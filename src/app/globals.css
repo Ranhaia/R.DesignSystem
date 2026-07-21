@@ -1,0 +1,397 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  ===========================================================================
+  MAPA DE TOKENS -> UTILITÁRIOS TAILWIND
+  ===========================================================================
+  Este bloco @theme conecta cada token semântico (definido em :root e .dark
+  abaixo) a uma classe utilitária do Tailwind. É por isso que "bg-primary"
+  ou "text-muted-foreground" funcionam: eles apontam para as variáveis CSS
+  definidas mais abaixo, não para valores fixos.
+
+  Para customizar o tema, você normalmente NÃO precisa mexer aqui.
+  Basta alterar os valores das variáveis em :root (tema claro) e .dark
+  (tema escuro) logo abaixo.
+*/
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+  ===========================================================================
+  TOKENS - TEMA CLARO
+  ===========================================================================
+  Cada variável abaixo é um "design token": um valor de cor nomeado pelo seu
+  PAPEL na interface (ex: --primary), não pela cor em si (ex: --blue-600).
+  Isso é o que permite trocar toda a identidade visual do app editando
+  só este arquivo, sem tocar em nenhum componente.
+
+  As cores usam o espaço de cor OKLCH (Lightness, Chroma, Hue). Vantagens
+  sobre HSL/RGB para criar paletas: luminosidade perceptualmente uniforme
+  (fácil de gerar tons consistentes) e melhor interpolação entre cores.
+*/
+:root {
+  --radius: 0.625rem;
+
+  /* Tokens do background do Hero (portfólio): não são cor, são
+     "energia" do movimento. Lidos via getComputedStyle por useHeroTokens()
+     e passados como props pro componente de background (Aurora/React Bits).
+     Cascateiam junto com o resto do preset — nenhum componente precisa saber
+     qual preset está ativo. */
+  --hero-speed: 0.6;
+  --hero-amplitude: 1;
+
+  /* Tipografia: fonte principal (corpo/UI) e secundária (títulos/headings).
+     As variáveis --font-inter etc. vêm do next/font/google, aplicadas no
+     <html> em app/layout.tsx — aqui só apontamos qual delas cada papel usa. */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Elevação: cada nível é uma sombra completa, não só uma cor.
+     Estilos com identidade "flat" zeram isso; estilos "soft" usam blur alto. */
+  --shadow-2xs: 0 1px 2px 0 oklch(0% 0 0 / 0.04);
+  --shadow-xs: 0 1px 3px 0 oklch(0% 0 0 / 0.06);
+  --shadow-sm: 0 1px 3px 0 oklch(0% 0 0 / 0.08), 0 1px 2px -1px oklch(0% 0 0 / 0.08);
+  --shadow-md: 0 4px 6px -1px oklch(0% 0 0 / 0.08), 0 2px 4px -2px oklch(0% 0 0 / 0.08);
+  --shadow-lg: 0 10px 15px -3px oklch(0% 0 0 / 0.08), 0 4px 6px -4px oklch(0% 0 0 / 0.08);
+  --shadow-xl: 0 20px 25px -5px oklch(0% 0 0 / 0.1), 0 8px 10px -6px oklch(0% 0 0 / 0.1);
+
+  /* Superfícies base */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+
+  /* Cards e popovers (superfícies elevadas) */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+
+  /* Ações primárias (botões principais, links de destaque) */
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+
+  /* Ações secundárias */
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+
+  /* Conteúdo esmaecido (texto de apoio, placeholders, estados desabilitados) */
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+
+  /* Destaques neutros (hover em itens de menu, seleção) */
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+
+  /* Estados de erro / ações destrutivas */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  /* Bordas, inputs e anel de foco */
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+
+  /* Paleta para gráficos (recharts) */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  /* Tokens dedicados à sidebar (podem divergir do restante do app) */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+/*
+  ===========================================================================
+  TOKENS - TEMA ESCURO
+  ===========================================================================
+  Mesmo conjunto de papéis semânticos, valores diferentes. A troca de tema
+  acontece só adicionando/removendo a classe "dark" no <html> (ver
+  app/layout.tsx) — nenhum componente precisa saber se está claro ou escuro.
+*/
+.dark {
+  --shadow-2xs: 0 1px 2px 0 oklch(0% 0 0 / 0.3);
+  --shadow-xs: 0 1px 3px 0 oklch(0% 0 0 / 0.35);
+  --shadow-sm: 0 1px 3px 0 oklch(0% 0 0 / 0.4), 0 1px 2px -1px oklch(0% 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px oklch(0% 0 0 / 0.4), 0 2px 4px -2px oklch(0% 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px oklch(0% 0 0 / 0.4), 0 4px 6px -4px oklch(0% 0 0 / 0.4);
+  --shadow-xl: 0 20px 25px -5px oklch(0% 0 0 / 0.45), 0 8px 10px -6px oklch(0% 0 0 / 0.45);
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/*
+  ===========================================================================
+  PRESETS DE ESTILO (identidades completas, não só cor)
+  ===========================================================================
+  Cada bloco troca um PACOTE de tokens — cor de ação, fonte principal e
+  secundária, radius e elevação (sombra) — simulando trocar de fornecedor
+  de design system. "Padrão" é a base em :root/.dark, sem bloco próprio.
+
+  Ativado via atributo data-style no <html> (ver StyleSwitcher). Fontes vêm
+  de next/font/google (variáveis --font-* aplicadas no <html>, ver layout.tsx).
+*/
+
+/* ---- Editorial: serifada, achatada, tom terracota — identidade impressa ---- */
+[data-style="editorial"] {
+  --font-sans: var(--font-lora), ui-serif, Georgia, serif;
+  --font-heading: var(--font-lora), ui-serif, Georgia, serif;
+  --radius: 0.2rem;
+  --hero-speed: 0.35;
+  --hero-amplitude: 0.7;
+  --shadow-2xs: 0 0 0 0 transparent;
+  --shadow-xs: 0 1px 1px 0 oklch(0% 0 0 / 0.04);
+  --shadow-sm: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
+  --shadow-md: 0 2px 4px 0 oklch(0% 0 0 / 0.06);
+  --shadow-lg: 0 4px 8px 0 oklch(0% 0 0 / 0.07);
+  --shadow-xl: 0 8px 16px 0 oklch(0% 0 0 / 0.08);
+  --primary: oklch(0.4 0.13 41);
+  --primary-foreground: oklch(0.98 0.016 73.684);
+  --secondary: oklch(0.95 0.02 60);
+  --secondary-foreground: oklch(0.3 0.06 41);
+  --border: oklch(0.88 0.02 60);
+  --input: oklch(0.88 0.02 60);
+  --ring: oklch(0.4 0.13 41 / 40%);
+  --chart-1: oklch(0.837 0.128 66.29);
+  --chart-2: oklch(0.705 0.213 47.604);
+  --chart-3: oklch(0.646 0.222 41.116);
+  --chart-4: oklch(0.553 0.195 38.402);
+  --chart-5: oklch(0.4 0.13 41);
+  --sidebar-primary: oklch(0.4 0.13 41);
+  --sidebar-primary-foreground: oklch(0.98 0.016 73.684);
+  --sidebar-border: oklch(0.88 0.02 60);
+}
+.dark[data-style="editorial"] {
+  --primary: oklch(0.75 0.13 60);
+  --primary-foreground: oklch(0.2 0.04 41);
+  --secondary: oklch(0.27 0.02 60);
+  --secondary-foreground: oklch(0.9 0.02 60);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.75 0.13 60 / 40%);
+  --sidebar-primary: oklch(0.75 0.13 60);
+  --sidebar-primary-foreground: oklch(0.2 0.04 41);
+}
+
+/* ---- Tech: mono nos títulos, quinas retas, sombra dura — identidade de dev tool ---- */
+[data-style="tech"] {
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --radius: 0rem;
+  --hero-speed: 1.4;
+  --hero-amplitude: 1.3;
+  --shadow-2xs: 0 1px 0 0 oklch(0% 0 0 / 0.1);
+  --shadow-xs: 0 2px 0 0 oklch(0% 0 0 / 0.12);
+  --shadow-sm: 0 2px 0 0 oklch(0% 0 0 / 0.9);
+  --shadow-md: 0 3px 0 0 oklch(0% 0 0 / 0.9);
+  --shadow-lg: 0 4px 0 0 oklch(0% 0 0 / 0.9);
+  --shadow-xl: 0 6px 0 0 oklch(0% 0 0 / 0.9);
+  --primary: oklch(0.488 0.243 264.376);
+  --primary-foreground: oklch(0.97 0.014 254.604);
+  --secondary: oklch(0.94 0.02 260);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --border: oklch(0.15 0 0);
+  --input: oklch(0.15 0 0);
+  --ring: oklch(0.488 0.243 264.376 / 50%);
+  --chart-1: oklch(0.809 0.105 251.813);
+  --chart-2: oklch(0.623 0.214 259.815);
+  --chart-3: oklch(0.546 0.245 262.881);
+  --chart-4: oklch(0.488 0.243 264.376);
+  --chart-5: oklch(0.424 0.199 265.638);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.97 0.014 254.604);
+  --sidebar-border: oklch(0.15 0 0);
+}
+.dark[data-style="tech"] {
+  --primary: oklch(0.75 0.16 255);
+  --primary-foreground: oklch(0.15 0.03 260);
+  --secondary: oklch(0.26 0.02 260);
+  --secondary-foreground: oklch(0.9 0.02 260);
+  --border: oklch(1 0 0 / 25%);
+  --input: oklch(1 0 0 / 25%);
+  --shadow-sm: 0 2px 0 0 oklch(100% 0 0 / 0.15);
+  --shadow-md: 0 3px 0 0 oklch(100% 0 0 / 0.15);
+  --shadow-lg: 0 4px 0 0 oklch(100% 0 0 / 0.15);
+  --sidebar-primary: oklch(0.75 0.16 255);
+  --sidebar-primary-foreground: oklch(0.15 0.03 260);
+}
+
+/* ---- Suave: bem arredondada, sombra difusa, tom rosado — identidade lifestyle ---- */
+[data-style="soft"] {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --radius: 1.35rem;
+  --hero-speed: 0.5;
+  --hero-amplitude: 0.8;
+  --shadow-2xs: 0 2px 8px -2px oklch(0.6 0.2 15 / 0.06);
+  --shadow-xs: 0 4px 12px -2px oklch(0.6 0.2 15 / 0.08);
+  --shadow-sm: 0 6px 16px -4px oklch(0.6 0.2 15 / 0.12);
+  --shadow-md: 0 10px 24px -6px oklch(0.6 0.2 15 / 0.14);
+  --shadow-lg: 0 16px 36px -8px oklch(0.6 0.2 15 / 0.16);
+  --shadow-xl: 0 24px 48px -10px oklch(0.6 0.2 15 / 0.18);
+  --primary: oklch(0.65 0.19 15);
+  --primary-foreground: oklch(0.99 0.01 15);
+  --secondary: oklch(0.96 0.03 15);
+  --secondary-foreground: oklch(0.4 0.15 15);
+  --border: oklch(0.92 0.03 15);
+  --input: oklch(0.92 0.03 15);
+  --ring: oklch(0.65 0.19 15 / 35%);
+  --chart-1: oklch(0.81 0.117 11.638);
+  --chart-2: oklch(0.72 0.15 15);
+  --chart-3: oklch(0.65 0.19 15);
+  --chart-4: oklch(0.58 0.21 16);
+  --chart-5: oklch(0.5 0.2 17);
+  --sidebar-primary: oklch(0.65 0.19 15);
+  --sidebar-primary-foreground: oklch(0.99 0.01 15);
+  --sidebar-border: oklch(0.92 0.03 15);
+}
+.dark[data-style="soft"] {
+  --primary: oklch(0.72 0.17 15);
+  --primary-foreground: oklch(0.2 0.05 15);
+  --secondary: oklch(0.28 0.04 15);
+  --secondary-foreground: oklch(0.9 0.03 15);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --sidebar-primary: oklch(0.72 0.17 15);
+  --sidebar-primary-foreground: oklch(0.2 0.05 15);
+}
+
+/* ---- Midnight: escura por padrão, com "glow" no lugar de sombra comum ----
+   Sobrescreve as superfícies base (background/card/border) direto, então
+   fica escura mesmo sem a classe .dark no <html>. */
+[data-style="midnight"] {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --radius: 0.75rem;
+  --hero-speed: 0.9;
+  --hero-amplitude: 1.5;
+  --background: oklch(0.16 0.015 280);
+  --foreground: oklch(0.95 0.01 280);
+  --card: oklch(0.21 0.02 280);
+  --card-foreground: oklch(0.95 0.01 280);
+  --popover: oklch(0.21 0.02 280);
+  --popover-foreground: oklch(0.95 0.01 280);
+  --muted: oklch(0.26 0.02 280);
+  --muted-foreground: oklch(0.68 0.02 280);
+  --accent: oklch(0.28 0.03 280);
+  --accent-foreground: oklch(0.95 0.01 280);
+  --primary: oklch(0.72 0.19 292.5);
+  --primary-foreground: oklch(0.98 0.01 292.5);
+  --secondary: oklch(0.26 0.02 280);
+  --secondary-foreground: oklch(0.95 0.01 280);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.72 0.19 292.5 / 45%);
+  --shadow-2xs: 0 0 6px 0 oklch(0.72 0.19 292.5 / 0.15);
+  --shadow-xs: 0 0 10px 0 oklch(0.72 0.19 292.5 / 0.18);
+  --shadow-sm: 0 2px 16px 0 oklch(0.72 0.19 292.5 / 0.22);
+  --shadow-md: 0 4px 24px 0 oklch(0.72 0.19 292.5 / 0.26);
+  --shadow-lg: 0 8px 36px 0 oklch(0.72 0.19 292.5 / 0.3);
+  --shadow-xl: 0 12px 48px 0 oklch(0.72 0.19 292.5 / 0.34);
+  --chart-1: oklch(0.811 0.111 293.571);
+  --chart-2: oklch(0.72 0.19 292.5);
+  --chart-3: oklch(0.606 0.25 292.717);
+  --chart-4: oklch(0.541 0.281 293.009);
+  --chart-5: oklch(0.432 0.232 292.759);
+  --sidebar: oklch(0.13 0.015 280);
+  --sidebar-foreground: oklch(0.95 0.01 280);
+  --sidebar-primary: oklch(0.72 0.19 292.5);
+  --sidebar-primary-foreground: oklch(0.98 0.01 292.5);
+  --sidebar-accent: oklch(0.26 0.02 280);
+  --sidebar-accent-foreground: oklch(0.95 0.01 280);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.72 0.19 292.5 / 45%);
+}
