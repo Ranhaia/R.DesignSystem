@@ -1308,3 +1308,93 @@ desse preset), o Rafael pediu pra corrigir também aqui no shadcn-local.
 - Verificado computacionalmente (contraste WCAG) antes e depois da
   troca; nenhum outro arquivo do projeto referenciava `#EB5169` como
   valor "vivo" (só a correção acima em comentário histórico).
+
+### 2026-07-22 — R.ds logo no menu, nav Templates reorganizada, elevação do Button, bg do modal
+
+Sequência de ajustes de UI pedidos pelo Rafael no mesmo loop de revisão
+visual do dia (favicon, avatar, cores por token, contraste do Suave):
+
+- **Logo "R.ds" substituindo "Estilo padrão"** (`r-logo.tsx`, novo):
+  path data extraído do SVG que o Rafael enviou (2 paths — "R" e ".ds").
+  `RLogo` (só o "R", usado recolhido) e `RDsLogo` (wordmark completo,
+  usado expandido) — o "R" em `fill="currentColor"` (herda
+  `text-sidebar-primary`, cor de destaque do preset ativo); o ".ds" fixo
+  em `var(--sidebar-foreground)`. `style-switcher.tsx` foi reestruturado:
+  logo e gatilho de troca de tema (ícone `PuzzleIcon`, era `BlocksIcon`
+  — corrigido a pedido do Rafael pra não repetir o ícone de Patterns) são
+  2 elementos separados, `justify-between` empurra o gatilho pra borda
+  quando expandido, `flex-col` empilha quando recolhido. Título da aba
+  (`layout.tsx`) trocado de "shadcn/ui local" pra "R.ds".
+- **Espaçamento do logo** (mesmo arquivo): `pl-1` no container só quando
+  expandido (cancelado com `pl-0` no recolhido, senão desalinha a
+  centralização do ícone) — o "R.ds" estava colado na borda esquerda do
+  `SidebarHeader`. Gap entre "R" e gatilho no recolhido, `gap-1`→`gap-3`
+  — Rafael achou os dois muito próximos quando o menu fecha.
+- **Nav "Outros" removida**: só continha o utilitário "direction"
+  (`atomic-registry.ts`, `utilitySlugs`), que continua acessível por link
+  direto — só saiu da sidebar. O `PuzzleIcon` que era dela foi
+  reaproveitado no gatilho de troca de tema (item acima), em vez de
+  escolher um ícone novo.
+- **Templates reorganizado** (`templates-registry.ts` novo,
+  `template-index.tsx` novo, `/templates` novo, `nav-templates.tsx`
+  novo): era um `SidebarGroup` estático com "Dashboard financeiro" como
+  único item solto. Agora segue o mesmo padrão accordion de
+  `nav-patterns.tsx`/`nav-components.tsx` (clique no nome navega,
+  chevron abre/fecha) e tem página-índice própria com os mesmos cards
+  "Em construção" já usados em Atoms/Molecules/Organisms — populada com
+  as 8 telas da Fase 5 (5 do fluxo de login + 3 de seguros, ver seção
+  "Fase 5" mais acima) como placeholder, "Dashboard financeiro" como
+  único item construído por enquanto.
+- **Gráfico do dashboard financeiro sem paleta**: `BarChart` do template
+  usava 1 cor hardcoded (`#2563eb`) pra todas as barras. Trocado por
+  `<Cell>` por barra usando a escala categórica (`--color-categorical-1`
+  a `-10`, construída em 2026-07-21 especificamente pra tabela/gráfico —
+  ver bloco "PRIMITIVOS GLOBAIS DE COR" em `globals.css`) — primeira vez
+  que essa escala é de fato consumida por um componente.
+- **Elevação ausente nas variants não-default do Button**: só a variant
+  `default` tinha o efeito de "sombra reduz + desce 1px" no hover
+  (simula botão sendo pressionado). `destructive` e `secondary` estavam
+  sem sombra nenhuma; `outline` e `ai-secondary` tinham sombra estática
+  sem reagir ao hover; `ai-primary` tinha a sombra mas não o
+  deslocamento. Extraído `const elevation` (mesma string pras 5
+  variants com superfície própria) — `ghost` e `link` ficam de fora de
+  propósito, não têm bg própria pra "elevar".
+- **Fundo do modal errado** (`dialog.tsx`, `alert-dialog.tsx`,
+  `sheet.tsx`, `drawer.tsx`, `chart.tsx`): todos usavam `bg-background`.
+  Antes do fix de contraste do Alert (mais acima no Log, mesmo dia),
+  `--background` era branco puro em todo preset — então `bg-background`
+  e `bg-popover` pareciam iguais e o bug não era visível. Depois daquele
+  fix, `--background` dos presets Editorial/Tech/Soft passou a ter tint
+  de `--muted`, enquanto `--popover` continuou branco puro — o modal
+  passou a "herdar" o tom da página em vez do branco de superfície
+  flutuante que Popover/Sonner/Tooltip/DropdownMenu/Command/etc já usam
+  corretamente. Trocado `bg-background` → `bg-popover
+  text-popover-foreground` nos 5 arquivos (Dialog, AlertDialog, Sheet,
+  Drawer e o tooltip do Chart — mesma família de superfície flutuante,
+  mesmo bug).
+- **Verificação de tipos**: `tsc --noEmit` não completou dentro do teto
+  de tempo do sandbox (mesma limitação já registrada antes neste
+  arquivo — I/O lento no mount do projeto). Revisão manual dos arquivos
+  novos/editados não encontrou incompatibilidade de tipo aparente;
+  fica pendente confirmação real via `next build` no Vercel ou `tsc`
+  local no Windows do Rafael.
+- **Logo R.ds de 24px pra 32px**: `RDsLogo` (`h-6`→`h-8`) e `RLogo`
+  (`size-6`→`size-8`) em `style-switcher.tsx` — os containers já eram
+  `h-8`/`size-8`, então os dois agora preenchem exatamente o espaço que
+  já existia (sem sobra de respiro no recolhido, era isso que o Rafael
+  pediu).
+- **Breadcrumb linkando pra "Componentes" (página que não existe)**:
+  `app-shell.tsx` tinha 2 bugs no crumb intermediário. (1) O `href` do
+  crumb de seção era sempre `"/"`, ignorando qual seção era — Templates,
+  Patterns e o crumb de componente todos apontavam pra home em vez da
+  própria página-índice. (2) Página de componente (`/components/[slug]`)
+  usava um bucket fixo `"Componentes"` que nunca teve rota própria (só
+  existem índices por categoria: `/atoms`, `/molecules`, `/organisms`).
+  Fix: movi `categoryLabels`/`categoryHref` de `nav-components.tsx` pra
+  `atomic-registry.ts` (única fonte, reaproveitada pelos dois lugares);
+  o breadcrumb de componente agora resolve a categoria real via
+  `atomicRegistry[slug]` e linka pro índice certo. Patterns e Templates
+  passaram a linkar pra `/patterns` e `/templates` (existem desde antes/
+  desde a mudança de hoje mesmo), em vez de `/`. Utilitários fora do
+  atomicRegistry (ex: "direction") ficam sem crumb de seção — não têm
+  categoria nem índice, então não tem link melhor pra oferecer.

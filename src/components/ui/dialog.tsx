@@ -61,7 +61,16 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg",
+          // 2026-07-22: era bg-background — igual ao Tooltip antes do fix
+          // do dia 21 (task #34), esse é o mesmo bug: Dialog é uma
+          // superfície flutuante (mesma família de Popover/Sonner/
+          // DropdownMenu/Command, todos em bg-popover), não a página em si.
+          // Passou a doer visualmente hoje porque --background dos presets
+          // Editorial/Tech/Soft deixou de ser branco puro (ficou com tint
+          // de --muted, ver fix de contraste do Alert) enquanto --popover
+          // continuou branco puro — então o modal "herdava" o tom da
+          // página em vez do branco de superfície flutuante.
+          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-popover p-6 text-popover-foreground shadow-lg duration-200 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg",
           className
         )}
         {...props}

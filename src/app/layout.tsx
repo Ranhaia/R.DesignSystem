@@ -56,8 +56,23 @@ const fontVariables = [
 ].join(" ");
 
 export const metadata: Metadata = {
-  title: "shadcn/ui local",
+  title: "R.ds",
   description: "Projeto local com shadcn/ui, todos os componentes e tokens de tema",
+  // 2026-07-22: pasta de favicon que o Rafael colocou na raiz do projeto —
+  // movida pra public/ (Next.js só serve arquivos estáticos de lá; os
+  // paths "/xxx.png" dentro do site.webmanifest já eram root-relative,
+  // então tinham que ficar em public/ mesmo, não numa subpasta). Ícones e
+  // manifest conectados via metadata (API oficial do App Router) em vez
+  // de <link> manual no <head>.
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 // Aplica o preset de estilo salvo ANTES da hidratação, para não piscar o

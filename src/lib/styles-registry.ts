@@ -29,21 +29,21 @@ export const stylesList: StyleEntry[] = [
   {
     value: "default",
     label: "Padrão",
-    swatch: "oklch(0.205 0 0)",
+    swatch: "#171717",
     description: "Inter, cantos médios, sombra sutil",
     nativeMode: "light",
   },
   {
     value: "editorial",
     label: "Editorial",
-    swatch: "oklch(0.4 0.13 41)",
+    swatch: "#7E2600",
     description: "Serifada (Lora), cantos retos, quase sem sombra",
     nativeMode: "light",
   },
   {
     value: "tech",
     label: "Tech",
-    swatch: "oklch(0.488 0.243 264.376)",
+    swatch: "#1447E6",
     description: "Título em mono, quinas 90°, sombra dura, borda 2px",
     nativeMode: "light",
   },
@@ -60,7 +60,7 @@ export const stylesList: StyleEntry[] = [
   {
     value: "midnight",
     label: "Midnight",
-    swatch: "oklch(0.16 0.015 280)",
+    swatch: "#0C0D14",
     description: "Violeta, Manrope, sombra com glow — nativamente escuro, mas também tem versão clara",
     nativeMode: "dark",
   },

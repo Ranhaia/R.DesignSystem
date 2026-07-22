@@ -3,8 +3,14 @@
 import * as React from "react"
 import { usePathname } from "next/navigation"
 
+import {
+  atomicRegistry,
+  categoryHref,
+  categoryLabels,
+} from "@/lib/atomic-registry"
 import { componentsList } from "@/lib/components-registry"
 import { patternsList } from "@/lib/patterns-registry"
+import { templatesList } from "@/lib/templates-registry"
 import { AppSidebar } from "@/components/sidebar-07/app-sidebar"
 import {
   Breadcrumb,
@@ -22,58 +28,86 @@ import {
 } from "@/components/ui/sidebar"
 import { Toaster } from "@/components/ui/sonner"
 
+// 2026-07-22: antes o crumb intermediário (`section`) sempre linkava pra
+// "/" independente do texto — e a página de componente usava um bucket
+// fixo "Componentes" que nunca teve rota própria (só existem índices por
+// categoria: /atoms, /molecules, /organisms). Rafael pegou o link morto.
+// Agora cada `section` vem com o `sectionHref` real, e a categoria de
+// /components/[slug] usa o mesmo atomic-registry.ts que a nav lateral
+// (categoryLabels/categoryHref) — única fonte, sem bucket inventado.
 function useBreadcrumb() {
   const pathname = usePathname()
 
   if (pathname === "/") {
-    return { section: null, page: "Visão geral" }
+    return { section: null, sectionHref: null, page: "Visão geral" }
   }
 
   if (pathname === "/estilo") {
-    return { section: null, page: "Folha de estilo" }
+    return { section: null, sectionHref: null, page: "Folha de estilo" }
   }
 
   if (pathname === "/portfolio") {
-    return { section: null, page: "Portfólio" }
+    return { section: null, sectionHref: null, page: "Portfólio" }
   }
 
   if (pathname === "/atoms") {
-    return { section: null, page: "Atoms" }
+    return { section: null, sectionHref: null, page: "Atoms" }
   }
 
   if (pathname === "/molecules") {
-    return { section: null, page: "Molecules" }
+    return { section: null, sectionHref: null, page: "Molecules" }
   }
 
   if (pathname === "/organisms") {
-    return { section: null, page: "Organisms" }
+    return { section: null, sectionHref: null, page: "Organisms" }
   }
 
-  if (pathname === "/templates/dashboard-financeiro") {
-    return { section: "Templates", page: "Dashboard financeiro" }
+  if (pathname === "/templates") {
+    return { section: null, sectionHref: null, page: "Templates" }
   }
 
   if (pathname === "/patterns") {
-    return { section: null, page: "Patterns" }
+    return { section: null, sectionHref: null, page: "Patterns" }
   }
 
-  const match = pathname.match(/^\/components\/(.+)$/)
-  if (match) {
-    const entry = componentsList.find((c) => c.slug === match[1])
-    return { section: "Componentes", page: entry?.name ?? match[1] }
+  const componentMatch = pathname.match(/^\/components\/(.+)$/)
+  if (componentMatch) {
+    const entry = componentsList.find((c) => c.slug === componentMatch[1])
+    const category = atomicRegistry[componentMatch[1]]
+    return {
+      // Utilitários fora do atomicRegistry (ex: "direction") não têm
+      // categoria/índice — ficam sem crumb de seção, só o nome da página.
+      section: category ? categoryLabels[category] : null,
+      sectionHref: category ? categoryHref[category] : null,
+      page: entry?.name ?? componentMatch[1],
+    }
   }
 
   const patternMatch = pathname.match(/^\/patterns\/(.+)$/)
   if (patternMatch) {
     const entry = patternsList.find((p) => p.slug === patternMatch[1])
-    return { section: "Patterns", page: entry?.name ?? patternMatch[1] }
+    return {
+      section: "Patterns",
+      sectionHref: "/patterns",
+      page: entry?.name ?? patternMatch[1],
+    }
   }
 
-  return { section: null, page: pathname }
+  const templateMatch = pathname.match(/^\/templates\/(.+)$/)
+  if (templateMatch) {
+    const entry = templatesList.find((t) => t.slug === templateMatch[1])
+    return {
+      section: "Templates",
+      sectionHref: "/templates",
+      page: entry?.name ?? templateMatch[1],
+    }
+  }
+
+  return { section: null, sectionHref: null, page: pathname }
 }
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const { section, page } = useBreadcrumb()
+  const { section, sectionHref, page } = useBreadcrumb()
 
   return (
     <SidebarProvider>
@@ -91,7 +125,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 {section && (
                   <>
                     <BreadcrumbItem className="hidden md:block">
-                      <BreadcrumbLink href="/">{section}</BreadcrumbLink>
+                      <BreadcrumbLink href={sectionHref ?? "/"}>
+                        {section}
+                      </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator className="hidden md:block" />
                   </>

@@ -5,19 +5,27 @@ import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
 
+// 2026-07-22: efeito de "elevação" (sombra some um pouco + desce 1px no
+// hover, simulando o botão sendo pressionado) existia só na variant
+// "default" — as outras variants com superfície própria (destructive,
+// outline, secondary, ai-primary, ai-secondary) tinham ficado sem sombra
+// nenhuma ou com sombra estática sem reação ao hover. Rafael pediu pra
+// igualar. Ghost e link ficam de fora de propósito: são variantes "sem
+// superfície" (ghost só pinta no hover, link é texto puro), não fazem
+// sentido ganhar elevação — a mesma distinção que o resto do arquivo já
+// faz entre "tem bg própria" e "não tem".
+const elevation =
+  "shadow-sm hover:shadow-xs hover:translate-y-px disabled:translate-y-0 disabled:shadow-none"
+
 const buttonVariants = cva(
   "inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-xs hover:translate-y-px disabled:translate-y-0 disabled:shadow-none",
-        destructive:
-          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40",
-        outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        default: `bg-primary text-primary-foreground ${elevation} hover:bg-primary/90`,
+        destructive: `bg-destructive text-white ${elevation} hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40`,
+        outline: `border bg-background ${elevation} hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50`,
+        secondary: `bg-secondary text-secondary-foreground ${elevation} hover:bg-secondary/80`,
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
@@ -28,11 +36,9 @@ const buttonVariants = cva(
         // em vez do 3º gradiente (mais claro) que a Nimbus usa pra disabled,
         // pra manter o mesmo comportamento de "desabilitado" em toda a família
         // de variantes deste projeto.
-        "ai-primary":
-          "text-white shadow-sm [background-image:var(--ai-gradient-rest)] hover:[background-image:var(--ai-gradient-hover)] hover:shadow-xs",
+        "ai-primary": `text-white ${elevation} [background-image:var(--ai-gradient-rest)] hover:[background-image:var(--ai-gradient-hover)]`,
         // Ação de IA complementar (appearance="ai-secondary" da Nimbus).
-        "ai-secondary":
-          "border border-ai-interactive bg-ai-surface text-ai-text-high shadow-xs hover:bg-ai-surface-highlight hover:border-ai-interactive-hover",
+        "ai-secondary": `border border-ai-interactive bg-ai-surface text-ai-text-high ${elevation} hover:bg-ai-surface-highlight hover:border-ai-interactive-hover`,
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

@@ -191,7 +191,10 @@ function ChartTooltipContent({
   return (
     <div
       className={cn(
-        "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl",
+        // 2026-07-22: mesmo fix do Dialog (ver dialog.tsx) — o tooltip do
+        // chart também é superfície flutuante, bg-background → bg-popover/
+        // text-popover-foreground.
+        "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-popover px-2.5 py-1.5 text-xs text-popover-foreground shadow-xl",
         className
       )}
     >

@@ -1,5 +1,24 @@
 export type AtomicCategory = "atom" | "molecule" | "organism"
 
+// Label e rota de índice por categoria — únicas (antes duplicadas como
+// consts locais em nav-components.tsx). Movidas pra cá 2026-07-22 pra
+// resolver o breadcrumb de /components/[slug] linkando pra um
+// "Componentes" que não existe como página: agora o breadcrumb usa esses
+// mesmos mapas pra saber que categoria (Atoms/Molecules/Organisms) e pra
+// que rota de índice cada componente pertence, em vez de um bucket fixo
+// que nunca teve página própria.
+export const categoryLabels: Record<AtomicCategory, string> = {
+  atom: "Atoms",
+  molecule: "Molecules",
+  organism: "Organisms",
+}
+
+export const categoryHref: Record<AtomicCategory, string> = {
+  atom: "/atoms",
+  molecule: "/molecules",
+  organism: "/organisms",
+}
+
 // Fonte da verdade da categorização Atomic Design dos componentes já
 // existentes em src/components/ui/. Aprovada por Rafael na Fase 0 do
 // PLANO-LOOP-80-20-TEMPLATES.md (2026-07-20). Qualquer mudança de

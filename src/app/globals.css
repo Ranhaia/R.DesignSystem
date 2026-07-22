@@ -248,42 +248,51 @@
   --primary-foreground: var(--default-action-foreground);
 
   /* Ações secundárias */
-  --secondary: oklch(0.97 0 0);
+  --secondary: #F5F5F5;
   --secondary-foreground: var(--default-action);
 
   /* Conteúdo esmaecido (texto de apoio, placeholders, estados desabilitados) */
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted: #F5F5F5;
+  --muted-foreground: #737373;
 
   /* Destaques neutros (hover em itens de menu, seleção) */
-  --accent: oklch(0.97 0 0);
+  --accent: #F5F5F5;
   --accent-foreground: var(--default-action);
 
   /* Estados de erro / ações destrutivas */
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: #E7000B;
   --destructive-foreground: var(--default-action-foreground);
 
   /* Bordas, inputs e anel de foco */
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #E5E5E5;
+  --input: #E5E5E5;
+  --ring: #A1A1A1;
 
   /* Paleta para gráficos (recharts) */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --chart-1: #F54900;
+  --chart-2: #009689;
+  --chart-3: #104E64;
+  --chart-4: #FFB900;
+  --chart-5: #FE9A00;
 
   /* Tokens dedicados à sidebar (podem divergir do restante do app) */
   --sidebar: var(--default-action-foreground);
   --sidebar-foreground: var(--default-surface-foreground);
   --sidebar-primary: var(--default-action);
   --sidebar-primary-foreground: var(--default-action-foreground);
-  --sidebar-accent: oklch(0.97 0 0);
+  /* 2026-07-22: era #F5F5F5 — cinza neutro puro, sem cor nenhuma,
+     motivo do menu parecer "muito Vercel" (o hover do dashboard da Vercel
+     usa exatamente esse tipo de cinza neutro quase igual ao fundo). Trocado
+     por um passo da escala primitiva --color-info (já existente, ver
+     "Cor para Info/Sucesso/Alerta/Perigo" em :root) em vez de inventar um
+     azul novo — o -200 (não o -100) porque contra --sidebar
+     (var(--default-action-foreground), quase branco) o -100 ficava
+     perceptualmente parecido demais com o fundo, sem dar affordance clara
+     de hover. */
+  --sidebar-accent: var(--color-info-200);
   --sidebar-accent-foreground: var(--default-action);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-border: #E5E5E5;
+  --sidebar-ring: #A1A1A1;
 
   /* Tokens de IA (fonte: Nimbus Design System, "Referência técnica de IA" —
      nimbus.nuvemshop.com.br/documentation/ai-experiences/referencia-tecnica,
@@ -433,38 +442,38 @@
   --default-dark-surface: #171717;
   --default-dark-surface-foreground: #FAFAFA;
 
-  --background: oklch(0.145 0 0);
+  --background: #0A0A0A;
   --foreground: var(--default-dark-surface-foreground);
   --card: var(--default-dark-surface);
   --card-foreground: var(--default-dark-surface-foreground);
   --popover: var(--default-dark-surface);
   --popover-foreground: var(--default-dark-surface-foreground);
-  --primary: oklch(0.922 0 0);
+  --primary: #E5E5E5;
   --primary-foreground: var(--default-dark-surface);
-  --secondary: oklch(0.269 0 0);
+  --secondary: #262626;
   --secondary-foreground: var(--default-dark-surface-foreground);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
+  --muted: #262626;
+  --muted-foreground: #A1A1A1;
+  --accent: #262626;
   --accent-foreground: var(--default-dark-surface-foreground);
-  --destructive: oklch(0.704 0.191 22.216);
+  --destructive: #FF6467;
   --destructive-foreground: var(--default-dark-surface-foreground);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  --ring: #737373;
+  --chart-1: #1447E6;
+  --chart-2: #00BC7D;
+  --chart-3: #FE9A00;
+  --chart-4: #AD46FF;
+  --chart-5: #FF2056;
   --sidebar: var(--default-dark-surface);
   --sidebar-foreground: var(--default-dark-surface-foreground);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary: #1447E6;
   --sidebar-primary-foreground: var(--default-dark-surface-foreground);
-  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent: #262626;
   --sidebar-accent-foreground: var(--default-dark-surface-foreground);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: #737373;
 }
 
 @layer base {
@@ -506,12 +515,19 @@
      pra explicar a ideia de primitivo pro Rafael. */
   --editorial-action: #7E2600;
   --editorial-action-foreground: #FFF7ED;
-  --editorial-surface: #FFFBF6;
+  /* 2026-07-22: era #FFFBF6 (branco com tingimento quente) — quase
+     idêntico ao --background (que não existia aqui, caía pro branco puro
+     de :root por herança), então Anatomia/Composição (bg-card) e o fundo
+     da página ficavam visualmente iguais, sem separação nenhuma — Rafael
+     reportou "pesado de ler". Virou branco puro; a identidade quente da
+     página agora fica só no --background (abaixo), que passa a usar o
+     --muted deste preset em vez de herdar o branco do :root. */
+  --editorial-surface: #FFFFFF;
   --editorial-surface-foreground: #472215;
 
   --primary: var(--editorial-action);
   --primary-foreground: var(--editorial-action-foreground);
-  --secondary: oklch(0.95 0.02 60);
+  --secondary: #F9ECE1;
   --secondary-foreground: var(--editorial-surface-foreground);
 
   /* Superfícies que abrem "por cima" (Popover, DropdownMenu, HoverCard,
@@ -520,25 +536,34 @@
      qualquer preset, porque nenhum preset sobrescrevia esses 4 tokens.
      Cada componente já referenciava bg-popover/bg-card/bg-accent
      corretamente (não era bug de componente) — o gap era só aqui. */
+  --background: var(--muted);
+  --foreground: var(--editorial-surface-foreground);
   --card: var(--editorial-surface);
   --card-foreground: var(--editorial-surface-foreground);
   --popover: var(--editorial-surface);
   --popover-foreground: var(--editorial-surface-foreground);
-  --muted: oklch(0.96 0.015 60);
-  --muted-foreground: oklch(0.5 0.05 41);
-  --accent: oklch(0.93 0.03 55);
+  --muted: #FAF0E8;
+  --muted-foreground: #7C5A4D;
+  --accent: #F9E3D5;
   --accent-foreground: var(--editorial-surface-foreground);
-  --border: oklch(0.88 0.02 60);
-  --input: oklch(0.88 0.02 60);
+  --border: #E2D5CB;
+  --input: #E2D5CB;
   --ring: oklch(0.4 0.13 41 / 40%);
-  --chart-1: oklch(0.837 0.128 66.29);
-  --chart-2: oklch(0.705 0.213 47.604);
-  --chart-3: oklch(0.646 0.222 41.116);
-  --chart-4: oklch(0.553 0.195 38.402);
+  --chart-1: #FFB86A;
+  --chart-2: #FF6900;
+  --chart-3: #F54900;
+  --chart-4: #CA3500;
   --chart-5: var(--editorial-action);
   --sidebar-primary: var(--editorial-action);
   --sidebar-primary-foreground: var(--editorial-action-foreground);
-  --sidebar-border: oklch(0.88 0.02 60);
+  --sidebar-border: #E2D5CB;
+  /* 2026-07-22: sidebar-accent próprio (antes herdava o cinza neutro do
+     :root, e depois herdaria o azul do Padrão — nenhum dos dois combina
+     com o tom quente/sério deste preset). Reaproveita o --accent que já
+     existe aqui mesmo (não inventa cor nova), que já é pensado como
+     "destaque suave" dentro do preset. */
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
 }
 .dark[data-style="editorial"] {
   /* Primitivos deste tema (editorial/escuro) */
@@ -549,15 +574,15 @@
 
   --primary: var(--editorial-dark-action);
   --primary-foreground: var(--editorial-dark-action-foreground);
-  --secondary: oklch(0.27 0.02 60);
-  --secondary-foreground: oklch(0.9 0.02 60);
+  --secondary: #2E241D;
+  --secondary-foreground: #E8DBD1;
   --card: var(--editorial-dark-surface);
   --card-foreground: var(--editorial-dark-surface-foreground);
   --popover: var(--editorial-dark-surface);
   --popover-foreground: var(--editorial-dark-surface-foreground);
-  --muted: oklch(0.28 0.03 41);
-  --muted-foreground: oklch(0.7 0.03 60);
-  --accent: oklch(0.32 0.05 41);
+  --muted: #36241D;
+  --muted-foreground: #AD9A8C;
+  --accent: #482A1E;
   --accent-foreground: var(--editorial-dark-surface-foreground);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
@@ -585,32 +610,44 @@
   /* Primitivos deste tema (tech/claro) */
   --tech-action: #1447E6;
   --tech-action-foreground: #EFF6FF;
-  --tech-surface: #FAFCFF;
+  /* 2026-07-22: mesma correção do Editorial (ver comentário lá) — era
+     #FAFCFF, quase idêntico ao branco puro que --background herdava de
+     :root. Virou branco puro; a identidade azulada da página fica no
+     --background (abaixo), que usa o --muted deste preset. */
+  --tech-surface: #FFFFFF;
   --tech-surface-foreground: #18181B;
 
   --primary: var(--tech-action);
   --primary-foreground: var(--tech-action-foreground);
-  --secondary: oklch(0.94 0.02 260);
+  --secondary: #E4ECF9;
   --secondary-foreground: var(--tech-surface-foreground);
+  --background: var(--muted);
+  --foreground: var(--tech-surface-foreground);
   --card: var(--tech-surface);
   --card-foreground: var(--tech-surface-foreground);
   --popover: var(--tech-surface);
   --popover-foreground: var(--tech-surface-foreground);
-  --muted: oklch(0.95 0.015 260);
-  --muted-foreground: oklch(0.5 0.02 260);
-  --accent: oklch(0.92 0.025 258);
+  --muted: #E9EFF9;
+  --muted-foreground: #5D646F;
+  --accent: #DBE5F6;
   --accent-foreground: var(--tech-surface-foreground);
-  --border: oklch(0.15 0 0);
-  --input: oklch(0.15 0 0);
+  --border: #0B0B0B;
+  --input: #0B0B0B;
   --ring: oklch(0.488 0.243 264.376 / 50%);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
+  --chart-1: #8EC5FF;
+  --chart-2: #2B7FFF;
+  --chart-3: #155DFC;
   --chart-4: var(--tech-action);
-  --chart-5: oklch(0.424 0.199 265.638);
+  --chart-5: #193CB8;
   --sidebar-primary: var(--tech-action);
   --sidebar-primary-foreground: var(--tech-action-foreground);
-  --sidebar-border: oklch(0.15 0 0);
+  --sidebar-border: #0B0B0B;
+  /* 2026-07-22: sidebar-accent próprio, mesmo motivo do Editorial acima —
+     reaproveita o --accent já existente neste preset. Aqui coincide ser
+     um azul claro também (Tech já é azul de base), então não conflita com
+     o --color-info-200 usado no Padrão. */
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
 }
 .dark[data-style="tech"] {
   /* Primitivos deste tema (tech/escuro) */
@@ -621,15 +658,15 @@
 
   --primary: var(--tech-dark-action);
   --primary-foreground: var(--tech-dark-action-foreground);
-  --secondary: oklch(0.26 0.02 260);
+  --secondary: #1E242E;
   --secondary-foreground: var(--tech-dark-surface-foreground);
   --card: var(--tech-dark-surface);
   --card-foreground: var(--tech-dark-surface-foreground);
   --popover: var(--tech-dark-surface);
   --popover-foreground: var(--tech-dark-surface-foreground);
-  --muted: oklch(0.26 0.02 260);
-  --muted-foreground: oklch(0.65 0.02 260);
-  --accent: oklch(0.3 0.03 260);
+  --muted: #1E242E;
+  --muted-foreground: #88909C;
+  --accent: #252E3D;
   --accent-foreground: var(--tech-dark-surface-foreground);
   --border: oklch(1 0 0 / 25%);
   --input: oklch(1 0 0 / 25%);
@@ -665,32 +702,43 @@
      o par de contraste real é diferente (branco puro vs #FFF9FA aqui). */
   --soft-action: #E31A39;
   --soft-action-foreground: #FFF9FA;
-  --soft-surface: #FFFBFB;
+  /* 2026-07-22: mesma correção do Editorial/Tech (ver comentários lá) —
+     era #FFFBFB, quase idêntico ao branco puro que --background herdava
+     de :root. Virou branco puro; a identidade rosada da página fica no
+     --background (abaixo), que usa o --muted deste preset. */
+  --soft-surface: #FFFFFF;
   --soft-surface-foreground: #850E2C;
 
   --primary: var(--soft-action);
   --primary-foreground: var(--soft-action-foreground);
-  --secondary: oklch(0.96 0.03 15);
+  --secondary: #FFEAEB;
   --secondary-foreground: var(--soft-surface-foreground);
+  --background: var(--muted);
+  /* Rafael pediu pra manter neutro: --soft-surface-foreground (#850E2C) é
+     forte/saturado demais pro texto corrido da página inteira — funciona
+     bem como cor de destaque em card/popover (título, texto curto), mas
+     virar a cor de TODO texto ficava pesado. Reaproveita o neutro de
+     :root (--default-surface-foreground, quase preto) só pra este token. */
+  --foreground: var(--default-surface-foreground);
   --card: var(--soft-surface);
   --card-foreground: var(--soft-surface-foreground);
   --popover: var(--soft-surface);
   --popover-foreground: var(--soft-surface-foreground);
-  --muted: oklch(0.97 0.02 15);
-  --muted-foreground: oklch(0.55 0.08 15);
-  --accent: oklch(0.94 0.04 15);
+  --muted: #FFF0F1;
+  --muted-foreground: #9B5E62;
+  --accent: #FFE1E3;
   --accent-foreground: var(--soft-surface-foreground);
-  --border: oklch(0.92 0.03 15);
-  --input: oklch(0.92 0.03 15);
+  --border: #F8DDDE;
+  --input: #F8DDDE;
   --ring: oklch(0.65 0.19 15 / 35%);
-  --chart-1: oklch(0.81 0.117 11.638);
-  --chart-2: oklch(0.72 0.15 15);
+  --chart-1: #FFA1AD;
+  --chart-2: #F37986;
   --chart-3: var(--soft-action);
-  --chart-4: oklch(0.58 0.21 16);
-  --chart-5: oklch(0.5 0.2 17);
+  --chart-4: #DA284E;
+  --chart-5: #BA0037;
   --sidebar-primary: var(--soft-action);
   --sidebar-primary-foreground: var(--soft-action-foreground);
-  --sidebar-border: oklch(0.92 0.03 15);
+  --sidebar-border: #F8DDDE;
 }
 .dark[data-style="soft"] {
   /* Primitivos deste tema (soft/escuro) */
@@ -701,15 +749,15 @@
 
   --primary: var(--soft-dark-action);
   --primary-foreground: var(--soft-dark-action-foreground);
-  --secondary: oklch(0.28 0.04 15);
-  --secondary-foreground: oklch(0.9 0.03 15);
+  --secondary: #3A2022;
+  --secondary-foreground: #F1D6D8;
   --card: var(--soft-dark-surface);
   --card-foreground: var(--soft-dark-surface-foreground);
   --popover: var(--soft-dark-surface);
   --popover-foreground: var(--soft-dark-surface-foreground);
-  --muted: oklch(0.3 0.04 15);
-  --muted-foreground: oklch(0.7 0.03 15);
-  --accent: oklch(0.34 0.05 15);
+  --muted: #402527;
+  --muted-foreground: #B09798;
+  --accent: #4F2D2F;
   --accent-foreground: var(--soft-dark-surface-foreground);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
@@ -772,11 +820,11 @@
   --shadow-md: 0 2px 16px 0 oklch(0.5 0.22 292.5 / 0.14);
   --shadow-lg: 0 4px 24px 0 oklch(0.5 0.22 292.5 / 0.16);
   --shadow-xl: 0 8px 32px 0 oklch(0.5 0.22 292.5 / 0.18);
-  --chart-1: oklch(0.811 0.111 293.571);
+  --chart-1: #C4B4FF;
   --chart-2: var(--midnight-action);
-  --chart-3: oklch(0.606 0.25 292.717);
-  --chart-4: oklch(0.541 0.281 293.009);
-  --chart-5: oklch(0.432 0.232 292.759);
+  --chart-3: #8E51FF;
+  --chart-4: #7F22FE;
+  --chart-5: #5D0EC0;
   --sidebar: #EBEAF5;
   --sidebar-foreground: var(--midnight-surface-foreground);
   --sidebar-primary: var(--midnight-action);
@@ -809,27 +857,27 @@
   --midnight-dark-surface: #161721;
   --midnight-dark-surface-foreground: #EDEEF5;
 
-  --background: oklch(0.16 0.015 280);
-  --foreground: oklch(0.95 0.01 280);
+  --background: #0C0D14;
+  --foreground: #EDEEF5;
   --card: var(--midnight-dark-surface);
   --card-foreground: var(--midnight-dark-surface-foreground);
   --popover: var(--midnight-dark-surface);
   --popover-foreground: var(--midnight-dark-surface-foreground);
-  --muted: oklch(0.26 0.02 280);
-  --muted-foreground: oklch(0.68 0.02 280);
-  --accent: oklch(0.28 0.03 280);
-  --accent-foreground: oklch(0.95 0.01 280);
+  --muted: #22232E;
+  --muted-foreground: #9597A5;
+  --accent: #262738;
+  --accent-foreground: #EDEEF5;
   --primary: var(--midnight-dark-action);
   --primary-foreground: var(--midnight-dark-action-foreground);
-  --secondary: oklch(0.26 0.02 280);
-  --secondary-foreground: oklch(0.95 0.01 280);
+  --secondary: #22232E;
+  --secondary-foreground: #EDEEF5;
   /* Midnight/escuro já cobria card/popover/muted/accent desde a criação
      do preset — só faltava --destructive: sem isso, herdava o vermelho
      de :root (calibrado pra fundo claro), pouco legível sobre o
      navy-violeta escuro deste preset. Reuso o mesmo tom que .dark (base)
      já usa. */
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
+  --destructive: #FF6467;
+  --destructive-foreground: #FAFAFA;
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
   --ring: oklch(0.72 0.19 292.5 / 45%);
@@ -845,17 +893,17 @@
      antes de hoje (era o único preset com --sidebar-* completo também).
      Sem isso, o modo escuro herdaria --chart-2 do bloco claro (a cor de
      ação clara, #6D37D2) em vez do tom certo pra fundo escuro. */
-  --chart-1: oklch(0.811 0.111 293.571);
+  --chart-1: #C4B4FF;
   --chart-2: var(--midnight-dark-action);
-  --chart-3: oklch(0.606 0.25 292.717);
-  --chart-4: oklch(0.541 0.281 293.009);
-  --chart-5: oklch(0.432 0.232 292.759);
-  --sidebar: oklch(0.13 0.015 280);
-  --sidebar-foreground: oklch(0.95 0.01 280);
+  --chart-3: #8E51FF;
+  --chart-4: #7F22FE;
+  --chart-5: #5D0EC0;
+  --sidebar: #06070D;
+  --sidebar-foreground: #EDEEF5;
   --sidebar-primary: var(--midnight-dark-action);
   --sidebar-primary-foreground: var(--midnight-dark-action-foreground);
-  --sidebar-accent: oklch(0.26 0.02 280);
-  --sidebar-accent-foreground: oklch(0.95 0.01 280);
+  --sidebar-accent: #22232E;
+  --sidebar-accent-foreground: #EDEEF5;
   --sidebar-border: oklch(1 0 0 / 12%);
   --sidebar-ring: oklch(0.72 0.19 292.5 / 45%);
 }

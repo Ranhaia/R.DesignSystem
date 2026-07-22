@@ -13,7 +13,12 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { componentsList } from "@/lib/components-registry"
-import { atomicRegistry, type AtomicCategory } from "@/lib/atomic-registry"
+import {
+  atomicRegistry,
+  categoryHref as atomicCategoryHref,
+  categoryLabels as atomicCategoryLabels,
+  type AtomicCategory,
+} from "@/lib/atomic-registry"
 import {
   Collapsible,
   CollapsibleContent,
@@ -30,10 +35,15 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 
 type NavCategory = AtomicCategory | "other"
 
+// Label e href vêm de atomic-registry.ts agora (2026-07-22) — única fonte,
+// reaproveitada também pelo breadcrumb em app-shell.tsx (que precisava
+// saber a categoria/rota de cada componente e antes linkava pra um
+// "Componentes" que nunca existiu como página). "other" (utilitários) só
+// existe aqui porque essa nav ainda referencia o tipo/ícone dele em código
+// morto inofensivo (ver comentário mais abaixo) — não tem label nem href
+// próprios no registro compartilhado, então completamos só o que falta.
 const categoryLabels: Record<NavCategory, string> = {
-  atom: "Atoms",
-  molecule: "Molecules",
-  organism: "Organisms",
+  ...atomicCategoryLabels,
   other: "Outros",
 }
 
@@ -51,14 +61,16 @@ const categoryIcons: Record<NavCategory, LucideIcon> = {
 // Só Atoms/Molecules/Organisms têm página-índice própria (Fase 1) —
 // "other" (utilitários) não entra no catálogo visual.
 const categoryHref: Partial<Record<NavCategory, string>> = {
-  atom: "/atoms",
-  molecule: "/molecules",
-  organism: "/organisms",
+  ...atomicCategoryHref,
 }
 
 // Ordem fixa: segue a hierarquia Atomic Design (Atoms → Molecules →
-// Organisms), utilitários (direction, sonner) ficam por último.
-const categoryOrder: NavCategory[] = ["atom", "molecule", "organism", "other"]
+// Organisms). "other" (utilitários, hoje só "direction") ficou de fora da
+// nav a pedido do Rafael em 2026-07-22 — o PuzzleIcon que era dele foi
+// reaproveitado no botão de troca de tema (StyleSwitcher). O item
+// "direction" continua existindo e acessível por link direto
+// (/components/direction), só não aparece mais como grupo na sidebar.
+const categoryOrder: NavCategory[] = ["atom", "molecule", "organism"]
 
 export function NavComponents() {
   const pathname = usePathname()

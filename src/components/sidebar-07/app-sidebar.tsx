@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { LayoutTemplateIcon, PaletteIcon } from "lucide-react"
+import { PaletteIcon } from "lucide-react"
 
 import { NavComponents } from "@/components/sidebar-07/nav-components"
 import { NavPatterns } from "@/components/sidebar-07/nav-patterns"
+import { NavTemplates } from "@/components/sidebar-07/nav-templates"
 import { NavUser } from "@/components/sidebar-07/nav-user"
 import { StyleSwitcher } from "@/components/style-switcher"
 import {
@@ -12,7 +13,6 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -23,9 +23,9 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 const user = {
-  name: "Rafael",
-  email: "rafanhaia@gmail.com",
-  avatar: "",
+  name: "Fulano",
+  email: "fulano@detal.com",
+  avatar: "/avatar.png",
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -51,26 +51,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarGroup>
         <NavComponents />
         <NavPatterns />
-        <SidebarGroup>
-          <SidebarGroupLabel className="gap-2">
-            <LayoutTemplateIcon className="size-4 shrink-0" />
-            Templates
-          </SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton
-                asChild
-                isActive={pathname === "/templates/dashboard-financeiro"}
-                tooltip="Dashboard financeiro"
-              >
-                <Link href="/templates/dashboard-financeiro">
-                  <LayoutTemplateIcon />
-                  <span>Dashboard financeiro</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
+        <NavTemplates />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={user} />

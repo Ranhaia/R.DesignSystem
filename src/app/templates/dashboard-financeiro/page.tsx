@@ -1,6 +1,6 @@
 "use client"
 
-import { Bar, BarChart } from "recharts"
+import { Bar, BarChart, Cell } from "recharts"
 import {
   BarChart3Icon,
   BellIcon,
@@ -119,10 +119,26 @@ const contributionData = [
   { semana: "Sem 6", valor: 860 },
 ]
 
+// Antes era 1 cor hardcoded (#2563eb) pra todas as barras — Rafael pediu
+// pra usar as paletas do DS em vez de azul fixo. Aplicamos a escala
+// categórica (10 hues, ver globals.css "PRIMITIVOS GLOBAIS DE COR" —
+// construída justamente pra tabela/gráfico) 1 cor por barra via <Cell>,
+// pra realmente mostrar a paleta funcionando no chart, não só documentada
+// em token. chartConfig.valor.color fica só como cor de referência (usada
+// se algum tooltip/legenda genérico do shadcn precisar de --color-valor).
+const chartColors = [
+  "var(--color-categorical-1)",
+  "var(--color-categorical-6)",
+  "var(--color-categorical-8)",
+  "var(--color-categorical-4)",
+  "var(--color-categorical-9)",
+  "var(--color-categorical-2)",
+]
+
 const chartConfig = {
   valor: {
     label: "Contribuição",
-    color: "#2563eb",
+    color: "var(--color-categorical-1)",
   },
 } satisfies ChartConfig
 
@@ -194,7 +210,14 @@ export default function DashboardFinanceiroTemplate() {
                 <CardContent>
                   <ChartContainer config={chartConfig} className="h-[160px] w-full">
                     <BarChart accessibilityLayer data={contributionData}>
-                      <Bar dataKey="valor" fill="var(--color-valor)" radius={4} />
+                      <Bar dataKey="valor" radius={4}>
+                        {contributionData.map((entry, index) => (
+                          <Cell
+                            key={entry.semana}
+                            fill={chartColors[index % chartColors.length]}
+                          />
+                        ))}
+                      </Bar>
                     </BarChart>
                   </ChartContainer>
                 </CardContent>
