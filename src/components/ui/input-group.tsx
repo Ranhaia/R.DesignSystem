@@ -111,7 +111,16 @@ function InputGroupButton({
       data-size={size}
       variant={variant}
       className={cn(inputGroupButtonVariants({ size }), className)}
-      {...props}
+      // Cast pro tipo real do Button: ao desestruturar um parâmetro que é
+      // uma união (children/icon/label do ButtonContent, em button.tsx) via
+      // "...props", o TypeScript perde a discriminação da união e devolve
+      // um tipo achatado com os três campos individualmente opcionais — não
+      // existe forma de "...props" satisfazer de volta a exigência de "pelo
+      // menos um dos três" sem essa ajuda, mesmo garantindo isso em runtime
+      // (quem chama InputGroupButton já teve que satisfazer essa mesma
+      // união pra montar "props" em primeiro lugar). Isso não é um bug de
+      // digitação; é uma limitação conhecida do TS com rest de union types.
+      {...(props as React.ComponentProps<typeof Button>)}
     />
   )
 }

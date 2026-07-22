@@ -153,7 +153,10 @@ function AttachmentAction({
       variant={variant ?? "ghost"}
       size={size}
       className={cn(className)}
-      {...props}
+      // Cast necessário pelo mesmo motivo documentado em InputGroupButton
+      // (src/components/ui/input-group.tsx): "...props" aqui já perdeu a
+      // discriminação da união ButtonContent ao ser desestruturado.
+      {...(props as React.ComponentProps<typeof Button>)}
     />
   )
 }
