@@ -34,6 +34,14 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
 
   // Molecules
   alert: "molecule",
+  // Sonner substituiu o Toast antigo do shadcn/ui — é uma composição de
+  // ícone + texto + ação (igual em complexidade ao Alert, que também é
+  // molecule), só que renderizada via portal/toast() em vez de inline.
+  // Continua sendo um átomo visual de verdade (aparece na tela pro
+  // usuário), diferente do Direction (que não renderiza nada, só
+  // contexto de direção de texto) — por isso Direction fica como
+  // utilitário e Sonner não.
+  sonner: "molecule",
   breadcrumb: "molecule",
   "button-group": "molecule",
   collapsible: "molecule",
@@ -73,7 +81,9 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
 
 // Utilitários/infraestrutura — não entram no catálogo visual (Atoms/
 // Molecules/Organisms), mas continuam com página própria em /components.
-export const utilitySlugs = ["direction", "sonner"]
+// Sonner saiu de aqui em 2026-07-21 (ver atomicRegistry acima): ele
+// renderiza UI real pro usuário, não é só infraestrutura como Direction.
+export const utilitySlugs = ["direction"]
 
 export function getAtomicCategory(slug: string): AtomicCategory | null {
   return atomicRegistry[slug] ?? null
@@ -97,4 +107,22 @@ export const inProgressEntries: InProgressEntry[] = [
   { name: "List", category: "atom" },
   { name: "Text", category: "atom" },
   { name: "Box", category: "atom" },
+
+  // Achados na auditoria contra a Nimbus em 2026-07-21 (ver
+  // PLANO-LOOP-80-20-TEMPLATES.md) — os 4 primeiros eram "Atomic" lá,
+  // categoria "atom" direto. Os 4 últimos eram "Composite" (equivalente
+  // a Molecules/Organisms); categorizados aqui pelo mesmo raciocínio já
+  // usado no resto do atomicRegistry (comparando com o "parente" mais
+  // próximo em complexidade que já temos): SegmentedControl e
+  // SplitButton são composições simples de poucos atoms, como
+  // ToggleGroup e ButtonGroup (molecule); Stepper e TimePicker têm
+  // lógica própria mais complexa, como Accordion e Calendar (organism).
+  { name: "Icon", category: "atom" },
+  { name: "MultiSelect", category: "atom" },
+  { name: "Thumbnail", category: "atom" },
+  { name: "Title", category: "atom" },
+  { name: "SegmentedControl", category: "molecule" },
+  { name: "SplitButton", category: "molecule" },
+  { name: "Stepper", category: "organism" },
+  { name: "TimePicker", category: "organism" },
 ]

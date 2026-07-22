@@ -62,13 +62,30 @@ export const metadata: Metadata = {
 
 // Aplica o preset de estilo salvo ANTES da hidratação, para não piscar o
 // estilo padrão por uma fração de segundo ao recarregar a página.
+//
+// 2026-07-22: também sincroniza a classe "dark" com o nativeMode do estilo
+// (ver src/lib/styles-registry.ts). Antes desta mudança, midnight era o
+// único preset que ficava escuro sem precisar da classe .dark — agora que
+// todo estilo tem bloco claro E escuro completos em globals.css (pra
+// resolver a divergência que o Rafael apontou), midnight PRECISA da classe
+// .dark pra mostrar seu modo nativo. Como não existe (ainda) um toggle
+// manual de tema no app, sincronizamos direto pelo nativeMode — se um
+// toggle for adicionado depois, ele decide precisar rodar essa lógica só
+// na ausência de uma preferência manual salva.
+//
+// Mapa duplicado aqui de propósito: script inline não importa módulo TS.
+// Se adicionar um estilo novo em styles-registry.ts com nativeMode "dark",
+// replicar a entrada aqui também.
 const setStyleScript = `
 (function () {
+  var nativeModeByStyle = { midnight: "dark" };
   try {
     var style = window.localStorage.getItem("style-preset");
     if (style && style !== "default") {
       document.documentElement.setAttribute("data-style", style);
     }
+    var mode = nativeModeByStyle[style] || "light";
+    document.documentElement.classList.toggle("dark", mode === "dark");
   } catch (e) {}
 })();
 `;

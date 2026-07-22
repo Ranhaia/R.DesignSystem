@@ -1,14 +1,17 @@
-// Registro-piloto de documentação estilo atomic design (Descrição, Quando
+// Registro de documentação estilo atomic design (Descrição, Quando
 // utilizar, Anatomia, Variantes, Estados, Tamanhos, Boas práticas, Evite,
-// Código, Propriedades). Só "button" está preenchido por enquanto — é o
-// piloto para validar o template antes de replicar para os outros
-// componentes. Slugs sem entrada aqui continuam com a página no formato
-// antigo (Composição + Exemplos), sem quebrar nada.
+// Código, Propriedades). "button" foi o piloto que validou o template;
+// desde 2026-07-21 os outros 58 componentes (todos os que têm entrada
+// aqui) já têm description/whenToUse reais, sourced de ui.shadcn.com e
+// traduzidos (ver PLANO-LOOP-80-20-TEMPLATES.md). Slugs sem entrada aqui
+// continuam com a página no formato antigo (Composição + Exemplos), sem
+// quebrar nada.
 //
-// Texto narrativo (description, whenToUse, doGuidelines, dontGuidelines)
-// fica como placeholder "[a preencher]" — combinado com o Rafael para não
-// inventar conteúdo. Anatomia, Variantes, Estados, Tamanhos e Propriedades
-// são derivados do código real do componente (src/components/ui/button.tsx).
+// doGuidelines/dontGuidelines continuam como placeholder "[a preencher]"
+// em todos os 59 componentes — combinado com o Rafael para não inventar
+// conteúdo, e a doc oficial do shadcn/ui não publica orientação de
+// faça/não faça por componente. Anatomia, Variantes, Estados, Tamanhos e
+// Propriedades são derivados do código real de cada componente.
 
 export interface ComponentDocOption {
   name: string
@@ -38,8 +41,8 @@ export interface ComponentDoc {
 
 export const componentDocs: Record<string, ComponentDoc> = {
   button: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe um botão ou um componente com aparência de botão.",
+    whenToUse: "Use para ações que o usuário aciona diretamente, como confirmar, enviar ou navegar.",
     anatomy: [
       {
         part: "Elemento raiz",
@@ -49,11 +52,17 @@ export const componentDocs: Record<string, ComponentDoc> = {
       {
         part: "Ícone (opcional)",
         description:
-          "SVG antes e/ou depois do label. O tamanho é herdado automaticamente pelo seletor [&_svg].",
+          "SVG antes e/ou depois do label. O tamanho é herdado automaticamente pelo seletor [&_svg]. Pode vir via prop `icon` ou dentro de `children`.",
       },
       {
         part: "Label",
-        description: "Texto do botão — pode ser omitido em botões só-ícone (size=\"icon\").",
+        description:
+          'Texto do botão — via prop `label` ou dentro de `children`. O tipo exige pelo menos ícone OU label (nunca os dois ausentes ao mesmo tempo, pra nunca existir um botão sem nome acessível). Botões ícone-only (`icon` sem `label`) ainda precisam de `aria-label`.',
+      },
+      {
+        part: "Skeleton (Button.Skeleton)",
+        description:
+          "Placeholder de carregamento com o mesmo formato do botão real (altura por size), pra evitar layout shift. Aceita as props size e fullWidth.",
       },
     ],
     variants: [
@@ -63,13 +72,15 @@ export const componentDocs: Record<string, ComponentDoc> = {
       { name: "Ghost", value: "ghost", description: "Sem fundo nem borda até o hover." },
       { name: "Destructive", value: "destructive", description: "Ações irreversíveis ou de risco (excluir, remover)." },
       { name: "Link", value: "link", description: "Aparência de link de texto, sem fundo." },
+      { name: "AI Primary", value: "ai-primary", description: "Ação de IA com hierarquia principal (ex: disparar uma geração). Gradiente de 3 cores (azul/violeta/rosa), tokens reais da Nimbus Design System." },
+      { name: "AI Secondary", value: "ai-secondary", description: "Ação de IA complementar — fundo e borda suaves em tom violeta claro, mesmos tokens de IA da Nimbus." },
     ],
     states: [
       { name: "Default", description: "Estado de repouso." },
-      { name: "Hover", description: "Cursor sobre o botão — muda fundo/opacidade conforme a variante." },
+      { name: "Hover", description: "Cursor sobre o botão — muda fundo/opacidade conforme a variante. No variant default, a elevação (shadow) diminui e o botão desloca 1px pra baixo, simulando uma \"descida\" como feedback físico da interação." },
       { name: "Active", description: "Durante o clique/pressionamento." },
       { name: "Focus", description: "Navegação por teclado — anel de foco (focus-visible:ring)." },
-      { name: "Disabled", description: 'prop "disabled" — opacidade reduzida, pointer-events desativado.' },
+      { name: "Disabled", description: 'prop "disabled" — opacidade reduzida, pointer-events desativado. No variant default, a elevação (shadow) some completamente, reforçando visualmente que não está mais interativo.' },
       { name: "Loading", description: 'Padrão de composição (ver exemplo "loading"): <Spinner /> + disabled.' },
     ],
     sizes: [
@@ -88,13 +99,21 @@ export const componentDocs: Record<string, ComponentDoc> = {
 
 <Button variant="outline" size="sm">
   Button
-</Button>`,
+</Button>
+
+// Ação de IA (tokens Nimbus) + largura total
+<Button variant="ai-primary" fullWidth>
+  Gerar com IA
+</Button>
+
+// Placeholder de carregamento
+<Button.Skeleton size="sm" />`,
     props: [
       {
         name: "variant",
-        type: '"default" | "destructive" | "outline" | "secondary" | "ghost" | "link"',
+        type: '"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "ai-primary" | "ai-secondary"',
         default: '"default"',
-        description: "Estilo visual do botão.",
+        description: "Estilo visual do botão. ai-primary/ai-secondary seguem os tokens de IA da Nimbus Design System (ver globals.css).",
       },
       {
         name: "size",
@@ -103,10 +122,31 @@ export const componentDocs: Record<string, ComponentDoc> = {
         description: "Dimensão do botão.",
       },
       {
+        name: "fullWidth",
+        type: "boolean",
+        default: "false",
+        description: "Faz o botão ocupar 100% da largura do container (w-full). Mesmo nome e default da prop equivalente na Nimbus.",
+      },
+      {
         name: "asChild",
         type: "boolean",
         default: "false",
         description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <button>.",
+      },
+      {
+        name: "icon",
+        type: "React.ReactNode",
+        description: 'Ícone do botão. Exige pelo menos `icon` ou `label` (nunca os dois ausentes) — mutuamente exclusivo com `children`.',
+      },
+      {
+        name: "label",
+        type: "React.ReactNode",
+        description: 'Texto do botão. Exige pelo menos `icon` ou `label` (nunca os dois ausentes) — mutuamente exclusivo com `children`.',
+      },
+      {
+        name: "children",
+        type: "React.ReactNode",
+        description: "Composição livre (usada com asChild, ButtonGroup, ou conteúdo condicional como Spinner + texto) — mutuamente exclusivo com icon/label.",
       },
       {
         name: "disabled",
@@ -123,8 +163,8 @@ export const componentDocs: Record<string, ComponentDoc> = {
   },
 
   avatar: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um elemento de imagem com um fallback para representar o usuário.",
+    whenToUse: "Use para representar visualmente uma pessoa ou conta, com uma alternativa (iniciais/ícone) para quando a imagem não carregar.",
     anatomy: [
       { part: "Root", description: 'AvatarPrimitive.Root — data-slot="avatar", data-size.' },
       { part: "Image", description: "Foto do usuário. Some automaticamente se falhar ao carregar." },
@@ -157,8 +197,8 @@ export const componentDocs: Record<string, ComponentDoc> = {
   },
 
   badge: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe um selo (badge) ou um componente com aparência de selo.",
+    whenToUse: "Use para destacar um status, contagem ou rótulo curto associado a um item.",
     anatomy: [
       { part: "Elemento raiz", description: 'Um <span> (ou o filho, via asChild) com data-slot="badge" e data-variant.' },
     ],
@@ -185,8 +225,8 @@ export const componentDocs: Record<string, ComponentDoc> = {
   },
 
   checkbox: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um controle que permite ao usuário alternar entre marcado e desmarcado.",
+    whenToUse: "Use quando o usuário precisar marcar ou desmarcar uma opção, sozinha ou em um grupo de seleção múltipla.",
     anatomy: [
       { part: "Root", description: 'CheckboxPrimitive.Root — data-slot="checkbox", data-state.' },
       { part: "Indicator", description: "Ícone de check, visível só quando marcado (data-state=checked)." },
@@ -218,8 +258,8 @@ import { Label } from "@/components/ui/label"
   },
 
   input: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um componente de campo de texto para formulários e entrada de dados do usuário, com estilo e recursos de acessibilidade já incorporados.",
+    whenToUse: "Use para capturar texto, números ou outros dados digitados pelo usuário em um formulário.",
     anatomy: [
       { part: "Elemento raiz", description: 'Um <input> nativo com data-slot="input". Ícone/addon acoplado é composição via InputGroup (Molecule), não parte do Atom.' },
     ],
@@ -243,8 +283,8 @@ import { Label } from "@/components/ui/label"
   },
 
   "input-otp": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Componente acessível de senha de uso único (OTP), com suporte a copiar e colar.",
+    whenToUse: "Use para capturar códigos de verificação enviados por SMS ou e-mail, com um campo por dígito.",
     anatomy: [
       { part: "InputOTP", description: 'Root — envolve o input real (invisível) que captura o valor completo.' },
       { part: "InputOTPGroup", description: "Agrupa visualmente um bloco de slots." },
@@ -281,8 +321,8 @@ import { Label } from "@/components/ui/label"
   },
 
   kbd: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Usado para exibir uma entrada de teclado do usuário em formato textual.",
+    whenToUse: "Use para indicar teclas ou atalhos de teclado dentro de textos, tooltips ou menus.",
     anatomy: [
       { part: "Elemento raiz", description: 'Um <kbd> com data-slot="kbd".' },
       { part: "KbdGroup", description: "Agrupa duas ou mais teclas de um atalho (ex: Ctrl + K)." },
@@ -304,8 +344,8 @@ import { Label } from "@/components/ui/label"
   },
 
   label: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Renderiza um rótulo acessível associado a controles de formulário.",
+    whenToUse: "Use para nomear um campo ou controle, associando-o via htmlFor para leitores de tela.",
     anatomy: [
       { part: "Elemento raiz", description: 'LabelPrimitive.Root, renderiza <label> com data-slot="label".' },
     ],
@@ -327,8 +367,8 @@ import { Label } from "@/components/ui/label"
   },
 
   progress: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe um indicador que mostra o progresso de conclusão de uma tarefa, geralmente representado como uma barra de progresso.",
+    whenToUse: "Use para comunicar o andamento de um processo com duração determinada, como upload, carregamento ou etapas.",
     anatomy: [
       { part: "Root", description: 'ProgressPrimitive.Root — trilho de fundo (bg-primary/20).' },
       { part: "Indicator", description: "Barra preenchida — translateX calculado a partir de value." },
@@ -352,8 +392,8 @@ import { Label } from "@/components/ui/label"
   },
 
   "radio-group": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um conjunto de botões marcáveis — conhecidos como radio buttons — no qual no máximo um pode estar marcado por vez.",
+    whenToUse: "Use quando o usuário precisar escolher exatamente uma opção entre um conjunto pequeno e visível de alternativas.",
     anatomy: [
       { part: "RadioGroup", description: "Root — grid que agrupa os itens, controla qual valor está selecionado." },
       { part: "RadioGroupItem", description: "Cada opção — requer prop value." },
@@ -391,8 +431,8 @@ import { Label } from "@/components/ui/label"
   },
 
   separator: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Separa conteúdo visualmente ou semanticamente.",
+    whenToUse: "Use para dividir seções ou agrupamentos de conteúdo relacionados.",
     anatomy: [
       { part: "Elemento raiz", description: 'SeparatorPrimitive.Root — linha de 1px (bg-border), horizontal ou vertical.' },
     ],
@@ -412,8 +452,8 @@ import { Label } from "@/components/ui/label"
   },
 
   skeleton: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Use para mostrar um espaço reservado (placeholder) enquanto o conteúdo está carregando.",
+    whenToUse: "Use enquanto os dados reais ainda não chegaram, para indicar onde o conteúdo vai aparecer.",
     anatomy: [
       { part: "Elemento raiz", description: 'Um <div> com animate-pulse — o tamanho/forma vem 100% da className (h-4 w-32, rounded-full, etc.).' },
     ],
@@ -431,8 +471,8 @@ import { Label } from "@/components/ui/label"
   },
 
   slider: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um controle de entrada em que o usuário seleciona um valor dentro de um intervalo definido.",
+    whenToUse: "Use quando o usuário precisar ajustar um valor numérico dentro de um intervalo, de forma visual e contínua.",
     anatomy: [
       { part: "Root", description: "SliderPrimitive.Root — calcula _values a partir de value/defaultValue." },
       { part: "Track", description: "Trilho de fundo (bg-muted)." },
@@ -461,8 +501,8 @@ import { Label } from "@/components/ui/label"
   },
 
   spinner: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um indicador que pode ser usado para mostrar um estado de carregamento.",
+    whenToUse: "Use para sinalizar que uma ação está em andamento e o resultado ainda não está disponível.",
     anatomy: [
       { part: "Elemento raiz", description: 'Ícone Loader2 girando (animate-spin), role="status" e aria-label="Loading" pra leitor de tela.' },
     ],
@@ -480,8 +520,8 @@ import { Label } from "@/components/ui/label"
   },
 
   switch: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um controle que permite ao usuário alternar entre ativado e desativado.",
+    whenToUse: "Use para ativar ou desativar uma configuração imediatamente, sem precisar de um botão de confirmação separado.",
     anatomy: [
       { part: "Root", description: 'SwitchPrimitive.Root — trilho (data-state=checked altera a cor de fundo).' },
       { part: "Thumb", description: "Bolinha que deslinza — translateX conforme o estado." },
@@ -515,8 +555,8 @@ import { Label } from "@/components/ui/label"
   },
 
   textarea: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe uma área de texto (textarea) de formulário ou um componente com aparência de textarea.",
+    whenToUse: "Use para capturar textos mais longos, como comentários, descrições ou mensagens.",
     anatomy: [
       { part: "Elemento raiz", description: 'Um <textarea> com field-sizing-content — cresce com o conteúdo até o min-h-16.' },
     ],
@@ -539,8 +579,8 @@ import { Label } from "@/components/ui/label"
   },
 
   toggle: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um botão de dois estados, que pode estar ativado ou desativado.",
+    whenToUse: "Use para uma ação isolada com estado binário, como favoritar ou negrito/itálico numa toolbar, sem formar um grupo.",
     anatomy: [
       { part: "Elemento raiz", description: 'TogglePrimitive.Root — data-state="on"/"off".' },
     ],
@@ -575,8 +615,8 @@ import { Label } from "@/components/ui/label"
   },
 
   tooltip: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um popup que exibe informações relacionadas a um elemento quando ele recebe foco de teclado ou o mouse passa sobre ele.",
+    whenToUse: "Use para complementar um elemento com uma explicação curta, sem ocupar espaço permanente na tela.",
     anatomy: [
       { part: "TooltipProvider", description: "Contexto global — já registrado no shell do app (delayDuration=0)." },
       { part: "Tooltip", description: "Root — controla aberto/fechado." },
@@ -605,8 +645,8 @@ import { Label } from "@/components/ui/label"
   },
 
   "aspect-ratio": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe conteúdo dentro de uma proporção desejada.",
+    whenToUse: "Use para manter a proporção de imagens, vídeos ou embeds ao redimensionar o layout.",
     anatomy: [
       { part: "Elemento raiz", description: 'AspectRatioPrimitive.Root — wrapper que reserva o espaço proporcional pro conteúdo filho (ex: uma imagem).' },
     ],
@@ -626,8 +666,8 @@ import { Label } from "@/components/ui/label"
   },
 
   "native-select": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um elemento <select> nativo do HTML, estilizado e integrado de forma consistente ao design system.",
+    whenToUse: "Use quando quiser o comportamento nativo do navegador para seleção (melhor em mobile e acessibilidade) em vez do Select customizado.",
     anatomy: [
       { part: "Wrapper", description: "div relativo que posiciona o ícone sobre o <select>." },
       { part: "Elemento raiz", description: 'Um <select> nativo do navegador — data-slot="native-select".' },
@@ -660,8 +700,8 @@ import { Label } from "@/components/ui/label"
   },
 
   select: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe uma lista de opções para o usuário escolher, acionada por um botão.",
+    whenToUse: "Use para seleção única entre várias opções, quando quiser um menu customizado (com ícones, grupos etc.) em vez do select nativo.",
     anatomy: [
       { part: "Select", description: "Root — controla valor selecionado e abertura." },
       { part: "SelectTrigger", description: "Botão que abre o menu — inclui ícone de chevron." },
@@ -709,8 +749,8 @@ import { Label } from "@/components/ui/label"
   },
 
   popover: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe conteúdo rico em um portal, acionado por um botão.",
+    whenToUse: "Use para mostrar conteúdo adicional (formulário curto, opções, detalhes) ancorado a um elemento, sem sair da tela atual.",
     anatomy: [
       { part: "Popover", description: "Root — controla abertura." },
       { part: "PopoverTrigger", description: "Elemento que abre o popover ao clicar." },
@@ -742,8 +782,8 @@ import { Button } from "@/components/ui/button"
   },
 
   item: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um componente versátil para exibir conteúdo com mídia, título, descrição e ações.",
+    whenToUse: "Use como linha de lista genérica — contatos, arquivos, notificações — combinando ícone ou imagem, texto e ações.",
     anatomy: [
       { part: "Item", description: "Elemento raiz — linha de uma lista (data-variant, data-size)." },
       { part: "ItemMedia (opcional)", description: "Ícone ou imagem à esquerda." },
@@ -788,8 +828,8 @@ import { UserIcon } from "lucide-react"
   },
 
   marker: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe um status em linha, uma nota do sistema, uma linha com borda ou um separador rotulado dentro de uma conversa.",
+    whenToUse: "Use em interfaces de conversa (chat) para marcar eventos do sistema, status ou separadores entre mensagens.",
     anatomy: [
       { part: "Marker", description: "Elemento raiz — linha de texto com ícone (data-variant)." },
       { part: "MarkerIcon", description: "Ícone à esquerda, aria-hidden (decorativo)." },
@@ -820,8 +860,8 @@ import { CheckIcon } from "lucide-react"
   },
 
   alert: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe um destaque para chamar a atenção do usuário.",
+    whenToUse: "Use para comunicar uma informação importante, confirmação ou erro relacionado ao contexto atual da tela.",
     anatomy: [
       { part: "Alert", description: 'Elemento raiz — <div role="alert"> em grid (ícone opcional na 1ª coluna).' },
       { part: "AlertTitle", description: "Linha de título, uma linha só (line-clamp-1)." },
@@ -852,8 +892,8 @@ import { AlertCircleIcon } from "lucide-react"
   },
 
   breadcrumb: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe o caminho até o recurso atual usando uma hierarquia de links.",
+    whenToUse: "Use para mostrar a localização da página atual dentro da estrutura de navegação do produto.",
     anatomy: [
       { part: "Breadcrumb", description: 'Elemento raiz — <nav aria-label="breadcrumb">.' },
       { part: "BreadcrumbList", description: "<ol> que envolve os itens." },
@@ -894,8 +934,8 @@ import { AlertCircleIcon } from "lucide-react"
   },
 
   "button-group": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um contêiner que agrupa botões relacionados com um estilo visual consistente.",
+    whenToUse: "Use para agrupar botões que executam ações relacionadas, mantendo bordas coladas e alinhamento consistente.",
     anatomy: [
       { part: "ButtonGroup", description: 'Elemento raiz — role="group", junta os botões visualmente (bordas coladas).' },
       { part: "ButtonGroupText", description: "Rótulo não clicável dentro do grupo (ex: prefixo)." },
@@ -919,8 +959,8 @@ import { ButtonGroup } from "@/components/ui/button-group"
   },
 
   collapsible: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um componente interativo que expande ou recolhe um painel.",
+    whenToUse: "Use para esconder ou mostrar um bloco de conteúdo opcional sob demanda, sem a formalidade de um Accordion.",
     anatomy: [
       { part: "Collapsible", description: "Root — controla o estado aberto/fechado." },
       { part: "CollapsibleTrigger", description: "Elemento que alterna abrir/fechar." },
@@ -954,8 +994,8 @@ import { ButtonGroup } from "@/components/ui/button-group"
   },
 
   combobox: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Campo de entrada com autocompletar e uma lista de sugestões.",
+    whenToUse: "Use quando o usuário precisar buscar e selecionar uma opção entre muitas, digitando para filtrar a lista.",
     anatomy: [
       { part: "Combobox", description: "Root (base-ui) — controla valor, itens filtrados e abertura." },
       { part: "ComboboxInput", description: "Campo de busca — já vem com InputGroup, trigger e clear embutidos." },
@@ -1001,8 +1041,8 @@ import { ButtonGroup } from "@/components/ui/button-group"
   },
 
   empty: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Use o componente Empty para exibir um estado vazio.",
+    whenToUse: "Use quando uma lista, busca ou seção não tiver conteúdo para mostrar, orientando o próximo passo do usuário.",
     anatomy: [
       { part: "Empty", description: "Elemento raiz — borda tracejada, conteúdo centralizado." },
       { part: "EmptyHeader", description: "Envolve ícone, título e descrição." },
@@ -1046,8 +1086,8 @@ import { Button } from "@/components/ui/button"
   },
 
   field: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Combine labels, controles e textos de ajuda para compor campos de formulário acessíveis e agrupamentos de campos.",
+    whenToUse: "Use para estruturar qualquer campo de formulário, garantindo que label, texto de ajuda e mensagem de erro fiquem conectados corretamente para acessibilidade.",
     anatomy: [
       { part: "FieldSet / FieldLegend", description: "Agrupam vários Fields relacionados, com título (legend)." },
       { part: "FieldGroup", description: "Espaçamento vertical entre Fields." },
@@ -1087,8 +1127,8 @@ import { Input } from "@/components/ui/input"
   },
 
   "hover-card": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Para usuários com visão, permite pré-visualizar conteúdo disponível atrás de um link.",
+    whenToUse: "Use para mostrar uma pré-visualização de informação (perfil, card) ao passar o mouse sobre um link ou elemento, sem navegar até ele.",
     anatomy: [
       { part: "HoverCard", description: "Root — controla abertura no hover/foco." },
       { part: "HoverCardTrigger", description: "Elemento que dispara o card ao passar o mouse." },
@@ -1119,8 +1159,8 @@ import { Input } from "@/components/ui/input"
   },
 
   "input-group": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Adicione complementos, botões e conteúdo auxiliar a campos de entrada.",
+    whenToUse: "Use quando um Input ou Textarea precisar de um ícone, prefixo, sufixo, botão ou texto de apoio acoplado.",
     anatomy: [
       { part: "InputGroup", description: "Elemento raiz — borda única compartilhada entre input e addons." },
       { part: "InputGroupAddon", description: "Ícone, texto ou botão fixado numa borda (align: inline-start/inline-end/block-start/block-end)." },
@@ -1157,8 +1197,8 @@ import { SearchIcon } from "lucide-react"
   },
 
   pagination: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Paginação com navegação entre páginas e links de próxima/anterior.",
+    whenToUse: "Use para dividir uma lista longa de resultados em páginas navegáveis.",
     anatomy: [
       { part: "Pagination", description: '<nav aria-label="pagination"> — elemento raiz.' },
       { part: "PaginationContent", description: "<ul> que envolve os itens." },
@@ -1199,8 +1239,8 @@ import { SearchIcon } from "lucide-react"
   },
 
   "toggle-group": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um conjunto de botões de dois estados que podem ser ativados ou desativados.",
+    whenToUse: "Use para um grupo de opções que alternam estado (ativo/inativo), com seleção única ou múltipla, como alinhamento de texto ou filtros.",
     anatomy: [
       { part: "ToggleGroup", description: "Root — define variant/size/spacing compartilhados via contexto." },
       { part: "ToggleGroupItem", description: "Cada opção — herda variant/size do grupo se não especificar o próprio." },
@@ -1238,8 +1278,8 @@ import { SearchIcon } from "lucide-react"
   },
 
   "scroll-area": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Amplia a funcionalidade nativa de rolagem para permitir um estilo customizado e consistente entre navegadores.",
+    whenToUse: "Use quando precisar de uma área de rolagem com barra estilizada, dentro de um espaço de altura ou largura fixa.",
     anatomy: [
       { part: "ScrollArea", description: "Root — define a altura/largura visível (via className)." },
       { part: "Viewport (interno)", description: "Área que realmente rola — renderizada automaticamente ao redor dos children." },
@@ -1262,8 +1302,8 @@ import { SearchIcon } from "lucide-react"
   },
 
   attachment: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe um anexo de arquivo ou imagem com mídia, metadados, estado de upload e ações.",
+    whenToUse: "Use para listar arquivos anexados em um formulário, composer de chat ou upload, mostrando nome, tamanho e status.",
     anatomy: [
       { part: "Attachment", description: "Elemento raiz — data-state, data-size, data-orientation." },
       { part: "AttachmentGroup", description: "Agrupa vários attachments (ex: lista de arquivos anexados)." },
@@ -1319,8 +1359,8 @@ import { FileTextIcon, XIcon } from "lucide-react"
   },
 
   accordion: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um conjunto de cabeçalhos interativos empilhados verticalmente, cada um revelando uma seção de conteúdo.",
+    whenToUse: "Use para organizar conteúdo extenso em seções que podem ser expandidas uma a uma, como perguntas frequentes.",
     anatomy: [
       { part: "Accordion", description: 'Root — type="single" (um item aberto por vez) ou "multiple".' },
       { part: "AccordionItem", description: "Cada seção — requer value único, borda inferior separando itens." },
@@ -1358,8 +1398,8 @@ import { FileTextIcon, XIcon } from "lucide-react"
   },
 
   "alert-dialog": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um diálogo modal que interrompe o usuário com um conteúdo importante e espera uma resposta.",
+    whenToUse: "Use para confirmar ações irreversíveis ou críticas, como excluir ou cancelar, exigindo uma escolha explícita antes de continuar.",
     anatomy: [
       { part: "AlertDialog", description: "Root — controla abertura. Diferente do Dialog, exige uma ação explícita (não fecha ao clicar fora)." },
       { part: "AlertDialogTrigger", description: "Elemento que abre o diálogo." },
@@ -1414,8 +1454,8 @@ import { Button } from "@/components/ui/button"
   },
 
   calendar: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um componente de calendário que permite ao usuário selecionar uma data ou um intervalo de datas.",
+    whenToUse: "Use quando o usuário precisar escolher uma ou mais datas visualmente, como agendamento de vistoria ou vigência de apólice.",
     anatomy: [
       { part: "Calendar", description: "Wrapper do react-day-picker — reestiliza navegação, dropdowns e dias com os tokens do projeto." },
       { part: "CalendarDayButton", description: "Cada dia — um Button ghost, com data-selected-single/data-range-* pros estados de seleção." },
@@ -1443,8 +1483,8 @@ import { Button } from "@/components/ui/button"
   },
 
   card: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe um cartão com cabeçalho, conteúdo e rodapé.",
+    whenToUse: "Use para agrupar informações relacionadas em um bloco visualmente delimitado, com título, corpo e ações opcionais.",
     anatomy: [
       { part: "Card", description: "Elemento raiz — borda, fundo bg-card, sombra leve." },
       { part: "CardHeader", description: "Grid que envolve título, descrição e ação (CardAction)." },
@@ -1479,8 +1519,8 @@ import { Button } from "@/components/ui/button"
   },
 
   carousel: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um carrossel com movimento e suporte a swipe, construído com a biblioteca Embla.",
+    whenToUse: "Use para exibir uma sequência de itens (imagens, cards) navegável horizontalmente, um ou poucos por vez.",
     anatomy: [
       { part: "Carousel", description: "Root — inicializa o Embla Carousel e expõe o contexto (api, scrollPrev/Next)." },
       { part: "CarouselContent", description: "Viewport + trilho flex dos slides." },
@@ -1519,8 +1559,8 @@ import { Button } from "@/components/ui/button"
   },
 
   chart: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Gráficos com boa aparência visual, construídos com Recharts, prontos para copiar e colar no app.",
+    whenToUse: "Use para visualizar dados numéricos ao longo do tempo ou por categoria — barras, linhas, pizza — com tooltip e legenda integrados.",
     anatomy: [
       { part: "ChartContainer", description: "Envolve o gráfico do recharts (ResponsiveContainer) e injeta as cores do config como CSS vars." },
       { part: "ChartStyle (interno)", description: "Gera um <style> com --color-{chave} por série, derivado de config, já com variação light/dark." },
@@ -1550,8 +1590,8 @@ const chartConfig = {
   },
 
   command: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Menu de comandos para busca e ações rápidas.",
+    whenToUse: "Use para uma paleta de comandos (estilo atalho ⌘K) que permite buscar e executar ações rapidamente pelo teclado.",
     anatomy: [
       { part: "Command", description: "Root (cmdk) — lista filtrável por texto." },
       { part: "CommandDialog (opcional)", description: "Command dentro de um Dialog — paleta de comandos (⌘K)." },
@@ -1595,8 +1635,8 @@ const chartConfig = {
   },
 
   "context-menu": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe um menu de ações acionado pelo clique com o botão direito do mouse.",
+    whenToUse: "Use para oferecer ações contextuais a um item específico, sem ocupar espaço fixo na tela.",
     anatomy: [
       { part: "ContextMenu", description: "Root — controla abertura." },
       { part: "ContextMenuTrigger", description: "Área que abre o menu no clique com o botão direito." },
@@ -1639,8 +1679,8 @@ const chartConfig = {
   },
 
   dialog: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Uma janela sobreposta à janela principal ou a outro diálogo, tornando o conteúdo abaixo inerte.",
+    whenToUse: "Use para tarefas focadas que precisam da atenção total do usuário antes de voltar ao fluxo principal, como editar ou confirmar dados.",
     anatomy: [
       { part: "Dialog", description: "Root — controla abertura." },
       { part: "DialogTrigger", description: "Elemento que abre o modal." },
@@ -1686,8 +1726,8 @@ import { Button } from "@/components/ui/button"
   },
 
   "dropdown-menu": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe um menu para o usuário — como um conjunto de ações ou funções — acionado por um botão.",
+    whenToUse: "Use para agrupar ações relacionadas a um elemento, como o menu de opções de uma linha de tabela, atrás de um botão gatilho.",
     anatomy: [
       { part: "DropdownMenu", description: "Root — controla abertura." },
       { part: "DropdownMenuTrigger", description: "Elemento que abre o menu ao clicar." },
@@ -1732,8 +1772,8 @@ import { Button } from "@/components/ui/button"
   },
 
   drawer: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um componente de painel deslizante (drawer) para React.",
+    whenToUse: "Use para exibir conteúdo complementar em um painel que desliza de uma borda da tela, especialmente em mobile.",
     anatomy: [
       { part: "Drawer", description: "Root (vaul) — controla abertura." },
       { part: "DrawerTrigger", description: "Elemento que abre o drawer." },
@@ -1777,8 +1817,8 @@ import { Button } from "@/components/ui/button"
   },
 
   form: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Construa formulários com React e shadcn/ui.",
+    whenToUse: "Use para compor formulários completos, conectando os campos (Field) a uma biblioteca de validação como o React Hook Form.",
     anatomy: [
       { part: "Form", description: "= FormProvider do react-hook-form — dá contexto do formulário pra tudo dentro." },
       { part: "FormField", description: "Controller — associa um campo do form pelo name, expõe {field} pro render prop." },
@@ -1831,8 +1871,8 @@ import { Input } from "@/components/ui/input"
   },
 
   menubar: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um menu visualmente persistente, comum em aplicações desktop, que dá acesso rápido a um conjunto consistente de comandos.",
+    whenToUse: "Use em interfaces densas, estilo aplicativo desktop, quando quiser uma barra de menus sempre visível, como Arquivo, Editar e Exibir.",
     anatomy: [
       { part: "Menubar", description: "Root — barra horizontal, borda e fundo próprios (estilo desktop app)." },
       { part: "MenubarMenu", description: "Cada menu da barra (ex: Arquivo, Editar)." },
@@ -1877,8 +1917,8 @@ import { Input } from "@/components/ui/input"
   },
 
   message: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe uma mensagem em uma conversa, com avatar, cabeçalho, rodapé e alinhamento opcionais.",
+    whenToUse: "Use para estruturar cada linha de uma conversa (chat, atendimento, assistente de IA), cuidando de avatar, alinhamento e metadados.",
     anatomy: [
       { part: "MessageGroup", description: "Agrupa várias mensagens em sequência (ex: histórico de chat)." },
       { part: "Message", description: 'Elemento raiz de uma mensagem — align "start" (recebida) ou "end" (enviada), inverte a direção do flex.' },
@@ -1916,8 +1956,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
   },
 
   bubble: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Exibe conteúdo de conversa em um balão de mensagem. Suporta variantes visuais, alinhamento, agrupamento, reações e conteúdo recolhível.",
+    whenToUse: "Use como a superfície visível de uma mensagem de chat — o balão de texto — dentro do componente Message.",
     anatomy: [
       { part: "BubbleGroup", description: "Agrupa várias bolhas em sequência." },
       { part: "Bubble", description: 'Elemento raiz — variant de cor + align "start"/"end".' },
@@ -1954,8 +1994,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
   },
 
   "navigation-menu": {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Uma coleção de links para navegar em um site.",
+    whenToUse: "Use para a navegação principal do produto, com suporte a submenus e painéis de conteúdo maiores que um dropdown simples.",
     anatomy: [
       { part: "NavigationMenu", description: "Root — pode compartilhar um viewport único entre os itens (viewport=true, padrão) ou cada um ter o seu." },
       { part: "NavigationMenuList", description: "Lista horizontal dos itens de topo." },
@@ -2000,8 +2040,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
   },
 
   resizable: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Grupos de painéis redimensionáveis e acessíveis, com suporte a teclado.",
+    whenToUse: "Use quando o usuário precisar ajustar manualmente o tamanho de painéis lado a lado, como em um editor de código ou um layout com sidebar.",
     anatomy: [
       { part: "ResizablePanelGroup", description: "Root — define a direção (horizontal/vertical) do grupo." },
       { part: "ResizablePanel", description: "Cada painel — aceita defaultSize/minSize/maxSize (percentuais)." },
@@ -2031,8 +2071,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
   },
 
   sheet: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Estende o componente Dialog para exibir conteúdo que complementa o conteúdo principal da tela.",
+    whenToUse: "Use para painéis laterais (ou de qualquer borda) que complementam a tela atual, como filtros avançados ou detalhes de um item.",
     anatomy: [
       { part: "Sheet", description: "Root (Radix Dialog por baixo) — controla abertura." },
       { part: "SheetTrigger", description: "Elemento que abre o painel." },
@@ -2077,8 +2117,8 @@ import { Button } from "@/components/ui/button"
   },
 
   sidebar: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um componente de barra lateral (sidebar) componível, tematizável e customizável.",
+    whenToUse: "Use como a navegação lateral principal do produto, com suporte a estado colapsado, ícones e submenus.",
     anatomy: [
       { part: "SidebarProvider", description: "Contexto raiz — estado aberto/colapsado, persistido em cookie, TooltipProvider embutido." },
       { part: "Sidebar", description: 'Elemento raiz — collapsible "offcanvas" (mobile), "icon" (encolhe pra ícones) ou "none".' },
@@ -2133,8 +2173,8 @@ import { Button } from "@/components/ui/button"
   },
 
   table: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um componente de tabela responsivo.",
+    whenToUse: "Use para exibir dados tabulares — linhas e colunas — como listas de apólices, sinistros ou transações.",
     anatomy: [
       { part: "Table", description: "Wrapper com overflow-x-auto + <table>." },
       { part: "TableHeader / TableBody / TableFooter", description: "<thead>/<tbody>/<tfoot>." },
@@ -2179,8 +2219,8 @@ import { Button } from "@/components/ui/button"
   },
 
   tabs: {
-    description: "[a preencher]",
-    whenToUse: "[a preencher]",
+    description: "Um conjunto de seções de conteúdo em camadas — conhecidas como painéis de aba — exibidas uma por vez.",
+    whenToUse: "Use para alternar entre visões relacionadas do mesmo contexto, sem navegar para outra página.",
     anatomy: [
       { part: "Tabs", description: "Root — orientation horizontal ou vertical." },
       { part: "TabsList", description: 'Envolve os gatilhos — variant "default" (fundo bg-muted) ou "line" (sublinhado, sem fundo).' },
@@ -2210,6 +2250,43 @@ import { Button } from "@/components/ui/button"
       { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "(Tabs) direção do layout." },
       { name: "variant", type: '"default" | "line"', default: '"default"', description: "(TabsList) estilo visual da lista de abas." },
       { name: "value / defaultValue", type: "string", description: "(Tabs) aba ativa — controlada ou inicial." },
+    ],
+  },
+
+  sonner: {
+    description: "Um componente de notificação toast opinativo para React.",
+    whenToUse: "Use para dar feedback rápido e não bloqueante sobre o resultado de uma ação (sucesso, erro, carregamento), sem interromper o fluxo do usuário.",
+    anatomy: [
+      { part: "Toaster", description: "Montado uma vez na raiz do app — é o container que renderiza as notificações disparadas em qualquer lugar." },
+      { part: "toast()", description: "Função (não é um componente React) que dispara a notificação — toast(\"mensagem\") ou toast.success/error/warning/info/promise." },
+    ],
+    variants: [
+      { name: "Default", value: "default", description: "Notificação neutra." },
+      { name: "Success", value: "success", description: "Confirmação de uma ação concluída." },
+      { name: "Info", value: "info", description: "Informação neutra adicional." },
+      { name: "Warning", value: "warning", description: "Alerta que não bloqueia o fluxo." },
+      { name: "Error", value: "error", description: "Falha em uma ação." },
+      { name: "Promise", value: "promise", description: "Acompanha o ciclo de uma Promise — loading, depois success ou error." },
+    ],
+    states: [
+      { name: "Entrando", description: "Anima deslizando para a posição configurada (padrão: canto inferior direito)." },
+      { name: "Visível", description: "Permanece na tela até o tempo definido ou o fechamento manual." },
+      { name: "Saindo", description: "Anima ao fechar automaticamente ou por interação do usuário." },
+    ],
+    sizes: [],
+    doGuidelines: ["[a preencher]"],
+    dontGuidelines: ["[a preencher]"],
+    code: `import { Toaster } from "@/components/ui/sonner"
+import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
+
+// <Toaster /> é montado uma vez na raiz do app (ver app-shell.tsx)
+<Button onClick={() => toast.success("Apólice atualizada com sucesso.")}>
+  Salvar
+</Button>`,
+    props: [
+      { name: "position", type: '"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"', default: '"bottom-right"', description: "(Toaster) posição das notificações na tela." },
+      { name: "richColors", type: "boolean", default: "false", description: "(Toaster) usa cores mais vivas por tipo de toast." },
     ],
   },
 }

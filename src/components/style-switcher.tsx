@@ -36,6 +36,11 @@ export function StyleSwitcher() {
   function selectStyle(style: (typeof stylesList)[number]) {
     setActive(style)
     document.documentElement.dataset.style = style.value
+    // Sincroniza a classe "dark" com o modo nativo do estilo escolhido —
+    // mesma lógica do script inline em layout.tsx (que cobre o primeiro
+    // carregamento). Sem isso, trocar para "Midnight" em runtime não
+    // aplicaria o modo escuro que é a identidade nativa dele.
+    document.documentElement.classList.toggle("dark", style.nativeMode === "dark")
     window.localStorage.setItem(STORAGE_KEY, style.value)
   }
 

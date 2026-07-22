@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
+import AccordionDemo from "@/components/examples/accordion-demo"
 import {
   Accordion,
   AccordionContent,
@@ -53,4 +54,8 @@ export const Default: Story = {}
 
 export const Multiple: Story = {
   args: { type: "multiple" },
+}
+
+export const Examples: Story = {
+  render: () => <AccordionDemo />,
 }

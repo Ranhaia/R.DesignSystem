@@ -3,13 +3,15 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
+import { Skeleton } from "@/components/ui/skeleton"
 
 const buttonVariants = cva(
   "inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default:
+          "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-xs hover:translate-y-px disabled:translate-y-0 disabled:shadow-none",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40",
         outline:
@@ -19,6 +21,18 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        // Ação de IA com hierarquia (equivalente ao appearance="ai-primary" da
+        // Nimbus). Gradiente e cores vêm de tokens reais da Nimbus, definidos
+        // em globals.css (--ai-gradient-rest/hover) — ver comentário lá pra
+        // fonte exata. Reaproveita o disabled:opacity-50 já global do Button
+        // em vez do 3º gradiente (mais claro) que a Nimbus usa pra disabled,
+        // pra manter o mesmo comportamento de "desabilitado" em toda a família
+        // de variantes deste projeto.
+        "ai-primary":
+          "text-white shadow-sm [background-image:var(--ai-gradient-rest)] hover:[background-image:var(--ai-gradient-hover)] hover:shadow-xs",
+        // Ação de IA complementar (appearance="ai-secondary" da Nimbus).
+        "ai-secondary":
+          "border border-ai-interactive bg-ai-surface text-ai-text-high shadow-xs hover:bg-ai-surface-highlight hover:border-ai-interactive-hover",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -38,27 +52,112 @@ const buttonVariants = cva(
   }
 )
 
+// Conteúdo do botão: dois jeitos de preencher.
+// 1) `children` livre — cobre asChild (ex: <Button asChild><Link/></Button>),
+//    ButtonGroup, Spinner + texto condicional e qualquer composição mais
+//    complexa já usada no projeto. Continua funcionando exatamente como
+//    antes, sem quebrar nada.
+// 2) `icon`/`label` explícitos — pensado pra uso direto (não-asChild). O
+//    tipo exige pelo menos um dos dois: nunca dá pra montar um Button sem
+//    ícone E sem label ao mesmo tempo (o que resultaria num botão sem nome
+//    acessível pra leitor de tela). Pode usar só `icon` (botão ícone-only,
+//    lembrar de aria-label), só `label` (texto puro) ou os dois juntos.
+type ButtonContent =
+  | { children: React.ReactNode; icon?: never; label?: never }
+  | { children?: never; icon: React.ReactNode; label?: React.ReactNode }
+  | { children?: never; icon?: React.ReactNode; label: React.ReactNode }
+
 function Button({
   className,
   variant = "default",
   size = "default",
   asChild = false,
+  // fullWidth: equivalente ao prop `fullWidth` da Nimbus (default false lá e
+  // aqui). Faz o botão ocupar 100% da largura do container — útil em
+  // formulários mobile e folhas/modais de largura total.
+  fullWidth = false,
+  children,
+  icon,
+  label,
   ...props
-}: React.ComponentProps<"button"> &
+}: Omit<React.ComponentProps<"button">, "children"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
-  }) {
+    fullWidth?: boolean
+  } & ButtonContent) {
   const Comp = asChild ? Slot.Root : "button"
+  const content = children ?? (
+    <>
+      {icon}
+      {label}
+    </>
+  )
 
   return (
     <Comp
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size, className }),
+        fullWidth && "w-full"
+      )}
+      {...props}
+    >
+      {content}
+    </Comp>
+  )
+}
+
+// Button.Skeleton: placeholder de carregamento com o mesmo formato do
+// Button real (altura por size + cantos), pra evitar layout shift. A Nimbus
+// usa um tamanho fixo (width 4.75rem, height 2rem) porque o Button dela não
+// tem escala de size própria; aqui, como já temos xs/sm/default/lg, faz mais
+// sentido ser size-aware — mantém a decisão "aditiva" de reaproveitar nossa
+// própria escala em vez de copiar o valor fixo da Nimbus. Larguras abaixo
+// são uma estimativa nossa (não um token Nimbus) pra cobrir o caso comum de
+// um botão de texto curto; ajuste via className quando o botão real for
+// mais largo.
+const skeletonSizeClasses: Record<
+  NonNullable<VariantProps<typeof buttonVariants>["size"]>,
+  string
+> = {
+  default: "h-9 w-24 rounded-md",
+  xs: "h-6 w-16 rounded-md",
+  sm: "h-8 w-20 rounded-md",
+  lg: "h-10 w-28 rounded-md",
+  icon: "size-9 rounded-md",
+  "icon-xs": "size-6 rounded-md",
+  "icon-sm": "size-8 rounded-md",
+  "icon-lg": "size-10 rounded-md",
+}
+
+function ButtonSkeleton({
+  className,
+  size = "default",
+  fullWidth = false,
+  ...props
+}: React.ComponentProps<"div"> & {
+  size?: VariantProps<typeof buttonVariants>["size"]
+  fullWidth?: boolean
+}) {
+  return (
+    <Skeleton
+      data-slot="button-skeleton"
+      className={cn(
+        skeletonSizeClasses[size ?? "default"],
+        fullWidth && "w-full",
+        className
+      )}
       {...props}
     />
   )
 }
 
-export { Button, buttonVariants }
+// Object.assign (em vez de `Button.Skeleton = ButtonSkeleton`) porque
+// `function Button(...)` não tem essa propriedade no seu tipo inferido — TS
+// reclamaria na atribuição direta. Object.assign devolve a interseção dos
+// dois tipos, então `<Button.Skeleton />` funciona sem cast/any.
+const ButtonWithSkeleton = Object.assign(Button, { Skeleton: ButtonSkeleton })
+
+export { ButtonWithSkeleton as Button, buttonVariants }

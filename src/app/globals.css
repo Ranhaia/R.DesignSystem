@@ -21,6 +21,33 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Escala "Shape" (radius), nomeada como na Nimbus (0-5, 1..6, half, full,
+     base) — mas aditiva: sm/md/lg/xl acima continuam intactos, então nenhum
+     dos 58 componentes que já usa rounded-sm/md/lg/xl quebra. Cada passo é
+     um múltiplo de --radius (o "unit" que cada preset de estilo já
+     controla), então trocar de marca ainda muda a escala inteira de uma vez
+     — só ganhamos passos nomeados extras pra escolher raio por componente
+     individualmente, igual à Nimbus. Valores absolutos da Nimbus (0.125rem,
+     0.25rem...) não foram copiados 1:1 de propósito: lá a escala é fixa,
+     aqui ela escala com o preset. */
+  --radius-0-5: calc(var(--radius) * 0.5);
+  --radius-1: var(--radius);
+  --radius-2: calc(var(--radius) * 2);
+  --radius-3: calc(var(--radius) * 3);
+  --radius-4: calc(var(--radius) * 4);
+  --radius-5: calc(var(--radius) * 5);
+  --radius-6: calc(var(--radius) * 6);
+  --radius-half: 50%;
+  --radius-full: 9999px;
+  --radius-base: var(--radius);
+
+  /* Espessura de borda: token novo (não existia). --default-border-width é
+     a variável de tema do Tailwind v4 que o utilitário "border" (sem
+     sufixo) lê por padrão — por isso dá pra mudar a espessura em TODO o
+     projeto (qualquer elemento com className "border") só trocando
+     --border-width no preset, sem editar nenhum componente. */
+  --default-border-width: var(--border-width);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
   --shadow-2xs: var(--shadow-2xs);
@@ -61,6 +88,91 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-ai-surface: var(--ai-surface);
+  --color-ai-surface-highlight: var(--ai-surface-highlight);
+  --color-ai-interactive: var(--ai-interactive);
+  --color-ai-interactive-hover: var(--ai-interactive-hover);
+  --color-ai-interactive-pressed: var(--ai-interactive-pressed);
+  --color-ai-text-low: var(--ai-text-low);
+  --color-ai-text-high: var(--ai-text-high);
+
+  /* Primitivos globais de status (info/success/warning/danger, 10 passos
+     cada, 100=mais claro/1000=mais escuro) e categóricos (10 hues x 3
+     luminosidades, pra tabela/gráfico) — ver bloco em :root pra fonte e
+     método de geração. Mapeados aqui pra virar utilitário Tailwind
+     (bg-info-600, text-categorical-3-dark etc.), do mesmo jeito que os
+     tokens --ai-*. */
+  --color-info-100: var(--color-info-100);
+  --color-info-200: var(--color-info-200);
+  --color-info-300: var(--color-info-300);
+  --color-info-400: var(--color-info-400);
+  --color-info-500: var(--color-info-500);
+  --color-info-600: var(--color-info-600);
+  --color-info-700: var(--color-info-700);
+  --color-info-800: var(--color-info-800);
+  --color-info-900: var(--color-info-900);
+  --color-info-1000: var(--color-info-1000);
+  --color-success-100: var(--color-success-100);
+  --color-success-200: var(--color-success-200);
+  --color-success-300: var(--color-success-300);
+  --color-success-400: var(--color-success-400);
+  --color-success-500: var(--color-success-500);
+  --color-success-600: var(--color-success-600);
+  --color-success-700: var(--color-success-700);
+  --color-success-800: var(--color-success-800);
+  --color-success-900: var(--color-success-900);
+  --color-success-1000: var(--color-success-1000);
+  --color-warning-100: var(--color-warning-100);
+  --color-warning-200: var(--color-warning-200);
+  --color-warning-300: var(--color-warning-300);
+  --color-warning-400: var(--color-warning-400);
+  --color-warning-500: var(--color-warning-500);
+  --color-warning-600: var(--color-warning-600);
+  --color-warning-700: var(--color-warning-700);
+  --color-warning-800: var(--color-warning-800);
+  --color-warning-900: var(--color-warning-900);
+  --color-warning-1000: var(--color-warning-1000);
+  --color-danger-100: var(--color-danger-100);
+  --color-danger-200: var(--color-danger-200);
+  --color-danger-300: var(--color-danger-300);
+  --color-danger-400: var(--color-danger-400);
+  --color-danger-500: var(--color-danger-500);
+  --color-danger-600: var(--color-danger-600);
+  --color-danger-700: var(--color-danger-700);
+  --color-danger-800: var(--color-danger-800);
+  --color-danger-900: var(--color-danger-900);
+  --color-danger-1000: var(--color-danger-1000);
+  --color-categorical-1-light: var(--color-categorical-1-light);
+  --color-categorical-1: var(--color-categorical-1);
+  --color-categorical-1-dark: var(--color-categorical-1-dark);
+  --color-categorical-2-light: var(--color-categorical-2-light);
+  --color-categorical-2: var(--color-categorical-2);
+  --color-categorical-2-dark: var(--color-categorical-2-dark);
+  --color-categorical-3-light: var(--color-categorical-3-light);
+  --color-categorical-3: var(--color-categorical-3);
+  --color-categorical-3-dark: var(--color-categorical-3-dark);
+  --color-categorical-4-light: var(--color-categorical-4-light);
+  --color-categorical-4: var(--color-categorical-4);
+  --color-categorical-4-dark: var(--color-categorical-4-dark);
+  --color-categorical-5-light: var(--color-categorical-5-light);
+  --color-categorical-5: var(--color-categorical-5);
+  --color-categorical-5-dark: var(--color-categorical-5-dark);
+  --color-categorical-6-light: var(--color-categorical-6-light);
+  --color-categorical-6: var(--color-categorical-6);
+  --color-categorical-6-dark: var(--color-categorical-6-dark);
+  --color-categorical-7-light: var(--color-categorical-7-light);
+  --color-categorical-7: var(--color-categorical-7);
+  --color-categorical-7-dark: var(--color-categorical-7-dark);
+  --color-categorical-8-light: var(--color-categorical-8-light);
+  --color-categorical-8: var(--color-categorical-8);
+  --color-categorical-8-dark: var(--color-categorical-8-dark);
+  --color-categorical-9-light: var(--color-categorical-9-light);
+  --color-categorical-9: var(--color-categorical-9);
+  --color-categorical-9-dark: var(--color-categorical-9-dark);
+  --color-categorical-10-light: var(--color-categorical-10-light);
+  --color-categorical-10: var(--color-categorical-10);
+  --color-categorical-10-dark: var(--color-categorical-10-dark);
 }
 
 /*
@@ -78,6 +190,13 @@
 */
 :root {
   --radius: 0.625rem;
+
+  /* Espessura de borda padrão (Shape). 1px = mesmo valor que o Tailwind já
+     usava fixo antes desse token existir — baseline não muda pra quem não
+     tem preset ativo. Presets que tiverem uma identidade que dependa de
+     borda mais grossa sobrescrevem isso no próprio bloco (ver "tech"
+     abaixo); os que não mencionam o assunto herdam este 1px sem alteração. */
+  --border-width: 1px;
 
   /* Tokens do background do Hero (portfólio): não são cor, são
      "energia" do movimento. Lidos via getComputedStyle por useHeroTokens()
@@ -102,23 +221,35 @@
   --shadow-lg: 0 10px 15px -3px oklch(0% 0 0 / 0.08), 0 4px 6px -4px oklch(0% 0 0 / 0.08);
   --shadow-xl: 0 20px 25px -5px oklch(0% 0 0 / 0.1), 0 8px 10px -6px oklch(0% 0 0 / 0.1);
 
+  /* ---- Primitivos deste tema (default/claro) ------------------------------
+     Extraídos em 2026-07-22: cada um destes valores já era repetido
+     literalmente em 2+ papéis semânticos abaixo (ver PLANO-LOOP-80-20-
+     TEMPLATES.md pela evidência completa, achada durante a revisão com
+     agentes). Escrever o valor uma vez só aqui elimina o risco de trocar
+     em 3 lugares e esquecer o 4º. Só extraí onde a duplicação já existia
+     — não criei uma escala nova (tipo 50-900) sem necessidade comprovada. */
+  --default-surface: #FFFFFF;
+  --default-surface-foreground: #0A0A0A;
+  --default-action: #171717;
+  --default-action-foreground: #FAFAFA;
+
   /* Superfícies base */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: var(--default-surface);
+  --foreground: var(--default-surface-foreground);
 
   /* Cards e popovers (superfícies elevadas) */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --card: var(--default-surface);
+  --card-foreground: var(--default-surface-foreground);
+  --popover: var(--default-surface);
+  --popover-foreground: var(--default-surface-foreground);
 
   /* Ações primárias (botões principais, links de destaque) */
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: var(--default-action);
+  --primary-foreground: var(--default-action-foreground);
 
   /* Ações secundárias */
   --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --secondary-foreground: var(--default-action);
 
   /* Conteúdo esmaecido (texto de apoio, placeholders, estados desabilitados) */
   --muted: oklch(0.97 0 0);
@@ -126,11 +257,11 @@
 
   /* Destaques neutros (hover em itens de menu, seleção) */
   --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --accent-foreground: var(--default-action);
 
   /* Estados de erro / ações destrutivas */
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
+  --destructive-foreground: var(--default-action-foreground);
 
   /* Bordas, inputs e anel de foco */
   --border: oklch(0.922 0 0);
@@ -145,14 +276,138 @@
   --chart-5: oklch(0.769 0.188 70.08);
 
   /* Tokens dedicados à sidebar (podem divergir do restante do app) */
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar: var(--default-action-foreground);
+  --sidebar-foreground: var(--default-surface-foreground);
+  --sidebar-primary: var(--default-action);
+  --sidebar-primary-foreground: var(--default-action-foreground);
   --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-accent-foreground: var(--default-action);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Tokens de IA (fonte: Nimbus Design System, "Referência técnica de IA" —
+     nimbus.nuvemshop.com.br/documentation/ai-experiences/referencia-tecnica,
+     verificado com @nimbus-ds/tokens@9.6.0 e @nimbus-ds/styles@9.65.0).
+     Valores hex mantidos como no original (não convertidos pra OKLCH) pra não
+     introduzir arredondamento em cima de um token que não é nosso. A própria
+     Nimbus documenta que esses valores são idênticos em light e dark, por
+     isso ficam só aqui em :root, sem bloco em .dark. Hoje só o Button
+     (variantes ai-primary/ai-secondary) consome; ficam disponíveis pra
+     Input/Select/Chip/Tag etc. quando esses padrões forem adicionados. */
+  --ai-surface: #F8F7FD;
+  --ai-surface-highlight: #F1EDFC;
+  --ai-interactive: #E2DCFA;
+  --ai-interactive-hover: #CDC1F6;
+  --ai-interactive-pressed: #4629BA;
+  --ai-text-low: #452F9D;
+  --ai-text-high: #1F1254;
+
+  /* Gradiente generativo (3 stops, 50deg) — mesmo fonte acima. Usado como
+     background do Button ai-primary. Não passa pelo @theme (não é um token
+     de cor simples), é referenciado direto via var() no componente. */
+  --ai-gradient-rest: linear-gradient(50deg, #0050C3 28.22%, #4629BA 49.27%, #D8446E 83.12%);
+  --ai-gradient-hover: linear-gradient(50deg, #D8446E 28.22%, #4629BA 49.27%, #0050C3 83.12%);
+
+  /* ===========================================================================
+     PRIMITIVOS GLOBAIS DE COR — status e categóricos (2026-07-22)
+     ===========================================================================
+     Pedido do Rafael: base primitiva de cor pra virar variável no Figma
+     (documentação) e alimentar ferramenta de contraste — por isso hex, não
+     OKLCH, mesmo tendo sido gerados com base em luminosidade (metodologia:
+     10 passos de L/C por escala, aplicados a um hue fixo, convertidos pra
+     hex só no final — ver PLANO-LOOP-80-20-TEMPLATES.md pro script exato).
+
+     Hues NÃO são arbitrários: danger reaproveita o hue do --destructive já
+     existente no projeto (27.325), info reaproveita o hue do --tech-action
+     (264.376), warning reaproveita o hue do --chart-4 de :root (84.429).
+     success não tinha uma cor verde já estabelecida no projeto — usei a
+     convenção padrão de mercado (verde = sucesso), a mesma que Material/
+     Polaris/Carbon/Nimbus usam, confirmada no comparativo.md de hoje.
+
+     Escala: 100 (mais claro) a 1000 (mais escuro), passo 100 — cada estilo
+     aponta pro passo que precisar (ex: --destructive de um preset pode
+     usar --color-danger-600 num tema claro e --color-danger-400 num
+     escuro). Ainda NÃO estão ligados aos presets — isso é o próximo passo
+     (ver --destructive de cada bloco abaixo). */
+  --color-info-100: #EEF5FF;
+  --color-info-200: #D7E8FF;
+  --color-info-300: #B7D4FF;
+  --color-info-400: #90B9FF;
+  --color-info-500: #6B9AFF;
+  --color-info-600: #4878EA;
+  --color-info-700: #305AC2;
+  --color-info-800: #1D3F97;
+  --color-info-900: #0D2769;
+  --color-info-1000: #03103E;
+  --color-success-100: #EDF9ED;
+  --color-success-200: #D4F1D4;
+  --color-success-300: #AFE4B0;
+  --color-success-400: #83D186;
+  --color-success-500: #54B85B;
+  --color-success-600: #189A30;
+  --color-success-700: #007A11;
+  --color-success-800: #005A00;
+  --color-success-900: #003C00;
+  --color-success-1000: #001F00;
+  --color-warning-100: #FBF4E6;
+  --color-warning-200: #F8E6C3;
+  --color-warning-300: #F0D08F;
+  --color-warning-400: #E1B34D;
+  --color-warning-500: #CC9400;
+  --color-warning-600: #B17200;
+  --color-warning-700: #8F5500;
+  --color-warning-800: #6C3B00;
+  --color-warning-900: #492400;
+  --color-warning-1000: #280F00;
+  --color-danger-100: #FFF0EE;
+  --color-danger-200: #FFDCD6;
+  --color-danger-300: #FFBEB4;
+  --color-danger-400: #FF998C;
+  --color-danger-500: #F17166;
+  --color-danger-600: #D64840;
+  --color-danger-700: #B02B27;
+  --color-danger-800: #861212;
+  --color-danger-900: #5C0205;
+  --color-danger-1000: #350000;
+
+  /* 10 cores categóricas x 3 luminosidades, pra tabela e gráfico (recharts
+     etc.) — hues distribuídos uniformemente na roda de cor (36° entre
+     cada, técnica padrão de paleta categórica, mesmo princípio do
+     d3.schemeCategory10), não são cópia dos --chart-1..5 que já existem
+     (esses continuam existindo, por preset — os categóricos aqui são um
+     conjunto NEUTRO/global, pra quando o gráfico não deve variar por
+     marca). "-light"/"" (médio)/"-dark" = 3 variações de luminosidade do
+     mesmo hue. */
+  --color-categorical-1-light: #FF8386;
+  --color-categorical-1: #BD4049;
+  --color-categorical-1-dark: #720119;
+  --color-categorical-2-light: #F59243;
+  --color-categorical-2: #B45100;
+  --color-categorical-2-dark: #6C1A00;
+  --color-categorical-3-light: #D0AA13;
+  --color-categorical-3: #936B00;
+  --color-categorical-3-dark: #553300;
+  --color-categorical-4-light: #92BF4F;
+  --color-categorical-4: #568100;
+  --color-categorical-4-dark: #244600;
+  --color-categorical-5-light: #2BCB94;
+  --color-categorical-5: #008D57;
+  --color-categorical-5-dark: #004E25;
+  --color-categorical-6-light: #00C9D3;
+  --color-categorical-6: #008A96;
+  --color-categorical-6-dark: #004C57;
+  --color-categorical-7-light: #2DBBFF;
+  --color-categorical-7: #007CC1;
+  --color-categorical-7-dark: #004078;
+  --color-categorical-8-light: #8DA6FF;
+  --color-categorical-8: #5366CE;
+  --color-categorical-8-dark: #242E82;
+  --color-categorical-9-light: #C892F6;
+  --color-categorical-9: #8C52B8;
+  --color-categorical-9-dark: #4F1C71;
+  --color-categorical-10-light: #EF85C5;
+  --color-categorical-10: #AE4388;
+  --color-categorical-10-dark: #670A4C;
 }
 
 /*
@@ -170,22 +425,30 @@
   --shadow-md: 0 4px 6px -1px oklch(0% 0 0 / 0.4), 0 2px 4px -2px oklch(0% 0 0 / 0.4);
   --shadow-lg: 0 10px 15px -3px oklch(0% 0 0 / 0.4), 0 4px 6px -4px oklch(0% 0 0 / 0.4);
   --shadow-xl: 0 20px 25px -5px oklch(0% 0 0 / 0.45), 0 8px 10px -6px oklch(0% 0 0 / 0.45);
+  /* Primitivos deste tema (default/escuro) — mesmo critério do :root acima:
+     só extraído onde já havia repetição literal comprovada. --primary e
+     --sidebar-primary NÃO são iguais no dark base (por isso não viram
+     primitivo aqui) — sidebar mantém identidade azul própria mesmo quando
+     o resto do app está neutro; ver "não tocar" no diagnóstico. */
+  --default-dark-surface: #171717;
+  --default-dark-surface-foreground: #FAFAFA;
+
   --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --foreground: var(--default-dark-surface-foreground);
+  --card: var(--default-dark-surface);
+  --card-foreground: var(--default-dark-surface-foreground);
+  --popover: var(--default-dark-surface);
+  --popover-foreground: var(--default-dark-surface-foreground);
   --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary-foreground: var(--default-dark-surface);
   --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary-foreground: var(--default-dark-surface-foreground);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent-foreground: var(--default-dark-surface-foreground);
   --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
+  --destructive-foreground: var(--default-dark-surface-foreground);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
@@ -194,12 +457,12 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar: var(--default-dark-surface);
+  --sidebar-foreground: var(--default-dark-surface-foreground);
   --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary-foreground: var(--default-dark-surface-foreground);
   --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-accent-foreground: var(--default-dark-surface-foreground);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
@@ -238,10 +501,33 @@
   --shadow-md: 0 2px 4px 0 oklch(0% 0 0 / 0.06);
   --shadow-lg: 0 4px 8px 0 oklch(0% 0 0 / 0.07);
   --shadow-xl: 0 8px 16px 0 oklch(0% 0 0 / 0.08);
-  --primary: oklch(0.4 0.13 41);
-  --primary-foreground: oklch(0.98 0.016 73.684);
+  /* Primitivos deste tema (editorial/claro). --editorial-action reaparecia
+     em 3 papéis (primary, chart-5, sidebar-primary) — o exemplo que usei
+     pra explicar a ideia de primitivo pro Rafael. */
+  --editorial-action: #7E2600;
+  --editorial-action-foreground: #FFF7ED;
+  --editorial-surface: #FFFBF6;
+  --editorial-surface-foreground: #472215;
+
+  --primary: var(--editorial-action);
+  --primary-foreground: var(--editorial-action-foreground);
   --secondary: oklch(0.95 0.02 60);
-  --secondary-foreground: oklch(0.3 0.06 41);
+  --secondary-foreground: var(--editorial-surface-foreground);
+
+  /* Superfícies que abrem "por cima" (Popover, DropdownMenu, HoverCard,
+     Menubar, Command, Calendar, Tooltip, Card) — antes ficavam com o
+     --card/--popover/--muted/--accent genéricos de :root (cinza puro) em
+     qualquer preset, porque nenhum preset sobrescrevia esses 4 tokens.
+     Cada componente já referenciava bg-popover/bg-card/bg-accent
+     corretamente (não era bug de componente) — o gap era só aqui. */
+  --card: var(--editorial-surface);
+  --card-foreground: var(--editorial-surface-foreground);
+  --popover: var(--editorial-surface);
+  --popover-foreground: var(--editorial-surface-foreground);
+  --muted: oklch(0.96 0.015 60);
+  --muted-foreground: oklch(0.5 0.05 41);
+  --accent: oklch(0.93 0.03 55);
+  --accent-foreground: var(--editorial-surface-foreground);
   --border: oklch(0.88 0.02 60);
   --input: oklch(0.88 0.02 60);
   --ring: oklch(0.4 0.13 41 / 40%);
@@ -249,21 +535,35 @@
   --chart-2: oklch(0.705 0.213 47.604);
   --chart-3: oklch(0.646 0.222 41.116);
   --chart-4: oklch(0.553 0.195 38.402);
-  --chart-5: oklch(0.4 0.13 41);
-  --sidebar-primary: oklch(0.4 0.13 41);
-  --sidebar-primary-foreground: oklch(0.98 0.016 73.684);
+  --chart-5: var(--editorial-action);
+  --sidebar-primary: var(--editorial-action);
+  --sidebar-primary-foreground: var(--editorial-action-foreground);
   --sidebar-border: oklch(0.88 0.02 60);
 }
 .dark[data-style="editorial"] {
-  --primary: oklch(0.75 0.13 60);
-  --primary-foreground: oklch(0.2 0.04 41);
+  /* Primitivos deste tema (editorial/escuro) */
+  --editorial-dark-action: #EA9952;
+  --editorial-dark-action-foreground: #250F07;
+  --editorial-dark-surface: #2C1A14;
+  --editorial-dark-surface-foreground: #F9ECE1;
+
+  --primary: var(--editorial-dark-action);
+  --primary-foreground: var(--editorial-dark-action-foreground);
   --secondary: oklch(0.27 0.02 60);
   --secondary-foreground: oklch(0.9 0.02 60);
+  --card: var(--editorial-dark-surface);
+  --card-foreground: var(--editorial-dark-surface-foreground);
+  --popover: var(--editorial-dark-surface);
+  --popover-foreground: var(--editorial-dark-surface-foreground);
+  --muted: oklch(0.28 0.03 41);
+  --muted-foreground: oklch(0.7 0.03 60);
+  --accent: oklch(0.32 0.05 41);
+  --accent-foreground: var(--editorial-dark-surface-foreground);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
   --ring: oklch(0.75 0.13 60 / 40%);
-  --sidebar-primary: oklch(0.75 0.13 60);
-  --sidebar-primary-foreground: oklch(0.2 0.04 41);
+  --sidebar-primary: var(--editorial-dark-action);
+  --sidebar-primary-foreground: var(--editorial-dark-action-foreground);
 }
 
 /* ---- Tech: mono nos títulos, quinas retas, sombra dura — identidade de dev tool ---- */
@@ -271,6 +571,9 @@
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-jetbrains-mono), ui-monospace, monospace;
   --radius: 0rem;
+  /* Quinas retas + sombra dura já reforçam a identidade "dev tool"; borda
+     mais grossa (2px) segue a mesma lógica de contorno marcado. */
+  --border-width: 2px;
   --hero-speed: 1.4;
   --hero-amplitude: 1.3;
   --shadow-2xs: 0 1px 0 0 oklch(0% 0 0 / 0.1);
@@ -279,34 +582,62 @@
   --shadow-md: 0 3px 0 0 oklch(0% 0 0 / 0.9);
   --shadow-lg: 0 4px 0 0 oklch(0% 0 0 / 0.9);
   --shadow-xl: 0 6px 0 0 oklch(0% 0 0 / 0.9);
-  --primary: oklch(0.488 0.243 264.376);
-  --primary-foreground: oklch(0.97 0.014 254.604);
+  /* Primitivos deste tema (tech/claro) */
+  --tech-action: #1447E6;
+  --tech-action-foreground: #EFF6FF;
+  --tech-surface: #FAFCFF;
+  --tech-surface-foreground: #18181B;
+
+  --primary: var(--tech-action);
+  --primary-foreground: var(--tech-action-foreground);
   --secondary: oklch(0.94 0.02 260);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --secondary-foreground: var(--tech-surface-foreground);
+  --card: var(--tech-surface);
+  --card-foreground: var(--tech-surface-foreground);
+  --popover: var(--tech-surface);
+  --popover-foreground: var(--tech-surface-foreground);
+  --muted: oklch(0.95 0.015 260);
+  --muted-foreground: oklch(0.5 0.02 260);
+  --accent: oklch(0.92 0.025 258);
+  --accent-foreground: var(--tech-surface-foreground);
   --border: oklch(0.15 0 0);
   --input: oklch(0.15 0 0);
   --ring: oklch(0.488 0.243 264.376 / 50%);
   --chart-1: oklch(0.809 0.105 251.813);
   --chart-2: oklch(0.623 0.214 259.815);
   --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
+  --chart-4: var(--tech-action);
   --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.97 0.014 254.604);
+  --sidebar-primary: var(--tech-action);
+  --sidebar-primary-foreground: var(--tech-action-foreground);
   --sidebar-border: oklch(0.15 0 0);
 }
 .dark[data-style="tech"] {
-  --primary: oklch(0.75 0.16 255);
-  --primary-foreground: oklch(0.15 0.03 260);
+  /* Primitivos deste tema (tech/escuro) */
+  --tech-dark-action: #62B0FF;
+  --tech-dark-action-foreground: #050B18;
+  --tech-dark-surface: #171B22;
+  --tech-dark-surface-foreground: #D6DFEC;
+
+  --primary: var(--tech-dark-action);
+  --primary-foreground: var(--tech-dark-action-foreground);
   --secondary: oklch(0.26 0.02 260);
-  --secondary-foreground: oklch(0.9 0.02 260);
+  --secondary-foreground: var(--tech-dark-surface-foreground);
+  --card: var(--tech-dark-surface);
+  --card-foreground: var(--tech-dark-surface-foreground);
+  --popover: var(--tech-dark-surface);
+  --popover-foreground: var(--tech-dark-surface-foreground);
+  --muted: oklch(0.26 0.02 260);
+  --muted-foreground: oklch(0.65 0.02 260);
+  --accent: oklch(0.3 0.03 260);
+  --accent-foreground: var(--tech-dark-surface-foreground);
   --border: oklch(1 0 0 / 25%);
   --input: oklch(1 0 0 / 25%);
   --shadow-sm: 0 2px 0 0 oklch(100% 0 0 / 0.15);
   --shadow-md: 0 3px 0 0 oklch(100% 0 0 / 0.15);
   --shadow-lg: 0 4px 0 0 oklch(100% 0 0 / 0.15);
-  --sidebar-primary: oklch(0.75 0.16 255);
-  --sidebar-primary-foreground: oklch(0.15 0.03 260);
+  --sidebar-primary: var(--tech-dark-action);
+  --sidebar-primary-foreground: var(--tech-dark-action-foreground);
 }
 
 /* ---- Suave: bem arredondada, sombra difusa, tom rosado — identidade lifestyle ---- */
@@ -322,56 +653,183 @@
   --shadow-md: 0 10px 24px -6px oklch(0.6 0.2 15 / 0.14);
   --shadow-lg: 0 16px 36px -8px oklch(0.6 0.2 15 / 0.16);
   --shadow-xl: 0 24px 48px -10px oklch(0.6 0.2 15 / 0.18);
-  --primary: oklch(0.65 0.19 15);
-  --primary-foreground: oklch(0.99 0.01 15);
+  /* Primitivos deste tema (soft/claro)
+     2026-07-22: --soft-action corrigido de #EB5169 para #E31A39 (mesmo H/S
+     351°/79%, L 62%→50%). O valor original dava primary/primary-foreground
+     em 3.41:1 contra #FFF9FA — reprova AA texto normal (4.5:1); o novo passa
+     (4.52:1). Afeta também --chart-3 e --sidebar-primary, que apontam pra
+     esta mesma variável. --soft-dark-action (bloco .dark abaixo) já passava
+     (6.81:1) e não foi alterado. Mesma correção replicada no portfólio
+     (P-portfolio-design-system/DESIGN.md, direção "suave"), lá contra
+     on-accent branco puro: chegou em #E51F3E — perto mas não igual, porque
+     o par de contraste real é diferente (branco puro vs #FFF9FA aqui). */
+  --soft-action: #E31A39;
+  --soft-action-foreground: #FFF9FA;
+  --soft-surface: #FFFBFB;
+  --soft-surface-foreground: #850E2C;
+
+  --primary: var(--soft-action);
+  --primary-foreground: var(--soft-action-foreground);
   --secondary: oklch(0.96 0.03 15);
-  --secondary-foreground: oklch(0.4 0.15 15);
+  --secondary-foreground: var(--soft-surface-foreground);
+  --card: var(--soft-surface);
+  --card-foreground: var(--soft-surface-foreground);
+  --popover: var(--soft-surface);
+  --popover-foreground: var(--soft-surface-foreground);
+  --muted: oklch(0.97 0.02 15);
+  --muted-foreground: oklch(0.55 0.08 15);
+  --accent: oklch(0.94 0.04 15);
+  --accent-foreground: var(--soft-surface-foreground);
   --border: oklch(0.92 0.03 15);
   --input: oklch(0.92 0.03 15);
   --ring: oklch(0.65 0.19 15 / 35%);
   --chart-1: oklch(0.81 0.117 11.638);
   --chart-2: oklch(0.72 0.15 15);
-  --chart-3: oklch(0.65 0.19 15);
+  --chart-3: var(--soft-action);
   --chart-4: oklch(0.58 0.21 16);
   --chart-5: oklch(0.5 0.2 17);
-  --sidebar-primary: oklch(0.65 0.19 15);
-  --sidebar-primary-foreground: oklch(0.99 0.01 15);
+  --sidebar-primary: var(--soft-action);
+  --sidebar-primary-foreground: var(--soft-action-foreground);
   --sidebar-border: oklch(0.92 0.03 15);
 }
 .dark[data-style="soft"] {
-  --primary: oklch(0.72 0.17 15);
-  --primary-foreground: oklch(0.2 0.05 15);
+  /* Primitivos deste tema (soft/escuro) */
+  --soft-dark-action: #FC7182;
+  --soft-dark-action-foreground: #290B0F;
+  --soft-dark-surface: #351C1E;
+  --soft-dark-surface-foreground: #F2E0E0;
+
+  --primary: var(--soft-dark-action);
+  --primary-foreground: var(--soft-dark-action-foreground);
   --secondary: oklch(0.28 0.04 15);
   --secondary-foreground: oklch(0.9 0.03 15);
+  --card: var(--soft-dark-surface);
+  --card-foreground: var(--soft-dark-surface-foreground);
+  --popover: var(--soft-dark-surface);
+  --popover-foreground: var(--soft-dark-surface-foreground);
+  --muted: oklch(0.3 0.04 15);
+  --muted-foreground: oklch(0.7 0.03 15);
+  --accent: oklch(0.34 0.05 15);
+  --accent-foreground: var(--soft-dark-surface-foreground);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
-  --sidebar-primary: oklch(0.72 0.17 15);
-  --sidebar-primary-foreground: oklch(0.2 0.05 15);
+  --sidebar-primary: var(--soft-dark-action);
+  --sidebar-primary-foreground: var(--soft-dark-action-foreground);
 }
 
-/* ---- Midnight: escura por padrão, com "glow" no lugar de sombra comum ----
-   Sobrescreve as superfícies base (background/card/border) direto, então
-   fica escura mesmo sem a classe .dark no <html>. */
+/* ---- Midnight: identidade violeta, Manrope, sombra com glow ----
+   2026-07-22: até aqui, midnight só existia "escuro" — um único bloco
+   [data-style="midnight"] sem precisar de .dark, o que quebrava o padrão
+   dos outros 3 presets (onde [data-style="x"] = claro e
+   .dark[data-style="x"] = escuro) e confundia ferramenta que lê o modo
+   pela presença de .dark (foi o que aconteceu na auditoria de
+   acessibilidade de hoje: o par primary/primary-foreground do midnight
+   foi lido como "light" quando na prática é o único modo escuro que
+   existia). Rafael pediu pra resolver essa divergência: todo estilo
+   passa a ter os dois modos, um marcado como nativo. Modo nativo do
+   midnight continua sendo escuro (ver styles-registry.ts, nativeMode) —
+   o que muda é que agora ele tem um modo claro genuíno também, pro
+   mecanismo ficar simétrico com editorial/tech/soft.
+   PROVISÓRIO: os valores do modo claro abaixo foram derivados
+   mecanicamente (mesmo hue 292.5, invertendo os passos de luminosidade
+   na mesma proporção que editorial/tech/soft já usam entre seus próprios
+   blocos claro/escuro) — não vêm de uma fonte externa, é a mesma lógica
+   de "escala nova só onde já há padrão estabelecido". Revisar visualmente
+   antes de usar em produção de verdade. */
 [data-style="midnight"] {
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --radius: 0.75rem;
   --hero-speed: 0.9;
   --hero-amplitude: 1.5;
+
+  /* Primitivos deste tema (midnight/claro — novo). */
+  --midnight-action: #6D37D2;
+  --midnight-action-foreground: #F8F7FF;
+  --midnight-surface: #FCFBFF;
+  --midnight-surface-foreground: #181721;
+
+  --background: var(--midnight-surface);
+  --foreground: var(--midnight-surface-foreground);
+  --card: var(--midnight-surface);
+  --card-foreground: var(--midnight-surface-foreground);
+  --popover: var(--midnight-surface);
+  --popover-foreground: var(--midnight-surface-foreground);
+  --muted: #EBEAF5;
+  --muted-foreground: #63616E;
+  --accent: #E5E2F4;
+  --accent-foreground: var(--midnight-surface-foreground);
+  --primary: var(--midnight-action);
+  --primary-foreground: var(--midnight-action-foreground);
+  --secondary: #EBEAF5;
+  --secondary-foreground: var(--midnight-surface-foreground);
+  --border: #D7D5E4;
+  --input: #D7D5E4;
+  --ring: oklch(0.5 0.22 292.5 / 40%);
+  --shadow-2xs: 0 0 4px 0 oklch(0.5 0.22 292.5 / 0.08);
+  --shadow-xs: 0 0 6px 0 oklch(0.5 0.22 292.5 / 0.1);
+  --shadow-sm: 0 1px 10px 0 oklch(0.5 0.22 292.5 / 0.12);
+  --shadow-md: 0 2px 16px 0 oklch(0.5 0.22 292.5 / 0.14);
+  --shadow-lg: 0 4px 24px 0 oklch(0.5 0.22 292.5 / 0.16);
+  --shadow-xl: 0 8px 32px 0 oklch(0.5 0.22 292.5 / 0.18);
+  --chart-1: oklch(0.811 0.111 293.571);
+  --chart-2: var(--midnight-action);
+  --chart-3: oklch(0.606 0.25 292.717);
+  --chart-4: oklch(0.541 0.281 293.009);
+  --chart-5: oklch(0.432 0.232 292.759);
+  --sidebar: #EBEAF5;
+  --sidebar-foreground: var(--midnight-surface-foreground);
+  --sidebar-primary: var(--midnight-action);
+  --sidebar-primary-foreground: var(--midnight-action-foreground);
+  --sidebar-accent: #E5E2F4;
+  --sidebar-accent-foreground: var(--midnight-surface-foreground);
+  --sidebar-border: #D7D5E4;
+  --sidebar-ring: oklch(0.5 0.22 292.5 / 40%);
+  /* --destructive não é sobrescrito aqui de propósito: cai pro vermelho
+     de :root, já calibrado pra fundo claro. */
+}
+.dark[data-style="midnight"] {
+  /* Primitivos deste tema (midnight/escuro — era o único bloco de
+     midnight até hoje). --midnight-dark-action reaparece em 3 papéis
+     (primary, chart-2, sidebar-primary), igual aos outros 3 presets. Há
+     mais duplicação "coincidente" aqui (--midnight-dark-surface-foreground
+     também bate com --foreground/--secondary-foreground/
+     --sidebar-foreground/--sidebar-accent-foreground) que decidi NÃO
+     extrair — ficaria um primitivo genérico demais ("texto claro sobre
+     qualquer superfície escura"), acoplando papéis hoje independentes só
+     por coincidência de valor. Registrado no PLANO como oportunidade
+     futura, não como pendência silenciosa.
+     NOTA: o par --midnight-dark-action/--midnight-dark-action-foreground
+     é a combinação que o diagnóstico de acessibilidade de hoje reprovou
+     em AA (2.56:1) — mantive o valor exatamente como estava (não é o que
+     o Rafael pediu nesta mudança), só corrigi o rótulo claro/escuro que
+     estava mascarando o problema. Ajustar contraste é decisão separada. */
+  --midnight-dark-action: #AA89FF;
+  --midnight-dark-action-foreground: #F8F7FF;
+  --midnight-dark-surface: #161721;
+  --midnight-dark-surface-foreground: #EDEEF5;
+
   --background: oklch(0.16 0.015 280);
   --foreground: oklch(0.95 0.01 280);
-  --card: oklch(0.21 0.02 280);
-  --card-foreground: oklch(0.95 0.01 280);
-  --popover: oklch(0.21 0.02 280);
-  --popover-foreground: oklch(0.95 0.01 280);
+  --card: var(--midnight-dark-surface);
+  --card-foreground: var(--midnight-dark-surface-foreground);
+  --popover: var(--midnight-dark-surface);
+  --popover-foreground: var(--midnight-dark-surface-foreground);
   --muted: oklch(0.26 0.02 280);
   --muted-foreground: oklch(0.68 0.02 280);
   --accent: oklch(0.28 0.03 280);
   --accent-foreground: oklch(0.95 0.01 280);
-  --primary: oklch(0.72 0.19 292.5);
-  --primary-foreground: oklch(0.98 0.01 292.5);
+  --primary: var(--midnight-dark-action);
+  --primary-foreground: var(--midnight-dark-action-foreground);
   --secondary: oklch(0.26 0.02 280);
   --secondary-foreground: oklch(0.95 0.01 280);
+  /* Midnight/escuro já cobria card/popover/muted/accent desde a criação
+     do preset — só faltava --destructive: sem isso, herdava o vermelho
+     de :root (calibrado pra fundo claro), pouco legível sobre o
+     navy-violeta escuro deste preset. Reuso o mesmo tom que .dark (base)
+     já usa. */
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
   --ring: oklch(0.72 0.19 292.5 / 45%);
@@ -381,15 +839,21 @@
   --shadow-md: 0 4px 24px 0 oklch(0.72 0.19 292.5 / 0.26);
   --shadow-lg: 0 8px 36px 0 oklch(0.72 0.19 292.5 / 0.3);
   --shadow-xl: 0 12px 48px 0 oklch(0.72 0.19 292.5 / 0.34);
+  /* chart-1..5 redeclarados aqui de propósito (diferente de editorial/
+     tech/soft, cujo bloco escuro NÃO redeclara chart e herda do bloco
+     claro por cascata) — midnight já tinha essa particularidade desde
+     antes de hoje (era o único preset com --sidebar-* completo também).
+     Sem isso, o modo escuro herdaria --chart-2 do bloco claro (a cor de
+     ação clara, #6D37D2) em vez do tom certo pra fundo escuro. */
   --chart-1: oklch(0.811 0.111 293.571);
-  --chart-2: oklch(0.72 0.19 292.5);
+  --chart-2: var(--midnight-dark-action);
   --chart-3: oklch(0.606 0.25 292.717);
   --chart-4: oklch(0.541 0.281 293.009);
   --chart-5: oklch(0.432 0.232 292.759);
   --sidebar: oklch(0.13 0.015 280);
   --sidebar-foreground: oklch(0.95 0.01 280);
-  --sidebar-primary: oklch(0.72 0.19 292.5);
-  --sidebar-primary-foreground: oklch(0.98 0.01 292.5);
+  --sidebar-primary: var(--midnight-dark-action);
+  --sidebar-primary-foreground: var(--midnight-dark-action-foreground);
   --sidebar-accent: oklch(0.26 0.02 280);
   --sidebar-accent-foreground: oklch(0.95 0.01 280);
   --sidebar-border: oklch(1 0 0 / 12%);

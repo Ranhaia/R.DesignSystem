@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { CheckCircle2Icon, ServerCrashIcon } from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import AlertDemo from "@/components/examples/alert-demo"
 
 const meta: Meta<typeof Alert> = {
   title: "Molecules/Alert",
@@ -41,4 +42,8 @@ export const Destructive: Story = {
       <AlertDescription>Verifique sua conexão e tente novamente.</AlertDescription>
     </Alert>
   ),
+}
+
+export const Examples: Story = {
+  render: () => <AlertDemo />,
 }
