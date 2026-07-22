@@ -183,6 +183,12 @@ function CalendarDayButton({
   className,
   day,
   modifiers,
+  // children explícito (não só dentro de ...props): o dia numérico vem do
+  // react-day-picker e o tipo dele pra children não bate estruturalmente
+  // com a união ButtonContent do nosso Button (button.tsx) quando fica
+  // escondido dentro do spread. Passando como filho JSX literal abaixo,
+  // satisfaz a união sem mudar nada em runtime.
+  children,
   ...props
 }: React.ComponentProps<typeof DayButton>) {
   const defaultClassNames = getDefaultClassNames()
@@ -213,7 +219,9 @@ function CalendarDayButton({
         className
       )}
       {...props}
-    />
+    >
+      {children}
+    </Button>
   )
 }
 

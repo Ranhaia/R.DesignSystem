@@ -43,7 +43,12 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
   return (
     <ComboboxPrimitive.Clear
       data-slot="combobox-clear"
-      render={<InputGroupButton variant="ghost" size="icon-xs" />}
+      // label aqui é só pra satisfazer o tipo do Button (exige nome
+      // acessível quando não tem children literal) — o Base UI clona este
+      // elemento e injeta como children o que o ComboboxPrimitive.Clear
+      // já recebe (<XIcon /> abaixo), então na prática o texto nunca chega
+      // a aparecer, mas cobre o caso de o comportamento de clone mudar.
+      render={<InputGroupButton variant="ghost" size="icon-xs" label="Limpar" />}
       className={cn(className)}
       {...props}
     >
@@ -261,7 +266,9 @@ function ComboboxChip({
       {children}
       {showRemove && (
         <ComboboxPrimitive.ChipRemove
-          render={<Button variant="ghost" size="icon-xs" />}
+          // Mesmo motivo do ComboboxClear acima: label só pra satisfazer o
+          // tipo, o Base UI substitui pelo children real (<XIcon /> abaixo).
+          render={<Button variant="ghost" size="icon-xs" label="Remover" />}
           className="-ml-1 opacity-50 hover:opacity-100"
           data-slot="combobox-chip-remove"
         >
