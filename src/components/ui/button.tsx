@@ -58,14 +58,29 @@ const buttonVariants = cva(
 //    complexa já usada no projeto. Continua funcionando exatamente como
 //    antes, sem quebrar nada.
 // 2) `icon`/`label` explícitos — pensado pra uso direto (não-asChild). O
-//    tipo exige pelo menos um dos dois: nunca dá pra montar um Button sem
-//    ícone E sem label ao mesmo tempo (o que resultaria num botão sem nome
-//    acessível pra leitor de tela). Pode usar só `icon` (botão ícone-only,
-//    lembrar de aria-label), só `label` (texto puro) ou os dois juntos.
+//    tipo exige pelo menos um dos três (children/icon/label): nunca dá pra
+//    montar um Button sem nenhum dos três (o que resultaria num botão sem
+//    nome acessível pra leitor de tela).
+//
+// 2026-07-22: os outros dois campos de cada variante do union eram `never`
+// (mutuamente exclusivos) até essa mesma tarde — trocado pra `React.ReactNode`
+// opcional depois de quebrar o build umas 4 vezes seguidas. Motivo: todo
+// componente que EMBRULHA Button e repassa filhos/ícone via
+// `{...props}` (em vez de children literal entre `<Button>...</Button>`) —
+// SidebarTrigger, CarouselPrevious/Next, InputGroupButton, AttachmentAction —
+// faz o `children` (ou `icon`/`label`) do chamador externo chegar ao Button
+// interno tipado como parte de um objeto genérico, não mais discriminado
+// exatamente numa das 3 variantes. Contra um campo `never`, isso sempre dava
+// erro de tipo (mesmo com conteúdo real em runtime), forçando eu corrigir
+// componente por componente a cada novo caso encontrado. Com os campos como
+// opcionais normais, a união continua exigindo pelo menos um dos três
+// presentes (um Button 100% vazio ainda é rejeitado), mas sobrevive a esse
+// tipo de repasse via spread sem precisar de tratamento especial em cada
+// wrapper.
 type ButtonContent =
-  | { children: React.ReactNode; icon?: never; label?: never }
-  | { children?: never; icon: React.ReactNode; label?: React.ReactNode }
-  | { children?: never; icon?: React.ReactNode; label: React.ReactNode }
+  | { children: React.ReactNode; icon?: React.ReactNode; label?: React.ReactNode }
+  | { children?: React.ReactNode; icon: React.ReactNode; label?: React.ReactNode }
+  | { children?: React.ReactNode; icon?: React.ReactNode; label: React.ReactNode }
 
 function Button({
   className,
