@@ -257,7 +257,13 @@ function SidebarTrigger({
   className,
   onClick,
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: Omit<React.ComponentProps<typeof Button>, "children" | "icon" | "label">) {
+  // Omit de children/icon/label: este wrapper já define seu próprio
+  // conteúdo acessível (ícone + texto sr-only) fixo abaixo — não repassa
+  // esses três props pro Button interno, então quem usa <SidebarTrigger />
+  // não deveria (e não precisa) satisfazer a união ButtonContent de
+  // button.tsx. Sem este Omit, `next build` quebra o typecheck em todo
+  // lugar que chama <SidebarTrigger className="..." /> sem children.
   const { toggleSidebar } = useSidebar()
 
   return (

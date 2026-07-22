@@ -176,7 +176,10 @@ function CarouselPrevious({
   variant = "outline",
   size = "icon",
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: Omit<React.ComponentProps<typeof Button>, "children" | "icon" | "label">) {
+  // Omit de children/icon/label: mesmo motivo do SidebarTrigger (ver
+  // sidebar.tsx) — este componente já hardcoda seu próprio ícone + texto
+  // sr-only abaixo, não repassa esses props pro Button interno.
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
@@ -206,7 +209,8 @@ function CarouselNext({
   variant = "outline",
   size = "icon",
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: Omit<React.ComponentProps<typeof Button>, "children" | "icon" | "label">) {
+  // Omit de children/icon/label: mesmo motivo do CarouselPrevious acima.
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
