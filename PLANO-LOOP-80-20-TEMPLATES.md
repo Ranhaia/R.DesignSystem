@@ -1225,6 +1225,58 @@ já estabelecido como domínio real do Rafael.
   pattern `crud` (já existe, cobre criar/editar/listar/excluir de uma
   vez).
 
+## Fase 5 — Jornadas de telas (login + seguros) rumo ao Case público
+
+Rafael quer transformar o racional deste projeto (Atomic Design + tokens
+globais + acessibilidade real com leitor de tela) num Case público,
+publicado a partir do portfólio (já deployado no Vercel como
+`anhaia-portfolio`, stack HTML/CSS/JS estático — **incompatível** com os
+componentes React do shadcn-local, então o portfólio não vai "importar"
+componente nenhum, só contar a história e linkar pro shadcn-local
+deployado como prova viva).
+
+**Decisões tomadas com o Rafael (2026-07-22):**
+- Deploy do shadcn-local: repositório novo no GitHub + import no Vercel
+  (projeto separado do `anhaia-portfolio`). Repo git local já existe
+  (`209ceee` era o único commit; todo o trabalho desta sessão foi
+  consolidado num commit novo). **Falta**: eu não tenho `gh` CLI
+  autenticado neste ambiente — o Rafael precisa criar o repo no GitHub e
+  dar push ele mesmo (ou autorizar acesso), e depois importar no Vercel.
+- Escopo da v1 (além do fluxo de login completo): 3 telas do domínio de
+  seguros — **Apólices ativas**, **Novo sinistro**, **Painel do
+  corretor** — escolhidas por cobrirem listagem/filtro,
+  fluxo-multi-etapa-com-upload-e-confirmação, e busca/paginação sem
+  inflar o escopo.
+- Arquitetura de rotas: continua tudo em `src/app/templates/` (mesmo
+  padrão do `dashboard-financeiro` já existente), Next.js como já
+  decidido em 2026-07-21 (Storybook = Atoms/Molecules/Organisms/
+  Patterns; Next.js = Templates/Jornadas com navegação real, necessária
+  pro teste de leitor de tela ponta a ponta).
+
+**Plano de fases:**
+1. **5 (feito):** commit consolidando toda a sessão de hoje.
+2. **5A — Fluxo de login** (5 rotas novas): login simples → erro de
+   validação → recuperação de senha → seleção de perfil/corretora →
+   onboarding (reaproveita `multi-step-form`). Nenhum componente novo.
+3. **5B — 3 telas de seguros**: Apólices ativas, Novo sinistro, Painel
+   do corretor — com os estados de sistema (empty/error/success/toast)
+   aplicados DENTRO delas, não como telas isoladas extras.
+4. **5C — Storybook público**: rodar `build-storybook` (nunca rodado
+   ainda) e decidir onde publicar (subpath do mesmo domínio Vercel vs.
+   domínio separado) — decisão pendente, não é bloqueante pra 5A/5B.
+5. **5D — Portfólio linka pro case**: só depois do shadcn-local estar
+   no ar, adicionar seção/link no `anhaia-portfolio` contando o
+   racional e apontando pro app + Storybook publicados.
+
+**Riscos anotados:**
+- Repo sem remoto e sem CI até o Rafael criar o GitHub/Vercel — depende
+  dele, não é algo que eu resolvo sozinho neste ambiente.
+- Dados de exemplo nas telas de seguros precisam ser fictícios antes de
+  publicar (nada de dado real de cliente/apólice).
+- Publicar o Storybook publicamente expõe todos os estados dos
+  componentes — esperado e até desejável num case de design system, mas
+  vale o Rafael estar consciente disso antes do deploy.
+
 ### 2026-07-22 — Correção de contraste AA no accent do preset Suave
 
 O diagnóstico de acessibilidade de hoje (`.review/acessibilidade.md`) já
