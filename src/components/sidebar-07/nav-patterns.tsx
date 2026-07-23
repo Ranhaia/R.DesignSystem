@@ -26,22 +26,24 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 // (Patterns não usa atomic-registry — vive em patterns-registry.ts).
 export function NavPatterns() {
   const pathname = usePathname()
-  const [isOpen, setIsOpen] = React.useState(true)
+  // 2026-07-23: default false (fechado) — mesma decisão de
+  // nav-components.tsx, pra sidebar carregar compacta.
+  const [isOpen, setIsOpen] = React.useState(false)
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
       <SidebarGroup>
-        <div className="flex items-center gap-1 pr-1 group-data-[collapsible=icon]:hidden">
+        <div className="flex items-center gap-1 pr-1 group-data-[collapsible=icon]:hidden max-md:gap-0.5">
           <SidebarGroupLabel asChild className="min-w-0 flex-1">
             <Link href="/patterns" className="gap-2 truncate hover:text-sidebar-foreground">
-              <BlocksIcon className="size-4 shrink-0" />
+              <BlocksIcon className="size-4 shrink-0 max-md:size-3.5" />
               Patterns
             </Link>
           </SidebarGroupLabel>
           <CollapsibleTrigger
-            className="flex size-6 shrink-0 items-center justify-center rounded-md text-sidebar-foreground/70 outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground focus-visible:ring-2 focus-visible:ring-sidebar-ring [&[data-state=open]>svg]:rotate-180"
+            className="flex size-6 shrink-0 items-center justify-center rounded-md text-sidebar-foreground/70 outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground focus-visible:ring-2 focus-visible:ring-sidebar-ring max-md:size-5 [&[data-state=open]>svg]:rotate-180"
           >
-            <ChevronDownIcon className="size-4 transition-transform duration-200" />
+            <ChevronDownIcon className="size-4 transition-transform duration-200 max-md:size-3.5" />
             <span className="sr-only">
               {isOpen ? "Recolher Patterns" : "Expandir Patterns"}
             </span>
@@ -70,7 +72,13 @@ export function NavPatterns() {
 
               return (
                 <SidebarMenuItem key={item.slug}>
-                  <SidebarMenuButton asChild isActive={isActive} tooltip={item.name}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={isActive}
+                    tooltip={item.name}
+                    size="sm"
+                    className="max-md:h-6 max-md:text-[11px]"
+                  >
                     <Link href={href}>
                       <span>{item.name}</span>
                     </Link>

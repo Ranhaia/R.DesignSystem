@@ -1515,3 +1515,48 @@ visual do dia (favicon, avatar, cores por token, contraste do Suave):
   desde a mudança de hoje mesmo), em vez de `/`. Utilitários fora do
   atomicRegistry (ex: "direction") ficam sem crumb de seção — não têm
   categoria nem índice, então não tem link melhor pra oferecer.
+
+## 2026-07-23 — Ajustes de sidebar/header (compactação + fixação)
+
+Pedido do Rafael: componentes com menos "cara de shadcn genérico" — ele
+sinalizou que ainda tem mais itens visuais a apontar depois deste passo,
+então isto aqui fecha só os 4 itens concretos já descritos, não o passe
+de estilo completo.
+
+- **Categorias fechadas por padrão**: os 3 grupos accordion da nav
+  (Atoms/Molecules/Organisms em `nav-components.tsx`, Patterns e
+  Templates) carregavam todos abertos (`useState(true)` em cada). Trocado
+  pra `false` — sidebar abre compacta, cada grupo expande só quando o
+  usuário clica no chevron.
+- **Botões de item menores**: todo `SidebarMenuButton` de item de
+  categoria (componente/pattern/template individual) ganhou `size="sm"`
+  (variant já existente em `ui/sidebar.tsx`: `h-7 text-xs` em vez do
+  `h-8 text-sm` default). Não toquei no botão "Folha de estilo" (item
+  solto, fora de categoria) nem no rodapé (`NavUser`) — pedido foi
+  especificamente "dentro da categoria".
+- **Mobile encolhe 1 passo além do `sm`**: decisão explícita do Rafael
+  (perguntei o alcance) foi restringir a navegação lateral, sem tocar
+  tipografia/espaçamento do resto do site. Via `max-md:` (breakpoint
+  768px, mesmo valor do hook `useIsMobile`): itens de menu vão pra
+  `h-6 text-[11px]`; ícones de categoria e o chevron do accordion vão de
+  `size-4`/`size-6` pra `size-3.5`/`size-5`.
+- **Header fixo (sticky)**: `app-shell.tsx` — `<header>` ganhou
+  `sticky top-0 z-40 bg-background border-b` (antes vivia no fluxo
+  normal, sem precisar de fundo opaco porque nada rolava por baixo).
+  `SidebarInset`/`SidebarProvider` não têm `overflow` próprio (scroll é
+  do documento), então sticky funciona sem precisar de ajuste na árvore.
+- **Header mobile substituído por hambúrguer à direita**: no mobile
+  (`md:hidden`), o bloco trigger+separador+breadcrumb desaparece e um
+  botão novo (`MobileSidebarTrigger`, local em `app-shell.tsx`) ocupa o
+  lado direito via `ml-auto`. Ele reaproveita `toggleSidebar()` do hook
+  `useSidebar` mas usa `MenuIcon` (hambúrguer de 3 linhas) em vez do
+  `PanelLeftIcon` do `SidebarTrigger` compartilhado — não alterei o
+  `SidebarTrigger` de `ui/sidebar.tsx` porque ele é a referência de doc
+  do padrão shadcn sidebar-07 (usado em `component-docs.ts`) e continua
+  correto no desktop.
+- **Ainda pendente**: Rafael vai apontar componentes específicos que
+  ainda parecem genéricos — não coberto aqui, próximo passo separado.
+- **Verificação de tipos**: mesma limitação de sempre (`tsc --noEmit`/
+  `next build` não completam no sandbox) — revisão manual das 4 edições,
+  sem incompatibilidade aparente. Confirmação real depende do Vercel ou
+  do `tsc` local do Rafael.

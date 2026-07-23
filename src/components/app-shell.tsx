@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { usePathname } from "next/navigation"
+import { MenuIcon } from "lucide-react"
 
 import {
   atomicRegistry,
@@ -20,11 +21,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import { Toaster } from "@/components/ui/sonner"
 
@@ -106,6 +109,29 @@ function useBreadcrumb() {
   return { section: null, sectionHref: null, page: pathname }
 }
 
+// 2026-07-23: hambúrguer específico do mobile, pedido pelo Rafael — o
+// SidebarTrigger "oficial" (ui/sidebar.tsx) usa PanelLeftIcon, que é a
+// convenção do padrão shadcn sidebar-07 e continua assim no desktop
+// (não alteramos o componente compartilhado, ele é usado como referência
+// de doc em component-docs.ts). No mobile o pedido foi por um ícone de
+// menu hambúrguer de fato (3 linhas), então este botão reaproveita
+// toggleSidebar() direto do hook em vez de estender o SidebarTrigger.
+function MobileSidebarTrigger() {
+  const { toggleSidebar } = useSidebar()
+
+  return (
+    <Button
+      variant="ghost"
+      size="icon"
+      className="size-7"
+      onClick={toggleSidebar}
+    >
+      <MenuIcon />
+      <span className="sr-only">Abrir menu</span>
+    </Button>
+  )
+}
+
 export function AppShell({ children }: { children: React.ReactNode }) {
   const { section, sectionHref, page } = useBreadcrumb()
 
@@ -113,8 +139,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-2 px-4">
+        {/* 2026-07-23: header fixo (sticky) — pedido do Rafael pra manter
+            acesso ao menu/breadcrumb ao rolar a página. bg-background +
+            border-b porque, fixo, ele agora fica sobre o conteúdo que
+            rola por baixo (antes bastava ser opaco por herança do fluxo
+            normal). No mobile, o bloco desktop (trigger + separador +
+            breadcrumb) é substituído por só um hambúrguer alinhado à
+            direita — não são dois headers, é o mesmo <header> com dois
+            blocos internos que se alternam por breakpoint (md). */}
+        <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-2 border-b bg-background transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+          <div className="hidden items-center gap-2 px-4 md:flex">
             <SidebarTrigger className="-ml-1" />
             <Separator
               orientation="vertical"
@@ -137,6 +171,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
+          </div>
+          <div className="ml-auto flex items-center px-4 md:hidden">
+            <MobileSidebarTrigger />
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>
