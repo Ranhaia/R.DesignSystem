@@ -1637,3 +1637,19 @@ campo Produto).
 - **Verificação de tipos**: mesma limitação de sempre — revisão manual,
   sem incompatibilidade aparente. Confirmação real pendente de `next
   build`/`tsc` fora do sandbox.
+
+## 2026-07-23 — Correção: Sheet mobile abre da direita, não da esquerda
+
+Rafael corrigiu a decisão registrada mais acima nesta mesma data ("Sheet
+mobile abre da esquerda") — o certo é abrir do MESMO lado do botão de
+hambúrguer (que fica à direita do header no mobile).
+
+`side` de `<Sidebar>` (`ui/sidebar.tsx`) controla os dois casos ao mesmo
+tempo — o sidebar fixo do desktop E o `side` do `Sheet` mobile — não dá
+pra fixar um valor só sem afetar os dois. Fix em `app-sidebar.tsx`:
+`side` passa a ser calculado com `useIsMobile()` — `"left"` no desktop
+(sidebar fixo à esquerda, sem mudança), `"right"` no mobile (Sheet abre
+da direita, mesmo lado do hambúrguer). Mesmo hook que `ui/sidebar.tsx`
+já usa internamente pra decidir qual branch renderizar — sem risco novo
+de mismatch de hidratação (`useIsMobile` já retorna `false` de forma
+consistente no SSR e só atualiza depois do mount).

@@ -8,6 +8,7 @@ import { NavPatterns } from "@/components/sidebar-07/nav-patterns"
 import { NavTemplates } from "@/components/sidebar-07/nav-templates"
 import { NavUser } from "@/components/sidebar-07/nav-user"
 import { StyleSwitcher } from "@/components/style-switcher"
+import { useIsMobile } from "@/hooks/use-mobile"
 import {
   Sidebar,
   SidebarContent,
@@ -30,15 +31,19 @@ const user = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname()
+  const isMobile = useIsMobile()
+
+  // 2026-07-23: `side` de <Sidebar> serve tanto pro sidebar fixo do
+  // desktop quanto pro Sheet do mobile (mesma prop, dois usos dentro de
+  // ui/sidebar.tsx) — não dá pra fixar um valor só. Desktop continua
+  // "left" (sidebar fixo à esquerda, comportamento de sempre). Mobile
+  // passa a ser "right": Rafael corrigiu a decisão anterior — o Sheet
+  // precisa abrir do MESMO lado do botão de hambúrguer, que fica à
+  // direita do header no mobile.
+  const side = isMobile ? "right" : "left"
 
   return (
-    // side="left" explícito — 2026-07-23: o Sheet mobile precisa abrir da
-    // esquerda mesmo com o botão de hambúrguer ficando à direita do
-    // header (pedido do Rafael, "seguir a ordem do clique": ver do
-    // hambúrguer, no fim do header, pro menu, que recomeça do início da
-    // tela). Já era o valor padrão de <Sidebar> antes desta linha — deixo
-    // explícito pra não depender de um default que pode mudar.
-    <Sidebar collapsible="icon" side="left" {...props}>
+    <Sidebar collapsible="icon" side={side} {...props}>
       <SidebarHeader>
         <StyleSwitcher />
       </SidebarHeader>
