@@ -19,7 +19,15 @@ export function LoadingPattern() {
     setLoadedAt(null)
     window.setTimeout(() => {
       setLoading(false)
-      setLoadedAt(new Date().toLocaleTimeString("pt-BR"))
+      // timeZone fixado em America/Sao_Paulo — sem isso, o horário exibido
+      // seguiria o fuso do navegador/servidor de quem acessa, não o do
+      // Rafael. Pedido dele: "preciso que se relacione ao horario de São
+      // paulo" (2026-07-23).
+      setLoadedAt(
+        new Date().toLocaleTimeString("pt-BR", {
+          timeZone: "America/Sao_Paulo",
+        })
+      )
     }, 1500)
   }
 

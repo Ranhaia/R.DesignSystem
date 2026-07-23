@@ -1653,3 +1653,46 @@ da direita, mesmo lado do hambúrguer). Mesmo hook que `ui/sidebar.tsx`
 já usa internamente pra decidir qual branch renderizar — sem risco novo
 de mismatch de hidratação (`useIsMobile` já retorna `false` de forma
 consistente no SSR e só atualiza depois do mount).
+
+## 2026-07-23 — Datas em pt-BR com dia da semana + timestamp em America/Sao_Paulo
+
+Rafael reportou que os componentes de data apareciam em inglês e
+perguntou se havia GTM (provavelmente GMT/timezone, não Google Tag
+Manager — hipótese minha, não confirmada por ele) envolvido, pedindo
+que tudo se relacione ao horário de São Paulo com data em português e
+dia da semana.
+
+- **Investigação prévia (subagent)**: confirmado que não existe GTM,
+  Google Analytics, nem qualquer script de tracking em nenhum lugar do
+  projeto — a pergunta do Rafael não tinha um "GTM" real pra ajustar.
+  Mapeados todos os pontos de data/hora/locale do catálogo.
+- **`ui/calendar.tsx`**: `locale` agora tem default `ptBR` (de
+  `date-fns/locale`), passado pro `DayPicker` — resolve dia da semana,
+  nomes de mês e textos de navegação de uma vez só, pra qualquer
+  Calendar do catálogo (atual e futuro) sem precisar repetir a prop em
+  cada tela. `formatMonthDropdown` e o `data-day` (ambos chamadas nativas
+  de `Date`, fora do `locale` do DayPicker) fixados em `"pt-BR"` direto.
+- **`src/lib/date-formatters.ts`** (novo): única fonte pros formatos de
+  data em texto do catálogo — `formatarDataCompleta` ("quinta-feira, 23
+  de julho de 2026", pra trigger de DatePicker de 1 campo) e
+  `formatarDataCurta` ("qui, 23/07/2026", pra espaços apertados como
+  chip de filtro ou range De–Até). Evita repetir `format(...,{locale:
+  ptBR})` em cada arquivo.
+- **Aplicado em**: `examples/date-picker-demo.tsx`,
+  `examples/date-picker-with-presets.tsx`,
+  `examples/date-picker-with-range.tsx` e `patterns/filter-panel.tsx`
+  (campo Período, trigger e chip). Botões de trigger alargados
+  (`w-[240px]`→`w-[280px]`, `w-[300px]`→`w-[340px]`) porque o texto
+  pt-BR com dia da semana é mais longo que o "PPP"/"LLL dd, y" em inglês
+  anterior.
+- **Timestamp "agora" (`patterns/loading.tsx`)**: `toLocaleTimeString`
+  passa a fixar `timeZone: "America/Sao_Paulo"` explicitamente — antes
+  seguia o fuso do navegador/servidor de quem acessa, não o do Rafael.
+  Único "agora" com horário exibido no catálogo hoje; não alterado:
+  `addDays(new Date(), ...)` do preset de DatePicker (comportamento
+  genuinamente relativo ao momento real de uso, não uma âncora de
+  exibição) e o `new Date()` inicial do `calendar-demo.tsx` (só valor
+  default, não é texto exibido).
+- **Verificação de tipos**: mesma limitação de sempre — revisão manual,
+  sem incompatibilidade aparente. Confirmação real pendente de `next
+  build`/`tsc` fora do sandbox.

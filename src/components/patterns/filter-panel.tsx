@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { format } from "date-fns"
 import {
   BarChart3Icon,
   CalendarIcon,
@@ -14,6 +13,7 @@ import {
 } from "lucide-react"
 import { type DateRange } from "react-day-picker"
 
+import { formatarDataCurta } from "@/lib/date-formatters"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -200,8 +200,8 @@ export function FilterPanelPattern() {
             campo: "Período",
             icon: CAMPO_ICONE.periodo,
             label: periodo.to
-              ? `${format(periodo.from, "dd/MM/yyyy")} – ${format(periodo.to, "dd/MM/yyyy")}`
-              : format(periodo.from, "dd/MM/yyyy"),
+              ? `${formatarDataCurta(periodo.from)} – ${formatarDataCurta(periodo.to)}`
+              : formatarDataCurta(periodo.from),
             onRemove: () => setPeriodo(undefined),
           },
         ]
@@ -377,11 +377,11 @@ export function FilterPanelPattern() {
               {periodo?.from ? (
                 periodo.to ? (
                   <>
-                    {format(periodo.from, "dd/MM/yy")} –{" "}
-                    {format(periodo.to, "dd/MM/yy")}
+                    {formatarDataCurta(periodo.from)} –{" "}
+                    {formatarDataCurta(periodo.to)}
                   </>
                 ) : (
-                  format(periodo.from, "dd/MM/yy")
+                  formatarDataCurta(periodo.from)
                 )
               ) : (
                 "Período"

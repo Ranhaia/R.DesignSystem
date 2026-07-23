@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { addDays, format } from "date-fns"
+import { addDays } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { type DateRange } from "react-day-picker"
 
+import { formatarDataCurta } from "@/lib/date-formatters"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -30,7 +31,9 @@ export default function DatePickerWithRange({
             id="date"
             variant={"outline"}
             className={cn(
-              "w-[300px] justify-start text-left font-normal",
+              // w-[340px] — "qui, 20/01/2022" x2 (pt-BR com dia da semana)
+              // é mais longo que "Jan 20, 2022" em inglês.
+              "w-[340px] justify-start text-left font-normal",
               !date && "text-muted-foreground"
             )}
           >
@@ -38,11 +41,11 @@ export default function DatePickerWithRange({
             {date?.from ? (
               date.to ? (
                 <>
-                  {format(date.from, "LLL dd, y")} -{" "}
-                  {format(date.to, "LLL dd, y")}
+                  {formatarDataCurta(date.from)} –{" "}
+                  {formatarDataCurta(date.to)}
                 </>
               ) : (
-                format(date.from, "LLL dd, y")
+                formatarDataCurta(date.from)
               )
             ) : (
               <span>Escolha uma data</span>

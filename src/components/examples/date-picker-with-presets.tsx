@@ -1,9 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { addDays, format } from "date-fns"
+import { addDays } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 
+import { formatarDataCompleta } from "@/lib/date-formatters"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -29,12 +30,14 @@ export default function DatePickerWithPresets() {
         <Button
           variant={"outline"}
           className={cn(
-            "w-[240px] justify-start text-left font-normal",
+            // w-[280px] — mesmo motivo do date-picker-demo: texto pt-BR
+            // por extenso é mais longo que "PPP" em inglês.
+            "w-[280px] justify-start text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >
           <CalendarIcon />
-          {date ? format(date, "PPP") : <span>Escolha uma data</span>}
+          {date ? formatarDataCompleta(date) : <span>Escolha uma data</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent

@@ -6,6 +6,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "lucide-react"
+import { ptBR } from "date-fns/locale"
 import {
   DayPicker,
   getDefaultClassNames,
@@ -15,6 +16,16 @@ import {
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
 
+// 2026-07-23: locale pt-BR fixado como default — pedido do Rafael, o
+// componente estava em inglês (cabeçalho de dias da semana "Su Mo Tu...",
+// nome dos meses, "Go to next/previous month" etc.). react-day-picker
+// localiza tudo isso de uma vez só via a prop `locale` — dá pra
+// sobrescrever passando `locale` explícito em qualquer chamada, mas o
+// catálogo inteiro (Templates/Patterns/exemplos) passa a vir em
+// português por padrão sem precisar repetir em cada lugar. Ver também
+// os 2 `toLocaleString`/`toLocaleDateString` mais abaixo, que não usam
+// a prop `locale` do DayPicker (são chamadas nativas de Date) — fixados
+// em "pt-BR" direto pelo mesmo motivo.
 function Calendar({
   className,
   classNames,
@@ -23,6 +34,7 @@ function Calendar({
   buttonVariant = "ghost",
   formatters,
   components,
+  locale = ptBR,
   ...props
 }: React.ComponentProps<typeof DayPicker> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"]
@@ -32,6 +44,7 @@ function Calendar({
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
+      locale={locale}
       className={cn(
         "group/calendar bg-background p-3 [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
@@ -41,7 +54,7 @@ function Calendar({
       captionLayout={captionLayout}
       formatters={{
         formatMonthDropdown: (date) =>
-          date.toLocaleString("default", { month: "short" }),
+          date.toLocaleString("pt-BR", { month: "short" }),
         ...formatters,
       }}
       classNames={{
@@ -203,7 +216,7 @@ function CalendarDayButton({
       ref={ref}
       variant="ghost"
       size="icon"
-      data-day={day.date.toLocaleDateString()}
+      data-day={day.date.toLocaleDateString("pt-BR")}
       data-selected-single={
         modifiers.selected &&
         !modifiers.range_start &&
