@@ -1696,3 +1696,74 @@ dia da semana.
 - **Verificação de tipos**: mesma limitação de sempre — revisão manual,
   sem incompatibilidade aparente. Confirmação real pendente de `next
   build`/`tsc` fora do sandbox.
+
+## 2026-07-23 — Menu mobile fecha só quando a página termina de carregar
+
+Antes não havia fechamento automático do Sheet mobile ao navegar — o
+menu ficava aberto por cima da página nova até o usuário fechar na mão.
+Rafael pediu que ele saia quando a página clicada por último "terminar
+de carregar" (não no instante do clique).
+
+Adicionado `CloseMobileSidebarOnNavigate` em `app-shell.tsx` — componente
+sem retorno visual, montado dentro do `SidebarProvider` (precisa de
+`useSidebar()`). Guarda o `pathname` anterior num `ref` e só chama
+`setOpenMobile(false)` quando `usePathname()` muda de fato, comparado ao
+valor guardado — no App Router, `usePathname()` só reflete a rota nova
+depois que a navegação é concluída (segment tree commitado), então essa
+mudança já é o proxy direto de "carregamento terminado" sem precisar de
+estado de loading manual nem tocar em `next/navigation` events.
+
+- **Verificação de tipos**: mesma limitação de sempre — revisão manual,
+  sem incompatibilidade aparente.
+- **Build**: tentei rodar `next build` no sandbox pra Rafael conferir
+  antes do deploy — não rodou. `node_modules/@next` só tem o binário SWC
+  `win32-x64-msvc` (instalado originalmente no Windows do Rafael); o
+  sandbox é Linux e precisaria baixar `@next/swc-linux-x64-gnu`, mas o
+  registro npm não está acessível daqui (`EAI_AGAIN
+  registry.npmjs.org`). Não é o mesmo problema de lentidão de I/O já
+  registrado antes — aqui é bloqueio de rede/plataforma mesmo.
+  Recomendação: rodar `npm run build` local (Windows) antes do commit
+  final, ou deixar a Vercel buildar direto no deploy (ela instala as
+  deps certas pro Linux automaticamente — é o fluxo normal mesmo).
+
+## 2026-07-23 — Referência de paleta ATLAS pra revisão futura dos tokens primitivos
+
+Rafael compartilhou um print de paleta de cores de outro Design System
+(ATLAS) como referência pra uma revisão futura dos tokens primitivos de
+cor deste projeto — ainda **não** é uma tarefa pra fazer agora, só
+registro pra retomar quando ele pedir.
+
+**O que a referência mostra:**
+- Cor institucional (Primário — Azul Principal): escala 100–800 + marca
+  qual step é o "principal" (aqui, 600).
+- 3 cores de suporte, cada uma com a própria escala 100–800: Azul CIERGS,
+  Verde SESI, Laranja. Cada suporte também marca seu próprio "principal"
+  dentro da escala (exceto Laranja, sem marcação nessa referência).
+- Cores de status/feedback (Sucesso, Alerta, Erro, Informação): 1 tom
+  principal + 3 variantes de apoio cada (não é escala completa de 8
+  steps como as de marca).
+- Escala de cinza: Preto sólido + 100–900.
+- Uma escala extra "Pantone — Planos de Fundo" (100–800, cinza-azulado),
+  separada da escala de cinza neutro — uso específico pra apresentações
+  internas/comunicados.
+- 9 combinações de gradiente recomendadas (45°), cada uma combinando 2
+  cores/steps já existentes na paleta (ex: Azul Profundo, Ciano → Verde).
+
+**O pedido dele pra quando formos revisar:**
+1. Gama de cor maior por estilo/preset — hoje os presets deste projeto
+   têm menos steps por cor do que essa referência.
+2. Desacoplar cor primária de cor de destaque (accent): hoje, em pelo
+   menos alguns presets, a mesma cor faz os dois papéis. Ele quer que
+   isso seja uma escolha por preset, não uma regra fixa — em alguns
+   estilos, destaque = mesma cor da primária; em outros, destaque é uma
+   cor à parte pra uso pontual/de reforço, sem virar a cor dominante da
+   UI.
+3. Múltiplas cores de suporte por preset (não só 1 accent) parece ser o
+   padrão de referência (ATLAS tem 3 suportes + institucional) — a
+   confirmar com ele se é isso que quer replicar aqui ou só usar como
+   inspiração de estrutura de escala.
+
+**Não decidido ainda**: quantos steps por escala, se cada preset terá o
+mesmo número de cores de suporte, e como a escala "Pantone/Planos de
+Fundo" se aplicaria (ou não) à estrutura atual de neutros. Fica pra
+quando o Rafael abrir esse loop.

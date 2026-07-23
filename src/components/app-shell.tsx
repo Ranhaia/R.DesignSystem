@@ -132,11 +132,37 @@ function MobileSidebarTrigger() {
   )
 }
 
+// 2026-07-23: fecha o menu mobile só quando a página clicada TERMINOU de
+// carregar — não no momento do clique. Pedido do Rafael: "quando o menu
+// estiver aberto no mobile ele precisa sair quando a pagina que foi
+// clicada por ultimo terminar de carregar". No App Router, `usePathname()`
+// só reflete a rota nova depois que a navegação é concluída (segment tree
+// commitado) — observar essa mudança via useEffect é um proxy direto de
+// "carregamento terminado", sem precisar de estado de loading manual.
+// Fica como componente próprio (sem retornar nada visual) porque precisa
+// estar DENTRO do SidebarProvider pra acessar useSidebar().
+function CloseMobileSidebarOnNavigate() {
+  const pathname = usePathname()
+  const { isMobile, openMobile, setOpenMobile } = useSidebar()
+  const previousPathname = React.useRef(pathname)
+
+  React.useEffect(() => {
+    if (pathname === previousPathname.current) return
+    previousPathname.current = pathname
+    if (isMobile && openMobile) {
+      setOpenMobile(false)
+    }
+  }, [pathname, isMobile, openMobile, setOpenMobile])
+
+  return null
+}
+
 export function AppShell({ children }: { children: React.ReactNode }) {
   const { section, sectionHref, page } = useBreadcrumb()
 
   return (
     <SidebarProvider>
+      <CloseMobileSidebarOnNavigate />
       <AppSidebar />
       <SidebarInset>
         {/* 2026-07-23: header fixo (sticky) — pedido do Rafael pra manter
