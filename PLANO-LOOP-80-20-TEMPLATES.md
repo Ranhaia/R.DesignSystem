@@ -1273,6 +1273,41 @@ deployado como prova viva).
   dele, não é algo que eu resolvo sozinho neste ambiente.
 - Dados de exemplo nas telas de seguros precisam ser fictícios antes de
   publicar (nada de dado real de cliente/apólice).
+
+### 2026-07-22 — Pipeline `/construir-telas` (agentes autônomos via terminal)
+
+Deploy no ar (Vercel, proteção de deployment ajustada pro domínio de
+produção ficar público) e repo sincronizado. Rafael pediu uma estrutura
+pra construir a Fase 5A/5B via terminal (Claude Code) com agentes
+autônomos, no mesmo formato do pipeline `/revisar-ds` já existente
+(`auditor-ds` → `pesquisador-ds`+`acessibilidade-ds` em paralelo →
+`revisor-ds`, artefatos em `.review/*.md`).
+
+- 4 subagentes novos em `.claude/agents/`, um estágio cada:
+  `telas-planejador` (lê o plano + registries + a rota
+  `dashboard-financeiro` como referência, escreve a especificação de
+  composição/estados/navegação/a11y em `.build/telas/<slug>.md` — não
+  edita `src/`), `telas-construtor` (implementa a rota em
+  `src/app/templates/<slug>/page.tsx` só com componentes reais do
+  catálogo, move o slug de `inProgressTemplates` pra `templatesList`),
+  `telas-acessibilidade` (audita label/aria-live/tab-order/nome
+  acessível da tela construída, escreve
+  `.build/telas/acessibilidade-<slug>.md`), `telas-revisor` (consolida
+  spec + auditoria num veredito em
+  `.build/telas/diagnostico-<slug>.md` — pronta / ajuste menor /
+  retrabalho).
+- Comando `/construir-telas <slug>` em `.claude/commands/` orquestra os
+  4 em sequência (spec → build → a11y → diagnóstico) pra UMA tela por
+  execução; sem slug, usa o primeiro item de `inProgressTemplates`
+  (login-simples, seguindo a ordem 5A→5B já definida). Pipeline não faz
+  commit nem avança pra próxima tela sozinho — para no diagnóstico pro
+  Rafael aprovar ou pedir retrabalho, mesma disciplina de gate do
+  `/revisar-ds`.
+- Motivo de não construir eu mesmo as 5 telas agora, nesta sessão: o
+  Rafael pediu explicitamente a estrutura pra rodar via terminal com
+  agentes autônomos — a divisão em estágios/artefatos serve tanto pra
+  automação quanto pra dar a ele um ponto de aprovação por tela, sem
+  precisar revisar um fluxo de 5 telas de uma vez só no final.
 - Publicar o Storybook publicamente expõe todos os estados dos
   componentes — esperado e até desejável num case de design system, mas
   vale o Rafael estar consciente disso antes do deploy.
