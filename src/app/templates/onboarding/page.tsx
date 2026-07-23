@@ -42,6 +42,12 @@ import {
 import { Spinner } from "@/components/ui/spinner"
 import { Switch } from "@/components/ui/switch"
 import { useFluxoLogin } from "@/components/templates/fluxo-login-context"
+import {
+  formatarTelefone,
+  NOME_REGEX,
+  TELEFONE_MASCARA_MAX_LENGTH,
+  TELEFONE_REGEX,
+} from "@/lib/field-formatters"
 
 // Template "Onboarding" — Fase 5A do PLANO-LOOP-80-20-TEMPLATES.md, 5ª e
 // última rota do fluxo de login (login-simples → login-erro-validacao →
@@ -74,9 +80,12 @@ const CARGOS: Record<string, string> = {
   analista: "Analista",
 }
 
-// Validação de formato simples, mesmo espírito do EMAIL_REGEX já usado nas
-// telas irmãs — aceita telefone com ou sem formatação (DDD + 8/9 dígitos).
-const TELEFONE_REGEX = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/
+// 2026-07-23: regex de telefone/nome movidas pra field-formatters.ts —
+// configuração de contexto única (nome vs. nome completo vs. telefone),
+// pedida pelo Rafael pra não repetir regex ad hoc por tela (era o caso
+// aqui, com uma versão frouxa que aceitava várias formatações soltas em
+// vez da máscara oficial). "Nome de exibição" é contexto "nome" (não
+// exige espaço/2 palavras — pode ser um nome só ou apelido).
 
 type CenarioConclusao = "sucesso" | "falha"
 
@@ -202,17 +211,29 @@ export default function OnboardingTemplate() {
       const nomeAparado = nomeExibicao.trim()
       const telefoneAparado = telefone.trim()
       const nomeVazio = !nomeAparado
+      // Contexto "nome" (não "nome completo"): não exige espaço, só que
+      // seja composto de letras reais — rejeita nome só com número/símbolo.
+      const nomeFormatoInvalido = !nomeVazio && !NOME_REGEX.test(nomeAparado)
       const telefoneVazio = !telefoneAparado
+      // Contexto "telefone": o valor já chega mascarado (ver
+      // handleTelefoneChange) — só falta confirmar que a máscara está
+      // completa, não parcial (usuário parou de digitar no meio).
       const telefoneInvalido =
         !telefoneVazio && !TELEFONE_REGEX.test(telefoneAparado)
 
-      if (nomeVazio || telefoneVazio || telefoneInvalido) {
-        setErroNome(nomeVazio ? "Informe seu nome de exibição." : null)
+      if (nomeVazio || nomeFormatoInvalido || telefoneVazio || telefoneInvalido) {
+        setErroNome(
+          nomeVazio
+            ? "Informe seu nome de exibição."
+            : nomeFormatoInvalido
+              ? "Informe um nome válido (só letras)."
+              : null
+        )
         setErroTelefone(
           telefoneVazio
             ? "Informe seu telefone."
             : telefoneInvalido
-              ? "Informe um telefone válido."
+              ? "Informe um telefone válido, com DDD."
               : null
         )
         return
@@ -410,8 +431,9 @@ export default function OnboardingTemplate() {
                           placeholder="(11) 91234-5678"
                           disabled={enviando}
                           value={telefone}
+                          maxLength={TELEFONE_MASCARA_MAX_LENGTH}
                           onChange={(event) => {
-                            setTelefone(event.target.value)
+                            setTelefone(formatarTelefone(event.target.value))
                             if (erroTelefone) setErroTelefone(null)
                           }}
                           aria-invalid={!!erroTelefone}
