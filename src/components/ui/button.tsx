@@ -17,8 +17,17 @@ import { Skeleton } from "@/components/ui/skeleton"
 const elevation =
   "shadow-sm hover:shadow-xs hover:translate-y-px disabled:translate-y-0 disabled:shadow-none"
 
+// 2026-07-23: aria-disabled:* adicionado ao lado do disabled:* nativo —
+// telas com loading síncrono (Fase 5) passaram a usar aria-disabled em vez
+// de disabled no botão de ação principal (disabled nativo tira o elemento
+// focado da árvore de acessibilidade e joga o foco pro <body> no instante
+// em que vira true; aria-disabled mantém o botão focável/anunciado, quem
+// bloqueia o reenvio é o próprio handler). Sem esta linha o botão ficaria
+// com aria-disabled mas sem o feedback visual de "desabilitado" que
+// disabled: já dava. disabled:* nativo continua igual, pros ~60 outros
+// usos do Button que não mudaram.
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {

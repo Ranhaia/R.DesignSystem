@@ -13,21 +13,21 @@ export interface TemplateEntry {
 // Templates com rota funcional em src/app/templates/.
 export const templatesList: TemplateEntry[] = [
   { slug: "dashboard-financeiro", name: "Dashboard financeiro" },
+  { slug: "login-simples", name: "Login simples" },
+  { slug: "login-erro-validacao", name: "Login — erro de validação" },
+  { slug: "recuperacao-senha", name: "Recuperação de senha" },
+  { slug: "selecao-perfil-corretora", name: "Seleção de perfil/corretora" },
+  { slug: "onboarding", name: "Onboarding" },
+  { slug: "apolices-ativas", name: "Apólices ativas" },
 ]
 
 // Templates planejados (Fase 5, ver PLANO-LOOP-80-20-TEMPLATES.md) — ainda
 // sem rota própria. Aparecem na página-índice como card desabilitado com
 // badge "Em construção", mesmo padrão do atomic-registry.
 export const inProgressTemplates: TemplateEntry[] = [
-  // 5A — Fluxo de login (5 rotas)
-  { slug: "login-simples", name: "Login simples" },
-  { slug: "login-erro-validacao", name: "Login — erro de validação" },
-  { slug: "recuperacao-senha", name: "Recuperação de senha" },
-  { slug: "selecao-perfil-corretora", name: "Seleção de perfil/corretora" },
-  { slug: "onboarding", name: "Onboarding" },
+  // 5A — Fluxo de login (5 rotas, todas já construídas acima)
 
-  // 5B — 3 telas de seguros
-  { slug: "apolices-ativas", name: "Apólices ativas" },
+  // 5B — 3 telas de seguros (apolices-ativas já construída acima)
   { slug: "novo-sinistro", name: "Novo sinistro" },
   { slug: "painel-corretor", name: "Painel do corretor" },
 ]

@@ -1308,6 +1308,88 @@ autônomos, no mesmo formato do pipeline `/revisar-ds` já existente
   agentes autônomos — a divisão em estágios/artefatos serve tanto pra
   automação quanto pra dar a ele um ponto de aprovação por tela, sem
   precisar revisar um fluxo de 5 telas de uma vez só no final.
+
+### 2026-07-23 — Fase 5A construída (pipeline autônomo) + fechamento de pendências
+
+As 5 telas do fluxo de login foram construídas via `/construir-telas` no
+terminal (agentes autônomos, ver seção anterior) — `login-simples`,
+`login-erro-validacao`, `recuperacao-senha`, `selecao-perfil-corretora`,
+`onboarding` — e `apolices-ativas` (1ª de 5B) também. Ao revisar o estado
+consolidado (`.build/telas/PENDENCIAS.md`), 3 decisões precisavam do
+Rafael antes de seguir; ele respondeu as 3 com a opção recomendada.
+Registro das decisões e do que foi feito a partir delas:
+
+**Decisão 1 — Persistência entre telas: Context React.** Implementado em
+`src/components/templates/fluxo-login-context.tsx`
+(`FluxoLoginProvider`/`useFluxoLogin`), montado em
+`src/app/templates/layout.tsx` (escopo: todo `/templates/*`, não só o
+fluxo de login — dashboard-financeiro e as telas de 5B também vivem lá).
+`selecao-perfil-corretora` grava `{ perfil, corretora }` no Context antes
+de navegar; `onboarding` lê e personaliza a tela de boas-vindas final
+("Você está conectado como X na Y"); `apolices-ativas` lê pra trocar o
+nome genérico "Portal do corretor" da sidebar mockada pelo nome real da
+corretora, com fallback se a tela for aberta direto. `selecao: null` é
+estado válido (tela aberta sem passar pela seleção antes), não erro — só
+usar o hook fora do `<FluxoLoginProvider>` lança.
+
+**Decisão 2 — Convenção do `Select` "Cenário (demonstração)": ratificada
+como padrão oficial.** Toda tela de Template cujos estados dependem de
+resposta de backend fictício (sem gatilho natural de formulário pra
+demonstrar erro/vazio/sucesso) pode usar um `Select` de "Cenário
+(demonstração)" acima do Card real — sempre fora da composição do Card
+(não faz parte do "produto" que a tela representa), com `Label`
+associado via `htmlFor`, controlando o estado simulado. Já usado em
+`selecao-perfil-corretora`, `onboarding` e `apolices-ativas`. **Válido
+pras 2 telas restantes de 5B** (`novo-sinistro`, `painel-corretor`) —
+`telas-planejador` deve já prever esse gatilho na spec, em vez do
+`telas-construtor` decidir sozinho de novo.
+
+**Decisão 3 — E-mail não encontrado em `recuperacao-senha`: mantém
+sucesso genérico.** Nenhuma mudança de código — já era o comportamento
+implementado (proteção contra enumeração de contas). Decisão só
+confirma/encerra a pendência.
+
+**Gap de QA fechado:** `login-erro-validacao` tinha rota construída e
+registrada, mas ficou sem as etapas 3/4 do pipeline (auditoria de
+acessibilidade + diagnóstico) — interrompido antes de terminar, provável
+coincidência com o reinício de terminal do Rafael no meio da execução.
+Fechado manualmente (mesmo rigor do pipeline): `.build/telas/
+acessibilidade-login-erro-validacao.md` e `diagnostico-login-erro-
+validacao.md`, veredito PRONTA.
+
+**Passe sistêmico de acessibilidade no catálogo** (2 dos 4 itens
+registrados em `PENDENCIAS.md`, escolhidos pelo risco real — os outros 2
+são de baixo risco por avaliação das próprias auditorias):
+- `CardTitle`/`EmptyTitle` (`card.tsx`/`empty.tsx`): ganharam `asChild`
+  (padrão `Slot.Root`, mesmo mecanismo do `Button`) — renderizam `<div>`
+  por padrão (zero mudança nos ~60 usos existentes no catálogo/docs/
+  exemplos), mas aceitam `<h2>`/`h3` real quando o consumidor passa
+  `asChild`. Aplicado nas 7 telas de Template (as 5 de login +
+  `apolices-ativas` + `dashboard-financeiro`): `CardTitle` de seção
+  principal → `h2` (a página já tem `<h1>` próprio), `EmptyTitle`
+  aninhado dentro de um Card com `CardTitle` → `h3`.
+- Botão perdendo foco ao virar `disabled` durante loading síncrono
+  (`setTimeout`): `button.tsx` ganhou `aria-disabled:pointer-events-none
+  aria-disabled:opacity-50` ao lado do `disabled:*` nativo já existente —
+  mesmo efeito visual, mas via `aria-disabled` o botão continua focável/
+  anunciado (não some da árvore de acessibilidade). Aplicado nos ~7
+  botões de ação principal das 5 telas de login + `apolices-ativas` que
+  tinham esse padrão; cada `handleSubmit`/handler correspondente ganhou
+  uma guarda (`if (carregando) return`) pra bloquear o reenvio, já que
+  `aria-disabled` não impede o clique/submit nativamente como `disabled`
+  fazia.
+- **Deliberadamente não tocados nesta passada** (baixo risco por
+  avaliação das próprias auditorias, ver `PENDENCIAS.md` item 4): ícones
+  decorativos sem `aria-hidden` explícito (~40+ ocorrências nas 7 telas —
+  inofensivo na prática, leitor de tela já ignora SVG sem `role`/`title`)
+  e `role="group"` implícito de `Field`/`InputGroup`. Ficam registrados
+  como pendência aberta, não esquecidos — decisão de escopo, não
+  omissão.
+
+**Verificação de tipos:** `tsc --noEmit`/`next build` continuam
+impraticáveis neste sandbox (mesma limitação de I/O já documentada).
+Revisão manual de cada edição não encontrou incompatibilidade aparente;
+veredito real fica pro `next build` do Vercel ou `tsc` local do Rafael.
 - Publicar o Storybook publicamente expõe todos os estados dos
   componentes — esperado e até desejável num case de design system, mas
   vale o Rafael estar consciente disso antes do deploy.

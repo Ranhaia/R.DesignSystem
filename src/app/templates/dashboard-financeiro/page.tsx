@@ -204,7 +204,9 @@ export default function DashboardFinanceiroTemplate() {
               {/* Contribution History — chart card */}
               <Card className="md:col-span-2">
                 <CardHeader>
-                  <CardTitle className="text-base">Histórico de contribuições</CardTitle>
+                  <CardTitle className="text-base" asChild>
+                    <h2>Histórico de contribuições</h2>
+                  </CardTitle>
                   <CardDescription>Últimas 6 semanas</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -226,7 +228,9 @@ export default function DashboardFinanceiroTemplate() {
               {/* Set a new milestone — form card com Button Group + Alert Dialog */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Definir nova meta</CardTitle>
+                  <CardTitle className="text-base" asChild>
+                    <h2>Definir nova meta</h2>
+                  </CardTitle>
                   <CardDescription>Crie um novo alvo de contribuição</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -271,7 +275,9 @@ export default function DashboardFinanceiroTemplate() {
               {/* Payout Threshold — slider card */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Limite de repasse</CardTitle>
+                  <CardTitle className="text-base" asChild>
+                    <h2>Limite de repasse</h2>
+                  </CardTitle>
                   <CardDescription>
                     Valor mínimo para liberar o próximo repasse
                   </CardDescription>
@@ -288,7 +294,9 @@ export default function DashboardFinanceiroTemplate() {
               {/* QR connect */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Conectar via QR code</CardTitle>
+                  <CardTitle className="text-base" asChild>
+                    <h2>Conectar via QR code</h2>
+                  </CardTitle>
                   <CardDescription>Escaneie no app para vincular a conta</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col items-center gap-3">
@@ -302,7 +310,9 @@ export default function DashboardFinanceiroTemplate() {
               {/* Card com item colapsável — Accordion */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Detalhes da conta</CardTitle>
+                  <CardTitle className="text-base" asChild>
+                    <h2>Detalhes da conta</h2>
+                  </CardTitle>
                   <CardDescription>Informações e preferências</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -349,7 +359,9 @@ export default function DashboardFinanceiroTemplate() {
               <Card className="lg:col-span-3">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0">
                   <div>
-                    <CardTitle className="text-base">Novo chat</CardTitle>
+                    <CardTitle className="text-base" asChild>
+                      <h2>Novo chat</h2>
+                    </CardTitle>
                     <CardDescription>Suporte · Marina Pereira</CardDescription>
                   </div>
                   <BellIcon className="text-muted-foreground size-4" />

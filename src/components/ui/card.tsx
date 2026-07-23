@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 
@@ -28,9 +29,22 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+// 2026-07-23: CardTitle sempre foi <div> — auditoria de acessibilidade
+// das telas da Fase 5 (login flow) apontou isso como gap sistêmico
+// (WCAG 1.3.1/2.4.6: título de seção não é anunciado como heading pelo
+// leitor de tela). `asChild` deixa quem usa escolher a tag real (h2/h3,
+// o nível certo depende de onde o Card está na hierarquia da página) SEM
+// mudar o comportamento padrão dos outros ~60 usos existentes no
+// catálogo (docs, exemplos) — aqueles continuam <div>, só as telas reais
+// (Templates) passaram a usar heading de verdade.
+function CardTitle({
+  className,
+  asChild = false,
+  ...props
+}: React.ComponentProps<"div"> & { asChild?: boolean }) {
+  const Comp = asChild ? Slot.Root : "div"
   return (
-    <div
+    <Comp
       data-slot="card-title"
       className={cn("font-heading leading-none font-semibold", className)}
       {...props}

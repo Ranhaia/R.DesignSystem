@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 
@@ -58,9 +59,17 @@ function EmptyMedia({
   )
 }
 
-function EmptyTitle({ className, ...props }: React.ComponentProps<"div">) {
+// 2026-07-23: mesmo fix do CardTitle (ver card.tsx) — `asChild` opcional
+// pra renderizar heading real (h2/h3) sem mudar o padrão <div> dos usos
+// existentes.
+function EmptyTitle({
+  className,
+  asChild = false,
+  ...props
+}: React.ComponentProps<"div"> & { asChild?: boolean }) {
+  const Comp = asChild ? Slot.Root : "div"
   return (
-    <div
+    <Comp
       data-slot="empty-title"
       className={cn("text-lg font-medium tracking-tight", className)}
       {...props}
