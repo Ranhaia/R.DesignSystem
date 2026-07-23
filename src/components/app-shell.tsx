@@ -123,7 +123,7 @@ function MobileSidebarTrigger() {
     <Button
       variant="ghost"
       size="icon"
-      className="size-7"
+      className="size-7 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
       onClick={toggleSidebar}
     >
       <MenuIcon />
@@ -140,26 +140,44 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <AppSidebar />
       <SidebarInset>
         {/* 2026-07-23: header fixo (sticky) — pedido do Rafael pra manter
-            acesso ao menu/breadcrumb ao rolar a página. bg-background +
-            border-b porque, fixo, ele agora fica sobre o conteúdo que
-            rola por baixo (antes bastava ser opaco por herança do fluxo
-            normal). No mobile, o bloco desktop (trigger + separador +
-            breadcrumb) é substituído por só um hambúrguer alinhado à
-            direita — não são dois headers, é o mesmo <header> com dois
-            blocos internos que se alternam por breakpoint (md). */}
-        <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-2 border-b bg-background transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
-          <div className="hidden items-center gap-2 px-4 md:flex">
-            <SidebarTrigger className="-ml-1" />
+            acesso ao menu/breadcrumb ao rolar a página.
+            2026-07-23 (ajuste): bg-sidebar/text-sidebar-foreground em vez
+            de bg-background — Rafael pediu pro header usar o mesmo fundo
+            do menu lateral (mesmo par bg/foreground que ui/sidebar.tsx já
+            usa nos dois lugares dele). border-b continua sem token
+            especial (border-border padrão), igual à própria borda que
+            separa o Sidebar do conteúdo em ui/sidebar.tsx.
+            Breadcrumb (o componente que identifica em que página/seção o
+            usuário está) agora fica visível em qualquer largura — só o
+            trigger+separador desktop (redundante com o hambúrguer no
+            mobile) somem em telas pequenas. O hambúrguer mobile fica à
+            direita (ml-auto) enquanto o breadcrumb ocupa a esquerda —
+            justify-between no header cuida do espaçamento entre os dois
+            grupos. */}
+        <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between gap-2 border-b bg-sidebar text-sidebar-foreground transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+          <div className="flex items-center gap-2 px-4">
+            <SidebarTrigger className="-ml-1 hidden md:flex" />
             <Separator
               orientation="vertical"
-              className="mr-2 data-[orientation=vertical]:h-4"
+              className="mr-2 hidden bg-sidebar-border data-[orientation=vertical]:h-4 md:flex"
             />
             <Breadcrumb>
-              <BreadcrumbList>
+              {/* Breadcrumb usa text-muted-foreground/text-foreground por
+                  padrão — tokens genéricos pensados pra bg-background, não
+                  pra bg-sidebar. Sobrescrevo pra text-sidebar-foreground
+                  (com /70 no trail, igual ao padrão que ui/sidebar.tsx já
+                  usa em SidebarGroupLabel) pra garantir contraste correto
+                  em qualquer preset — mesma classe de bug que já foi
+                  corrigida em Dialog/Sheet/Tooltip quando os tokens de
+                  superfície não combinavam com o texto por cima. */}
+              <BreadcrumbList className="text-sidebar-foreground/70">
                 {section && (
                   <>
                     <BreadcrumbItem className="hidden md:block">
-                      <BreadcrumbLink href={sectionHref ?? "/"}>
+                      <BreadcrumbLink
+                        href={sectionHref ?? "/"}
+                        className="hover:text-sidebar-foreground"
+                      >
                         {section}
                       </BreadcrumbLink>
                     </BreadcrumbItem>
@@ -167,16 +185,22 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                   </>
                 )}
                 <BreadcrumbItem>
-                  <BreadcrumbPage>{page}</BreadcrumbPage>
+                  <BreadcrumbPage className="text-sidebar-foreground">
+                    {page}
+                  </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
-          <div className="ml-auto flex items-center px-4 md:hidden">
+          <div className="ml-auto px-4 md:hidden">
             <MobileSidebarTrigger />
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>
+        {/* 2026-07-23: pt-6 (24px) em vez de pt-0 — header sticky não
+            empurra mais o conteúdo pra baixo por fluxo normal, então o
+            respiro entre o topo fixo e o conteúdo precisa ser explícito.
+            Rafael pediu 24px certinho (não o 16px genérico do p-4). */}
+        <div className="flex flex-1 flex-col gap-4 p-4 pt-6">{children}</div>
       </SidebarInset>
       <Toaster />
     </SidebarProvider>

@@ -1608,3 +1608,32 @@ campo Produto).
 - **Verificação de tipos**: mesma limitação de sempre — revisão manual,
   sem incompatibilidade aparente. Confirmação real pendente de `next
   build`/`tsc` fora do sandbox.
+
+## 2026-07-23 — 4 ajustes no header (app-shell.tsx)
+
+- **24px entre header e conteúdo**: `pt-0` → `pt-6` no wrapper do
+  conteúdo — o header sticky não empurra mais o conteúdo por fluxo
+  normal, então o respiro precisa ser explícito.
+- **Fundo do header = fundo do menu lateral**: `bg-background` →
+  `bg-sidebar text-sidebar-foreground`. Efeito colateral corrigido no
+  mesmo commit: Breadcrumb/Separator usam tokens genéricos
+  (`text-muted-foreground`, `text-foreground`, `bg-border`) pensados pra
+  `bg-background` — sobrescritos pra `text-sidebar-foreground`/`/70` e
+  `bg-sidebar-border` (mesmos tokens que `ui/sidebar.tsx` já usa pros
+  próprios rótulos secundários), pra não repetir a mesma classe de bug
+  de contraste já corrigida antes em Dialog/Sheet/Tooltip.
+- **Sheet mobile abre da esquerda**: já era o comportamento padrão
+  (`side="left"` é o default de `<Sidebar>`), mas deixei explícito em
+  `app-sidebar.tsx` a pedido do Rafael — o botão de hambúrguer fica à
+  direita do header, mas o menu precisa continuar abrindo da esquerda
+  ("seguir a ordem do clique": do fim do header pro início da tela).
+- **Breadcrumb visível no mobile**: antes o mobile só mostrava o
+  hambúrguer, escondendo o componente que identifica a página atual.
+  Agora o Breadcrumb (crumb de seção escondido, página atual sempre
+  visível — mesma regra `hidden md:block` de antes) fica à esquerda do
+  header em qualquer largura; só o trigger+separador desktop (redundante
+  com o hambúrguer) somem no mobile. `justify-between` no header separa
+  os 2 grupos (breadcrumb à esquerda, hambúrguer à direita via `ml-auto`).
+- **Verificação de tipos**: mesma limitação de sempre — revisão manual,
+  sem incompatibilidade aparente. Confirmação real pendente de `next
+  build`/`tsc` fora do sandbox.

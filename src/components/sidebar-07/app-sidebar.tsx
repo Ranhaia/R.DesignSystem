@@ -32,7 +32,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname()
 
   return (
-    <Sidebar collapsible="icon" {...props}>
+    // side="left" explícito — 2026-07-23: o Sheet mobile precisa abrir da
+    // esquerda mesmo com o botão de hambúrguer ficando à direita do
+    // header (pedido do Rafael, "seguir a ordem do clique": ver do
+    // hambúrguer, no fim do header, pro menu, que recomeça do início da
+    // tela). Já era o valor padrão de <Sidebar> antes desta linha — deixo
+    // explícito pra não depender de um default que pode mudar.
+    <Sidebar collapsible="icon" side="left" {...props}>
       <SidebarHeader>
         <StyleSwitcher />
       </SidebarHeader>
