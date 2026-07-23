@@ -5,6 +5,7 @@ import { CrudPattern } from "@/components/patterns/crud"
 import { DeleteFlowPattern } from "@/components/patterns/delete-flow"
 import { EmptyStatePattern } from "@/components/patterns/empty-state"
 import { ErrorStatePattern } from "@/components/patterns/error-state"
+import { FilterPanelPattern } from "@/components/patterns/filter-panel"
 import { FiltersPattern } from "@/components/patterns/filters"
 import { InfiniteScrollPattern } from "@/components/patterns/infinite-scroll"
 import { LoadingPattern } from "@/components/patterns/loading"
@@ -32,4 +33,5 @@ export const patternRegistry: Record<string, ComponentType> = {
   filters: FiltersPattern,
   upload: UploadPattern,
   "toast-strategy": ToastStrategyPattern,
+  "filter-panel": FilterPanelPattern,
 }

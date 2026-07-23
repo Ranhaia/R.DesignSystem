@@ -373,6 +373,46 @@ useEffect(() => { headingRef.current?.focus() }, [step])
 ))}`,
   },
 
+  "filter-panel": {
+    description: "[a preencher]",
+    whenToUse: "[a preencher]",
+    composition: [
+      "Popover / PopoverTrigger / PopoverContent (Atom popover)",
+      "Command / CommandInput / CommandList / CommandGroup / CommandItem / CommandEmpty (Molecule command)",
+      "Select / SelectTrigger / SelectContent / SelectItem / SelectValue (Molecule select)",
+      "Calendar (Organism calendar, mode=\"range\")",
+      "Badge (Atom)",
+      "Button (Atom)",
+    ],
+    accessibility: [
+      "O ícone dentro de cada chip é decorativo (o texto do chip já diz o valor) — leva aria-hidden=\"true\", não duplica informação pra leitor de tela.",
+      "Cada chip de filtro aplicado tem um botão de remover com aria-label descritivo incluindo campo E valor (ex: \"Remover filtro Produto: Auto\"), não só um ícone de X sem contexto — mais específico que o Pattern \"Filters\" original porque aqui há vários campos diferentes ao mesmo tempo.",
+      "A contagem de resultados é anunciada via aria-live=\"polite\" a cada filtro ligado/desligado.",
+      "O campo multi-select (Produto) não fecha o Popover ao marcar um item — permite marcar vários em sequência sem reabrir; os campos de valor único (Corretora, Segurado) fecham ao selecionar, reduzindo passos.",
+    ],
+    doGuidelines: ["[a preencher]"],
+    dontGuidelines: ["[a preencher]"],
+    code: `// Ícone é do CAMPO, não do valor — "Produto A", "Produto B"... usam o
+// mesmo ícone. Única fonte, reaproveitada no controle E no chip.
+const CAMPO_ICONE = { produto: BarChart3Icon, corretora: ShieldIcon, /* ... */ }
+
+<Button variant="outline" size="sm">
+  <BarChart3Icon aria-hidden="true" />
+  Produto
+  {produtos.length > 0 && <Badge variant="secondary">{produtos.length}</Badge>}
+</Button>
+
+{chips.map((chip) => (
+  <Badge key={chip.id} variant="secondary" className="gap-1.5">
+    <chip.icon aria-hidden="true" />
+    {chip.label}
+    <button aria-label={\`Remover filtro \${chip.campo}: \${chip.label}\`} onClick={chip.onRemove}>
+      <XIcon className="size-3" />
+    </button>
+  </Badge>
+))}`,
+  },
+
   upload: {
     description: "[a preencher]",
     whenToUse: "[a preencher]",

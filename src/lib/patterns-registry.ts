@@ -1,7 +1,9 @@
-// Registro dos 15 Patterns do "mapa de IA completo" (PLANO-DESIGN-SYSTEM.md).
-// Cada slug tem um componente funcional real em src/components/patterns/ —
-// nada aqui é só documentação em texto, seguindo a regra 4 daquele plano
-// ("cada pattern deve ter exemplo funcional de código").
+// Registro dos Patterns do "mapa de IA completo" (PLANO-DESIGN-SYSTEM.md) —
+// originalmente 15, +1 ("Filter Panel") adicionado em 2026-07-23 a pedido
+// do Rafael. Cada slug tem um componente funcional real em
+// src/components/patterns/ — nada aqui é só documentação em texto,
+// seguindo a regra 4 daquele plano ("cada pattern deve ter exemplo
+// funcional de código").
 
 export interface PatternEntry {
   slug: string
@@ -24,4 +26,5 @@ export const patternsList: PatternEntry[] = [
   { slug: "filters", name: "Filters" },
   { slug: "upload", name: "Upload" },
   { slug: "toast-strategy", name: "Toast Strategy" },
+  { slug: "filter-panel", name: "Filter Panel" },
 ]

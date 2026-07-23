@@ -1560,3 +1560,51 @@ de estilo completo.
   `next build` não completam no sandbox) — revisão manual das 4 edições,
   sem incompatibilidade aparente. Confirmação real depende do Vercel ou
   do `tsc` local do Rafael.
+
+## 2026-07-23 — Novo Pattern "Filter Panel" (ícone por campo de filtro)
+
+Pedido do Rafael a partir de uma referência de outra seguradora onde
+trabalhou: painel de filtros multi-campo (cotação/listagem) onde cada
+chip do resultado carrega o ícone do campo de origem, reforçando o
+contexto visualmente (ex: chip "Auto" com ícone de gráfico = veio do
+campo Produto).
+
+- **Decisão de modelagem** (perguntei antes de construir): ícone é por
+  CAMPO, não por valor individual — confirmado pelo Rafael. "Produto A",
+  "Produto B"... usam todos o mesmo ícone; Corretora e Segurado têm cada
+  um o seu próprio ícone de campo. Mesmo princípio já usado em
+  `atomic-registry.ts`/`categoryIcons` (nav lateral) — 1 fonte única de
+  ícone por categoria, reaproveitada em mais de um lugar da UI.
+- **Onde implementar** (2ª decisão perguntada): novo Pattern dedicado,
+  não uma extensão do "Filters" existente (que é só Popover+Checkbox de
+  1 campo) nem só embutido direto em `apolices-ativas` — o painel da
+  referência é multi-campo (5 campos, tipos diferentes) e vai servir de
+  base pra quando a tela de cotação real da Fase 5B existir.
+- **Arquivo novo**: `src/components/patterns/filter-panel.tsx` +
+  `filter-panel.stories.tsx`, registrado em `patterns-registry.ts`
+  (15 → 16 Patterns), `components/patterns/registry.tsx` e
+  `lib/pattern-docs.ts` (composição/acessibilidade reais; description/
+  whenToUse/doGuidelines/dontGuidelines ficam "[a preencher]", mesma
+  regra dos outros 15).
+- **4 tipos de campo demonstrados**, cada um reaproveitando um mecanismo
+  já catalogado (nenhuma peça nova em `ui/`):
+  - Produto — multi-select (Popover+Command, várias opções, popover não
+    fecha ao marcar).
+  - Corretora / Segurado ou Tomador — busca com 1 valor só (mesmo
+    Combobox de `examples/combobox-demo.tsx`, fecha ao selecionar). Em
+    produção, "Segurado" provavelmente busca numa API — o Pattern usa
+    lista mock só pra demonstrar o mecanismo do ícone.
+  - Status — `Select` nativo (lista curta, mutuamente exclusiva).
+  - Período — Date Picker With Range (mesmo mecanismo de
+    `examples/date-picker-with-range.tsx`), sempre "De/Até".
+- **Acessibilidade**: ícone do chip é decorativo (`aria-hidden="true"` —
+  não duplica o que o texto já diz); botão de remover de cada chip tem
+  `aria-label` com CAMPO + valor (ex: "Remover filtro Produto: Auto"),
+  mais específico que o Pattern "Filters" original porque aqui há vários
+  campos simultâneos; contagem de resultado em `aria-live="polite"`.
+- **Ainda pendente**: aplicar esse mecanismo numa tela real (cotação, ou
+  retroativamente em `apolices-ativas`) fica pra quando o Rafael pedir —
+  por ora é só o Pattern/proposta validada.
+- **Verificação de tipos**: mesma limitação de sempre — revisão manual,
+  sem incompatibilidade aparente. Confirmação real pendente de `next
+  build`/`tsc` fora do sandbox.
