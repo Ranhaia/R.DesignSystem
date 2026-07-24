@@ -36,7 +36,8 @@
     "react-textarea-autosize": "^8.5.9",
     "zod": "^3.25.76",
     "@hookform/resolvers": "^5.2.2",
-    "@tabler/icons-react": "^3.35.0"
+    "@tabler/icons-react": "^3.35.0",
+    "@vercel/analytics": "^2.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
