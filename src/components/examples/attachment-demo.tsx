@@ -1,4 +1,4 @@
-import { FileTextIcon, ImageIcon, XIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 
 import {
   Attachment,
@@ -16,7 +16,7 @@ export default function AttachmentDemo() {
     <AttachmentGroup className="flex-col sm:flex-row">
       <Attachment>
         <AttachmentMedia>
-          <ImageIcon />
+          <Icon name="image" />
         </AttachmentMedia>
         <AttachmentContent>
           <AttachmentTitle>mockup-final.png</AttachmentTitle>
@@ -24,13 +24,13 @@ export default function AttachmentDemo() {
         </AttachmentContent>
         <AttachmentActions>
           <AttachmentAction aria-label="Remover">
-            <XIcon />
+            <Icon name="close" />
           </AttachmentAction>
         </AttachmentActions>
       </Attachment>
       <Attachment state="error">
         <AttachmentMedia>
-          <FileTextIcon />
+          <Icon name="description" />
         </AttachmentMedia>
         <AttachmentContent>
           <AttachmentTitle>contrato.pdf</AttachmentTitle>
@@ -38,7 +38,7 @@ export default function AttachmentDemo() {
         </AttachmentContent>
         <AttachmentActions>
           <AttachmentAction aria-label="Remover">
-            <XIcon />
+            <Icon name="close" />
           </AttachmentAction>
         </AttachmentActions>
       </Attachment>

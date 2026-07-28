@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { ChevronsUpDown } from "lucide-react"
 
+import { Icon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
 import {
   Collapsible,
@@ -25,7 +25,7 @@ export default function CollapsibleDemo() {
         </h4>
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="icon" className="size-8">
-            <ChevronsUpDown />
+            <Icon name="unfold_more" />
             <span className="sr-only">Alternar</span>
           </Button>
         </CollapsibleTrigger>

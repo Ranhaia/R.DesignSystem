@@ -1,4 +1,4 @@
-import { AlertCircleIcon, BadgeCheckIcon, CheckIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 
 import { Badge } from "@/components/ui/badge"
 
@@ -16,7 +16,7 @@ export default function BadgeDemo() {
           variant="secondary"
           className="bg-blue-500 text-white dark:bg-blue-600"
         >
-          <BadgeCheckIcon />
+          <Icon name="verified" />
           Verificado
         </Badge>
         <Badge className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">

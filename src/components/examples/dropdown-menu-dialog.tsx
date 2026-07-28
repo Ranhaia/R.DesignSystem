@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { MoreHorizontalIcon } from "lucide-react"
 
+import { Icon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -35,7 +35,7 @@ export default function DropdownMenuDialog() {
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" aria-label="Abrir menu" size="icon-sm">
-            <MoreHorizontalIcon />
+            <Icon name="more_horiz" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-40" align="end">

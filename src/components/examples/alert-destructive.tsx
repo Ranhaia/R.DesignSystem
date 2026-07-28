@@ -1,4 +1,4 @@
-import { AlertCircleIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 
 import {
   Alert,
@@ -9,7 +9,7 @@ import {
 export default function AlertDestructive() {
   return (
     <Alert variant="destructive">
-      <AlertCircleIcon />
+      <Icon name="error" />
       <AlertTitle>Erro</AlertTitle>
       <AlertDescription>
         Sua sessão expirou. Faça login novamente.

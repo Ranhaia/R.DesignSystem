@@ -2,11 +2,11 @@
 
 import * as React from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { XIcon } from "lucide-react"
 import { Controller, useFieldArray, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import * as z from "zod"
 
+import { Icon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -116,7 +116,7 @@ export default function FormRhfArray() {
                                 onClick={() => remove(index)}
                                 aria-label={`Remover e-mail ${index + 1}`}
                               >
-                                <XIcon />
+                                <Icon name="close" />
                               </InputGroupButton>
                             </InputGroupAddon>
                           )}

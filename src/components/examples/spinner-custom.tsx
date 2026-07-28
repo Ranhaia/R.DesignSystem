@@ -1,10 +1,17 @@
-import { LoaderIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import { cn } from "@/lib/utils"
 
-function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
+// Omit<"name" | "fill">: SVGAttributes nativo tem `name?: string` e
+// `fill?: string` (atributo SVG de preenchimento) que colidiriam com o
+// `name: MaterialSymbol` e o `fill?: boolean` (eixo FILL) do Icon ao
+// espalhar {...props} — mesmo desvio documentado em ui/spinner.tsx.
+function Spinner({
+  className,
+  ...props
+}: Omit<React.ComponentProps<"svg">, "name" | "fill">) {
   return (
-    <LoaderIcon
+    <Icon
+      name="progress_activity"
       role="status"
       aria-label="Carregando"
       className={cn("size-4 animate-spin", className)}

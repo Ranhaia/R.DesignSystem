@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { ChevronDownIcon, SlashIcon } from "lucide-react"
 
+import { Icon } from "@/components/ui/icon"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -26,13 +26,13 @@ export default function BreadcrumbWithDropdown() {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <span className="text-sm">/</span>
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5">
               Componentes
-              <ChevronDownIcon />
+              <Icon name="keyboard_arrow_down" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuItem>Documentação</DropdownMenuItem>
@@ -42,7 +42,7 @@ export default function BreadcrumbWithDropdown() {
           </DropdownMenu>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <span className="text-sm">/</span>
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Trilha</BreadcrumbPage>

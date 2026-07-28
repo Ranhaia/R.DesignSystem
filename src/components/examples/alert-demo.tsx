@@ -1,4 +1,4 @@
-import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 
 import {
   Alert,
@@ -10,20 +10,20 @@ export default function AlertDemo() {
   return (
     <div className="grid w-full max-w-xl items-start gap-4">
       <Alert>
-        <CheckCircle2Icon />
+        <Icon name="check_circle" />
         <AlertTitle>Sucesso! Suas alterações foram salvas</AlertTitle>
         <AlertDescription>
           Este é um alerta com ícone, título e descrição.
         </AlertDescription>
       </Alert>
       <Alert>
-        <PopcornIcon />
+        <Icon name="celebration" />
         <AlertTitle>
           Este alerta tem um título e um ícone. Sem descrição.
         </AlertTitle>
       </Alert>
       <Alert variant="destructive">
-        <AlertCircleIcon />
+        <Icon name="error" />
         <AlertTitle>Não foi possível processar seu pagamento.</AlertTitle>
         <AlertDescription>
           <p>Verifique os dados de cobrança e tente novamente.</p>
