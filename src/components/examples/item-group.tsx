@@ -1,5 +1,4 @@
 import * as React from "react"
-import { PlusIcon } from "lucide-react"
 
 import {
   Avatar,
@@ -7,6 +6,7 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import {
   Item,
   ItemActions,
@@ -55,7 +55,7 @@ export default function ItemGroupExample() {
               </ItemContent>
               <ItemActions>
                 <Button variant="ghost" size="icon" className="rounded-full">
-                  <PlusIcon />
+                  <Icon name="add" />
                 </Button>
               </ItemActions>
             </Item>

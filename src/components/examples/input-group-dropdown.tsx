@@ -1,11 +1,10 @@
-import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icon } from "@/components/ui/icon"
 import {
   InputGroup,
   InputGroupAddon,
@@ -26,7 +25,7 @@ export default function InputGroupDropdown() {
                 aria-label="Mais"
                 size="icon-xs"
               >
-                <MoreHorizontal />
+                <Icon name="more_horiz" />
               </InputGroupButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -43,7 +42,7 @@ export default function InputGroupDropdown() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <InputGroupButton variant="ghost" className="pr-1.5! text-xs">
-                Buscar em... <ChevronDownIcon className="size-3" />
+                Buscar em... <Icon name="keyboard_arrow_down" size={0.75} />
               </InputGroupButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="[--radius:0.95rem]">

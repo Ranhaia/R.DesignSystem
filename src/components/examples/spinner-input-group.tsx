@@ -1,5 +1,4 @@
-import { ArrowUpIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   InputGroup,
   InputGroupAddon,
@@ -23,7 +22,7 @@ export default function SpinnerInputGroup() {
         <InputGroupAddon align="block-end">
           <Spinner /> Validando...
           <InputGroupButton className="ml-auto" variant="default">
-            <ArrowUpIcon />
+            <Icon name="arrow_upward" />
             <span className="sr-only">Enviar</span>
           </InputGroupButton>
         </InputGroupAddon>

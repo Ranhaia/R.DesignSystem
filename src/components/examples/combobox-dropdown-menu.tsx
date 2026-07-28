@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import {
   Command,
   CommandEmpty,
@@ -51,7 +51,7 @@ export default function ComboboxDropdownMenu() {
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="sm">
-            <MoreHorizontal />
+            <Icon name="more_horiz" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[200px]">

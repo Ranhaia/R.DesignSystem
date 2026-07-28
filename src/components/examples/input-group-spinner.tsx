@@ -1,5 +1,4 @@
-import { LoaderIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   InputGroup,
   InputGroupAddon,
@@ -33,7 +32,7 @@ export default function InputGroupSpinner() {
       <InputGroup data-disabled>
         <InputGroupInput placeholder="Atualizando dados..." disabled />
         <InputGroupAddon>
-          <LoaderIcon className="animate-spin" />
+          <Icon name="progress_activity" className="animate-spin" />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
           <InputGroupText className="text-muted-foreground">

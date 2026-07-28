@@ -1,5 +1,4 @@
-import { SearchIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   InputGroup,
   InputGroupAddon,
@@ -13,7 +12,7 @@ export default function KbdInputGroup() {
       <InputGroup>
         <InputGroupInput placeholder="Buscar..." />
         <InputGroupAddon>
-          <SearchIcon />
+          <Icon name="search" />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
           <Kbd>⌘</Kbd>

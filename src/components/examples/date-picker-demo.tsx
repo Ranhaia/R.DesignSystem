@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { CalendarIcon } from "lucide-react"
 
 import { formatarDataCompleta } from "@/lib/date-formatters"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
+import { Icon } from "@/components/ui/icon"
 import {
   Popover,
   PopoverContent,
@@ -29,7 +29,7 @@ export default function DatePickerDemo() {
             !date && "text-muted-foreground"
           )}
         >
-          <CalendarIcon />
+          <Icon name="calendar_today" />
           {date ? formatarDataCompleta(date) : <span>Escolha uma data</span>}
         </Button>
       </PopoverTrigger>
