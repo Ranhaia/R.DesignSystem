@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { RefreshCwIcon, ServerCrashIcon } from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 
 // Pattern: Error State — Alert (Atom já catalogado) já vem com role="alert"
 // embutido, o que faz o leitor de tela anunciar o conteúdo automaticamente
@@ -39,14 +39,14 @@ export function ErrorStatePattern() {
 
   return (
     <Alert variant="destructive">
-      <ServerCrashIcon />
+      <Icon name="cloud_off" />
       <AlertTitle ref={titleRef} tabIndex={-1}>
         Não foi possível carregar o sinistro
       </AlertTitle>
       <AlertDescription>
         <p>Verifique sua conexão e tente novamente.</p>
         <Button size="sm" variant="outline" onClick={handleRetry}>
-          <RefreshCwIcon />
+          <Icon name="refresh" />
           Tentar novamente
         </Button>
       </AlertDescription>

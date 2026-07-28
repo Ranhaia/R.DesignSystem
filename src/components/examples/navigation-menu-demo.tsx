@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
 
 import { useIsMobile } from "@/hooks/use-mobile"
+import { Icon } from "@/components/ui/icon"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -170,19 +170,19 @@ export default function NavigationMenuDemo() {
               <li>
                 <NavigationMenuLink asChild>
                   <Link href="#" className="flex-row items-center gap-2">
-                    <CircleHelpIcon />
+                    <Icon name="help" />
                     Pendências
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
                   <Link href="#" className="flex-row items-center gap-2">
-                    <CircleIcon />
+                    <Icon name="circle" />
                     A fazer
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
                   <Link href="#" className="flex-row items-center gap-2">
-                    <CircleCheckIcon />
+                    <Icon name="check_circle" />
                     Concluído
                   </Link>
                 </NavigationMenuLink>

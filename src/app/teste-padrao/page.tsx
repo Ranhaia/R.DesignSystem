@@ -1,4 +1,4 @@
-import { AlertTriangle, FileCheck2, Search, TrendingUp, Wallet } from "lucide-react"
+import type { MaterialSymbol } from "material-symbols"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Icon } from "@/components/ui/icon"
 import { Input } from "@/components/ui/input"
 import { Progress } from "@/components/ui/progress"
 import {
@@ -35,33 +36,39 @@ import {
 // fixo — tudo via classes de token (bg-card, text-muted-foreground etc.)
 // e componentes já existentes em src/components/ui/.
 
-const stats = [
+const stats: {
+  label: string
+  value: string
+  progress: number
+  icon: MaterialSymbol
+  hint: string
+}[] = [
   {
     label: "Apólices ativas",
     value: "1.284",
     progress: 76,
-    icon: FileCheck2,
+    icon: "fact_check",
     hint: "76% da meta do trimestre",
   },
   {
     label: "Sinistros em aberto",
     value: "37",
     progress: 32,
-    icon: AlertTriangle,
+    icon: "warning",
     hint: "12 aguardando vistoria",
   },
   {
     label: "Taxa de renovação",
     value: "91%",
     progress: 91,
-    icon: TrendingUp,
+    icon: "trending_up",
     hint: "+4pp vs. mês anterior",
   },
   {
     label: "Prêmio emitido (mês)",
     value: "R$ 482.9k",
     progress: 68,
-    icon: Wallet,
+    icon: "wallet",
     hint: "68% da meta do mês",
   },
 ]
@@ -138,7 +145,7 @@ export default function TestePadrao() {
           <Card key={stat.label}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardDescription>{stat.label}</CardDescription>
-              <stat.icon className="text-muted-foreground size-4" />
+              <Icon name={stat.icon} className="text-muted-foreground" size={1} />
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="text-2xl font-bold">{stat.value}</div>
@@ -188,7 +195,11 @@ export default function TestePadrao() {
             </Select>
 
             <div className="relative flex-1">
-              <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2" />
+              <Icon
+                name="search"
+                size={1}
+                className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 -translate-y-1/2"
+              />
               <Input
                 placeholder="Buscar por segurado ou nº da apólice"
                 className="pl-8"

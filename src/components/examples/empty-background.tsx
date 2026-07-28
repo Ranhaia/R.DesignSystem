@@ -1,6 +1,6 @@
 import { IconBell } from "@tabler/icons-react"
-import { RefreshCcwIcon } from "lucide-react"
 
+import { Icon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
 import {
   Empty,
@@ -25,7 +25,7 @@ export default function EmptyMuted() {
       </EmptyHeader>
       <EmptyContent>
         <Button variant="outline" size="sm">
-          <RefreshCcwIcon />
+          <Icon name="refresh" />
           Atualizar
         </Button>
       </EmptyContent>

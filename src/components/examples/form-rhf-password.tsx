@@ -2,11 +2,11 @@
 
 import * as React from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { CheckIcon } from "lucide-react"
 import { Controller, useForm, useWatch } from "react-hook-form"
 import { toast } from "sonner"
 import * as z from "zod"
 
+import { Icon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -152,7 +152,8 @@ export default function FormRhfPassword() {
                       autoComplete="new-password"
                     />
                     <InputGroupAddon align="inline-end">
-                      <CheckIcon
+                      <Icon
+                        name="check"
                         className={
                           allRequirementsMet
                             ? "text-green-500"
@@ -178,11 +179,13 @@ export default function FormRhfPassword() {
                             key={requirement.id}
                             className="flex items-center gap-2 text-sm"
                           >
-                            <CheckIcon
+                            <Icon
+                              name="check"
+                              size={1}
                               className={
                                 isMet
-                                  ? "size-4 text-green-500"
-                                  : "size-4 text-muted-foreground"
+                                  ? "text-green-500"
+                                  : "text-muted-foreground"
                               }
                             />
                             <span

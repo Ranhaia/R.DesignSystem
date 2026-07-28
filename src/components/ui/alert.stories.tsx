@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
-import { CheckCircle2Icon, ServerCrashIcon } from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Icon } from "@/components/ui/icon"
 import AlertDemo from "@/components/examples/alert-demo"
 
 const meta: Meta<typeof Alert> = {
@@ -24,7 +24,7 @@ export const Default: Story = {
   args: { variant: "default" },
   render: (args) => (
     <Alert {...args}>
-      <CheckCircle2Icon />
+      <Icon name="check_circle" />
       <AlertTitle>Alterações salvas</AlertTitle>
       <AlertDescription>
         Os dados da apólice foram atualizados com sucesso.
@@ -37,7 +37,7 @@ export const Destructive: Story = {
   args: { variant: "destructive" },
   render: (args) => (
     <Alert {...args}>
-      <ServerCrashIcon />
+      <Icon name="cloud_off" />
       <AlertTitle>Não foi possível carregar o sinistro</AlertTitle>
       <AlertDescription>Verifique sua conexão e tente novamente.</AlertDescription>
     </Alert>

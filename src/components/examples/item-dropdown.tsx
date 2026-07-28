@@ -1,7 +1,5 @@
 "use client"
 
-import { ChevronDownIcon } from "lucide-react"
-
 import {
   Avatar,
   AvatarFallback,
@@ -14,6 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icon } from "@/components/ui/icon"
 import {
   Item,
   ItemContent,
@@ -46,7 +45,7 @@ export default function ItemDropdown() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm" className="w-fit">
-            Selecionar <ChevronDownIcon />
+            Selecionar <Icon name="keyboard_arrow_down" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-72 [--radius:0.65rem]" align="end">

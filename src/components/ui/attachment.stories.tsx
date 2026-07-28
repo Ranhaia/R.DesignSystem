@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
-import { FileIcon } from "lucide-react"
 
 import {
   Attachment,
@@ -8,6 +7,7 @@ import {
   AttachmentMedia,
   AttachmentTitle,
 } from "@/components/ui/attachment"
+import { Icon } from "@/components/ui/icon"
 import AttachmentDemo from "@/components/examples/attachment-demo"
 
 type AttachmentArgs = {
@@ -35,7 +35,7 @@ const meta: Meta<AttachmentArgs> = {
   render: ({ state, size }) => (
     <Attachment state={state} size={size} className="max-w-56">
       <AttachmentMedia>
-        <FileIcon className="size-4" />
+        <Icon name="draft" size={1} />
       </AttachmentMedia>
       <AttachmentContent>
         <AttachmentTitle>arquivo.pdf</AttachmentTitle>

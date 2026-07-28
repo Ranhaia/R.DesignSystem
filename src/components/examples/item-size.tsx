@@ -1,6 +1,5 @@
-import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import {
   Item,
   ItemActions,
@@ -29,13 +28,13 @@ export default function ItemSizeDemo() {
       <Item variant="outline" size="sm" asChild>
         <a href="#">
           <ItemMedia>
-            <BadgeCheckIcon className="size-5" />
+            <Icon name="verified" size={1.25} />
           </ItemMedia>
           <ItemContent>
             <ItemTitle>Seu perfil foi verificado.</ItemTitle>
           </ItemContent>
           <ItemActions>
-            <ChevronRightIcon className="size-4" />
+            <Icon name="chevron_right" size={1} />
           </ItemActions>
         </a>
       </Item>

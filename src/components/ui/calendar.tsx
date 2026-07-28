@@ -1,11 +1,6 @@
 "use client"
 
 import * as React from "react"
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "lucide-react"
 import { ptBR } from "date-fns/locale"
 import {
   DayPicker,
@@ -15,6 +10,7 @@ import {
 
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 
 // 2026-07-23: locale pt-BR fixado como default — pedido do Rafael, o
 // componente estava em inglês (cabeçalho de dias da semana "Su Mo Tu...",
@@ -155,24 +151,19 @@ function Calendar({
             />
           )
         },
-        Chevron: ({ className, orientation, ...props }) => {
+        // NÃO espalhar {...props} no <Icon> (ele carrega um `size` em px do
+        // react-day-picker, que colidiria com o `size` em rem do Icon).
+        Chevron: ({ className, orientation }) => {
           if (orientation === "left") {
-            return (
-              <ChevronLeftIcon className={cn("size-4", className)} {...props} />
-            )
+            return <Icon name="chevron_left" size={1} className={className} />
           }
 
           if (orientation === "right") {
-            return (
-              <ChevronRightIcon
-                className={cn("size-4", className)}
-                {...props}
-              />
-            )
+            return <Icon name="chevron_right" size={1} className={className} />
           }
 
           return (
-            <ChevronDownIcon className={cn("size-4", className)} {...props} />
+            <Icon name="keyboard_arrow_down" size={1} className={className} />
           )
         },
         DayButton: CalendarDayButton,

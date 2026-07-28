@@ -2,10 +2,10 @@
 
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
-import { CheckIcon, ChevronDownIcon, XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import {
   InputGroup,
   InputGroupAddon,
@@ -31,9 +31,11 @@ function ComboboxTrigger({
       {...props}
     >
       {children}
-      <ChevronDownIcon
+      <Icon
+        name="keyboard_arrow_down"
+        size={1}
         data-slot="combobox-trigger-icon"
-        className="pointer-events-none size-4 text-muted-foreground"
+        className="pointer-events-none text-muted-foreground"
       />
     </ComboboxPrimitive.Trigger>
   )
@@ -46,13 +48,14 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
       // label aqui é só pra satisfazer o tipo do Button (exige nome
       // acessível quando não tem children literal) — o Base UI clona este
       // elemento e injeta como children o que o ComboboxPrimitive.Clear
-      // já recebe (<XIcon /> abaixo), então na prática o texto nunca chega
-      // a aparecer, mas cobre o caso de o comportamento de clone mudar.
+      // já recebe (<Icon name="close" /> abaixo), então na prática o texto
+      // nunca chega a aparecer, mas cobre o caso de o comportamento de
+      // clone mudar.
       render={<InputGroupButton variant="ghost" size="icon-xs" label="Limpar" />}
       className={cn(className)}
       {...props}
     >
-      <XIcon className="pointer-events-none" />
+      <Icon name="close" className="pointer-events-none" />
     </ComboboxPrimitive.Clear>
   )
 }
@@ -165,7 +168,16 @@ function ComboboxItem({
           <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />
         }
       >
-        <CheckIcon className="pointer-events-none size-4 pointer-coarse:size-5" />
+        {/* Desvio pontual (mesmo padrão do Task 8/nav-components.tsx do
+            plano): há uma variante responsiva (pointer-coarse:size-5) que
+            precisa continuar sendo controlada por classe Tailwind — o prop
+            `size` do Icon aplica width/height via style inline, que sempre
+            vence sobre classe e quebraria essa variante. Por isso size é
+            omitido aqui e o dimensionamento fica 100% em className. */}
+        <Icon
+          name="check"
+          className="pointer-events-none size-4 pointer-coarse:size-5"
+        />
       </ComboboxPrimitive.ItemIndicator>
     </ComboboxPrimitive.Item>
   )
@@ -267,12 +279,13 @@ function ComboboxChip({
       {showRemove && (
         <ComboboxPrimitive.ChipRemove
           // Mesmo motivo do ComboboxClear acima: label só pra satisfazer o
-          // tipo, o Base UI substitui pelo children real (<XIcon /> abaixo).
+          // tipo, o Base UI substitui pelo children real (<Icon name="close" />
+          // abaixo).
           render={<Button variant="ghost" size="icon-xs" label="Remover" />}
           className="-ml-1 opacity-50 hover:opacity-100"
           data-slot="combobox-chip-remove"
         >
-          <XIcon className="pointer-events-none" />
+          <Icon name="close" className="pointer-events-none" />
         </ComboboxPrimitive.ChipRemove>
       )}
     </ComboboxPrimitive.Chip>

@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { usePathname } from "next/navigation"
-import { MenuIcon } from "lucide-react"
 
 import {
   atomicRegistry,
@@ -22,6 +21,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import { Separator } from "@/components/ui/separator"
 import {
   SidebarInset,
@@ -126,7 +126,7 @@ function MobileSidebarTrigger() {
       className="size-7 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
       onClick={toggleSidebar}
     >
-      <MenuIcon />
+      <Icon name="menu" />
       <span className="sr-only">Abrir menu</span>
     </Button>
   )

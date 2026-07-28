@@ -1,6 +1,5 @@
-import { ShieldAlertIcon } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import {
   Item,
   ItemActions,
@@ -15,7 +14,7 @@ export default function ItemIcon() {
     <div className="flex w-full max-w-lg flex-col gap-6">
       <Item variant="outline">
         <ItemMedia variant="icon">
-          <ShieldAlertIcon />
+          <Icon name="gpp_maybe" />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Alerta de segurança</ItemTitle>

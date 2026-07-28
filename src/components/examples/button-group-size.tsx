@@ -1,7 +1,6 @@
-import { PlusIcon } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
+import { Icon } from "@/components/ui/icon"
 
 export default function ButtonGroupSize() {
   return (
@@ -17,7 +16,7 @@ export default function ButtonGroupSize() {
           Grupo
         </Button>
         <Button variant="outline" size="icon-sm">
-          <PlusIcon />
+          <Icon name="add" />
         </Button>
       </ButtonGroup>
       <ButtonGroup>
@@ -25,7 +24,7 @@ export default function ButtonGroupSize() {
         <Button variant="outline">Botão</Button>
         <Button variant="outline">Grupo</Button>
         <Button variant="outline" size="icon">
-          <PlusIcon />
+          <Icon name="add" />
         </Button>
       </ButtonGroup>
       <ButtonGroup>
@@ -39,7 +38,7 @@ export default function ButtonGroupSize() {
           Grupo
         </Button>
         <Button variant="outline" size="icon-lg">
-          <PlusIcon />
+          <Icon name="add" />
         </Button>
       </ButtonGroup>
     </div>

@@ -1,9 +1,8 @@
-import { Link2Icon } from "lucide-react"
-
 import {
   ButtonGroup,
   ButtonGroupText,
 } from "@/components/ui/button-group"
+import { Icon } from "@/components/ui/icon"
 import {
   InputGroup,
   InputGroupAddon,
@@ -21,7 +20,7 @@ export default function InputGroupButtonGroup() {
         <InputGroup>
           <InputGroupInput id="url" />
           <InputGroupAddon align="inline-end">
-            <Link2Icon />
+            <Icon name="link" />
           </InputGroupAddon>
         </InputGroup>
         <ButtonGroupText>.com</ButtonGroupText>

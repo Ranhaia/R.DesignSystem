@@ -1,14 +1,6 @@
 "use client"
 
 import * as React from "react"
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react"
 
 import {
   CommandDialog,
@@ -20,6 +12,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command"
+import { Icon } from "@/components/ui/icon"
 
 export default function CommandDialogDemo() {
   const [open, setOpen] = React.useState(false)
@@ -50,32 +43,32 @@ export default function CommandDialogDemo() {
           <CommandEmpty>Nenhum resultado encontrado.</CommandEmpty>
           <CommandGroup heading="Sugestões">
             <CommandItem>
-              <Calendar />
+              <Icon name="calendar_today" />
               <span>Calendário</span>
             </CommandItem>
             <CommandItem>
-              <Smile />
+              <Icon name="mood" />
               <span>Buscar emoji</span>
             </CommandItem>
             <CommandItem>
-              <Calculator />
+              <Icon name="calculate" />
               <span>Calculadora</span>
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Configurações">
             <CommandItem>
-              <User />
+              <Icon name="person" />
               <span>Perfil</span>
               <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <CreditCard />
+              <Icon name="credit_card" />
               <span>Cobrança</span>
               <CommandShortcut>⌘B</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <Settings />
+              <Icon name="settings" />
               <span>Configurações</span>
               <CommandShortcut>⌘S</CommandShortcut>
             </CommandItem>

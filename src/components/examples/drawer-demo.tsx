@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Minus, Plus } from "lucide-react"
 import { Bar, BarChart, ResponsiveContainer } from "recharts"
 
+import { Icon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
 import {
   Drawer,
@@ -85,7 +85,7 @@ export default function DrawerDemo() {
                 onClick={() => onClick(-10)}
                 disabled={goal <= 200}
               >
-                <Minus />
+                <Icon name="remove" />
                 <span className="sr-only">Diminuir</span>
               </Button>
               <div className="flex-1 text-center">
@@ -103,7 +103,7 @@ export default function DrawerDemo() {
                 onClick={() => onClick(10)}
                 disabled={goal >= 400}
               >
-                <Plus />
+                <Icon name="add" />
                 <span className="sr-only">Aumentar</span>
               </Button>
             </div>

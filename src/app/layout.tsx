@@ -7,7 +7,10 @@ import {
   Poppins,
   Space_Grotesk,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import "material-symbols/rounded.css";
+import "material-symbols/sharp.css";
 import { AppShell } from "@/components/app-shell";
 
 // Uma variável CSS por fonte. Cada preset de estilo (ver globals.css)
@@ -121,6 +124,10 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <AppShell>{children}</AppShell>
+        {/* Vercel Web Analytics — pedido do Rafael pra ter noção de
+            visitantes/pageviews depois do deploy. Componente inerte fora
+            de produção (Vercel), não afeta dev local nem outro host. */}
+        <Analytics />
       </body>
     </html>
   );

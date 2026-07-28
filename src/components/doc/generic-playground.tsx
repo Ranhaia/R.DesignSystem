@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { FileIcon } from "lucide-react"
 
 import { Alert, AlertTitle } from "@/components/ui/alert"
 import { Attachment, AttachmentContent, AttachmentDescription, AttachmentMedia, AttachmentTitle } from "@/components/ui/attachment"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Bubble, BubbleContent } from "@/components/ui/bubble"
+import { Icon } from "@/components/ui/icon"
 import { Item } from "@/components/ui/item"
 import { Label } from "@/components/ui/label"
 import { Marker } from "@/components/ui/marker"
@@ -163,7 +163,7 @@ export const genericPlaygroundRegistry: Record<string, GenericPlaygroundConfig> 
     render: ({ variant, size }) => (
       <Attachment state={variant as never} size={size as never} className="max-w-56">
         <AttachmentMedia>
-          <FileIcon className="size-4" />
+          <Icon name="draft" size={1} />
         </AttachmentMedia>
         <AttachmentContent>
           <AttachmentTitle>arquivo.pdf</AttachmentTitle>

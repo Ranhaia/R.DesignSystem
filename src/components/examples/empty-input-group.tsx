@@ -1,5 +1,4 @@
-import { SearchIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   Empty,
   EmptyContent,
@@ -28,7 +27,7 @@ export default function EmptyInputGroup() {
         <InputGroup className="sm:w-3/4">
           <InputGroupInput placeholder="Busque por páginas..." />
           <InputGroupAddon>
-            <SearchIcon />
+            <Icon name="search" />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">
             <Kbd>/</Kbd>

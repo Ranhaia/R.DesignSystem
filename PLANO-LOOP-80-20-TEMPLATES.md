@@ -1767,3 +1767,24 @@ registro pra retomar quando ele pedir.
 mesmo número de cores de suporte, e como a escala "Pantone/Planos de
 Fundo" se aplicaria (ou não) à estrutura atual de neutros. Fica pra
 quando o Rafael abrir esse loop.
+
+## 2026-07-23 — Vercel Web Analytics
+
+Rafael mostrou o painel "Get Started" da Vercel (0 visitantes ainda) e
+pediu pra ter noção de gente entrando no site.
+
+- `@vercel/analytics` adicionado em `package.json` (`^2.0.1`, versão
+  atual confirmada na registry) — **não instalado no sandbox**: a
+  mesma falha de rede do `next build` (`EAI_AGAIN registry.npmjs.org`)
+  bloqueia `npm install` aqui também, então `node_modules` não tem o
+  pacote ainda. Instala normal no primeiro `npm install` do Rafael
+  (local) ou automaticamente no build da Vercel.
+- `src/app/layout.tsx`: `<Analytics />` (de `@vercel/analytics/next`,
+  a integração específica pra App Router) adicionado dentro do `<body>`,
+  depois do `<AppShell>`. Componente inerte fora da infraestrutura da
+  Vercel — não afeta `next dev` local nem outro host de deploy.
+- **Verificação de tipos**: não roda no sandbox sem o pacote instalado
+  (import não resolve). Revisão manual: uso segue exatamente a doc
+  oficial (import de `@vercel/analytics/next`, componente sem props
+  obrigatórias, dentro do body). Rafael precisa confirmar com
+  `npm run dev`/`npm run build` local depois do `npm install`.

@@ -2,13 +2,13 @@
 
 import * as React from "react"
 import { addDays } from "date-fns"
-import { CalendarIcon } from "lucide-react"
 import { type DateRange } from "react-day-picker"
 
 import { formatarDataCurta } from "@/lib/date-formatters"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
+import { Icon } from "@/components/ui/icon"
 import {
   Popover,
   PopoverContent,
@@ -37,7 +37,7 @@ export default function DatePickerWithRange({
               !date && "text-muted-foreground"
             )}
           >
-            <CalendarIcon />
+            <Icon name="calendar_today" />
             {date?.from ? (
               date.to ? (
                 <>

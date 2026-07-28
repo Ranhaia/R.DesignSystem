@@ -1,5 +1,4 @@
-import { HelpCircle, InfoIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   InputGroup,
   InputGroupAddon,
@@ -25,7 +24,7 @@ export default function InputGroupTooltip() {
                 aria-label="Informações"
                 size="icon-xs"
               >
-                <InfoIcon />
+                <Icon name="info" />
               </InputGroupButton>
             </TooltipTrigger>
             <TooltipContent>
@@ -44,7 +43,7 @@ export default function InputGroupTooltip() {
                 aria-label="Ajuda"
                 size="icon-xs"
               >
-                <HelpCircle />
+                <Icon name="help" />
               </InputGroupButton>
             </TooltipTrigger>
             <TooltipContent>
@@ -63,7 +62,7 @@ export default function InputGroupTooltip() {
                 aria-label="Ajuda"
                 size="icon-xs"
               >
-                <HelpCircle />
+                <Icon name="help" />
               </InputGroupButton>
             </InputGroupAddon>
           </TooltipTrigger>

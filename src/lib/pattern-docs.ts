@@ -31,12 +31,12 @@ export const patternDocs: Record<string, PatternDoc> = {
     dontGuidelines: ["[a preencher]"],
     code: `import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 import { Button } from "@/components/ui/button"
-import { InboxIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 
 <Empty className="border">
   <EmptyHeader>
     <EmptyMedia variant="icon">
-      <InboxIcon />
+      <Icon name="inbox" />
     </EmptyMedia>
     <EmptyTitle>Nenhuma apólice encontrada</EmptyTitle>
     <EmptyDescription>Crie a primeira apólice para começar.</EmptyDescription>
@@ -89,7 +89,7 @@ function handleLoad() {
 useEffect(() => { titleRef.current?.focus() }, [hasError])
 
 <Alert variant="destructive">
-  <ServerCrashIcon />
+  <Icon name="cloud_off" />
   <AlertTitle ref={titleRef} tabIndex={-1}>
     Não foi possível carregar o sinistro
   </AlertTitle>
@@ -135,7 +135,7 @@ useEffect(() => { titleRef.current?.focus() }, [hasError])
     dontGuidelines: ["[a preencher]"],
     code: `{saved && (
   <Alert>
-    <CheckCircle2Icon />
+    <Icon name="check_circle" />
     <AlertTitle>Alterações salvas</AlertTitle>
     <AlertDescription>
       Os dados da apólice foram atualizados com sucesso.
@@ -165,7 +165,7 @@ useEffect(() => { titleRef.current?.focus() }, [hasError])
     code: `const results = items.filter((item) => matches(item, query))
 
 <InputGroup>
-  <InputGroupAddon><SearchIcon /></InputGroupAddon>
+  <InputGroupAddon><Icon name="search" /></InputGroupAddon>
   <InputGroupInput
     value={query}
     onChange={(e) => setQuery(e.target.value)}
@@ -357,7 +357,7 @@ useEffect(() => { headingRef.current?.focus() }, [step])
     dontGuidelines: ["[a preencher]"],
     code: `<Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline" size="sm"><SlidersHorizontalIcon />Filtros</Button>
+    <Button variant="outline" size="sm"><Icon name="tune" />Filtros</Button>
   </PopoverTrigger>
   <PopoverContent>
     {categorias.map((c) => (
@@ -394,20 +394,20 @@ useEffect(() => { headingRef.current?.focus() }, [step])
     dontGuidelines: ["[a preencher]"],
     code: `// Ícone é do CAMPO, não do valor — "Produto A", "Produto B"... usam o
 // mesmo ícone. Única fonte, reaproveitada no controle E no chip.
-const CAMPO_ICONE = { produto: BarChart3Icon, corretora: ShieldIcon, /* ... */ }
+const CAMPO_ICONE = { produto: "bar_chart", corretora: "shield", /* ... */ }
 
 <Button variant="outline" size="sm">
-  <BarChart3Icon aria-hidden="true" />
+  <Icon name="bar_chart" aria-hidden="true" />
   Produto
   {produtos.length > 0 && <Badge variant="secondary">{produtos.length}</Badge>}
 </Button>
 
 {chips.map((chip) => (
   <Badge key={chip.id} variant="secondary" className="gap-1.5">
-    <chip.icon aria-hidden="true" />
+    <Icon name={chip.icon} aria-hidden="true" />
     {chip.label}
     <button aria-label={\`Remover filtro \${chip.campo}: \${chip.label}\`} onClick={chip.onRemove}>
-      <XIcon className="size-3" />
+      <Icon name="close" size={0.75} />
     </button>
   </Badge>
 ))}`,
@@ -429,12 +429,12 @@ const CAMPO_ICONE = { produto: BarChart3Icon, corretora: ShieldIcon, /* ... */ }
     code: `<div role="button" tabIndex={0} onClick={() => inputRef.current?.click()}
   onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") inputRef.current?.click() }}
   onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
-  <CloudUploadIcon />
+  <Icon name="cloud_upload" />
   <input ref={inputRef} type="file" multiple className="sr-only" onChange={handleFiles} />
 </div>
 
 <Attachment state={item.state} size="sm">
-  <AttachmentMedia><FileIcon /></AttachmentMedia>
+  <AttachmentMedia><Icon name="draft" /></AttachmentMedia>
   <AttachmentContent>
     <AttachmentTitle>{item.nome}</AttachmentTitle>
     <AttachmentDescription>{stateLabel[item.state]}</AttachmentDescription>

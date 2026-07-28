@@ -1,11 +1,10 @@
-import { Plus } from "lucide-react"
-
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import {
   Item,
   ItemActions,
@@ -36,7 +35,7 @@ export default function ItemAvatar() {
             className="rounded-full"
             aria-label="Convidar"
           >
-            <Plus />
+            <Icon name="add" />
           </Button>
         </ItemActions>
       </Item>

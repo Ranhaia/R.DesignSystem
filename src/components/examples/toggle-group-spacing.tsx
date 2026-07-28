@@ -1,5 +1,4 @@
-import { BookmarkIcon, HeartIcon, StarIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   ToggleGroup,
   ToggleGroupItem,
@@ -11,25 +10,25 @@ export default function ToggleGroupSpacing() {
       <ToggleGroupItem
         value="star"
         aria-label="Alternar estrela"
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-500 data-[state=on]:*:[svg]:stroke-yellow-500"
+        className="data-[state=on]:bg-transparent data-[state=on]:text-yellow-500"
       >
-        <StarIcon />
+        <Icon name="star" />
         Estrela
       </ToggleGroupItem>
       <ToggleGroupItem
         value="heart"
         aria-label="Alternar coração"
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500"
+        className="data-[state=on]:bg-transparent data-[state=on]:text-red-500"
       >
-        <HeartIcon />
+        <Icon name="favorite" />
         Coração
       </ToggleGroupItem>
       <ToggleGroupItem
         value="bookmark"
         aria-label="Alternar favorito"
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+        className="data-[state=on]:bg-transparent data-[state=on]:text-blue-500"
       >
-        <BookmarkIcon />
+        <Icon name="bookmark" />
         Favorito
       </ToggleGroupItem>
     </ToggleGroup>

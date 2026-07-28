@@ -1,6 +1,6 @@
 import { IconFolderCode } from "@tabler/icons-react"
-import { ArrowUpRightIcon } from "lucide-react"
 
+import { Icon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
 import {
   Empty,
@@ -37,7 +37,7 @@ export default function EmptyDemo() {
         size="sm"
       >
         <a href="#">
-          Saiba mais <ArrowUpRightIcon />
+          Saiba mais <Icon name="arrow_outward" />
         </a>
       </Button>
     </Empty>

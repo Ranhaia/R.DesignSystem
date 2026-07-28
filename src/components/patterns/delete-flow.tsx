@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Trash2Icon } from "lucide-react"
 import { toast } from "sonner"
 
 import {
@@ -16,6 +15,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import { Item, ItemActions, ItemContent, ItemTitle } from "@/components/ui/item"
 
 type Documento = { id: string; nome: string }
@@ -77,7 +77,7 @@ export function DeleteFlowPattern() {
                   variant="ghost"
                   aria-label={`Excluir ${doc.nome}`}
                 >
-                  <Trash2Icon />
+                  <Icon name="delete" />
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>

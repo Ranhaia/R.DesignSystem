@@ -6,6 +6,8 @@ import { stylesList } from "@/lib/styles-registry"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import type { MaterialSymbol } from "material-symbols"
+import { Icon } from "@/components/ui/icon"
 
 const colorTokens: { token: string; label: string }[] = [
   { token: "--background", label: "background" },
@@ -31,6 +33,14 @@ const sidebarTokens: { token: string; label: string }[] = [
   { token: "--sidebar-primary", label: "sidebar-primary" },
   { token: "--sidebar-accent", label: "sidebar-accent" },
   { token: "--sidebar-border", label: "sidebar-border" },
+]
+
+const iconSampler: { name: MaterialSymbol; label: string }[] = [
+  { name: "home", label: "home" },
+  { name: "search", label: "search" },
+  { name: "favorite", label: "favorite" },
+  { name: "settings", label: "settings" },
+  { name: "delete", label: "delete" },
 ]
 
 const typeScale: { label: string; className: string; sizeHint: string }[] = [
@@ -214,6 +224,24 @@ export default function StyleGuidePage() {
         <CardContent className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {sidebarTokens.map((c) => (
             <Swatch key={c.token} token={c.token} label={c.label} />
+          ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Ícones</CardTitle>
+          <CardDescription>
+            Material Symbols — variante e eixos (fill/weight/grade/optical size)
+            do estilo ativo, via --icon-* em globals.css.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid grid-cols-3 gap-4 sm:grid-cols-5">
+          {iconSampler.map((i) => (
+            <div key={i.name} className="flex flex-col items-center gap-1.5 rounded-lg border p-4">
+              <Icon name={i.name} size={1.5} />
+              <p className="text-muted-foreground font-mono text-xs">{i.label}</p>
+            </div>
           ))}
         </CardContent>
       </Card>

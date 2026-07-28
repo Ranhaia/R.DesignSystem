@@ -3,13 +3,6 @@
 import * as React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import {
-  CircleAlertIcon,
-  EyeIcon,
-  EyeOffIcon,
-  LogInIcon,
-  ShieldCheckIcon,
-} from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
@@ -24,6 +17,7 @@ import {
 } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Field, FieldError, FieldLabel } from "@/components/ui/field"
+import { Icon } from "@/components/ui/icon"
 import { Input } from "@/components/ui/input"
 import {
   InputGroup,
@@ -180,7 +174,7 @@ export default function LoginErroValidacaoTemplate() {
                 <Badge variant="outline">Ambiente de demonstração</Badge>
               </div>
               <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-full">
-                <ShieldCheckIcon className="size-5" />
+                <Icon name="verified_user" size={1.25} />
               </div>
               <CardTitle asChild>
                 <h2>Entrar</h2>
@@ -194,7 +188,7 @@ export default function LoginErroValidacaoTemplate() {
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 {erroCredenciais && (
                   <Alert variant="destructive">
-                    <CircleAlertIcon />
+                    <Icon name="error" />
                     <AlertTitle ref={bannerRef} tabIndex={-1}>
                       E-mail ou senha incorretos
                     </AlertTitle>
@@ -247,7 +241,11 @@ export default function LoginErroValidacaoTemplate() {
                         disabled={carregando}
                         onClick={() => setSenhaVisivel((visivel) => !visivel)}
                       >
-                        {senhaVisivel ? <EyeOffIcon /> : <EyeIcon />}
+                        {senhaVisivel ? (
+                          <Icon name="visibility_off" />
+                        ) : (
+                          <Icon name="visibility" />
+                        )}
                       </InputGroupButton>
                     </InputGroupAddon>
                   </InputGroup>
@@ -291,7 +289,7 @@ export default function LoginErroValidacaoTemplate() {
                     </>
                   ) : (
                     <>
-                      <LogInIcon />
+                      <Icon name="login" />
                       Entrar
                     </>
                   )}

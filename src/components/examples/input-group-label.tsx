@@ -1,5 +1,4 @@
-import { InfoIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   InputGroup,
   InputGroupAddon,
@@ -36,7 +35,7 @@ export default function InputGroupLabel() {
                 className="ml-auto rounded-full"
                 size="icon-xs"
               >
-                <InfoIcon />
+                <Icon name="info" />
               </InputGroupButton>
             </TooltipTrigger>
             <TooltipContent>

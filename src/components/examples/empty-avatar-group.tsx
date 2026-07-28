@@ -1,5 +1,4 @@
-import { PlusIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   Avatar,
   AvatarFallback,
@@ -48,7 +47,7 @@ export default function EmptyAvatarGroup() {
       </EmptyHeader>
       <EmptyContent>
         <Button size="sm">
-          <PlusIcon />
+          <Icon name="add" />
           Convidar membros
         </Button>
       </EmptyContent>

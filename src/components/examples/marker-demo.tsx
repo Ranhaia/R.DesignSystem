@@ -1,5 +1,4 @@
-import { CircleCheckIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker"
 
 export default function MarkerDemo() {
@@ -7,7 +6,7 @@ export default function MarkerDemo() {
     <div className="flex flex-col gap-3">
       <Marker>
         <MarkerIcon>
-          <CircleCheckIcon />
+          <Icon name="check_circle" />
         </MarkerIcon>
         <MarkerContent>Tokens de cor aplicados</MarkerContent>
       </Marker>

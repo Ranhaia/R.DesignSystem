@@ -1,5 +1,4 @@
-import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   Item,
   ItemActions,
@@ -20,7 +19,7 @@ export default function ItemLink() {
             </ItemDescription>
           </ItemContent>
           <ItemActions>
-            <ChevronRightIcon className="size-4" />
+            <Icon name="chevron_right" size={1} />
           </ItemActions>
         </a>
       </Item>
@@ -33,7 +32,7 @@ export default function ItemLink() {
             </ItemDescription>
           </ItemContent>
           <ItemActions>
-            <ExternalLinkIcon className="size-4" />
+            <Icon name="open_in_new" size={1} />
           </ItemActions>
         </a>
       </Item>

@@ -1,5 +1,4 @@
-import { HomeIcon, SettingsIcon, UsersIcon } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   Sidebar,
   SidebarContent,
@@ -13,9 +12,9 @@ import {
 } from "@/components/ui/sidebar"
 
 const items = [
-  { title: "Início", icon: HomeIcon },
-  { title: "Time", icon: UsersIcon },
-  { title: "Configurações", icon: SettingsIcon },
+  { title: "Início", icon: "home" as const },
+  { title: "Time", icon: "group" as const },
+  { title: "Configurações", icon: "settings" as const },
 ]
 
 export default function SidebarDemo() {
@@ -33,7 +32,7 @@ export default function SidebarDemo() {
                 {items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton>
-                      <item.icon />
+                      <Icon name={item.icon} />
                       <span>{item.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>

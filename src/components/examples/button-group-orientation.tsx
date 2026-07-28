@@ -1,7 +1,6 @@
-import { MinusIcon, PlusIcon } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
+import { Icon } from "@/components/ui/icon"
 
 export default function ButtonGroupOrientation() {
   return (
@@ -11,10 +10,10 @@ export default function ButtonGroupOrientation() {
       className="h-fit"
     >
       <Button variant="outline" size="icon">
-        <PlusIcon />
+        <Icon name="add" />
       </Button>
       <Button variant="outline" size="icon">
-        <MinusIcon />
+        <Icon name="remove" />
       </Button>
     </ButtonGroup>
   )

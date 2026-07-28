@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { PaletteIcon } from "lucide-react"
 
 import { NavComponents } from "@/components/sidebar-07/nav-components"
 import { NavPatterns } from "@/components/sidebar-07/nav-patterns"
 import { NavTemplates } from "@/components/sidebar-07/nav-templates"
 import { NavUser } from "@/components/sidebar-07/nav-user"
 import { StyleSwitcher } from "@/components/style-switcher"
+import { Icon } from "@/components/ui/icon"
 import { useIsMobile } from "@/hooks/use-mobile"
 import {
   Sidebar,
@@ -53,7 +53,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuItem>
               <SidebarMenuButton asChild isActive={pathname === "/estilo"} tooltip="Folha de estilo">
                 <Link href="/estilo">
-                  <PaletteIcon />
+                  <Icon name="palette" />
                   <span>Folha de estilo</span>
                 </Link>
               </SidebarMenuButton>

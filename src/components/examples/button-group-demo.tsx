@@ -1,17 +1,6 @@
 "use client"
 
 import * as React from "react"
-import {
-  ArchiveIcon,
-  ArrowLeftIcon,
-  CalendarPlusIcon,
-  ClockIcon,
-  ListFilterIcon,
-  MailCheckIcon,
-  MoreHorizontalIcon,
-  TagIcon,
-  Trash2Icon,
-} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
@@ -28,6 +17,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icon } from "@/components/ui/icon"
 
 export default function ButtonGroupDemo() {
   const [label, setLabel] = React.useState("personal")
@@ -36,7 +26,7 @@ export default function ButtonGroupDemo() {
     <ButtonGroup>
       <ButtonGroup className="hidden sm:flex">
         <Button variant="outline" size="icon" aria-label="Voltar">
-          <ArrowLeftIcon />
+          <Icon name="arrow_back" />
         </Button>
       </ButtonGroup>
       <ButtonGroup>
@@ -48,37 +38,37 @@ export default function ButtonGroupDemo() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon" aria-label="Mais opções">
-              <MoreHorizontalIcon />
+              <Icon name="more_horiz" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-52">
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <MailCheckIcon />
+                <Icon name="mark_email_read" />
                 Marcar como lido
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <ArchiveIcon />
+                <Icon name="archive" />
                 Arquivar
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <ClockIcon />
+                <Icon name="schedule" />
                 Adiar
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <CalendarPlusIcon />
+                <Icon name="calendar_add_on" />
                 Adicionar ao calendário
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <ListFilterIcon />
+                <Icon name="filter_list" />
                 Adicionar à lista
               </DropdownMenuItem>
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
-                  <TagIcon />
+                  <Icon name="label" />
                   Rotular como...
                 </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent>
@@ -102,7 +92,7 @@ export default function ButtonGroupDemo() {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem variant="destructive">
-                <Trash2Icon />
+                <Icon name="delete" />
                 Lixeira
               </DropdownMenuItem>
             </DropdownMenuGroup>

@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { SearchIcon } from "lucide-react"
 
 import { Empty, EmptyDescription, EmptyTitle } from "@/components/ui/empty"
+import { Icon } from "@/components/ui/icon"
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group"
 import { Item, ItemContent, ItemTitle } from "@/components/ui/item"
 
@@ -29,7 +29,7 @@ export function SearchExperiencePattern() {
     <div className="space-y-3">
       <InputGroup>
         <InputGroupAddon>
-          <SearchIcon />
+          <Icon name="search" />
         </InputGroupAddon>
         <InputGroupInput
           placeholder="Buscar por número ou titular..."

@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { CloudUploadIcon, FileIcon, Trash2Icon } from "lucide-react"
 
 import {
   Attachment,
@@ -12,6 +11,7 @@ import {
   AttachmentTitle,
 } from "@/components/ui/attachment"
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 
 type UploadState = "idle" | "uploading" | "processing" | "error" | "done"
 
@@ -78,7 +78,7 @@ export function UploadPattern() {
           (dragging ? " border-primary bg-primary/5" : "")
         }
       >
-        <CloudUploadIcon className="text-foreground" />
+        <Icon name="cloud_upload" className="text-foreground" />
         <p>Arraste arquivos aqui ou clique para selecionar</p>
         <input
           ref={inputRef}
@@ -94,7 +94,7 @@ export function UploadPattern() {
           {items.map((item) => (
             <Attachment key={item.id} state={item.state} size="sm">
               <AttachmentMedia>
-                <FileIcon className="size-4" />
+                <Icon name="draft" size={1} />
               </AttachmentMedia>
               <AttachmentContent>
                 <AttachmentTitle>{item.nome}</AttachmentTitle>
@@ -114,7 +114,7 @@ export function UploadPattern() {
                     setItems((prev) => prev.filter((i) => i.id !== item.id))
                   }
                 >
-                  <Trash2Icon />
+                  <Icon name="delete" />
                 </Button>
               </AttachmentActions>
             </Attachment>

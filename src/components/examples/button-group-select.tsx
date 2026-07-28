@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { ArrowRightIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
+import { Icon } from "@/components/ui/icon"
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -49,7 +49,7 @@ export default function ButtonGroupSelect() {
       </ButtonGroup>
       <ButtonGroup>
         <Button aria-label="Enviar" size="icon" variant="outline">
-          <ArrowRightIcon />
+          <Icon name="arrow_forward" />
         </Button>
       </ButtonGroup>
     </ButtonGroup>
