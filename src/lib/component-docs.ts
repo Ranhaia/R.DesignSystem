@@ -810,11 +810,11 @@ import { Button } from "@/components/ui/button"
     doGuidelines: ["[a preencher]"],
     dontGuidelines: ["[a preencher]"],
     code: `import { Item, ItemContent, ItemMedia, ItemTitle } from "@/components/ui/item"
-import { UserIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 
 <Item variant="outline">
   <ItemMedia variant="icon">
-    <UserIcon />
+    <Icon name="person" />
   </ItemMedia>
   <ItemContent>
     <ItemTitle>Rafael Anhaia</ItemTitle>
@@ -845,11 +845,11 @@ import { UserIcon } from "lucide-react"
     doGuidelines: ["[a preencher]"],
     dontGuidelines: ["[a preencher]"],
     code: `import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker"
-import { CheckIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 
 <Marker>
   <MarkerIcon>
-    <CheckIcon />
+    <Icon name="check" />
   </MarkerIcon>
   <MarkerContent>Etapa concluída</MarkerContent>
 </Marker>`,
@@ -876,10 +876,10 @@ import { CheckIcon } from "lucide-react"
     doGuidelines: ["[a preencher]"],
     dontGuidelines: ["[a preencher]"],
     code: `import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { AlertCircleIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 
 <Alert variant="destructive">
-  <AlertCircleIcon />
+  <Icon name="error" />
   <AlertTitle>Erro ao salvar</AlertTitle>
   <AlertDescription>
     Verifique os campos e tente novamente.
@@ -1063,13 +1063,13 @@ import { ButtonGroup } from "@/components/ui/button-group"
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
-import { InboxIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
 
 <Empty>
   <EmptyHeader>
     <EmptyMedia variant="icon">
-      <InboxIcon />
+      <Icon name="inbox" />
     </EmptyMedia>
     <EmptyTitle>Nenhum resultado</EmptyTitle>
     <EmptyDescription>
@@ -1182,11 +1182,11 @@ import { Input } from "@/components/ui/input"
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import { SearchIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 
 <InputGroup>
   <InputGroupAddon>
-    <SearchIcon />
+    <Icon name="search" />
   </InputGroupAddon>
   <InputGroupInput placeholder="Buscar..." />
 </InputGroup>`,
@@ -1335,11 +1335,11 @@ import { SearchIcon } from "lucide-react"
   AttachmentMedia,
   AttachmentTitle,
 } from "@/components/ui/attachment"
-import { FileTextIcon, XIcon } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 
 <Attachment>
   <AttachmentMedia>
-    <FileTextIcon />
+    <Icon name="description" />
   </AttachmentMedia>
   <AttachmentContent>
     <AttachmentTitle>contrato.pdf</AttachmentTitle>
@@ -1347,7 +1347,7 @@ import { FileTextIcon, XIcon } from "lucide-react"
   </AttachmentContent>
   <AttachmentActions>
     <AttachmentAction aria-label="Remover">
-      <XIcon />
+      <Icon name="close" />
     </AttachmentAction>
   </AttachmentActions>
 </Attachment>`,
