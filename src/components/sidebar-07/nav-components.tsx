@@ -1,14 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  AtomIcon,
-  ChevronDownIcon,
-  CombineIcon,
-  NetworkIcon,
-  PuzzleIcon,
-  type LucideIcon,
-} from "lucide-react"
+import type { MaterialSymbol } from "material-symbols"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -24,6 +17,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import { Icon } from "@/components/ui/icon"
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -51,11 +45,11 @@ const categoryLabels: Record<NavCategory, string> = {
 // Escolha decorativa/de wayfinding: Atom literal pra Atoms, Combine
 // (juntar peças) pra Molecules, Network (composição interconectada) pra
 // Organisms, Puzzle pra utilitários/infra que não entram no catálogo.
-const categoryIcons: Record<NavCategory, LucideIcon> = {
-  atom: AtomIcon,
-  molecule: CombineIcon,
-  organism: NetworkIcon,
-  other: PuzzleIcon,
+const categoryIcons: Record<NavCategory, MaterialSymbol> = {
+  atom: "orbit",
+  molecule: "call_merge",
+  organism: "hub",
+  other: "extension",
 }
 
 // Só Atoms/Molecules/Organisms têm página-índice própria (Fase 1) —
@@ -103,7 +97,7 @@ export function NavComponents() {
       {groups.map(({ category, items }) => {
         const href = categoryHref[category]
         const isOpen = openGroups[category] ?? true
-        const CategoryIcon = categoryIcons[category]
+        const categoryIconName = categoryIcons[category]
 
         return (
           <Collapsible
@@ -123,20 +117,20 @@ export function NavComponents() {
                       href={href}
                       className="gap-2 truncate hover:text-sidebar-foreground"
                     >
-                      <CategoryIcon className="size-4 shrink-0 max-md:size-3.5" />
+                      <Icon name={categoryIconName} className="size-4 shrink-0 max-md:size-3.5" />
                       {categoryLabels[category]}
                     </Link>
                   </SidebarGroupLabel>
                 ) : (
                   <SidebarGroupLabel className="min-w-0 flex-1 gap-2">
-                    <CategoryIcon className="size-4 shrink-0 max-md:size-3.5" />
+                    <Icon name={categoryIconName} className="size-4 shrink-0 max-md:size-3.5" />
                     {categoryLabels[category]}
                   </SidebarGroupLabel>
                 )}
                 <CollapsibleTrigger
                   className="flex size-6 shrink-0 items-center justify-center rounded-md text-sidebar-foreground/70 outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground focus-visible:ring-2 focus-visible:ring-sidebar-ring max-md:size-5 [&[data-state=open]>svg]:rotate-180"
                 >
-                  <ChevronDownIcon className="size-4 transition-transform duration-200 max-md:size-3.5" />
+                  <Icon name="keyboard_arrow_down" className="size-4 transition-transform duration-200 max-md:size-3.5" />
                   <span className="sr-only">
                     {isOpen
                       ? `Recolher ${categoryLabels[category]}`
@@ -155,7 +149,7 @@ export function NavComponents() {
                       href={href}
                       className="mx-auto hidden size-8 items-center justify-center rounded-md text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground group-data-[collapsible=icon]:flex"
                     >
-                      <CategoryIcon className="size-4" />
+                      <Icon name={categoryIconName} size={1} />
                     </Link>
                   ) : (
                     <div
@@ -164,7 +158,7 @@ export function NavComponents() {
                       aria-label={categoryLabels[category]}
                       className="mx-auto hidden size-8 items-center justify-center rounded-md text-sidebar-foreground/70 group-data-[collapsible=icon]:flex"
                     >
-                      <CategoryIcon className="size-4" />
+                      <Icon name={categoryIconName} size={1} />
                     </div>
                   )}
                 </TooltipTrigger>

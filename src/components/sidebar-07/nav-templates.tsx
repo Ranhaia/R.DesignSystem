@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { ChevronDownIcon, LayoutTemplateIcon } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -11,6 +10,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import { Icon } from "@/components/ui/icon"
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -38,14 +38,14 @@ export function NavTemplates() {
         <div className="flex items-center gap-1 pr-1 group-data-[collapsible=icon]:hidden max-md:gap-0.5">
           <SidebarGroupLabel asChild className="min-w-0 flex-1">
             <Link href="/templates" className="gap-2 truncate hover:text-sidebar-foreground">
-              <LayoutTemplateIcon className="size-4 shrink-0 max-md:size-3.5" />
+              <Icon name="space_dashboard" className="size-4 shrink-0 max-md:size-3.5" />
               Templates
             </Link>
           </SidebarGroupLabel>
           <CollapsibleTrigger
             className="flex size-6 shrink-0 items-center justify-center rounded-md text-sidebar-foreground/70 outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground focus-visible:ring-2 focus-visible:ring-sidebar-ring max-md:size-5 [&[data-state=open]>svg]:rotate-180"
           >
-            <ChevronDownIcon className="size-4 transition-transform duration-200 max-md:size-3.5" />
+            <Icon name="keyboard_arrow_down" className="size-4 transition-transform duration-200 max-md:size-3.5" />
             <span className="sr-only">
               {isOpen ? "Recolher Templates" : "Expandir Templates"}
             </span>
@@ -58,7 +58,7 @@ export function NavTemplates() {
               href="/templates"
               className="mx-auto hidden size-8 items-center justify-center rounded-md text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground group-data-[collapsible=icon]:flex"
             >
-              <LayoutTemplateIcon className="size-4" />
+              <Icon name="space_dashboard" size={1} />
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right" align="center">
