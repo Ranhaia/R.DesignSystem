@@ -212,6 +212,20 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
+  /* Material Symbols: duas variáveis fixas (nome de fonte real, carregada
+     em layout.tsx) que cada preset referencia via --icon-font-family,
+     conforme o preset for "rounded" ou "sharp". */
+  --font-material-rounded: "Material Symbols Rounded";
+  --font-material-sharp: "Material Symbols Sharp";
+
+  /* Eixos do Material Symbols para o preset Padrão (rounded, sem fill,
+     peso regular, sem grade, tamanho óptico 24 — ver tabela na spec). */
+  --icon-font-family: var(--font-material-rounded);
+  --icon-fill: 0;
+  --icon-weight: 400;
+  --icon-grade: 0;
+  --icon-optical-size: 24;
+
   /* Elevação: cada nível é uma sombra completa, não só uma cor.
      Estilos com identidade "flat" zeram isso; estilos "soft" usam blur alto. */
   --shadow-2xs: 0 1px 2px 0 oklch(0% 0 0 / 0.04);
@@ -504,6 +518,11 @@
   --radius: 0.2rem;
   --hero-speed: 0.35;
   --hero-amplitude: 0.7;
+  --icon-font-family: var(--font-material-sharp);
+  --icon-fill: 0;
+  --icon-weight: 300;
+  --icon-grade: 0;
+  --icon-optical-size: 24;
   --shadow-2xs: 0 0 0 0 transparent;
   --shadow-xs: 0 1px 1px 0 oklch(0% 0 0 / 0.04);
   --shadow-sm: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
@@ -601,6 +620,11 @@
   --border-width: 2px;
   --hero-speed: 1.4;
   --hero-amplitude: 1.3;
+  --icon-font-family: var(--font-material-sharp);
+  --icon-fill: 0;
+  --icon-weight: 500;
+  --icon-grade: -25;
+  --icon-optical-size: 20;
   --shadow-2xs: 0 1px 0 0 oklch(0% 0 0 / 0.1);
   --shadow-xs: 0 2px 0 0 oklch(0% 0 0 / 0.12);
   --shadow-sm: 0 2px 0 0 oklch(0% 0 0 / 0.9);
@@ -684,6 +708,11 @@
   --radius: 1.35rem;
   --hero-speed: 0.5;
   --hero-amplitude: 0.8;
+  --icon-font-family: var(--font-material-rounded);
+  --icon-fill: 1;
+  --icon-weight: 400;
+  --icon-grade: 200;
+  --icon-optical-size: 24;
   --shadow-2xs: 0 2px 8px -2px oklch(0.6 0.2 15 / 0.06);
   --shadow-xs: 0 4px 12px -2px oklch(0.6 0.2 15 / 0.08);
   --shadow-sm: 0 6px 16px -4px oklch(0.6 0.2 15 / 0.12);
@@ -790,6 +819,11 @@
   --radius: 0.75rem;
   --hero-speed: 0.9;
   --hero-amplitude: 1.5;
+  --icon-font-family: var(--font-material-rounded);
+  --icon-fill: 0;
+  --icon-weight: 400;
+  --icon-grade: -25;
+  --icon-optical-size: 24;
 
   /* Primitivos deste tema (midnight/claro — novo). */
   --midnight-action: #6D37D2;
