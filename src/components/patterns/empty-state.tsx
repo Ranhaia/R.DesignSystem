@@ -1,6 +1,5 @@
 "use client"
 
-import { InboxIcon } from "lucide-react"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
@@ -12,6 +11,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
+import { Icon } from "@/components/ui/icon"
 
 // Pattern: Empty State — composição real do Molecule "empty" (já catalogado)
 // com uma ação primária. Usa a variante "icon" do EmptyMedia (fundo
@@ -21,7 +21,7 @@ export function EmptyStatePattern() {
     <Empty className="border">
       <EmptyHeader>
         <EmptyMedia variant="icon">
-          <InboxIcon />
+          <Icon name="inbox" />
         </EmptyMedia>
         <EmptyTitle>Nenhuma apólice encontrada</EmptyTitle>
         <EmptyDescription>

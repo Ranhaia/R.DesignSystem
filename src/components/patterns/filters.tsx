@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { SlidersHorizontalIcon, XIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Icon } from "@/components/ui/icon"
 import { Label } from "@/components/ui/label"
 import {
   Popover,
@@ -49,7 +49,7 @@ export function FiltersPattern() {
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="outline" size="sm">
-              <SlidersHorizontalIcon />
+              <Icon name="tune" />
               Filtros
             </Button>
           </PopoverTrigger>
@@ -77,7 +77,7 @@ export function FiltersPattern() {
               onClick={() => toggle(categoria)}
               className="rounded-full hover:bg-secondary-foreground/10"
             >
-              <XIcon className="size-3" />
+              <Icon name="close" size={0.75} />
             </button>
           </Badge>
         ))}

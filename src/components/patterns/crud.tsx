@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { PencilIcon, PlusIcon, Trash2Icon } from "lucide-react"
 import { toast } from "sonner"
 
 import {
@@ -24,6 +23,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { Field, FieldContent, FieldLabel } from "@/components/ui/field"
+import { Icon } from "@/components/ui/icon"
 import { Input } from "@/components/ui/input"
 import {
   Table,
@@ -88,7 +88,7 @@ export function CrudPattern() {
     <div className="space-y-3">
       <div className="flex justify-end">
         <Button size="sm" onClick={openCreate}>
-          <PlusIcon />
+          <Icon name="add" />
           Novo corretor
         </Button>
       </div>
@@ -113,7 +113,7 @@ export function CrudPattern() {
                   aria-label={`Editar ${item.nome}`}
                   onClick={() => openEdit(item)}
                 >
-                  <PencilIcon />
+                  <Icon name="edit" />
                 </Button>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
@@ -122,7 +122,7 @@ export function CrudPattern() {
                       variant="ghost"
                       aria-label={`Excluir ${item.nome}`}
                     >
-                      <Trash2Icon />
+                      <Icon name="delete" />
                     </Button>
                   </AlertDialogTrigger>
                   <AlertDialogContent>

@@ -1,16 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  BarChart3Icon,
-  CalendarIcon,
-  CheckIcon,
-  ClipboardIcon,
-  ShieldIcon,
-  UserIcon,
-  XIcon,
-  type LucideIcon,
-} from "lucide-react"
+import type { MaterialSymbol } from "material-symbols"
 import { type DateRange } from "react-day-picker"
 
 import { formatarDataCurta } from "@/lib/date-formatters"
@@ -26,6 +17,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
+import { Icon } from "@/components/ui/icon"
 import {
   Popover,
   PopoverContent,
@@ -104,12 +96,12 @@ const STATUS_OPCOES: Opcao[] = [
 // Única fonte do ícone por campo — consumida pelo controle (trigger) e
 // pelo chip do resultado. Trocar o ícone de "Produto" aqui muda nos dois
 // lugares ao mesmo tempo, sem duplicar.
-const CAMPO_ICONE: Record<string, LucideIcon> = {
-  produto: BarChart3Icon,
-  corretora: ShieldIcon,
-  segurado: UserIcon,
-  status: ClipboardIcon,
-  periodo: CalendarIcon,
+const CAMPO_ICONE: Record<string, MaterialSymbol> = {
+  produto: "bar_chart",
+  corretora: "shield",
+  segurado: "person",
+  status: "assignment",
+  periodo: "calendar_today",
 }
 
 const COTACOES = [
@@ -127,7 +119,7 @@ function rotulo(opcoes: Opcao[], value: string) {
 interface ChipAtivo {
   id: string
   campo: string
-  icon: LucideIcon
+  icon: MaterialSymbol
   label: string
   onRemove: () => void
 }
@@ -233,7 +225,7 @@ export function FilterPanelPattern() {
         <Popover open={produtoOpen} onOpenChange={setProdutoOpen}>
           <PopoverTrigger asChild>
             <Button variant="outline" size="sm" className="gap-1.5">
-              <BarChart3Icon aria-hidden="true" />
+              <Icon name="bar_chart" aria-hidden="true" />
               Produto
               {produtos.length > 0 && (
                 <Badge variant="secondary" className="ml-0.5 rounded-sm px-1">
@@ -255,7 +247,8 @@ export function FilterPanelPattern() {
                       onSelect={() => toggleProduto(opcao.value)}
                     >
                       {opcao.label}
-                      <CheckIcon
+                      <Icon
+                        name="check"
                         className={cn(
                           "ml-auto",
                           produtos.includes(opcao.value)
@@ -275,7 +268,7 @@ export function FilterPanelPattern() {
         <Popover open={corretoraOpen} onOpenChange={setCorretoraOpen}>
           <PopoverTrigger asChild>
             <Button variant="outline" size="sm" className="gap-1.5">
-              <ShieldIcon aria-hidden="true" />
+              <Icon name="shield" aria-hidden="true" />
               {corretora ? rotulo(CORRETORAS, corretora) : "Corretora"}
             </Button>
           </PopoverTrigger>
@@ -295,7 +288,8 @@ export function FilterPanelPattern() {
                       }}
                     >
                       {opcao.label}
-                      <CheckIcon
+                      <Icon
+                        name="check"
                         className={cn(
                           "ml-auto",
                           corretora === opcao.value ? "opacity-100" : "opacity-0"
@@ -315,7 +309,7 @@ export function FilterPanelPattern() {
         <Popover open={seguradoOpen} onOpenChange={setSeguradoOpen}>
           <PopoverTrigger asChild>
             <Button variant="outline" size="sm" className="gap-1.5">
-              <UserIcon aria-hidden="true" />
+              <Icon name="person" aria-hidden="true" />
               {segurado ? rotulo(SEGURADOS, segurado) : "Segurado ou Tomador"}
             </Button>
           </PopoverTrigger>
@@ -335,7 +329,8 @@ export function FilterPanelPattern() {
                       }}
                     >
                       {opcao.label}
-                      <CheckIcon
+                      <Icon
+                        name="check"
                         className={cn(
                           "ml-auto",
                           segurado === opcao.value ? "opacity-100" : "opacity-0"
@@ -352,7 +347,7 @@ export function FilterPanelPattern() {
         {/* Status — Select nativo (lista curta, mutuamente exclusiva) */}
         <Select value={status} onValueChange={setStatus}>
           <SelectTrigger size="sm" className="w-40">
-            <ClipboardIcon aria-hidden="true" />
+            <Icon name="assignment" aria-hidden="true" />
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
@@ -373,7 +368,7 @@ export function FilterPanelPattern() {
               size="sm"
               className={cn("gap-1.5", !periodo && "text-muted-foreground")}
             >
-              <CalendarIcon aria-hidden="true" />
+              <Icon name="calendar_today" aria-hidden="true" />
               {periodo?.from ? (
                 periodo.to ? (
                   <>
@@ -408,7 +403,7 @@ export function FilterPanelPattern() {
           <span className="text-sm font-medium">Filtros ativos:</span>
           {chips.map((chip) => (
             <Badge key={chip.id} variant="secondary" className="gap-1.5">
-              <chip.icon aria-hidden="true" />
+              <Icon name={chip.icon} aria-hidden="true" />
               {chip.label}
               <button
                 type="button"
@@ -416,7 +411,7 @@ export function FilterPanelPattern() {
                 onClick={chip.onRemove}
                 className="rounded-full hover:bg-secondary-foreground/10"
               >
-                <XIcon className="size-3" />
+                <Icon name="close" size={0.75} />
               </button>
             </Badge>
           ))}
