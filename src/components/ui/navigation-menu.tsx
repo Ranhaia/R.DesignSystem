@@ -1,8 +1,8 @@
 import * as React from "react"
 import { cva } from "class-variance-authority"
-import { ChevronDownIcon } from "lucide-react"
 import { NavigationMenu as NavigationMenuPrimitive } from "radix-ui"
 
+import { Icon } from "@/components/ui/icon"
 import { cn } from "@/lib/utils"
 
 function NavigationMenu({
@@ -74,8 +74,10 @@ function NavigationMenuTrigger({
       {...props}
     >
       {children}{" "}
-      <ChevronDownIcon
-        className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
+      <Icon
+        name="keyboard_arrow_down"
+        size={0.75}
+        className="relative top-[1px] ml-1 transition duration-300 group-data-[state=open]:rotate-180"
         aria-hidden="true"
       />
     </NavigationMenuPrimitive.Trigger>

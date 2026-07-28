@@ -1,6 +1,6 @@
 import * as React from "react"
-import { ChevronDownIcon } from "lucide-react"
 
+import { Icon } from "@/components/ui/icon"
 import { cn } from "@/lib/utils"
 
 function NativeSelect({
@@ -24,8 +24,10 @@ function NativeSelect({
         )}
         {...props}
       />
-      <ChevronDownIcon
-        className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-muted-foreground opacity-50 select-none"
+      <Icon
+        name="keyboard_arrow_down"
+        size={1}
+        className="pointer-events-none absolute top-1/2 right-3.5 -translate-y-1/2 text-muted-foreground opacity-50 select-none"
         aria-hidden="true"
         data-slot="native-select-icon"
       />

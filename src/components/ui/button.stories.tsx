@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
-import { Download, Trash2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import ButtonAsChild from "@/components/examples/button-as-child"
 import ButtonLoading from "@/components/examples/button-loading"
 import ButtonRounded from "@/components/examples/button-rounded"
@@ -67,7 +67,7 @@ export const Disabled: Story = { args: { disabled: true } }
 export const IconAndLabel: Story = {
   args: {
     children: undefined,
-    icon: <Download />,
+    icon: <Icon name="download" />,
     label: "Baixar",
   },
 }
@@ -83,7 +83,7 @@ export const IconOnly: Story = {
   args: {
     children: undefined,
     size: "icon",
-    icon: <Trash2 />,
+    icon: <Icon name="delete" />,
     label: undefined,
     "aria-label": "Excluir",
   },
