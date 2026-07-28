@@ -1,16 +1,5 @@
 "use client"
 
-import {
-  AlertTriangleIcon,
-  CheckIcon,
-  ChevronDownIcon,
-  CopyIcon,
-  ShareIcon,
-  TrashIcon,
-  UserRoundXIcon,
-  VolumeOffIcon,
-} from "lucide-react"
-
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
 import {
@@ -21,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icon } from "@/components/ui/icon"
 
 export default function ButtonGroupDropdown() {
   return (
@@ -29,40 +19,40 @@ export default function ButtonGroupDropdown() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="pl-2!">
-            <ChevronDownIcon />
+            <Icon name="keyboard_arrow_down" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="[--radius:1rem]">
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              <VolumeOffIcon />
+              <Icon name="volume_off" />
               Silenciar conversa
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <CheckIcon />
+              <Icon name="check" />
               Marcar como lida
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <AlertTriangleIcon />
+              <Icon name="warning" />
               Denunciar conversa
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <UserRoundXIcon />
+              <Icon name="person_cancel" />
               Bloquear usuário
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <ShareIcon />
+              <Icon name="share" />
               Compartilhar conversa
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <CopyIcon />
+              <Icon name="content_copy" />
               Copiar conversa
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem variant="destructive">
-              <TrashIcon />
+              <Icon name="delete" />
               Excluir conversa
             </DropdownMenuItem>
           </DropdownMenuGroup>

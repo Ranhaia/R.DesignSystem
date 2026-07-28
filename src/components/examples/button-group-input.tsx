@@ -1,7 +1,6 @@
-import { SearchIcon } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
+import { Icon } from "@/components/ui/icon"
 import { Input } from "@/components/ui/input"
 
 export default function ButtonGroupInput() {
@@ -9,7 +8,7 @@ export default function ButtonGroupInput() {
     <ButtonGroup>
       <Input placeholder="Buscar..." />
       <Button variant="outline" aria-label="Buscar">
-        <SearchIcon />
+        <Icon name="search" />
       </Button>
     </ButtonGroup>
   )

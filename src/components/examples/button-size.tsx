@@ -1,6 +1,5 @@
-import { ArrowUpRightIcon } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 
 export default function ButtonSize() {
   return (
@@ -10,13 +9,13 @@ export default function ButtonSize() {
           Pequeno
         </Button>
         <Button size="icon-sm" aria-label="Enviar" variant="outline">
-          <ArrowUpRightIcon />
+          <Icon name="arrow_outward" />
         </Button>
       </div>
       <div className="flex items-start gap-2">
         <Button variant="outline">Padrão</Button>
         <Button size="icon" aria-label="Enviar" variant="outline">
-          <ArrowUpRightIcon />
+          <Icon name="arrow_outward" />
         </Button>
       </div>
       <div className="flex items-start gap-2">
@@ -24,7 +23,7 @@ export default function ButtonSize() {
           Grande
         </Button>
         <Button size="icon-lg" aria-label="Enviar" variant="outline">
-          <ArrowUpRightIcon />
+          <Icon name="arrow_outward" />
         </Button>
       </div>
     </div>

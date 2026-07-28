@@ -1,5 +1,4 @@
-import { Bold, Italic, Underline } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import {
   ToggleGroup,
   ToggleGroupItem,
@@ -9,13 +8,13 @@ export default function ToggleGroupDemo() {
   return (
     <ToggleGroup variant="outline" type="multiple">
       <ToggleGroupItem value="bold" aria-label="Alternar negrito">
-        <Bold className="h-4 w-4" />
+        <Icon name="format_bold" size={1} />
       </ToggleGroupItem>
       <ToggleGroupItem value="italic" aria-label="Alternar itálico">
-        <Italic className="h-4 w-4" />
+        <Icon name="format_italic" size={1} />
       </ToggleGroupItem>
       <ToggleGroupItem value="strikethrough" aria-label="Alternar tachado">
-        <Underline className="h-4 w-4" />
+        <Icon name="format_underlined" size={1} />
       </ToggleGroupItem>
     </ToggleGroup>
   )

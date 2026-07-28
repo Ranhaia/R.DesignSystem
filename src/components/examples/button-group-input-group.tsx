@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { AudioLinesIcon, PlusIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
+import { Icon } from "@/components/ui/icon"
 import {
   InputGroup,
   InputGroupAddon,
@@ -24,7 +24,7 @@ export default function ButtonGroupInputGroup() {
     <ButtonGroup className="[--radius:9999rem]">
       <ButtonGroup>
         <Button variant="outline" size="icon">
-          <PlusIcon />
+          <Icon name="add" />
         </Button>
       </ButtonGroup>
       <ButtonGroup>
@@ -45,7 +45,7 @@ export default function ButtonGroupInputGroup() {
                   className="data-[active=true]:bg-orange-100 data-[active=true]:text-orange-700 dark:data-[active=true]:bg-orange-800 dark:data-[active=true]:text-orange-100"
                   aria-pressed={voiceEnabled}
                 >
-                  <AudioLinesIcon />
+                  <Icon name="graphic_eq" />
                 </InputGroupButton>
               </TooltipTrigger>
               <TooltipContent>Modo de voz</TooltipContent>

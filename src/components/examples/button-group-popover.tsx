@@ -1,7 +1,6 @@
-import { BotIcon, ChevronDownIcon } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
+import { Icon } from "@/components/ui/icon"
 import {
   Popover,
   PopoverContent,
@@ -14,12 +13,12 @@ export default function ButtonGroupPopover() {
   return (
     <ButtonGroup>
       <Button variant="outline">
-        <BotIcon /> Copilot
+        <Icon name="smart_toy" /> Copilot
       </Button>
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline" size="icon" aria-label="Abrir popover">
-            <ChevronDownIcon />
+            <Icon name="keyboard_arrow_down" />
           </Button>
         </PopoverTrigger>
         <PopoverContent align="end" className="rounded-xl p-0 text-sm">

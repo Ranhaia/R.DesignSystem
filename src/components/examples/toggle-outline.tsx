@@ -1,11 +1,10 @@
-import { Italic } from "lucide-react"
-
+import { Icon } from "@/components/ui/icon"
 import { Toggle } from "@/components/ui/toggle"
 
 export default function ToggleOutline() {
   return (
     <Toggle variant="outline" aria-label="Alternar itálico">
-      <Italic />
+      <Icon name="format_italic" />
     </Toggle>
   )
 }
