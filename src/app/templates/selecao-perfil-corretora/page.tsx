@@ -3,14 +3,6 @@
 import * as React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  CircleAlertIcon,
-  RotateCcwIcon,
-  UserCogIcon,
-  UserXIcon,
-} from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -41,6 +33,7 @@ import {
   FieldSet,
   FieldTitle,
 } from "@/components/ui/field"
+import { Icon } from "@/components/ui/icon"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import {
@@ -239,7 +232,7 @@ export default function SelecaoPerfilCorretoraTemplate() {
                 <Badge variant="outline">Ambiente de demonstração</Badge>
               </div>
               <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-full">
-                <UserCogIcon className="size-5" />
+                <Icon name="manage_accounts" size={1.25} />
               </div>
               <CardTitle asChild>
                 <h2>Escolha como continuar</h2>
@@ -266,7 +259,7 @@ export default function SelecaoPerfilCorretoraTemplate() {
             {statusBusca === "erro" && (
               <CardContent className="flex flex-col gap-4">
                 <Alert variant="destructive">
-                  <CircleAlertIcon />
+                  <Icon name="error" />
                   <AlertTitle ref={erroRef} tabIndex={-1}>
                     Não foi possível carregar seus perfis
                   </AlertTitle>
@@ -281,7 +274,7 @@ export default function SelecaoPerfilCorretoraTemplate() {
                   fullWidth
                   onClick={() => buscarVinculos(cenario)}
                 >
-                  <RotateCcwIcon />
+                  <Icon name="restart_alt" />
                   Tentar novamente
                 </Button>
               </CardContent>
@@ -292,7 +285,7 @@ export default function SelecaoPerfilCorretoraTemplate() {
                 <Empty>
                   <EmptyHeader>
                     <EmptyMedia variant="icon">
-                      <UserXIcon />
+                      <Icon name="person_off" />
                     </EmptyMedia>
                     <EmptyTitle asChild>
                       <h3>Nenhum acesso liberado</h3>
@@ -380,7 +373,7 @@ export default function SelecaoPerfilCorretoraTemplate() {
                       </>
                     ) : (
                       <>
-                        <ArrowRightIcon />
+                        <Icon name="arrow_forward" />
                         Continuar
                       </>
                     )}
@@ -397,7 +390,7 @@ export default function SelecaoPerfilCorretoraTemplate() {
                     asChild
                   >
                     <Link href="/templates/login-simples">
-                      <ArrowLeftIcon />
+                      <Icon name="arrow_back" />
                       Usar outra conta
                     </Link>
                   </Button>

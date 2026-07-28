@@ -3,17 +3,6 @@
 import * as React from "react"
 import Link from "next/link"
 import { toast } from "sonner"
-import {
-  ArrowRightIcon,
-  ClipboardListIcon,
-  InboxIcon,
-  LayoutDashboardIcon,
-  RefreshCwIcon,
-  ServerCrashIcon,
-  ShieldCheckIcon,
-  SlidersHorizontalIcon,
-  XIcon,
-} from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
@@ -34,6 +23,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
+import { Icon } from "@/components/ui/icon"
 import { Label } from "@/components/ui/label"
 import {
   Popover,
@@ -225,21 +215,21 @@ export default function ApolicesAtivasTemplate() {
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
                       <Link href="/templates/painel-corretor">
-                        <LayoutDashboardIcon />
+                        <Icon name="dashboard" />
                         <span>Painel</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton isActive aria-current="page">
-                      <ShieldCheckIcon />
+                      <Icon name="verified_user" />
                       <span>Apólices</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
                       <Link href="/templates/novo-sinistro">
-                        <ClipboardListIcon />
+                        <Icon name="checklist" />
                         <span>Sinistros</span>
                       </Link>
                     </SidebarMenuButton>
@@ -273,7 +263,7 @@ export default function ApolicesAtivasTemplate() {
                       if (!carregando) carregar(cenario)
                     }}
                   >
-                    <RefreshCwIcon />
+                    <Icon name="refresh" />
                     Atualizar
                   </Button>
                 </div>
@@ -302,7 +292,7 @@ export default function ApolicesAtivasTemplate() {
                   </div>
                 ) : resultado === "erro" ? (
                   <Alert variant="destructive">
-                    <ServerCrashIcon />
+                    <Icon name="cloud_off" />
                     <AlertTitle ref={erroRef} tabIndex={-1}>
                       Não foi possível carregar as apólices
                     </AlertTitle>
@@ -313,7 +303,7 @@ export default function ApolicesAtivasTemplate() {
                         variant="outline"
                         onClick={() => carregar(cenario)}
                       >
-                        <RefreshCwIcon />
+                        <Icon name="refresh" />
                         Tentar novamente
                       </Button>
                     </AlertDescription>
@@ -322,7 +312,7 @@ export default function ApolicesAtivasTemplate() {
                   <Empty className="border">
                     <EmptyHeader>
                       <EmptyMedia variant="icon">
-                        <InboxIcon />
+                        <Icon name="inbox" />
                       </EmptyMedia>
                       <EmptyTitle asChild>
                         <h3>Nenhuma apólice encontrada</h3>
@@ -348,7 +338,7 @@ export default function ApolicesAtivasTemplate() {
                       <Popover>
                         <PopoverTrigger asChild>
                           <Button variant="outline" size="sm">
-                            <SlidersHorizontalIcon />
+                            <Icon name="tune" />
                             Filtros
                           </Button>
                         </PopoverTrigger>
@@ -389,7 +379,7 @@ export default function ApolicesAtivasTemplate() {
                             onClick={() => toggleCategoria(categoria)}
                             className="rounded-full hover:bg-secondary-foreground/10"
                           >
-                            <XIcon className="size-3" />
+                            <Icon name="close" size={0.75} />
                           </button>
                         </Badge>
                       ))}
@@ -438,7 +428,7 @@ export default function ApolicesAtivasTemplate() {
                                 <Button variant="outline" size="sm" asChild>
                                   <Link href="/templates/novo-sinistro">
                                     Abrir sinistro
-                                    <ArrowRightIcon />
+                                    <Icon name="arrow_forward" />
                                   </Link>
                                 </Button>
                               </TableCell>

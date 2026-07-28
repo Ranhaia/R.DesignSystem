@@ -2,13 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import {
-  ArrowRightIcon,
-  CircleAlertIcon,
-  PartyPopperIcon,
-  RocketIcon,
-  RotateCcwIcon,
-} from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
@@ -29,6 +22,7 @@ import {
   FieldError,
   FieldLabel,
 } from "@/components/ui/field"
+import { Icon } from "@/components/ui/icon"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Progress } from "@/components/ui/progress"
@@ -305,7 +299,7 @@ export default function OnboardingTemplate() {
               {concluido ? (
                 <>
                   <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-full">
-                    <PartyPopperIcon className="size-5" />
+                    <Icon name="celebration" size={1.25} />
                   </div>
                   <CardTitle asChild>
                     <h2 ref={tituloSucessoRef} tabIndex={-1}>
@@ -319,7 +313,7 @@ export default function OnboardingTemplate() {
               ) : (
                 <>
                   <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-full">
-                    <RocketIcon className="size-5" />
+                    <Icon name="rocket_launch" size={1.25} />
                   </div>
                   <CardTitle asChild>
                     <h2>Vamos configurar sua conta</h2>
@@ -349,7 +343,7 @@ export default function OnboardingTemplate() {
                   <Button type="button" fullWidth asChild>
                     <Link href="/templates/painel-corretor">
                       Ir para o Painel do corretor
-                      <ArrowRightIcon />
+                      <Icon name="arrow_forward" />
                     </Link>
                   </Button>
                 </CardFooter>
@@ -512,7 +506,7 @@ export default function OnboardingTemplate() {
                     (erroSistema ? (
                       <div className="flex flex-col gap-4">
                         <Alert variant="destructive">
-                          <CircleAlertIcon />
+                          <Icon name="error" />
                           <AlertTitle ref={erroRef} tabIndex={-1}>
                             Não foi possível concluir sua configuração
                           </AlertTitle>
@@ -527,7 +521,7 @@ export default function OnboardingTemplate() {
                           fullWidth
                           onClick={enviar}
                         >
-                          <RotateCcwIcon />
+                          <Icon name="restart_alt" />
                           Tentar novamente
                         </Button>
                       </div>

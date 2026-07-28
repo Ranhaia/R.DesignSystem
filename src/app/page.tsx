@@ -1,4 +1,4 @@
-import { ArrowUpRight, TrendingUp, Users, Zap } from "lucide-react"
+import type { MaterialSymbol } from "material-symbols"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Icon } from "@/components/ui/icon"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Progress } from "@/components/ui/progress"
@@ -26,26 +27,32 @@ import {
 } from "@/components/ui/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const stats = [
+const stats: {
+  label: string
+  value: string
+  progress: number
+  icon: MaterialSymbol
+  hint: string
+}[] = [
   {
     label: "Projetos ativos",
     value: "12",
     progress: 68,
-    icon: Zap,
+    icon: "bolt",
     hint: "68% da meta do trimestre",
   },
   {
     label: "Usuários no time",
     value: "8",
     progress: 40,
-    icon: Users,
+    icon: "group",
     hint: "3 convites pendentes",
   },
   {
     label: "Taxa de conclusão",
     value: "92%",
     progress: 92,
-    icon: TrendingUp,
+    icon: "trending_up",
     hint: "+4pp vs. mês anterior",
   },
 ]
@@ -83,7 +90,7 @@ export default function Home() {
           <Card key={stat.label}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardDescription>{stat.label}</CardDescription>
-              <stat.icon className="text-muted-foreground size-4" />
+              <Icon name={stat.icon} className="text-muted-foreground" size={1} />
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="text-2xl font-bold">{stat.value}</div>
@@ -112,7 +119,7 @@ export default function Home() {
               <Button variant="ghost">Fantasma</Button>
               <Button variant="destructive">Destrutivo</Button>
               <Button variant="link">
-                Link <ArrowUpRight className="size-3.5" />
+                Link <Icon name="arrow_outward" size={0.875} />
               </Button>
             </div>
 

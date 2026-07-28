@@ -1,24 +1,7 @@
 "use client"
 
+import type { MaterialSymbol } from "material-symbols"
 import { Bar, BarChart, Cell } from "recharts"
-import {
-  BarChart3Icon,
-  BellIcon,
-  ClipboardListIcon,
-  FileTextIcon,
-  HandCoinsIcon,
-  HeadsetIcon,
-  LayoutDashboardIcon,
-  LifeBuoyIcon,
-  MessageCircleIcon,
-  MessageSquareIcon,
-  QrCodeIcon,
-  ShieldCheckIcon,
-  TargetIcon,
-  UserIcon,
-  WalletIcon,
-  WalletCardsIcon,
-} from "lucide-react"
 
 import {
   Accordion,
@@ -51,6 +34,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { ChartContainer, type ChartConfig } from "@/components/ui/chart"
+import { Icon } from "@/components/ui/icon"
 import { Input } from "@/components/ui/input"
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group"
 import { Label } from "@/components/ui/label"
@@ -79,33 +63,36 @@ import { Slider } from "@/components/ui/slider"
 // já usado em examples/sidebar-demo.tsx, com SidebarProvider próprio) — não é
 // a navegação real do portal, que continua na AppSidebar global.
 
-const navGroups = [
+const navGroups: {
+  label: string
+  items: { name: string; icon: MaterialSymbol; active?: boolean }[]
+}[] = [
   {
     label: "Planejamento",
     items: [
-      { name: "Metas", icon: TargetIcon },
-      { name: "Contribuições", icon: HandCoinsIcon },
+      { name: "Metas", icon: "target" },
+      { name: "Contribuições", icon: "payments" },
     ],
   },
   {
     label: "Suporte",
     items: [
-      { name: "Central de ajuda", icon: LifeBuoyIcon },
-      { name: "Novo chat", icon: MessageSquareIcon },
+      { name: "Central de ajuda", icon: "help_center" },
+      { name: "Novo chat", icon: "chat" },
     ],
   },
   {
     label: "Visão geral",
     items: [
-      { name: "Painel", icon: LayoutDashboardIcon, active: true },
-      { name: "Relatórios", icon: BarChart3Icon },
+      { name: "Painel", icon: "dashboard", active: true },
+      { name: "Relatórios", icon: "bar_chart" },
     ],
   },
   {
     label: "Conta",
     items: [
-      { name: "Perfil", icon: UserIcon },
-      { name: "Conectar carteira", icon: WalletCardsIcon },
+      { name: "Perfil", icon: "person" },
+      { name: "Conectar carteira", icon: "account_balance_wallet" },
     ],
   },
 ]
@@ -171,7 +158,7 @@ export default function DashboardFinanceiroTemplate() {
                     {group.items.map((item) => (
                       <SidebarMenuItem key={item.name}>
                         <SidebarMenuButton isActive={item.active}>
-                          <item.icon />
+                          <Icon name={item.icon} />
                           <span>{item.name}</span>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -188,7 +175,7 @@ export default function DashboardFinanceiroTemplate() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardDescription>Saldo disponível para resgate</CardDescription>
-                  <WalletIcon className="text-muted-foreground size-4" />
+                  <Icon name="wallet" className="text-muted-foreground" size={1} />
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="text-2xl font-bold">R$ 1.284,00</div>
@@ -301,7 +288,7 @@ export default function DashboardFinanceiroTemplate() {
                 </CardHeader>
                 <CardContent className="flex flex-col items-center gap-3">
                   <div className="bg-muted flex size-28 items-center justify-center rounded-md">
-                    <QrCodeIcon className="text-muted-foreground size-16" />
+                    <Icon name="qr_code" className="text-muted-foreground" size={4} />
                   </div>
                   <Badge variant="outline">Aguardando conexão</Badge>
                 </CardContent>
@@ -320,7 +307,7 @@ export default function DashboardFinanceiroTemplate() {
                     <AccordionItem value="dados">
                       <AccordionTrigger>
                         <span className="flex items-center gap-2">
-                          <FileTextIcon className="size-4" />
+                          <Icon name="description" size={1} />
                           Dados cadastrais
                         </span>
                       </AccordionTrigger>
@@ -332,7 +319,7 @@ export default function DashboardFinanceiroTemplate() {
                     <AccordionItem value="recebimento">
                       <AccordionTrigger>
                         <span className="flex items-center gap-2">
-                          <ClipboardListIcon className="size-4" />
+                          <Icon name="checklist" size={1} />
                           Método de recebimento
                         </span>
                       </AccordionTrigger>
@@ -343,7 +330,7 @@ export default function DashboardFinanceiroTemplate() {
                     <AccordionItem value="seguranca">
                       <AccordionTrigger>
                         <span className="flex items-center gap-2">
-                          <ShieldCheckIcon className="size-4" />
+                          <Icon name="verified_user" size={1} />
                           Segurança
                         </span>
                       </AccordionTrigger>
@@ -364,7 +351,7 @@ export default function DashboardFinanceiroTemplate() {
                     </CardTitle>
                     <CardDescription>Suporte · Marina Pereira</CardDescription>
                   </div>
-                  <BellIcon className="text-muted-foreground size-4" />
+                  <Icon name="notifications" className="text-muted-foreground" size={1} />
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex flex-col gap-4">
@@ -394,7 +381,7 @@ export default function DashboardFinanceiroTemplate() {
 
                     <Attachment className="max-w-sm">
                       <AttachmentMedia>
-                        <FileTextIcon />
+                        <Icon name="description" />
                       </AttachmentMedia>
                       <AttachmentContent>
                         <AttachmentTitle>comprovante-contribuicao.pdf</AttachmentTitle>
@@ -406,13 +393,13 @@ export default function DashboardFinanceiroTemplate() {
                   <InputGroup>
                     <InputGroupInput placeholder="Escreva uma mensagem..." />
                     <InputGroupAddon align="inline-end">
-                      <MessageCircleIcon className="size-4" />
+                      <Icon name="chat_bubble" size={1} />
                     </InputGroupAddon>
                   </InputGroup>
                 </CardContent>
                 <CardFooter className="justify-end">
                   <Button size="sm" variant="outline">
-                    <HeadsetIcon className="size-4" />
+                    <Icon name="headset_mic" size={1} />
                     Falar com humano
                   </Button>
                 </CardFooter>

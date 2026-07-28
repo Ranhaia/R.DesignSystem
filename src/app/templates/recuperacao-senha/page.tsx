@@ -2,14 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import {
-  ArrowLeftIcon,
-  CheckCircle2Icon,
-  KeyRoundIcon,
-  MailCheckIcon,
-  RotateCcwIcon,
-  SendIcon,
-} from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
@@ -22,6 +14,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Field, FieldError, FieldLabel } from "@/components/ui/field"
+import { Icon } from "@/components/ui/icon"
 import { Input } from "@/components/ui/input"
 import { Spinner } from "@/components/ui/spinner"
 
@@ -152,7 +145,7 @@ export default function RecuperacaoSenhaTemplate() {
               {enviado ? (
                 <>
                   <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-full">
-                    <MailCheckIcon className="size-5" />
+                    <Icon name="mark_email_read" size={1.25} />
                   </div>
                   <CardTitle asChild>
                     <h2>Verifique seu e-mail</h2>
@@ -164,7 +157,7 @@ export default function RecuperacaoSenhaTemplate() {
               ) : (
                 <>
                   <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-full">
-                    <KeyRoundIcon className="size-5" />
+                    <Icon name="key" size={1.25} />
                   </div>
                   <CardTitle asChild>
                     <h2>Esqueceu sua senha?</h2>
@@ -181,7 +174,7 @@ export default function RecuperacaoSenhaTemplate() {
               {enviado ? (
                 <div className="flex flex-col gap-4">
                   <Alert>
-                    <CheckCircle2Icon />
+                    <Icon name="check_circle" />
                     <AlertTitle ref={confirmacaoRef} tabIndex={-1}>
                       Link enviado
                     </AlertTitle>
@@ -210,12 +203,12 @@ export default function RecuperacaoSenhaTemplate() {
                       </>
                     ) : cooldown > 0 ? (
                       <>
-                        <RotateCcwIcon />
+                        <Icon name="restart_alt" />
                         Reenviar em {cooldownFormatado}
                       </>
                     ) : (
                       <>
-                        <RotateCcwIcon />
+                        <Icon name="restart_alt" />
                         Reenviar e-mail
                       </>
                     )}
@@ -236,7 +229,7 @@ export default function RecuperacaoSenhaTemplate() {
                     asChild
                   >
                     <Link href="/templates/login-simples">
-                      <ArrowLeftIcon />
+                      <Icon name="arrow_back" />
                       Voltar para login
                     </Link>
                   </Button>
@@ -277,7 +270,7 @@ export default function RecuperacaoSenhaTemplate() {
                       </>
                     ) : (
                       <>
-                        <SendIcon />
+                        <Icon name="send" />
                         Enviar link de redefinição
                       </>
                     )}
@@ -294,7 +287,7 @@ export default function RecuperacaoSenhaTemplate() {
                     asChild
                   >
                     <Link href="/templates/login-simples">
-                      <ArrowLeftIcon />
+                      <Icon name="arrow_back" />
                       Voltar para login
                     </Link>
                   </Button>

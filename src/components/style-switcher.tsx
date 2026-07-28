@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Check, PuzzleIcon } from "lucide-react"
 
 import { stylesList } from "@/lib/styles-registry"
 import { RDsLogo, RLogo } from "@/components/r-logo"
@@ -13,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icon } from "@/components/ui/icon"
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -95,7 +95,7 @@ export function StyleSwitcher() {
                     className="size-8 shrink-0 justify-center p-0 data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                     aria-label="Trocar tema"
                   >
-                    <PuzzleIcon className="size-4" />
+                    <Icon name="extension" size={1} />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
               </TooltipTrigger>
@@ -127,7 +127,7 @@ export function StyleSwitcher() {
                     <div className="flex items-center gap-2">
                       <span className="truncate">{style.label}</span>
                       {style.value === active.value && (
-                        <Check className="ml-auto size-4 shrink-0" />
+                        <Icon name="check" size={1} className="ml-auto shrink-0" />
                       )}
                     </div>
                     <p className="text-muted-foreground text-xs text-wrap">
