@@ -397,7 +397,7 @@ import { Label } from "@/components/ui/label"
     anatomy: [
       { part: "RadioGroup", description: "Root — grid que agrupa os itens, controla qual valor está selecionado." },
       { part: "RadioGroupItem", description: "Cada opção — requer prop value." },
-      { part: "Indicator", description: "Círculo preenchido (fill-primary), visível só no item selecionado." },
+      { part: "Indicator", description: "Ícone circle preenchido (Icon com prop fill, cor text-primary), visível só no item selecionado." },
     ],
     variants: [],
     states: [

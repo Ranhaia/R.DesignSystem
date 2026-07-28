@@ -407,7 +407,7 @@ const CAMPO_ICONE = { produto: "bar_chart", corretora: "shield", /* ... */ }
     <Icon name={chip.icon} aria-hidden="true" />
     {chip.label}
     <button aria-label={\`Remover filtro \${chip.campo}: \${chip.label}\`} onClick={chip.onRemove}>
-      <Icon name="close" className="size-3" />
+      <Icon name="close" size={0.75} />
     </button>
   </Badge>
 ))}`,

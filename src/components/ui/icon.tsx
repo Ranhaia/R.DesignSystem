@@ -4,6 +4,8 @@ import type { MaterialSymbol } from "material-symbols"
 import { computeOpticalSize } from "@/lib/icon-optical-size"
 import { cn } from "@/lib/utils"
 
+// "fill" é excluído do <svg> nativo (onde é string, ex.: cor de preenchimento)
+// porque aqui a prop pública "fill" é um boolean (ativa a variação FILL do glifo).
 interface IconProps extends Omit<React.ComponentProps<"svg">, "name" | "fill"> {
   name: MaterialSymbol
   /** Tamanho em rem. Ausente = herda o auto-tamanho ambiente (ex.: size-4
@@ -33,11 +35,17 @@ function Icon({
   const resolvedOpticalSize =
     opticalSize ?? (size !== undefined ? computeOpticalSize(size) : undefined)
 
+  // Só força aria-hidden quando o chamador não passou nenhuma prop de
+  // acessibilidade — caso contrário o svg ficaria fora da árvore de
+  // acessibilidade mesmo com role/aria-label explícitos (ex.: Spinner).
+  const hasA11yProp =
+    "aria-label" in props || "aria-labelledby" in props || "role" in props
+
   return (
     <svg
       viewBox="0 0 24 24"
       data-slot="icon"
-      aria-hidden="true"
+      aria-hidden={hasA11yProp ? undefined : "true"}
       className={cn("shrink-0 select-none", className)}
       style={
         {
@@ -63,6 +71,7 @@ function Icon({
         dominantBaseline="central"
         fontSize={24}
         fill="currentColor"
+        aria-hidden="true"
         style={{
           fontFamily: "var(--icon-font-family)",
           fontFeatureSettings: "'liga'",
