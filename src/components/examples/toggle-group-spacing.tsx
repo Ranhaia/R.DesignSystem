@@ -10,7 +10,7 @@ export default function ToggleGroupSpacing() {
       <ToggleGroupItem
         value="star"
         aria-label="Alternar estrela"
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-500 data-[state=on]:*:[svg]:stroke-yellow-500"
+        className="data-[state=on]:bg-transparent data-[state=on]:text-yellow-500"
       >
         <Icon name="star" />
         Estrela
@@ -18,7 +18,7 @@ export default function ToggleGroupSpacing() {
       <ToggleGroupItem
         value="heart"
         aria-label="Alternar coração"
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500"
+        className="data-[state=on]:bg-transparent data-[state=on]:text-red-500"
       >
         <Icon name="favorite" />
         Coração
@@ -26,7 +26,7 @@ export default function ToggleGroupSpacing() {
       <ToggleGroupItem
         value="bookmark"
         aria-label="Alternar favorito"
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+        className="data-[state=on]:bg-transparent data-[state=on]:text-blue-500"
       >
         <Icon name="bookmark" />
         Favorito

@@ -7,7 +7,7 @@ export default function ToggleDemo() {
       aria-label="Alternar favorito"
       size="sm"
       variant="outline"
-      className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+      className="data-[state=on]:bg-transparent data-[state=on]:text-blue-500"
     >
       <Icon name="bookmark" />
       Favorito
