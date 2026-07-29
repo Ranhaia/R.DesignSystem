@@ -93,8 +93,8 @@ export const componentDocs: Record<string, ComponentDoc> = {
       { name: "icon-sm", value: "icon-sm", description: "size-8, quadrado — use com aria-label." },
       { name: "icon-lg", value: "icon-lg", description: "size-10, quadrado — use com aria-label." },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Nomeie a ação com verbo no infinitivo (Salvar, Excluir, Criar). Use primary uma única vez por contexto."],
+    dontGuidelines: ["Não use button para navegar entre páginas — use Link. Não use labels genéricos como \"Excluir isto\"."],
     code: `import { Button } from "@/components/ui/button"
 
 <Button variant="outline" size="sm">
@@ -182,8 +182,8 @@ export const componentDocs: Record<string, ComponentDoc> = {
       { name: "default", value: "default", description: "size-8." },
       { name: "lg", value: "lg", description: "size-10." },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para representar visualmente o usuário em perfis, listas e comentários. Ofereça fallback com iniciais quando não houver imagem."],
+    dontGuidelines: ["Não use avatar como elemento decorativo sem função de identificação."],
     code: `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 <Avatar>
@@ -212,8 +212,8 @@ export const componentDocs: Record<string, ComponentDoc> = {
     ],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para comunicar quantidade de itens pendentes ou estado de um elemento. Mantenha o contador breve (ex: +99)."],
+    dontGuidelines: ["Não use badge para categorizar ou rotular — use Tag. Não use para mensagens acionáveis — use Toast."],
     code: `import { Badge } from "@/components/ui/badge"
 
 <Badge variant="secondary">Badge</Badge>`,
@@ -240,8 +240,8 @@ export const componentDocs: Record<string, ComponentDoc> = {
       { name: "Disabled", description: "opacidade reduzida, sem interação." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use quando uma ou várias opções podem ser selecionadas simultaneamente. Redija o label em positivo."],
+    dontGuidelines: ["Não use checkbox para opções mutuamente excludentes — use Radio. Não use para ações com efeito imediato — use Toggle."],
     code: `import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 
@@ -271,8 +271,8 @@ import { Label } from "@/components/ui/label"
       { name: "Aria-invalid", description: "Borda e ring em --destructive quando aria-invalid=true." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Acompanhe sempre com Label visível. Use placeholder como exemplo, não como instrução."],
+    dontGuidelines: ["Não use input para textos longos — use Textarea. Não substitua Label por placeholder."],
     code: `import { Input } from "@/components/ui/input"
 
 <Input type="email" placeholder="voce@email.com" />`,
@@ -298,8 +298,8 @@ import { Label } from "@/components/ui/label"
       { name: "Disabled", description: "has-disabled:opacity-50 no container." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para códigos de verificação ou autenticação em duas etapas. Avance o foco automaticamente."],
+    dontGuidelines: ["Não use para senhas ou dados que o usuário precisa revisar antes de enviar."],
     code: `import {
   InputOTP,
   InputOTPGroup,
@@ -330,8 +330,8 @@ import { Label } from "@/components/ui/label"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para mostrar atalhos de teclado em menus, tooltips e documentação."],
+    dontGuidelines: ["Não use kbd para comandos que não têm atalho real implementado."],
     code: `import { Kbd, KbdGroup } from "@/components/ui/kbd"
 
 <KbdGroup>
@@ -355,8 +355,8 @@ import { Label } from "@/components/ui/label"
       { name: "Disabled", description: "Herdado via group-data-[disabled=true] ou peer-disabled quando associado a um controle desativado." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Associe ao campo com htmlFor. Mantenha o texto curto e descritivo."],
+    dontGuidelines: ["Não use label para texto de ajuda ou instruções — use helpText. Não duplique label em Checkbox/Radio."],
     code: `import { Label } from "@/components/ui/label"
 
 <Label htmlFor="email">E-mail</Label>`,
@@ -380,8 +380,8 @@ import { Label } from "@/components/ui/label"
       { name: "Completo", description: "value = 100." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para operações com duração previsível (upload, salvamento). Mostre a porcentagem quando disponível."],
+    dontGuidelines: ["Não use para operações instantâneas (<1s). Não use se não puder estimar o progresso — use Spinner."],
     code: `import { Progress } from "@/components/ui/progress"
 
 <Progress value={66} />`,
@@ -407,8 +407,8 @@ import { Label } from "@/components/ui/label"
       { name: "Disabled", description: "opacidade reduzida, sem interação." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para selecionar uma única opção entre várias mutuamente excludentes."],
+    dontGuidelines: ["Não use radio para selecionar múltiplas opções — use Checkbox. Não use para ativar/desativar — use Toggle."],
     code: `import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 
@@ -439,8 +439,8 @@ import { Label } from "@/components/ui/label"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para separar blocos de conteúdo distintos dentro de um mesmo container."],
+    dontGuidelines: ["Não use separator como substituto de margens ou padding. Não use em excesso para não fragmentar a interface."],
     code: `import { Separator } from "@/components/ui/separator"
 
 <Separator />
@@ -460,8 +460,8 @@ import { Label } from "@/components/ui/label"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para indicar carregamento de conteúdo com formato similar ao componente final."],
+    dontGuidelines: ["Não use skeleton para operações instantâneas. Não mantenha skeleton por mais de alguns segundos sem feedback."],
     code: `import { Skeleton } from "@/components/ui/skeleton"
 
 <Skeleton className="h-4 w-32" />`,
@@ -487,8 +487,8 @@ import { Label } from "@/components/ui/label"
       { name: "Disabled", description: "data-[disabled]:opacity-50." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para selecionar um valor ou intervalo dentro de um range contínuo. Mostre o valor atual."],
+    dontGuidelines: ["Não use slider para valores discretos com poucas opções — use Select ou Radio."],
     code: `import { Slider } from "@/components/ui/slider"
 
 <Slider defaultValue={[50]} max={100} step={1} />`,
@@ -509,8 +509,8 @@ import { Label } from "@/components/ui/label"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para operações curtas ou quando o progresso não pode ser medido."],
+    dontGuidelines: ["Não use spinner para operações previsíveis — use Progress. Não use sem texto de contexto."],
     code: `import { Spinner } from "@/components/ui/spinner"
 
 <Spinner className="size-5" />`,
@@ -537,8 +537,8 @@ import { Label } from "@/components/ui/label"
       { name: "sm", value: "sm", description: "h-3.5 w-6." },
       { name: "default", value: "default", description: "h-[1.15rem] w-8." },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para ativar/desativar uma configuração com efeito imediato, sem confirmação."],
+    dontGuidelines: ["Não use switch para ações que exigem salvamento — use Button. Não use para selecionar itens — use Checkbox."],
     code: `import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 
@@ -568,8 +568,8 @@ import { Label } from "@/components/ui/label"
       { name: "Aria-invalid", description: "Borda e ring em --destructive." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para entrada de texto com múltiplas linhas. Defina altura mínima adequada ao conteúdo."],
+    dontGuidelines: ["Não use textarea para textos curtos de uma linha — use Input."],
     code: `import { Textarea } from "@/components/ui/textarea"
 
 <Textarea placeholder="Escreva uma mensagem..." />`,
@@ -599,8 +599,8 @@ import { Label } from "@/components/ui/label"
       { name: "default", value: "default", description: "h-9 min-w-9." },
       { name: "lg", value: "lg", description: "h-10 min-w-10." },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para alternar entre dois estados com efeito imediato."],
+    dontGuidelines: ["Não use toggle para formulários que exigem salvamento explícito."],
     code: `import { Toggle } from "@/components/ui/toggle"
 
 <Toggle aria-label="Negrito">
@@ -629,8 +629,8 @@ import { Label } from "@/components/ui/label"
       { name: "Open", description: "Hover ou foco no trigger — anima fade + zoom." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para revelar informação adicional breve ao passar o mouse ou receber foco."],
+    dontGuidelines: ["Não use tooltip para informação crítica ou essencial — deve estar visível sempre. Não use para ações interativas."],
     code: `import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 
 <Tooltip>
@@ -653,8 +653,8 @@ import { Label } from "@/components/ui/label"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para manter proporção consistente em imagens, vídeos e embeds."],
+    dontGuidelines: ["Não use aspect-ratio para conteúdo que precisa se adaptar livremente ao container."],
     code: `import { AspectRatio } from "@/components/ui/aspect-ratio"
 
 <AspectRatio ratio={16 / 9}>
@@ -685,8 +685,8 @@ import { Label } from "@/components/ui/label"
       { name: "sm", value: "sm", description: "h-8." },
       { name: "default", value: "default", description: "h-9." },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para selecionar uma opção em formulários simples com poucas opções."],
+    dontGuidelines: ["Não use native-select para opções que precisam de busca ou filtro — use Select."],
     code: `import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 
 <NativeSelect defaultValue="br">
@@ -721,8 +721,8 @@ import { Label } from "@/components/ui/label"
       { name: "sm", value: "sm", description: "h-8 (SelectTrigger)." },
       { name: "default", value: "default", description: "h-9 (SelectTrigger)." },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para selecionar uma opção em listas com busca ou muitas opções."],
+    dontGuidelines: ["Não use select para 3 opções ou menos — use Radio Group."],
     code: `import {
   Select,
   SelectContent,
@@ -764,8 +764,8 @@ import { Label } from "@/components/ui/label"
       { name: "Open", description: "Anima fade + zoom conforme o lado de abertura." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para mostrar ações secundárias ou informações complementares ancoradas a um elemento."],
+    dontGuidelines: ["Não use popover para texto de ajuda breve — use Tooltip. Não use para formulários extensos — use Dialog."],
     code: `import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 
@@ -807,8 +807,8 @@ import { Button } from "@/components/ui/button"
       { name: "default", value: "default", description: "gap-4 p-4." },
       { name: "sm", value: "sm", description: "gap-2.5 px-4 py-3." },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use como container flexível para itens de lista com layout consistente."],
+    dontGuidelines: ["Não use item para substituir componentes com semântica própria como Card."],
     code: `import { Item, ItemContent, ItemMedia, ItemTitle } from "@/components/ui/item"
 import { Icon } from "@/components/ui/icon"
 
@@ -842,8 +842,8 @@ import { Icon } from "@/components/ui/icon"
     ],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para destacar visualmente um elemento ou região específica."],
+    dontGuidelines: ["Não use marker como único indicador de estado — combine com texto ou ícone."],
     code: `import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker"
 import { Icon } from "@/components/ui/icon"
 
@@ -873,8 +873,8 @@ import { Icon } from "@/components/ui/icon"
     ],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para comunicar informações importantes sobre o estado do sistema. Use a aparência adequada (success, warning, danger, info)."],
+    dontGuidelines: ["Não use alert para notificações temporárias — use Sonner/Toast. Não use alert para mensagens de confirmação de ação."],
     code: `import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Icon } from "@/components/ui/icon"
 
@@ -906,8 +906,8 @@ import { Icon } from "@/components/ui/icon"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para mostrar a hierarquia de navegação e permitir voltar a páginas anteriores."],
+    dontGuidelines: ["Não use breadcrumb em fluxos de uma única página. Não use como substituto para navegação principal."],
     code: `import {
   Breadcrumb,
   BreadcrumbItem,
@@ -944,8 +944,8 @@ import { Icon } from "@/components/ui/icon"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para agrupar botões com ação relacionada, como filtros ou visualizações."],
+    dontGuidelines: ["Não use button-group para ações primárias e secundárias conflitantes."],
     code: `import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
 
@@ -972,8 +972,8 @@ import { ButtonGroup } from "@/components/ui/button-group"
       { name: "Open", description: "data-state=open — conteúdo visível." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para ocultar conteúdo complementar que não é necessário à primeira vista."],
+    dontGuidelines: ["Não use collapsible para conteúdo crítico que o usuário precisa ver sempre."],
     code: `import {
   Collapsible,
   CollapsibleContent,
@@ -1014,8 +1014,8 @@ import { ButtonGroup } from "@/components/ui/button-group"
       { name: "Disabled", description: "Campo e trigger desativados." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para combinar input de texto livre com seleção de opções pré-definidas."],
+    dontGuidelines: ["Não use combobox para listas pequenas e fixas — use Select."],
     code: `import {
   Combobox,
   ComboboxContent,
@@ -1053,8 +1053,8 @@ import { ButtonGroup } from "@/components/ui/button-group"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para indicar que uma lista ou área não tem conteúdo. Ofereça ação para criar o primeiro item."],
+    dontGuidelines: ["Não deixe a área vazia sem orientação do que fazer a seguir."],
     code: `import {
   Empty,
   EmptyContent,
@@ -1105,8 +1105,8 @@ import { Button } from "@/components/ui/button"
       { name: "Disabled", description: "group-data-[disabled=true] — opacidade reduzida no label." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para agrupar label + input + mensagens de ajuda/erro em formulários."],
+    dontGuidelines: ["Não use field para elementos que não são campos de formulário."],
     code: `import {
   Field,
   FieldContent,
@@ -1140,8 +1140,8 @@ import { Input } from "@/components/ui/input"
       { name: "Open", description: "Hover ou foco no trigger — anima fade + zoom." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para mostrar preview ou informação adicional ao passar o mouse sobre um elemento."],
+    dontGuidelines: ["Não use hover-card para ações interativas — use Popover. Não use em mobile sem alternativa de toque."],
     code: `import {
   HoverCard,
   HoverCardContent,
@@ -1175,8 +1175,8 @@ import { Input } from "@/components/ui/input"
       { name: "Aria-invalid", description: "Borda e ring em --destructive." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para agrupar input com elementos adjacentes como botões ou ícones."],
+    dontGuidelines: ["Não use input-group para campos que não têm relação direta entre si."],
     code: `import {
   InputGroup,
   InputGroupAddon,
@@ -1213,8 +1213,8 @@ import { Icon } from "@/components/ui/icon"
       { name: "Active", description: 'isActive=true — variant outline, aria-current="page".' },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para navegar entre páginas de uma lista ou tabela com muitos itens. Mostre o total de páginas."],
+    dontGuidelines: ["Não use pagination para menos de 10 itens — use scroll. Não use sem indicar a página atual."],
     code: `import {
   Pagination,
   PaginationContent,
@@ -1260,8 +1260,8 @@ import { Icon } from "@/components/ui/icon"
       { name: "default", value: "default", description: "h-9 min-w-9." },
       { name: "lg", value: "lg", description: "h-10 min-w-10." },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para agrupar opções mutuamente excludentes em formato de botões."],
+    dontGuidelines: ["Não use toggle-group para ações que não são de seleção."],
     code: `import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 <ToggleGroup type="single" defaultValue="center">
@@ -1289,8 +1289,8 @@ import { Icon } from "@/components/ui/icon"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para áreas com conteúdo rolável customizado, mantendo consistência visual."],
+    dontGuidelines: ["Não use scroll-area para conteúdo que cabe inteiro na tela."],
     code: `import { ScrollArea } from "@/components/ui/scroll-area"
 
 <ScrollArea className="h-48 w-64 rounded-md border p-4">
@@ -1324,8 +1324,8 @@ import { Icon } from "@/components/ui/icon"
       { name: "sm", value: "sm", description: "Intermediário." },
       { name: "default", value: "default", description: "Tamanho padrão." },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para exibir arquivos anexados com opção de download ou preview."],
+    dontGuidelines: ["Não use attachment para upload de novos arquivos — use File Uploader."],
     code: `import {
   Attachment,
   AttachmentAction,
@@ -1375,8 +1375,8 @@ import { Icon } from "@/components/ui/icon"
       { name: "Disabled", description: "opacidade reduzida, sem interação." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para organizar conteúdo em seções expansíveis, economizando espaço vertical."],
+    dontGuidelines: ["Não use accordion para conteúdo que o usuário precisa comparar entre seções."],
     code: `import {
   Accordion,
   AccordionContent,
@@ -1415,8 +1415,8 @@ import { Icon } from "@/components/ui/icon"
       { name: "Open", description: "Overlay + conteúdo visíveis, anima fade + zoom." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para confirmar ações destrutivas ou importantes que exigem atenção."],
+    dontGuidelines: ["Não use alert-dialog para notificações simples — use Alert ou Sonner."],
     code: `import {
   AlertDialog,
   AlertDialogAction,
@@ -1469,8 +1469,8 @@ import { Button } from "@/components/ui/button"
       { name: "Disabled", description: "opacidade reduzida, sem seleção." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para seleção de datas em formulários e filtros. Destaque a data atual."],
+    dontGuidelines: ["Não use calendar para seleção de horários específicos — use DatePicker com time."],
     code: `import { Calendar } from "@/components/ui/calendar"
 
 <Calendar mode="single" selected={date} onSelect={setDate} />`,
@@ -1496,8 +1496,8 @@ import { Button } from "@/components/ui/button"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para agrupar informações relacionadas em um container visual distinto."],
+    dontGuidelines: ["Não use card para ações únicas como botões — use Button."],
     code: `import {
   Card,
   CardContent,
@@ -1533,8 +1533,8 @@ import { Button } from "@/components/ui/button"
       { name: "Nos extremos", description: "Seta correspondente desativada (disabled)." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para exibir múltiplos itens em um espaço limitado, com navegação."],
+    dontGuidelines: ["Não use carousel para conteúdo que o usuário precisa ver todo de uma vez."],
     code: `import {
   Carousel,
   CarouselContent,
@@ -1570,8 +1570,8 @@ import { Button } from "@/components/ui/button"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para visualizar dados numéricos e tendências. Escolha o tipo de gráfico adequado ao dado."],
+    dontGuidelines: ["Não use chart para dados que seriam mais claros como tabela simples."],
     code: `import { Bar, BarChart } from "recharts"
 import { ChartContainer, type ChartConfig } from "@/components/ui/chart"
 
@@ -1608,8 +1608,8 @@ const chartConfig = {
       { name: "Vazio", description: "CommandEmpty visível quando a busca não retorna itens." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para comandos rápidos e busca por ações dentro da aplicação (palette)."],
+    dontGuidelines: ["Não use command como substituto para navegação principal."],
     code: `import {
   Command,
   CommandEmpty,
@@ -1654,8 +1654,8 @@ const chartConfig = {
       { name: "Disabled", description: "opacidade reduzida, sem interação." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para ações contextuais ao clicar com botão direito em um elemento."],
+    dontGuidelines: ["Não use context-menu como único meio de acesso a ações importantes."],
     code: `import {
   ContextMenu,
   ContextMenuContent,
@@ -1695,8 +1695,8 @@ const chartConfig = {
       { name: "Open", description: "Overlay + conteúdo visíveis, anima fade + zoom." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para tarefas de foco completo que interrompem o fluxo atual."],
+    dontGuidelines: ["Não use dialog para ações simples que cabem em um popover."],
     code: `import {
   Dialog,
   DialogContent,
@@ -1745,8 +1745,8 @@ import { Button } from "@/components/ui/button"
       { name: "Disabled", description: "opacidade reduzida, sem interação." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para listar ações ou opções em um menu suspenso."],
+    dontGuidelines: ["Não use dropdown-menu para navegação principal — use Navigation Menu."],
     code: `import {
   DropdownMenu,
   DropdownMenuContent,
@@ -1788,8 +1788,8 @@ import { Button } from "@/components/ui/button"
       { name: "Open", description: "Desliza a partir da direção configurada." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para painéis laterais com conteúdo complementar ou formulários."],
+    dontGuidelines: ["Não use drawer para conteúdo crítico que precisa ser visto sempre."],
     code: `import {
   Drawer,
   DrawerContent,
@@ -1834,8 +1834,8 @@ import { Button } from "@/components/ui/button"
       { name: "Error", description: "Validação falhou — label e mensagem em --destructive, aria-invalid no controle." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para agrupar campos de formulário com validação e submissão."],
+    dontGuidelines: ["Não use form para elementos que não enviam dados."],
     code: `import {
   Form,
   FormControl,
@@ -1891,8 +1891,8 @@ import { Input } from "@/components/ui/input"
       { name: "Disabled", description: "opacidade reduzida, sem interação." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para menus de aplicação no topo, com múltiplas categorias e submenus."],
+    dontGuidelines: ["Não use menubar para ações simples — use Dropdown Menu."],
     code: `import {
   Menubar,
   MenubarContent,
@@ -1929,8 +1929,8 @@ import { Input } from "@/components/ui/input"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para exibir mensagens em um chat ou timeline de conversa."],
+    dontGuidelines: ["Não use message para notificações do sistema — use Sonner."],
     code: `import {
   Message,
   MessageAvatar,
@@ -1975,8 +1975,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
     ],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para representar mensagens individuais em interfaces de chat."],
+    dontGuidelines: ["Não use bubble para conteúdo que não é parte de uma conversa."],
     code: `import { Bubble, BubbleContent, BubbleGroup } from "@/components/ui/bubble"
 
 <BubbleGroup>
@@ -2013,8 +2013,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
       { name: "Ativo", description: "data-active=true no Link — página atual." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para navegação principal do site ou aplicação, com suporte a submenus."],
+    dontGuidelines: ["Não use navigation-menu para ações — use Dropdown Menu."],
     code: `import {
   NavigationMenu,
   NavigationMenuContent,
@@ -2050,8 +2050,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para painéis redimensionáveis que o usuário pode ajustar."],
+    dontGuidelines: ["Não use resizable em layouts fixos ou com largura determinada."],
     code: `import {
   ResizableHandle,
   ResizablePanel,
@@ -2087,8 +2087,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
       { name: "Open", description: "Desliza a partir do lado configurado." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para painéis laterais que deslizam sobre o conteúdo principal."],
+    dontGuidelines: ["Não use sheet para conteúdo que precisa de interação com a página atrás."],
     code: `import {
   Sheet,
   SheetContent,
@@ -2139,8 +2139,8 @@ import { Button } from "@/components/ui/button"
       { name: "Mobile", description: "Renderiza como Sheet (painel deslizante) abaixo do breakpoint md." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para navegação persistente em aplicações com muitas seções."],
+    dontGuidelines: ["Não use sidebar para ações temporárias — use Sheet ou Drawer."],
     code: `import {
   Sidebar,
   SidebarContent,
@@ -2188,8 +2188,8 @@ import { Button } from "@/components/ui/button"
       { name: "Selecionada", description: "data-state=selected — bg-muted." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para exibir dados tabulares com colunas e linhas. Suporte ordenação quando relevante."],
+    dontGuidelines: ["Não use table para layouts de página — use CSS Grid ou Box."],
     code: `import {
   Table,
   TableBody,
@@ -2234,8 +2234,8 @@ import { Button } from "@/components/ui/button"
       { name: "Disabled", description: "opacidade reduzida, sem interação." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para organizar conteúdo relacionado em abas, permitindo alternar entre visualizações."],
+    dontGuidelines: ["Não use tabs para conteúdo que o usuário precisa ver simultaneamente."],
     code: `import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 <Tabs defaultValue="todos">
@@ -2274,8 +2274,8 @@ import { Button } from "@/components/ui/button"
       { name: "Saindo", description: "Anima ao fechar automaticamente ou por interação do usuário." },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para notificações temporárias que desaparecem automaticamente. Mantenha a mensagem concisa."],
+    dontGuidelines: ["Não use sonner para mensagens críticas que exigem ação do usuário. Não use para erros de formulário — use Field."],
     code: `import { Toaster } from "@/components/ui/sonner"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
@@ -2287,6 +2287,88 @@ import { toast } from "sonner"
     props: [
       { name: "position", type: '"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"', default: '"bottom-right"', description: "(Toaster) posição das notificações na tela." },
       { name: "richColors", type: "boolean", default: "false", description: "(Toaster) usa cores mais vivas por tipo de toast." },
+    ],
+  },
+
+  icon: {
+    description: "Renderiza um ícone do Google Material Symbols com suporte a variantes (fill, weight, grade, optical size) e cores do tema.",
+    whenToUse: "Para ilustrar ações, estados ou seções dentro de botões, menus, cards e mensagens. Use quando um conceito é mais claro visualmente do que com texto.",
+    anatomy: [
+      {
+        part: "Elemento raiz",
+        description:
+          'Um <svg viewBox="0 0 24 24"> com data-slot="icon". Recebe aria-hidden="true" automaticamente, exceto quando o chamador já passou aria-label/aria-labelledby/role (ex.: Spinner).',
+      },
+      {
+        part: "Glifo (<text>)",
+        description:
+          'Ligadura de texto (nome do ícone do Material Symbols) renderizada via <text>, com fontVariationSettings controlando os eixos FILL/wght/GRAD/opsz do glifo variável.',
+      },
+    ],
+    variants: [
+      { name: "Rounded", value: "rounded", description: "Family Material Symbols Rounded — default do preset ativo se a prop `rounded` não for informada." },
+      { name: "Sharp", value: "sharp", description: "Family Material Symbols Sharp, ativada com `rounded={false}`." },
+      { name: "Fill", value: "fill", description: "Eixo FILL do glifo variável — preenchido (true) ou apenas contorno (false/ausente, usa --icon-fill do preset)." },
+    ],
+    states: [],
+    sizes: [
+      { name: "Auto (herdado)", value: "auto", description: "Sem a prop `size`, herda o tamanho do elemento ambiente (ex.: size-4 dentro de um Button), igual ao comportamento antigo do lucide-react." },
+      { name: "Customizado", value: "custom", description: "Com a prop `size` (em rem), define width/height inline e recalcula o optical size automaticamente via computeOpticalSize, a menos que `opticalSize` seja passado explicitamente." },
+    ],
+    doGuidelines: ["Escolha ícones com significado universal e reconhecível. Use aria-label quando o ícone for o único elemento interativo. Mantenha consistência — não misture famílias de ícones."],
+    dontGuidelines: ["Não use ícone como único feedback de estado crítico — sempre acompanhe de texto. Não use ícones decorativos sem contexto acessível. Não distorça a proporção original."],
+    code: `import { Icon } from "@/components/ui/icon"
+
+<Icon name="check_circle" />
+
+// Tamanho customizado (rem) + fill ativado
+<Icon name="favorite" size={1.5} fill />
+
+// Ícone como único elemento interativo — precisa de aria-label
+<Button size="icon" aria-label="Excluir">
+  <Icon name="delete" aria-label="Excluir" />
+</Button>`,
+    props: [
+      {
+        name: "name",
+        type: "MaterialSymbol",
+        description: "Nome do ícone no catálogo do Google Material Symbols (tipagem via pacote material-symbols).",
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "Tamanho em rem. Ausente = herda o auto-tamanho ambiente.",
+      },
+      {
+        name: "rounded",
+        type: "boolean",
+        description: "true = Material Symbols Rounded, false = Sharp. Ausente = default do preset ativo (--icon-font-family).",
+      },
+      {
+        name: "fill",
+        type: "boolean",
+        description: "Ativa a variação FILL do glifo (preenchido). Ausente = usa --icon-fill do preset.",
+      },
+      {
+        name: "weight",
+        type: "number",
+        description: "Eixo wght do glifo variável. Ausente = usa --icon-weight do preset.",
+      },
+      {
+        name: "grade",
+        type: "number",
+        description: "Eixo GRAD do glifo variável. Ausente = usa --icon-grade do preset.",
+      },
+      {
+        name: "opticalSize",
+        type: "number",
+        description: "Eixo opsz do glifo variável. Ausente = calculado automaticamente a partir de `size` (computeOpticalSize) ou usa --icon-optical-size do preset.",
+      },
+      {
+        name: "...props",
+        type: 'React.ComponentProps<"svg">',
+        description: "Todos os atributos nativos de <svg> (aria-label, role, className, style, etc.), exceto `name` e `fill` (sobrescritos pela API pública do componente).",
+      },
     ],
   },
 }
