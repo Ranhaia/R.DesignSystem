@@ -1933,3 +1933,16 @@ simplesmente nunca entrou no git:
   edita. Segurei essa parte específica e voltei a perguntar pro Rafael
   em vez de aplicar a resposta genérica — fica registrado aqui até ele
   confirmar.
+
+**Resposta do Rafael**: o plano já foi executado — pediu resumo e pra
+mover pro vault, pra não perder histórico. Investiguei antes de mover
+(`git log`/`git diff --stat main migracao-icones-material-symbols`) e
+achei algo que muda o status real do projeto: os 15 commits da
+migração existem só na branch isolada `migracao-icones-material-symbols`,
+nunca foram mesclados no `main`. `src/components/ui/icon.tsx` não
+existe em `main`; `lucide-react` continua no `package.json` de `main`.
+O app real (fora daquele worktree específico) ainda roda 100% em
+lucide-react. Resumo completo + essa pendência de merge registrados no
+Diário de Bordo do vault (`B01 Projetos/P-DS-SHADCN/Diário de
+Bordo.md`, entrada 2026-07-28) — decisão de mesclar ou não fica com o
+Rafael, não assumi.
