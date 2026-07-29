@@ -34,6 +34,7 @@ export const componentsList: ComponentEntry[] = [
   { slug: "field", name: "Field" },
   { slug: "form", name: "Form" },
   { slug: "hover-card", name: "Hover Card" },
+  { slug: "icon", name: "Icon" },
   { slug: "input", name: "Input" },
   { slug: "input-group", name: "Input Group" },
   { slug: "input-otp", name: "Input Otp" },

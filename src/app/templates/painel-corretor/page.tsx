@@ -535,17 +535,11 @@ export default function PainelCorretorTemplate() {
                           </TableBody>
                         </Table>
 
-                        {/* PaginationPrevious/PaginationNext/Pagination têm
-                            aria-label padrão em inglês embutido no
-                            componente (ui/pagination.tsx) — sobrescrito aqui
-                            em PT-BR, {...props} do consumidor prevalece
-                            sobre o default fixo dentro do componente. */}
                         <Pagination aria-label="Paginação de sinistros">
                           <PaginationContent>
                             <PaginationItem>
                               <PaginationPrevious
                                 href="#"
-                                aria-label="Página anterior"
                                 onClick={(event) => {
                                   event.preventDefault()
                                   setPagina((p) => Math.max(1, p - 1))
@@ -569,7 +563,6 @@ export default function PainelCorretorTemplate() {
                             <PaginationItem>
                               <PaginationNext
                                 href="#"
-                                aria-label="Próxima página"
                                 onClick={(event) => {
                                   event.preventDefault()
                                   setPagina((p) =>

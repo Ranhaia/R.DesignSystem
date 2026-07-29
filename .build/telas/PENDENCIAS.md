@@ -61,20 +61,22 @@ validacao.md` e `diagnostico-login-erro-validacao.md`, veredito PRONTA.
   em cada `Field`/`InputGroup` sem nome — verbosidade extra possível em
   alguns leitores de tela. Baixo risco, mesmo critério dos itens acima.
 
-## 5. Gaps de registro — abertos
+## 5. Gaps de registro — RESOLVIDOS (2026-07-29, Rafael decidiu os dois)
 
-- `Icon` não está listado em `src/lib/components-registry.ts` (só em
-  `atomic-registry.ts`). Não é componente inventado — o arquivo existe e
-  é usado nas 9 telas —, é lacuna de registro deixada pela migração
-  Material Symbols. Ajuste de 1 linha, decisão do Rafael (achado do
-  diagnóstico `painel-corretor`, seção 5).
-- Os 3 `aria-label` padrão em inglês de `ui/pagination.tsx`
+- ~~`Icon` não está listado em `src/lib/components-registry.ts` (só em
+  `atomic-registry.ts`).~~ **Resolvido**: entrada `{ slug: "icon", name:
+  "Icon" }` adicionada em ordem alfabética (entre `hover-card` e
+  `input`).
+- ~~Os 3 `aria-label` padrão em inglês de `ui/pagination.tsx`
   (`Pagination`/`PaginationPrevious`/`PaginationNext`) continuam
-  sobrescritos localmente em PT-BR em vez de corrigidos na origem —
-  decisão correta na ausência de consumidor real, mas agora que
-  `painel-corretor` existe, trocar os 3 defaults elimina a sobrescrita
-  manual em toda tela futura. Lacuna 5 da spec de `painel-corretor`,
-  decisão do Rafael.
+  sobrescritos localmente em PT-BR em vez de corrigidos na origem.~~
+  **Resolvido**: defaults trocados direto no componente
+  (`aria-label="paginação"`, `"Ir para a página anterior"`, `"Ir para a
+  próxima página"`, texto visível `Anterior`/`Próxima`, e `sr-only`
+  `"Mais páginas"` no Ellipsis). Removida a sobrescrita redundante em
+  `painel-corretor/page.tsx` (o `aria-label="Paginação de sinistros"` no
+  `<Pagination>` raiz continua — é customização legítima de contexto,
+  não duplicação do default).
 
 ## 6. Gap de processo — aberto
 
