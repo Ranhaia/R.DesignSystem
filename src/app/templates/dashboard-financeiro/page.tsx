@@ -146,7 +146,7 @@ export default function DashboardFinanceiroTemplate() {
 
       <div className="w-full rounded-lg border">
         <SidebarProvider className="min-h-[880px]">
-          <Sidebar collapsible="none" className="h-full">
+          <Sidebar collapsible="none" className="hidden h-full md:flex">
             <SidebarHeader className="p-3 text-sm font-medium">
               Recompensas
             </SidebarHeader>

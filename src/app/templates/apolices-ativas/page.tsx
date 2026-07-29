@@ -204,7 +204,7 @@ export default function ApolicesAtivasTemplate() {
 
       <div className="w-full rounded-lg border">
         <SidebarProvider className="min-h-[720px]">
-          <Sidebar collapsible="none" className="h-full">
+          <Sidebar collapsible="none" className="hidden h-full md:flex">
             <SidebarHeader className="p-3 text-sm font-medium">
               {selecao?.corretora ?? "Portal do corretor"}
             </SidebarHeader>
