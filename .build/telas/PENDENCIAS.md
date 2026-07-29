@@ -1,8 +1,11 @@
-# Pendências consolidadas — Fase 5A (fluxo de login) + apolices-ativas (5B)
+# Pendências consolidadas — Fase 5A (fluxo de login) + Fase 5B (seguros)
 
 Lista única juntando o que ficou espalhado nos diagnósticos individuais
 (`.build/telas/diagnostico-*.md`). Atualizado em 2026-07-23 depois do
 Rafael decidir os itens 1–3 e eu fechar o que dependia só de código.
+Atualizado novamente em 2026-07-29: Fase 5B fechou com `painel-corretor`
+(3ª e última tela de seguros); item 4 revisado e a duplicação de
+`aria-live` corrigida nas 2 telas afetadas.
 
 ## 1. Gap de processo — RESOLVIDO
 
@@ -30,20 +33,58 @@ validacao.md` e `diagnostico-login-erro-validacao.md`, veredito PRONTA.
 ## 4. Notas de acessibilidade sistêmicas — parcialmente resolvidas
 
 - ~~`CardTitle`/`EmptyTitle` renderizam `<div>`, não heading semântico.~~
-  **Resolvido**: `asChild` em `card.tsx`/`empty.tsx`, aplicado nas 7
+  **Resolvido**: `asChild` em `card.tsx`/`empty.tsx`, aplicado nas 9
   telas de Template (`h2` pro título de seção, `h3` pro `Empty` aninhado).
 - ~~Botão perde foco ao virar `disabled` durante loading síncrono.~~
   **Resolvido**: `aria-disabled` + guarda no handler, em `button.tsx` +
   todas as telas que tinham o padrão.
-- **Ainda aberto, deliberadamente não tocado** (baixo risco, ~40+
-  ocorrências em 7 arquivos): ícones decorativos (lucide) sem
-  `aria-hidden="true"` explícito. Inofensivo na prática — leitores de
-  tela já ignoram SVG sem `role`/`title` — mas não é boa prática
-  documentada. Candidato a um passe único futuro, se o Rafael quiser.
+- ~~Ícones decorativos (lucide) sem `aria-hidden="true"` explícito.~~
+  **Resolvido**: a migração pra Material Symbols (`@/components/ui/icon`)
+  terminou — nenhuma das 9 rotas de Template importa mais `lucide-react`,
+  e o Atom `Icon` aplica `aria-hidden="true"` automaticamente quando não
+  recebe prop de acessibilidade (`icon.tsx`). Confirmado por leitura de
+  código no diagnóstico de `painel-corretor` (2026-07-29); a entrada
+  anterior deste item citava "~40+ ocorrências em 7 arquivos" como ainda
+  vivas — estava desatualizada.
+- ~~Duplicação de anúncio `aria-live` nos estados "carregando"/"erro" de
+  `apolices-ativas` e `painel-corretor`.~~ **Resolvido em 2026-07-29**:
+  removido o `<p aria-live>` efêmero do bloco de skeleton (a
+  `CardDescription aria-live="polite"` já é persistente e cobre
+  carregando→carregado nas duas direções); no estado de erro a
+  `CardDescription` passou a usar texto curto ("Erro ao carregar"),
+  deixando o `Alert` (`role="alert"`) como única fonte da frase completa.
+  Achado original em `acessibilidade-apolices-ativas.md` e
+  `acessibilidade-painel-corretor.md`; havia sido listado como "ajuste
+  menor recomendado" no diagnóstico de `apolices-ativas` e ficado pendente
+  até se repetir em `painel-corretor`.
 - **Ainda aberto, deliberadamente não tocado**: `role="group"` implícito
   em cada `Field`/`InputGroup` sem nome — verbosidade extra possível em
-  alguns leitores de tela. Mesmo critério do item acima.
+  alguns leitores de tela. Baixo risco, mesmo critério dos itens acima.
+
+## 5. Gaps de registro — abertos
+
+- `Icon` não está listado em `src/lib/components-registry.ts` (só em
+  `atomic-registry.ts`). Não é componente inventado — o arquivo existe e
+  é usado nas 9 telas —, é lacuna de registro deixada pela migração
+  Material Symbols. Ajuste de 1 linha, decisão do Rafael (achado do
+  diagnóstico `painel-corretor`, seção 5).
+- Os 3 `aria-label` padrão em inglês de `ui/pagination.tsx`
+  (`Pagination`/`PaginationPrevious`/`PaginationNext`) continuam
+  sobrescritos localmente em PT-BR em vez de corrigidos na origem —
+  decisão correta na ausência de consumidor real, mas agora que
+  `painel-corretor` existe, trocar os 3 defaults elimina a sobrescrita
+  manual em toda tela futura. Lacuna 5 da spec de `painel-corretor`,
+  decisão do Rafael.
+
+## 6. Gap de processo — aberto
+
+- Estágio mobile do pipeline não foi executado para `painel-corretor`
+  (não existe `.build/telas/mobile-painel-corretor.md`). Fechado por
+  leitura de código no diagnóstico (sem caminho estrutural pra overflow
+  em 390px) — recomenda-se rodar a medição de rotina numa próxima sessão,
+  não bloqueia a tela.
 
 Fonte de cada item resolvido: ver Log do `PLANO-LOOP-80-20-TEMPLATES.md`,
 entrada "2026-07-23 — Fase 5A construída (pipeline autônomo) + fechamento
-de pendências".
+de pendências", e `.build/telas/diagnostico-painel-corretor.md`
+(2026-07-29) pra tudo que fechou a Fase 5B.

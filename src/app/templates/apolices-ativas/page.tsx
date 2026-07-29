@@ -154,6 +154,12 @@ export default function ApolicesAtivasTemplate() {
           categoriasSelecionadas.includes(apolice.categoria)
         )
 
+  // 2026-07-29: erro usa texto curto/genérico aqui de propósito — o Alert
+  // logo abaixo já anuncia a frase completa via role="alert" (AlertTitle);
+  // esta CardDescription é a única região aria-live persistente da tela
+  // (cobre carregando→carregado nas duas direções), então repetir a frase
+  // inteira do Alert geraria o mesmo anúncio 2x. Ver diagnóstico
+  // painel-corretor, seção 2.1.
   let descricaoStatus: string
   if (carregando) {
     descricaoStatus = "Carregando apólices..."
@@ -164,7 +170,7 @@ export default function ApolicesAtivasTemplate() {
   } else if (resultado === "vazio") {
     descricaoStatus = "Nenhuma apólice cadastrada"
   } else {
-    descricaoStatus = "Não foi possível carregar as apólices"
+    descricaoStatus = "Erro ao carregar"
   }
 
   return (
@@ -286,9 +292,6 @@ export default function ApolicesAtivasTemplate() {
                         </div>
                       ))}
                     </div>
-                    <p aria-live="polite" className="sr-only">
-                      Carregando apólices
-                    </p>
                   </div>
                 ) : resultado === "erro" ? (
                   <Alert variant="destructive">

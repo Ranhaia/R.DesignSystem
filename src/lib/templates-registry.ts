@@ -20,6 +20,7 @@ export const templatesList: TemplateEntry[] = [
   { slug: "onboarding", name: "Onboarding" },
   { slug: "apolices-ativas", name: "Apólices ativas" },
   { slug: "novo-sinistro", name: "Novo sinistro" },
+  { slug: "painel-corretor", name: "Painel do corretor" },
 ]
 
 // Templates planejados (Fase 5, ver PLANO-LOOP-80-20-TEMPLATES.md) — ainda
@@ -28,6 +29,5 @@ export const templatesList: TemplateEntry[] = [
 export const inProgressTemplates: TemplateEntry[] = [
   // 5A — Fluxo de login (5 rotas, todas já construídas acima)
 
-  // 5B — 3 telas de seguros (apolices-ativas/novo-sinistro já construídas acima)
-  { slug: "painel-corretor", name: "Painel do corretor" },
+  // 5B — 3 telas de seguros (todas já construídas acima)
 ]
