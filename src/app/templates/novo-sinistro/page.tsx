@@ -2,22 +2,10 @@
 
 import * as React from "react"
 import Link from "next/link"
-import {
-  ArrowRightIcon,
-  CalendarIcon,
-  CheckCircle2Icon,
-  CircleAlertIcon,
-  ClipboardListIcon,
-  CloudUploadIcon,
-  FileIcon,
-  LayoutDashboardIcon,
-  RotateCcwIcon,
-  ShieldCheckIcon,
-  Trash2Icon,
-} from "lucide-react"
 
 import { formatarDataCompleta } from "@/lib/date-formatters"
 import { cn } from "@/lib/utils"
+import { Icon } from "@/components/ui/icon"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -388,7 +376,7 @@ export default function NovoSinistroTemplate() {
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
                       <Link href="/templates/painel-corretor">
-                        <LayoutDashboardIcon />
+                        <Icon name="dashboard" />
                         <span>Painel</span>
                       </Link>
                     </SidebarMenuButton>
@@ -396,14 +384,14 @@ export default function NovoSinistroTemplate() {
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
                       <Link href="/templates/apolices-ativas">
-                        <ShieldCheckIcon />
+                        <Icon name="verified_user" />
                         <span>Apólices</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton isActive aria-current="page">
-                      <ClipboardListIcon />
+                      <Icon name="checklist" />
                       <span>Sinistros</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -418,7 +406,7 @@ export default function NovoSinistroTemplate() {
                 <div className="flex items-center gap-3">
                   {concluido && (
                     <div className="bg-primary/10 text-primary flex size-10 shrink-0 items-center justify-center rounded-full">
-                      <CheckCircle2Icon className="size-5" />
+                      <Icon name="check_circle" size={1.25} />
                     </div>
                   )}
                   <div>
@@ -452,7 +440,7 @@ export default function NovoSinistroTemplate() {
                     <Button asChild>
                       <Link href="/templates/painel-corretor">
                         Ir para o Painel do corretor
-                        <ArrowRightIcon />
+                        <Icon name="arrow_forward" />
                       </Link>
                     </Button>
                   </CardFooter>
@@ -577,7 +565,7 @@ export default function NovoSinistroTemplate() {
                                   !data && "text-muted-foreground"
                                 )}
                               >
-                                <CalendarIcon className="shrink-0" />
+                                <Icon name="calendar_today" className="shrink-0" />
                                 <span className="truncate">
                                   {data
                                     ? formatarDataCompleta(data)
@@ -663,7 +651,7 @@ export default function NovoSinistroTemplate() {
                             dragging && "border-primary bg-primary/5"
                           )}
                         >
-                          <CloudUploadIcon className="text-foreground" />
+                          <Icon name="cloud_upload" className="text-foreground" />
                           <p>Arraste arquivos aqui ou clique para selecionar</p>
                           <p className="text-xs">
                             Documentos sugeridos: boletim de ocorrência, fotos
@@ -693,7 +681,7 @@ export default function NovoSinistroTemplate() {
                                 size="sm"
                               >
                                 <AttachmentMedia>
-                                  <FileIcon className="size-4" />
+                                  <Icon name="draft" size={1} />
                                 </AttachmentMedia>
                                 <AttachmentContent>
                                   <AttachmentTitle>
@@ -717,7 +705,7 @@ export default function NovoSinistroTemplate() {
                                     aria-label={`Remover ${item.nome}`}
                                     onClick={() => removerAnexo(item.id)}
                                   >
-                                    <Trash2Icon />
+                                    <Icon name="delete" />
                                   </Button>
                                 </AttachmentActions>
                               </Attachment>
@@ -731,7 +719,7 @@ export default function NovoSinistroTemplate() {
                       (erroSistema ? (
                         <div className="flex flex-col gap-4">
                           <Alert variant="destructive">
-                            <CircleAlertIcon />
+                            <Icon name="error" />
                             <AlertTitle ref={erroSistemaRef} tabIndex={-1}>
                               Não foi possível protocolar o sinistro
                             </AlertTitle>
@@ -746,7 +734,7 @@ export default function NovoSinistroTemplate() {
                             fullWidth
                             onClick={enviar}
                           >
-                            <RotateCcwIcon />
+                            <Icon name="restart_alt" />
                             Tentar novamente
                           </Button>
                         </div>
@@ -787,7 +775,7 @@ export default function NovoSinistroTemplate() {
                                   size="sm"
                                 >
                                   <AttachmentMedia>
-                                    <FileIcon className="size-4" />
+                                    <Icon name="draft" size={1} />
                                   </AttachmentMedia>
                                   <AttachmentContent>
                                     <AttachmentTitle>
