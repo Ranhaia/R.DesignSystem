@@ -1788,3 +1788,118 @@ pediu pra ter noção de gente entrando no site.
   oficial (import de `@vercel/analytics/next`, componente sem props
   obrigatórias, dentro do body). Rafael precisa confirmar com
   `npm run dev`/`npm run build` local depois do `npm install`.
+
+## 2026-07-28 — Bug real de overflow mobile encontrado e corrigido; 5º estágio no pipeline `/construir-telas`
+
+Rafael reportou que telas construídas pelo pipeline autônomo estavam
+falhando no mobile e perguntou se a solução seria migrar pra
+micro-frontends (uma tela renderizando dentro da outra). Rodei o projeto
+local pela primeira vez nesta sessão (Windows do Rafael, não mais o
+sandbox Linux antigo — `npm run dev` e Chrome de verdade disponíveis
+agora) em vez de responder só por leitura de código.
+
+- **Causa raiz confirmada, não só suposição:** nenhum dos 4 agentes do
+  pipeline (`telas-planejador`, `telas-construtor`, `telas-acessibilidade`,
+  `telas-revisor`) roda a aplicação — todos auditam código estático.
+  `telas-acessibilidade` até declara isso na própria instrução. Por isso
+  um bug visual real passava pelas 4 etapas sem ninguém olhar a tela de
+  verdade.
+- **Achado concreto, medido (não só visual):** `dashboard-financeiro` e
+  `apolices-ativas` usam `<Sidebar collapsible="none">` pra simular um
+  portal dentro de um Card — `collapsible="none"` desliga todo o
+  comportamento responsivo do componente (sempre 256px fixos). Sem
+  `hidden md:flex`, isso forçava overflow horizontal da PÁGINA inteira em
+  qualquer viewport abaixo de ~640px (confirmado via
+  `document.documentElement.scrollWidth > window.innerWidth`, não só
+  screenshot). As 5 telas do fluxo de login não usam esse padrão e
+  passaram sem problema.
+- **Corrigido:** `className="h-full"` → `className="hidden h-full
+  md:flex"` na `<Sidebar>` mockada dos 2 arquivos. A sidebar mockada some
+  abaixo de `md` — sem perda de navegação real, já que o mobile usa o
+  hambúrguer da `AppShell`. Confirmado sem overflow nas 7 telas depois da
+  correção. Detalhe completo em `.build/telas/RETROATIVO-MOBILE.md`.
+- **Não é o mesmo problema:** a tabela de `apolices-ativas` acidona scroll
+  horizontal *contido* nela mesma no mobile (`overflow-x-auto` já
+  embutido em `ui/table.tsx`) — padrão aceito do shadcn/ui pra tabela
+  larga em tela estreita, não vaza pra página. Não mexido; virar cards
+  empilhados no mobile seria decisão de design nova, não correção deste
+  achado.
+- **Resposta à pergunta de micro-frontends: não é o problema certo pra
+  essa ferramenta.** Micro-frontends (inclusive o suporte nativo da
+  Vercel, `@vercel/microfrontends`) resolvem times/deploys independentes
+  compostos por roteamento de borda — não têm relação com CSS responsivo
+  não renderizar bem numa tela estreita. "Uma tela renderizar dentro da
+  outra" (iframe) não teria corrigido o bug real (que era largura fixa
+  de um componente, não isolamento entre apps) e traria complexidade nova
+  sem necessidade (múltiplos deploys, mensagens entre iframes, CSS
+  duplicado) — over-engineering pro tamanho real do projeto (1 app, 1
+  time). O problema era 100% verificação: ninguém olhava a tela renderizada
+  antes de aprovar.
+- **Pipeline `/construir-telas` ganhou um 5º estágio:** `telas-mobile`
+  (`.claude/agents/telas-mobile.md`) — roda a app de verdade + Chrome,
+  mede overflow em 390px, screenshot, aponta causa raiz no código. Roda
+  em paralelo ao `telas-acessibilidade`, depois do `telas-construtor`.
+  `telas-planejador` agora exige seção "Requisitos de responsividade" na
+  spec; `telas-construtor` tem a regra fixa `hidden md:flex` documentada;
+  `telas-revisor` consolida os dois relatórios (a11y + mobile) com o
+  mesmo critério de bloqueante. `/construir-telas` atualizado pra
+  orquestrar os 5 estágios (era 4).
+- **Verificação de tipos:** não rodei `tsc --noEmit` nesta sessão (só
+  2 linhas de className mudaram, revisão manual sem risco) — mas agora
+  que `npm run dev` roda local sem as limitações antigas de sandbox,
+  isso deixa de ser uma limitação estrutural do projeto daqui pra frente.
+- **Pendente:** aplicar o mesmo cuidado quando as 2 telas restantes de 5B
+  (`novo-sinistro`, `painel-corretor`) forem construídas — já cobertas
+  pelo pipeline atualizado, não precisa de ação manual extra.
+
+## 2026-07-28 — Reconciliação: `novo-sinistro` existia, só nunca foi commitada
+
+Rafael relatou "lembro de já existir a tela de novo sinistro, mas quando
+subiu a migração de ícones isso se perdeu". Investiguei via `git log`/
+`git status` em vez de assumir — a tela nunca tinha sido apagada, ela
+simplesmente nunca entrou no git:
+
+- `src/app/templates/novo-sinistro/page.tsx` já existia completo (35KB),
+  registrado em `templates-registry.ts`, com os 4 docs de apoio em
+  `.build/telas/` (build, acessibilidade, diagnóstico, mobile) — tudo
+  isso ficou como untracked (`??` no `git status`) desde que foi
+  construído. `git log --all -- '*novo-sinistro*'` não retornava nada.
+- O commit da migração de ícones (`c44ff008`) não tocou nem apagou nada
+  relacionado — só adicionou 1 arquivo de spec
+  (`docs/superpowers/plans/2026-07-28-icon-system-material-symbols-design.md`)
+  dentro do worktree `.worktrees/migracao-icones-material-symbols`. A
+  percepção de "perda" era real no sentido que importa: por nunca ter
+  sido commitada, a tela não existia pra nada que lê o histórico do git
+  (o `graphify` GRAPH_REPORT.md, um clone novo, o deploy da Vercel) —
+  só existia como arquivo solto no disco, um `git clean -fd` distraído
+  teria apagado de verdade.
+- **Comitado agora** (lote fechado, só o que é inequivocamente parte
+  dessa tela): `novo-sinistro/page.tsx`, os 4 `.build/telas/*.md`,
+  `templates-registry.ts` (promove `novo-sinistro` de "planejado" pra
+  "com rota própria"), `.claude/agents/telas-mobile.md` (agente novo
+  usado pra gerar `mobile-novo-sinistro.md`), e `CLAUDE.md` da raiz —
+  esse último, motivo aparte: são as instruções vigentes do projeto,
+  guiando todas as sessões, e nunca tinham sido commitadas.
+- **Fase 5B reconciliada**: das "3 telas de seguros", `apolices-ativas`
+  e `novo-sinistro` já existem e têm rota própria. Só falta
+  `painel-corretor` — confirmado ausente (`src/app/templates/
+  painel-corretor` não existe), continua listado em
+  `inProgressTemplates` como "Em construção". Task #54 no tracker
+  precisa refletir isso (2/3 prontas), não mais "pending" genérico.
+- **Não commitado ainda, ficou de fora deste lote de propósito** (achado
+  ao investigar, não pedido por Rafael nesta rodada — precisa decisão
+  dele antes de tocar): `package.json`/`package-lock.json` (46 linhas de
+  diff, mais além do que a sessão de `@vercel/analytics` + overrides já
+  cobriu), `apolices-ativas/page.tsx` e `dashboard-financeiro/page.tsx`
+  (2 linhas cada, provavelmente relacionado à prep da migração de
+  ícones), `.claude/agents/telas-construtor.md` +
+  `telas-planejador.md` + `telas-revisor.md` + `.claude/commands/
+  construir-telas.md` (ajustes pra incluir `telas-mobile` no pipeline),
+  e `.review/*.md` (centenas de linhas — parece rodada nova do pipeline
+  `/revisar-ds`). Também apareceram 3 itens sem contexto nenhum meu:
+  `REFERENCIA-PRISMSYSTEM.md` + `avaliacao-prismsystem.md` (nota de
+  referência externa datada de 24/07, formato Obsidian com wikilinks —
+  pode ter sido escrita pra viver no vault, não aqui), `card-video-poc/`
+  (um projeto Next.js completo e separado, aninhado dentro da pasta), e
+  `docs/superpowers/plans/` (framework de execução de plano isolado via
+  git worktree, não documentado em nenhum CLAUDE.md ainda).
