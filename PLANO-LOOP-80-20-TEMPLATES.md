@@ -1946,3 +1946,30 @@ lucide-react. Resumo completo + essa pendência de merge registrados no
 Diário de Bordo do vault (`B01 Projetos/P-DS-SHADCN/Diário de
 Bordo.md`, entrada 2026-07-28) — decisão de mesclar ou não fica com o
 Rafael, não assumi.
+
+**Rafael confirmou o merge.** Antes de mesclar, fiz `git stash` de tudo
+que estava sem commit e sem contexto (revisão `/revisar-ds`, ajustes de
+pipeline de telas mobile, `graphify-out/`) pra não misturar com o
+merge — voltou pra `stash@{0}`, decisão em aberto ainda.
+
+`git merge migracao-icones-material-symbols` sem conflitos (145
+arquivos). Achado depois do merge: `novo-sinistro/page.tsx` ainda
+importava de `lucide-react` — ficou de fora da migração porque só
+tinha sido commitada nesta mesma sessão (commit `87b3a86`), depois que
+a branch de migração já existia. Migrado manualmente os 11 usos
+seguindo a mesma tabela do plano (dashboard, verified_user, checklist,
+check_circle, arrow_forward, calendar_today, cloud_upload, draft ×2,
+delete, error, restart_alt) — confirmado com grep, zero import de
+`lucide-react` real restando em todo `src/`.
+
+Conflito real só em `package.json`/`package-lock.json` (o merge trouxe
+de volta `next: 16.2.10` da branch antiga, sobrescrevendo o patch de
+segurança `^16.2.11` já aplicado em main) — resolvido mantendo
+`^16.2.11` + `material-symbols` + `overrides` (next/sharp) juntos,
+`lucide-react` fora. `package-lock.json` ficou consistente exceto o
+metadado interno da versão do `next` (ainda lista 16.2.10 — o binário
+real em `node_modules/next` já é 16.2.11, confirmado via `require()`;
+o `npm install` de sincronização final travou 2x por lentidão de I/O do
+sandbox, mesma limitação de sempre). **Pendência**: Rafael rodar `npm
+install` uma vez local pra fechar esse último detalhe do lockfile —
+rápido do lado dele, já testado nesta mesma sessão.
