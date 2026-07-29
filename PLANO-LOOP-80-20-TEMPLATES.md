@@ -1903,3 +1903,33 @@ simplesmente nunca entrou no git:
   (um projeto Next.js completo e separado, aninhado dentro da pasta), e
   `docs/superpowers/plans/` (framework de execução de plano isolado via
   git worktree, não documentado em nenhum CLAUDE.md ainda).
+
+## 2026-07-28 — Resolução dos 3 itens sem contexto
+
+- **`REFERENCIA-PRISMSYSTEM.md` + `avaliacao-prismsystem.md`**: Rafael
+  confirmou — são nota de referência/decisão (formato Obsidian, com
+  wikilinks), não pertencem ao repo de código. Movidos pro vault
+  (`B03 Recursos/R-PrismSystem.md` e `R-PrismSystem-Avaliacao.md`,
+  linkados de `Recursos.md`), removidos daqui. Os pontos de ação da
+  seção "O que vale a pena incorporar" continuam válidos como backlog
+  futuro deste projeto, só passaram a viver no vault.
+- **`card-video-poc/`**: Rafael não lembrava o que era — é uma PoC
+  completamente sem relação com o design system (animação de carta de
+  jogo + exportação de vídeo transparente via Canvas/MediaRecorder,
+  Next.js 14 + Framer Motion, projeto próprio com seu README/HISTORICO).
+  Ficou aninhada aqui por acidente. Adicionei ao `.gitignore` pra não
+  arriscar entrar num commit por engano; mover a pasta pra um lugar
+  próprio continua pendente com o Rafael (arrastar/mover é ação dele,
+  não fiz isso via ferramenta de arquivo).
+- **`docs/superpowers/plans/2026-07-28-icon-system-material-symbols.md`**:
+  Rafael pediu pra mover pro Obsidian junto com os outros 2, mas ao ler
+  o conteúdo completo percebi que é categoricamente diferente — não é
+  nota de referência/decisão, é um **plano de implementação executável**
+  (12 tarefas, comandos de shell, snippets de código, caminhos de
+  arquivo exatos deste repo, pensado pra ser seguido por um worker
+  agêntico via `superpowers:subagent-driven-development`). Mover isso
+  pro vault quebraria a convenção `docs/superpowers/plans/` que o
+  próprio framework espera e desconectaria o plano do repo que ele
+  edita. Segurei essa parte específica e voltei a perguntar pro Rafael
+  em vez de aplicar a resposta genérica — fica registrado aqui até ele
+  confirmar.

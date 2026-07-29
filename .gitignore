@@ -51,3 +51,8 @@ storybook-static
 
 # git worktrees isolados (superpowers:using-git-worktrees)
 /.worktrees/
+
+# projeto solto, sem relação com o design system (POC de vídeo de carta
+# animada) — aninhado aqui por engano, decisão de mover pra pasta própria
+# ainda pendente com o Rafael (2026-07-28)
+/card-video-poc/
