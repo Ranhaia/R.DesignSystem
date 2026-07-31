@@ -25,6 +25,6 @@ Você é o único estágio do pipeline `/construir-telas` que roda a aplicação
    - Larguras fixas em px (`w-[240px]`, `w-[340px]`) em trigger de DatePicker fora de um container que possa encolher.
    - `grid-cols-N`/`lg:col-span-N` sem variante mobile-first (deveria começar em 1 coluna e crescer com `md:`/`lg:`).
 
-6. Escreva `.build/telas/mobile-<slug>.md`: veredito (passa / passa com ressalva / falha), a métrica de overflow medida, screenshot(s) referenciados por descrição (o arquivo de imagem em si não precisa ser salvo em disco a menos que ajude a revisão), e para cada falha o trecho de código + causa raiz + sugestão de correção (não edite `src/` você mesmo — é o `telas-revisor`/Rafael que decide).
+6. Escreva `docs/active/telas/<slug>/mobile.md`: veredito (passa / passa com ressalva / falha), a métrica de overflow medida, screenshot(s) referenciados por descrição (o arquivo de imagem em si não precisa ser salvo em disco a menos que ajude a revisão), e para cada falha o trecho de código + causa raiz + sugestão de correção (não edite `src/` você mesmo — é o `telas-revisor`/Rafael que decide).
 
 Não edite `src/`. Não decida por conta própria consertar — reporte para o `telas-revisor` consolidar.
