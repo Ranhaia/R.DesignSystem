@@ -20,32 +20,72 @@ Trate este projeto como uma ferramenta de trabalho viva, não uma vitrine.
    de explorar arquivo por arquivo. Se não existir ou estiver muito
    desatualizado (mudanças grandes desde a última extração), regenerar:
    `graphify extract . --code-only && graphify cluster-only .`
-2. **`PLANO-LOOP-80-20-TEMPLATES.md`** — prioridade atual de construção
-   (o que fazer agora, em que ordem, com que regras). Este é o plano
-   ativo.
-3. **`PLANO-DESIGN-SYSTEM.md`** — plano do piloto de documentação
-   (Button), pausado, retomar quando o loop acima chegar na Fase 5.
+2. **`plans/current/loop-80-20-templates.md`** — prioridade atual de
+   construção (o que fazer agora, em que ordem, com que regras). Este é
+   o plano ativo.
+3. **`plans/current/design-system-piloto.md`** — plano do piloto de
+   documentação (Button), pausado, retomar quando o loop acima chegar na
+   Fase 5.
 4. **`README.md`** — visão geral técnica do projeto (stack, presets,
    estrutura de pastas).
-5. Só então arquivos individuais em `src/`.
+5. Depois, use a receita de contexto por tarefa abaixo em vez de carregar
+   `docs/` ou `plans/` inteiros.
+6. Só então arquivos individuais em `src/`.
 
-## Onde vive o quê — regra importante
+## Estrutura de pastas e receita de contexto por tarefa
 
-Este projeto guarda **só código + planejamento corrente**. Não vira
-arquivo de histórico.
+Este projeto guarda **só código + planejamento corrente + documentação
+viva**. Não vira arquivo de histórico.
 
-- **Fica aqui**: código real (`src/`), tokens (`globals.css`), os
-  `PLANO-*.md` enquanto estiverem ativos (refletem o estado atual e os
-  próximos passos, são reescritos/atualizados conforme o trabalho
-  avança), `README.md`.
-- **NÃO fica aqui**: raciocínio completo de decisões antigas, histórico
-  de sessões, o "porquê" narrado passo a passo de cada escolha já
-  fechada. Isso vai para o vault Obsidian.
+```
+tokens/        → não é pasta própria: é src/app/globals.css
+components/    → não é pasta própria: é src/components/ui/
+docs/
+  active/
+    especificacoes/    # specs em vigor (ex: taxonomia-componentes.md)
+    decisoes/           # ADRs e decisões provisórias ainda não ratificadas
+    revisao-ds/          # último diagnóstico do /revisar-ds (sempre sobrescrito)
+    telas/<slug>/          # spec + auditorias de uma tela AINDA em construção
+    componentes/<slug>/     # spec de um componente AINDA em construção
+  archive/
+    telas/<slug>/           # tela finalizada (diagnóstico "pronta")
+    componentes/<slug>/      # componente finalizado
+    decisoes/                 # decisões já resolvidas/ratificadas
+plans/
+  current/    # PLANO-*.md ativos (o que fazer agora)
+  done/        # resumo curto de fases/planos já concluídos
+```
 
-Quando uma fase de um `PLANO-*.md` for concluída, resuma o que foi
-decidido e o porquê, e arquive essa narrativa no vault (ver abaixo) —
-deixe neste arquivo só o essencial pro próximo passo, não o histórico
-completo de como se chegou ali.
+Quando um item de `docs/active/` for finalizado (diagnóstico "pronta" ou
+decisão ratificada por mim), mova a pasta inteira pra `docs/archive/`
+equivalente — é isso que mantém `active/` pequeno e relevante. O
+`telas-revisor` já faz isso sozinho para telas (ver
+`.claude/agents/telas-revisor.md`); para componentes e decisões, é manual
+por enquanto.
+
+### Receita de contexto por tipo de tarefa
+
+| Tarefa | Pastas a carregar |
+|---|---|
+| Ajustar tokens (cor, spacing, tipografia) | `src/app/globals.css` + `docs/active/decisoes/` (se houver decisão pendente sobre o token) |
+| Criar/editar componente | `src/components/ui/` + `docs/active/componentes/<slug>/` (ou `docs/archive/componentes/<slug>/` pra consultar um já fechado) |
+| Construir tela (`/construir-telas`) | `docs/active/telas/<slug>/` + `src/lib/templates-registry.ts` + `src/lib/atomic-registry.ts` |
+| Documentar uma decisão nova (ADR) | `docs/active/decisoes/` |
+| Revisar/aprovar um plano | `plans/current/` + o `docs/active/` correspondente à fase |
+| Rodar `/revisar-ds` | `docs/active/revisao-ds/` (é o output) |
+
+- **Fica aqui**: código real (`src/`), `docs/active/` e `docs/archive/`
+  (specs, ADRs e diagnósticos são artefatos, não narrativa), os
+  `plans/current/*.md` enquanto ativos, resumos em `plans/done/`,
+  `README.md`.
+- **NÃO fica aqui**: o raciocínio completo dia a dia de como se chegou a
+  uma decisão, histórico de sessão narrado passo a passo. Isso vai para
+  o vault Obsidian.
+
+Quando uma fase de um plano em `plans/current/` for concluída, resuma o
+que foi decidido e o porquê num arquivo novo em `plans/done/`, remova
+esse trecho do `current`, e — se quiser preservar o racional completo —
+arquive a narrativa integral no vault (ver abaixo).
 
 ## Base de conhecimento — vault Obsidian
 
@@ -67,11 +107,11 @@ não está disponível aqui:
 ## Convenções já estabelecidas neste projeto
 
 - Categorização atomic design (Atoms / Molecules / Organisms) — ver
-  `PLANO-LOOP-80-20-TEMPLATES.md`, Fase 0
+  `plans/current/loop-80-20-templates.md`, Fase 0
 - Tokens semânticos (não direction-aware vs. direction-aware) e os 5
   presets de estilo — ver `README.md`, seção "Sistema de tokens"
 - Regras do loop autônomo (decisão provisória em vez de travar quando
-  Rafael não está disponível) — ver `PLANO-LOOP-80-20-TEMPLATES.md`
+  Rafael não está disponível) — ver `plans/current/loop-80-20-templates.md`
 - Nunca cor fixa fora de token, nunca componente inventado fora do
   catálogo em `src/components/ui/`
 
