@@ -237,8 +237,8 @@
 
   /* ---- Primitivos deste tema (default/claro) ------------------------------
      Extraídos em 2026-07-22: cada um destes valores já era repetido
-     literalmente em 2+ papéis semânticos abaixo (ver PLANO-LOOP-80-20-
-     TEMPLATES.md pela evidência completa, achada durante a revisão com
+     literalmente em 2+ papéis semânticos abaixo (ver
+     plans/current/loop-80-20-templates.md pela evidência completa, achada durante a revisão com
      agentes). Escrever o valor uma vez só aqui elimina o risco de trocar
      em 3 lugares e esquecer o 4º. Só extraí onde a duplicação já existia
      — não criei uma escala nova (tipo 50-900) sem necessidade comprovada. */
@@ -342,7 +342,7 @@
      (documentação) e alimentar ferramenta de contraste — por isso hex, não
      OKLCH, mesmo tendo sido gerados com base em luminosidade (metodologia:
      10 passos de L/C por escala, aplicados a um hue fixo, convertidos pra
-     hex só no final — ver PLANO-LOOP-80-20-TEMPLATES.md pro script exato).
+     hex só no final — ver plans/current/loop-80-20-templates.md pro script exato).
 
      Hues NÃO são arbitrários: danger reaproveita o hue do --destructive já
      existente no projeto (27.325), info reaproveita o hue do --tech-action
