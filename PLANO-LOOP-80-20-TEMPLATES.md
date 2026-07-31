@@ -397,7 +397,7 @@ server já registrada na Fase 6.1).
   trabalho do Rafael, regra fixa desde a Fase 0.
 - Revisão da paleta ATLAS (tokens primitivos de cor) — Rafael já disse
   "não agora" (registrado 2026-07-23).
-- Aplicar a taxonomia por função de `TAXONOMIA-COMPONENTES.md` — Rafael
+- Aplicar a taxonomia por função de `docs/active/especificacoes/taxonomia-componentes.md` — Rafael
   disse "vamos ajustar depois", decisão em aberto, não confirmada.
 - B1/B2 de `.review/diagnostico.md` (tokens de escala tipográfica/
   espaçamento) — classificados como decisão de escopo, não bug.
@@ -848,8 +848,8 @@ pendente ou precisou de decisão do Rafael)*
   feedback, data-display, overlay, navigation, layout) proposta pros
   58 componentes, documentada com o raciocínio de cada categoria e os
   5 casos discutíveis (accordion, calendar, carousel, card,
-  navigation-menu) em **`TAXONOMIA-COMPONENTES.md`** (novo arquivo na
-  raiz do projeto). Ainda **não aplicada** em nenhum arquivo de dados
+  navigation-menu) em **`docs/active/especificacoes/taxonomia-componentes.md`**.
+  Ainda **não aplicada** em nenhum arquivo de dados
   — Rafael disse "vamos ajustar depois", então só a nota ficou
   registrada por enquanto.
 - `commonPartners` derivado de evidência real (script Node varrendo
@@ -857,7 +857,7 @@ pendente ou precisou de decisão do Rafael)*
   verdade: Template + `/teste-padrao` + 15 Patterns), com o corte de
   confiabilidade (só pares com 2+ ocorrências independentes) e a
   ressalva de amostra pequena documentados no mesmo
-  `TAXONOMIA-COMPONENTES.md`.
+  `docs/active/especificacoes/taxonomia-componentes.md`.
 - Próximo: Rafael termina a instalação do Storybook; depois, revisar a
   taxonomia proposta, decidir onde ela é aplicada (`atomic-registry.ts`
   vs. arquivo novo `component-taxonomy.ts`) e como o `commonPartners`
