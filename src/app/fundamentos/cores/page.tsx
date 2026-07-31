@@ -166,7 +166,7 @@ export default function CoresPage() {
         <CardHeader>
           <CardTitle>Inteligência artificial</CardTitle>
           <CardDescription>
-            Tokens da Nimbus Design System para superfícies e interações de IA
+            Tokens dedicados a superfícies e interações relacionadas a IA
             (ex: variantes ai-primary/ai-secondary do Button).
           </CardDescription>
         </CardHeader>
