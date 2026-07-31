@@ -28,12 +28,18 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   // Atoms
   avatar: "atom",
   badge: "atom",
+  box: "atom",
   button: "atom",
   checkbox: "atom",
+  chip: "atom",
+  "file-uploader": "atom",
+  icon: "atom",
+  "icon-button": "atom",
   input: "atom",
   "input-otp": "atom",
   kbd: "atom",
   label: "atom",
+  link: "atom",
   progress: "atom",
   "radio-group": "atom",
   separator: "atom",
@@ -41,7 +47,11 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   slider: "atom",
   spinner: "atom",
   switch: "atom",
+  tag: "atom",
+  text: "atom",
   textarea: "atom",
+  thumbnail: "atom",
+  title: "atom",
   toggle: "atom",
   tooltip: "atom",
   "aspect-ratio": "atom",
@@ -50,6 +60,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   popover: "atom",
   item: "atom",
   marker: "atom",
+  "multi-select": "atom",
 
   // Molecules
   alert: "molecule",
@@ -72,6 +83,8 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   pagination: "molecule",
   "toggle-group": "molecule",
   "scroll-area": "molecule",
+  "segmented-control": "molecule",
+  "split-button": "molecule",
   attachment: "molecule",
 
   // Organisms
@@ -94,8 +107,10 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   resizable: "organism",
   sheet: "organism",
   sidebar: "organism",
+  stepper: "organism",
   table: "organism",
   tabs: "organism",
+  "time-picker": "organism",
 }
 
 // Utilitários/infraestrutura — não entram no catálogo visual (Atoms/
@@ -117,31 +132,10 @@ export interface InProgressEntry {
   category: AtomicCategory
 }
 
-export const inProgressEntries: InProgressEntry[] = [
-  { name: "Chip", category: "atom" },
-  { name: "Tag", category: "atom" },
-  { name: "File Uploader", category: "atom" },
-  { name: "Icon Button", category: "atom" },
-  { name: "Link", category: "atom" },
-  { name: "List", category: "atom" },
-  { name: "Text", category: "atom" },
-  { name: "Box", category: "atom" },
-
-  // Achados na auditoria contra a Nimbus em 2026-07-21 (ver
-  // PLANO-LOOP-80-20-TEMPLATES.md) — os 4 primeiros eram "Atomic" lá,
-  // categoria "atom" direto. Os 4 últimos eram "Composite" (equivalente
-  // a Molecules/Organisms); categorizados aqui pelo mesmo raciocínio já
-  // usado no resto do atomicRegistry (comparando com o "parente" mais
-  // próximo em complexidade que já temos): SegmentedControl e
-  // SplitButton são composições simples de poucos atoms, como
-  // ToggleGroup e ButtonGroup (molecule); Stepper e TimePicker têm
-  // lógica própria mais complexa, como Accordion e Calendar (organism).
-  { name: "Icon", category: "atom" },
-  { name: "MultiSelect", category: "atom" },
-  { name: "Thumbnail", category: "atom" },
-  { name: "Title", category: "atom" },
-  { name: "SegmentedControl", category: "molecule" },
-  { name: "SplitButton", category: "molecule" },
-  { name: "Stepper", category: "organism" },
-  { name: "TimePicker", category: "organism" },
-]
+// Vazia desde 2026-07-30 — os 15 componentes que estavam aqui (Fase 6.1 do
+// PLANO-LOOP-80-20-TEMPLATES.md) foram todos implementados e movidos pra
+// atomicRegistry acima. Mantida como array tipado (não removida) porque
+// nav-components.tsx e as páginas de índice (/atoms, /molecules, /organisms)
+// ainda consomem essa lista pra renderizar cards "Em construção" — component
+// futuro que entrar nesse fluxo volta a usar esta lista.
+export const inProgressEntries: InProgressEntry[] = []

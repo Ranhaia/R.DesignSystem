@@ -7,13 +7,24 @@ import { Attachment, AttachmentContent, AttachmentDescription, AttachmentMedia, 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Bubble, BubbleContent } from "@/components/ui/bubble"
+import { Chip } from "@/components/ui/chip"
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { Icon } from "@/components/ui/icon"
+import { IconButton } from "@/components/ui/icon-button"
 import { Item } from "@/components/ui/item"
 import { Label } from "@/components/ui/label"
+import { List, ListItem } from "@/components/ui/list"
+import { Link } from "@/components/ui/link"
 import { Marker } from "@/components/ui/marker"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
+import { SegmentedControl, SegmentedControlItem } from "@/components/ui/segmented-control"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { SplitButton } from "@/components/ui/split-button"
 import { Switch } from "@/components/ui/switch"
+import { Tag } from "@/components/ui/tag"
+import { Text } from "@/components/ui/text"
+import { Thumbnail } from "@/components/ui/thumbnail"
+import { Title } from "@/components/ui/title"
 import { Toggle } from "@/components/ui/toggle"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
@@ -56,6 +67,101 @@ export const genericPlaygroundRegistry: Record<string, GenericPlaygroundConfig> 
   badge: {
     variants: ["default", "secondary", "destructive", "outline", "ghost", "link"],
     render: ({ variant }) => <Badge variant={variant as never}>Badge</Badge>,
+  },
+  chip: {
+    variants: ["default", "ai-generated"],
+    disabled: true,
+    checked: { label: "Removível" },
+    render: ({ variant, disabled, checked }) => (
+      <Chip
+        variant={variant as never}
+        removable={checked}
+        disabled={disabled}
+        onRemove={() => {}}
+      >
+        Chip de exemplo
+      </Chip>
+    ),
+  },
+  tag: {
+    variants: ["default", "primary", "success", "warning", "danger", "ai-generated"],
+    render: ({ variant }) => <Tag variant={variant as never}>Tag de exemplo</Tag>,
+  },
+  text: {
+    variants: ["regular", "medium", "bold"],
+    variantLabel: "Peso",
+    sizes: ["caption", "base", "highlight"],
+    checked: { label: "Muted" },
+    render: ({ variant, size, checked }) => (
+      <Text weight={variant as never} size={size as never} muted={checked}>
+        Texto de exemplo
+      </Text>
+    ),
+  },
+  thumbnail: {
+    sizes: ["sm", "default", "lg"],
+    render: ({ size }) => (
+      <Thumbnail
+        size={size as never}
+        src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=400&dpr=2&q=80"
+        alt="Foto de Drew Beamer"
+      />
+    ),
+  },
+  title: {
+    sizes: ["h1", "h2", "h3", "h4", "h5", "h6"],
+    sizeLabel: "Tamanho (visual)",
+    render: ({ size }) => (
+      <Title as="h2" size={size as never}>
+        Título de exemplo
+      </Title>
+    ),
+  },
+  "icon-button": {
+    variants: ["default", "secondary", "outline", "ghost", "destructive", "link", "ai-primary", "ai-secondary"],
+    sizes: ["icon", "icon-xs", "icon-sm", "icon-lg"],
+    disabled: true,
+    render: ({ variant, size, disabled }) => (
+      <IconButton
+        variant={variant as never}
+        size={size as never}
+        disabled={disabled}
+        icon={<Icon name="favorite" />}
+        aria-label="Favoritar"
+      />
+    ),
+  },
+  list: {
+    variants: ["none", "marker"],
+    render: ({ variant }) => (
+      <List variant={variant as never} className="w-48">
+        <ListItem>Primeiro item</ListItem>
+        <ListItem>Segundo item</ListItem>
+        <ListItem>Terceiro item</ListItem>
+      </List>
+    ),
+  },
+  "split-button": {
+    variants: ["default", "secondary", "outline", "ghost", "destructive", "link"],
+    sizes: ["sm", "default", "lg"],
+    disabled: true,
+    render: ({ variant, size, disabled }) => (
+      <SplitButton
+        variant={variant as never}
+        size={size as never}
+        disabled={disabled}
+        label="Salvar"
+      >
+        <DropdownMenuItem onClick={() => {}}>
+          <Icon name="draft" />
+          Salvar como rascunho
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => {}}>
+          <Icon name="logout" />
+          Salvar e sair
+        </DropdownMenuItem>
+      </SplitButton>
+    ),
   },
   switch: {
     sizes: ["sm", "default"],
@@ -121,6 +227,14 @@ export const genericPlaygroundRegistry: Record<string, GenericPlaygroundConfig> 
       </Item>
     ),
   },
+  link: {
+    sizes: ["xs", "sm", "default", "lg"],
+    render: ({ size }) => (
+      <Link href="#" size={size as never}>
+        Link de exemplo
+      </Link>
+    ),
+  },
   marker: {
     variants: ["default", "separator", "border"],
     render: ({ variant }) => (
@@ -135,6 +249,23 @@ export const genericPlaygroundRegistry: Record<string, GenericPlaygroundConfig> 
       <Alert variant={variant as never} className="w-auto">
         <AlertTitle>Aviso de exemplo</AlertTitle>
       </Alert>
+    ),
+  },
+  "segmented-control": {
+    sizes: ["sm", "default", "lg"],
+    disabled: true,
+    checked: { label: 'Item "B" selecionado' },
+    render: ({ size, disabled, checked, setChecked }) => (
+      <SegmentedControl
+        aria-label="Exemplo"
+        size={size as never}
+        disabled={disabled}
+        value={checked ? "b" : "a"}
+        onValueChange={(value) => setChecked(value === "b")}
+      >
+        <SegmentedControlItem value="a">A</SegmentedControlItem>
+        <SegmentedControlItem value="b">B</SegmentedControlItem>
+      </SegmentedControl>
     ),
   },
   "toggle-group": {

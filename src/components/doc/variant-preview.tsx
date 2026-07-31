@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Bubble, BubbleContent } from "@/components/ui/bubble"
 import { Button } from "@/components/ui/button"
+import { Chip } from "@/components/ui/chip"
 import { Item } from "@/components/ui/item"
 import { Marker } from "@/components/ui/marker"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
@@ -31,6 +32,9 @@ export const variantPreviewRegistry: Record<
   ),
   badge: ({ value, children }) => (
     <Badge variant={value as never}>{children}</Badge>
+  ),
+  chip: ({ value, children }) => (
+    <Chip variant={value as never}>{children}</Chip>
   ),
   toggle: ({ value, children }) => (
     <Toggle variant={value as never}>{children}</Toggle>
