@@ -267,7 +267,11 @@
 
   /* Conteúdo esmaecido (texto de apoio, placeholders, estados desabilitados) */
   --muted: #F5F5F5;
-  --muted-foreground: #737373;
+  /* 2026-07-30 (Fase 6.2, item M2): #737373 dava 4.35:1 contra --muted
+     #F5F5F5 — reprova AA texto normal (4.5:1) por pouco. Corrigido só via
+     luminosidade OKLCH (L 0.556→0.543, sem hue/chroma — é cinza puro,
+     C=0 antes e depois), mesmo H/C preservado. Novo par: 4.61:1. */
+  --muted-foreground: #6F6F6F;
 
   /* Destaques neutros (hover em itens de menu, seleção) */
   --accent: #F5F5F5;
@@ -470,7 +474,14 @@
   --muted-foreground: #A1A1A1;
   --accent: #262626;
   --accent-foreground: var(--default-dark-surface-foreground);
-  --destructive: #FF6467;
+  /* 2026-07-30 (Fase 6.2, item A1): #FF6467 contra --destructive-foreground
+     #FAFAFA dava 2.77:1 — reprova AA (falha texto normal E grande). Ajustado
+     só via luminosidade OKLCH (L 0.702→0.578, mesmo H=22.2°/C=0.189).
+     Propaga por cascata pra editorial/dark, tech/dark e soft/dark (nenhum
+     dos 3 sobrescreve --destructive, herdam este valor de .dark base) —
+     resolve os 4 casos do A1 de uma vez. midnight/dark tem sua própria
+     redefinição idêntica abaixo, corrigida em paralelo. Novo par: 4.57:1. */
+  --destructive: #D23943;
   --destructive-foreground: var(--default-dark-surface-foreground);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
@@ -882,11 +893,12 @@
      por coincidência de valor. Registrado no PLANO como oportunidade
      futura, não como pendência silenciosa.
      NOTA: o par --midnight-dark-action/--midnight-dark-action-foreground
-     é a combinação que o diagnóstico de acessibilidade de hoje reprovou
-     em AA (2.56:1) — mantive o valor exatamente como estava (não é o que
-     o Rafael pediu nesta mudança), só corrigi o rótulo claro/escuro que
-     estava mascarando o problema. Ajustar contraste é decisão separada. */
-  --midnight-dark-action: #AA89FF;
+     era a combinação que o diagnóstico de acessibilidade reprovava em AA
+     (2.55:1, o plano rotulou como "midnight/light" por engano — o par que
+     falhava é este, em .dark[data-style="midnight"]).
+     2026-07-30 (Fase 6.2, item A2): corrigido só via luminosidade OKLCH
+     (L 0.711→0.567, mesmo H=294.6°/C=0.169 preservados). Novo par: 4.56:1. */
+  --midnight-dark-action: #7F5CCE;
   --midnight-dark-action-foreground: #F8F7FF;
   --midnight-dark-surface: #161721;
   --midnight-dark-surface-foreground: #EDEEF5;
@@ -909,8 +921,9 @@
      do preset — só faltava --destructive: sem isso, herdava o vermelho
      de :root (calibrado pra fundo claro), pouco legível sobre o
      navy-violeta escuro deste preset. Reuso o mesmo tom que .dark (base)
-     já usa. */
-  --destructive: #FF6467;
+     já usa. 2026-07-30 (Fase 6.2, item A1): mesmo ajuste de luminosidade
+     aplicado em .dark base — ver comentário lá. Novo par: 4.57:1. */
+  --destructive: #D23943;
   --destructive-foreground: #FAFAFA;
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);

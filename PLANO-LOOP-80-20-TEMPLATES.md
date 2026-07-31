@@ -339,25 +339,56 @@ padrão mais consistente já usado no catálogo (mesma regra do "Modo
 autônomo") e registrar a escolha como decisão provisória na tabela
 abaixo.
 
-### 6.2 — Correções de acessibilidade AA (achados de `.review/diagnostico.md`, ainda não corrigidos)
+### 6.2 — Correções de acessibilidade AA (achados de `.review/diagnostico.md`) — ✅ concluído 2026-07-30
 
-- [ ] **A1 (ALTA):** `--destructive-foreground`/`--destructive` falha AA
-      (2.77:1, falha normal E grande) em `default/dark`, `editorial/dark`,
-      `tech/dark`, `soft/dark` e `midnight/light` — 5 das 81 combinações,
-      mesmo par de valores nos 5 casos. Ajustar o par de cor em
-      `globals.css` (blocos `.dark` de cada preset + `midnight/light`)
-      pra atingir ≥4.5:1, sem remover os overrides já existentes (só
-      corrigir o valor).
-- [ ] **A2 (ALTA):** `--primary-foreground`/`--primary` em `midnight/light`
-      — 2.56:1, a pior razão das 81 combinações.
-- [ ] **M1 (MÉDIA):** `--primary-foreground`/`--primary` em `soft/light`
-      — 3.42:1 (falha só texto normal, passa texto grande).
-- [ ] **M2 (MÉDIA):** `--muted-foreground`/`--muted` em `default/light`
-      — 4.34:1 (falha por pouco, mais próxima do limiar entre as 81).
+> **Correção de rótulo, achada ao recalcular antes de ajustar:** os itens
+> A1 e A2 abaixo diziam "midnight/light" — na verdade os pares que
+> reprovavam são de **midnight/dark** (`.dark[data-style="midnight"]`).
+> `midnight/light` já passava (6.31:1 no primary, herda o destructive de
+> `:root` a 4.57:1). O comentário já existente em `globals.css` linha
+> ~884 (junto de `--midnight-dark-action`) já tinha a rotulagem certa —
+> só o texto deste plano estava desatualizado. Confirmado recalculando
+> os 81 pares antes de tocar em qualquer valor, não só confiando no texto
+> do plano.
+>
+> **M1 também estava obsoleto:** `--primary`/`--primary-foreground` de
+> `soft/light` já tinha sido corrigido em 2026-07-22 (`#EB5169`→`#E31A39`,
+> ver comentário em `globals.css` linha ~722) — recalculado agora em
+> 4.51:1, já passa. Não precisou de novo ajuste. Sobraram 3 pares reais
+> a corrigir (A1, A2, M2), não 4 — o plano contava M1 que já não existia
+> mais como problema.
 
-**Verificação:** recalcular contraste (mesmo método de
-`.review/acessibilidade.md`) pros 4 pares corrigidos, confirmar ≥4.5:1
-AA texto normal em todos.
+- [x] **A1 (ALTA):** `--destructive`/`--destructive-foreground` em
+      `.dark` (base) — 2.77:1. Corrigido só via luminosidade OKLCH
+      (`#FF6467`→`#D23943`, L 0.702→0.578, mesmo H=22.2°/C=0.189
+      preservados) → **4.57:1**. Propaga por cascata pra `editorial/dark`,
+      `tech/dark` e `soft/dark` (nenhum dos 3 sobrescreve
+      `--destructive`, herdam de `.dark` base) — resolve os 4 casos
+      citados no plano original de uma vez. `.dark[data-style="midnight"]`
+      redefine o mesmo par explicitamente (não herda) — ajustado em
+      paralelo com o mesmo valor, por consistência.
+- [x] **A2 (ALTA):** `--midnight-dark-action`/`-foreground` em
+      `.dark[data-style="midnight"]` — 2.55:1 (a pior razão das 81
+      combinações). Corrigido só via luminosidade OKLCH
+      (`#AA89FF`→`#7F5CCE`, L 0.711→0.567, mesmo H=294.6°/C=0.169
+      preservados) → **4.56:1**. Propaga automaticamente pros 3 papéis
+      que referenciam essa variável (`primary`, `chart-2`,
+      `sidebar-primary`), sem precisar editar os 3.
+- [x] **M2 (MÉDIA):** `--muted-foreground`/`--muted` em `:root` (default/
+      light) — 4.35:1. Corrigido só via luminosidade OKLCH
+      (`#737373`→`#6F6F6F`, L 0.556→0.543 — cinza puro, C=0 antes e
+      depois, sem hue) → **4.61:1**.
+- [x] ~~M1 (MÉDIA): `--primary`/`--primary-foreground` em `soft/light`~~
+      — já corrigido em 2026-07-22, confirmado ainda válido (4.51:1),
+      nenhuma ação necessária.
+
+**Verificação:** contraste recalculado programaticamente (luminância
+relativa WCAG, mesmo método de `.review/acessibilidade.md`) pros 3 pares
+corrigidos — todos ≥4.5:1 AA texto normal. Mudança isolada em
+`globals.css` (7 linhas de valor, só cor — nenhum `.ts`/`.tsx` tocado,
+`tsc` não é afetado). **Pendente:** verificação visual real dos 3 tons
+novos nos respectivos presets (mesma limitação de sandbox sem dev
+server já registrada na Fase 6.1).
 
 ### Fora de escopo desta fase — não tocar sem Rafael decidir primeiro
 
@@ -385,8 +416,9 @@ AA texto normal em todos.
       — não rodou nesta sessão (sem servidor de desenvolvimento ativo);
       recomendado antes de considerar 100% fechado.
 - [x] Icon com card ativo em `/atoms` (6.0 corrigido) — 2026-07-30.
-- [ ] Os 4 pares de cor da 6.2 com contraste ≥4.5:1 confirmado — **ainda
-      não tocado nesta sessão**, continua pendente.
+- [x] Os pares de cor da 6.2 com contraste ≥4.5:1 confirmado — 3 pares
+      reais corrigidos (A1/A2/M2), M1 já estava resolvido desde
+      2026-07-22 — concluído 2026-07-30 (ver Log).
 - [x] `inProgressEntries` (em `atomic-registry.ts`) vazio — confirmado
       2026-07-30 (array tipado mantido, só sem entradas).
 
@@ -417,6 +449,7 @@ que Rafael confere ao voltar. Uma linha por decisão.)*
 | Fase 6.1 — Stepper | Numeração de `StepperItem` automática (posição nos `children`), sem prop `step` explícita; `Stepper` 100% controlado (`value` obrigatório, sem `defaultValue`); etapas clicáveis permitem pular pra qualquer etapa (inclusive `upcoming`) sem restrição interna | Exigir `step` manual; suportar modo não-controlado (como Radix Tabs); bloquear clique em `upcoming` dentro do componente | Numeração automática evita erro de índice duplicado/fora de ordem. Reverter: cada peça é aditiva/isolada em `stepper.tsx`. |
 | Fase 6.1 — TimePicker | Composição via 2–3 `Select`s (Hora/Minuto/Período) em vez de `ScrollArea`+botões (padrão "scroll", o default real do Nimbus); `minuteStep` default `5` (Nimbus real default `30`, só documentado pro modo dropdown); `mode`/`minTime`/`maxTime` do Nimbus **não implementados** | `ScrollArea`+botões fiel ao Nimbus; default `30`; implementar os 3 pra paridade total | `Select` já dá navegação por teclado completa de graça (setas, Home/End, typeahead, Escape) — `ScrollArea` exigiria handler de roving-tabindex escrito à mão. Reverter: trocar o conteúdo do `PopoverContent` em `time-picker.tsx`, mesma API pública (`value`/`onValueChange`). |
 | Fase 6.1 — MultiSelect | Base real de implementação = `Combobox` (multiple), não `Select` — Nimbus real usa input+chips+popover, não um botão "+N mais"; chips reaproveitam `ComboboxChip` (não o átomo `Chip`, que quebraria a navegação por teclado entre chips do Combobox); API monolítica (`MultiSelect` único, não composable) — espelha a própria API do Nimbus real; `appearance` (success/warning/danger/neutral) do Nimbus **não** replicado | `Select` com `multiple` nativo (base-ui); trocar por `Chip removable`; composição livre tipo Select/Combobox; adicionar prop `appearance` | `Select` nativo colocaria um botão de remover chip dentro do botão do trigger — HTML inválido, quebra foco/leitor de tela. Reverter: usar `aria-invalid` (já padrão do catálogo) cobre o caso de erro sem precisar de `appearance`. |
+| Fase 6.2 — A1/A2/M2 | Ajuste de contraste feito só variando luminosidade (L) no espaço OKLCH, mantendo chroma (C) e hue (H) originais de cada cor — pedido explícito do Rafael ("usando variação de luminosidade"), não escolha da IA | Trocar a cor inteira por outro tom da paleta ATLAS; usar um valor arbitrário que "parecesse" certo visualmente sem recalcular | L é o único eixo que controla contraste percebido de forma previsível no OKLCH — mexer só nele preserva a identidade de cor (mesmo hue/saturação), só ajusta claro/escuro até bater o mínimo AA. Calculado programaticamente (script Python com `coloraide` + luminância relativa WCAG), não por tentativa visual. Reverter: os 3 hex antigos estão nos comentários ao lado de cada `--destructive`/`--midnight-dark-action`/`--muted-foreground` em `globals.css`. |
 
 ## Log
 
