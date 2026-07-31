@@ -1,4 +1,4 @@
-// Documentação dos 15 Patterns (mapa original em PLANO-DESIGN-SYSTEM.md).
+// Documentação dos 15 Patterns (mapa original em plans/current/design-system-piloto.md).
 // Mesma regra do component-docs.ts: description/whenToUse/doGuidelines/
 // dontGuidelines ficam como placeholder "[a preencher]" — conteúdo que
 // Rafael escreve depois. `composition` e `accessibility` são reais,

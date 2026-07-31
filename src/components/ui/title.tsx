@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 // Title: átomo tipográfico formal para headings (h1-h6). Duas props
-// independentes, de propósito diferente (ver .build/componentes/title.md):
+// independentes, de propósito diferente (ver docs/archive/componentes/title/spec.md):
 // - `as`: qual elemento HTML real é renderizado (semântica/hierarquia de
 //   documento, importante pra leitor de tela e SEO).
 // - `size`: qual escala visual é aplicada (hierarquia visual). Por padrão

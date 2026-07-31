@@ -59,7 +59,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-// Template "Apólices ativas" — Fase 5B do PLANO-LOOP-80-20-TEMPLATES.md, 1ª
+// Template "Apólices ativas" — Fase 5B do plans/current/loop-80-20-templates.md, 1ª
 // das 3 telas de seguros (apolices-ativas → novo-sinistro → painel-corretor).
 // Reaproveita o MECANISMO de 5 Patterns já catalogados (não cópia): a
 // composição exata de empty-state.tsx (estado 5 - vazio real), a variante
@@ -71,7 +71,7 @@ import {
 // dashboard-financeiro (SidebarProvider escopado, não é a AppSidebar real).
 //
 // 2026-07-23: perfil/corretora agora vêm do FluxoLoginContext (decisão
-// ratificada por Rafael, ver .build/telas/PENDENCIAS.md item 2.1) — usado
+// ratificada por Rafael, ver docs/archive/decisoes/pendencias-fase5.md item 2.1) — usado
 // aqui só pra exibir o nome real da corretora no cabeçalho da sidebar
 // mockada (fallback genérico se a tela for aberta direto, sem passar por
 // selecao-perfil-corretora). Continua PROVISÓRIO e fora deste Context:

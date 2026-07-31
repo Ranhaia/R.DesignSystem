@@ -45,7 +45,7 @@ function useStepItemContext(component: string) {
 
 // Stepper: root controlado — `value` é o índice (0-based) da etapa atual,
 // sempre fornecido pelo chamador (sem modo não-controlado/defaultValue, ver
-// spec em .build/componentes/stepper.md). O índice de cada <StepperItem>
+// spec em docs/archive/componentes/stepper/spec.md). O índice de cada <StepperItem>
 // filho é derivado automaticamente da posição dele nos `children` (igual ao
 // comportamento real do @nimbus-ds/stepper, que também numera Stepper.Item
 // automaticamente) — o chamador nunca precisa passar um número de etapa à

@@ -68,7 +68,7 @@ import { Spinner } from "@/components/ui/spinner"
 import { Textarea } from "@/components/ui/textarea"
 import { useFluxoLogin } from "@/components/templates/fluxo-login-context"
 
-// Template "Novo sinistro" — Fase 5B do PLANO-LOOP-80-20-TEMPLATES.md, 2ª
+// Template "Novo sinistro" — Fase 5B do plans/current/loop-80-20-templates.md, 2ª
 // das 3 telas de seguros (apolices-ativas → novo-sinistro → painel-corretor).
 // Moldura de portal idêntica a apolices-ativas (mesma Sidebar mockada, item
 // ativo trocado para "Sinistros"). O formulário reaproveita o MECANISMO de 3
@@ -78,7 +78,7 @@ import { useFluxoLogin } from "@/components/templates/fluxo-login-context"
 // e confirmation-dialog.tsx (AlertDialog como gate antes do envio final da
 // etapa 3, não uma 4ª etapa do wizard). Nenhuma peça nova.
 //
-// PROVISÓRIO (ver .build/telas/novo-sinistro.md, "Lacunas" item 1): esta
+// PROVISÓRIO (ver docs/archive/telas/novo-sinistro/spec.md, "Lacunas" item 1): esta
 // tela não recebe a apólice de origem de apolices-ativas — "Apólice
 // relacionada" sempre começa vazia, mesma decisão já tomada na fronteira
 // anterior do fluxo.

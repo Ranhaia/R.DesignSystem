@@ -28,7 +28,7 @@ const tagVariants = cva(
 // Tag: rótulo ESTÁTICO pra categorizar informação (não removível, sem ação
 // própria) — diferente do Chip (critério de filtro ativo, tipicamente
 // removível) e do Badge (contagem/status pontual). Fonte real:
-// @nimbus-ds/tag (ver .build/componentes/tag.md) — TagProperties só expõe
+// @nimbus-ds/tag (ver docs/archive/componentes/tag/spec.md) — TagProperties só expõe
 // `children` e `appearance`, sem `icon`/`removable`/`onRemove`/`disabled`.
 // Ícone (quando fizer sentido) é composição livre via children, não uma
 // prop dedicada — mesmo comportamento que o próprio pacote Nimbus tem

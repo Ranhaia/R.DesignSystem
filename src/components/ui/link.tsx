@@ -34,7 +34,7 @@ function Link({
   asChild?: boolean
   /** Marca o link como saída para fora do contexto atual: força
       target="_blank" + rel="noopener noreferrer" e acrescenta um ícone de
-      saída depois do texto. Decisão provisória (ver .build/componentes/link.md
+      saída depois do texto. Decisão provisória (ver docs/archive/componentes/link/spec.md
       "Modo autônomo") — o typedef do @nimbus-ds/link não expõe um boolean
       `external` pronto (o README só recomenda "inclua um ícone" como boa
       prática, sem prescrever a prop), mas o padrão já existe implementado

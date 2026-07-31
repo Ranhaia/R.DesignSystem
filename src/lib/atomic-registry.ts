@@ -21,7 +21,7 @@ export const categoryHref: Record<AtomicCategory, string> = {
 
 // Fonte da verdade da categorização Atomic Design dos componentes já
 // existentes em src/components/ui/. Aprovada por Rafael na Fase 0 do
-// PLANO-LOOP-80-20-TEMPLATES.md (2026-07-20). Qualquer mudança de
+// plans/current/loop-80-20-templates.md (2026-07-20). Qualquer mudança de
 // categoria deve ser feita só aqui — o resto do projeto (nav, páginas de
 // índice) consome este mapa, nunca lista hardcoded em outro lugar.
 export const atomicRegistry: Record<string, AtomicCategory> = {
@@ -126,14 +126,14 @@ export function getAtomicCategory(slug: string): AtomicCategory | null {
 // Atoms "em construção" — já existem no Nimbus (outro produto de Rafael),
 // ainda não implementados neste projeto. Aparecem nas páginas de índice
 // como card desabilitado com badge "Em construção". Fora de escopo da
-// Fase 4 (ver Fase 5 do PLANO-LOOP-80-20-TEMPLATES.md).
+// Fase 4 (ver Fase 5 do plans/current/loop-80-20-templates.md).
 export interface InProgressEntry {
   name: string
   category: AtomicCategory
 }
 
 // Vazia desde 2026-07-30 — os 15 componentes que estavam aqui (Fase 6.1 do
-// PLANO-LOOP-80-20-TEMPLATES.md) foram todos implementados e movidos pra
+// plans/current/loop-80-20-templates.md) foram todos implementados e movidos pra
 // atomicRegistry acima. Mantida como array tipado (não removida) porque
 // nav-components.tsx e as páginas de índice (/atoms, /molecules, /organisms)
 // ainda consomem essa lista pra renderizar cards "Em construção" — component

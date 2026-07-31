@@ -24,7 +24,7 @@ import {
 // seleções como chips removíveis dentro do próprio campo — é o mesmo
 // desenho que o `@nimbus-ds/multi-select` real usa (chips + input + popover
 // sobre @floating-ui/react). Ver decisão completa e fontes em
-// `.build/componentes/multi-select.md`.
+// `docs/archive/componentes/multi-select/spec.md`.
 //
 // Por que ComboboxChip (não o átomo genérico Chip): ComboboxChip/
 // ComboboxChipRemove estão amarrados ao contexto interno de teclado do
@@ -117,7 +117,7 @@ function MultiSelect({
 // MultiSelect.Skeleton: placeholder de carregamento, mesmo mecanismo de
 // Chip.Skeleton (chip.tsx) e Button.Skeleton (button.tsx). Existe porque o
 // `@nimbus-ds/multi-select` real também expõe `MultiSelect.Skeleton` como
-// subcomponente estático (ver .build/componentes/multi-select.md) — não é
+// subcomponente estático (ver docs/archive/componentes/multi-select/spec.md) — não é
 // invenção deste projeto.
 function MultiSelectSkeleton({
   className,

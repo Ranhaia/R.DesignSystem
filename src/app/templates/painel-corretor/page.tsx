@@ -61,7 +61,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-// Template "Painel do corretor" — Fase 5B do PLANO-LOOP-80-20-TEMPLATES.md,
+// Template "Painel do corretor" — Fase 5B do plans/current/loop-80-20-templates.md,
 // 3ª e última das 3 telas de seguros (apolices-ativas → novo-sinistro →
 // painel-corretor). Papel diferente das 2 telas irmãs: este é o HUB do
 // portal — o item "Painel" da sidebar mockada das outras 2 telas sempre
@@ -75,7 +75,7 @@ import {
 // de array sobre Table) — primeira tela do projeto a de fato renderizar
 // <Pagination> dentro de uma jornada.
 //
-// PROVISÓRIO (ver .build/telas/painel-corretor.md, "Lacunas" itens 1-3):
+// PROVISÓRIO (ver docs/archive/telas/painel-corretor/spec.md, "Lacunas" itens 1-3):
 // nenhum dado é recebido de outra tela (mesma decisão das 2 fronteiras
 // anteriores de 5B); os 3 cards de KPI são estáticos (só o card de lista
 // passa pelo Select de cenário); os números de KPI são fictícios, não

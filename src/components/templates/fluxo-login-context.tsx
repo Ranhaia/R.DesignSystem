@@ -4,7 +4,7 @@ import * as React from "react"
 
 // Context de persistência entre as telas do fluxo de login (Fase 5A) e,
 // a partir daqui, as telas de seguros da Fase 5B — decisão ratificada
-// por Rafael em 2026-07-23 (ver .build/telas/PENDENCIAS.md, item 2.1).
+// por Rafael em 2026-07-23 (ver docs/archive/decisoes/pendencias-fase5.md, item 2.1).
 // Antes, cada tela usava só estado local — nada sobrevivia à navegação
 // entre rotas. Escolha de Context (em vez de query param/sessionStorage):
 // guarda em memória durante a navegação client-side entre as telas do

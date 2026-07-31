@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 // asChild, mesmo mecanismo já usado em Chip/Badge/Button) sem props
 // próprias de estilo.
 //
-// Decisão de escopo (ver .build/componentes/box.md para o raciocínio
+// Decisão de escopo (ver docs/archive/componentes/box/spec.md para o raciocínio
 // completo): a API real do @nimbus-ds/box expõe 100+ props de
 // style-system (padding/margin com shorthands m/p/mt/mb/mx/my/pl/pr...,
 // display, flex, grid, cor, borda, sombra, breakpoints responsivos

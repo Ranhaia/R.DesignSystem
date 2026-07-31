@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 // Elementos aceitos pela prop `as` — fonte real (@nimbus-ds/list, ver
-// .build/componentes/list.md): `ListProperties.as` é exatamente
+// docs/archive/componentes/list/spec.md): `ListProperties.as` é exatamente
 // "ul" | "ol", sem outras opções documentadas.
 type ListElement = "ul" | "ol"
 

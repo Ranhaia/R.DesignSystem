@@ -28,7 +28,7 @@ const textVariants = cva("", {
 })
 
 // Elementos aceitos pela prop `as` — decisão do catálogo (ver
-// .build/componentes/text.md): a fonte real (@nimbus-ds/text) só documenta
+// docs/archive/componentes/text/spec.md): a fonte real (@nimbus-ds/text) só documenta
 // "p" | "span", "div" foi incluído a pedido explícito do escopo desta tarefa.
 type TextElement = "p" | "span" | "div"
 

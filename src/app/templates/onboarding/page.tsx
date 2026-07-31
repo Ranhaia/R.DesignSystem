@@ -43,7 +43,7 @@ import {
   TELEFONE_REGEX,
 } from "@/lib/field-formatters"
 
-// Template "Onboarding" — Fase 5A do PLANO-LOOP-80-20-TEMPLATES.md, 5ª e
+// Template "Onboarding" — Fase 5A do plans/current/loop-80-20-templates.md, 5ª e
 // última rota do fluxo de login (login-simples → login-erro-validacao →
 // recuperacao-senha → selecao-perfil-corretora → onboarding). Reaproveita o
 // MECANISMO do Pattern multi-step-form.tsx (Progress + aria-live "Etapa X de
@@ -56,7 +56,7 @@ import {
 // 2026-07-23: persistência entre selecao-perfil-corretora e esta tela
 // resolvida — decisão PROVISÓRIA anterior (100% state-local, sem nada
 // entre rotas) foi substituída por Context (ratificado por Rafael, ver
-// .build/telas/PENDENCIAS.md item 2.1): fluxo-login-context.tsx, montado
+// docs/archive/decisoes/pendencias-fase5.md item 2.1): fluxo-login-context.tsx, montado
 // em src/app/templates/layout.tsx. A tela de boas-vindas final personaliza
 // com o nome capturado aqui NA etapa 1 (dado local, faz sentido continuar
 // assim — é texto livre digitado nesta própria tela) + perfil/corretora

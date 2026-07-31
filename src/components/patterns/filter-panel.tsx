@@ -59,7 +59,7 @@ import {
 //   src/components/examples/date-picker-with-range.tsx) — sempre "De/Até".
 //
 // Ícone decorativo dentro do chip leva aria-hidden (pendência sistêmica de
-// a11y do catálogo, registrada em .build/telas/PENDENCIAS.md) — aplicado
+// a11y do catálogo, registrada em docs/archive/decisoes/pendencias-fase5.md) — aplicado
 // certo aqui desde já.
 
 interface Opcao {

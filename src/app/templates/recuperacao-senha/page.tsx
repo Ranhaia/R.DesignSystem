@@ -18,7 +18,7 @@ import { Icon } from "@/components/ui/icon"
 import { Input } from "@/components/ui/input"
 import { Spinner } from "@/components/ui/spinner"
 
-// Template "Recuperação de senha" — Fase 5A do PLANO-LOOP-80-20-TEMPLATES.md,
+// Template "Recuperação de senha" — Fase 5A do plans/current/loop-80-20-templates.md,
 // 3ª de 5 rotas construídas do fluxo de login (não a 3ª etapa da jornada do
 // usuário: quem chega aqui vem do link "Esqueci minha senha" de
 // login-simples/login-erro-validacao, e o único caminho de volta é para o
@@ -26,7 +26,7 @@ import { Spinner } from "@/components/ui/spinner"
 // redefinição (capturar e-mail + confirmar envio + reenvio com cooldown),
 // não a definição da nova senha em si. Sem estado de "e-mail não
 // encontrado" — decisão de segurança/UX para evitar enumeração de contas
-// (ver .build/telas/recuperacao-senha.md, seção "Lacunas"). Nenhuma peça
+// (ver docs/archive/telas/recuperacao-senha/spec.md, seção "Lacunas"). Nenhuma peça
 // nova: só Atoms/Molecules/Organisms já confirmados no catálogo.
 
 const COOLDOWN_SEGUNDOS = 30

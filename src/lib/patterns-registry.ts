@@ -1,4 +1,4 @@
-// Registro dos Patterns do "mapa de IA completo" (PLANO-DESIGN-SYSTEM.md) —
+// Registro dos Patterns do "mapa de IA completo" (plans/current/design-system-piloto.md) —
 // originalmente 15, +1 ("Filter Panel") adicionado em 2026-07-23 a pedido
 // do Rafael. Cada slug tem um componente funcional real em
 // src/components/patterns/ — nada aqui é só documentação em texto,

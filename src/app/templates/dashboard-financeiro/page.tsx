@@ -52,7 +52,7 @@ import {
 } from "@/components/ui/sidebar"
 import { Slider } from "@/components/ui/slider"
 
-// Template "Dashboard financeiro" — Fase 4 do PLANO-LOOP-80-20-TEMPLATES.md.
+// Template "Dashboard financeiro" — Fase 4 do plans/current/loop-80-20-templates.md.
 // Equivalente em variedade de composição ao print de referência (Contribution
 // History, Claimable Balance, Set a new milestone, Payout Threshold, QR
 // connect, New Chat + sidebar agrupada), domínio traduzido para PT-BR e

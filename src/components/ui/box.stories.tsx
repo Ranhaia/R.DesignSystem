@@ -8,7 +8,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { Box } from "@/components/ui/box"
 import BoxDemo from "@/components/examples/box-demo"
 
-// Sem variant/size controlável (ver .build/componentes/box.md — decisão
+// Sem variant/size controlável (ver docs/archive/componentes/box/spec.md — decisão
 // de escopo) — a story existe pra ter o componente navegável no
 // catálogo do Storybook, com addon-a11y auditando o exemplo real (não
 // um placeholder). Único controle real é `asChild`, que troca o

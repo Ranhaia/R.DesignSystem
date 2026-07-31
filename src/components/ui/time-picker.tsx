@@ -77,7 +77,7 @@ interface TimePickerProps
   /** Intervalo entre minutos selecionáveis (1 a 60). Default 5 — decisão
       provisória deste projeto (não vem de nenhuma fonte pública), diverge
       do default "30" do modo dropdown da @nimbus-ds/time-picker (ver
-      .build/componentes/time-picker.md) por ser mais granular sem virar
+      docs/archive/componentes/time-picker/spec.md) por ser mais granular sem virar
       uma lista de 60 itens. Reversível via prop a qualquer momento. */
   minuteStep?: number
   placeholder?: string

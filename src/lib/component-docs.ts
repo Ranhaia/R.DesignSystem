@@ -3,7 +3,7 @@
 // Código, Propriedades). "button" foi o piloto que validou o template;
 // desde 2026-07-21 os outros 58 componentes (todos os que têm entrada
 // aqui) já têm description/whenToUse reais, sourced de ui.shadcn.com e
-// traduzidos (ver PLANO-LOOP-80-20-TEMPLATES.md). Slugs sem entrada aqui
+// traduzidos (ver plans/current/loop-80-20-templates.md). Slugs sem entrada aqui
 // continuam com a página no formato antigo (Composição + Exemplos), sem
 // quebrar nada.
 //

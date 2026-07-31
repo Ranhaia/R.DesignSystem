@@ -31,7 +31,7 @@ type ThumbnailAspectRatio = keyof typeof thumbnailAspectRatioMap
 // estabeleceu a convenção de escala discreta sm/default/lg pra átomos de
 // mídia (ver Avatar, size sm/default/lg) — reaproveitada aqui em vez de
 // expor uma prop `width` de string livre, pra manter consistência com o
-// resto do catálogo. Ver .build/componentes/thumbnail.md.
+// resto do catálogo. Ver docs/archive/componentes/thumbnail/spec.md.
 const thumbnailVariants = cva(
   "relative flex shrink-0 overflow-hidden rounded-md bg-muted",
   {
@@ -98,7 +98,7 @@ function Thumbnail({
         {showFallback ? (
           // Placeholder visual sem ícone — nenhum Material Symbol de
           // "imagem quebrada" está confirmado em uso neste projeto (ver
-          // .build/componentes/thumbnail.md), então o fallback é só a cor
+          // docs/archive/componentes/thumbnail/spec.md), então o fallback é só a cor
           // de fundo do token --muted, sem glifo.
           <div
             data-slot="thumbnail-fallback"

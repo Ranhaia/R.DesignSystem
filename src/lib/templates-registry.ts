@@ -1,4 +1,4 @@
-// Registro dos Templates (Fase 4/5 do PLANO-LOOP-80-20-TEMPLATES.md) — mesmo
+// Registro dos Templates (Fase 4/5 do plans/current/loop-80-20-templates.md) — mesmo
 // padrão de atomic-registry.ts / patterns-registry.ts: fonte única de
 // verdade, consumida pela nav (nav-templates.tsx) e pela página-índice
 // (/templates). Templates são jornadas reais em Next.js (não Storybook),
@@ -23,7 +23,7 @@ export const templatesList: TemplateEntry[] = [
   { slug: "painel-corretor", name: "Painel do corretor" },
 ]
 
-// Templates planejados (Fase 5, ver PLANO-LOOP-80-20-TEMPLATES.md) — ainda
+// Templates planejados (Fase 5, ver plans/current/loop-80-20-templates.md) — ainda
 // sem rota própria. Aparecem na página-índice como card desabilitado com
 // badge "Em construção", mesmo padrão do atomic-registry.
 export const inProgressTemplates: TemplateEntry[] = [

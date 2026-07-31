@@ -48,7 +48,7 @@ import { Spinner } from "@/components/ui/spinner"
 import { useFluxoLogin } from "@/components/templates/fluxo-login-context"
 
 // Template "Seleção de perfil/corretora" — Fase 5A do
-// PLANO-LOOP-80-20-TEMPLATES.md, 4ª de 5 rotas do fluxo de login
+// plans/current/loop-80-20-templates.md, 4ª de 5 rotas do fluxo de login
 // (login-simples → login-erro-validacao → recuperacao-senha →
 // selecao-perfil-corretora → onboarding). Destino do caminho feliz de
 // login: deixa escolher com qual combinação perfil+corretora continuar,

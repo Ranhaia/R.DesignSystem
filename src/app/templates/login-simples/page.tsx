@@ -27,7 +27,7 @@ import {
 import { Label } from "@/components/ui/label"
 import { Spinner } from "@/components/ui/spinner"
 
-// Template "Login simples" — Fase 5A do PLANO-LOOP-80-20-TEMPLATES.md,
+// Template "Login simples" — Fase 5A do plans/current/loop-80-20-templates.md,
 // 1ª de 5 rotas do fluxo de login (login-simples → login-erro-validacao →
 // recuperacao-senha → selecao-perfil-corretora → onboarding). Cobre só o
 // caminho feliz (vazio, preenchendo, senha oculta/visível, "manter
