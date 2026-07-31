@@ -85,8 +85,8 @@ Propriedades         → tabela real de props (nome, tipo, default, descrição)
 5. Trabalho futuro, ainda não escopado em detalhe:
    - Reorganizar o sidebar/navegação para refletir Foundations / Atoms / Molecules / Organisms / Templates / Patterns.
    - Criar páginas de Foundations (Colors, Typography, Spacing, Grid, Radius, Elevation, Motion, Icons, Accessibility) — hoje esse conteúdo existe espalhado em `/estilo` e nos presets, precisa ser reorganizado/expandido.
-   - ~~Categorizar os 60 componentes shadcn existentes dentro de Atoms/Molecules/Organisms/Templates~~ — feito em 2026-07-20 via `src/lib/atomic-registry.ts` (ver `PLANO-LOOP-80-20-TEMPLATES.md`).
-   - ~~Construir a seção Patterns do zero (15 padrões listados), cada um com exemplo de código funcional.~~ — feito em 2026-07-21: os 15 patterns têm componente funcional real em `src/components/patterns/*.tsx`, documentação em `src/lib/pattern-docs.ts`, páginas em `/patterns` e `/patterns/[slug]`, e entrada na navegação (`nav-patterns.tsx`). Detalhe completo no Log de `PLANO-LOOP-80-20-TEMPLATES.md`.
+   - ~~Categorizar os 60 componentes shadcn existentes dentro de Atoms/Molecules/Organisms/Templates~~ — feito em 2026-07-20 via `src/lib/atomic-registry.ts` (ver `plans/current/loop-80-20-templates.md`).
+   - ~~Construir a seção Patterns do zero (15 padrões listados), cada um com exemplo de código funcional.~~ — feito em 2026-07-21: os 15 patterns têm componente funcional real em `src/components/patterns/*.tsx`, documentação em `src/lib/pattern-docs.ts`, páginas em `/patterns` e `/patterns/[slug]`, e entrada na navegação (`nav-patterns.tsx`). Detalhe completo em `plans/done/loop-80-20-log-resumo.md`.
    - ~~Generalizar o Playground (hoje só existe pro Button).~~ — feito parcialmente em 2026-07-20/21: genericizado pra todos os componentes com variante/tamanho real (12, via `generic-playground.tsx`); Button mantém o dedicado por ter o controle "Loading" que não existe modelo genérico ainda.
 
 ## Contexto do projeto (para retomar sem perder o fio)
