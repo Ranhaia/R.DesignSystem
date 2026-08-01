@@ -31,7 +31,7 @@ export const examplesMapping: Record<string, string[]> = {
   "form": ["form-rhf-array", "form-rhf-checkbox", "form-rhf-complex", "form-rhf-demo", "form-rhf-input", "form-rhf-password", "form-rhf-radiogroup", "form-rhf-select", "form-rhf-switch", "form-rhf-textarea"],
   "hover-card": ["hover-card-demo"],
   "icon-button": ["icon-button-demo"],
-  "input": ["input-demo", "input-disabled", "input-file", "input-with-button", "input-with-label", "input-with-text"],
+  "input": ["input-demo", "input-disabled", "input-file", "input-fixed-label", "input-floating-label", "input-with-button", "input-with-label", "input-with-text"],
   "input-group": ["input-group-button", "input-group-button-group", "input-group-custom", "input-group-demo", "input-group-dropdown", "input-group-icon", "input-group-label", "input-group-spinner", "input-group-text", "input-group-textarea", "input-group-tooltip"],
   "input-otp": ["input-otp-controlled", "input-otp-demo", "input-otp-pattern", "input-otp-separator"],
   "item": ["item-avatar", "item-demo", "item-dropdown", "item-group", "item-header", "item-icon", "item-image", "item-link", "item-size", "item-variant"],

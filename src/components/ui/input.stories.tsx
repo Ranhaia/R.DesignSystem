@@ -9,6 +9,8 @@ import { Input } from "@/components/ui/input"
 import InputDemo from "@/components/examples/input-demo"
 import InputDisabled from "@/components/examples/input-disabled"
 import InputFile from "@/components/examples/input-file"
+import InputFixedLabel from "@/components/examples/input-fixed-label"
+import InputFloatingLabel from "@/components/examples/input-floating-label"
 import InputWithButton from "@/components/examples/input-with-button"
 import InputWithLabel from "@/components/examples/input-with-label"
 import InputWithText from "@/components/examples/input-with-text"
@@ -48,4 +50,12 @@ export const WithLabel: Story = {
 
 export const WithText: Story = {
   render: () => <InputWithText />,
+}
+
+export const FixedLabel: Story = {
+  render: () => <InputFixedLabel />,
+}
+
+export const FloatingLabel: Story = {
+  render: () => <InputFloatingLabel />,
 }

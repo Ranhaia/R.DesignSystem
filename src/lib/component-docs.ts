@@ -510,6 +510,8 @@ import { Icon } from "@/components/ui/icon"
 <Input type="email" placeholder="voce@email.com" />`,
     props: [
       { name: "type", type: "string", default: '"text"', description: "Tipo nativo do input (email, password, number...)." },
+      { name: "label", type: "React.ReactNode", description: "Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
+      { name: "animatedLabel", type: "boolean", default: "false", description: "Com label presente, ativa o padrão de label flutuante (motion) em vez da label fixa acima do campo." },
       { name: "...props", type: 'React.ComponentProps<"input">', description: "Todos os atributos nativos de <input>." },
     ],
   },
