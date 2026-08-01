@@ -1502,6 +1502,8 @@ function Exemplo() {
       { name: "onValueChange", type: "(value: string) => void", description: "(Select) callback de mudança." },
       { name: "size", type: '"sm" | "default"', default: '"default"', description: "(SelectTrigger) dimensão." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa o select ou um item." },
+      { name: "label", type: "React.ReactNode", description: "(SelectTrigger) Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
+      { name: "animatedLabel", type: "boolean", default: "false", description: "(SelectTrigger) Com label presente, ativa o padrão de label flutuante (motion)." },
     ],
   },
 

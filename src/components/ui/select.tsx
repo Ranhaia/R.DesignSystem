@@ -4,6 +4,7 @@ import * as React from "react"
 import { Select as SelectPrimitive } from "radix-ui"
 
 import { Icon } from "@/components/ui/icon"
+import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 
 function Select({
@@ -28,14 +29,25 @@ function SelectTrigger({
   className,
   size = "default",
   children,
+  id,
+  label,
+  animatedLabel = false,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
   size?: "sm" | "default"
+  label?: React.ReactNode
+  animatedLabel?: boolean
 }) {
-  return (
+  const generatedId = React.useId()
+  const triggerId = label ? (id ?? generatedId) : id
+  const labelId = label ? `${generatedId}-label` : undefined
+
+  const triggerEl = (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       data-size={size}
+      id={triggerId}
+      aria-labelledby={labelId}
       className={cn(
         "flex w-fit items-center justify-between gap-2 rounded-md border border-input bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-[placeholder]:text-muted-foreground data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
         className
@@ -47,6 +59,39 @@ function SelectTrigger({
         <Icon name="keyboard_arrow_down" size={1} className="opacity-50" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
+  )
+
+  if (!label) {
+    return triggerEl
+  }
+
+  if (!animatedLabel) {
+    return (
+      <div className="flex flex-col gap-1.5">
+        <Label id={labelId} htmlFor={triggerId}>
+          {label}
+        </Label>
+        {triggerEl}
+      </div>
+    )
+  }
+
+  return (
+    <div className="group/floating-label relative w-fit" data-slot="select-trigger-label-wrapper">
+      {triggerEl}
+      <Label
+        id={labelId}
+        htmlFor={triggerId}
+        // pointer-events-none: a label fica sobreposta ao SelectValue em
+        // repouso — sem isso, clicar nela não abre o menu por baixo.
+        className={cn(
+          "pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-muted-foreground transition-[top,left,transform,color] duration-motion-fast ease-out",
+          "group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:top-0 group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:left-0 group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:-translate-y-full group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:text-foreground"
+        )}
+      >
+        {label}
+      </Label>
+    </div>
   )
 }
 

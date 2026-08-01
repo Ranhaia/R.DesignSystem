@@ -52,7 +52,7 @@ export const examplesMapping: Record<string, string[]> = {
   "resizable": ["resizable-demo", "resizable-demo-with-handle", "resizable-handle", "resizable-vertical"],
   "scroll-area": ["scroll-area-demo", "scroll-area-horizontal-demo"],
   "segmented-control": ["segmented-control-demo"],
-  "select": ["select-demo", "select-scrollable"],
+  "select": ["select-demo", "select-fixed-label", "select-floating-label", "select-scrollable"],
   "separator": ["separator-demo"],
   "sheet": ["sheet-demo", "sheet-side"],
   "sidebar": ["sidebar-demo"],

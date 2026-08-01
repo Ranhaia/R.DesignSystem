@@ -8,6 +8,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import SelectDemo from "@/components/examples/select-demo"
+import SelectFixedLabel from "@/components/examples/select-fixed-label"
+import SelectFloatingLabel from "@/components/examples/select-floating-label"
 import SelectScrollable from "@/components/examples/select-scrollable"
 
 // O tamanho (sm/default) fica no SelectTrigger, não no Select raiz — por
@@ -57,4 +59,12 @@ export const Examples: Story = {
 
 export const Scrollable: Story = {
   render: () => <SelectScrollable />,
+}
+
+export const FixedLabel: Story = {
+  render: () => <SelectFixedLabel />,
+}
+
+export const FloatingLabel: Story = {
+  render: () => <SelectFloatingLabel />,
 }
