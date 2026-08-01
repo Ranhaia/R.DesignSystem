@@ -1413,6 +1413,8 @@ function Exemplo() {
 </NativeSelect>`,
     props: [
       { name: "size", type: '"sm" | "default"', default: '"default"', description: "Dimensão do select." },
+      { name: "label", type: "React.ReactNode", description: "Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
+      { name: "animatedLabel", type: "boolean", default: "false", description: "Com label presente, ativa o padrão de label flutuante (motion). O gatilho de \"tem valor\" é estado React, não CSS puro — ver decisão provisória se precisar revisar." },
       { name: "...props", type: 'React.ComponentProps<"select">', description: "Todos os atributos nativos de <select>." },
     ],
   },

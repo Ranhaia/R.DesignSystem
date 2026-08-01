@@ -5,6 +5,8 @@ import {
   NativeSelectOption,
 } from "@/components/ui/native-select"
 import NativeSelectDemo from "@/components/examples/native-select-demo"
+import NativeSelectFixedLabel from "@/components/examples/native-select-fixed-label"
+import NativeSelectFloatingLabel from "@/components/examples/native-select-floating-label"
 import NativeSelectGroups from "@/components/examples/native-select-groups"
 import NativeSelectInvalid from "@/components/examples/native-select-invalid"
 
@@ -50,4 +52,12 @@ export const Groups: Story = {
 
 export const Invalid: Story = {
   render: () => <NativeSelectInvalid />,
+}
+
+export const FixedLabel: Story = {
+  render: () => <NativeSelectFixedLabel />,
+}
+
+export const FloatingLabel: Story = {
+  render: () => <NativeSelectFloatingLabel />,
 }
