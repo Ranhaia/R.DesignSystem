@@ -8,6 +8,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { Textarea } from "@/components/ui/textarea"
 import TextareaDemo from "@/components/examples/textarea-demo"
 import TextareaDisabled from "@/components/examples/textarea-disabled"
+import TextareaFixedLabel from "@/components/examples/textarea-fixed-label"
+import TextareaFloatingLabel from "@/components/examples/textarea-floating-label"
 import TextareaWithButton from "@/components/examples/textarea-with-button"
 import TextareaWithLabel from "@/components/examples/textarea-with-label"
 import TextareaWithText from "@/components/examples/textarea-with-text"
@@ -43,4 +45,12 @@ export const WithLabel: Story = {
 
 export const WithText: Story = {
   render: () => <TextareaWithText />,
+}
+
+export const FixedLabel: Story = {
+  render: () => <TextareaFixedLabel />,
+}
+
+export const FloatingLabel: Story = {
+  render: () => <TextareaFloatingLabel />,
 }

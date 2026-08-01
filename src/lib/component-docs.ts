@@ -1062,6 +1062,8 @@ import { Icon } from "@/components/ui/icon"
 
 <Textarea placeholder="Escreva uma mensagem..." />`,
     props: [
+      { name: "label", type: "React.ReactNode", description: "Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
+      { name: "animatedLabel", type: "boolean", default: "false", description: "Com label presente, ativa o padrão de label flutuante (motion) em vez da label fixa acima do campo." },
       { name: "...props", type: 'React.ComponentProps<"textarea">', description: "Todos os atributos nativos de <textarea>." },
     ],
   },

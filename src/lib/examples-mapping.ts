@@ -67,7 +67,7 @@ export const examplesMapping: Record<string, string[]> = {
   "tabs": ["tabs-demo"],
   "tag": ["tag-demo"],
   "text": ["text-demo"],
-  "textarea": ["textarea-demo", "textarea-disabled", "textarea-with-button", "textarea-with-label", "textarea-with-text"],
+  "textarea": ["textarea-demo", "textarea-disabled", "textarea-fixed-label", "textarea-floating-label", "textarea-with-button", "textarea-with-label", "textarea-with-text"],
   "thumbnail": ["thumbnail-demo"],
   "time-picker": ["time-picker-demo"],
   "title": ["title-demo"],
