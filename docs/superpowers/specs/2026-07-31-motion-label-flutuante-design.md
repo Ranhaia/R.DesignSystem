@@ -1,7 +1,7 @@
 # Motion design: fundação de tokens + label flutuante em Input, Textarea, Select e NativeSelect
 
 Data: 2026-07-31
-Status: aprovado, pronto para plano de implementação
+Status: implementado (2026-07-31) — pendente QA visual manual do Rafael (5 presets × claro/escuro, prefers-reduced-motion, NativeSelect por teclado). Ver docs/superpowers/plans/2026-07-31-motion-label-flutuante-plan.md.
 
 ## Contexto e objetivo
 
