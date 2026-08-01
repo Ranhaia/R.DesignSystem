@@ -82,8 +82,8 @@ function NativeSelect({
           // <select> por baixo.
           className={cn(
             "pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-muted-foreground transition-[top,left,transform,color] duration-motion-fast ease-out",
-            "group-focus-within/native-select:top-0 group-focus-within/native-select:left-0 group-focus-within/native-select:-translate-y-full group-focus-within/native-select:text-foreground",
-            "group-data-[has-value=true]/native-select:top-0 group-data-[has-value=true]/native-select:left-0 group-data-[has-value=true]/native-select:-translate-y-full group-data-[has-value=true]/native-select:text-foreground"
+            "group-focus-within/native-select:top-0 group-focus-within/native-select:left-0 group-focus-within/native-select:-translate-y-[calc(100%+0.375rem)] group-focus-within/native-select:text-foreground",
+            "group-data-[has-value=true]/native-select:top-0 group-data-[has-value=true]/native-select:left-0 group-data-[has-value=true]/native-select:-translate-y-[calc(100%+0.375rem)] group-data-[has-value=true]/native-select:text-foreground"
           )}
         >
           {label}

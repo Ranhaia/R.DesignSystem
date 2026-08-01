@@ -89,7 +89,7 @@ function SelectTrigger({
         // repouso — sem isso, clicar nela não abre o menu por baixo.
         className={cn(
           "pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-muted-foreground transition-[top,left,transform,color] duration-motion-fast ease-out",
-          "group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:top-0 group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:left-0 group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:-translate-y-full group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:text-foreground"
+          "group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:top-0 group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:left-0 group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:-translate-y-[calc(100%+0.375rem)] group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:text-foreground"
         )}
       >
         {label}

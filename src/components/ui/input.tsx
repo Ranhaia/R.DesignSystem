@@ -58,7 +58,7 @@ function Input({
         // input por baixo.
         className={cn(
           "pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-muted-foreground transition-[top,left,transform,color] duration-motion-fast ease-out",
-          "group-has-[input:focus,input:not(:placeholder-shown)]/floating-label:top-0 group-has-[input:focus,input:not(:placeholder-shown)]/floating-label:left-0 group-has-[input:focus,input:not(:placeholder-shown)]/floating-label:-translate-y-full group-has-[input:focus,input:not(:placeholder-shown)]/floating-label:text-foreground"
+          "group-has-[input:focus,input:not(:placeholder-shown)]/floating-label:top-0 group-has-[input:focus,input:not(:placeholder-shown)]/floating-label:left-0 group-has-[input:focus,input:not(:placeholder-shown)]/floating-label:-translate-y-[calc(100%+0.375rem)] group-has-[input:focus,input:not(:placeholder-shown)]/floating-label:text-foreground"
         )}
       >
         {label}

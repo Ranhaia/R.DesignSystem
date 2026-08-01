@@ -54,7 +54,7 @@ function Textarea({
         // por baixo.
         className={cn(
           "pointer-events-none absolute top-3 left-3 text-muted-foreground transition-[top,left,transform,color] duration-motion-fast ease-out",
-          "group-has-[textarea:focus,textarea:not(:placeholder-shown)]/floating-label:top-0 group-has-[textarea:focus,textarea:not(:placeholder-shown)]/floating-label:left-0 group-has-[textarea:focus,textarea:not(:placeholder-shown)]/floating-label:-translate-y-full group-has-[textarea:focus,textarea:not(:placeholder-shown)]/floating-label:text-foreground"
+          "group-has-[textarea:focus,textarea:not(:placeholder-shown)]/floating-label:top-0 group-has-[textarea:focus,textarea:not(:placeholder-shown)]/floating-label:left-0 group-has-[textarea:focus,textarea:not(:placeholder-shown)]/floating-label:-translate-y-[calc(100%+0.375rem)] group-has-[textarea:focus,textarea:not(:placeholder-shown)]/floating-label:text-foreground"
         )}
       >
         {label}
