@@ -1245,8 +1245,8 @@ function Exemplo() {
       { name: "Outline", value: "outline", description: "Contorno visível mesmo desativado." },
     ],
     states: [
-      { name: "Off", description: "data-state=off — estado de repouso." },
-      { name: "On", description: "data-state=on — bg-accent." },
+      { name: "Off", description: "data-state=off — estado de repouso, font-normal (400), --icon-fill do preset ativo (0 na maioria, contorno)." },
+      { name: "On", description: "data-state=on — bg-accent, font-bold (700) e --icon-fill:1 (ícone preenchido). O fill funciona automaticamente em qualquer <Icon> passado como children, desde que ele não receba a prop fill fixa (aí ela sempre vence a CSS var)." },
       { name: "Focus", description: "focus-visible:ring." },
       { name: "Disabled", description: "opacidade reduzida, sem interação." },
     ],
@@ -2136,8 +2136,8 @@ import { Icon } from "@/components/ui/icon"
       { name: "Outline", value: "outline", description: "Contorno visível no grupo inteiro." },
     ],
     states: [
-      { name: "Off", description: "Item não selecionado." },
-      { name: "On", description: "data-state=on — bg-accent." },
+      { name: "Off", description: "Item não selecionado — font-normal (400)." },
+      { name: "On", description: "data-state=on — bg-accent, font-bold (700) e --icon-fill:1 no item selecionado (herdado de toggleVariants, mesmo mecanismo do Toggle isolado)." },
       { name: "Focus", description: "focus-visible:ring, com z-index elevado pra não cortar o anel." },
       { name: "Disabled", description: "opacidade reduzida." },
     ],
