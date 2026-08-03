@@ -1245,8 +1245,8 @@ function Exemplo() {
       { name: "Outline", value: "outline", description: "Contorno visível mesmo desativado." },
     ],
     states: [
-      { name: "Off", description: "data-state=off — estado de repouso, font-normal (400), --icon-fill do preset ativo (0 na maioria, contorno)." },
-      { name: "On", description: "data-state=on — bg-accent, font-bold (700) e --icon-fill:1 (ícone preenchido). O fill funciona automaticamente em qualquer <Icon> passado como children, desde que ele não receba a prop fill fixa (aí ela sempre vence a CSS var)." },
+      { name: "Off", description: "data-state=off — estado de repouso, font-normal (400) e --icon-fill:0 fixado (ícone em contorno, independente do preset ativo)." },
+      { name: "On", description: "data-state=on — bg-accent, font-bold (700) e --icon-fill:1 fixado (ícone preenchido). Contorno↔preenchido é característica do Toggle, não do preset — os dois estados sobrescrevem --icon-fill explicitamente, então o comportamento é igual em todos os presets, mesmo nos que definem --icon-fill:1 como padrão global (ex.: preset soft). Funciona automaticamente em qualquer <Icon> passado como children, desde que ele não receba a prop fill fixa (aí ela sempre vence a CSS var)." },
       { name: "Focus", description: "focus-visible:ring." },
       { name: "Disabled", description: "opacidade reduzida, sem interação." },
     ],
@@ -2136,8 +2136,8 @@ import { Icon } from "@/components/ui/icon"
       { name: "Outline", value: "outline", description: "Contorno visível no grupo inteiro." },
     ],
     states: [
-      { name: "Off", description: "Item não selecionado — font-normal (400)." },
-      { name: "On", description: "data-state=on — bg-accent, font-bold (700) e --icon-fill:1 no item selecionado (herdado de toggleVariants, mesmo mecanismo do Toggle isolado)." },
+      { name: "Off", description: "Item não selecionado — font-normal (400) e --icon-fill:0 fixado, independente do preset ativo." },
+      { name: "On", description: "data-state=on — bg-accent, font-bold (700) e --icon-fill:1 fixado no item selecionado (herdado de toggleVariants, mesmo mecanismo do Toggle isolado — os dois estados sobrescrevem --icon-fill, então o comportamento é igual em qualquer preset)." },
       { name: "Focus", description: "focus-visible:ring, com z-index elevado pra não cortar o anel." },
       { name: "Disabled", description: "opacidade reduzida." },
     ],
