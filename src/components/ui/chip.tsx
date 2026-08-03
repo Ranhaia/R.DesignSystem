@@ -7,8 +7,13 @@ import { Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
 import { Skeleton } from "@/components/ui/skeleton"
 
+// 2026-08-03: altura corrigida de 22px (h-[calc(--spacing(5.5))], 5.5 x
+// 4px) pra 24px — mesmo bug/mesma correção já aplicada em badge.tsx e
+// tag.tsx (min-h-6 + leading-none, não só padding/altura fixa, robusto a
+// conteúdo variável como o botão de remover interno, que já é 24px via
+// size="icon-xs").
 const chipVariants = cva(
-  "inline-flex h-[calc(--spacing(5.5))] w-fit shrink-0 items-center justify-center gap-1 rounded-sm px-1.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-50 has-disabled:pointer-events-none has-disabled:opacity-50 [&>svg]:pointer-events-none [&>svg]:size-3",
+  "inline-flex min-h-6 w-fit shrink-0 items-center justify-center gap-1 rounded-sm px-1.5 text-xs leading-none font-medium whitespace-nowrap transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-50 has-disabled:pointer-events-none has-disabled:opacity-50 [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
       variant: {
@@ -84,7 +89,7 @@ function ChipSkeleton({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <Skeleton
       data-slot="chip-skeleton"
-      className={cn("h-[calc(--spacing(5.5))] w-20 rounded-sm", className)}
+      className={cn("h-6 w-20 rounded-sm", className)}
       {...props}
     />
   )
