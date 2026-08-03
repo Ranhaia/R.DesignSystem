@@ -19,17 +19,17 @@ export default function BadgeDemo() {
           <Icon name="verified" />
           Verificado
         </Badge>
-        <Badge className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
+        <Badge className="h-6 min-w-6 rounded-full px-1 font-mono tabular-nums">
           8
         </Badge>
         <Badge
-          className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
+          className="h-6 min-w-6 rounded-full px-1 font-mono tabular-nums"
           variant="destructive"
         >
           99
         </Badge>
         <Badge
-          className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
+          className="h-6 min-w-6 rounded-full px-1 font-mono tabular-nums"
           variant="outline"
         >
           20+
