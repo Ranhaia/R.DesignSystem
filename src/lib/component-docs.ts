@@ -68,7 +68,7 @@ export const componentDocs: Record<string, ComponentDoc> = {
     variants: [
       { name: "Primary", value: "default", description: "Ação principal da tela. Usa --primary." },
       { name: "Secondary", value: "secondary", description: "Ação secundária, menor ênfase." },
-      { name: "Outline", value: "outline", description: "Contorno com fundo neutro, para ações alternativas." },
+      { name: "Outline", value: "outline", description: "Contorno, fundo transparente (herda o fundo do container — card, popover etc.), para ações alternativas." },
       { name: "Ghost", value: "ghost", description: "Sem fundo nem borda até o hover." },
       { name: "Destructive", value: "destructive", description: "Ações irreversíveis ou de risco (excluir, remover)." },
       { name: "Link", value: "link", description: "Aparência de link de texto, sem fundo." },
