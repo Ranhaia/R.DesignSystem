@@ -142,6 +142,87 @@ uma entrada em `src/lib/components-registry.ts` (e, se fizer sentido,
 `composition-registry.ts` / `examples-mapping.ts`) para aparecer na
 sidebar e ganhar página própria em `/components/[slug]`.
 
+## Estrutura de pastas para novos projetos (receita)
+
+Este portal é o catálogo/vitrine do Design System — não é onde as telas de
+produto são construídas. Quando for iniciar um **projeto novo** (protótipo
+de cliente, produto real) que consome este DS, a receita abaixo é o ponto
+de partida: mesma stack (Next.js App Router + TypeScript + Tailwind v4),
+convenção de pastas já validada aqui, adaptada para crescer por
+funcionalidade em vez de crescer só por tipo de arquivo.
+
+```
+src/
+  app/                        # rotas (App Router) — cada pasta = 1 rota
+    (auth)/                    # grupo de rotas sem afetar a URL (ex.: login, recuperação de senha)
+      login/page.tsx
+    (app)/                      # grupo de rotas autenticadas
+      dashboard/page.tsx
+      apolices/
+        page.tsx                  # lista
+        [id]/page.tsx               # detalhe
+    layout.tsx                    # fontes + shell global
+    globals.css                    # tokens copiados/importados deste DS (ver abaixo)
+  components/
+    ui/                          # ATOMS/MOLECULES/ORGANISMS — vêm direto deste DS,
+                                   # copiados via `npx shadcn@latest add` (ver "Como importar")
+    patterns/                     # Patterns deste DS (Empty State, CRUD, Upload etc.),
+                                    # copiados sob demanda, igual a ui/
+    <feature>/                     # componentes que só fazem sentido numa feature
+                                     # específica (ex.: apolices/apolice-card.tsx),
+                                     # nunca promovidos a ui/ sem ser genéricos de verdade
+  hooks/                          # hooks reutilizáveis entre features
+  lib/
+    utils.ts                       # cn() e outros helpers puros
+    api/                             # camada de acesso a dados (fetch/axios/client de API)
+      client.ts
+      apolices.ts                     # 1 arquivo por recurso/domínio
+    validations/                       # schemas zod, 1 arquivo por formulário/recurso
+  types/                             # tipos TypeScript compartilhados entre features
+components.json                     # config da CLI do shadcn (copiar deste projeto)
+```
+
+**Por que agrupar por feature dentro de `app/` e não por tipo de arquivo**
+(diferente do que uma estrutura genérica tipo `pages/`, `services/`,
+`redux/` sugeriria): o App Router já força colocation de rota, então
+`apolices/apolice-card.tsx` ao lado de `apolices/page.tsx` mantém junto o
+que muda junto — é mais fácil escalar (adicionar uma feature nova = uma
+pasta nova) do que caçar 5 pastas diferentes (`components/`, `hooks/`,
+`services/`, `redux/`, `pages/`) toda vez que uma tela muda.
+
+**O que sempre vem deste DS, sem reinventar:**
+- `src/components/ui/*` — Atoms/Molecules/Organisms (copiados via CLI, nunca
+  reescritos à mão).
+- `src/components/patterns/*` — Patterns (Empty State, Loading, CRUD,
+  Multi-step Form etc.) quando o caso de uso do projeto novo bater com um
+  já catalogado aqui.
+- Tokens de `globals.css` (papéis semânticos + os 5 presets) — copiar o
+  arquivo inteiro é mais seguro do que recriar os tokens à mão, evita
+  divergência de valor entre o catálogo e o projeto novo.
+
+**O que é sempre próprio do projeto novo, nunca deste DS:**
+- `app/` (rotas), `lib/api/`, `lib/validations/`, `types/` — regra de
+  negócio e dados são do produto, o DS não sabe (e não deve saber) nada
+  sobre isso.
+- Qualquer componente em `components/<feature>/` — só sobe pra `ui/`
+  quando (e se) provar que é genérico o suficiente pra outro projeto usar.
+
+### Como importar os componentes
+
+Este projeto não publica um pacote npm próprio — a forma de trazer um
+componente pro projeto novo é a mesma CLI do shadcn/ui, apontando pro
+`registry.json` deste repositório (ou copiando o arquivo `.tsx` direto de
+`src/components/ui/`, caminho mais simples enquanto não houver um registry
+próprio publicado):
+
+```bash
+npx shadcn@latest add <slug>
+```
+
+Isso traz o componente + as dependências dele (outros componentes/pacotes
+npm) automaticamente, mesmo comportamento já usado neste catálogo (ver
+"Adicionar mais blocos ou componentes depois" acima).
+
 ## O que ficou de fora
 
 - **`data-table-demo`** — depende de `@tanstack/react-table`, não instalado
