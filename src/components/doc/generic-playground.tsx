@@ -85,7 +85,12 @@ export const genericPlaygroundRegistry: Record<string, GenericPlaygroundConfig> 
   },
   tag: {
     variants: ["default", "primary", "success", "warning", "danger", "ai-generated"],
-    render: ({ variant }) => <Tag variant={variant as never}>Tag de exemplo</Tag>,
+    checked: { label: "Highlight" },
+    render: ({ variant, checked }) => (
+      <Tag variant={variant as never} highlight={checked}>
+        Tag de exemplo
+      </Tag>
+    ),
   },
   text: {
     variants: ["regular", "medium", "bold"],

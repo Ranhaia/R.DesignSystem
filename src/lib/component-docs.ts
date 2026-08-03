@@ -953,15 +953,16 @@ import { Label } from "@/components/ui/label"
       },
     ],
     variants: [
-      { name: "Default", value: "default", description: "Aparência neutra padrão — fundo --muted, texto --foreground." },
-      { name: "Primary", value: "primary", description: "Fundo --primary, texto --primary-foreground — cor de marca do preset ativo." },
-      { name: "Success", value: "success", description: "Fundo --color-success-100, texto --color-success-900 — sinaliza status positivo (ex.: aprovado)." },
-      { name: "Warning", value: "warning", description: "Fundo --color-warning-100, texto --color-warning-900 — sinaliza status de atenção (ex.: pendente)." },
-      { name: "Danger", value: "danger", description: "Fundo --color-danger-100, texto --color-danger-900 — sinaliza status negativo (ex.: recusado)." },
-      { name: "AI Generated", value: "ai-generated", description: "Sinaliza que o valor do tag foi gerado por IA. Usa os mesmos tokens --ai-surface/--ai-interactive/--ai-text-high que o Chip variant ai-generated já usa." },
+      { name: "Default", value: "default", description: "Fundo --muted, borda --border, texto --muted-foreground — aparência neutra padrão. Sem escala de 10 passos própria (só existe pra info/success/warning/danger), por isso reaproveita os tokens semânticos neutros já existentes em vez de uma escala nova." },
+      { name: "Primary", value: "primary", description: "Fundo --accent, borda --primary/20 (opacidade baixa, sutil), texto --primary — cor de marca do preset ativo. --primary não tem variação clara/escura própria (é um valor único por preset), por isso o fundo usa --accent (o tom \"claro\" de destaque que cada preset já define) em vez de uma escala nova." },
+      { name: "Success", value: "success", description: "Fundo --color-success-100, borda --color-success-300, texto --color-success-900 — três passos da mesma escala de 10, sinaliza status positivo (ex.: aprovado)." },
+      { name: "Warning", value: "warning", description: "Fundo --color-warning-100, borda --color-warning-300, texto --color-warning-900 — sinaliza status de atenção (ex.: pendente)." },
+      { name: "Danger", value: "danger", description: "Fundo --color-danger-100, borda --color-danger-300, texto --color-danger-900 — sinaliza status negativo (ex.: recusado)." },
+      { name: "AI Generated", value: "ai-generated", description: "Fundo --ai-surface, borda --ai-interactive, texto --ai-text-high — sinaliza que o valor do tag foi gerado por IA. Mesmos tokens que o Chip variant ai-generated já usa. Foi a referência original desse padrão (fundo claro + borda + texto), replicado agora pras demais variantes." },
     ],
     states: [
       { name: "Default", description: "Estado de repouso — único estado real do componente. Tag não recebe foco e não tem hover/disabled próprios." },
+      { name: "Highlight", description: "Prop highlight=true inverte fundo⇄texto de QUALQUER variant de cor (ex.: danger normal = fundo claro/texto escuro; danger highlight = fundo escuro/texto claro) e remove a borda — a própria superfície escura da escala já faz o destaque, sem precisar de contorno. Combinável com qualquer variant, não é uma variante fixa separada." },
       { name: "Composição via asChild", description: "Quando usado com asChild para tornar o Tag clicável, hover/focus/disabled passam a ser responsabilidade do elemento filho." },
     ],
     sizes: [],
@@ -973,11 +974,15 @@ import { Icon } from "@/components/ui/icon"
 // Tag simples (categorização estática)
 <Tag>Categoria: Roupas</Tag>
 
-// Variantes de status
-<Tag variant="primary">Em destaque</Tag>
+// Variantes de status — fundo claro + borda + texto, mesma paleta de tom
+<Tag variant="primary">Novidade</Tag>
 <Tag variant="success">Aprovado</Tag>
 <Tag variant="warning">Pendente</Tag>
 <Tag variant="danger">Recusado</Tag>
+
+// highlight inverte fundo⇄texto e remove a borda — funciona com
+// qualquer variant, não é uma variante fixa
+<Tag variant="danger" highlight>Em destaque</Tag>
 
 // Tag com ícone composto via children (sem prop icon dedicada)
 <Tag variant="ai-generated">
@@ -989,7 +994,8 @@ import { Icon } from "@/components/ui/icon"
 <Tag.Skeleton />`,
     props: [
       { name: "children", type: "React.ReactNode", description: "Conteúdo do tag — texto e, opcionalmente, um ícone composto junto (obrigatório)." },
-      { name: "variant", type: '"default" | "primary" | "success" | "warning" | "danger" | "ai-generated"', default: '"default"', description: "Aparência visual do tag." },
+      { name: "variant", type: '"default" | "primary" | "success" | "warning" | "danger" | "ai-generated"', default: '"default"', description: "Aparência visual do tag — sempre fundo claro + borda + texto, na mesma paleta de tom." },
+      { name: "highlight", type: "boolean", default: "false", description: "Inverte fundo⇄texto do variant ativo e remove a borda, pra destacar o tag sem trocar de variant." },
       { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <span>." },
       { name: "...props", type: 'React.ComponentProps<"span">', description: "Demais atributos nativos do elemento raiz." },
     ],
