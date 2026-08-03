@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Bubble, BubbleContent } from "@/components/ui/bubble"
 import { Button } from "@/components/ui/button"
 import { Chip } from "@/components/ui/chip"
+import { Icon } from "@/components/ui/icon"
 import { Item } from "@/components/ui/item"
 import { Marker } from "@/components/ui/marker"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
@@ -68,11 +69,21 @@ export const sizePreviewRegistry: Record<
   string,
   (props: SizePreviewProps) => React.ReactNode
 > = {
-  button: ({ value }) => (
-    <Button size={value as never} variant="outline">
-      {value.startsWith("icon") ? "" : "Aa"}
-    </Button>
-  ),
+  // 2026-08-02: tamanhos "icon*" tinham "" como children — renderizava um
+  // botão quadrado vazio, sem ícone nenhum, na seção Tamanhos de
+  // /components/button. Corrigido pra mostrar um Icon real (mesmo
+  // "arrow_outward" já usado em button-size.tsx), com aria-label pra não
+  // ficar um botão ícone-only sem nome acessível na preview.
+  button: ({ value }) =>
+    value.startsWith("icon") ? (
+      <Button size={value as never} variant="outline" aria-label="Enviar">
+        <Icon name="arrow_outward" />
+      </Button>
+    ) : (
+      <Button size={value as never} variant="outline">
+        Aa
+      </Button>
+    ),
   avatar: ({ value }) => (
     <Avatar size={value as never}>
       <AvatarFallback>RA</AvatarFallback>

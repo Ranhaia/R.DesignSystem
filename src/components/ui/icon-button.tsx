@@ -13,12 +13,14 @@ import { Button, buttonVariants } from "@/components/ui/button"
 // obrigatórios via tipo — não dá pra montar um <IconButton /> sem nome
 // acessível, o TypeScript barra antes do runtime, não só na revisão.
 //
-// `size` é restrito às 4 escalas quadradas que o Button já tem
-// (icon/icon-xs/icon-sm/icon-lg) — as escalas com padding horizontal
-// (default/xs/sm/lg) não fazem sentido pra um botão só-ícone.
+// `size` é restrito às escalas quadradas que o Button já tem
+// (icon/icon-xs/icon-sm/icon-md/icon-lg/icon-xl) — as escalas com padding
+// horizontal (default/md/xs/sm/lg/xl) não fazem sentido pra um botão
+// só-ícone. 2026-08-02: icon-md/icon-xl adicionados junto da escala nova
+// do Button (md=40px/lg=48px/xl=56px).
 type IconButtonSize = Extract<
   NonNullable<VariantProps<typeof buttonVariants>["size"]>,
-  "icon" | "icon-xs" | "icon-sm" | "icon-lg"
+  "icon" | "icon-xs" | "icon-sm" | "icon-md" | "icon-lg" | "icon-xl"
 >
 
 // Omite "icon" | "label" | "children" inteiros (não só restringe) — assim

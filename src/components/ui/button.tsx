@@ -56,15 +56,26 @@ const buttonVariants = cva(
         // Ação de IA complementar (appearance="ai-secondary" da Nimbus).
         "ai-secondary": `border border-ai-interactive bg-ai-surface text-ai-text-high ${elevation} hover:bg-ai-surface-highlight hover:border-ai-interactive-hover`,
       },
+      // 2026-08-02: escala deslocada pra cima — md passa a ser 40px (era
+      // 36px, "default" antigo), lg passa a ser 48px (era 40px), e entra um
+      // xl novo de 56px. "default" continua existindo como alias de "md"
+      // (mesmo valor, não um tamanho a mais) só pra não quebrar o
+      // defaultVariants/qualquer lugar que dependa do nome "default" sem
+      // especificar size — todo uso novo deve preferir "md" explicitamente.
+      // xs/sm ficam intocados (24px/32px, uso extenso no catálogo hoje).
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
         xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
         sm: "h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
+        default: "h-10 px-4 py-2 has-[>svg]:px-3",
+        md: "h-10 px-4 py-2 has-[>svg]:px-3",
+        lg: "h-12 rounded-md px-6 has-[>svg]:px-4",
+        xl: "h-14 rounded-md px-8 text-base has-[>svg]:px-5",
         "icon-xs": "size-6 rounded-md [&_svg:not([class*='size-'])]:size-3",
         "icon-sm": "size-8",
-        "icon-lg": "size-10",
+        icon: "size-10",
+        "icon-md": "size-10",
+        "icon-lg": "size-12",
+        "icon-xl": "size-14",
       },
     },
     defaultVariants: {
@@ -159,14 +170,18 @@ const skeletonSizeClasses: Record<
   NonNullable<VariantProps<typeof buttonVariants>["size"]>,
   string
 > = {
-  default: "h-9 w-24 rounded-md",
   xs: "h-6 w-16 rounded-md",
   sm: "h-8 w-20 rounded-md",
-  lg: "h-10 w-28 rounded-md",
-  icon: "size-9 rounded-md",
+  default: "h-10 w-24 rounded-md",
+  md: "h-10 w-24 rounded-md",
+  lg: "h-12 w-28 rounded-md",
+  xl: "h-14 w-32 rounded-md",
   "icon-xs": "size-6 rounded-md",
   "icon-sm": "size-8 rounded-md",
-  "icon-lg": "size-10 rounded-md",
+  icon: "size-10 rounded-md",
+  "icon-md": "size-10 rounded-md",
+  "icon-lg": "size-12 rounded-md",
+  "icon-xl": "size-14 rounded-md",
 }
 
 function ButtonSkeleton({
