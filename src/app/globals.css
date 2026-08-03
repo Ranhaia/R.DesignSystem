@@ -208,6 +208,17 @@
      abaixo); os que não mencionam o assunto herdam este 1px sem alteração. */
   --border-width: 1px;
 
+  /* Escala de controles de formulário (Checkbox, Radio) — token isolado,
+     NÃO ligado a --icon-optical-size/--icon-fill/etc. Aqueles controlam
+     estilo do glifo (peso, preenchimento); este controla o tamanho físico
+     da caixa/círculo clicável e do ícone interno, os dois juntos, pra não
+     dessincronizar. 1rem = 16px = size-4, o tamanho fixo que ambos os
+     componentes já usavam antes deste token existir (baseline não muda
+     pra quem não tem preset ativo). Presets que quiserem uma densidade de
+     formulário diferente (ex.: "compacto" numa tela de admin densa)
+     sobrescrevem só esta variável, sem tocar em Checkbox/Radio. */
+  --form-control-size: 1rem;
+
   /* Tokens do background do Hero (portfólio): não são cor, são
      "energia" do movimento. Lidos via getComputedStyle por useHeroTokens()
      e passados como props pro componente de background (Aurora/React Bits).

@@ -272,6 +272,11 @@ export const componentDocs: Record<string, ComponentDoc> = {
     anatomy: [
       { part: "Root", description: 'CheckboxPrimitive.Root — data-slot="checkbox", data-state.' },
       { part: "Indicator", description: "Ícone de check, visível só quando marcado (data-state=checked)." },
+      {
+        part: "Tamanho",
+        description:
+          "Controlado por --form-control-size (globals.css), não por classe fixa. O mesmo token também escala RadioGroupItem — trocar essa variável por preset ajusta os dois componentes juntos.",
+      },
     ],
     variants: [],
     states: [
@@ -634,6 +639,11 @@ import { Icon } from "@/components/ui/icon"
       { part: "RadioGroup", description: "Root — grid que agrupa os itens, controla qual valor está selecionado." },
       { part: "RadioGroupItem", description: "Cada opção — requer prop value." },
       { part: "Indicator", description: "Ícone circle preenchido (Icon com prop fill, cor text-primary), visível só no item selecionado." },
+      {
+        part: "Tamanho",
+        description:
+          "Controlado por --form-control-size (globals.css), não por classe fixa. O mesmo token também escala Checkbox — trocar essa variável por preset ajusta os dois componentes juntos.",
+      },
     ],
     variants: [],
     states: [

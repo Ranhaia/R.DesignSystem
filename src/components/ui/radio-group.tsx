@@ -19,6 +19,15 @@ function RadioGroup({
   )
 }
 
+// 2026-08-03: mesmo mecanismo do Checkbox (ver comentário em checkbox.tsx)
+// — tamanho vem de --form-control-size, não mais "size-4" fixo. O
+// indicador interno (bolinha preenchida) usava size={0.5} (prop em rem,
+// fixo em 8px = metade de 16px); trocado por className com calc() na
+// mesma proporção (0.5x), pra continuar exatamente na metade do
+// tamanho do círculo externo em qualquer densidade. Precisa ser
+// className, não a prop `size` do Icon — `size` escreve width/height via
+// style inline, que tem prioridade sobre qualquer classe Tailwind e
+// travaria o indicador num valor fixo outra vez.
 function RadioGroupItem({
   className,
   ...props
@@ -27,7 +36,7 @@ function RadioGroupItem({
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       className={cn(
-        "aspect-square size-4 shrink-0 rounded-full border border-input text-primary shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:bg-input/30 dark:aria-invalid:ring-destructive/40",
+        "aspect-square size-[var(--form-control-size)] shrink-0 rounded-full border border-input text-primary shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:bg-input/30 dark:aria-invalid:ring-destructive/40",
         className
       )}
       {...props}
@@ -38,9 +47,8 @@ function RadioGroupItem({
       >
         <Icon
           name="circle"
-          size={0.5}
           fill
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary"
+          className="absolute top-1/2 left-1/2 size-[calc(var(--form-control-size)*0.5)] -translate-x-1/2 -translate-y-1/2 text-primary"
         />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
