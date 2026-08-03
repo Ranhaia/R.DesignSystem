@@ -55,6 +55,20 @@ const specialRadius = [
   { className: "rounded-[var(--radius-full)]", label: "full (pill)", token: "--radius-full" },
 ]
 
+// Regra de raio aninhado (nested radius): raio_externo = raio_interno +
+// padding. O raio de dentro é sempre o ponto de partida (escolhido pela
+// escala Shape/base normalmente); o de fora se adapta a ele, nunca o
+// contrário. Como a escala de espaçamento deste projeto é a nativa do
+// Tailwind (múltiplos de 4px, uso predominante em 8 em 8 — ver
+// /fundamentos/espacamento), o ajuste do raio externo também acontece em
+// saltos de 8px por padrão, um padding por vez.
+const nestedRadiusExamples = [
+  { paddingClass: "p-2", paddingLabel: "p-2 (8px)", paddingPx: 8, innerRadius: 8 },
+  { paddingClass: "p-3", paddingLabel: "p-3 (12px)", paddingPx: 12, innerRadius: 8 },
+  { paddingClass: "p-4", paddingLabel: "p-4 (16px)", paddingPx: 16, innerRadius: 8 },
+  { paddingClass: "p-6", paddingLabel: "p-6 (24px)", paddingPx: 24, innerRadius: 8 },
+]
+
 export default function BordasPage() {
   const allTokens = [
     ...baseRadius.map((r) => r.token),
@@ -139,6 +153,62 @@ export default function BordasPage() {
               </div>
             </div>
           ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Raio aninhado (caixa dentro de caixa)</CardTitle>
+          <CardDescription>
+            Sempre que uma caixa fica dentro de outra (card dentro de card,
+            painel dentro de dialog, imagem dentro de container), a borda
+            interna precisa ser diferente da externa — nunca o mesmo raio
+            nas duas. Regra: <strong>raio externo = raio interno +
+            padding</strong>. O raio de dentro é o ponto de partida (você
+            escolhe pela escala Shape/base de cima); o de fora se adapta a
+            ele — nunca o contrário.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+            {nestedRadiusExamples.map((ex) => {
+              const outerRadius = ex.innerRadius + ex.paddingPx
+              return (
+                <div key={ex.paddingClass} className="space-y-1.5">
+                  <div
+                    className={`bg-muted flex ${ex.paddingClass} border`}
+                    style={{ borderRadius: `${outerRadius}px` }}
+                  >
+                    <div
+                      className="bg-card flex-1 border"
+                      style={{
+                        borderRadius: `${ex.innerRadius}px`,
+                        aspectRatio: "1.6",
+                      }}
+                    />
+                  </div>
+                  <div className="text-xs">
+                    <p className="font-medium">{ex.paddingLabel}</p>
+                    <p className="text-muted-foreground font-mono">
+                      {ex.innerRadius}px + {ex.paddingPx}px = {outerRadius}px
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          <p className="text-muted-foreground text-xs">
+            Como a escala de espaçamento deste projeto é a nativa do
+            Tailwind (múltiplos de 4px, predominantemente usada de 8 em 8 —
+            ver <span className="font-mono">/fundamentos/espacamento</span>),
+            o raio externo cresce em saltos de 8px por padrão: um passo de
+            padding (8px) = um passo de raio (8px) a mais que o interno. Se
+            o padding entre as caixas mudar (ex.: de{" "}
+            <span className="font-mono">p-2</span> pra{" "}
+            <span className="font-mono">p-4</span>), o raio externo
+            recalcula — nunca fica um valor fixo desacoplado do padding
+            real usado ali.
+          </p>
         </CardContent>
       </Card>
 
