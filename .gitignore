@@ -52,6 +52,12 @@ storybook-static
 # git worktrees isolados (superpowers:using-git-worktrees)
 /.worktrees/
 
+# saída do graphify — regenerável de graça em ~40s com
+# `graphify extract . --code-only && graphify cluster-only . --no-label`.
+# graph.json (3 MB) e graph.html (2,3 MB) mudam por inteiro a cada extração.
+/graphify-out/
+.tsc-check.log
+
 # projeto solto, sem relação com o design system (POC de vídeo de carta
 # animada) — aninhado aqui por engano, decisão de mover pra pasta própria
 # ainda pendente com o Rafael (2026-07-28)

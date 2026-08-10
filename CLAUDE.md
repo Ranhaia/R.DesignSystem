@@ -89,7 +89,7 @@ arquive a narrativa integral no vault (ver abaixo).
 
 ## Base de conhecimento — vault Obsidian
 
-Caminho: `C:\Users\rca_1\Documents\!Obsidian!\Teste`
+Caminho: `C:\base-conhecimento\Rafanhaia`
 
 Quando precisar de contexto sobre o histórico deste projeto, decisões já
 tomadas e o porquê delas, ou contexto de outros projetos de Rafael que
