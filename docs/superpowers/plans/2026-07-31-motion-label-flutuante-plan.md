@@ -9,6 +9,10 @@
 > Verificado contra o código em 2026-08-23 — a verificação foi por
 > **resultado entregue**, não passo a passo. Existe `animatedLabel` em `src/components/ui/input.tsx`, 4 componentes de exemplo em `src/components/examples/`, e 4 tokens `duration-motion` em `globals.css`.
 >
+> As checkboxes foram convertidas em marcadores simples em
+> 2026-08-23 — não eram tarefa, e no formato de tarefa apareciam
+> como fila aberta em qualquer busca por `- [ ]`.
+>
 > Este arquivo é **registro histórico**. O trabalho vivo deste repo está
 > em `_trabalho/`, e é o único lugar onde checkbox significa alguma
 > coisa.
@@ -65,7 +69,7 @@
 **Interfaces:**
 - Produces: classes utilitárias Tailwind `duration-motion-fast` (150ms), `duration-motion-base` (200ms), `duration-motion-slow` (350ms) — consumidas pelas Tasks 3-6.
 
-- [ ] **Step 1: Adicionar a ponte no bloco `@theme inline`**
+- **Step 1: Adicionar a ponte no bloco `@theme inline`**
 
 Em `src/app/globals.css`, localizar o bloco que termina em (linhas 51-59):
 
@@ -102,7 +106,7 @@ Substituir por (insere 4 linhas novas entre `--shadow-xl` e `--color-background`
   --color-background: var(--background);
 ```
 
-- [ ] **Step 2: Adicionar os valores base em `:root`**
+- **Step 2: Adicionar os valores base em `:root`**
 
 Localizar (linha 191-192):
 
@@ -121,7 +125,7 @@ Substituir por:
   --motion-duration-slow: 350ms;
 ```
 
-- [ ] **Step 3: Adicionar o reset global de `prefers-reduced-motion`**
+- **Step 3: Adicionar o reset global de `prefers-reduced-motion`**
 
 No fim de `src/app/globals.css` (depois do último `}` do bloco `.dark[data-style="midnight"]`, linha 956), adicionar:
 
@@ -139,7 +143,7 @@ No fim de `src/app/globals.css` (depois do último `}` do bloco `.dark[data-styl
 }
 ```
 
-- [ ] **Step 4: Verificar**
+- **Step 4: Verificar**
 
 Rodar:
 ```bash
@@ -148,7 +152,7 @@ grep -n "prefers-reduced-motion: reduce" src/app/globals.css
 ```
 Esperado: 2 ocorrências de `duration-motion-fast` (bridge + `:root`) e 1 de `prefers-reduced-motion: reduce`.
 
-- [ ] **Step 5: Commit**
+- **Step 5: Commit**
 
 ```bash
 git add src/app/globals.css
@@ -165,7 +169,7 @@ git commit -m "feat: adicionar fundacao de tokens de motion (duration + reduced-
 **Interfaces:**
 - Nenhuma — documentação pura, não bloqueia nem é bloqueada pelas outras tasks.
 
-- [ ] **Step 1: Criar o arquivo de decisão**
+- **Step 1: Criar o arquivo de decisão**
 
 Criar `docs/active/decisoes/excecao-atoms-label-embutida.md` com o conteúdo:
 
@@ -210,7 +214,7 @@ componentes.
   documentada além da genérica — citado aqui por completude.
 ```
 
-- [ ] **Step 2: Commit**
+- **Step 2: Commit**
 
 ```bash
 git add docs/active/decisoes/excecao-atoms-label-embutida.md
@@ -230,7 +234,7 @@ git commit -m "docs: registrar excecao arquitetural de Atoms com label embutida"
 - Consumes: `duration-motion-fast` (Task 1).
 - Produces: `Input` aceita `label?: React.ReactNode` e `animatedLabel?: boolean` (default `false`) — mesmo padrão de API replicado nas Tasks 4-6.
 
-- [ ] **Step 1: Reescrever `src/components/ui/input.tsx`**
+- **Step 1: Reescrever `src/components/ui/input.tsx`**
 
 ```tsx
 import * as React from "react"
@@ -304,14 +308,14 @@ function Input({
 export { Input }
 ```
 
-- [ ] **Step 2: Verificar tipos**
+- **Step 2: Verificar tipos**
 
 ```bash
 npx tsc --noEmit
 ```
 Esperado: sem erros novos relacionados a `input.tsx`.
 
-- [ ] **Step 3: Criar `src/components/examples/input-fixed-label.tsx`**
+- **Step 3: Criar `src/components/examples/input-fixed-label.tsx`**
 
 ```tsx
 import { Input } from "@/components/ui/input"
@@ -327,7 +331,7 @@ export default function InputFixedLabel() {
 }
 ```
 
-- [ ] **Step 4: Criar `src/components/examples/input-floating-label.tsx`**
+- **Step 4: Criar `src/components/examples/input-floating-label.tsx`**
 
 ```tsx
 import { Input } from "@/components/ui/input"
@@ -337,7 +341,7 @@ export default function InputFloatingLabel() {
 }
 ```
 
-- [ ] **Step 5: Registrar em `src/lib/examples-mapping.ts`**
+- **Step 5: Registrar em `src/lib/examples-mapping.ts`**
 
 Localizar (linha 34):
 ```ts
@@ -348,7 +352,7 @@ Substituir por:
   "input": ["input-demo", "input-disabled", "input-file", "input-fixed-label", "input-floating-label", "input-with-button", "input-with-label", "input-with-text"],
 ```
 
-- [ ] **Step 6: Registrar em `src/components/examples/registry.tsx`**
+- **Step 6: Registrar em `src/components/examples/registry.tsx`**
 
 Localizar (linhas 120-121):
 ```tsx
@@ -363,7 +367,7 @@ Substituir por:
   "input-group-button": dynamic(() => import("@/components/examples/input-group-button")),
 ```
 
-- [ ] **Step 7: Adicionar stories em `src/components/ui/input.stories.tsx`**
+- **Step 7: Adicionar stories em `src/components/ui/input.stories.tsx`**
 
 Adicionar aos imports (depois de `import InputFile from "@/components/examples/input-file"`):
 ```tsx
@@ -383,7 +387,7 @@ export const FloatingLabel: Story = {
 }
 ```
 
-- [ ] **Step 8: Atualizar props em `src/lib/component-docs.ts`**
+- **Step 8: Atualizar props em `src/lib/component-docs.ts`**
 
 Localizar a entrada `input:` (linhas 511-514):
 ```ts
@@ -402,7 +406,7 @@ Substituir por:
     ],
 ```
 
-- [ ] **Step 9: Verificar e commitar**
+- **Step 9: Verificar e commitar**
 
 ```bash
 npx tsc --noEmit
@@ -422,7 +426,7 @@ git commit -m "feat: adicionar label flutuante ao Input"
 **Interfaces:**
 - Consumes: `duration-motion-fast` (Task 1). Mesmo padrão de API da Task 3 (`label`/`animatedLabel`), aplicado de forma independente a este arquivo.
 
-- [ ] **Step 1: Reescrever `src/components/ui/textarea.tsx`**
+- **Step 1: Reescrever `src/components/ui/textarea.tsx`**
 
 ```tsx
 import * as React from "react"
@@ -492,13 +496,13 @@ function Textarea({
 export { Textarea }
 ```
 
-- [ ] **Step 2: Verificar tipos**
+- **Step 2: Verificar tipos**
 
 ```bash
 npx tsc --noEmit
 ```
 
-- [ ] **Step 3: Criar `src/components/examples/textarea-fixed-label.tsx`**
+- **Step 3: Criar `src/components/examples/textarea-fixed-label.tsx`**
 
 ```tsx
 import { Textarea } from "@/components/ui/textarea"
@@ -514,7 +518,7 @@ export default function TextareaFixedLabel() {
 }
 ```
 
-- [ ] **Step 4: Criar `src/components/examples/textarea-floating-label.tsx`**
+- **Step 4: Criar `src/components/examples/textarea-floating-label.tsx`**
 
 ```tsx
 import { Textarea } from "@/components/ui/textarea"
@@ -524,7 +528,7 @@ export default function TextareaFloatingLabel() {
 }
 ```
 
-- [ ] **Step 5: Registrar em `src/lib/examples-mapping.ts`**
+- **Step 5: Registrar em `src/lib/examples-mapping.ts`**
 
 Localizar (linha 70):
 ```ts
@@ -535,7 +539,7 @@ Substituir por:
   "textarea": ["textarea-demo", "textarea-disabled", "textarea-fixed-label", "textarea-floating-label", "textarea-with-button", "textarea-with-label", "textarea-with-text"],
 ```
 
-- [ ] **Step 6: Registrar em `src/components/examples/registry.tsx`**
+- **Step 6: Registrar em `src/components/examples/registry.tsx`**
 
 Localizar (linhas 206-207):
 ```tsx
@@ -550,7 +554,7 @@ Substituir por:
   "textarea-with-button": dynamic(() => import("@/components/examples/textarea-with-button")),
 ```
 
-- [ ] **Step 7: Adicionar stories em `src/components/ui/textarea.stories.tsx`**
+- **Step 7: Adicionar stories em `src/components/ui/textarea.stories.tsx`**
 
 Adicionar aos imports (depois de `import TextareaDisabled from "@/components/examples/textarea-disabled"`):
 ```tsx
@@ -570,7 +574,7 @@ export const FloatingLabel: Story = {
 }
 ```
 
-- [ ] **Step 8: Atualizar props em `src/lib/component-docs.ts`**
+- **Step 8: Atualizar props em `src/lib/component-docs.ts`**
 
 Localizar a entrada `textarea:` (linhas 1062-1064):
 ```ts
@@ -587,7 +591,7 @@ Substituir por:
     ],
 ```
 
-- [ ] **Step 9: Verificar e commitar**
+- **Step 9: Verificar e commitar**
 
 ```bash
 npx tsc --noEmit
@@ -608,7 +612,7 @@ git commit -m "feat: adicionar label flutuante ao Textarea"
 - Consumes: `duration-motion-fast` (Task 1).
 - Produces: `SelectTrigger` aceita `label?: React.ReactNode` e `animatedLabel?: boolean` — associação de acessibilidade via `aria-labelledby` + `htmlFor`/`id` (Radix `role="combobox"` não é elemento de formulário nativo).
 
-- [ ] **Step 1: Editar `src/components/ui/select.tsx` — imports**
+- **Step 1: Editar `src/components/ui/select.tsx` — imports**
 
 Localizar (linhas 1-7):
 ```tsx
@@ -632,7 +636,7 @@ import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 ```
 
-- [ ] **Step 2: Reescrever `SelectTrigger`**
+- **Step 2: Reescrever `SelectTrigger`**
 
 Localizar a função `SelectTrigger` inteira (linhas 27-51):
 ```tsx
@@ -735,13 +739,13 @@ function SelectTrigger({
 }
 ```
 
-- [ ] **Step 3: Verificar tipos**
+- **Step 3: Verificar tipos**
 
 ```bash
 npx tsc --noEmit
 ```
 
-- [ ] **Step 4: Criar `src/components/examples/select-fixed-label.tsx`**
+- **Step 4: Criar `src/components/examples/select-fixed-label.tsx`**
 
 ```tsx
 import {
@@ -767,7 +771,7 @@ export default function SelectFixedLabel() {
 }
 ```
 
-- [ ] **Step 5: Criar `src/components/examples/select-floating-label.tsx`**
+- **Step 5: Criar `src/components/examples/select-floating-label.tsx`**
 
 ```tsx
 import {
@@ -793,7 +797,7 @@ export default function SelectFloatingLabel() {
 }
 ```
 
-- [ ] **Step 6: Registrar em `src/lib/examples-mapping.ts`**
+- **Step 6: Registrar em `src/lib/examples-mapping.ts`**
 
 Localizar (linha 55):
 ```ts
@@ -804,7 +808,7 @@ Substituir por:
   "select": ["select-demo", "select-fixed-label", "select-floating-label", "select-scrollable"],
 ```
 
-- [ ] **Step 7: Registrar em `src/components/examples/registry.tsx`**
+- **Step 7: Registrar em `src/components/examples/registry.tsx`**
 
 Localizar (linhas 177-178):
 ```tsx
@@ -819,7 +823,7 @@ Substituir por:
   "select-scrollable": dynamic(() => import("@/components/examples/select-scrollable")),
 ```
 
-- [ ] **Step 8: Adicionar stories em `src/components/ui/select.stories.tsx`**
+- **Step 8: Adicionar stories em `src/components/ui/select.stories.tsx`**
 
 Adicionar aos imports (depois de `import SelectDemo from "@/components/examples/select-demo"`):
 ```tsx
@@ -839,7 +843,7 @@ export const FloatingLabel: Story = {
 }
 ```
 
-- [ ] **Step 9: Atualizar props em `src/lib/component-docs.ts`**
+- **Step 9: Atualizar props em `src/lib/component-docs.ts`**
 
 Localizar a entrada `select:` (linhas 1496-1501):
 ```ts
@@ -862,7 +866,7 @@ Substituir por:
     ],
 ```
 
-- [ ] **Step 10: Verificar e commitar**
+- **Step 10: Verificar e commitar**
 
 ```bash
 npx tsc --noEmit
@@ -883,7 +887,7 @@ git commit -m "feat: adicionar label flutuante ao SelectTrigger"
 - Consumes: `duration-motion-fast` (Task 1).
 - Produces: `NativeSelect` aceita `label?: React.ReactNode` e `animatedLabel?: boolean`. Diferente das Tasks 3-5 (CSS puro), o gatilho "tem valor" vem de estado React (`hasValue`), porque `<select>` nativo não tem `:placeholder-shown`.
 
-- [ ] **Step 1: Reescrever `src/components/ui/native-select.tsx`**
+- **Step 1: Reescrever `src/components/ui/native-select.tsx`**
 
 ```tsx
 "use client"
@@ -1015,13 +1019,13 @@ function NativeSelectOptGroup({
 export { NativeSelect, NativeSelectOptGroup, NativeSelectOption }
 ```
 
-- [ ] **Step 2: Verificar tipos**
+- **Step 2: Verificar tipos**
 
 ```bash
 npx tsc --noEmit
 ```
 
-- [ ] **Step 3: Criar `src/components/examples/native-select-fixed-label.tsx`**
+- **Step 3: Criar `src/components/examples/native-select-fixed-label.tsx`**
 
 ```tsx
 import {
@@ -1039,7 +1043,7 @@ export default function NativeSelectFixedLabel() {
 }
 ```
 
-- [ ] **Step 4: Criar `src/components/examples/native-select-floating-label.tsx`**
+- **Step 4: Criar `src/components/examples/native-select-floating-label.tsx`**
 
 ```tsx
 import {
@@ -1058,7 +1062,7 @@ export default function NativeSelectFloatingLabel() {
 }
 ```
 
-- [ ] **Step 5: Registrar em `src/lib/examples-mapping.ts`**
+- **Step 5: Registrar em `src/lib/examples-mapping.ts`**
 
 Localizar (linha 46):
 ```ts
@@ -1069,7 +1073,7 @@ Substituir por:
   "native-select": ["native-select-demo", "native-select-disabled", "native-select-fixed-label", "native-select-floating-label", "native-select-groups", "native-select-invalid"],
 ```
 
-- [ ] **Step 6: Registrar em `src/components/examples/registry.tsx`**
+- **Step 6: Registrar em `src/components/examples/registry.tsx`**
 
 Localizar (linhas 162-163):
 ```tsx
@@ -1084,7 +1088,7 @@ Substituir por:
   "native-select-groups": dynamic(() => import("@/components/examples/native-select-groups")),
 ```
 
-- [ ] **Step 7: Adicionar stories em `src/components/ui/native-select.stories.tsx`**
+- **Step 7: Adicionar stories em `src/components/ui/native-select.stories.tsx`**
 
 Adicionar aos imports (depois de `import NativeSelectDemo from "@/components/examples/native-select-demo"`):
 ```tsx
@@ -1104,7 +1108,7 @@ export const FloatingLabel: Story = {
 }
 ```
 
-- [ ] **Step 8: Atualizar props em `src/lib/component-docs.ts`**
+- **Step 8: Atualizar props em `src/lib/component-docs.ts`**
 
 Localizar a entrada `"native-select":` (linhas 1410-1413):
 ```ts
@@ -1123,7 +1127,7 @@ Substituir por:
     ],
 ```
 
-- [ ] **Step 9: Verificar e commitar**
+- **Step 9: Verificar e commitar**
 
 ```bash
 npx tsc --noEmit
@@ -1141,28 +1145,28 @@ git commit -m "feat: adicionar label flutuante ao NativeSelect"
 **Interfaces:**
 - Consumes: resultado de todas as Tasks 1-6.
 
-- [ ] **Step 1: Typecheck completo do projeto**
+- **Step 1: Typecheck completo do projeto**
 
 ```bash
 npx tsc --noEmit
 ```
 Esperado: 0 erros.
 
-- [ ] **Step 2: Grep de sanidade — nenhuma cor fixa fora de token nos 4 arquivos tocados**
+- **Step 2: Grep de sanidade — nenhuma cor fixa fora de token nos 4 arquivos tocados**
 
 ```bash
 grep -nE "#[0-9a-fA-F]{3,8}|oklch\(" src/components/ui/input.tsx src/components/ui/textarea.tsx src/components/ui/select.tsx src/components/ui/native-select.tsx
 ```
 Esperado: nenhuma ocorrência (só classes de token como `text-muted-foreground`, `text-foreground`, `border-input`).
 
-- [ ] **Step 3: Grep de sanidade — as 8 novas entradas de exemplo existem nos 2 registries**
+- **Step 3: Grep de sanidade — as 8 novas entradas de exemplo existem nos 2 registries**
 
 ```bash
 grep -c "fixed-label\|floating-label" src/lib/examples-mapping.ts src/components/examples/registry.tsx
 ```
 Esperado: 8 em cada arquivo (2 por componente × 4 componentes).
 
-- [ ] **Step 4: Atualizar o status da spec de origem**
+- **Step 4: Atualizar o status da spec de origem**
 
 Em `docs/superpowers/specs/2026-07-31-motion-label-flutuante-design.md`, localizar a linha 4:
 ```
@@ -1173,7 +1177,7 @@ Substituir por:
 Status: implementado (2026-07-31) — pendente QA visual manual do Rafael (5 presets × claro/escuro, prefers-reduced-motion, NativeSelect por teclado). Ver docs/superpowers/plans/2026-07-31-motion-label-flutuante-plan.md.
 ```
 
-- [ ] **Step 5: Commit**
+- **Step 5: Commit**
 
 ```bash
 git add docs/superpowers/specs/2026-07-31-motion-label-flutuante-design.md

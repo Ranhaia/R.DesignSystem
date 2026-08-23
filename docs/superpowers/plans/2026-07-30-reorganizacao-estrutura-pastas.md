@@ -9,6 +9,10 @@
 > Verificado contra o código em 2026-08-23 — a verificação foi por
 > **resultado entregue**, não passo a passo. Todas as pastas que ele criava existem: `plans/current`, `plans/done`, `docs/active/decisoes`, `docs/active/especificacoes`, `docs/archive`.
 >
+> As checkboxes foram convertidas em marcadores simples em
+> 2026-08-23 — não eram tarefa, e no formato de tarefa apareciam
+> como fila aberta em qualquer busca por `- [ ]`.
+>
 > Este arquivo é **registro histórico**. O trabalho vivo deste repo está
 > em `_trabalho/`, e é o único lugar onde checkbox significa alguma
 > coisa.
@@ -85,7 +89,7 @@ plans/
 **Files:**
 - Create: `docs/active/especificacoes/`, `docs/active/decisoes/`, `docs/active/revisao-ds/`, `docs/active/telas/.gitkeep`, `docs/active/componentes/.gitkeep`, `docs/archive/telas/`, `docs/archive/componentes/`, `docs/archive/decisoes/`, `plans/current/`, `plans/done/`
 
-- [ ] **Step 1: Criar os diretórios**
+- **Step 1: Criar os diretórios**
 
 ```bash
 mkdir -p "docs/active/especificacoes" "docs/active/decisoes" "docs/active/revisao-ds" \
@@ -94,13 +98,13 @@ mkdir -p "docs/active/especificacoes" "docs/active/decisoes" "docs/active/revisa
          "plans/current" "plans/done"
 ```
 
-- [ ] **Step 2: Criar os `.gitkeep` das pastas que ficam vazias por enquanto**
+- **Step 2: Criar os `.gitkeep` das pastas que ficam vazias por enquanto**
 
 ```bash
 touch "docs/active/telas/.gitkeep" "docs/active/componentes/.gitkeep"
 ```
 
-- [ ] **Step 3: Verificar**
+- **Step 3: Verificar**
 
 ```bash
 find docs plans -type d
@@ -108,7 +112,7 @@ find docs plans -type d
 
 Esperado: as 10 pastas do Step 1 listadas.
 
-- [ ] **Step 4: Commit**
+- **Step 4: Commit**
 
 ```bash
 git add docs/active/telas/.gitkeep docs/active/componentes/.gitkeep
@@ -126,7 +130,7 @@ Todas as 8 telas do fluxo (login, recuperação de senha, seleção de perfil, o
 **Files:**
 - Move (com rename): os 25 arquivos de tela abaixo.
 
-- [ ] **Step 1: Criar as 8 subpastas e mover com `git mv`**
+- **Step 1: Criar as 8 subpastas e mover com `git mv`**
 
 ```bash
 for slug in login-simples login-erro-validacao recuperacao-senha selecao-perfil-corretora onboarding apolices-ativas novo-sinistro painel-corretor; do
@@ -138,7 +142,7 @@ done
 git mv ".build/telas/mobile-novo-sinistro.md" "docs/archive/telas/novo-sinistro/mobile.md"
 ```
 
-- [ ] **Step 2: Verificar — nenhum arquivo de tela deve sobrar em `.build/telas/` exceto `RETROATIVO-MOBILE.md` e `PENDENCIAS.md`**
+- **Step 2: Verificar — nenhum arquivo de tela deve sobrar em `.build/telas/` exceto `RETROATIVO-MOBILE.md` e `PENDENCIAS.md`**
 
 ```bash
 ls .build/telas/
@@ -152,7 +156,7 @@ find docs/archive/telas -type f | wc -l
 
 Esperado: `25` (24 dos 8 trios + 1 `mobile.md` extra do novo-sinistro).
 
-- [ ] **Step 3: Commit**
+- **Step 3: Commit**
 
 ```bash
 git add docs/archive/telas
@@ -167,14 +171,14 @@ git commit -m "chore: arquivar specs/diagnosticos das 8 telas da Fase 5 em docs/
 - Move: `.build/telas/RETROATIVO-MOBILE.md` → `docs/archive/telas/retroativo-mobile.md`
 - Move: `.build/telas/PENDENCIAS.md` → `docs/archive/decisoes/pendencias-fase5.md`
 
-- [ ] **Step 1: Mover**
+- **Step 1: Mover**
 
 ```bash
 git mv ".build/telas/RETROATIVO-MOBILE.md" "docs/archive/telas/retroativo-mobile.md"
 git mv ".build/telas/PENDENCIAS.md" "docs/archive/decisoes/pendencias-fase5.md"
 ```
 
-- [ ] **Step 2: Verificar que `.build/telas/` ficou vazio**
+- **Step 2: Verificar que `.build/telas/` ficou vazio**
 
 ```bash
 ls .build/telas/ 2>&1
@@ -182,7 +186,7 @@ ls .build/telas/ 2>&1
 
 Esperado: erro "no such file or directory" (a pasta some quando fica vazia) ou listagem vazia.
 
-- [ ] **Step 3: Commit**
+- **Step 3: Commit**
 
 ```bash
 git add docs/archive/telas/retroativo-mobile.md docs/archive/decisoes/pendencias-fase5.md
@@ -198,7 +202,7 @@ Os 15 componentes da Fase 6.1 e o ajuste de contraste da Fase 6.2 já estão com
 **Files:**
 - Move (com rename): os 16 arquivos abaixo (chip tem 2, os outros 14 têm 1).
 
-- [ ] **Step 1: Mover `chip` (único com auditoria de acessibilidade)**
+- **Step 1: Mover `chip` (único com auditoria de acessibilidade)**
 
 ```bash
 mkdir -p "docs/archive/componentes/chip"
@@ -206,7 +210,7 @@ git mv ".build/componentes/chip.md" "docs/archive/componentes/chip/spec.md"
 git mv ".build/componentes/acessibilidade-chip.md" "docs/archive/componentes/chip/acessibilidade.md"
 ```
 
-- [ ] **Step 2: Mover os outros 14 (1 arquivo cada)**
+- **Step 2: Mover os outros 14 (1 arquivo cada)**
 
 ```bash
 for slug in text box link title tag list thumbnail icon-button file-uploader stepper segmented-control split-button time-picker multi-select; do
@@ -215,7 +219,7 @@ for slug in text box link title tag list thumbnail icon-button file-uploader ste
 done
 ```
 
-- [ ] **Step 3: Verificar — `.build/` inteiro deve deixar de existir**
+- **Step 3: Verificar — `.build/` inteiro deve deixar de existir**
 
 ```bash
 find docs/archive/componentes -type f | wc -l
@@ -229,7 +233,7 @@ ls .build 2>&1
 
 Esperado: erro "no such file or directory" (pasta vazia removida) — se `.build/` ainda existir com algo dentro, pare e investigue antes de seguir (pode ter sobrado arquivo que este plano não previu).
 
-- [ ] **Step 4: Commit**
+- **Step 4: Commit**
 
 ```bash
 git add docs/archive/componentes
@@ -245,7 +249,7 @@ Os 4 arquivos de `.review/` são sempre sobrescritos no próximo `/revisar-ds` �
 **Files:**
 - Move: `.review/auditoria.md`, `.review/comparativo.md`, `.review/acessibilidade.md`, `.review/diagnostico.md` → `docs/active/revisao-ds/` (mesmo nome de arquivo).
 
-- [ ] **Step 1: Mover**
+- **Step 1: Mover**
 
 ```bash
 git mv ".review/auditoria.md" "docs/active/revisao-ds/auditoria.md"
@@ -254,7 +258,7 @@ git mv ".review/acessibilidade.md" "docs/active/revisao-ds/acessibilidade.md"
 git mv ".review/diagnostico.md" "docs/active/revisao-ds/diagnostico.md"
 ```
 
-- [ ] **Step 2: Verificar**
+- **Step 2: Verificar**
 
 ```bash
 ls .review 2>&1
@@ -263,7 +267,7 @@ find docs/active/revisao-ds -type f
 
 Esperado: `.review` não existe mais; `docs/active/revisao-ds` lista os 4 arquivos.
 
-- [ ] **Step 3: Commit**
+- **Step 3: Commit**
 
 ```bash
 git add docs/active/revisao-ds
@@ -278,13 +282,13 @@ git commit -m "chore: mover .review para docs/active/revisao-ds"
 - Move: `TAXONOMIA-COMPONENTES.md` → `docs/active/especificacoes/taxonomia-componentes.md`
 - Modify: `PLANO-LOOP-80-20-TEMPLATES.md:400,851,860` (referências ao caminho antigo — dentro da parte "current" do arquivo, linhas 1–453, que a Task 8 ainda vai mover pra `plans/current/`; corrija aqui, antes da Task 8, para não perder o rastro)
 
-- [ ] **Step 1: Mover**
+- **Step 1: Mover**
 
 ```bash
 git mv "TAXONOMIA-COMPONENTES.md" "docs/active/especificacoes/taxonomia-componentes.md"
 ```
 
-- [ ] **Step 2: Corrigir as 3 referências em `PLANO-LOOP-80-20-TEMPLATES.md`**
+- **Step 2: Corrigir as 3 referências em `PLANO-LOOP-80-20-TEMPLATES.md`**
 
 Linha 400 (dentro da Fase 6, checklist): trocar `TAXONOMIA-COMPONENTES.md` por `docs/active/especificacoes/taxonomia-componentes.md`.
 
@@ -292,7 +296,7 @@ Linhas 851 e 860 (dentro da Fase 6, subseção da taxonomia por função): mesma
 
 Use `Edit` com `replace_all: true` no arquivo `PLANO-LOOP-80-20-TEMPLATES.md`, substituindo a string literal `` `TAXONOMIA-COMPONENTES.md` `` por `` `docs/active/especificacoes/taxonomia-componentes.md` ``.
 
-- [ ] **Step 3: Verificar que não sobrou referência ao caminho antigo fora de arquivos já arquivados**
+- **Step 3: Verificar que não sobrou referência ao caminho antigo fora de arquivos já arquivados**
 
 ```bash
 grep -rn "TAXONOMIA-COMPONENTES.md" --include="*.md" --include="*.ts" --include="*.tsx" --include="*.css" . \
@@ -301,7 +305,7 @@ grep -rn "TAXONOMIA-COMPONENTES.md" --include="*.md" --include="*.ts" --include=
 
 Esperado: nenhum resultado (o único arquivo fora de `docs/` que citava o nome era `PLANO-LOOP-80-20-TEMPLATES.md`, já corrigido).
 
-- [ ] **Step 4: Commit**
+- **Step 4: Commit**
 
 ```bash
 git add docs/active/especificacoes/taxonomia-componentes.md PLANO-LOOP-80-20-TEMPLATES.md
@@ -316,13 +320,13 @@ git commit -m "chore: mover TAXONOMIA-COMPONENTES.md para docs/active/especifica
 - Move: `PLANO-DESIGN-SYSTEM.md` → `plans/current/design-system-piloto.md`
 - Modify: o próprio arquivo, linhas 88–89 (referências a `PLANO-LOOP-80-20-TEMPLATES.md`)
 
-- [ ] **Step 1: Mover**
+- **Step 1: Mover**
 
 ```bash
 git mv "PLANO-DESIGN-SYSTEM.md" "plans/current/design-system-piloto.md"
 ```
 
-- [ ] **Step 2: Corrigir as referências internas**
+- **Step 2: Corrigir as referências internas**
 
 Em `plans/current/design-system-piloto.md`, linha 88, o trecho:
 ```
@@ -344,7 +348,7 @@ Detalhe completo em `plans/done/loop-80-20-log-resumo.md`.
 
 (Esse segundo arquivo só vai existir depois da Task 8 — a referência já fica correta esperando por ele.)
 
-- [ ] **Step 3: Verificar**
+- **Step 3: Verificar**
 
 ```bash
 grep -n "PLANO-LOOP-80-20-TEMPLATES" "plans/current/design-system-piloto.md"
@@ -352,7 +356,7 @@ grep -n "PLANO-LOOP-80-20-TEMPLATES" "plans/current/design-system-piloto.md"
 
 Esperado: nenhum resultado.
 
-- [ ] **Step 4: Commit**
+- **Step 4: Commit**
 
 ```bash
 git add plans/current/design-system-piloto.md
@@ -371,7 +375,7 @@ O arquivo tem 2344 linhas: linhas 1–426 são o plano vivo (Fases 0–6, regras
 - Create: `plans/done/loop-80-20-log-resumo.md` (resumo condensado das linhas 454–2344)
 - Delete: `PLANO-LOOP-80-20-TEMPLATES.md` (o conteúdo se torna os 3 arquivos acima)
 
-- [ ] **Step 1: Ler o arquivo original inteiro**
+- **Step 1: Ler o arquivo original inteiro**
 
 ```bash
 wc -l PLANO-LOOP-80-20-TEMPLATES.md
@@ -379,7 +383,7 @@ wc -l PLANO-LOOP-80-20-TEMPLATES.md
 
 Confirme que ainda são 2344 linhas (se o número mudou desde que este plano foi escrito, pare — alguém editou o arquivo nesse meio tempo, releia antes de continuar).
 
-- [ ] **Step 2: Criar `docs/active/decisoes/decisoes-provisorias-loop-80-20.md`**
+- **Step 2: Criar `docs/active/decisoes/decisoes-provisorias-loop-80-20.md`**
 
 Copie **verbatim** as linhas 427–453 do arquivo original (o cabeçalho `## Decisões provisórias — revisar`, a nota em itálico, e a tabela completa de 14 linhas — Fase 4, Fase 3, Fase 6.1 ×11, Fase 6.2). Adicione no topo:
 
@@ -392,7 +396,7 @@ Copie **verbatim** as linhas 427–453 do arquivo original (o cabeçalho `## Dec
 
 seguido da tabela verbatim.
 
-- [ ] **Step 3: Criar `plans/current/loop-80-20-templates.md`**
+- **Step 3: Criar `plans/current/loop-80-20-templates.md`**
 
 Copie as linhas 1–426 do arquivo original **sem alteração de conteúdo** (essas 3 referências a `TAXONOMIA-COMPONENTES.md` e as 5 a `PLANO-DESIGN-SYSTEM.md` já foram corrigidas nas Tasks 6 e 7 — confirme que a versão que você está copiando já reflete essas correções). No final do arquivo, troque o que era `## Decisões provisórias — revisar` (linha 427 em diante) e `## Log` (linha 454 em diante) por:
 
@@ -409,7 +413,7 @@ completo dia-a-dia (se precisar do texto original de novo) está em
 reorganização.
 ```
 
-- [ ] **Step 4: Criar `plans/done/loop-80-20-log-resumo.md`**
+- **Step 4: Criar `plans/done/loop-80-20-log-resumo.md`**
 
 Este é o passo que exige leitura e condensação de verdade — não é cópia mecânica. Para **cada** uma das ~33 entradas `###`/`##` do Log original (linhas 454–2344), escreva 1–3 bullets seguindo esta regra:
 
@@ -482,13 +486,13 @@ Para cada uma, use o mesmo formato do exemplo do Step 4 (título `###` com data,
 
 ```
 
-- [ ] **Step 5: Apagar o arquivo original**
+- **Step 5: Apagar o arquivo original**
 
 ```bash
 git rm "PLANO-LOOP-80-20-TEMPLATES.md"
 ```
 
-- [ ] **Step 6: Verificar**
+- **Step 6: Verificar**
 
 ```bash
 ls PLANO-LOOP-80-20-TEMPLATES.md 2>&1
@@ -497,7 +501,7 @@ wc -l plans/current/loop-80-20-templates.md docs/active/decisoes/decisoes-provis
 
 Esperado: o primeiro comando dá erro (arquivo não existe mais). `loop-80-20-templates.md` deve ter ~430 linhas. `decisoes-provisorias-loop-80-20.md` deve ter ~30 linhas. `loop-80-20-log-resumo.md` deve ter entre 100–250 linhas (33 entradas × 1–4 linhas cada + títulos) — se estiver muito maior que isso, a condensação não cortou narrativa suficiente; se tiver menos de 60 linhas, provavelmente cortou informação demais (decisões difíceis de reverter não podem sumir).
 
-- [ ] **Step 7: Commit**
+- **Step 7: Commit**
 
 ```bash
 git add plans/current/loop-80-20-templates.md docs/active/decisoes/decisoes-provisorias-loop-80-20.md plans/done/loop-80-20-log-resumo.md
@@ -517,7 +521,7 @@ git commit -m "chore: dividir PLANO-LOOP-80-20-TEMPLATES.md em plans/current, do
 - Modify: `.claude/agents/telas-mobile.md`
 - Modify: `.claude/agents/telas-revisor.md`
 
-- [ ] **Step 1: `construir-telas.md`** — trocar as 3 ocorrências de `.build/telas/`:
+- **Step 1: `construir-telas.md`** — trocar as 3 ocorrências de `.build/telas/`:
 
 ```
 1. Delegue ao subagente telas-planejador. Espere `.build/telas/<slug>.md`.
@@ -537,21 +541,21 @@ git commit -m "chore: dividir PLANO-LOOP-80-20-TEMPLATES.md em plans/current, do
 4. Delegue ao telas-revisor. Mostre `docs/active/telas/<slug>/diagnostico.md` (ou `docs/archive/telas/<slug>/diagnostico.md` se o veredito for "pronta" e o telas-revisor já tiver graduado a pasta — ver Task 11).
 ```
 
-- [ ] **Step 2: `telas-planejador.md`** — 2 mudanças:
+- **Step 2: `telas-planejador.md`** — 2 mudanças:
 
 Referência ao plano (linha 9): trocar `` `PLANO-LOOP-80-20-TEMPLATES.md` `` por `` `plans/current/loop-80-20-templates.md` ``.
 
 Caminho de saída (linha 12): trocar `` `.build/telas/<slug>.md` `` por `` `docs/active/telas/<slug>/spec.md` `` (crie a subpasta `docs/active/telas/<slug>/` se não existir).
 
-- [ ] **Step 3: `telas-construtor.md`** — 3 ocorrências de `.build/telas/<slug>.md` (linhas 9 e 15) trocam para `docs/active/telas/<slug>/spec.md`.
+- **Step 3: `telas-construtor.md`** — 3 ocorrências de `.build/telas/<slug>.md` (linhas 9 e 15) trocam para `docs/active/telas/<slug>/spec.md`.
 
-- [ ] **Step 4: `telas-acessibilidade.md`** — linha 9 (`.build/telas/<slug>.md`) vira `docs/active/telas/<slug>/spec.md`; linha 18 (`.build/telas/acessibilidade-<slug>.md`) vira `docs/active/telas/<slug>/acessibilidade.md`.
+- **Step 4: `telas-acessibilidade.md`** — linha 9 (`.build/telas/<slug>.md`) vira `docs/active/telas/<slug>/spec.md`; linha 18 (`.build/telas/acessibilidade-<slug>.md`) vira `docs/active/telas/<slug>/acessibilidade.md`.
 
-- [ ] **Step 5: `telas-mobile.md`** — linha 28 (`.build/telas/mobile-<slug>.md`) vira `docs/active/telas/<slug>/mobile.md`.
+- **Step 5: `telas-mobile.md`** — linha 28 (`.build/telas/mobile-<slug>.md`) vira `docs/active/telas/<slug>/mobile.md`.
 
-- [ ] **Step 6: `telas-revisor.md`** — linha 9 (`.build/telas/<slug>.md`, `.build/telas/acessibilidade-<slug>.md`) vira `docs/active/telas/<slug>/spec.md`, `docs/active/telas/<slug>/acessibilidade.md`; linha 12 (`.build/telas/diagnostico-<slug>.md`) vira `docs/active/telas/<slug>/diagnostico.md`.
+- **Step 6: `telas-revisor.md`** — linha 9 (`.build/telas/<slug>.md`, `.build/telas/acessibilidade-<slug>.md`) vira `docs/active/telas/<slug>/spec.md`, `docs/active/telas/<slug>/acessibilidade.md`; linha 12 (`.build/telas/diagnostico-<slug>.md`) vira `docs/active/telas/<slug>/diagnostico.md`.
 
-- [ ] **Step 7: Verificar que nenhuma referência a `.build/` sobrou nos 6 arquivos**
+- **Step 7: Verificar que nenhuma referência a `.build/` sobrou nos 6 arquivos**
 
 ```bash
 grep -rn "\.build/" .claude/commands/construir-telas.md .claude/agents/telas-*.md
@@ -559,7 +563,7 @@ grep -rn "\.build/" .claude/commands/construir-telas.md .claude/agents/telas-*.m
 
 Esperado: nenhum resultado.
 
-- [ ] **Step 8: Commit**
+- **Step 8: Commit**
 
 ```bash
 git add .claude/commands/construir-telas.md .claude/agents/telas-planejador.md .claude/agents/telas-construtor.md .claude/agents/telas-acessibilidade.md .claude/agents/telas-mobile.md .claude/agents/telas-revisor.md
@@ -577,9 +581,9 @@ git commit -m "chore: apontar pipeline /construir-telas para docs/active/telas e
 - Modify: `.claude/agents/acessibilidade-ds.md`
 - Modify: `.claude/agents/revisor-ds.md`
 
-- [ ] **Step 1: Em cada um dos 5 arquivos, trocar toda ocorrência de `.review/` por `docs/active/revisao-ds/`** (mesmo nome de arquivo depois da barra — `.review/auditoria.md` → `docs/active/revisao-ds/auditoria.md`, etc. — use `Edit` com `replace_all: true` em cada arquivo, já que a string `.review/` se repete várias vezes em cada um).
+- **Step 1: Em cada um dos 5 arquivos, trocar toda ocorrência de `.review/` por `docs/active/revisao-ds/`** (mesmo nome de arquivo depois da barra — `.review/auditoria.md` → `docs/active/revisao-ds/auditoria.md`, etc. — use `Edit` com `replace_all: true` em cada arquivo, já que a string `.review/` se repete várias vezes em cada um).
 
-- [ ] **Step 2: Verificar**
+- **Step 2: Verificar**
 
 ```bash
 grep -rn "\.review/" .claude/commands/revisar-ds.md .claude/agents/auditor-ds.md .claude/agents/pesquisador-ds.md .claude/agents/acessibilidade-ds.md .claude/agents/revisor-ds.md
@@ -587,7 +591,7 @@ grep -rn "\.review/" .claude/commands/revisar-ds.md .claude/agents/auditor-ds.md
 
 Esperado: nenhum resultado.
 
-- [ ] **Step 3: Commit**
+- **Step 3: Commit**
 
 ```bash
 git add .claude/commands/revisar-ds.md .claude/agents/auditor-ds.md .claude/agents/pesquisador-ds.md .claude/agents/acessibilidade-ds.md .claude/agents/revisor-ds.md
@@ -603,7 +607,7 @@ Sem isso, toda tela nova aprovada fica presa em `docs/active/telas/` para sempre
 **Files:**
 - Modify: `.claude/agents/telas-revisor.md`
 
-- [ ] **Step 1: Adicionar um item 4 ao final da lista numerada** (depois do item 3 sobre severidade, antes do parágrafo final "Não decida por conta própria corrigir nada"):
+- **Step 1: Adicionar um item 4 ao final da lista numerada** (depois do item 3 sobre severidade, antes do parágrafo final "Não decida por conta própria corrigir nada"):
 
 ```markdown
 4. Se o veredito for "pronta" (sem bloqueantes), mova a pasta inteira de
@@ -615,7 +619,7 @@ Sem isso, toda tela nova aprovada fica presa em `docs/active/telas/` para sempre
    próxima rodada do pipeline confirmar "pronta".
 ```
 
-- [ ] **Step 2: Verificar**
+- **Step 2: Verificar**
 
 ```bash
 grep -n "docs/archive/telas" .claude/agents/telas-revisor.md
@@ -623,7 +627,7 @@ grep -n "docs/archive/telas" .claude/agents/telas-revisor.md
 
 Esperado: 1 resultado (a linha nova).
 
-- [ ] **Step 3: Commit**
+- **Step 3: Commit**
 
 ```bash
 git add .claude/agents/telas-revisor.md
@@ -637,15 +641,15 @@ git commit -m "feat: telas-revisor gradua tela aprovada de docs/active para docs
 **Files:**
 - Modify: `src/app/globals.css:240,345`
 
-- [ ] **Step 1: Ler o contexto exato das 2 linhas antes de editar**
+- **Step 1: Ler o contexto exato das 2 linhas antes de editar**
 
 ```bash
 grep -n -B2 -A2 "PLANO-LOOP-80-20" src/app/globals.css
 ```
 
-- [ ] **Step 2: Trocar `PLANO-LOOP-80-20-TEMPLATES.md` por `plans/current/loop-80-20-templates.md`** nas 2 ocorrências (linhas 240 e 345), via `Edit` com `replace_all: true` no arquivo `src/app/globals.css`, string exata `` PLANO-LOOP-80-20-TEMPLATES.md `` → `` plans/current/loop-80-20-templates.md ``.
+- **Step 2: Trocar `PLANO-LOOP-80-20-TEMPLATES.md` por `plans/current/loop-80-20-templates.md`** nas 2 ocorrências (linhas 240 e 345), via `Edit` com `replace_all: true` no arquivo `src/app/globals.css`, string exata `` PLANO-LOOP-80-20-TEMPLATES.md `` → `` plans/current/loop-80-20-templates.md ``.
 
-- [ ] **Step 3: Verificar**
+- **Step 3: Verificar**
 
 ```bash
 grep -n "PLANO-LOOP-80-20-TEMPLATES.md" src/app/globals.css
@@ -653,7 +657,7 @@ grep -n "PLANO-LOOP-80-20-TEMPLATES.md" src/app/globals.css
 
 Esperado: nenhum resultado.
 
-- [ ] **Step 4: Commit**
+- **Step 4: Commit**
 
 ```bash
 git add src/app/globals.css
@@ -667,7 +671,7 @@ git commit -m "chore: atualizar referencia ao plano em globals.css apos reorgani
 **Files:**
 - Modify: `CLAUDE.md`
 
-- [ ] **Step 1: Substituir a seção "Como se orientar rápido"**
+- **Step 1: Substituir a seção "Como se orientar rápido"**
 
 Old string:
 ```markdown
@@ -710,7 +714,7 @@ New string:
 6. Só então arquivos individuais em `src/`.
 ```
 
-- [ ] **Step 2: Substituir a seção "Onde vive o quê"**
+- **Step 2: Substituir a seção "Onde vive o quê"**
 
 Old string:
 ```markdown
@@ -791,7 +795,7 @@ esse trecho do `current`, e — se quiser preservar o racional completo —
 arquive a narrativa integral no vault (ver abaixo).
 ```
 
-- [ ] **Step 3: Substituir as 2 referências restantes em "Convenções já estabelecidas neste projeto"**
+- **Step 3: Substituir as 2 referências restantes em "Convenções já estabelecidas neste projeto"**
 
 Old string:
 ```markdown
@@ -815,7 +819,7 @@ New string:
   Rafael não está disponível) — ver `plans/current/loop-80-20-templates.md`
 ```
 
-- [ ] **Step 4: Verificar que nenhuma referência ao caminho antigo sobrou em `CLAUDE.md`**
+- **Step 4: Verificar que nenhuma referência ao caminho antigo sobrou em `CLAUDE.md`**
 
 ```bash
 grep -n "PLANO-LOOP-80-20-TEMPLATES.md\|PLANO-DESIGN-SYSTEM.md" CLAUDE.md
@@ -823,7 +827,7 @@ grep -n "PLANO-LOOP-80-20-TEMPLATES.md\|PLANO-DESIGN-SYSTEM.md" CLAUDE.md
 
 Esperado: nenhum resultado.
 
-- [ ] **Step 5: Commit**
+- **Step 5: Commit**
 
 ```bash
 git add CLAUDE.md
@@ -836,7 +840,7 @@ git commit -m "docs: atualizar CLAUDE.md com a nova estrutura docs/plans e a rec
 
 **Files:** nenhum (só leitura/checagem)
 
-- [ ] **Step 1: Confirmar que `.build/` e `.review/` não existem mais**
+- **Step 1: Confirmar que `.build/` e `.review/` não existem mais**
 
 ```bash
 ls .build .review 2>&1
@@ -844,7 +848,7 @@ ls .build .review 2>&1
 
 Esperado: erro "no such file or directory" para os dois.
 
-- [ ] **Step 2: Confirmar que não sobrou nenhuma referência viva aos caminhos antigos fora de `git log`**
+- **Step 2: Confirmar que não sobrou nenhuma referência viva aos caminhos antigos fora de `git log`**
 
 ```bash
 grep -rln "\.build/\|\.review/\|PLANO-LOOP-80-20-TEMPLATES\.md\|PLANO-DESIGN-SYSTEM\.md\|^TAXONOMIA-COMPONENTES\.md" \
@@ -854,7 +858,7 @@ grep -rln "\.build/\|\.review/\|PLANO-LOOP-80-20-TEMPLATES\.md\|PLANO-DESIGN-SYS
 
 Esperado: nenhum resultado (tudo que sobrar deve estar só dentro de `docs/`/`plans/`, arquivado, o que é esperado — arquivo histórico pode citar o próprio nome antigo em prosa).
 
-- [ ] **Step 3: Conferir a árvore final**
+- **Step 3: Conferir a árvore final**
 
 ```bash
 find docs plans -type f | sort
@@ -862,7 +866,7 @@ find docs plans -type f | sort
 
 Confira contra a "Visão da estrutura final" no topo deste plano — mesma lista de arquivos (nomes podem ter sido ajustados durante a Task 8, mas a contagem deve bater: 25 arquivos em `docs/archive/telas` + 2 avulsos, 16 em `docs/archive/componentes`, 1 em `docs/archive/decisoes`, 1 em `docs/active/especificacoes`, 1 em `docs/active/decisoes`, 4 em `docs/active/revisao-ds`, 2 `.gitkeep`, 2 em `plans/current`, 1 em `plans/done`).
 
-- [ ] **Step 4: `git status` limpo (nada da reorganização deveria continuar pendente)**
+- **Step 4: `git status` limpo (nada da reorganização deveria continuar pendente)**
 
 ```bash
 git status

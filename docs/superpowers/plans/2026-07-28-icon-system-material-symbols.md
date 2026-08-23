@@ -9,6 +9,10 @@
 > Verificado contra o código em 2026-08-23 — a verificação foi por
 > **resultado entregue**, não passo a passo. Existem `src/components/ui/icon.tsx`, `icon-button.tsx` e Material Symbols em `layout.tsx` e `globals.css`.
 >
+> As checkboxes foram convertidas em marcadores simples em
+> 2026-08-23 — não eram tarefa, e no formato de tarefa apareciam
+> como fila aberta em qualquer busca por `- [ ]`.
+>
 > Este arquivo é **registro histórico**. O trabalho vivo deste repo está
 > em `_trabalho/`, e é o único lugar onde checkbox significa alguma
 > coisa.
@@ -205,13 +209,13 @@ Regra: `size-N` → `size={N * 0.25}`. `h-N w-N` (mesmo N) → mesma coisa. Sem 
 **Interfaces:**
 - Produces: duas variáveis CSS globais fixas `--font-material-rounded` e `--font-material-sharp` (definidas na Tarefa 2, mas dependem das fontes carregadas aqui).
 
-- [ ] **Step 1: Instalar o pacote**
+- **Step 1: Instalar o pacote**
 
 ```bash
 npm install material-symbols
 ```
 
-- [ ] **Step 2: Confirmar a versão e o tipo exportado**
+- **Step 2: Confirmar a versão e o tipo exportado**
 
 ```bash
 node -e "console.log(require('material-symbols/package.json').version)"
@@ -219,7 +223,7 @@ node -e "console.log(require('material-symbols/package.json').version)"
 
 Abra `node_modules/material-symbols/index.d.ts` e confirme que existe um type `MaterialSymbol` exportado (união de strings). Se o nome do type ou o caminho de import mudou de versão, ajuste os imports nas tarefas seguintes.
 
-- [ ] **Step 3: Importar as fontes no layout**
+- **Step 3: Importar as fontes no layout**
 
 Em `src/app/layout.tsx`, logo abaixo de `import "./globals.css"`:
 
@@ -229,7 +233,7 @@ import "material-symbols/rounded.css";
 import "material-symbols/sharp.css";
 ```
 
-- [ ] **Step 4: Rodar o dev server e confirmar que as fontes carregam**
+- **Step 4: Rodar o dev server e confirmar que as fontes carregam**
 
 ```bash
 npm run dev
@@ -237,7 +241,7 @@ npm run dev
 
 Abra `http://localhost:3000`, abra o DevTools → Network → filtre por `woff2` → confirme 2 arquivos de fonte carregados (`material-symbols-rounded.woff2`, `material-symbols-sharp.woff2`), sem erro 404.
 
-- [ ] **Step 5: Commit**
+- **Step 5: Commit**
 
 ```bash
 git add package.json package-lock.json src/app/layout.tsx
@@ -254,7 +258,7 @@ git commit -m "Instala pacote material-symbols e carrega fontes Rounded/Sharp"
 **Interfaces:**
 - Produces: `--font-material-rounded`, `--font-material-sharp` (fixas, `:root`), `--icon-font-family`, `--icon-fill`, `--icon-weight`, `--icon-grade`, `--icon-optical-size` (uma definição por preset, lidas pelo `<Icon>` na Tarefa 3).
 
-- [ ] **Step 1: Adicionar as duas variáveis fixas + defaults do preset Padrão em `:root`**
+- **Step 1: Adicionar as duas variáveis fixas + defaults do preset Padrão em `:root`**
 
 Em `src/app/globals.css`, dentro do bloco `:root` (linha 191), logo depois do comentário de tipografia (`--font-heading`, por volta da linha 213), adicionar:
 
@@ -274,7 +278,7 @@ Em `src/app/globals.css`, dentro do bloco `:root` (linha 191), logo depois do co
   --icon-optical-size: 24;
 ```
 
-- [ ] **Step 2: Adicionar os defaults de cada um dos 4 presets**
+- **Step 2: Adicionar os defaults de cada um dos 4 presets**
 
 Em `[data-style="editorial"]` (linha 501), logo após `--hero-amplitude: 0.7;`:
 
@@ -318,11 +322,11 @@ Em `[data-style="midnight"]` (linha 787):
 
 Não duplicar nada nos blocos `.dark[data-style="..."]` — esses só sobrescrevem cor, os tokens de ícone (como fonte/radius/sombra) ficam definidos uma vez só no bloco claro e continuam valendo no escuro por cascata (mesmo padrão já usado por `--font-sans`/`--radius`/`--shadow-*` no arquivo).
 
-- [ ] **Step 3: Verificar visualmente**
+- **Step 3: Verificar visualmente**
 
 Com o dev server rodando, abra `/estilo`, use o seletor de estilo na sidebar pra trocar entre os 5 presets, e confirme no DevTools (Elements → Computed) que `--icon-font-family`, `--icon-fill` etc. mudam de valor em `<html>` a cada troca.
 
-- [ ] **Step 4: Commit**
+- **Step 4: Commit**
 
 ```bash
 git add src/app/globals.css
@@ -343,7 +347,7 @@ git commit -m "Adiciona tokens --icon-* por preset de estilo"
 
 > Nota sobre testes: este projeto não tem um runner de teste de componente em jsdom — o único harness (`@storybook/addon-vitest`) roda stories reais dentro de um Chromium via Playwright (ver `vitest.config.ts`). Verificado durante o planejamento: `vitest.config.ts` hoje só declara UM projeto (`storybook`), com `include` restrito a `**/*.stories.@(js|jsx|mjs|ts|tsx)` e `**/*.mdx` — rodar `npx vitest run` contra um `.test.ts` puro sem adicionar um projeto novo falha com "No test files found" (confirmado empiricamente: `Test Files  no tests found` / exit code 1). O Step 1 abaixo adiciona um segundo projeto `unit` (ambiente `node`, sem browser) só para arquivos `src/**/*.test.ts` — isolado do projeto `storybook`, não muda nada do comportamento dele. Testes visuais/de integração do `<Icon>` em si ficam a cargo da Storybook story da Tarefa 4 + verificação manual (ver `CLAUDE.md` da sessão: "para mudanças de UI, rode o dev server e confira no navegador").
 
-- [ ] **Step 1: Adicionar um projeto `unit` ao `vitest.config.ts` para testes puros (sem browser)**
+- **Step 1: Adicionar um projeto `unit` ao `vitest.config.ts` para testes puros (sem browser)**
 
 Em `vitest.config.ts`, dentro do array `projects`, adicionar um novo objeto ANTES do objeto existente (`{ extends: true, plugins: [...], test: { name: 'storybook', ... } }`):
 
@@ -378,7 +382,7 @@ Em `vitest.config.ts`, dentro do array `projects`, adicionar um novo objeto ANTE
   },
 ```
 
-- [ ] **Step 2: Escrever o teste (vai falhar — o arquivo de implementação ainda não existe)**
+- **Step 2: Escrever o teste (vai falhar — o arquivo de implementação ainda não existe)**
 
 ```ts
 // src/lib/icon-optical-size.test.ts
@@ -405,7 +409,7 @@ describe("computeOpticalSize", () => {
 })
 ```
 
-- [ ] **Step 3: Rodar e confirmar que falha**
+- **Step 3: Rodar e confirmar que falha**
 
 ```bash
 npx vitest run src/lib/icon-optical-size.test.ts
@@ -413,7 +417,7 @@ npx vitest run src/lib/icon-optical-size.test.ts
 
 Esperado: FAIL com "Cannot find module './icon-optical-size'" (ou similar) — e a saída deve mostrar `|unit|`, não `|storybook (chromium)|`, confirmando que o novo projeto pegou o arquivo.
 
-- [ ] **Step 4: Implementar**
+- **Step 4: Implementar**
 
 ```ts
 // src/lib/icon-optical-size.ts
@@ -427,7 +431,7 @@ export function computeOpticalSize(sizeRem: number): number {
 }
 ```
 
-- [ ] **Step 5: Rodar de novo e confirmar que passa**
+- **Step 5: Rodar de novo e confirmar que passa**
 
 ```bash
 npx vitest run src/lib/icon-optical-size.test.ts
@@ -435,7 +439,7 @@ npx vitest run src/lib/icon-optical-size.test.ts
 
 Esperado: 4 testes PASS.
 
-- [ ] **Step 6: Commit**
+- **Step 6: Commit**
 
 ```bash
 git add vitest.config.ts src/lib/icon-optical-size.ts src/lib/icon-optical-size.test.ts
@@ -465,7 +469,7 @@ git commit -m "Adiciona projeto unit ao vitest e cálculo de optical size para o
   }
   ```
 
-- [ ] **Step 1: Implementar o componente**
+- **Step 1: Implementar o componente**
 
 ```tsx
 // src/components/ui/icon.tsx
@@ -555,7 +559,7 @@ export { Icon }
 export type { IconProps }
 ```
 
-- [ ] **Step 2: Rodar o type-check**
+- **Step 2: Rodar o type-check**
 
 ```bash
 npx tsc --noEmit
@@ -563,7 +567,7 @@ npx tsc --noEmit
 
 Esperado: sem erros novos relacionados a `icon.tsx`.
 
-- [ ] **Step 3: Story cobrindo props e presets**
+- **Step 3: Story cobrindo props e presets**
 
 ```tsx
 // src/components/ui/icon.stories.tsx
@@ -624,7 +628,7 @@ export const IndicadorSolido: Story = {
 }
 ```
 
-- [ ] **Step 4: Rodar o dev server e conferir visualmente**
+- **Step 4: Rodar o dev server e conferir visualmente**
 
 ```bash
 npm run storybook
@@ -632,7 +636,7 @@ npm run storybook
 
 Abra a story `Atoms/Icon`, confira as 4 variantes acima, e troque o preset de estilo na página `/estilo` do app (`npm run dev`, outro terminal) — os ícones no app devem mudar de variante/peso.
 
-- [ ] **Step 5: Commit**
+- **Step 5: Commit**
 
 ```bash
 git add src/components/ui/icon.tsx src/components/ui/icon.stories.tsx
@@ -719,10 +723,10 @@ import { Icon } from "@/components/ui/icon"
 </CheckboxPrimitive.Indicator>
 ```
 
-- [ ] **Step 1:** Migrar os 25 arquivos seguindo o algoritmo e os 2 casos especiais acima.
-- [ ] **Step 2:** `npx tsc --noEmit` — corrigir qualquer nome de ícone rejeitado (consultar fonts.google.com/icons).
-- [ ] **Step 3:** `npm run dev`, navegar por `/estilo`, `/components/*` (Storybook via `npm run storybook` também serve, já que 6 destes arquivos são `.stories.tsx`) e confirmar visualmente em pelo menos 2 dos 5 presets que os ícones aparecem (não em branco/tofu) e no tamanho certo.
-- [ ] **Step 4: Commit**
+- **Step 1:** Migrar os 25 arquivos seguindo o algoritmo e os 2 casos especiais acima.
+- **Step 2:** `npx tsc --noEmit` — corrigir qualquer nome de ícone rejeitado (consultar fonts.google.com/icons).
+- **Step 3:** `npm run dev`, navegar por `/estilo`, `/components/*` (Storybook via `npm run storybook` também serve, já que 6 destes arquivos são `.stories.tsx`) e confirmar visualmente em pelo menos 2 dos 5 presets que os ícones aparecem (não em branco/tofu) e no tamanho certo.
+- **Step 4: Commit**
 
 ```bash
 git add src/components/ui/*.tsx
@@ -759,10 +763,10 @@ Aplicar essa troca nas 2 ocorrências de `breadcrumb-separator.tsx` e nas 2 de `
 - Lote B — família `item*`/`input-group*`/`command*`/`combobox*`/`date-picker*` (26 arquivos).
 - Lote C — resto (17 arquivos: `alert-*`, `attachment-demo`, `badge-demo`, `breadcrumb-*`, `collapsible-demo`, `drawer-demo`, `dropdown-menu-dialog`, `empty-*`, `form-rhf-*`, `hover-card-demo`, `marker-demo`, `navigation-menu-demo`, `sidebar-demo`, `tabs-demo`).
 
-- [ ] **Step 1:** Migrar os 70 arquivos (em 1 ou 3 sub-lotes) seguindo o algoritmo + o caso especial do Slash.
-- [ ] **Step 2:** `npx tsc --noEmit` sem erros.
-- [ ] **Step 3:** `npm run storybook`, navegar pelas stories que usam esses `examples/*` (a maioria dos `.stories.tsx` da Tarefa 5 renderiza um `*-demo.tsx` como story `Examples`) e confirmar visualmente.
-- [ ] **Step 4: Commit** (1 commit se migrado de uma vez, ou 1 por sub-lote)
+- **Step 1:** Migrar os 70 arquivos (em 1 ou 3 sub-lotes) seguindo o algoritmo + o caso especial do Slash.
+- **Step 2:** `npx tsc --noEmit` sem erros.
+- **Step 3:** `npm run storybook`, navegar pelas stories que usam esses `examples/*` (a maioria dos `.stories.tsx` da Tarefa 5 renderiza um `*-demo.tsx` como story `Examples`) e confirmar visualmente.
+- **Step 4: Commit** (1 commit se migrado de uma vez, ou 1 por sub-lote)
 
 ```bash
 git add src/components/examples/*.tsx
@@ -831,11 +835,11 @@ interface ChipAtivo {
 
 (Confira o restante do arquivo: `CheckIcon` e `XIcon` também aparecem em outros pontos de `filter-panel.tsx` fora do `CAMPO_ICONE` — esses seguem o algoritmo padrão da Tarefa 5, viram `<Icon name="check" />` / `<Icon name="close" />` normalmente.)
 
-- [ ] **Step 1:** Migrar os 8 arquivos "normais" seguindo o algoritmo da Tarefa 5.
-- [ ] **Step 2:** Migrar `filter-panel.tsx` seguindo o caso especial acima.
-- [ ] **Step 3:** `npx tsc --noEmit` sem erros (o `Record<string, MaterialSymbol>` vai pegar qualquer string errada na tabela também).
-- [ ] **Step 4:** `npm run dev`, abrir a tela/pattern que usa `FilterPanelPattern` e confirmar visualmente que os chips de filtro mostram o ícone certo.
-- [ ] **Step 5: Commit**
+- **Step 1:** Migrar os 8 arquivos "normais" seguindo o algoritmo da Tarefa 5.
+- **Step 2:** Migrar `filter-panel.tsx` seguindo o caso especial acima.
+- **Step 3:** `npx tsc --noEmit` sem erros (o `Record<string, MaterialSymbol>` vai pegar qualquer string errada na tabela também).
+- **Step 4:** `npm run dev`, abrir a tela/pattern que usa `FilterPanelPattern` e confirmar visualmente que os chips de filtro mostram o ícone certo.
+- **Step 5: Commit**
 
 ```bash
 git add src/components/patterns/*.tsx
@@ -894,12 +898,12 @@ Note que o `max-md:size-3.5` (breakpoint responsivo, tamanho MENOR em telas pequ
 
 Isso funciona porque, sem `size` prop, o `<Icon>` não aplica `style` inline nenhum — o dimensionamento fica 100% a cargo das classes Tailwind normais (`size-4`, `max-md:size-3.5`), exatamente como funcionava com o SVG do lucide. Aplicar esse mesmo ajuste (omitir `size`, manter `size-4 ... max-md:size-3.5` em `className`) em **todo lugar que usar `max-md:size-*`** — isso também aparece em `nav-patterns.tsx` e `nav-templates.tsx` (ver grep: `size-4 shrink-0 max-md:size-3.5` e `size-4 transition-transform duration-200 max-md:size-3.5`).
 
-- [ ] **Step 1:** Migrar `app-sidebar.tsx` e `nav-user.tsx` seguindo o algoritmo da Tarefa 5.
-- [ ] **Step 2:** Migrar `nav-patterns.tsx` e `nav-templates.tsx` seguindo o algoritmo da Tarefa 5, aplicando a regra de "omitir `size` prop e manter classes Tailwind responsivas" para todo `max-md:size-*`.
-- [ ] **Step 3:** Migrar `nav-components.tsx` seguindo o caso especial acima.
-- [ ] **Step 4:** `npx tsc --noEmit` sem erros.
-- [ ] **Step 5:** `npm run dev`, abrir a sidebar principal do app, redimensionar a janela abaixo do breakpoint `md` e confirmar que os ícones da nav encolhem (max-md:size-3.5 ainda funcionando).
-- [ ] **Step 6: Commit**
+- **Step 1:** Migrar `app-sidebar.tsx` e `nav-user.tsx` seguindo o algoritmo da Tarefa 5.
+- **Step 2:** Migrar `nav-patterns.tsx` e `nav-templates.tsx` seguindo o algoritmo da Tarefa 5, aplicando a regra de "omitir `size` prop e manter classes Tailwind responsivas" para todo `max-md:size-*`.
+- **Step 3:** Migrar `nav-components.tsx` seguindo o caso especial acima.
+- **Step 4:** `npx tsc --noEmit` sem erros.
+- **Step 5:** `npm run dev`, abrir a sidebar principal do app, redimensionar a janela abaixo do breakpoint `md` e confirmar que os ícones da nav encolhem (max-md:size-3.5 ainda funcionando).
+- **Step 6: Commit**
 
 ```bash
 git add src/components/sidebar-07/*.tsx
@@ -920,11 +924,11 @@ git commit -m "Migra src/components/sidebar-07 de lucide-react para Icon/Materia
 - `dashboard-financeiro/page.tsx` é o arquivo com mais ícones do lote (16 nomes) — inclui `size-16` (`text-muted-foreground size-16` num ícone grande de estado vazio) → vira `size={4}`.
 - `style-switcher.tsx` usa `PuzzleIcon` (`size-4`) — vira `<Icon name="extension" size={1} />`, e também `Check`/`CheckIcon` → `<Icon name="check" />` (conferir qual variante o arquivo importa).
 
-- [ ] **Step 1:** Rodar `grep -rl "lucide-react" --include="*.tsx" --include="*.ts" src/app/templates src/app/page.tsx src/app/teste-padrao/page.tsx src/components/app-shell.tsx src/components/doc/generic-playground.tsx src/components/style-switcher.tsx` e confirmar a lista de arquivos contra a acima.
-- [ ] **Step 2:** Migrar os arquivos seguindo o algoritmo da Tarefa 5.
-- [ ] **Step 3:** `npx tsc --noEmit` sem erros.
-- [ ] **Step 4:** `npm run dev`, navegar por cada uma das 8 telas em `/templates/*` e pela home (`/`) em pelo menos 2 presets diferentes, confirmar visualmente.
-- [ ] **Step 5: Commit**
+- **Step 1:** Rodar `grep -rl "lucide-react" --include="*.tsx" --include="*.ts" src/app/templates src/app/page.tsx src/app/teste-padrao/page.tsx src/components/app-shell.tsx src/components/doc/generic-playground.tsx src/components/style-switcher.tsx` e confirmar a lista de arquivos contra a acima.
+- **Step 2:** Migrar os arquivos seguindo o algoritmo da Tarefa 5.
+- **Step 3:** `npx tsc --noEmit` sem erros.
+- **Step 4:** `npm run dev`, navegar por cada uma das 8 telas em `/templates/*` e pela home (`/`) em pelo menos 2 presets diferentes, confirmar visualmente.
+- **Step 5: Commit**
 
 ```bash
 git add src/app/templates src/app/page.tsx src/app/teste-padrao/page.tsx src/components/app-shell.tsx src/components/doc/generic-playground.tsx src/components/style-switcher.tsx
@@ -941,11 +945,11 @@ git commit -m "Migra templates e páginas soltas de lucide-react para Icon/Mater
 
 **Nota:** estes arquivos são `.ts` (não `.tsx`) mas contêm JSX inline em template de exemplos de código/preview (confirme a extensão real do arquivo antes de editar — se o JSX estiver dentro de string/template literal de "código de exemplo exibido na doc" em vez de JSX real, a troca é textual dentro da string, não uma troca de import real; abra o arquivo primeiro e confirme qual dos dois casos é, antes de aplicar o algoritmo).
 
-- [ ] **Step 1:** Abrir os 2 arquivos e confirmar se os usos de ícone são JSX real (import + `<XxxIcon />`) ou texto de exemplo dentro de string.
-- [ ] **Step 2:** Migrar seguindo o algoritmo da Tarefa 5 (se JSX real) ou substituição textual equivalente dentro das strings de exemplo (se for código-exemplo-como-string).
-- [ ] **Step 3:** `npx tsc --noEmit` sem erros.
-- [ ] **Step 4:** `npm run dev`, abrir as páginas de documentação de componentes/patterns que consomem `component-docs.ts`/`pattern-docs.ts` e confirmar visualmente.
-- [ ] **Step 5: Commit**
+- **Step 1:** Abrir os 2 arquivos e confirmar se os usos de ícone são JSX real (import + `<XxxIcon />`) ou texto de exemplo dentro de string.
+- **Step 2:** Migrar seguindo o algoritmo da Tarefa 5 (se JSX real) ou substituição textual equivalente dentro das strings de exemplo (se for código-exemplo-como-string).
+- **Step 3:** `npx tsc --noEmit` sem erros.
+- **Step 4:** `npm run dev`, abrir as páginas de documentação de componentes/patterns que consomem `component-docs.ts`/`pattern-docs.ts` e confirmar visualmente.
+- **Step 5: Commit**
 
 ```bash
 git add src/lib/component-docs.ts src/lib/pattern-docs.ts
@@ -964,7 +968,7 @@ git commit -m "Migra src/lib/*-docs.ts de lucide-react para Icon/Material Symbol
 
 Este é o critério de aceite visual da spec ("Os 5 presets renderizam ícones... visíveis na página /estilo"). Hoje essa página não tem nenhuma seção de ícones.
 
-- [ ] **Step 1:** Adicionar o import e uma nova seção, logo após o `<Card>` de "Sidebar" (linha ~219 do arquivo atual):
+- **Step 1:** Adicionar o import e uma nova seção, logo após o `<Card>` de "Sidebar" (linha ~219 do arquivo atual):
 
 ```tsx
 import type { MaterialSymbol } from "material-symbols"
@@ -999,9 +1003,9 @@ const iconSampler: { name: MaterialSymbol; label: string }[] = [
 </Card>
 ```
 
-- [ ] **Step 2:** `npx tsc --noEmit` sem erros.
-- [ ] **Step 3:** `npm run dev`, abrir `/estilo`, trocar entre os 5 presets no seletor da sidebar, confirmar visualmente que os 5 ícones da nova seção mudam de variante (rounded/sharp), peso e preenchimento a cada troca.
-- [ ] **Step 4: Commit**
+- **Step 2:** `npx tsc --noEmit` sem erros.
+- **Step 3:** `npm run dev`, abrir `/estilo`, trocar entre os 5 presets no seletor da sidebar, confirmar visualmente que os 5 ícones da nova seção mudam de variante (rounded/sharp), peso e preenchimento a cada troca.
+- **Step 4: Commit**
 
 ```bash
 git add src/app/estilo/page.tsx
@@ -1017,7 +1021,7 @@ git commit -m "Adiciona secao de icones na pagina /estilo para validar os 5 pres
 
 **Interfaces:** nenhuma (tarefa de limpeza/verificação).
 
-- [ ] **Step 1: Confirmar que não sobrou nenhum import**
+- **Step 1: Confirmar que não sobrou nenhum import**
 
 ```bash
 grep -rl "lucide-react" --include="*.tsx" --include="*.ts" src
@@ -1025,13 +1029,13 @@ grep -rl "lucide-react" --include="*.tsx" --include="*.ts" src
 
 Esperado: nenhuma saída (comando sem resultado). Se aparecer algum arquivo, ele ficou de fora de uma tarefa anterior — migre antes de continuar.
 
-- [ ] **Step 2: Remover a dependência**
+- **Step 2: Remover a dependência**
 
 ```bash
 npm uninstall lucide-react
 ```
 
-- [ ] **Step 3: Build completo**
+- **Step 3: Build completo**
 
 ```bash
 npm run build
@@ -1039,13 +1043,13 @@ npm run build
 
 Esperado: build passa sem erros (nem de tipo, nem de módulo faltando).
 
-- [ ] **Step 4: Rodar o teste de lógica pura de novo (regressão)**
+- **Step 4: Rodar o teste de lógica pura de novo (regressão)**
 
 ```bash
 npx vitest run src/lib/icon-optical-size.test.ts
 ```
 
-- [ ] **Step 5: Verificação visual final**
+- **Step 5: Verificação visual final**
 
 ```bash
 npm run dev
@@ -1053,7 +1057,7 @@ npm run dev
 
 Navegar por `/estilo` (5 presets), pelo menos 3 templates em `/templates/*`, e a home — nenhum ícone quebrado/tofu/ausente.
 
-- [ ] **Step 6: Commit**
+- **Step 6: Commit**
 
 ```bash
 git add package.json package-lock.json
@@ -1064,7 +1068,7 @@ git commit -m "Remove lucide-react apos conclusao da migracao para Material Symb
 
 ## Critério de aceite final (da spec, conferido)
 
-- [ ] Os 5 presets renderizam ícones com a variante (rounded/sharp) e eixos corretos, visíveis em `/estilo` (Tarefa 11) e nas telas existentes.
-- [ ] Nenhum dos 20 componentes-base do shadcn foi editado nos seletores `[&_svg]` (só troca de import/uso de ícone).
-- [ ] `npm run build` passa sem erros de fonte/tipo.
-- [ ] `lucide-react` removido do `package.json` sem import órfão restante (Tarefa 12, Step 1).
+- Os 5 presets renderizam ícones com a variante (rounded/sharp) e eixos corretos, visíveis em `/estilo` (Tarefa 11) e nas telas existentes.
+- Nenhum dos 20 componentes-base do shadcn foi editado nos seletores `[&_svg]` (só troca de import/uso de ícone).
+- `npm run build` passa sem erros de fonte/tipo.
+- `lucide-react` removido do `package.json` sem import órfão restante (Tarefa 12, Step 1).
