@@ -9,6 +9,9 @@ ciclo:
 perfil: front
 dono:
 tarefas: 0/2
+bloqueada-por:
+  - "[[H-shadcn-local-fluxo-login]]"
+  - "[[H-shadcn-local-telas-seguros]]"
 criado: 2026-08-23
 fechado:
 motivo-descarte:
@@ -25,10 +28,14 @@ apontando pro portal de Design System publicado.
 O portfólio é HTML/CSS/JS estático. Nada de React aqui: só texto,
 imagens e links para o portal já deployado.
 
-Fica no backlog (`ciclo` vazio) até 5A e 5B estarem entregues. Não existe
-propriedade de dependência no modelo: o que segura esta História é ela
-não ter sido atribuída a nenhum ciclo. Repescar de propósito no
-fechamento do ciclo em que aquilo acontecer.
+Fica no backlog (`ciclo` vazio) enquanto `bloqueada-por` apontar para
+História não entregue. O que segura esta História continua sendo ela não
+ter sido atribuída a nenhum ciclo — a propriedade só diz **por quê**, em
+vez de deixar o motivo como frase solta aqui no corpo.
+
+Quando as duas estiverem `entregue`, a varredura de sanidade acusa
+"destravou e ninguém viu", e aí é repescar de propósito no fechamento do
+ciclo.
 
 ## Pré-requisitos
 
