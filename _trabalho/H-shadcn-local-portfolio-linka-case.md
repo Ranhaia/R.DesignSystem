@@ -6,6 +6,7 @@ status: aguardando
 sinal: 🟡 Aguardando definição
 sinal-desde: 2026-08-23
 ciclo:
+estimativa: 1
 perfil: front
 dono:
 tarefas: 0/2
