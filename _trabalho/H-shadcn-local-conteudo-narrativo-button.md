@@ -1,6 +1,6 @@
 ---
 tipo: historia
-projeto: P-DS-SHADCN
+projeto: 🎨 P-DS-SHADCN
 epico: E-shadcn-local-documentacao-ds
 status: aguardando
 sinal: 🟡 Aguardando definição

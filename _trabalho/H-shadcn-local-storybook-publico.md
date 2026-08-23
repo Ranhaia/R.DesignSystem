@@ -1,6 +1,6 @@
 ---
 tipo: historia
-projeto: P-DS-SHADCN
+projeto: 🎨 P-DS-SHADCN
 epico: E-shadcn-local-case-publico
 status: descartado
 sinal: 🟡 Aguardando definição

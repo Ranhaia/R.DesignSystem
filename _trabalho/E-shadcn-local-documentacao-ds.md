@@ -1,6 +1,6 @@
 ---
 tipo: epico
-projeto: P-DS-SHADCN
+projeto: 🎨 P-DS-SHADCN
 status: progresso
 criado: 2026-08-23
 ---

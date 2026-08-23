@@ -1,6 +1,6 @@
 ---
 tipo: migracao
-projeto: P-DS-SHADCN
+projeto: 🎨 P-DS-SHADCN
 data: 2026-08-23
 ---
 
