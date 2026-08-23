@@ -109,11 +109,11 @@ não está disponível aqui:
 ## Convenções já estabelecidas neste projeto
 
 - Categorização atomic design (Atoms / Molecules / Organisms) — ver
-  `plans/current/loop-80-20-templates.md`, Fase 0
+  `plans/done/loop-80-20-log-resumo.md`, Fase 0
 - Tokens semânticos (não direction-aware vs. direction-aware) e os 5
   presets de estilo — ver `README.md`, seção "Sistema de tokens"
 - Regras do loop autônomo (decisão provisória em vez de travar quando
-  Rafael não está disponível) — ver `plans/current/loop-80-20-templates.md`
+  Rafael não está disponível) — ver `plans/done/loop-80-20-log-resumo.md`
 - Nunca cor fixa fora de token, nunca componente inventado fora do
   catálogo em `src/components/ui/`
 

@@ -1,4 +1,4 @@
-Construa a tela "$ARGUMENTS" do fluxo da Fase 5 (ver plans/current/loop-80-20-templates.md, seção "Fase 5 — Jornadas de telas"). Se nenhum slug foi passado em $ARGUMENTS, use o primeiro item de `inProgressTemplates` em `src/lib/templates-registry.ts` (segue a ordem: 5A fluxo de login primeiro, 5B telas de seguro depois).
+Construa a tela "$ARGUMENTS" do fluxo do Case público (ver as Histórias `_trabalho/H-shadcn-local-fluxo-login.md` e `_trabalho/H-shadcn-local-telas-seguros.md`, seção `## Tarefas`). Se nenhum slug foi passado em $ARGUMENTS, use o primeiro item de `inProgressTemplates` em `src/lib/templates-registry.ts` (segue a ordem: fluxo de login primeiro, telas de seguro depois).
 
 Rode os 4 estágios abaixo em sequência, direto, sem parar entre eles e sem perguntar nada ao Rafael no meio do caminho — ele não está acompanhando ao vivo. Só pare (e só então mostre algo) depois do estágio 4.
 
