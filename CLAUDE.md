@@ -20,9 +20,11 @@ Trate este projeto como uma ferramenta de trabalho viva, não uma vitrine.
    de explorar arquivo por arquivo. Se não existir ou estiver muito
    desatualizado (mudanças grandes desde a última extração), regenerar:
    `graphify extract . --code-only && graphify cluster-only .`
-2. **`plans/current/loop-80-20-templates.md`** — prioridade atual de
-   construção (o que fazer agora, em que ordem, com que regras). Este é
-   o plano ativo.
+2. **`_trabalho/`** — o trabalho deste repo: uma nota por Épico e por
+   História, com status, ciclo e pré-requisitos no frontmatter. O quadro
+   está em `C:\dev\Trabalho.base`, aberto pelo Obsidian com o vault
+   `C:\dev`. As regras estão em `C:\dev\_protocolo\PROTOCOLO.md`; o
+   resumo operacional está em `AGENTS.md`.
 3. **`plans/current/design-system-piloto.md`** — plano do piloto de
    documentação (Button), pausado, retomar quando o loop acima chegar na
    Fase 5.
