@@ -1,0 +1,32 @@
+filters:
+  and:
+    - tipo == "historia"
+    - projeto == "P-DS-SHADCN"
+views:
+  - type: kanban-action-planner
+    name: Quadro do projeto
+    filters:
+      and:
+        - status != "descartado"
+    order:
+      - sinal
+      - tarefas
+      - estimativa
+      - ciclo
+    statuses:
+      - aguardando
+      - progresso
+      - entregue
+      - descartado
+    statusProperty: status
+    orderProperty: manual_order
+    laneGrouping: none
+    showEmptyColumns: true
+    unmappedPosition: last
+    calendarMode: false
+    triageMode: false
+    timelineMode: false
+    wbsMode: false
+    agendaMode: false
+    compactMode: false
+    filterQuery: ""
