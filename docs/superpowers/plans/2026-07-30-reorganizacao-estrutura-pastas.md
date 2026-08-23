@@ -1,5 +1,20 @@
 # Reorganização da Estrutura de Pastas — Implementation Plan
 
+> ## ⚠️ PLANO EXECUTADO — NÃO REEXECUTAR
+>
+> Concluído em julho de 2026. As checkboxes abaixo **nunca foram
+> marcadas** pelo executor, então elas mentem: aparentam trabalho
+> pendente onde não há.
+>
+> Verificado contra o código em 2026-08-23 — a verificação foi por
+> **resultado entregue**, não passo a passo. Todas as pastas que ele criava existem: `plans/current`, `plans/done`, `docs/active/decisoes`, `docs/active/especificacoes`, `docs/archive`.
+>
+> Este arquivo é **registro histórico**. O trabalho vivo deste repo está
+> em `_trabalho/`, e é o único lugar onde checkbox significa alguma
+> coisa.
+
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Reorganizar a raiz do projeto (`.build/`, `.review/`, os `PLANO-*.md`, `TAXONOMIA-COMPONENTES.md`) numa estrutura `docs/active/` + `docs/archive/` + `plans/current/` + `plans/done/` que permite carregar só o contexto relevante por tipo de tarefa, sem precisar apontar a pasta inteira. Aplicar a regra de retenção: só ficam documentados decisão de design (ADR), plano finalizado (resumo) ou especificação criada/alterada — tentativas, rascunhos e exploração descartada saem.

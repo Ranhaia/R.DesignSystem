@@ -1,5 +1,20 @@
 # Migração de ícones lucide-react → Google Material Symbols — Plano de Implementação
 
+> ## ⚠️ PLANO EXECUTADO — NÃO REEXECUTAR
+>
+> Concluído em julho de 2026. As checkboxes abaixo **nunca foram
+> marcadas** pelo executor, então elas mentem: aparentam trabalho
+> pendente onde não há.
+>
+> Verificado contra o código em 2026-08-23 — a verificação foi por
+> **resultado entregue**, não passo a passo. Existem `src/components/ui/icon.tsx`, `icon-button.tsx` e Material Symbols em `layout.tsx` e `globals.css`.
+>
+> Este arquivo é **registro histórico**. O trabalho vivo deste repo está
+> em `_trabalho/`, e é o único lugar onde checkbox significa alguma
+> coisa.
+
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Substituir `lucide-react` por Google Material Symbols em todo o projeto, via um componente `<Icon>` que renderiza `<svg viewBox="0 0 24 24"><text>` (não `<span>` de fonte), preservando os seletores `[&_svg]` dos 20 componentes-base do shadcn/ui sem editar nenhum deles, e expondo os eixos variáveis (fill/weight/grade/opticalSize/rounded) via CSS custom properties por preset com override pontual via props.

@@ -1,5 +1,20 @@
 # Motion design: label flutuante — Plano de implementação
 
+> ## ⚠️ PLANO EXECUTADO — NÃO REEXECUTAR
+>
+> Concluído em julho de 2026. As checkboxes abaixo **nunca foram
+> marcadas** pelo executor, então elas mentem: aparentam trabalho
+> pendente onde não há.
+>
+> Verificado contra o código em 2026-08-23 — a verificação foi por
+> **resultado entregue**, não passo a passo. Existe `animatedLabel` em `src/components/ui/input.tsx`, 4 componentes de exemplo em `src/components/examples/`, e 4 tokens `duration-motion` em `globals.css`.
+>
+> Este arquivo é **registro histórico**. O trabalho vivo deste repo está
+> em `_trabalho/`, e é o único lugar onde checkbox significa alguma
+> coisa.
+
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Adicionar uma fundação de tokens de motion em `globals.css` e o padrão de label flutuante (prop `label` + `animatedLabel`) em `Input`, `Textarea`, `SelectTrigger` e `NativeSelect`, sem quebrar nenhum uso existente desses quatro componentes.

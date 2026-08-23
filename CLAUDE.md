@@ -25,9 +25,10 @@ Trate este projeto como uma ferramenta de trabalho viva, não uma vitrine.
    está em `C:\dev\Trabalho.base`, aberto pelo Obsidian com o vault
    `C:\dev`. As regras estão em `C:\dev\_protocolo\PROTOCOLO.md`; o
    resumo operacional está em `AGENTS.md`.
-3. **`plans/current/design-system-piloto.md`** — plano do piloto de
-   documentação (Button), pausado, retomar quando o loop acima chegar na
-   Fase 5.
+3. **`docs/superpowers/plans/`** — planos antigos, todos **executados**
+   em julho de 2026 e com as checkboxes nunca marcadas. São registro
+   histórico: não reexecutar, não "terminar". Cada um tem banner no topo
+   dizendo isso.
 4. **`README.md`** — visão geral técnica do projeto (stack, presets,
    estrutura de pastas).
 5. Depois, use a receita de contexto por tarefa abaixo em vez de carregar
@@ -112,8 +113,11 @@ não está disponível aqui:
   `plans/done/loop-80-20-log-resumo.md`, Fase 0
 - Tokens semânticos (não direction-aware vs. direction-aware) e os 5
   presets de estilo — ver `README.md`, seção "Sistema de tokens"
-- Regras do loop autônomo (decisão provisória em vez de travar quando
-  Rafael não está disponível) — ver `plans/done/loop-80-20-log-resumo.md`
+- ~~Regras do loop autônomo (decisão provisória em vez de travar quando
+  Rafael não está disponível)~~ — **revogado em 2026-08-23.** O protocolo
+  atual proíbe executor decidir arquitetura: bateu em decisão, marca a
+  História como `🟡 Aguardando definição` com pré-requisito `Decisão` e
+  vai para outra. Ver `C:\dev\_protocolo\PROTOCOLO.md`, regra 3.
 - Nunca cor fixa fora de token, nunca componente inventado fora do
   catálogo em `src/components/ui/`
 
