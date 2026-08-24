@@ -5,7 +5,7 @@ epico: E-shadcn-local-case-publico
 status: descartado
 sinal: 🟡 Aguardando definição
 sinal-desde: 2026-08-23
-ciclo: C-2026-S01
+ciclo:
 estimativa:
 perfil: front
 dono:

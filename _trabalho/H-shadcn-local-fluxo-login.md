@@ -5,7 +5,7 @@ epico: E-shadcn-local-case-publico
 status: aguardando
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-08-23
-ciclo: C-2026-S01
+ciclo: C-DS-2026-S01
 estimativa: 3
 perfil: front
 dono:
