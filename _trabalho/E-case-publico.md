@@ -34,7 +34,7 @@ shadcn-local deployado como prova viva.
 
 O Storybook saiu do escopo. No lugar dele, o próprio portal de Design
 System assumiu a função de catálogo. Ver
-`H-shadcn-local-storybook-publico`, descartada com motivo.
+`H-storybook-publico`, descartada com motivo.
 
 ## Risco registrado
 

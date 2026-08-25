@@ -86,10 +86,10 @@ e recomendação.
 
 | Origem | Destino |
 |---|---|
-| `loop-80-20-templates.md`, Fase 5 | `[[E-shadcn-local-case-publico]]` + 4 Histórias |
+| `loop-80-20-templates.md`, Fase 5 | `[[E-case-publico]]` + 4 Histórias |
 | `loop-80-20-templates.md`, "Ideias de telas" | `docs/active/especificacoes/ideias-telas-catalogo.md` — referência, **não** backlog |
 | `loop-80-20-templates.md`, fases 0–6 concluídas | já resumidas em `plans/done/loop-80-20-log-resumo.md` |
-| `design-system-piloto.md` | `[[E-shadcn-local-documentacao-ds]]` + 5 Histórias |
+| `design-system-piloto.md` | `[[E-documentacao-ds]]` + 5 Histórias |
 | Regras de agente dos dois planos | `C:\dev\_protocolo\PROTOCOLO.md` |
 | Racional dos 3 planos executados | as 2 specs em `docs/superpowers/specs/` e, no caso da reorganização, o próprio `CLAUDE.md` |
 

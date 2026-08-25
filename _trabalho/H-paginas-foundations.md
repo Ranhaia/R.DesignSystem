@@ -1,7 +1,7 @@
 ---
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
-epico: E-shadcn-local-documentacao-ds
+epico: E-documentacao-ds
 status: aguardando
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-08-23
@@ -11,7 +11,7 @@ perfil: front
 dono:
 tarefas: 0/3
 bloqueada-por:
-  - "[[H-shadcn-local-navegacao-design-system]]"
+  - "[[H-navegacao-design-system]]"
 criado: 2026-08-23
 fechado:
 motivo-descarte:

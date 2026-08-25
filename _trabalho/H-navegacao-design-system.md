@@ -1,7 +1,7 @@
 ---
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
-epico: E-shadcn-local-documentacao-ds
+epico: E-documentacao-ds
 status: aguardando
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-08-23

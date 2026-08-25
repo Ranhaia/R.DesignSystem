@@ -1,7 +1,7 @@
 ---
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
-epico: E-shadcn-local-case-publico
+epico: E-case-publico
 status: aguardando
 sinal: 🟡 Aguardando definição
 sinal-desde: 2026-08-23
@@ -11,8 +11,8 @@ perfil: front
 dono:
 tarefas: 0/2
 bloqueada-por:
-  - "[[H-shadcn-local-fluxo-login]]"
-  - "[[H-shadcn-local-telas-seguros]]"
+  - "[[H-fluxo-login]]"
+  - "[[H-telas-seguros]]"
 criado: 2026-08-23
 fechado:
 motivo-descarte:

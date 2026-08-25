@@ -1,7 +1,7 @@
 ---
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
-epico: E-shadcn-local-documentacao-ds
+epico: E-documentacao-ds
 status: aguardando
 sinal: 🟡 Aguardando definição
 sinal-desde: 2026-08-23
@@ -11,7 +11,7 @@ perfil: design
 dono:
 tarefas: 0/2
 bloqueada-por:
-  - "[[H-shadcn-local-validar-doc-button]]"
+  - "[[H-validar-doc-button]]"
 criado: 2026-08-23
 fechado:
 motivo-descarte:
