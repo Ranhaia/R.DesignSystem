@@ -1337,6 +1337,82 @@ function Exemplo() {
     ],
   },
 
+  "tree-select": {
+    description: "Campo de seleção em árvore: escolhe valores de uma lista hierárquica dentro de um painel flutuante. Tem três variações: single (um valor), multiple (vários valores, nó a nó) e checkable (vários valores com caixa de marcação e cascata pai/filhos).",
+    whenToUse: "Use quando as opções têm hierarquia (grupo > item) e o usuário precisa escolher entre elas. Prefira checkable quando marcar um grupo deve marcar tudo dentro dele; multiple quando cada nó é independente; single para um valor só. Para listas planas, use Select (um valor) ou MultiSelect (vários).",
+    anatomy: [
+      { part: "TreeSelect", description: "Elemento único — API monolítica. Compõe Popover + Checkbox; não usa Select/Combobox porque nenhum modela hierarquia." },
+      { part: "Campo", description: "Gatilho com role=combobox. Em single mostra o rótulo escolhido; em multiple/checkable mostra tags removíveis." },
+      { part: "Árvore", description: "role=tree dentro do painel. Cada nó é um treeitem com seta de expandir/recolher e, em checkable, uma caixa de marcação." },
+      { part: "Busca", description: "Campo no topo do painel que filtra a árvore (showSearch, ligado por padrão)." },
+      { part: "Rodapé", description: "Só checkable: contador de marcados e ações Todos / Limpar." },
+      { part: "TreeSelect.Skeleton", description: "Placeholder de carregamento." },
+    ],
+    variants: [
+      { name: "single", value: "single", description: "Um valor. Clicar num nó escolhe e fecha o painel; pais também são escolhíveis." },
+      { name: "multiple", value: "multiple", description: "Vários valores sem relação pai/filho; o painel fica aberto." },
+      { name: "checkable", value: "checkable", description: "Caixa de marcação com cascata: marcar o pai marca os filhos; marcar todos os filhos marca o pai; parcial = indeterminado." },
+    ],
+    states: [
+      { name: "Vazio", description: "Mostra o placeholder." },
+      { name: "Com seleção", description: "Rótulo (single) ou tags removíveis (multiple/checkable)." },
+      { name: "Aberto", description: "Painel com a árvore; nós expandem/recolhem por clique ou setas ←/→." },
+      { name: "Indeterminado", description: "Só em checkable: pai com parte dos filhos marcados." },
+      { name: "Nó desabilitado", description: "Não pode ser escolhido e não entra na cascata do pai." },
+      { name: "Disabled", description: "Campo inteiro desativado." },
+    ],
+    sizes: [],
+    doGuidelines: ["[a preencher]"],
+    dontGuidelines: ["[a preencher]"],
+    code: `import * as React from "react"
+import { TreeSelect } from "@/components/ui/tree-select"
+
+const ramos = [
+  { value: "patrimonial", label: "Patrimonial", children: [
+    { value: "auto", label: "Auto" },
+    { value: "residencial", label: "Residencial" },
+  ] },
+  { value: "pet", label: "Pet" },
+]
+
+function Exemplo() {
+  const [value, setValue] = React.useState<string[]>(["auto"])
+
+  return (
+    <TreeSelect
+      checkable
+      treeData={ramos}
+      value={value}
+      onValueChange={setValue}
+      showCheckedStrategy="parent"
+      defaultExpandAll
+      aria-label="Ramos de seguro"
+    />
+  )
+}`,
+    props: [
+      { name: "treeData", type: "{ label: string; value: string; children?: …[]; disabled?: boolean; exclusive?: boolean; closeOnClick?: boolean }[]", description: "Árvore de opções (obrigatório). Só checkable: exclusive faz o nó ser marcado sozinho (desmarca os demais e é desmarcado quando outro nó é marcado); closeOnClick fecha o painel ao clicar no nó." },
+      { name: "value", type: "string | null | string[]", description: "Controlado. single: string | null; multiple/checkable: string[]. Em checkable aceita folhas e/ou pais." },
+      { name: "onValueChange", type: "(value) => void", description: "Em checkable devolve sempre as folhas marcadas." },
+      { name: "multiple", type: "boolean", default: "false", description: "Vários valores, nó a nó." },
+      { name: "checkable", type: "boolean", default: "false", description: "Caixas de marcação com cascata pai/filhos (implica multiple)." },
+      { name: "showCheckedStrategy", type: '"child" | "parent" | "all"', default: '"child"', description: "Só checkable. Como as marcações aparecem no campo." },
+      { name: "defaultExpandAll", type: "boolean", default: "false", description: "Abre com todos os nós expandidos." },
+      { name: "defaultExpandedValues", type: "string[]", description: "Nós expandidos no primeiro render." },
+      { name: "placeholder", type: "string", default: '"Selecione..."', description: "Texto com o campo vazio." },
+      { name: "disabled", type: "boolean", default: "false", description: "Desativa o campo." },
+      { name: "aria-label", type: "string", description: "Nome acessível do campo e da árvore." },
+      { name: "showSearch", type: "boolean", default: "true", description: "Campo de busca no topo do painel." },
+      { name: "allowClear", type: "boolean", default: "false", description: "Botão de limpar a seleção (X) no campo." },
+      { name: "maxTagCount", type: "number", description: "Multiple/checkable: máximo de tags visíveis no campo; o resto vira +N." },
+      { name: "emptyText", type: "string", default: '"Nenhum resultado encontrado."', description: "Texto quando a busca não encontra nós." },
+      { name: "dropdownClassName", type: "string", description: "Classes extras para o painel flutuante." },
+      { name: "searchPlaceholder", type: "string", default: '"Buscar..."', description: "Texto do campo de busca. Use para o vocabulário do produto." },
+      { name: "selectAllLabel", type: "string", default: '"Todos"', description: "Só checkable: rótulo da ação que marca todas as folhas." },
+      { name: "selectedCountText", type: "(count: number) => string", default: '"Nenhum item selecionado" / "N selecionado(s)"', description: "Só checkable: frase do contador no rodapé." },
+    ],
+  },
+
   "multi-select": {
     description: "Campo de seleção múltipla: permite escolher mais de uma opção de uma lista, exibindo cada escolha como um chip removível dentro do próprio campo.",
     whenToUse: "Use quando o usuário precisar escolher mais de uma opção de uma lista de opções pré-definidas, com as seleções visíveis e removíveis individualmente sem reabrir a lista completa. Não confunda com componentes vizinhos: use Select quando só uma opção pode ser escolhida por vez; use Combobox em modo single para buscar-e-escolher um único valor com autocompletar.",

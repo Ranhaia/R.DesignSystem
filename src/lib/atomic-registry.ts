@@ -61,6 +61,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   item: "atom",
   marker: "atom",
   "multi-select": "atom",
+  "tree-select": "atom",
 
   // Molecules
   alert: "molecule",

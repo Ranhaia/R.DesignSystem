@@ -232,4 +232,8 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "toggle-sm": dynamic(() => import("@/components/examples/toggle-sm")),
   "toggle-with-text": dynamic(() => import("@/components/examples/toggle-with-text")),
   "tooltip-demo": dynamic(() => import("@/components/examples/tooltip-demo")),
+  "tree-select-demo": dynamic(() => import("@/components/examples/tree-select-demo")),
+  "tree-select-multiple": dynamic(() => import("@/components/examples/tree-select-multiple")),
+  "tree-select-checkable": dynamic(() => import("@/components/examples/tree-select-checkable")),
+  "tree-select-checkable-parent": dynamic(() => import("@/components/examples/tree-select-checkable-parent")),
 }
