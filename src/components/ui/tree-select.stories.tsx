@@ -1,3 +1,4 @@
+import * as React from "react"
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { expect, userEvent, waitFor, within } from "storybook/test"
 
@@ -44,4 +45,40 @@ export const Checkable: Story = {
 }
 export const CheckableShowParent: Story = {
   render: () => <TreeSelectCheckableParent />,
+}
+
+// Textos do produto entram por prop; os padrões neutros ficam na story
+// Checkable acima.
+function CustomTextsExample() {
+  const [value, setValue] = React.useState<string[]>([])
+  return (
+    <TreeSelect
+      checkable
+      defaultExpandAll
+      treeData={[
+        { value: "time", label: "Time", children: [
+          { value: "ana", label: "Ana" },
+          { value: "bia", label: "Bia" },
+        ] },
+      ]}
+      value={value}
+      onValueChange={setValue}
+      aria-label="Responsáveis"
+      searchPlaceholder="Buscar pessoa..."
+      selectAllLabel="Todas"
+      selectedCountText={(n) => (n === 0 ? "Nenhuma pessoa" : `${n} pessoas`)}
+    />
+  )
+}
+export const CustomTexts: Story = {
+  render: () => <CustomTextsExample />,
+  play: async () => {
+    const body = within(document.body)
+    await userEvent.click(body.getByRole("combobox", { name: "Responsáveis" }))
+    const search = await body.findByRole("textbox", { name: "Buscar na lista" })
+    await expect(search).toHaveAttribute("placeholder", "Buscar pessoa...")
+    await expect(body.getByText("Nenhuma pessoa")).toBeInTheDocument()
+    await userEvent.click(body.getByRole("button", { name: "Todas" }))
+    await expect(await body.findByText("2 pessoas")).toBeInTheDocument()
+  },
 }

@@ -1407,6 +1407,9 @@ function Exemplo() {
       { name: "maxTagCount", type: "number", description: "Multiple/checkable: máximo de tags visíveis no campo; o resto vira +N." },
       { name: "emptyText", type: "string", default: '"Nenhum resultado encontrado."', description: "Texto quando a busca não encontra nós." },
       { name: "dropdownClassName", type: "string", description: "Classes extras para o painel flutuante." },
+      { name: "searchPlaceholder", type: "string", default: '"Buscar..."', description: "Texto do campo de busca. Use para o vocabulário do produto." },
+      { name: "selectAllLabel", type: "string", default: '"Todos"', description: "Só checkable: rótulo da ação que marca todas as folhas." },
+      { name: "selectedCountText", type: "(count: number) => string", default: '"Nenhum item selecionado" / "N selecionado(s)"', description: "Só checkable: frase do contador no rodapé." },
     ],
   },
 

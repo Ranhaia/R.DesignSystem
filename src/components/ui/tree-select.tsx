@@ -40,6 +40,9 @@ export interface TreeSelectNode {
 
 type ShowCheckedStrategy = "child" | "parent" | "all"
 
+const defaultSelectedCountText = (n: number) =>
+  n === 0 ? "Nenhum item selecionado" : `${n} ${n === 1 ? "selecionado" : "selecionados"}`
+
 interface TreeSelectBaseProps {
   /** Árvore de opções. */
   treeData: TreeSelectNode[]
@@ -64,6 +67,12 @@ interface TreeSelectBaseProps {
   showSearch?: boolean
   /** Classes extras para o painel flutuante (PopoverContent). */
   dropdownClassName?: string
+  /** Texto do campo de busca. */
+  searchPlaceholder?: string
+  /** Só checkable: rótulo da ação que marca todas as folhas. */
+  selectAllLabel?: string
+  /** Só checkable: frase do contador no rodapé. */
+  selectedCountText?: (count: number) => string
 }
 
 interface TreeSelectSingleProps extends TreeSelectBaseProps {
@@ -149,6 +158,9 @@ function TreeSelect(props: TreeSelectProps) {
     allowClear = false,
     showSearch = true,
     dropdownClassName,
+    searchPlaceholder = "Buscar...",
+    selectAllLabel = "Todos",
+    selectedCountText = defaultSelectedCountText,
   } = props
   const checkable = props.checkable === true
   const multiple = checkable || props.multiple === true
@@ -535,7 +547,7 @@ function TreeSelect(props: TreeSelectProps) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar..."
+              placeholder={searchPlaceholder}
               aria-label="Buscar na lista"
               className="w-full bg-transparent text-xs text-foreground outline-none placeholder:text-muted-foreground"
             />
@@ -643,9 +655,7 @@ function TreeSelect(props: TreeSelectProps) {
         {checkable && treeData.length > 0 && (
           <div className="flex items-center justify-between border-t border-border/50 px-2.5 py-1.5 text-[11px] text-muted-foreground bg-muted/20">
             <span>
-              {selectedSet.size === 0
-                ? "Nenhum item selecionado"
-                : `${selectedSet.size} ${selectedSet.size === 1 ? "selecionado" : "selecionados"}`}
+              {selectedCountText(selectedSet.size)}
             </span>
             <div className="flex items-center gap-2">
               <button
@@ -661,7 +671,7 @@ function TreeSelect(props: TreeSelectProps) {
                 }}
                 className="cursor-pointer font-medium text-primary hover:underline"
               >
-                Todos
+                {selectAllLabel}
               </button>
               <span>·</span>
               <button
