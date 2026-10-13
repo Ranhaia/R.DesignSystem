@@ -7,7 +7,7 @@ import { describe, expect, it } from "vitest"
 // linha fina (≤3px) em borda, anel, contorno, raio ou sombra, ou como ajuste
 // dentro de calc() que compensa uma dessas linhas.
 
-const UI_DIR = join(__dirname, "../components/ui")
+const COMPONENTS_DIR = join(__dirname, "../components")
 const HAIRLINE = /^-?(ring|ring-offset|border|border-[xytblrse]|outline|outline-offset|rounded|rounded-[a-z]+|shadow|divide-[xy])$/
 const MAX_HAIRLINE_PX = 3
 
@@ -52,8 +52,11 @@ describe("fixedValues", () => {
 })
 
 describe("componentes do DS só usam token", () => {
-  const files = readdirSync(UI_DIR).filter((f) => f.endsWith(".tsx") && !f.endsWith(".stories.tsx"))
+  // ui, patterns, templates, examples, doc e demais pastas de src/components
+  const files = (readdirSync(COMPONENTS_DIR, { recursive: true }) as string[])
+    .map((f) => f.replaceAll("\\", "/"))
+    .filter((f) => f.endsWith(".tsx") && !f.endsWith(".stories.tsx"))
   it.each(files)("%s", (file) => {
-    expect(fixedValues(readFileSync(join(UI_DIR, file), "utf8"))).toEqual([])
+    expect(fixedValues(readFileSync(join(COMPONENTS_DIR, file), "utf8"))).toEqual([])
   })
 })

@@ -19,7 +19,7 @@ export default function DialogDemo() {
         <DialogTrigger asChild>
           <Button variant="outline">Abrir diálogo</Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-106.25">
           <DialogHeader>
             <DialogTitle>Editar perfil</DialogTitle>
             <DialogDescription>

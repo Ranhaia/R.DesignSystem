@@ -92,7 +92,7 @@ export default function DrawerDemo() {
                 <div className="text-7xl font-bold tracking-tighter">
                   {goal}
                 </div>
-                <div className="text-[0.70rem] text-muted-foreground uppercase">
+                <div className="text-xs text-muted-foreground uppercase">
                   Calorias/dia
                 </div>
               </div>
@@ -107,7 +107,7 @@ export default function DrawerDemo() {
                 <span className="sr-only">Aumentar</span>
               </Button>
             </div>
-            <div className="mt-3 h-[120px]">
+            <div className="mt-3 h-30">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={data}>
                   <Bar
