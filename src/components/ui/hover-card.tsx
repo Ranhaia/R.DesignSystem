@@ -3,7 +3,7 @@
 import * as React from "react"
 import { HoverCard as HoverCardPrimitive } from "radix-ui"
 
-import { cn } from "@/lib/utils"
+import { cn, FLOATING_COLLISION_PADDING } from "@/lib/utils"
 
 function HoverCard({
   ...props
@@ -29,6 +29,7 @@ function HoverCardContent({
     <HoverCardPrimitive.Portal data-slot="hover-card-portal">
       <HoverCardPrimitive.Content
         data-slot="hover-card-content"
+        collisionPadding={FLOATING_COLLISION_PADDING}
         align={align}
         sideOffset={sideOffset}
         className={cn(

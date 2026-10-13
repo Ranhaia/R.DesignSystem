@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 
-import { cn } from "@/lib/utils"
+import { cn, FLOATING_COLLISION_PADDING } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
 import {
@@ -118,6 +118,7 @@ function ComboboxContent({
         align={align}
         alignOffset={alignOffset}
         anchor={anchor}
+        collisionPadding={FLOATING_COLLISION_PADDING}
         className="isolate z-50"
       >
         <ComboboxPrimitive.Popup

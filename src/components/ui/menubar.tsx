@@ -4,7 +4,7 @@ import * as React from "react"
 import { Menubar as MenubarPrimitive } from "radix-ui"
 
 import { Icon } from "@/components/ui/icon"
-import { cn } from "@/lib/utils"
+import { cn, FLOATING_COLLISION_PADDING } from "@/lib/utils"
 
 function Menubar({
   className,
@@ -75,6 +75,7 @@ function MenubarContent({
     <MenubarPortal>
       <MenubarPrimitive.Content
         data-slot="menubar-content"
+        collisionPadding={FLOATING_COLLISION_PADDING}
         align={align}
         alignOffset={alignOffset}
         sideOffset={sideOffset}
@@ -247,6 +248,7 @@ function MenubarSubContent({
   return (
     <MenubarPrimitive.SubContent
       data-slot="menubar-sub-content"
+      collisionPadding={FLOATING_COLLISION_PADDING}
       className={cn(
         "z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
         className

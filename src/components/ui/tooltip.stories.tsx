@@ -11,6 +11,7 @@ import TooltipDemo from "@/components/examples/tooltip-demo"
 // Sem variant/size controlável (ver TAXONOMIA/component-docs.ts) — a story
 // existe pra ter o componente navegável no catálogo do Storybook, com
 // addon-a11y auditando o exemplo real (não um placeholder).
+// Adaptação à tela: ver floating-collision.stories.tsx.
 const meta: Meta<typeof Tooltip> = {
   title: "Atoms/Tooltip",
   component: Tooltip,

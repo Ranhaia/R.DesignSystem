@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Popover as PopoverPrimitive } from "radix-ui"
 
-import { cn } from "@/lib/utils"
+import { cn, FLOATING_COLLISION_PADDING } from "@/lib/utils"
 
 function Popover({
   ...props
@@ -27,6 +27,7 @@ function PopoverContent({
     <PopoverPrimitive.Portal>
       <PopoverPrimitive.Content
         data-slot="popover-content"
+        collisionPadding={FLOATING_COLLISION_PADDING}
         align={align}
         sideOffset={sideOffset}
         className={cn(
