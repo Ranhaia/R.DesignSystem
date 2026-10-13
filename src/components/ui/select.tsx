@@ -89,7 +89,7 @@ function SelectTrigger({
         // repouso — sem isso, clicar nela não abre o menu por baixo.
         className={cn(
           "pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-muted-foreground transition-[top,left,transform,color] duration-motion-fast ease-out",
-          "group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:top-0 group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:left-0 group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:-translate-y-[calc(100%+0.375rem)] group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:text-foreground"
+          "group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:top-0 group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:left-0 group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:-translate-y-[calc(100%+(--spacing(1.5)))] group-has-[[data-slot=select-trigger]:focus,[data-slot=select-trigger]:not([data-placeholder])]/floating-label:text-foreground"
         )}
       >
         {label}
@@ -111,7 +111,7 @@ function SelectContent({
         data-slot="select-content"
         collisionPadding={FLOATING_COLLISION_PADDING}
         className={cn(
-          "relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover text-popover-foreground shadow-md data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+          "relative z-50 max-h-(--radix-select-content-available-height) min-w-32 origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover text-popover-foreground shadow-md data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
           position === "popper" &&
             "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
           className

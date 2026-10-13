@@ -141,7 +141,7 @@ function TimePicker({
           variant="outline"
           disabled={disabled}
           className={cn(
-            "w-[160px] justify-start text-left font-normal",
+            "w-40 justify-start text-left font-normal",
             !display && "text-muted-foreground",
             className
           )}
@@ -166,7 +166,7 @@ function TimePicker({
             onValueChange={handleHourChange}
             disabled={disabled}
           >
-            <SelectTrigger size="sm" className="w-[72px]" aria-label="Hora">
+            <SelectTrigger size="sm" className="w-18" aria-label="Hora">
               <SelectValue placeholder="--" />
             </SelectTrigger>
             <SelectContent>
@@ -186,7 +186,7 @@ function TimePicker({
             onValueChange={handleMinuteChange}
             disabled={disabled}
           >
-            <SelectTrigger size="sm" className="w-[72px]" aria-label="Minuto">
+            <SelectTrigger size="sm" className="w-18" aria-label="Minuto">
               <SelectValue placeholder="--" />
             </SelectTrigger>
             <SelectContent>
@@ -209,7 +209,7 @@ function TimePicker({
             >
               <SelectTrigger
                 size="sm"
-                className="w-[68px]"
+                className="w-17"
                 aria-label="Período"
               >
                 <SelectValue placeholder="--" />

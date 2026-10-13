@@ -77,7 +77,7 @@ function NavigationMenuTrigger({
       <Icon
         name="keyboard_arrow_down"
         size={0.75}
-        className="relative top-[1px] ml-1 transition duration-300 group-data-[state=open]:rotate-180"
+        className="relative top-0.25 ml-1 transition duration-300 group-data-[state=open]:rotate-180"
         aria-hidden="true"
       />
     </NavigationMenuPrimitive.Trigger>

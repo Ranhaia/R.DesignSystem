@@ -17,7 +17,7 @@ export default function CollapsibleDemo() {
     <Collapsible
       open={isOpen}
       onOpenChange={setIsOpen}
-      className="flex w-[350px] flex-col gap-2"
+      className="flex w-87.5 flex-col gap-2"
     >
       <div className="flex items-center justify-between gap-4 px-4">
         <h4 className="text-sm font-semibold">

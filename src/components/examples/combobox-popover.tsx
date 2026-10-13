@@ -56,7 +56,7 @@ export default function ComboboxPopover() {
       <p className="text-sm text-muted-foreground">Status</p>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="w-[150px] justify-start">
+          <Button variant="outline" className="w-37.5 justify-start">
             {selectedStatus ? <>{selectedStatus.label}</> : <>+ Definir status</>}
           </Button>
         </PopoverTrigger>

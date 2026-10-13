@@ -77,7 +77,7 @@ export function NavPatterns() {
                     isActive={isActive}
                     tooltip={item.name}
                     size="sm"
-                    className="max-md:h-6 max-md:text-[11px]"
+                    className="max-md:h-6 max-md:text-xs"
                   >
                     <Link href={href}>
                       <span>{item.name}</span>
