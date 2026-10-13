@@ -43,6 +43,7 @@ export const examplesMapping: Record<string, string[]> = {
   "menubar": ["menubar-demo"],
   "message": ["message-demo"],
   "multi-select": ["multi-select-demo"],
+  "tree-select": ["tree-select-demo", "tree-select-multiple", "tree-select-checkable", "tree-select-checkable-parent"],
   "native-select": ["native-select-demo", "native-select-disabled", "native-select-fixed-label", "native-select-floating-label", "native-select-groups", "native-select-invalid"],
   "navigation-menu": ["navigation-menu-demo"],
   "pagination": ["pagination-demo"],

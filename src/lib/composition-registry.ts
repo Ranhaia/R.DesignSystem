@@ -43,6 +43,7 @@ export const compositionRegistry: Record<string, string[]> = {
   "menubar": ["Menubar", "MenubarPortal", "MenubarMenu", "MenubarTrigger", "MenubarContent", "MenubarGroup", "MenubarSeparator", "MenubarLabel", "MenubarItem", "MenubarShortcut", "MenubarCheckboxItem", "MenubarRadioGroup", "MenubarRadioItem", "MenubarSub", "MenubarSubTrigger", "MenubarSubContent"],
   "message": ["MessageGroup", "Message", "MessageAvatar", "MessageContent", "MessageFooter", "MessageHeader"],
   "multi-select": ["MultiSelect"],
+  "tree-select": ["TreeSelect"],
   "native-select": ["NativeSelect", "NativeSelectOptGroup", "NativeSelectOption"],
   "navigation-menu": ["NavigationMenu", "NavigationMenuList", "NavigationMenuItem", "NavigationMenuContent", "NavigationMenuTrigger", "NavigationMenuLink", "NavigationMenuIndicator", "NavigationMenuViewport"],
   "pagination": ["Pagination", "PaginationContent", "PaginationLink", "PaginationItem", "PaginationPrevious", "PaginationNext", "PaginationEllipsis"],
