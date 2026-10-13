@@ -2,6 +2,7 @@ import type { Preview } from '@storybook/nextjs-vite'
 
 import '../src/app/globals.css'
 import { stylesList } from '../src/lib/styles-registry'
+import { TooltipProvider } from '../src/components/ui/tooltip'
 
 // Acionamento único de "Foundations" no toolbar do Storybook: reaproveita
 // os mesmos 5 presets do StyleSwitcher do app (cada preset já é um pacote
@@ -31,7 +32,10 @@ const preview: Preview = {
         data-style={context.globals.style ?? 'default'}
         className="antialiased font-sans"
       >
-        <Story />
+        {/* No app o provider vem do SidebarProvider; sem ele toda story com Tooltip quebra. */}
+        <TooltipProvider>
+          <Story />
+        </TooltipProvider>
       </div>
     ),
   ],
