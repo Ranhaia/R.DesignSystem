@@ -52,7 +52,7 @@ export default function DropdownMenuDialog() {
         </DropdownMenuContent>
       </DropdownMenu>
       <Dialog open={showNewDialog} onOpenChange={setShowNewDialog}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-106.25">
           <DialogHeader>
             <DialogTitle>Criar novo arquivo</DialogTitle>
             <DialogDescription>
@@ -75,7 +75,7 @@ export default function DropdownMenuDialog() {
         </DialogContent>
       </Dialog>
       <Dialog open={showShareDialog} onOpenChange={setShowShareDialog}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-106.25">
           <DialogHeader>
             <DialogTitle>Compartilhar arquivo</DialogTitle>
             <DialogDescription>

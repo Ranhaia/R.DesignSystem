@@ -30,9 +30,9 @@ export default function DatePickerWithPresets() {
         <Button
           variant={"outline"}
           className={cn(
-            // w-[280px] — mesmo motivo do date-picker-demo: texto pt-BR
+            // w-70 — mesmo motivo do date-picker-demo: texto pt-BR
             // por extenso é mais longo que "PPP" em inglês.
-            "w-[280px] justify-start text-left font-normal",
+            "w-70 justify-start text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >

@@ -60,7 +60,7 @@ export default function TableDemo() {
       <TableCaption>Uma lista das suas faturas recentes.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Fatura</TableHead>
+          <TableHead className="w-25">Fatura</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Forma de pagamento</TableHead>
           <TableHead className="text-right">Valor</TableHead>

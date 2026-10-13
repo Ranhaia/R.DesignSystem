@@ -63,7 +63,7 @@ export default function FormRhfCheckbox() {
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("Você enviou os seguintes valores:", {
       description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
+        <pre className="mt-2 w-80 overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),

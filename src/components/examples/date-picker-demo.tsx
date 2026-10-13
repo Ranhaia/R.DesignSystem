@@ -22,10 +22,10 @@ export default function DatePickerDemo() {
         <Button
           variant={"outline"}
           className={cn(
-            // w-[280px] em vez de w-[240px] — "quinta-feira, 23 de julho
+            // w-70 em vez de w-60 — "quinta-feira, 23 de julho
             // de 2026" (pt-BR com dia da semana) é mais longo que "PPP"
             // em inglês, que era o formato anterior.
-            "w-[280px] justify-start text-left font-normal",
+            "w-70 justify-start text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >

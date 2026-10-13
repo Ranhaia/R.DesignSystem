@@ -180,7 +180,7 @@ export function NavComponents() {
                           isActive={isActive}
                           tooltip={item.name}
                           size="sm"
-                          className="max-md:h-6 max-md:text-[11px]"
+                          className="max-md:h-6 max-md:text-xs"
                         >
                           <Link href={itemHref}>
                             <span>{item.name}</span>

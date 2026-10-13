@@ -43,7 +43,7 @@ export default function FieldResponsive() {
                 id="message"
                 placeholder="Olá, mundo!"
                 required
-                className="min-h-[100px] resize-none sm:min-w-[300px]"
+                className="min-h-25 resize-none sm:min-w-75"
               />
             </Field>
             <FieldSeparator />
