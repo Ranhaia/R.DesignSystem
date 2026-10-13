@@ -54,7 +54,7 @@ export default function ComboboxDropdownMenu() {
             <Icon name="more_horiz" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-[200px]">
+        <DropdownMenuContent align="end" className="w-50">
           <DropdownMenuLabel>Ações</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuItem>Atribuir para...</DropdownMenuItem>

@@ -13,7 +13,7 @@ import {
 export default function SelectScrollable() {
   return (
     <Select>
-      <SelectTrigger className="w-[280px]">
+      <SelectTrigger className="w-70">
         <SelectValue placeholder="Selecione um fuso horário" />
       </SelectTrigger>
       <SelectContent>

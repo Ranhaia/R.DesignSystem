@@ -46,7 +46,7 @@ export function ButtonPlayground() {
   const [loading, setLoading] = React.useState(false)
 
   return (
-    <div className="grid gap-6 rounded-lg border bg-card p-6 sm:grid-cols-[1fr_14rem]">
+    <div className="grid gap-6 rounded-lg border bg-card p-6 sm:grid-cols-[1fr_--spacing(56)]">
       <div className="flex min-h-32 items-center justify-center rounded-md border border-dashed p-6">
         <Button
           variant={variant}

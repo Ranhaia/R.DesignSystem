@@ -12,7 +12,7 @@ import { Icon } from "@/components/ui/icon"
 
 export default function CommandDemo() {
   return (
-    <Command className="rounded-lg border shadow-md md:min-w-[450px]">
+    <Command className="rounded-lg border shadow-md md:min-w-112.5">
       <CommandInput placeholder="Digite um comando ou busque..." />
       <CommandList>
         <CommandEmpty>Nenhum resultado encontrado.</CommandEmpty>

@@ -31,9 +31,9 @@ export default function DatePickerWithRange({
             id="date"
             variant={"outline"}
             className={cn(
-              // w-[340px] — "qui, 20/01/2022" x2 (pt-BR com dia da semana)
+              // w-85 — "qui, 20/01/2022" x2 (pt-BR com dia da semana)
               // é mais longo que "Jan 20, 2022" em inglês.
-              "w-[340px] justify-start text-left font-normal",
+              "w-85 justify-start text-left font-normal",
               !date && "text-muted-foreground"
             )}
           >
