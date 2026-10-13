@@ -461,7 +461,7 @@ function TreeSelect(props: TreeSelectProps) {
                       data-slot="tree-select-tag"
                       className="flex h-5.5 w-fit max-w-full items-center gap-1 rounded-sm bg-muted pl-1.5 pr-0.5 text-xs font-medium text-foreground select-none"
                     >
-                      <span className="truncate max-w-[130px]">{labelOf(value)}</span>
+                      <span className="truncate max-w-32.5">{labelOf(value)}</span>
                       {!disabled && (
                         <button
                           type="button"
@@ -523,7 +523,7 @@ function TreeSelect(props: TreeSelectProps) {
       <PopoverContent
         align="start"
         className={cn(
-          "w-(--radix-popover-trigger-width) min-w-[300px] max-w-[460px] p-0 shadow-md",
+          "w-(--radix-popover-trigger-width) min-w-75 max-w-115 p-0 shadow-md",
           dropdownClassName
         )}
         onOpenAutoFocus={(event: Event) => {
@@ -653,7 +653,7 @@ function TreeSelect(props: TreeSelectProps) {
         </div>
 
         {checkable && treeData.length > 0 && (
-          <div className="flex items-center justify-between border-t border-border/50 px-2.5 py-1.5 text-[11px] text-muted-foreground bg-muted/20">
+          <div className="flex items-center justify-between border-t border-border/50 px-2.5 py-1.5 text-xs text-muted-foreground bg-muted/20">
             <span>
               {selectedCountText(selectedSet.size)}
             </span>
