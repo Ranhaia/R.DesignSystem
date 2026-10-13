@@ -1,5 +1,11 @@
 import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { extendTailwindMerge } from "tailwind-merge"
+
+// Utilitários de raio concêntrico (globals.css) entram no grupo "rounded":
+// sem isso, rounded-inner não substitui o rounded-md de um componente base.
+const twMerge = extendTailwindMerge({
+  extend: { classGroups: { rounded: ["rounded-inner", { "rounded-outer": [() => true] }] } },
+})
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
