@@ -522,6 +522,25 @@
   --sidebar-ring: #737373;
 }
 
+/* Raio concêntrico (externo / interno). Num container arredondado com um
+   filho arredondado dentro, o interno = externo − distância entre os dois,
+   nunca negativo; raio igual nos dois deixa as curvas não paralelas.
+   - Container: rounded-outer-{lg|md|…} (aplica o raio e o publica em
+     --radius-outer) + radius-inset-{n} (a distância até o filho, na escala
+     de spacing; normalmente igual ao padding).
+   - Filho: rounded-inner (calcula a partir do container mais próximo).
+   Checker: src/components/ui/radius-concentric.stories.tsx. */
+@utility rounded-outer-* {
+  --radius-outer: --value(--radius-*);
+  border-radius: var(--radius-outer);
+}
+@utility radius-inset-* {
+  --radius-inset: --spacing(--value(number));
+}
+@utility rounded-inner {
+  border-radius: max(0px, calc(var(--radius-outer, 0px) - var(--radius-inset, 0px)));
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
