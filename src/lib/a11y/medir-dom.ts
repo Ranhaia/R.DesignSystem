@@ -116,12 +116,24 @@ export function aneis(boxShadow: string): { largura: number; cor: string }[] {
 
 const hex = (c: Rgba) => paraHex(c)
 
-export function medirFocoDe(el: HTMLElement): MedidaFoco {
+function contornosDe(el: Element) {
   const cs = getComputedStyle(el)
-  const fundo = fundoAtras(el)
   const contornos = [...aneis(cs.boxShadow)]
   const lo = parseFloat(cs.outlineWidth)
   if (cs.outlineStyle !== "none" && lo > 0) contornos.unshift({ largura: lo, cor: cs.outlineColor })
+  return contornos
+}
+
+export function medirFocoDe(el: HTMLElement): MedidaFoco {
+  // Sem contorno no próprio elemento, o indicador pode estar no contêiner (input-group usa has-[…:focus-visible]).
+  // shortcut: olha até 3 ancestrais sem comparar com o estado sem foco; um anel fixo no contêiner passaria como foco; comparar com o estado sem foco se surgir falso positivo.
+  let dono: Element = el
+  let contornos = contornosDe(el)
+  for (let n = el.parentElement, i = 0; !contornos.length && n && i < 3; n = n.parentElement, i++) {
+    const c = contornosDe(n)
+    if (c.length) [dono, contornos] = [n, c]
+  }
+  const fundo = fundoAtras(dono)
   const elemento = descrever(el)
   if (!contornos.length) return { elemento, largura: 0, cor: null, fundo: hex(fundo), razao: null, resultado: "reprova", motivo: "foco só por preenchimento ou invisível" }
   const medidos = contornos.map((c) => {
@@ -147,7 +159,8 @@ export async function medirFoco(raiz: ParentNode = document.body, limite = 50): 
     if (!el || el === document.body || vistos.has(el)) break
     vistos.add(el)
     if (!raiz.contains(el)) continue
-    await Promise.all(el.getAnimations().map((a) => a.finished.catch(() => undefined)))
+    // Transições do elemento e do contêiner; animação infinita (spinner) nunca termina, por isso só CSSTransition.
+    await Promise.all(document.getAnimations().filter((a) => a instanceof CSSTransition).map((a) => a.finished.catch(() => undefined)))
     out.push(medirFocoDe(el))
   }
   ;(document.activeElement as HTMLElement | null)?.blur?.()

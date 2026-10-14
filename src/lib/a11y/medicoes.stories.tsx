@@ -84,3 +84,16 @@ export const FocoClaroDemaisReprova: StoryObj = {
   render: () => <div style={{ background: '#fff', padding: '0.5rem' }}><button className="focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-[#ddd] p-2">a</button></div>,
   play: async () => await expect((await medirFoco())[0].resultado).toBe('reprova'),
 }
+export const FocoNoConteinerPassa: StoryObj = {
+  // padrão do input-group: o anel fica no contêiner via has-[…:focus-visible]
+  render: () => (
+    <div className="bg-white p-2 transition-[box-shadow] has-[input:focus-visible]:ring-[3px] has-[input:focus-visible]:ring-black">
+      <input aria-label="busca" className="outline-none" />
+    </div>
+  ),
+  play: async () => {
+    const [f] = await medirFoco()
+    await expect(f.resultado).toBe('passa')
+    await expect(f.motivo).toBeUndefined()
+  },
+}
