@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./tokens-cor.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -263,62 +264,30 @@
      agentes). Escrever o valor uma vez só aqui elimina o risco de trocar
      em 3 lugares e esquecer o 4º. Só extraí onde a duplicação já existia
      — não criei uma escala nova (tipo 50-900) sem necessidade comprovada. */
-  --default-surface: #FFFFFF;
-  --default-surface-foreground: #0A0A0A;
-  --default-action: #171717;
-  --default-action-foreground: #FAFAFA;
 
   /* Superfícies base */
-  --background: var(--default-surface);
-  --foreground: var(--default-surface-foreground);
 
   /* Cards e popovers (superfícies elevadas) */
-  --card: var(--default-surface);
-  --card-foreground: var(--default-surface-foreground);
-  --popover: var(--default-surface);
-  --popover-foreground: var(--default-surface-foreground);
 
   /* Ações primárias (botões principais, links de destaque) */
-  --primary: var(--default-action);
-  --primary-foreground: var(--default-action-foreground);
 
   /* Ações secundárias */
-  --secondary: #F5F5F5;
-  --secondary-foreground: var(--default-action);
 
   /* Conteúdo esmaecido (texto de apoio, placeholders, estados desabilitados) */
-  --muted: #F5F5F5;
   /* 2026-07-30 (Fase 6.2, item M2): #737373 dava 4.35:1 contra --muted
      #F5F5F5 — reprova AA texto normal (4.5:1) por pouco. Corrigido só via
      luminosidade OKLCH (L 0.556→0.543, sem hue/chroma — é cinza puro,
      C=0 antes e depois), mesmo H/C preservado. Novo par: 4.61:1. */
-  --muted-foreground: #6F6F6F;
 
   /* Destaques neutros (hover em itens de menu, seleção) */
-  --accent: #F5F5F5;
-  --accent-foreground: var(--default-action);
 
   /* Estados de erro / ações destrutivas */
-  --destructive: #E7000B;
-  --destructive-foreground: var(--default-action-foreground);
 
   /* Bordas, inputs e anel de foco */
-  --border: #E5E5E5;
-  --input: #E5E5E5;
-  --ring: #A1A1A1;
 
   /* Paleta para gráficos (recharts) */
-  --chart-1: #F54900;
-  --chart-2: #009689;
-  --chart-3: #104E64;
-  --chart-4: #FFB900;
-  --chart-5: #FE9A00;
 
   /* Tokens dedicados à sidebar (podem divergir do restante do app) */
-  --sidebar: var(--default-action-foreground);
-  --sidebar-foreground: var(--default-surface-foreground);
-  --sidebar-primary: var(--default-action);
-  --sidebar-primary-foreground: var(--default-action-foreground);
   /* 2026-07-22: era #F5F5F5 — cinza neutro puro, sem cor nenhuma,
      motivo do menu parecer "muito Vercel" (o hover do dashboard da Vercel
      usa exatamente esse tipo de cinza neutro quase igual ao fundo). Trocado
@@ -328,10 +297,6 @@
      (var(--default-action-foreground), quase branco) o -100 ficava
      perceptualmente parecido demais com o fundo, sem dar affordance clara
      de hover. */
-  --sidebar-accent: var(--color-info-200);
-  --sidebar-accent-foreground: var(--default-action);
-  --sidebar-border: #E5E5E5;
-  --sidebar-ring: #A1A1A1;
 
   /* Tokens de IA (fonte: Nimbus Design System, "Referência técnica de IA" —
      nimbus.nuvemshop.com.br/documentation/ai-experiences/referencia-tecnica,
@@ -342,13 +307,6 @@
      isso ficam só aqui em :root, sem bloco em .dark. Hoje só o Button
      (variantes ai-primary/ai-secondary) consome; ficam disponíveis pra
      Input/Select/Chip/Tag etc. quando esses padrões forem adicionados. */
-  --ai-surface: #F8F7FD;
-  --ai-surface-highlight: #F1EDFC;
-  --ai-interactive: #E2DCFA;
-  --ai-interactive-hover: #CDC1F6;
-  --ai-interactive-pressed: #4629BA;
-  --ai-text-low: #452F9D;
-  --ai-text-high: #1F1254;
 
   /* Gradiente generativo (3 stops, 50deg) — mesmo fonte acima. Usado como
      background do Button ai-primary. Não passa pelo @theme (não é um token
@@ -478,23 +436,7 @@
      --sidebar-primary NÃO são iguais no dark base (por isso não viram
      primitivo aqui) — sidebar mantém identidade azul própria mesmo quando
      o resto do app está neutro; ver "não tocar" no diagnóstico. */
-  --default-dark-surface: #171717;
-  --default-dark-surface-foreground: #FAFAFA;
 
-  --background: #0A0A0A;
-  --foreground: var(--default-dark-surface-foreground);
-  --card: var(--default-dark-surface);
-  --card-foreground: var(--default-dark-surface-foreground);
-  --popover: var(--default-dark-surface);
-  --popover-foreground: var(--default-dark-surface-foreground);
-  --primary: #E5E5E5;
-  --primary-foreground: var(--default-dark-surface);
-  --secondary: #262626;
-  --secondary-foreground: var(--default-dark-surface-foreground);
-  --muted: #262626;
-  --muted-foreground: #A1A1A1;
-  --accent: #262626;
-  --accent-foreground: var(--default-dark-surface-foreground);
   /* 2026-07-30 (Fase 6.2, item A1): #FF6467 contra --destructive-foreground
      #FAFAFA dava 2.77:1 — reprova AA (falha texto normal E grande). Ajustado
      só via luminosidade OKLCH (L 0.702→0.578, mesmo H=22.2°/C=0.189).
@@ -502,24 +444,6 @@
      dos 3 sobrescreve --destructive, herdam este valor de .dark base) —
      resolve os 4 casos do A1 de uma vez. midnight/dark tem sua própria
      redefinição idêntica abaixo, corrigida em paralelo. Novo par: 4.57:1. */
-  --destructive: #D23943;
-  --destructive-foreground: var(--default-dark-surface-foreground);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: #737373;
-  --chart-1: #1447E6;
-  --chart-2: #00BC7D;
-  --chart-3: #FE9A00;
-  --chart-4: #AD46FF;
-  --chart-5: #FF2056;
-  --sidebar: var(--default-dark-surface);
-  --sidebar-foreground: var(--default-dark-surface-foreground);
-  --sidebar-primary: #1447E6;
-  --sidebar-primary-foreground: var(--default-dark-surface-foreground);
-  --sidebar-accent: #262626;
-  --sidebar-accent-foreground: var(--default-dark-surface-foreground);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: #737373;
 }
 
 /* Raio concêntrico (externo / interno). Num container arredondado com um
@@ -583,8 +507,6 @@
   /* Primitivos deste tema (editorial/claro). --editorial-action reaparecia
      em 3 papéis (primary, chart-5, sidebar-primary) — o exemplo que usei
      pra explicar a ideia de primitivo pro Rafael. */
-  --editorial-action: #7E2600;
-  --editorial-action-foreground: #FFF7ED;
   /* 2026-07-22: era #FFFBF6 (branco com tingimento quente) — quase
      idêntico ao --background (que não existia aqui, caía pro branco puro
      de :root por herança), então Anatomia/Composição (bg-card) e o fundo
@@ -592,13 +514,7 @@
      reportou "pesado de ler". Virou branco puro; a identidade quente da
      página agora fica só no --background (abaixo), que passa a usar o
      --muted deste preset em vez de herdar o branco do :root. */
-  --editorial-surface: #FFFFFF;
-  --editorial-surface-foreground: #472215;
 
-  --primary: var(--editorial-action);
-  --primary-foreground: var(--editorial-action-foreground);
-  --secondary: #F9ECE1;
-  --secondary-foreground: var(--editorial-surface-foreground);
 
   /* Superfícies que abrem "por cima" (Popover, DropdownMenu, HoverCard,
      Menubar, Command, Calendar, Tooltip, Card) — antes ficavam com o
@@ -606,68 +522,19 @@
      qualquer preset, porque nenhum preset sobrescrevia esses 4 tokens.
      Cada componente já referenciava bg-popover/bg-card/bg-accent
      corretamente (não era bug de componente) — o gap era só aqui. */
-  --background: var(--muted);
-  --foreground: var(--editorial-surface-foreground);
-  --card: var(--editorial-surface);
-  --card-foreground: var(--editorial-surface-foreground);
-  --popover: var(--editorial-surface);
-  --popover-foreground: var(--editorial-surface-foreground);
-  --muted: #FAF0E8;
-  --muted-foreground: #7C5A4D;
-  --accent: #F9E3D5;
-  --accent-foreground: var(--editorial-surface-foreground);
-  --border: #E2D5CB;
-  --input: #E2D5CB;
-  --ring: oklch(0.4 0.13 41 / 40%);
-  --chart-1: #FFB86A;
-  --chart-2: #FF6900;
-  --chart-3: #F54900;
-  --chart-4: #CA3500;
-  --chart-5: var(--editorial-action);
-  --sidebar-primary: var(--editorial-action);
-  --sidebar-primary-foreground: var(--editorial-action-foreground);
-  --sidebar-border: #E2D5CB;
   /* 2026-07-22: sidebar-accent próprio (antes herdava o cinza neutro do
      :root, e depois herdaria o azul do Padrão — nenhum dos dois combina
      com o tom quente/sério deste preset). Reaproveita o --accent que já
      existe aqui mesmo (não inventa cor nova), que já é pensado como
      "destaque suave" dentro do preset. */
-  --sidebar-accent: var(--accent);
-  --sidebar-accent-foreground: var(--accent-foreground);
 }
 .dark[data-style="editorial"] {
   /* Primitivos deste tema (editorial/escuro) */
-  --editorial-dark-action: #EA9952;
-  --editorial-dark-action-foreground: #250F07;
-  --editorial-dark-surface: #2C1A14;
-  --editorial-dark-surface-foreground: #F9ECE1;
 
-  --primary: var(--editorial-dark-action);
-  --primary-foreground: var(--editorial-dark-action-foreground);
-  --secondary: #2E241D;
-  --secondary-foreground: #E8DBD1;
-  --card: var(--editorial-dark-surface);
-  --card-foreground: var(--editorial-dark-surface-foreground);
-  --popover: var(--editorial-dark-surface);
-  --popover-foreground: var(--editorial-dark-surface-foreground);
-  --muted: #36241D;
-  --muted-foreground: #AD9A8C;
-  --accent: #482A1E;
-  --accent-foreground: var(--editorial-dark-surface-foreground);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
-  --sidebar-primary: var(--editorial-dark-action);
-  --sidebar-primary-foreground: var(--editorial-dark-action-foreground);
 
   /* 2026-10-14 (trava de acessibilidade): papéis que vazavam do bloco claro do preset.
      Tons pelo Material Design 3 (material-color-utilities, color_spec_2021): fundo 6, texto 90,
      container 12; anel de foco sólido na ação escura (tom 65–70), sem transparência. */
-  --background: #1F0E08;
-  --foreground: var(--editorial-dark-surface-foreground);
-  --ring: var(--editorial-dark-action);
-  --sidebar-border: var(--border);
-  --sidebar-ring: var(--ring);
-  --chart-5: #A04526; /* #7E2600 no claro; 3:1 contra o fundo escuro (SC 1.4.11) */
 }
 
 /* ---- Tech: mono nos títulos, quinas retas, sombra dura — identidade de dev tool ---- */
@@ -692,84 +559,26 @@
   --shadow-lg: 0 4px 0 0 oklch(0% 0 0 / 0.9);
   --shadow-xl: 0 6px 0 0 oklch(0% 0 0 / 0.9);
   /* Primitivos deste tema (tech/claro) */
-  --tech-action: #1447E6;
-  --tech-action-foreground: #EFF6FF;
   /* 2026-07-22: mesma correção do Editorial (ver comentário lá) — era
      #FAFCFF, quase idêntico ao branco puro que --background herdava de
      :root. Virou branco puro; a identidade azulada da página fica no
      --background (abaixo), que usa o --muted deste preset. */
-  --tech-surface: #FFFFFF;
-  --tech-surface-foreground: #18181B;
 
-  --primary: var(--tech-action);
-  --primary-foreground: var(--tech-action-foreground);
-  --secondary: #E4ECF9;
-  --secondary-foreground: var(--tech-surface-foreground);
-  --background: var(--muted);
-  --foreground: var(--tech-surface-foreground);
-  --card: var(--tech-surface);
-  --card-foreground: var(--tech-surface-foreground);
-  --popover: var(--tech-surface);
-  --popover-foreground: var(--tech-surface-foreground);
-  --muted: #E9EFF9;
-  --muted-foreground: #5D646F;
-  --accent: #DBE5F6;
-  --accent-foreground: var(--tech-surface-foreground);
-  --border: #0B0B0B;
-  --input: #0B0B0B;
-  --ring: oklch(0.488 0.243 264.376 / 50%);
-  --chart-1: #8EC5FF;
-  --chart-2: #2B7FFF;
-  --chart-3: #155DFC;
-  --chart-4: var(--tech-action);
-  --chart-5: #193CB8;
-  --sidebar-primary: var(--tech-action);
-  --sidebar-primary-foreground: var(--tech-action-foreground);
-  --sidebar-border: #0B0B0B;
   /* 2026-07-22: sidebar-accent próprio, mesmo motivo do Editorial acima —
      reaproveita o --accent já existente neste preset. Aqui coincide ser
      um azul claro também (Tech já é azul de base), então não conflita com
      o --color-info-200 usado no Padrão. */
-  --sidebar-accent: var(--accent);
-  --sidebar-accent-foreground: var(--accent-foreground);
 }
 .dark[data-style="tech"] {
   /* Primitivos deste tema (tech/escuro) */
-  --tech-dark-action: #62B0FF;
-  --tech-dark-action-foreground: #050B18;
-  --tech-dark-surface: #171B22;
-  --tech-dark-surface-foreground: #D6DFEC;
 
-  --primary: var(--tech-dark-action);
-  --primary-foreground: var(--tech-dark-action-foreground);
-  --secondary: #1E242E;
-  --secondary-foreground: var(--tech-dark-surface-foreground);
-  --card: var(--tech-dark-surface);
-  --card-foreground: var(--tech-dark-surface-foreground);
-  --popover: var(--tech-dark-surface);
-  --popover-foreground: var(--tech-dark-surface-foreground);
-  --muted: #1E242E;
-  --muted-foreground: #88909C;
-  --accent: #252E3D;
-  --accent-foreground: var(--tech-dark-surface-foreground);
-  --border: oklch(1 0 0 / 25%);
-  --input: oklch(1 0 0 / 25%);
   --shadow-sm: 0 2px 0 0 oklch(100% 0 0 / 0.15);
   --shadow-md: 0 3px 0 0 oklch(100% 0 0 / 0.15);
   --shadow-lg: 0 4px 0 0 oklch(100% 0 0 / 0.15);
-  --sidebar-primary: var(--tech-dark-action);
-  --sidebar-primary-foreground: var(--tech-dark-action-foreground);
 
   /* 2026-10-14 (trava de acessibilidade): papéis que vazavam do bloco claro do preset.
      Tons pelo Material Design 3 (material-color-utilities, color_spec_2021): fundo 6, texto 90,
      container 12; anel de foco sólido na ação escura (tom 65–70), sem transparência. */
-  --background: #0F1319;
-  --foreground: var(--tech-dark-surface-foreground);
-  --ring: var(--tech-dark-action);
-  --sidebar-border: var(--border);
-  --sidebar-ring: var(--ring);
-  --chart-4: #194FED; /* #1447E6 no claro; 3:1 contra o fundo escuro (SC 1.4.11) */
-  --chart-5: #2D56D3; /* #193CB8 no claro; 3:1 contra o fundo escuro (SC 1.4.11) */
 }
 
 /* ---- Suave: bem arredondada, sombra difusa, tom rosado — identidade lifestyle ---- */
@@ -800,79 +609,24 @@
      (P-portfolio-design-system/DESIGN.md, direção "suave"), lá contra
      on-accent branco puro: chegou em #E51F3E — perto mas não igual, porque
      o par de contraste real é diferente (branco puro vs #FFF9FA aqui). */
-  --soft-action: #E31A39;
-  --soft-action-foreground: #FFF9FA;
   /* 2026-07-22: mesma correção do Editorial/Tech (ver comentários lá) —
      era #FFFBFB, quase idêntico ao branco puro que --background herdava
      de :root. Virou branco puro; a identidade rosada da página fica no
      --background (abaixo), que usa o --muted deste preset. */
-  --soft-surface: #FFFFFF;
-  --soft-surface-foreground: #850E2C;
 
-  --primary: var(--soft-action);
-  --primary-foreground: var(--soft-action-foreground);
-  --secondary: #FFEAEB;
-  --secondary-foreground: var(--soft-surface-foreground);
-  --background: var(--muted);
   /* Rafael pediu pra manter neutro: --soft-surface-foreground (#850E2C) é
      forte/saturado demais pro texto corrido da página inteira — funciona
      bem como cor de destaque em card/popover (título, texto curto), mas
      virar a cor de TODO texto ficava pesado. Reaproveita o neutro de
      :root (--default-surface-foreground, quase preto) só pra este token. */
-  --foreground: var(--default-surface-foreground);
-  --card: var(--soft-surface);
-  --card-foreground: var(--soft-surface-foreground);
-  --popover: var(--soft-surface);
-  --popover-foreground: var(--soft-surface-foreground);
-  --muted: #FFF0F1;
-  --muted-foreground: #9B5E62;
-  --accent: #FFE1E3;
-  --accent-foreground: var(--soft-surface-foreground);
-  --border: #F8DDDE;
-  --input: #F8DDDE;
-  --ring: oklch(0.65 0.19 15 / 35%);
-  --chart-1: #FFA1AD;
-  --chart-2: #F37986;
-  --chart-3: var(--soft-action);
-  --chart-4: #DA284E;
-  --chart-5: #BA0037;
-  --sidebar-primary: var(--soft-action);
-  --sidebar-primary-foreground: var(--soft-action-foreground);
-  --sidebar-border: #F8DDDE;
 }
 .dark[data-style="soft"] {
   /* Primitivos deste tema (soft/escuro) */
-  --soft-dark-action: #FC7182;
-  --soft-dark-action-foreground: #290B0F;
-  --soft-dark-surface: #351C1E;
-  --soft-dark-surface-foreground: #F2E0E0;
 
-  --primary: var(--soft-dark-action);
-  --primary-foreground: var(--soft-dark-action-foreground);
-  --secondary: #3A2022;
-  --secondary-foreground: #F1D6D8;
-  --card: var(--soft-dark-surface);
-  --card-foreground: var(--soft-dark-surface-foreground);
-  --popover: var(--soft-dark-surface);
-  --popover-foreground: var(--soft-dark-surface-foreground);
-  --muted: #402527;
-  --muted-foreground: #B09798;
-  --accent: #4F2D2F;
-  --accent-foreground: var(--soft-dark-surface-foreground);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 14%);
-  --sidebar-primary: var(--soft-dark-action);
-  --sidebar-primary-foreground: var(--soft-dark-action-foreground);
 
   /* 2026-10-14 (trava de acessibilidade): papéis que vazavam do bloco claro do preset.
      Tons pelo Material Design 3 (material-color-utilities, color_spec_2021): fundo 6, texto 90,
      container 12; anel de foco sólido na ação escura (tom 65–70), sem transparência. */
-  --background: #220B0E;
-  --foreground: var(--soft-dark-surface-foreground);
-  --ring: var(--soft-dark-action);
-  --sidebar-border: var(--border);
-  --sidebar-ring: var(--ring);
-  --chart-5: #C00F3B; /* #BA0037 no claro; 3:1 contra o fundo escuro (SC 1.4.11) */
 }
 
 /* ---- Midnight: identidade violeta, Manrope, sombra com glow ----
@@ -907,47 +661,13 @@
   --icon-optical-size: 24;
 
   /* Primitivos deste tema (midnight/claro — novo). */
-  --midnight-action: #6D37D2;
-  --midnight-action-foreground: #F8F7FF;
-  --midnight-surface: #FCFBFF;
-  --midnight-surface-foreground: #181721;
 
-  --background: var(--midnight-surface);
-  --foreground: var(--midnight-surface-foreground);
-  --card: var(--midnight-surface);
-  --card-foreground: var(--midnight-surface-foreground);
-  --popover: var(--midnight-surface);
-  --popover-foreground: var(--midnight-surface-foreground);
-  --muted: #EBEAF5;
-  --muted-foreground: #63616E;
-  --accent: #E5E2F4;
-  --accent-foreground: var(--midnight-surface-foreground);
-  --primary: var(--midnight-action);
-  --primary-foreground: var(--midnight-action-foreground);
-  --secondary: #EBEAF5;
-  --secondary-foreground: var(--midnight-surface-foreground);
-  --border: #D7D5E4;
-  --input: #D7D5E4;
-  --ring: oklch(0.5 0.22 292.5 / 40%);
   --shadow-2xs: 0 0 4px 0 oklch(0.5 0.22 292.5 / 0.08);
   --shadow-xs: 0 0 6px 0 oklch(0.5 0.22 292.5 / 0.1);
   --shadow-sm: 0 1px 10px 0 oklch(0.5 0.22 292.5 / 0.12);
   --shadow-md: 0 2px 16px 0 oklch(0.5 0.22 292.5 / 0.14);
   --shadow-lg: 0 4px 24px 0 oklch(0.5 0.22 292.5 / 0.16);
   --shadow-xl: 0 8px 32px 0 oklch(0.5 0.22 292.5 / 0.18);
-  --chart-1: #C4B4FF;
-  --chart-2: var(--midnight-action);
-  --chart-3: #8E51FF;
-  --chart-4: #7F22FE;
-  --chart-5: #5D0EC0;
-  --sidebar: #EBEAF5;
-  --sidebar-foreground: var(--midnight-surface-foreground);
-  --sidebar-primary: var(--midnight-action);
-  --sidebar-primary-foreground: var(--midnight-action-foreground);
-  --sidebar-accent: #E5E2F4;
-  --sidebar-accent-foreground: var(--midnight-surface-foreground);
-  --sidebar-border: #D7D5E4;
-  --sidebar-ring: oklch(0.5 0.22 292.5 / 40%);
   /* --destructive não é sobrescrito aqui de propósito: cai pro vermelho
      de :root, já calibrado pra fundo claro. */
 }
@@ -968,36 +688,12 @@
      falhava é este, em .dark[data-style="midnight"]).
      2026-07-30 (Fase 6.2, item A2): corrigido só via luminosidade OKLCH
      (L 0.711→0.567, mesmo H=294.6°/C=0.169 preservados). Novo par: 4.56:1. */
-  --midnight-dark-action: #7F5CCE;
-  --midnight-dark-action-foreground: #F8F7FF;
-  --midnight-dark-surface: #161721;
-  --midnight-dark-surface-foreground: #EDEEF5;
 
-  --background: #0C0D14;
-  --foreground: #EDEEF5;
-  --card: var(--midnight-dark-surface);
-  --card-foreground: var(--midnight-dark-surface-foreground);
-  --popover: var(--midnight-dark-surface);
-  --popover-foreground: var(--midnight-dark-surface-foreground);
-  --muted: #22232E;
-  --muted-foreground: #9597A5;
-  --accent: #262738;
-  --accent-foreground: #EDEEF5;
-  --primary: var(--midnight-dark-action);
-  --primary-foreground: var(--midnight-dark-action-foreground);
-  --secondary: #22232E;
-  --secondary-foreground: #EDEEF5;
   /* Midnight/escuro já cobria card/popover/muted/accent desde a criação
-     do preset — só faltava --destructive: sem isso, herdava o vermelho
      de :root (calibrado pra fundo claro), pouco legível sobre o
      navy-violeta escuro deste preset. Reuso o mesmo tom que .dark (base)
      já usa. 2026-07-30 (Fase 6.2, item A1): mesmo ajuste de luminosidade
      aplicado em .dark base — ver comentário lá. Novo par: 4.57:1. */
-  --destructive: #D23943;
-  --destructive-foreground: #FAFAFA;
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.72 0.19 292.5 / 45%);
   --shadow-2xs: 0 0 6px 0 oklch(0.72 0.19 292.5 / 0.15);
   --shadow-xs: 0 0 10px 0 oklch(0.72 0.19 292.5 / 0.18);
   --shadow-sm: 0 2px 16px 0 oklch(0.72 0.19 292.5 / 0.22);
@@ -1010,19 +706,6 @@
      antes de hoje (era o único preset com --sidebar-* completo também).
      Sem isso, o modo escuro herdaria --chart-2 do bloco claro (a cor de
      ação clara, #6D37D2) em vez do tom certo pra fundo escuro. */
-  --chart-1: #C4B4FF;
-  --chart-2: var(--midnight-dark-action);
-  --chart-3: #8E51FF;
-  --chart-4: #7F22FE;
-  --chart-5: #5D0EC0;
-  --sidebar: #06070D;
-  --sidebar-foreground: #EDEEF5;
-  --sidebar-primary: var(--midnight-dark-action);
-  --sidebar-primary-foreground: var(--midnight-dark-action-foreground);
-  --sidebar-accent: #22232E;
-  --sidebar-accent-foreground: #EDEEF5;
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.72 0.19 292.5 / 45%);
 }
 
 @media (prefers-reduced-motion: reduce) {

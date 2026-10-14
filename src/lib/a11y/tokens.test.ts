@@ -5,7 +5,10 @@ import { CONTEXTOS } from "./css-tokens"
 import { medirTokens, relatorioTokens } from "./medir-tokens"
 import { PARES } from "./pares"
 
-const CSS = readFileSync(resolve(__dirname, "../../app/globals.css"), "utf8")
+const CSS =
+  readFileSync(resolve(__dirname, "../../app/tokens-cor.css"), "utf8") +
+  "\n" +
+  readFileSync(resolve(__dirname, "../../app/globals.css"), "utf8")
 
 describe("contraste dos tokens (perfil AA)", () => {
   const { medidas, erros } = medirTokens(CSS)
