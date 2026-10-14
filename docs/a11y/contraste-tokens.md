@@ -2,7 +2,7 @@
 
 Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standard (AA)** (texto 4,50:1, interface 3,00:1). Razão truncada, nunca arredondada. Cor com transparência composta sobre o fundo. Controle desabilitado é isento (WCAG) e não é medido.
 
-**220 medidas, 46 abaixo do piso.**
+**220 medidas, 36 abaixo do piso.**
 
 ## default/claro
 
@@ -89,14 +89,14 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 
 | Grupo | Par | Frente | Fundo | Razão | Piso | Resultado |
 |---|---|---|---|---|---|---|
-| Texto base | `--foreground` / `--background` | `#472215` | `#36241D` | 1,05 | 4,50 | **reprova** |
+| Texto base | `--foreground` / `--background` | `#F9ECE1` | `#1F0E08` | 16,10 | 4,50 | passa |
 | Texto base | `--card-foreground` / `--card` | `#F9ECE1` | `#2C1A14` | 14,31 | 4,50 | passa |
 | Texto base | `--popover-foreground` / `--popover` | `#F9ECE1` | `#2C1A14` | 14,31 | 4,50 | passa |
 | Texto em ação | `--primary-foreground` / `--primary` | `#250F07` | `#EA9952` | 7,97 | 4,50 | passa |
 | Texto em ação | `--secondary-foreground` / `--secondary` | `#E8DBD1` | `#2E241D` | 11,16 | 4,50 | passa |
 | Texto em ação | `--accent-foreground` / `--accent` | `#F9ECE1` | `#482A1E` | 11,14 | 4,50 | passa |
 | Texto em ação | `--destructive-foreground` / `--destructive` | `#FAFAFA` | `#D23943` | 4,56 | 4,50 | passa |
-| Texto de apoio | `--muted-foreground` / `--background` | `#AD9A8C` | `#36241D` | 5,45 | 4,50 | passa |
+| Texto de apoio | `--muted-foreground` / `--background` | `#AD9A8C` | `#1F0E08` | 6,91 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--muted` | `#AD9A8C` | `#36241D` | 5,45 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--card` | `#AD9A8C` | `#2C1A14` | 6,14 | 4,50 | passa |
 | Menu lateral | `--sidebar-foreground` / `--sidebar` | `#FAFAFA` | `#171717` | 17,17 | 4,50 | passa |
@@ -104,13 +104,13 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Menu lateral | `--sidebar-accent-foreground` / `--sidebar-accent` | `#F9ECE1` | `#482A1E` | 11,14 | 4,50 | passa |
 | IA | `--ai-text-high` / `--ai-surface` | `#1F1254` | `#F8F7FD` | 15,48 | 4,50 | passa |
 | IA | `--ai-text-low` / `--ai-surface` | `#452F9D` | `#F8F7FD` | 9,18 | 4,50 | passa |
-| Limite de controle | `--input` / `--background` | `oklch(1 0 0 / 16%)` | `#36241D` | 1,66 | 3,00 | **dúvida** |
-| Limite de controle | `--border` / `--background` | `oklch(1 0 0 / 12%)` | `#36241D` | 1,45 | 3,00 | **dúvida** |
-| Foco | `--ring` / `--background` | `oklch(0.75 0.13 60 / 40%)` | `#36241D` | 2,21 | 3,00 | **reprova** |
-| Foco | `--ring` / `--card` | `oklch(0.75 0.13 60 / 40%)` | `#2C1A14` | 2,28 | 3,00 | **reprova** |
-| Foco | `--sidebar-ring` / `--sidebar` | `#737373` | `#171717` | 3,78 | 3,00 | passa |
-| Ação contra a página | `--primary` / `--background` | `#EA9952` | `#36241D` | 6,43 | 3,00 | passa |
-| Ação contra a página | `--destructive` / `--background` | `#D23943` | `#36241D` | 3,08 | 3,00 | passa |
+| Limite de controle | `--input` / `--background` | `oklch(1 0 0 / 16%)` | `#1F0E08` | 1,58 | 3,00 | **dúvida** |
+| Limite de controle | `--border` / `--background` | `oklch(1 0 0 / 12%)` | `#1F0E08` | 1,37 | 3,00 | **dúvida** |
+| Foco | `--ring` / `--background` | `#EA9952` | `#1F0E08` | 8,16 | 3,00 | passa |
+| Foco | `--ring` / `--card` | `#EA9952` | `#2C1A14` | 7,25 | 3,00 | passa |
+| Foco | `--sidebar-ring` / `--sidebar` | `#EA9952` | `#171717` | 7,83 | 3,00 | passa |
+| Ação contra a página | `--primary` / `--background` | `#EA9952` | `#1F0E08` | 8,16 | 3,00 | passa |
+| Ação contra a página | `--destructive` / `--background` | `#D23943` | `#1F0E08` | 3,91 | 3,00 | passa |
 
 ## tech/claro
 
@@ -143,14 +143,14 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 
 | Grupo | Par | Frente | Fundo | Razão | Piso | Resultado |
 |---|---|---|---|---|---|---|
-| Texto base | `--foreground` / `--background` | `#18181B` | `#1E242E` | 1,13 | 4,50 | **reprova** |
+| Texto base | `--foreground` / `--background` | `#D6DFEC` | `#0F1319` | 13,85 | 4,50 | passa |
 | Texto base | `--card-foreground` / `--card` | `#D6DFEC` | `#171B22` | 12,84 | 4,50 | passa |
 | Texto base | `--popover-foreground` / `--popover` | `#D6DFEC` | `#171B22` | 12,84 | 4,50 | passa |
 | Texto em ação | `--primary-foreground` / `--primary` | `#050B18` | `#62B0FF` | 8,59 | 4,50 | passa |
 | Texto em ação | `--secondary-foreground` / `--secondary` | `#D6DFEC` | `#1E242E` | 11,60 | 4,50 | passa |
 | Texto em ação | `--accent-foreground` / `--accent` | `#D6DFEC` | `#252E3D` | 10,16 | 4,50 | passa |
 | Texto em ação | `--destructive-foreground` / `--destructive` | `#FAFAFA` | `#D23943` | 4,56 | 4,50 | passa |
-| Texto de apoio | `--muted-foreground` / `--background` | `#88909C` | `#1E242E` | 4,83 | 4,50 | passa |
+| Texto de apoio | `--muted-foreground` / `--background` | `#88909C` | `#0F1319` | 5,77 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--muted` | `#88909C` | `#1E242E` | 4,83 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--card` | `#88909C` | `#171B22` | 5,35 | 4,50 | passa |
 | Menu lateral | `--sidebar-foreground` / `--sidebar` | `#FAFAFA` | `#171717` | 17,17 | 4,50 | passa |
@@ -158,13 +158,13 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Menu lateral | `--sidebar-accent-foreground` / `--sidebar-accent` | `#D6DFEC` | `#252E3D` | 10,16 | 4,50 | passa |
 | IA | `--ai-text-high` / `--ai-surface` | `#1F1254` | `#F8F7FD` | 15,48 | 4,50 | passa |
 | IA | `--ai-text-low` / `--ai-surface` | `#452F9D` | `#F8F7FD` | 9,18 | 4,50 | passa |
-| Limite de controle | `--input` / `--background` | `oklch(1 0 0 / 25%)` | `#1E242E` | 2,27 | 3,00 | **dúvida** |
-| Limite de controle | `--border` / `--background` | `oklch(1 0 0 / 25%)` | `#1E242E` | 2,27 | 3,00 | **dúvida** |
-| Foco | `--ring` / `--background` | `oklch(0.488 0.243 264.376 / 50%)` | `#1E242E` | 1,43 | 3,00 | **reprova** |
-| Foco | `--ring` / `--card` | `oklch(0.488 0.243 264.376 / 50%)` | `#171B22` | 1,48 | 3,00 | **reprova** |
-| Foco | `--sidebar-ring` / `--sidebar` | `#737373` | `#171717` | 3,78 | 3,00 | passa |
-| Ação contra a página | `--primary` / `--background` | `#62B0FF` | `#1E242E` | 6,81 | 3,00 | passa |
-| Ação contra a página | `--destructive` / `--background` | `#D23943` | `#1E242E` | 3,27 | 3,00 | passa |
+| Limite de controle | `--input` / `--background` | `oklch(1 0 0 / 25%)` | `#0F1319` | 2,22 | 3,00 | **dúvida** |
+| Limite de controle | `--border` / `--background` | `oklch(1 0 0 / 25%)` | `#0F1319` | 2,22 | 3,00 | **dúvida** |
+| Foco | `--ring` / `--background` | `#62B0FF` | `#0F1319` | 8,13 | 3,00 | passa |
+| Foco | `--ring` / `--card` | `#62B0FF` | `#171B22` | 7,54 | 3,00 | passa |
+| Foco | `--sidebar-ring` / `--sidebar` | `#62B0FF` | `#171717` | 7,83 | 3,00 | passa |
+| Ação contra a página | `--primary` / `--background` | `#62B0FF` | `#0F1319` | 8,13 | 3,00 | passa |
+| Ação contra a página | `--destructive` / `--background` | `#D23943` | `#0F1319` | 3,90 | 3,00 | passa |
 
 ## soft/claro
 
@@ -197,14 +197,14 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 
 | Grupo | Par | Frente | Fundo | Razão | Piso | Resultado |
 |---|---|---|---|---|---|---|
-| Texto base | `--foreground` / `--background` | `#0A0A0A` | `#402527` | 1,42 | 4,50 | **reprova** |
+| Texto base | `--foreground` / `--background` | `#F2E0E0` | `#220B0E` | 14,71 | 4,50 | passa |
 | Texto base | `--card-foreground` / `--card` | `#F2E0E0` | `#351C1E` | 12,35 | 4,50 | passa |
 | Texto base | `--popover-foreground` / `--popover` | `#F2E0E0` | `#351C1E` | 12,35 | 4,50 | passa |
 | Texto em ação | `--primary-foreground` / `--primary` | `#290B0F` | `#FC7182` | 6,80 | 4,50 | passa |
 | Texto em ação | `--secondary-foreground` / `--secondary` | `#F1D6D8` | `#3A2022` | 10,88 | 4,50 | passa |
 | Texto em ação | `--accent-foreground` / `--accent` | `#F2E0E0` | `#4F2D2F` | 9,44 | 4,50 | passa |
 | Texto em ação | `--destructive-foreground` / `--destructive` | `#FAFAFA` | `#D23943` | 4,56 | 4,50 | passa |
-| Texto de apoio | `--muted-foreground` / `--background` | `#B09798` | `#402527` | 5,11 | 4,50 | passa |
+| Texto de apoio | `--muted-foreground` / `--background` | `#B09798` | `#220B0E` | 6,88 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--muted` | `#B09798` | `#402527` | 5,11 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--card` | `#B09798` | `#351C1E` | 5,78 | 4,50 | passa |
 | Menu lateral | `--sidebar-foreground` / `--sidebar` | `#FAFAFA` | `#171717` | 17,17 | 4,50 | passa |
@@ -212,13 +212,13 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Menu lateral | `--sidebar-accent-foreground` / `--sidebar-accent` | `#FAFAFA` | `#262626` | 14,49 | 4,50 | passa |
 | IA | `--ai-text-high` / `--ai-surface` | `#1F1254` | `#F8F7FD` | 15,48 | 4,50 | passa |
 | IA | `--ai-text-low` / `--ai-surface` | `#452F9D` | `#F8F7FD` | 9,18 | 4,50 | passa |
-| Limite de controle | `--input` / `--background` | `oklch(1 0 0 / 14%)` | `#402527` | 1,55 | 3,00 | **dúvida** |
-| Limite de controle | `--border` / `--background` | `oklch(1 0 0 / 10%)` | `#402527` | 1,36 | 3,00 | **dúvida** |
-| Foco | `--ring` / `--background` | `oklch(0.65 0.19 15 / 35%)` | `#402527` | 1,60 | 3,00 | **reprova** |
-| Foco | `--ring` / `--card` | `oklch(0.65 0.19 15 / 35%)` | `#351C1E` | 1,65 | 3,00 | **reprova** |
-| Foco | `--sidebar-ring` / `--sidebar` | `#737373` | `#171717` | 3,78 | 3,00 | passa |
-| Ação contra a página | `--primary` / `--background` | `#FC7182` | `#402527` | 5,17 | 3,00 | passa |
-| Ação contra a página | `--destructive` / `--background` | `#D23943` | `#402527` | 2,91 | 3,00 | **reprova** |
+| Limite de controle | `--input` / `--background` | `oklch(1 0 0 / 14%)` | `#220B0E` | 1,46 | 3,00 | **dúvida** |
+| Limite de controle | `--border` / `--background` | `oklch(1 0 0 / 10%)` | `#220B0E` | 1,28 | 3,00 | **dúvida** |
+| Foco | `--ring` / `--background` | `#FC7182` | `#220B0E` | 6,97 | 3,00 | passa |
+| Foco | `--ring` / `--card` | `#FC7182` | `#351C1E` | 5,85 | 3,00 | passa |
+| Foco | `--sidebar-ring` / `--sidebar` | `#FC7182` | `#171717` | 6,67 | 3,00 | passa |
+| Ação contra a página | `--primary` / `--background` | `#FC7182` | `#220B0E` | 6,97 | 3,00 | passa |
+| Ação contra a página | `--destructive` / `--background` | `#D23943` | `#220B0E` | 3,92 | 3,00 | passa |
 
 ## midnight/claro
 

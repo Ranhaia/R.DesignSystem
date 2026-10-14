@@ -656,9 +656,18 @@
   --accent-foreground: var(--editorial-dark-surface-foreground);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.75 0.13 60 / 40%);
   --sidebar-primary: var(--editorial-dark-action);
   --sidebar-primary-foreground: var(--editorial-dark-action-foreground);
+
+  /* 2026-10-14 (trava de acessibilidade): papéis que vazavam do bloco claro do preset.
+     Tons pelo Material Design 3 (material-color-utilities, color_spec_2021): fundo 6, texto 90,
+     container 12; anel de foco sólido na ação escura (tom 65–70), sem transparência. */
+  --background: #1F0E08;
+  --foreground: var(--editorial-dark-surface-foreground);
+  --ring: var(--editorial-dark-action);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+  --chart-5: #A04526; /* #7E2600 no claro; 3:1 contra o fundo escuro (SC 1.4.11) */
 }
 
 /* ---- Tech: mono nos títulos, quinas retas, sombra dura — identidade de dev tool ---- */
@@ -750,6 +759,17 @@
   --shadow-lg: 0 4px 0 0 oklch(100% 0 0 / 0.15);
   --sidebar-primary: var(--tech-dark-action);
   --sidebar-primary-foreground: var(--tech-dark-action-foreground);
+
+  /* 2026-10-14 (trava de acessibilidade): papéis que vazavam do bloco claro do preset.
+     Tons pelo Material Design 3 (material-color-utilities, color_spec_2021): fundo 6, texto 90,
+     container 12; anel de foco sólido na ação escura (tom 65–70), sem transparência. */
+  --background: #0F1319;
+  --foreground: var(--tech-dark-surface-foreground);
+  --ring: var(--tech-dark-action);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+  --chart-4: #194FED; /* #1447E6 no claro; 3:1 contra o fundo escuro (SC 1.4.11) */
+  --chart-5: #2D56D3; /* #193CB8 no claro; 3:1 contra o fundo escuro (SC 1.4.11) */
 }
 
 /* ---- Suave: bem arredondada, sombra difusa, tom rosado — identidade lifestyle ---- */
@@ -843,6 +863,16 @@
   --input: oklch(1 0 0 / 14%);
   --sidebar-primary: var(--soft-dark-action);
   --sidebar-primary-foreground: var(--soft-dark-action-foreground);
+
+  /* 2026-10-14 (trava de acessibilidade): papéis que vazavam do bloco claro do preset.
+     Tons pelo Material Design 3 (material-color-utilities, color_spec_2021): fundo 6, texto 90,
+     container 12; anel de foco sólido na ação escura (tom 65–70), sem transparência. */
+  --background: #220B0E;
+  --foreground: var(--soft-dark-surface-foreground);
+  --ring: var(--soft-dark-action);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+  --chart-5: #C00F3B; /* #BA0037 no claro; 3:1 contra o fundo escuro (SC 1.4.11) */
 }
 
 /* ---- Midnight: identidade violeta, Manrope, sombra com glow ----
