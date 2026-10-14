@@ -445,7 +445,7 @@ function TreeSelect(props: TreeSelectProps) {
           data-placeholder={hasValue ? undefined : ""}
           data-checkable={checkable ? "" : undefined}
           className={cn(
-            "flex min-h-9 w-64 cursor-pointer items-center justify-between gap-2 rounded-md border border-input bg-transparent px-3 py-1.5 text-sm shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-disabled:cursor-not-allowed aria-disabled:opacity-50 data-[placeholder]:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50",
+            "flex min-h-9 w-64 cursor-pointer items-center justify-between gap-2 rounded-md border border-input bg-transparent px-3 py-1.5 text-sm shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-disabled:cursor-not-allowed aria-disabled:opacity-50 data-[placeholder]:text-muted-foreground dark:hover:bg-input/50",
             className
           )}
         >

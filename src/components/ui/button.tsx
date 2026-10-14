@@ -32,7 +32,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: `bg-primary text-primary-foreground ${elevation} hover:bg-primary/90`,
-        destructive: `bg-destructive text-white ${elevation} hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40`,
+        destructive: `bg-destructive text-white ${elevation} hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40`,
         // bg-transparent (não bg-background): dentro de um Card/Popover
         // cujo fundo diverge de --background da página (ex.: preset Suave,
         // onde --background = --muted rosado mas --card é branco), um
@@ -40,7 +40,7 @@ const buttonVariants = cva(
         // ficava rosa dentro de um card branco, divergindo do Select/Input
         // ao lado (que já usam bg-transparent e herdam o fundo real do
         // container). transparent alinha o outline ao mesmo comportamento.
-        outline: `border bg-transparent ${elevation} hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50`,
+        outline: `border bg-transparent ${elevation} hover:bg-accent hover:text-accent-foreground dark:border-input dark:hover:bg-input/50`,
         secondary: `bg-secondary text-secondary-foreground ${elevation} hover:bg-secondary/80`,
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",

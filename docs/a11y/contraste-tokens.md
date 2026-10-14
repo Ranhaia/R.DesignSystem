@@ -38,15 +38,15 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Texto base | `--foreground` / `--background` | `#E3E2DF` | `#141311` | 14,33 | 4,50 | passa |
 | Texto base | `--card-foreground` / `--card` | `#E3E2DF` | `#201F1D` | 12,71 | 4,50 | passa |
 | Texto base | `--popover-foreground` / `--popover` | `#E3E2DF` | `#201F1D` | 12,71 | 4,50 | passa |
-| Texto em ação | `--primary-foreground` / `--primary` | `#303030` | `#C6C6C6` | 7,72 | 4,50 | passa |
+| Texto em ação | `--primary-foreground` / `--primary` | `#1B1B1B` | `#E2E2E2` | 13,29 | 4,50 | passa |
 | Texto em ação | `--secondary-foreground` / `--secondary` | `#E2E2E2` | `#474747` | 7,17 | 4,50 | passa |
 | Texto em ação | `--accent-foreground` / `--accent` | `#E2E2E2` | `#474747` | 7,17 | 4,50 | passa |
-| Texto em ação | `--destructive-foreground` / `--destructive` | `#68000B` | `#FFB3AD` | 7,72 | 4,50 | passa |
+| Texto em ação | `--destructive-foreground` / `--destructive` | `#FFFFFF` | `#C82E32` | 5,39 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--background` | `#C9C6BF` | `#141311` | 10,88 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--muted` | `#C9C6BF` | `#2B2A28` | 8,40 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--card` | `#C9C6BF` | `#201F1D` | 9,65 | 4,50 | passa |
 | Menu lateral | `--sidebar-foreground` / `--sidebar` | `#E3E2DF` | `#1C1B19` | 13,28 | 4,50 | passa |
-| Menu lateral | `--sidebar-primary-foreground` / `--sidebar-primary` | `#303030` | `#C6C6C6` | 7,72 | 4,50 | passa |
+| Menu lateral | `--sidebar-primary-foreground` / `--sidebar-primary` | `#1B1B1B` | `#E2E2E2` | 13,29 | 4,50 | passa |
 | Menu lateral | `--sidebar-accent-foreground` / `--sidebar-accent` | `#E2E2E2` | `#474747` | 7,17 | 4,50 | passa |
 | IA | `--ai-text-high` / `--ai-surface` | `#EFEFFF` | `#20005F` | 15,04 | 4,50 | passa |
 | IA | `--ai-text-low` / `--ai-surface` | `#C2C1FF` | `#20005F` | 10,08 | 4,50 | passa |
@@ -55,8 +55,8 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Foco | `--ring` / `--background` | `#C6C6C6` | `#141311` | 10,87 | 3,00 | passa |
 | Foco | `--ring` / `--card` | `#C6C6C6` | `#201F1D` | 9,64 | 3,00 | passa |
 | Foco | `--sidebar-ring` / `--sidebar` | `#C6C6C6` | `#1C1B19` | 10,07 | 3,00 | passa |
-| Ação contra a página | `--primary` / `--background` | `#C6C6C6` | `#141311` | 10,87 | 3,00 | passa |
-| Ação contra a página | `--destructive` / `--background` | `#FFB3AD` | `#141311` | 10,87 | 3,00 | passa |
+| Ação contra a página | `--primary` / `--background` | `#E2E2E2` | `#141311` | 14,33 | 3,00 | passa |
+| Ação contra a página | `--destructive` / `--background` | `#C82E32` | `#141311` | 3,44 | 3,00 | passa |
 
 ## editorial/claro
 
@@ -92,15 +92,15 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Texto base | `--foreground` / `--background` | `#E5E2E1` | `#151312` | 14,37 | 4,50 | passa |
 | Texto base | `--card-foreground` / `--card` | `#E5E2E1` | `#211F1E` | 12,73 | 4,50 | passa |
 | Texto base | `--popover-foreground` / `--popover` | `#E5E2E1` | `#211F1E` | 12,73 | 4,50 | passa |
-| Texto em ação | `--primary-foreground` / `--primary` | `#5C1900` | `#FFB59C` | 7,74 | 4,50 | passa |
+| Texto em ação | `--primary-foreground` / `--primary` | `#FFFFFF` | `#B45738` | 4,81 | 4,50 | passa |
 | Texto em ação | `--secondary-foreground` / `--secondary` | `#FFDBCF` | `#5D4036` | 7,23 | 4,50 | passa |
 | Texto em ação | `--accent-foreground` / `--accent` | `#EEE4A8` | `#514709` | 7,22 | 4,50 | passa |
-| Texto em ação | `--destructive-foreground` / `--destructive` | `#68000B` | `#FFB3AD` | 7,72 | 4,50 | passa |
+| Texto em ação | `--destructive-foreground` / `--destructive` | `#FFFFFF` | `#C82E32` | 5,39 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--background` | `#CDC5C2` | `#151312` | 10,90 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--muted` | `#CDC5C2` | `#2C2929` | 8,48 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--card` | `#CDC5C2` | `#211F1E` | 9,66 | 4,50 | passa |
 | Menu lateral | `--sidebar-foreground` / `--sidebar` | `#E5E2E1` | `#1D1B1A` | 13,31 | 4,50 | passa |
-| Menu lateral | `--sidebar-primary-foreground` / `--sidebar-primary` | `#5C1900` | `#FFB59C` | 7,74 | 4,50 | passa |
+| Menu lateral | `--sidebar-primary-foreground` / `--sidebar-primary` | `#FFFFFF` | `#B45738` | 4,81 | 4,50 | passa |
 | Menu lateral | `--sidebar-accent-foreground` / `--sidebar-accent` | `#FFDBCF` | `#5D4036` | 7,23 | 4,50 | passa |
 | IA | `--ai-text-high` / `--ai-surface` | `#EFEFFF` | `#20005F` | 15,04 | 4,50 | passa |
 | IA | `--ai-text-low` / `--ai-surface` | `#C2C1FF` | `#20005F` | 10,08 | 4,50 | passa |
@@ -109,8 +109,8 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Foco | `--ring` / `--background` | `#FFB59C` | `#151312` | 10,88 | 3,00 | passa |
 | Foco | `--ring` / `--card` | `#FFB59C` | `#211F1E` | 9,64 | 3,00 | passa |
 | Foco | `--sidebar-ring` / `--sidebar` | `#FFB59C` | `#1D1B1A` | 10,08 | 3,00 | passa |
-| Ação contra a página | `--primary` / `--background` | `#FFB59C` | `#151312` | 10,88 | 3,00 | passa |
-| Ação contra a página | `--destructive` / `--background` | `#FFB3AD` | `#151312` | 10,85 | 3,00 | passa |
+| Ação contra a página | `--primary` / `--background` | `#B45738` | `#151312` | 3,84 | 3,00 | passa |
+| Ação contra a página | `--destructive` / `--background` | `#C82E32` | `#151312` | 3,43 | 3,00 | passa |
 
 ## tech/claro
 
@@ -146,15 +146,15 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Texto base | `--foreground` / `--background` | `#E1E2E5` | `#121315` | 14,35 | 4,50 | passa |
 | Texto base | `--card-foreground` / `--card` | `#E1E2E5` | `#1F2022` | 12,58 | 4,50 | passa |
 | Texto base | `--popover-foreground` / `--popover` | `#E1E2E5` | `#1F2022` | 12,58 | 4,50 | passa |
-| Texto em ação | `--primary-foreground` / `--primary` | `#0200AC` | `#ABC7FF` | 7,72 | 4,50 | passa |
+| Texto em ação | `--primary-foreground` / `--primary` | `#FFFFFF` | `#225AF9` | 5,38 | 4,50 | passa |
 | Texto em ação | `--secondary-foreground` / `--secondary` | `#D5E3FF` | `#304675` | 7,19 | 4,50 | passa |
 | Texto em ação | `--accent-foreground` / `--accent` | `#FDD6FF` | `#702777` | 7,23 | 4,50 | passa |
-| Texto em ação | `--destructive-foreground` / `--destructive` | `#68000B` | `#FFB3AD` | 7,72 | 4,50 | passa |
+| Texto em ação | `--destructive-foreground` / `--destructive` | `#FFFFFF` | `#C82E32` | 5,39 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--background` | `#C3C7CD` | `#121315` | 10,95 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--muted` | `#C3C7CD` | `#292A2C` | 8,46 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--card` | `#C3C7CD` | `#1F2022` | 9,60 | 4,50 | passa |
 | Menu lateral | `--sidebar-foreground` / `--sidebar` | `#E1E2E5` | `#1B1C1D` | 13,17 | 4,50 | passa |
-| Menu lateral | `--sidebar-primary-foreground` / `--sidebar-primary` | `#0200AC` | `#ABC7FF` | 7,72 | 4,50 | passa |
+| Menu lateral | `--sidebar-primary-foreground` / `--sidebar-primary` | `#FFFFFF` | `#225AF9` | 5,38 | 4,50 | passa |
 | Menu lateral | `--sidebar-accent-foreground` / `--sidebar-accent` | `#D5E3FF` | `#304675` | 7,19 | 4,50 | passa |
 | IA | `--ai-text-high` / `--ai-surface` | `#EFEFFF` | `#20005F` | 15,04 | 4,50 | passa |
 | IA | `--ai-text-low` / `--ai-surface` | `#C2C1FF` | `#20005F` | 10,08 | 4,50 | passa |
@@ -163,8 +163,8 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Foco | `--ring` / `--background` | `#ABC7FF` | `#121315` | 10,92 | 3,00 | passa |
 | Foco | `--ring` / `--card` | `#ABC7FF` | `#1F2022` | 9,58 | 3,00 | passa |
 | Foco | `--sidebar-ring` / `--sidebar` | `#ABC7FF` | `#1B1C1D` | 10,03 | 3,00 | passa |
-| Ação contra a página | `--primary` / `--background` | `#ABC7FF` | `#121315` | 10,92 | 3,00 | passa |
-| Ação contra a página | `--destructive` / `--background` | `#FFB3AD` | `#121315` | 10,89 | 3,00 | passa |
+| Ação contra a página | `--primary` / `--background` | `#225AF9` | `#121315` | 3,45 | 3,00 | passa |
+| Ação contra a página | `--destructive` / `--background` | `#C82E32` | `#121315` | 3,44 | 3,00 | passa |
 
 ## soft/claro
 
@@ -200,15 +200,15 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Texto base | `--foreground` / `--background` | `#E5E2E1` | `#151313` | 14,36 | 4,50 | passa |
 | Texto base | `--card-foreground` / `--card` | `#E5E2E1` | `#221F1F` | 12,69 | 4,50 | passa |
 | Texto base | `--popover-foreground` / `--popover` | `#E5E2E1` | `#221F1F` | 12,69 | 4,50 | passa |
-| Texto em ação | `--primary-foreground` / `--primary` | `#680012` | `#FFB3B0` | 7,71 | 4,50 | passa |
+| Texto em ação | `--primary-foreground` / `--primary` | `#FFFFFF` | `#E31A39` | 4,69 | 4,50 | passa |
 | Texto em ação | `--secondary-foreground` / `--secondary` | `#FFDAD8` | `#6E3636` | 7,25 | 4,50 | passa |
 | Texto em ação | `--accent-foreground` / `--accent` | `#FFDEA3` | `#5D4200` | 7,23 | 4,50 | passa |
-| Texto em ação | `--destructive-foreground` / `--destructive` | `#68000B` | `#FFB3AD` | 7,72 | 4,50 | passa |
+| Texto em ação | `--destructive-foreground` / `--destructive` | `#FFFFFF` | `#C82E32` | 5,39 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--background` | `#CDC4C4` | `#151313` | 10,83 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--muted` | `#CDC4C4` | `#2C2929` | 8,43 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--card` | `#CDC4C4` | `#221F1F` | 9,57 | 4,50 | passa |
 | Menu lateral | `--sidebar-foreground` / `--sidebar` | `#E5E2E1` | `#1D1B1B` | 13,30 | 4,50 | passa |
-| Menu lateral | `--sidebar-primary-foreground` / `--sidebar-primary` | `#680012` | `#FFB3B0` | 7,71 | 4,50 | passa |
+| Menu lateral | `--sidebar-primary-foreground` / `--sidebar-primary` | `#FFFFFF` | `#E31A39` | 4,69 | 4,50 | passa |
 | Menu lateral | `--sidebar-accent-foreground` / `--sidebar-accent` | `#FFDAD8` | `#6E3636` | 7,25 | 4,50 | passa |
 | IA | `--ai-text-high` / `--ai-surface` | `#EFEFFF` | `#20005F` | 15,04 | 4,50 | passa |
 | IA | `--ai-text-low` / `--ai-surface` | `#C2C1FF` | `#20005F` | 10,08 | 4,50 | passa |
@@ -217,8 +217,8 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Foco | `--ring` / `--background` | `#FFB3B0` | `#151313` | 10,86 | 3,00 | passa |
 | Foco | `--ring` / `--card` | `#FFB3B0` | `#221F1F` | 9,60 | 3,00 | passa |
 | Foco | `--sidebar-ring` / `--sidebar` | `#FFB3B0` | `#1D1B1B` | 10,06 | 3,00 | passa |
-| Ação contra a página | `--primary` / `--background` | `#FFB3B0` | `#151313` | 10,86 | 3,00 | passa |
-| Ação contra a página | `--destructive` / `--background` | `#FFB3AD` | `#151313` | 10,84 | 3,00 | passa |
+| Ação contra a página | `--primary` / `--background` | `#E31A39` | `#151313` | 3,94 | 3,00 | passa |
+| Ação contra a página | `--destructive` / `--background` | `#C82E32` | `#151313` | 3,43 | 3,00 | passa |
 
 ## midnight/claro
 
@@ -254,15 +254,15 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Texto base | `--foreground` / `--background` | `#E2E2E5` | `#131315` | 14,35 | 4,50 | passa |
 | Texto base | `--card-foreground` / `--card` | `#E2E2E5` | `#201F21` | 12,69 | 4,50 | passa |
 | Texto base | `--popover-foreground` / `--popover` | `#E2E2E5` | `#201F21` | 12,69 | 4,50 | passa |
-| Texto em ação | `--primary-foreground` / `--primary` | `#41008C` | `#CABEFF` | 7,68 | 4,50 | passa |
+| Texto em ação | `--primary-foreground` / `--primary` | `#FFFFFF` | `#7B49E4` | 5,36 | 4,50 | passa |
 | Texto em ação | `--secondary-foreground` / `--secondary` | `#E4DFFF` | `#4A406E` | 7,24 | 4,50 | passa |
 | Texto em ação | `--accent-foreground` / `--accent` | `#FFD8E8` | `#7D2452` | 7,22 | 4,50 | passa |
-| Texto em ação | `--destructive-foreground` / `--destructive` | `#68000B` | `#FFB3AD` | 7,72 | 4,50 | passa |
+| Texto em ação | `--destructive-foreground` / `--destructive` | `#FFFFFF` | `#C82E32` | 5,39 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--background` | `#C7C6CD` | `#131315` | 10,94 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--muted` | `#C7C6CD` | `#2A2A2C` | 8,44 | 4,50 | passa |
 | Texto de apoio | `--muted-foreground` / `--card` | `#C7C6CD` | `#201F21` | 9,68 | 4,50 | passa |
 | Menu lateral | `--sidebar-foreground` / `--sidebar` | `#E2E2E5` | `#1C1B1D` | 13,27 | 4,50 | passa |
-| Menu lateral | `--sidebar-primary-foreground` / `--sidebar-primary` | `#41008C` | `#CABEFF` | 7,68 | 4,50 | passa |
+| Menu lateral | `--sidebar-primary-foreground` / `--sidebar-primary` | `#FFFFFF` | `#7B49E4` | 5,36 | 4,50 | passa |
 | Menu lateral | `--sidebar-accent-foreground` / `--sidebar-accent` | `#E4DFFF` | `#4A406E` | 7,24 | 4,50 | passa |
 | IA | `--ai-text-high` / `--ai-surface` | `#EFEFFF` | `#20005F` | 15,04 | 4,50 | passa |
 | IA | `--ai-text-low` / `--ai-surface` | `#C2C1FF` | `#20005F` | 10,08 | 4,50 | passa |
@@ -271,8 +271,8 @@ Gerado por `src/lib/a11y/tokens.test.ts`. Não editar à mão. Perfil: **Standar
 | Foco | `--ring` / `--background` | `#CABEFF` | `#131315` | 10,88 | 3,00 | passa |
 | Foco | `--ring` / `--card` | `#CABEFF` | `#201F21` | 9,63 | 3,00 | passa |
 | Foco | `--sidebar-ring` / `--sidebar` | `#CABEFF` | `#1C1B1D` | 10,06 | 3,00 | passa |
-| Ação contra a página | `--primary` / `--background` | `#CABEFF` | `#131315` | 10,88 | 3,00 | passa |
-| Ação contra a página | `--destructive` / `--background` | `#FFB3AD` | `#131315` | 10,87 | 3,00 | passa |
+| Ação contra a página | `--primary` / `--background` | `#7B49E4` | `#131315` | 3,45 | 3,00 | passa |
+| Ação contra a página | `--destructive` / `--background` | `#C82E32` | `#131315` | 3,43 | 3,00 | passa |
 
 ## Dúvidas de leitura do critério
 

@@ -50,6 +50,30 @@ export type TemaGerado = {
   escuro: Record<Token, string> & Record<string, string>
 }
 
+// Ação viva no escuro: o tom 80 do M3 é pastel e parece desabilitado. Usa a própria fonte se ela serve;
+// senão, entre os tons 45 e 75, o mais saturado que dá 3:1 contra o fundo e algum texto (tom 100 ou 10) com 4,5:1.
+function acaoViva(paleta: (t: number) => string, fundo: string, fonte?: string): { cor: string; texto: string } {
+  const texto = (c: string) => [paleta(100), paleta(10)].find((t) => razao(t, c) >= 4.5)
+  if (fonte && razao(fonte, fundo) >= 3) {
+    const t = texto(fonte)
+    if (t) return { cor: fonte, texto: t }
+  }
+  // Marca sem cor (preto/cinza): "vivo" não existe; usa o par clássico do escuro, ação quase branca e texto escuro.
+  if (paraOklch(paleta(50)).C < 0.03) return { cor: paleta(90), texto: paleta(10) }
+  const opcoes: { cor: string; texto: string; c: number }[] = []
+  for (let tom = 45; tom <= 75; tom++) {
+    const c = paleta(tom)
+    const t = texto(c)
+    if (t && razao(c, fundo) >= 3) opcoes.push({ cor: c, texto: t, c: paraOklch(c).C })
+  }
+  if (!opcoes.length) return { cor: paleta(80), texto: paleta(20) }
+  const max = Math.max(...opcoes.map((o) => o.c))
+  // Prefere texto branco (a mesma convenção do claro) se a saturação ficar em pelo menos 90% da mais viva.
+  const branco = opcoes.filter((o) => o.texto === paleta(100) && o.c >= max * 0.9)
+  const escolha = (branco.length ? branco : opcoes).reduce((a, b) => (b.c > a.c + 1e-4 ? b : a))
+  return { cor: escolha.cor, texto: escolha.texto }
+}
+
 export function gerarTema(fonte: string): TemaGerado {
   const fUpper = fonte.toUpperCase()
   const { H: H0, C: C0 } = paraOklch(fUpper)
@@ -179,8 +203,9 @@ export function gerarTema(fonte: string): TemaGerado {
   escuro["--muted"] = pNeutra(17)
   escuro["--muted-foreground"] = pNeutraVar(80)
 
-  escuro["--primary"] = pPrimaria(80)
-  escuro["--primary-foreground"] = pPrimaria(20)
+  const acaoEscuro = acaoViva(pPrimaria, escuro["--background"], fUpper)
+  escuro["--primary"] = acaoEscuro.cor
+  escuro["--primary-foreground"] = acaoEscuro.texto
 
   escuro["--secondary"] = pSecundaria(30)
   escuro["--secondary-foreground"] = pSecundaria(90)
@@ -188,8 +213,9 @@ export function gerarTema(fonte: string): TemaGerado {
   escuro["--accent"] = pTerciaria(30)
   escuro["--accent-foreground"] = pTerciaria(90)
 
-  escuro["--destructive"] = pErro(80)
-  escuro["--destructive-foreground"] = pErro(20)
+  const erroEscuro = acaoViva(pErro, escuro["--background"])
+  escuro["--destructive"] = erroEscuro.cor
+  escuro["--destructive-foreground"] = erroEscuro.texto
 
   escuro["--border"] = pNeutraVar(30)
   escuro["--input"] = pNeutraVar(60)

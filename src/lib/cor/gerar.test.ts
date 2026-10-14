@@ -69,8 +69,10 @@ describe("motor de cor", () => {
 describe("motor de cor: ação viva no escuro", () => {
   const CROMATICAS = FONTES.filter((f) => paraOklch(f).C >= 0.08)
 
-  it.each(CROMATICAS)("fonte %s: ação no escuro é saturada", (fonte) => {
-    expect(paraOklch(gerarTema(fonte).escuro["--primary"]).C).toBeGreaterThanOrEqual(0.1)
+  // "Vivo" = não mais lavado que a própria marca: pelo menos 85% do croma da fonte (teto 0,1, para fonte muito saturada).
+  it.each(CROMATICAS)("fonte %s: ação no escuro mantém a saturação da fonte", (fonte) => {
+    const minimo = Math.min(0.1, paraOklch(fonte).C * 0.85)
+    expect(paraOklch(gerarTema(fonte).escuro["--primary"]).C).toBeGreaterThanOrEqual(minimo)
   })
 
   it.each(FONTES)("fonte %s: destrutivo no escuro é saturado", (fonte) => {
