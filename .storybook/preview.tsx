@@ -3,16 +3,10 @@ import type { Preview } from '@storybook/nextjs-vite'
 import '../src/app/globals.css'
 import { stylesList } from '../src/lib/styles-registry'
 import { TooltipProvider } from '../src/components/ui/tooltip'
+import { aplicarContextoNoHtml, contextoDosGlobals, regrasAxe } from '../src/lib/a11y/contexto-story'
 
-// Acionamento único de "Foundations" no toolbar do Storybook: reaproveita
-// os mesmos 5 presets do StyleSwitcher do app (cada preset já é um pacote
-// completo — cor, radius, border-width, sombra, fonte — ver globals.css).
-// Trocar aqui muda TODOS os tokens de uma vez, em TODAS as stories/
-// componentes ao mesmo tempo, porque o decorator abaixo aplica o mesmo
-// atributo data-style que o app usa no <html>, e as regras CSS são
-// seletores de atributo — funcionam em qualquer elemento ancestral, não só
-// no <html>. Nenhum valor foi inventado aqui: são os presets já existentes
-// e aprovados no app real.
+// Preset e modo são aplicados diretamente no <html>, exatamente como em src/app/layout.tsx,
+// para que as stories vejam a mesma cascata de tokens que a tela real (.dark[data-style=...]).
 const preview: Preview = {
   globalTypes: {
     style: {
@@ -25,25 +19,44 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    modo: {
+      description: 'Modo claro ou escuro (classe .dark no <html>)',
+      defaultValue: 'claro',
+      toolbar: {
+        title: 'Modo',
+        icon: 'contrast',
+        items: [
+          { value: 'claro', title: 'Claro' },
+          { value: 'escuro', title: 'Escuro' },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
   decorators: [
-    (Story, context) => (
-      <div
-        data-style={context.globals.style ?? 'default'}
-        className="antialiased font-sans"
-      >
-        {/* No app o provider vem do SidebarProvider; sem ele toda story com Tooltip quebra. */}
-        <TooltipProvider>
-          <Story />
-        </TooltipProvider>
-      </div>
-    ),
+    (Story, context) => {
+      aplicarContextoNoHtml(contextoDosGlobals(context.globals))
+      return (
+        <div className="antialiased font-sans">
+          {/* No app o provider vem do SidebarProvider; sem ele toda story com Tooltip quebra. */}
+          <TooltipProvider>
+            <Story />
+          </TooltipProvider>
+        </div>
+      )
+    },
   ],
+  beforeEach: (context) => {
+    const regras = regrasAxe(contextoDosGlobals(context.globals))
+    if (!regras.length) return
+    const a11y = (context.parameters.a11y ??= {})
+    a11y.config = { ...a11y.config, rules: [...(a11y.config?.rules ?? []), ...regras] }
+  },
   parameters: {
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
 
@@ -51,9 +64,9 @@ const preview: Preview = {
       // 'todo' - show a11y violations in the test UI only
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
-      test: 'todo'
-    }
+      test: 'todo',
+    },
   },
-};
+}
 
-export default preview;
+export default preview
