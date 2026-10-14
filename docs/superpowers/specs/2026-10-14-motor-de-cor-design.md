@@ -88,7 +88,7 @@ Os gradientes `--ai-gradient-*` continuam escritos à mão (não são cor única
 
 ## 5. Fidelidade à marca
 
-`--primary` no claro é **a própria cor-fonte**, para cada preset manter a sua cor. `--primary-foreground` no claro é o tom 100 (branco da paleta) se ele der 4,5:1 sobre a fonte; senão, o tom 10. Se nenhum dos dois passar, o script falha e pede outra fonte ou uma sobrescrita.
+`--primary` no claro é **a própria cor-fonte** quando ela serve: 3:1 contra `--background` e algum texto (tom 100 ou tom 10 da primária) com 4,5:1 sobre ela. Senão, `--primary` vira o **tom 40** da primária (o padrão do M3). `--primary-foreground` no claro é o tom 100 se der 4,5:1 sobre `--primary`; senão, o tom 10. Os 5 presets atuais passam e mantêm a fonte como ação.
 
 ## 6. Presets e sobrescritas
 
@@ -109,7 +109,7 @@ export const PRESETS = {
 
 ## 7. Saída no CSS
 
-- `scripts/gerar-tokens.ts` (Node 24 roda TypeScript direto) gera `src/app/tokens-cor.css`, importado pelo `globals.css` logo depois do bloco de tokens.
+- `scripts/gerar-tokens.ts` (Node 24 roda TypeScript direto) gera `src/app/tokens-cor.css`, importado no topo do `globals.css`, logo depois dos `@import` do Tailwind (CSS exige `@import` no início).
 - Cada contexto recebe **todos** os tokens de cor, em blocos completos: `:root`, `.dark`, `[data-style="x"]`, `.dark[data-style="x"]`. Assim o vazamento do claro para o escuro, achado na Fase 1 da trava, deixa de existir por construção.
 - As declarações de cor saem dos blocos escritos à mão do `globals.css` (fontes, raios, motion e tokens que não são cor ficam lá).
 - Cabeçalho do arquivo gerado: "Gerado por scripts/gerar-tokens.ts. Não editar."
@@ -118,7 +118,7 @@ export const PRESETS = {
 
 - `espaco.test.ts`: ida e volta hex ↔ OKLCH ↔ L* (erro < 0,5 de tom); `cor(h, c, t)` sempre devolve o tom pedido (±0,5) e cor dentro do gamut.
 - `gerar.test.ts`: para as 5 fontes **e para 60 fontes aleatórias com semente fixa** (todas as matizes, croma baixo e alto, claras e escuras), todos os pares de `src/lib/a11y/pares.ts` passam o piso AA nos dois modos, e o croma de `--background`, `--card`, `--muted` e `--foreground` é ≤ 0,012. É a prova de robustez: qualquer cor escolhida gera um tema acessível.
-- `sincronia.test.ts`: o `tokens-cor.css` commitado é idêntico ao que o motor gera hoje a partir de `presets.ts` (ninguém edita cor direto no CSS).
+- `sincronia.test.ts`: o `tokens-cor.css` commitado é idêntico ao que o motor gera hoje a partir de `presets.ts` (ninguém edita cor direto no CSS), e o `globals.css` não declara nenhum token de cor gerado.
 - A trava existente (`tokens.test.ts`) passa a medir o CSS gerado; as falhas de anel de foco e de borda de campo somem por construção.
 - E2E do switch de modo (já existente) continua verde.
 
