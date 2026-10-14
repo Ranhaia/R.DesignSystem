@@ -64,3 +64,28 @@ describe("motor de cor", () => {
     expect(gerarTema("#1447E6")).toEqual(gerarTema("#1447E6"))
   })
 })
+
+// Ação e destrutivo no escuro precisam ser vivos, não pastel (tom 80 do M3 parece desabilitado).
+describe("motor de cor: ação viva no escuro", () => {
+  const CROMATICAS = FONTES.filter((f) => paraOklch(f).C >= 0.08)
+
+  it.each(CROMATICAS)("fonte %s: ação no escuro é saturada", (fonte) => {
+    expect(paraOklch(gerarTema(fonte).escuro["--primary"]).C).toBeGreaterThanOrEqual(0.1)
+  })
+
+  it.each(FONTES)("fonte %s: destrutivo no escuro é saturado", (fonte) => {
+    expect(paraOklch(gerarTema(fonte).escuro["--destructive"]).C).toBeGreaterThanOrEqual(0.12)
+  })
+
+  it.each(FONTES)("fonte %s: se a própria fonte serve no escuro, ela é a ação no escuro", (fonte) => {
+    const t = gerarTema(fonte)
+    const fundo = t.escuro["--background"]
+    const serve = razao(fonte, fundo) >= 3 && razao("#FFFFFF", fonte) >= 4.5
+    if (serve) expect(t.escuro["--primary"]).toBe(fonte.toUpperCase())
+  })
+
+  it("o vermelho do Suave é o mesmo nos dois modos", () => {
+    const t = gerarTema(PRESETS.soft.fonte)
+    expect(t.escuro["--primary"]).toBe(t.claro["--primary"])
+  })
+})
