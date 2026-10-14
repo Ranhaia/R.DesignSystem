@@ -102,7 +102,9 @@ const setStyleScript = `
     if (style && style !== "default") {
       document.documentElement.setAttribute("data-style", style);
     }
-    var mode = nativeModeByStyle[style] || "light";
+    // Preferência manual do switch "Modo escuro" (components/modo-tema.tsx) vence o modo nativo.
+    var manual = window.localStorage.getItem("tema-modo");
+    var mode = manual ? (manual === "escuro" ? "dark" : "light") : nativeModeByStyle[style] || "light";
     document.documentElement.classList.toggle("dark", mode === "dark");
   } catch (e) {}
 })();

@@ -33,7 +33,14 @@ async function abrir(preset, modo) {
 }
 
 const escuroNoHtml = () => page.evaluate(() => document.documentElement.classList.contains("dark"))
-const marcado = async () => (await page.getByRole("switch", { name: "Modo escuro" }).getAttribute("aria-checked")) === "true"
+// Espera o switch refletir o <html> (o HTML do servidor sai desligado até a hidratação ler a classe .dark).
+const marcado = async () => {
+  await page.waitForFunction(() => {
+    const sw = document.querySelector('[role="switch"]#modo-tema')
+    return sw && sw.getAttribute("aria-checked") === String(document.documentElement.classList.contains("dark"))
+  })
+  return (await page.getByRole("switch", { name: "Modo escuro" }).getAttribute("aria-checked")) === "true"
+}
 
 // Contraste real no DOM: cor do texto do <body> sobre o primeiro fundo opaco atrás dele.
 const contrasteDoTexto = () =>
