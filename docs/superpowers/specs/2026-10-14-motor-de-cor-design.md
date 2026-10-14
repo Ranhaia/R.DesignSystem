@@ -99,7 +99,7 @@ export const PRESETS = {
   editorial: { fonte: "#7E2600", nativo: "claro" },
   tech:      { fonte: "#1447E6", nativo: "claro" },
   soft:      { fonte: "#E31A39", nativo: "claro" },
-  midnight:  { fonte: "<ação atual do midnight>", nativo: "escuro" },
+  midnight:  { fonte: "#6D37D2", nativo: "escuro" },
 }
 // Sobrescrita: { claro?: Partial<Record<Token, string>>, escuro?: Partial<Record<Token, string>>, motivo: string }
 ```
