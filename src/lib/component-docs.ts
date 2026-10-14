@@ -3196,6 +3196,7 @@ import { Button } from "@/components/ui/button"
     props: [
       { name: "collapsible", type: '"offcanvas" | "icon" | "none"', default: '"offcanvas"', description: "(Sidebar) comportamento ao recolher." },
       { name: "side", type: '"left" | "right"', default: '"left"', description: "(Sidebar) lado da tela." },
+      { name: "mobileSide", type: '"left" | "right"', default: 'mesmo valor de "side"', description: "(Sidebar) lado da tela na gaveta mobile." },
       { name: "variant", type: '"sidebar" | "floating" | "inset"', default: '"sidebar"', description: "(Sidebar) estilo visual do contêiner." },
       { name: "tooltip", type: "string", description: "(SidebarMenuButton) texto mostrado quando a sidebar está recolhida." },
     ],
