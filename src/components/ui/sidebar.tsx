@@ -153,6 +153,7 @@ function SidebarProvider({
 
 function Sidebar({
   side = "left",
+  mobileSide,
   variant = "sidebar",
   collapsible = "offcanvas",
   className,
@@ -160,6 +161,8 @@ function Sidebar({
   ...props
 }: React.ComponentProps<"div"> & {
   side?: "left" | "right"
+  /** Lado pelo qual a gaveta mobile é aberta (padrão: mesmo valor de side). */
+  mobileSide?: "left" | "right"
   variant?: "sidebar" | "floating" | "inset"
   collapsible?: "offcanvas" | "icon" | "none"
 }) {
@@ -193,7 +196,7 @@ function Sidebar({
               "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
             } as React.CSSProperties
           }
-          side={side}
+          side={mobileSide ?? side}
         >
           <SheetHeader className="sr-only">
             <SheetTitle>Sidebar</SheetTitle>
@@ -264,7 +267,7 @@ function SidebarTrigger({
   // não deveria (e não precisa) satisfazer a união ButtonContent de
   // button.tsx. Sem este Omit, `next build` quebra o typecheck em todo
   // lugar que chama <SidebarTrigger className="..." /> sem children.
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar, isMobile } = useSidebar()
 
   return (
     <Button
@@ -279,7 +282,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <Icon name="left_panel_open" />
+      <Icon name={isMobile ? "menu" : "left_panel_open"} />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )
