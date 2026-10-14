@@ -9,7 +9,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "tokens:gerar": "node scripts/gerar-tokens.ts",
-    "test:e2e:modo": "node --test --test-concurrency=1 tests/e2e/modo-tema.e2e.mjs"
+    "test:e2e:modo": "node --test --test-concurrency=1 tests/e2e/modo-tema.e2e.mjs",
+    "test:a11y": "vitest run --project storybook",
+    "test:a11y:todos": "vitest run --project \"storybook*\""
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

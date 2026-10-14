@@ -8,6 +8,9 @@ import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 
 import { playwright } from '@vitest/browser-playwright';
 
+import { CONTEXTOS } from './src/lib/a11y/css-tokens';
+import { nomeProjeto } from './src/lib/a11y/contexto-story';
+
 const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
@@ -25,23 +28,24 @@ export default defineConfig({
           include: ['src/**/*.test.ts'],
         },
       },
-      {
-        extends: true,
+      ...CONTEXTOS.map((c) => ({
+        extends: true as const,
         plugins: [
-          // The plugin will run tests for the stories defined in your Storybook config
-          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-          storybookTest({ configDir: path.join(dirname, '.storybook') }),
+          storybookTest({
+            configDir: path.join(dirname, '.storybook'),
+            initialGlobals: { style: c.preset, modo: c.modo },
+          }),
         ],
         test: {
-          name: 'storybook',
+          name: nomeProjeto(c),
           browser: {
             enabled: true,
             headless: true,
             provider: playwright({}),
-            instances: [{ browser: 'chromium' }],
+            instances: [{ browser: 'chromium' as const }],
           },
         },
-      },
+      })),
     ],
   },
 });
