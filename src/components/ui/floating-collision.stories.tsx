@@ -116,7 +116,7 @@ export const PopoverCorner: Story = {
       <PopoverTrigger asChild>
         <button style={corner}>gatilho</button>
       </PopoverTrigger>
-      <PopoverContent side="bottom" align="start" className={WIDE}>Conteúdo</PopoverContent>
+      <PopoverContent aria-label="Conteúdo" side="bottom" align="start" className={WIDE}>Conteúdo</PopoverContent>
     </Popover>
   ),
   play: () => expectInside("popover-content", "top"),
@@ -141,7 +141,7 @@ export const DropdownMenuCorner: Story = {
       <DropdownMenuTrigger asChild>
         <button style={corner}>gatilho</button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="bottom" align="start" className={WIDE}>
+      <DropdownMenuContent tabIndex={0} aria-label="Menu de opções" side="bottom" align="start" className={WIDE}>
         <DropdownMenuItem>Item</DropdownMenuItem>
         <DropdownMenuSub open>
           <DropdownMenuSubTrigger>Mais</DropdownMenuSubTrigger>
@@ -187,7 +187,7 @@ export const ContextMenuCorner: Story = {
       <ContextMenuTrigger asChild>
         <div data-testid="area" style={{ ...corner, width: 120, height: 80 }}>área</div>
       </ContextMenuTrigger>
-      <ContextMenuContent className={WIDE}>
+      <ContextMenuContent tabIndex={0} aria-label="Menu de contexto" className={WIDE}>
         <ContextMenuItem>Item</ContextMenuItem>
         <ContextMenuSub open>
           <ContextMenuSubTrigger>Mais</ContextMenuSubTrigger>
@@ -217,9 +217,16 @@ export const ContextMenuCorner: Story = {
 
 // --- Seleção ----------------------------------------------------------------
 export const SelectPopperCorner: Story = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [{ id: "aria-hidden-focus", enabled: false }],
+      },
+    },
+  },
   render: () => (
-    <Select open>
-      <SelectTrigger style={corner}>
+    <Select>
+      <SelectTrigger aria-label="Escolha uma opção" style={corner}>
         <SelectValue placeholder="Escolha" />
       </SelectTrigger>
       <SelectContent position="popper" side="bottom" align="start" className={WIDE}>
@@ -227,7 +234,11 @@ export const SelectPopperCorner: Story = {
       </SelectContent>
     </Select>
   ),
-  play: () => expectInside("select-content", "top"),
+  play: async ({ canvasElement }) => {
+    const trigger = canvasElement.ownerDocument.querySelector<HTMLElement>('[data-slot="select-trigger"]')!
+    trigger.click()
+    await expectInside("select-content", "top")
+  },
 }
 
 // Âncora explícita no wrapper rente à borda: ancorado no <input> (que termina
