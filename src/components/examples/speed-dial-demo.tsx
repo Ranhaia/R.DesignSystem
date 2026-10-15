@@ -1,3 +1,5 @@
+"use client"
+
 import { SpeedDial } from "@/components/ui/speed-dial"
 import { Icon } from "@/components/ui/icon"
 
