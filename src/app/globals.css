@@ -782,3 +782,47 @@
     opacity: 0;
   }
 }
+
+@keyframes speed-dial-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--spacing) * 3)) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes speed-dial-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--spacing) * -3)) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes speed-dial-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(calc(var(--spacing) * 3)) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes speed-dial-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(calc(var(--spacing) * -3)) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
