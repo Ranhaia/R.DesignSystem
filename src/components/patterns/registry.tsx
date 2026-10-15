@@ -16,6 +16,7 @@ import { SkeletonPattern } from "@/components/patterns/skeleton"
 import { SuccessFeedbackPattern } from "@/components/patterns/success-feedback"
 import { ToastStrategyPattern } from "@/components/patterns/toast-strategy"
 import { UploadPattern } from "@/components/patterns/upload"
+import { ReactiveDashboardPanel } from "@/components/patterns/reactive-dashboard-panel"
 
 export const patternRegistry: Record<string, ComponentType> = {
   "empty-state": EmptyStatePattern,
@@ -34,4 +35,5 @@ export const patternRegistry: Record<string, ComponentType> = {
   upload: UploadPattern,
   "toast-strategy": ToastStrategyPattern,
   "filter-panel": FilterPanelPattern,
+  "reactive-dashboard-panel": ReactiveDashboardPanel,
 }

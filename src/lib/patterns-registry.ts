@@ -27,4 +27,5 @@ export const patternsList: PatternEntry[] = [
   { slug: "upload", name: "Upload" },
   { slug: "toast-strategy", name: "Toast Strategy" },
   { slug: "filter-panel", name: "Filter Panel" },
+  { slug: "reactive-dashboard-panel", name: "Painel Reativo (Widget Contract)" },
 ]
