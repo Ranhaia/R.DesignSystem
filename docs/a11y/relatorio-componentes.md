@@ -7,8 +7,8 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 ## Resumo
 
 - **Stories × Contextos:** 3851 medições (386 stories em 10 contextos)
-- **Componentes:** 94 componentes (76 reprovaram WCAG, 2 passaram com Regra da Casa 🟡, 16 passaram limpos)
-- **Falhas WCAG:** 2495
+- **Componentes:** 94 componentes (35 reprovaram WCAG, 42 passaram com Regra da Casa 🟡, 17 passaram limpos)
+- **Falhas WCAG:** 528
 - **Regras da Casa (🟡):** 717
 
 ## Causas comuns
@@ -17,31 +17,21 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | alvo menor que 44×44 | - | 4725 | 63 | 204 |
 | Regra da Casa (Alvo) | exceção de espaçamento | - | 800 | 10 | 30 |
-| WCAG 2.4.7 (Foco) | contraste 2,14:1 (mínimo 3:1) | `#A9A8A7` / `#F5F3F1` | 359 | 56 | 191 |
-| WCAG 2.4.7 (Foco) | contraste 2,22:1 (mínimo 3:1) | `#C99B8B` / `#F6F3F2` | 356 | 55 | 190 |
-| WCAG 2.4.7 (Foco) | contraste 2,26:1 (mínimo 3:1) | `#B296E5` / `#F4F3F6` | 356 | 55 | 190 |
-| WCAG 2.4.7 (Foco) | contraste 2,3:1 (mínimo 3:1) | `#85A0EF` / `#F2F4F6` | 356 | 55 | 190 |
-| WCAG 2.4.7 (Foco) | contraste 2,67:1 (mínimo 3:1) | `#DA798E` / `#F6F3F2` | 356 | 55 | 190 |
 | axe: button-name | Buttons must have discernible text | - | 280 | 11 | 28 |
 | WCAG 2.4.7 (Foco) | foco só por preenchimento ou invisível | - | 280 | 7 | 19 |
 | axe: label | Form elements must have labels | - | 60 | 3 | 6 |
 | axe: select-name | Select element must have an accessible name | - | 60 | 1 | 6 |
-| WCAG 2.4.7 (Foco) | contraste 2,21:1 (mínimo 3:1) | `#AEAEAE` / `#FFFFFF` | 56 | 6 | 16 |
-| WCAG 2.4.7 (Foco) | contraste 2,29:1 (mínimo 3:1) | `#CEA191` / `#FFFFFF` | 56 | 6 | 16 |
-| WCAG 2.4.7 (Foco) | contraste 2,34:1 (mínimo 3:1) | `#B79CEA` / `#FFFFFF` | 56 | 6 | 16 |
-| WCAG 2.4.7 (Foco) | contraste 2,39:1 (mínimo 3:1) | `#8BA5F4` / `#FFFFFF` | 56 | 6 | 16 |
-| WCAG 2.4.7 (Foco) | contraste 2,76:1 (mínimo 3:1) | `#DF7F94` / `#FFFFFF` | 56 | 6 | 16 |
 | axe: aria-progressbar-name | ARIA progressbar nodes must have an accessible name | - | 40 | 4 | 4 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#6D6C6B` / `#141311` | 34 | 8 | 24 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#C99B8B` / `#F6F3F2` | 34 | 8 | 24 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#8A6361` / `#151313` | 34 | 8 | 24 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#6E688A` / `#131315` | 34 | 8 | 24 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#A9A8A7` / `#F5F3F1` | 34 | 8 | 24 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#85A0EF` / `#F2F4F6` | 34 | 8 | 24 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#5F6D8A` / `#121315` | 34 | 8 | 24 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#8A6361` / `#151313` | 34 | 8 | 24 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#A9A8A7` / `#F5F3F1` | 34 | 8 | 24 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#DA798E` / `#F6F3F2` | 34 | 8 | 24 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#6E688A` / `#131315` | 34 | 8 | 24 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#B296E5` / `#F4F3F6` | 34 | 8 | 24 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#C99B8B` / `#F6F3F2` | 34 | 8 | 24 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#6D6C6B` / `#141311` | 34 | 8 | 24 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#8A6457` / `#151312` | 34 | 8 | 24 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#B296E5` / `#F4F3F6` | 34 | 8 | 24 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#DA798E` / `#F6F3F2` | 34 | 8 | 24 |
 | axe: scrollable-region-focusable | Scrollable region must have keyboard access | - | 31 | 2 | 4 |
 | axe: aria-dialog-name | ARIA dialog and alertdialog nodes should have an accessible name | - | 30 | 2 | 3 |
 | axe: aria-required-children | Certain ARIA roles must contain particular children | - | 30 | 2 | 3 |
@@ -49,97 +39,48 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | axe: aria-hidden-focus | ARIA hidden element must not be focusable or contain focusable elements | - | 10 | 1 | 1 |
 | axe: aria-input-field-name | ARIA input fields must have an accessible name | - | 10 | 1 | 1 |
 | axe: nested-interactive | Interactive controls must not be nested | - | 10 | 1 | 1 |
-| axe: image-alt | Images must have alternative text | - | 9 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,1:1 (mínimo 3:1) | `#A6A6A4` / `#EFEEEB` | 9 | 3 | 8 |
-| WCAG 2.4.7 (Foco) | contraste 2,18:1 (mínimo 3:1) | `#C69888` / `#F0EDEC` | 9 | 3 | 8 |
-| WCAG 2.4.7 (Foco) | contraste 2,22:1 (mínimo 3:1) | `#AF93E2` / `#EEEDF0` | 9 | 3 | 8 |
-| WCAG 2.4.7 (Foco) | contraste 2,25:1 (mínimo 3:1) | `#829DED` / `#ECEEF1` | 9 | 3 | 8 |
-| WCAG 2.4.7 (Foco) | contraste 2,62:1 (mínimo 3:1) | `#D8768B` / `#F1EDED` | 9 | 3 | 8 |
-| WCAG 2.4.7 (Foco) | contraste 1,4:1 (mínimo 3:1) | `#EAC7C9` / `#F6F3F2` | 8 | 3 | 4 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#FFFFFF` / `#141311` | 6 | 1 | 4 |
+| axe: image-alt | Images must have alternative text | - | 7 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#9D4323` / `#F6F3F2` | 6 | 1 | 4 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#FFFFFF` / `#151313` | 6 | 1 | 4 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#FFFFFF` / `#131315` | 6 | 1 | 4 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#5E5E5E` / `#F5F3F1` | 6 | 1 | 4 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#174CEA` / `#F2F4F6` | 6 | 1 | 4 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#FFFFFF` / `#121315` | 6 | 1 | 4 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#FFFFFF` / `#151313` | 6 | 1 | 4 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#5E5E5E` / `#F5F3F1` | 6 | 1 | 4 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#BF002A` / `#F6F3F2` | 6 | 1 | 4 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#FFFFFF` / `#131315` | 6 | 1 | 4 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#6F3AD5` / `#F4F3F6` | 6 | 1 | 4 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#9D4323` / `#F6F3F2` | 6 | 1 | 4 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#FFFFFF` / `#141311` | 6 | 1 | 4 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#FFFFFF` / `#151312` | 6 | 1 | 4 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#6F3AD5` / `#F4F3F6` | 6 | 1 | 4 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#BF002A` / `#F6F3F2` | 6 | 1 | 4 |
 | axe: color-contrast | Elements must meet minimum color contrast ratio thresholds | - | 5 | 5 | 5 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#747372` / `#23211F` | 4 | 1 | 2 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#CC9F8F` / `#FCFBFB` | 4 | 1 | 2 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#926A68` / `#242121` | 4 | 1 | 2 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#766F92` / `#222123` | 4 | 1 | 2 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#ADADAC` / `#FCFCFB` | 4 | 1 | 2 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#89A4F2` / `#FBFCFC` | 4 | 1 | 2 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#667592` / `#212224` | 4 | 1 | 2 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#926A68` / `#242121` | 4 | 1 | 2 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#ADADAC` / `#FCFCFB` | 4 | 1 | 2 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#DD7D92` / `#FCFBFB` | 4 | 1 | 2 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#766F92` / `#222123` | 4 | 1 | 2 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#B69AE8` / `#FCFBFC` | 4 | 1 | 2 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#CC9F8F` / `#FCFBFB` | 4 | 1 | 2 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#747372` / `#23211F` | 4 | 1 | 2 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#926B5E` / `#232120` | 4 | 1 | 2 |
-| WCAG 2.4.7 (Foco) | contraste 1,4:1 (mínimo 3:1) | `#E7C8CC` / `#F2F4F6` | 4 | 3 | 4 |
-| WCAG 2.4.7 (Foco) | contraste 1,4:1 (mínimo 3:1) | `#E9C7C8` / `#F5F3F1` | 4 | 3 | 4 |
-| WCAG 2.4.7 (Foco) | contraste 1,41:1 (mínimo 3:1) | `#E8C7CC` / `#F4F3F6` | 4 | 3 | 4 |
-| WCAG 2.4.7 (Foco) | contraste 1,45:1 (mínimo 3:1) | `#5C1D1E` / `#141311` | 4 | 3 | 4 |
-| WCAG 2.4.7 (Foco) | contraste 1,45:1 (mínimo 3:1) | `#5B1D21` / `#121315` | 4 | 3 | 4 |
-| WCAG 2.4.7 (Foco) | contraste 1,45:1 (mínimo 3:1) | `#5B1D21` / `#131315` | 4 | 3 | 4 |
-| WCAG 2.4.7 (Foco) | contraste 1,46:1 (mínimo 3:1) | `#5D1D1F` / `#151313` | 4 | 3 | 4 |
-| WCAG 2.4.7 (Foco) | contraste 1,46:1 (mínimo 3:1) | `#5D1D1F` / `#151312` | 4 | 3 | 4 |
-| WCAG 2.4.7 (Foco) | contraste 2,22:1 (mínimo 3:1) | `#C99B8A` / `#F5F3F1` | 3 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,26:1 (mínimo 3:1) | `#B296E3` / `#F5F3F1` | 3 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,31:1 (mínimo 3:1) | `#869FED` / `#F5F3F1` | 3 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,67:1 (mínimo 3:1) | `#DA798D` / `#F5F3F1` | 3 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#174CEA` / `#ECEEF1` | 2 | 2 | 2 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#5E5E5E` / `#EFEEEB` | 2 | 2 | 2 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#9D4323` / `#F0EDEC` | 2 | 2 | 2 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#BF002A` / `#F1EDED` | 2 | 2 | 2 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#6F3AD5` / `#EEEDF0` | 2 | 2 | 2 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#B69AE8` / `#FCFBFC` | 4 | 1 | 2 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#DD7D92` / `#FCFBFB` | 4 | 1 | 2 |
+| WCAG 2.4.7 (Foco) | contraste 1,4:1 (mínimo 3:1) | `#EAC7C9` / `#F6F3F2` | 2 | 1 | 1 |
 | axe: aria-valid-attr-value | ARIA attributes must conform to valid values | - | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#737271` / `#201F1D` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#CEA191` / `#FFFFFF` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#916967` / `#221F1F` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#756E90` / `#201F21` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#AEAEAE` / `#FFFFFF` | 1 | 1 | 1 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#8BA5F4` / `#FFFFFF` | 1 | 1 | 1 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#657491` / `#1F2022` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#916967` / `#221F1F` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#AEAEAE` / `#FFFFFF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#DF7F94` / `#FFFFFF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#756E90` / `#201F21` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#B79CEA` / `#FFFFFF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#CEA191` / `#FFFFFF` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#737271` / `#201F1D` | 1 | 1 | 1 |
 | WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#906A5D` / `#211F1E` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,01:1 (mínimo 3:1) | `#A0A0A0` / `#E2E2E2` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,06:1 (mínimo 3:1) | `#A3A3A2` / `#EAE8E6` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,08:1 (mínimo 3:1) | `#C59466` / `#EEE4A8` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,11:1 (mínimo 3:1) | `#A8A7A6` / `#F2F0EE` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,12:1 (mínimo 3:1) | `#B789DE` / `#FFD8E8` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,14:1 (mínimo 3:1) | `#A6AAAE` / `#EFF6FF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,14:1 (mínimo 3:1) | `#A8A8A8` / `#F3F3F3` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,15:1 (mínimo 3:1) | `#C69684` / `#EFE9E6` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,18:1 (mínimo 3:1) | `#8A91F4` / `#FDD6FF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,18:1 (mínimo 3:1) | `#ABABAE` / `#F9F9FF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,18:1 (mínimo 3:1) | `#C89A89` / `#F2F0EE` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,21:1 (mínimo 3:1) | `#AF91E5` / `#EEEAF4` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,22:1 (mínimo 3:1) | `#CA9C8B` / `#F8F4F2` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,23:1 (mínimo 3:1) | `#B095E4` / `#F0F0F2` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,23:1 (mínimo 3:1) | `#C69D91` / `#EFF6FF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,26:1 (mínimo 3:1) | `#7F9BEF` / `#E7ECF5` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,26:1 (mínimo 3:1) | `#AF98EA` / `#EFF6FF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,26:1 (mínimo 3:1) | `#CB9E91` / `#F9F9FF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,27:1 (mínimo 3:1) | `#839EEE` / `#EEF0F3` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,27:1 (mínimo 3:1) | `#B497E9` / `#F8F5FD` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,3:1 (mínimo 3:1) | `#83A1F4` / `#EFF6FF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,3:1 (mínimo 3:1) | `#B499EA` / `#F9F9FF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,31:1 (mínimo 3:1) | `#85A1F3` / `#F3F6FE` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,34:1 (mínimo 3:1) | `#88A2F4` / `#F9F9FF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,44:1 (mínimo 3:1) | `#A371A9` / `#7D2452` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,45:1 (mínimo 3:1) | `#8E77BB` / `#702777` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,45:1 (mínimo 3:1) | `#DF6F66` / `#FFDEA3` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,55:1 (mínimo 3:1) | `#868686` / `#474747` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,55:1 (mínimo 3:1) | `#A87E52` / `#514709` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,57:1 (mínimo 3:1) | `#AE7B58` / `#5D4200` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,59:1 (mínimo 3:1) | `#DA7389` / `#F5E8E9` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,64:1 (mínimo 3:1) | `#D9788C` / `#F3F0EF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,67:1 (mínimo 3:1) | `#DE798F` / `#FEF3F5` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,69:1 (mínimo 3:1) | `#D77B94` / `#EFF6FF` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 2,72:1 (mínimo 3:1) | `#DC7C94` / `#F9F9FF` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#B79CEA` / `#FFFFFF` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contorno de 1px (mínimo 2px) | `#DF7F94` / `#FFFFFF` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contraste 1,4:1 (mínimo 3:1) | `#E9C7C8` / `#F5F3F1` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contraste 1,4:1 (mínimo 3:1) | `#E7C8CC` / `#F2F4F6` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contraste 1,41:1 (mínimo 3:1) | `#E8C7CC` / `#F4F3F6` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contraste 1,45:1 (mínimo 3:1) | `#5B1D21` / `#131315` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contraste 1,45:1 (mínimo 3:1) | `#5B1D21` / `#121315` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contraste 1,45:1 (mínimo 3:1) | `#5C1D1E` / `#141311` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contraste 1,46:1 (mínimo 3:1) | `#5D1D1F` / `#151313` | 1 | 1 | 1 |
+| WCAG 2.4.7 (Foco) | contraste 1,46:1 (mínimo 3:1) | `#5D1D1F` / `#151312` | 1 | 1 | 1 |
 
 ## Visão geral por componente
 
@@ -149,96 +90,96 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | atoms-avatar | passou | 0 | 0 |
 | atoms-badge | reprovou | 1 | 0 |
 | atoms-box | passou | 0 | 0 |
-| atoms-button | reprovou | 95 | 22 |
-| atoms-checkbox | reprovou | 20 | 3 |
-| atoms-chip | reprovou | 21 | 3 |
+| atoms-button | reprovou | 1 | 22 |
+| atoms-checkbox | passou (🟡) | 0 | 3 |
+| atoms-chip | reprovou | 1 | 3 |
 | atoms-file-uploader | reprovou | 50 | 0 |
 | atoms-icon | reprovou | 10 | 2 |
-| atoms-icon-button | reprovou | 73 | 12 |
-| atoms-input | reprovou | 40 | 10 |
+| atoms-icon-button | passou (🟡) | 0 | 12 |
+| atoms-input | passou (🟡) | 0 | 10 |
 | atoms-input-otp | reprovou | 8 | 4 |
-| atoms-item | reprovou | 80 | 14 |
-| atoms-kbd | reprovou | 25 | 10 |
-| atoms-label | reprovou | 5 | 1 |
-| atoms-link | reprovou | 40 | 6 |
+| atoms-item | reprovou | 5 | 14 |
+| atoms-kbd | passou (🟡) | 0 | 10 |
+| atoms-label | passou (🟡) | 0 | 1 |
+| atoms-link | passou (🟡) | 0 | 6 |
 | atoms-list | passou | 0 | 0 |
 | atoms-marker | passou | 0 | 0 |
-| atoms-multiselect | reprovou | 6 | 3 |
-| atoms-native-select | reprovou | 45 | 12 |
-| atoms-popover | reprovou | 5 | 2 |
+| atoms-multiselect | reprovou | 1 | 3 |
+| atoms-native-select | reprovou | 15 | 12 |
+| atoms-popover | passou (🟡) | 0 | 2 |
 | atoms-progress | reprovou | 1 | 0 |
-| atoms-radio-group | reprovou | 5 | 2 |
-| atoms-select | reprovou | 35 | 8 |
+| atoms-radio-group | passou (🟡) | 0 | 2 |
+| atoms-select | reprovou | 5 | 8 |
 | atoms-separator | passou | 0 | 0 |
 | atoms-skeleton | passou | 0 | 0 |
-| atoms-slider | reprovou | 6 | 0 |
-| atoms-spinner | reprovou | 16 | 5 |
-| atoms-switch | reprovou | 24 | 4 |
+| atoms-slider | reprovou | 1 | 0 |
+| atoms-spinner | reprovou | 1 | 5 |
+| atoms-switch | reprovou | 4 | 4 |
 | atoms-tag | passou | 0 | 0 |
 | atoms-text | passou | 0 | 0 |
-| atoms-textarea | reprovou | 35 | 1 |
+| atoms-textarea | passou (🟡) | 0 | 1 |
 | atoms-thumbnail | passou | 0 | 0 |
 | atoms-title | passou | 0 | 0 |
-| atoms-toggle | reprovou | 35 | 9 |
-| atoms-tooltip | reprovou | 5 | 2 |
-| atoms-treeselect | reprovou | 73 | 18 |
+| atoms-toggle | passou (🟡) | 0 | 9 |
+| atoms-tooltip | passou (🟡) | 0 | 2 |
+| atoms-treeselect | reprovou | 48 | 18 |
 | molecules-alert | passou | 0 | 0 |
-| molecules-attachment | reprovou | 5 | 1 |
+| molecules-attachment | passou (🟡) | 0 | 1 |
 | molecules-breadcrumb | reprovou | 140 | 14 |
-| molecules-button-group | reprovou | 186 | 59 |
-| molecules-collapsible | reprovou | 5 | 1 |
-| molecules-combobox | reprovou | 22 | 4 |
-| molecules-empty | reprovou | 50 | 12 |
-| molecules-field | reprovou | 127 | 25 |
-| molecules-hover-card | reprovou | 5 | 1 |
-| molecules-input-group | reprovou | 140 | 50 |
-| molecules-pagination | reprovou | 25 | 5 |
+| molecules-button-group | reprovou | 6 | 59 |
+| molecules-collapsible | passou (🟡) | 0 | 1 |
+| molecules-combobox | reprovou | 2 | 4 |
+| molecules-empty | reprovou | 10 | 12 |
+| molecules-field | reprovou | 12 | 25 |
+| molecules-hover-card | passou (🟡) | 0 | 1 |
+| molecules-input-group | reprovou | 5 | 50 |
+| molecules-pagination | passou (🟡) | 0 | 5 |
 | molecules-scroll-area | reprovou | 2 | 0 |
-| molecules-segmentedcontrol | reprovou | 20 | 24 |
-| molecules-sonner | reprovou | 35 | 14 |
-| molecules-splitbutton | reprovou | 60 | 11 |
-| molecules-toggle-group | reprovou | 35 | 27 |
-| organisms-accordion | reprovou | 45 | 0 |
-| organisms-alert-dialog | reprovou | 5 | 2 |
+| molecules-segmentedcontrol | passou (🟡) | 0 | 24 |
+| molecules-sonner | passou (🟡) | 0 | 14 |
+| molecules-splitbutton | passou (🟡) | 0 | 11 |
+| molecules-toggle-group | passou (🟡) | 0 | 27 |
+| organisms-accordion | passou | 0 | 0 |
+| organisms-alert-dialog | passou (🟡) | 0 | 2 |
 | organisms-bubble | passou | 0 | 0 |
-| organisms-calendar | reprovou | 40 | 37 |
-| organisms-card | reprovou | 50 | 15 |
-| organisms-carousel | reprovou | 30 | 6 |
+| organisms-calendar | reprovou | 20 | 37 |
+| organisms-card | reprovou | 10 | 15 |
+| organisms-carousel | passou (🟡) | 0 | 6 |
 | organisms-chart | reprovou | 5 | 0 |
 | organisms-command | reprovou | 2 | 12 |
 | organisms-context-menu | passou | 0 | 0 |
-| organisms-dialog | reprovou | 10 | 4 |
-| organisms-drawer | reprovou | 10 | 4 |
-| organisms-dropdown-menu | reprovou | 20 | 7 |
-| organisms-form | reprovou | 188 | 54 |
+| organisms-dialog | passou (🟡) | 0 | 4 |
+| organisms-drawer | passou (🟡) | 0 | 4 |
+| organisms-dropdown-menu | passou (🟡) | 0 | 7 |
+| organisms-form | reprovou | 3 | 54 |
 | organisms-menubar | reprovou | 1 | 4 |
 | organisms-message | passou | 0 | 0 |
-| organisms-navigation-menu | reprovou | 30 | 6 |
+| organisms-navigation-menu | passou (🟡) | 0 | 6 |
 | organisms-resizable | reprovou | 40 | 0 |
-| organisms-sheet | reprovou | 25 | 6 |
+| organisms-sheet | passou (🟡) | 0 | 6 |
 | organisms-sidebar | passou (🟡) | 0 | 3 |
-| organisms-stepper | reprovou | 25 | 1 |
+| organisms-stepper | passou (🟡) | 0 | 1 |
 | organisms-table | passou | 0 | 0 |
-| organisms-tabs | reprovou | 17 | 7 |
-| organisms-timepicker | reprovou | 20 | 4 |
-| patterns-confirmation-dialog | reprovou | 5 | 2 |
-| patterns-crud | reprovou | 25 | 5 |
-| patterns-delete-flow | reprovou | 10 | 2 |
-| patterns-empty-state | reprovou | 5 | 1 |
-| patterns-error-state | reprovou | 5 | 2 |
-| patterns-filter-panel | reprovou | 26 | 9 |
-| patterns-filters | reprovou | 5 | 2 |
+| organisms-tabs | reprovou | 2 | 7 |
+| organisms-timepicker | passou (🟡) | 0 | 4 |
+| patterns-confirmation-dialog | passou (🟡) | 0 | 2 |
+| patterns-crud | passou (🟡) | 0 | 5 |
+| patterns-delete-flow | passou (🟡) | 0 | 2 |
+| patterns-empty-state | passou (🟡) | 0 | 1 |
+| patterns-error-state | passou (🟡) | 0 | 2 |
+| patterns-filter-panel | reprovou | 1 | 9 |
+| patterns-filters | passou (🟡) | 0 | 2 |
 | patterns-infinite-scroll | passou (🟡) | 0 | 2 |
-| patterns-loading | reprovou | 5 | 2 |
-| patterns-multi-step-form | reprovou | 11 | 3 |
-| patterns-pagination | reprovou | 35 | 7 |
-| patterns-search-experience | reprovou | 5 | 2 |
-| patterns-skeleton | reprovou | 5 | 2 |
-| patterns-success-feedback | reprovou | 5 | 1 |
-| patterns-toast-strategy | reprovou | 25 | 10 |
+| patterns-loading | passou (🟡) | 0 | 2 |
+| patterns-multi-step-form | reprovou | 1 | 3 |
+| patterns-pagination | passou (🟡) | 0 | 7 |
+| patterns-search-experience | passou (🟡) | 0 | 2 |
+| patterns-skeleton | passou (🟡) | 0 | 2 |
+| patterns-success-feedback | passou (🟡) | 0 | 1 |
+| patterns-toast-strategy | passou (🟡) | 0 | 10 |
 | patterns-upload | reprovou | 22 | 0 |
-| testes-adaptação-à-tela | reprovou | 95 | 79 |
-| testes-raio-concêntrico | reprovou | 27 | 13 |
+| testes-adaptação-à-tela | reprovou | 90 | 79 |
+| testes-raio-concêntrico | reprovou | 2 | 13 |
 
 ## Detalhes por componente
 
@@ -253,122 +194,28 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | as-child | `a[data-slot=button] "Entrar"` | 70,2×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | as-child | `a[data-slot=button] "Entrar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | as-child | `a[data-slot=button] "Entrar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | as-child | `a[data-slot=button] "Entrar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | as-child | `a[data-slot=button] "Entrar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | as-child | `a[data-slot=button] "Entrar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Button"` | 75,2×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Button"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Button"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Button"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Button"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Button"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | destructive | `button[data-slot=button] "Button"` | 75,2×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=button] "Button"` | contraste 1,4:1 (mínimo 3:1) (#E7C8CC sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=button] "Button"` | contraste 1,4:1 (mínimo 3:1) (#E9C7C8 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=button] "Button"` | contraste 1,4:1 (mínimo 3:1) (#EAC7C9 sobre #F6F3F2) | editorial/claro, soft/claro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=button] "Button"` | contraste 1,41:1 (mínimo 3:1) (#E8C7CC sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=button] "Button"` | contraste 1,45:1 (mínimo 3:1) (#5B1D21 sobre #121315) | tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=button] "Button"` | contraste 1,45:1 (mínimo 3:1) (#5B1D21 sobre #131315) | midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=button] "Button"` | contraste 1,45:1 (mínimo 3:1) (#5C1D1E sobre #141311) | default/escuro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=button] "Button"` | contraste 1,46:1 (mínimo 3:1) (#5D1D1F sobre #151312) | editorial/escuro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=button] "Button"` | contraste 1,46:1 (mínimo 3:1) (#5D1D1F sobre #151313) | soft/escuro |
 | Regra da Casa (Alvo) | 🟡 | elevation-feedback | `button[data-slot=button] "Passe o mouse para ver o feedb"` | 254,1×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | elevation-feedback | `button[data-slot=button] "Passe o mouse para ver o feedb"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | elevation-feedback | `button[data-slot=button] "Passe o mouse para ver o feedb"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | elevation-feedback | `button[data-slot=button] "Passe o mouse para ver o feedb"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | elevation-feedback | `button[data-slot=button] "Passe o mouse para ver o feedb"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | elevation-feedback | `button[data-slot=button] "Passe o mouse para ver o feedb"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=button] "Botão"` | 71,5×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=button] "Botão"` | 73,5×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=button] "Enviar"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Botão"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Botão"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Botão"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Botão"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Botão"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Enviar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Enviar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Enviar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Enviar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Enviar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | ghost | `button[data-slot=button] "Button"` | 75,2×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | ghost | `button[data-slot=button] "Button"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | ghost | `button[data-slot=button] "Button"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | ghost | `button[data-slot=button] "Button"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | ghost | `button[data-slot=button] "Button"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | ghost | `button[data-slot=button] "Button"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | icon-and-label | `button[data-slot=button] "downloadBaixar"` | 86,9×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | icon-and-label | `button[data-slot=button] "downloadBaixar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | icon-and-label | `button[data-slot=button] "downloadBaixar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | icon-and-label | `button[data-slot=button] "downloadBaixar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | icon-and-label | `button[data-slot=button] "downloadBaixar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | icon-and-label | `button[data-slot=button] "downloadBaixar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | icon-only | `button[data-slot=button] "Excluir"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | icon-only | `button[data-slot=button] "Excluir"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | icon-only | `button[data-slot=button] "Excluir"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | icon-only | `button[data-slot=button] "Excluir"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | icon-only | `button[data-slot=button] "Excluir"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | icon-only | `button[data-slot=button] "Excluir"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | label-only | `button[data-slot=button] "Confirmar"` | 95,8×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | label-only | `button[data-slot=button] "Confirmar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | label-only | `button[data-slot=button] "Confirmar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | label-only | `button[data-slot=button] "Confirmar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | label-only | `button[data-slot=button] "Confirmar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | label-only | `button[data-slot=button] "Confirmar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | link | `button[data-slot=button] "Button"` | 75,2×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | link | `button[data-slot=button] "Button"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | link | `button[data-slot=button] "Button"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | link | `button[data-slot=button] "Button"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | link | `button[data-slot=button] "Button"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | link | `button[data-slot=button] "Button"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=button] "Button"` | 77,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=button] "Button"` | 79,2×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Button"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Button"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Button"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Button"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Button"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | rounded | `.inline-flex` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | rounded | `button[data-slot=button] "arrow_upward"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | rounded | `button[data-slot=button] "arrow_upward"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | rounded | `button[data-slot=button] "arrow_upward"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | rounded | `button[data-slot=button] "arrow_upward"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | rounded | `button[data-slot=button] "arrow_upward"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | rounded | `button[data-slot=button] "arrow_upward"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | secondary | `button[data-slot=button] "Button"` | 75,2×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=button] "Button"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=button] "Button"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=button] "Button"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=button] "Button"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=button] "Button"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | size-showcase | `button[data-slot=button] "Enviar"` | 32×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | size-showcase | `button[data-slot=button] "Enviar"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | size-showcase | `button[data-slot=button] "Padrão"` | 78,4×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | size-showcase | `button[data-slot=button] "Padrão"` | 80,4×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | size-showcase | `button[data-slot=button] "Pequeno"` | 81,7×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | size-showcase | `button[data-slot=button] "Pequeno"` | 83,7×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Enviar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Enviar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Enviar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Enviar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Enviar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Grande"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Grande"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Grande"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Grande"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Grande"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Padrão"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Padrão"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Padrão"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Padrão"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Padrão"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Pequeno"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Pequeno"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Pequeno"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Pequeno"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Pequeno"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-checkbox
 
@@ -376,27 +223,7 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=checkbox][role=checkbox]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=checkbox][role=checkbox] "check"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,14:1 (mínimo 3:1) (#A6AAAE sobre #EFF6FF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,23:1 (mínimo 3:1) (#C69D91 sobre #EFF6FF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,26:1 (mínimo 3:1) (#AF98EA sobre #EFF6FF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,3:1 (mínimo 3:1) (#83A1F4 sobre #EFF6FF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,69:1 (mínimo 3:1) (#D77B94 sobre #EFF6FF) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-text | `button[data-slot=checkbox][role=checkbox]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | with-text | `button[data-slot=checkbox][role=checkbox]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `button[data-slot=checkbox][role=checkbox]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `button[data-slot=checkbox][role=checkbox]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `button[data-slot=checkbox][role=checkbox]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `button[data-slot=checkbox][role=checkbox]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-chip
 
@@ -404,28 +231,8 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | axe: color-contrast | séria | disabled | `.min-h-6` | Elements must meet minimum color contrast ratio thresholds | default/claro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=button] "Remover"` | 24×24 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Remover"` | contraste 2,1:1 (mínimo 3:1) (#A6A6A4 sobre #EFEEEB) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Remover"` | contraste 2,18:1 (mínimo 3:1) (#ABABAE sobre #F9F9FF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Remover"` | contraste 2,18:1 (mínimo 3:1) (#C69888 sobre #F0EDEC) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Remover"` | contraste 2,22:1 (mínimo 3:1) (#AF93E2 sobre #EEEDF0) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Remover"` | contraste 2,25:1 (mínimo 3:1) (#829DED sobre #ECEEF1) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Remover"` | contraste 2,26:1 (mínimo 3:1) (#CB9E91 sobre #F9F9FF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Remover"` | contraste 2,3:1 (mínimo 3:1) (#B499EA sobre #F9F9FF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Remover"` | contraste 2,34:1 (mínimo 3:1) (#88A2F4 sobre #F9F9FF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Remover"` | contraste 2,62:1 (mínimo 3:1) (#D8768B sobre #F1EDED) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Remover"` | contraste 2,72:1 (mínimo 3:1) (#DC7C94 sobre #F9F9FF) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | removable | `button[data-slot=button] "Remover"` | 24×24 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | removable | `button[data-slot=button] "Remover"` | contraste 2,1:1 (mínimo 3:1) (#A6A6A4 sobre #EFEEEB) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | removable | `button[data-slot=button] "Remover"` | contraste 2,18:1 (mínimo 3:1) (#C69888 sobre #F0EDEC) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | removable | `button[data-slot=button] "Remover"` | contraste 2,22:1 (mínimo 3:1) (#AF93E2 sobre #EEEDF0) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | removable | `button[data-slot=button] "Remover"` | contraste 2,25:1 (mínimo 3:1) (#829DED sobre #ECEEF1) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | removable | `button[data-slot=button] "Remover"` | contraste 2,62:1 (mínimo 3:1) (#D8768B sobre #F1EDED) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-icon | `button[data-slot=button] "Remover"` | 24×24 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | with-icon | `button[data-slot=button] "Remover"` | contraste 2,1:1 (mínimo 3:1) (#A6A6A4 sobre #EFEEEB) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-icon | `button[data-slot=button] "Remover"` | contraste 2,18:1 (mínimo 3:1) (#C69888 sobre #F0EDEC) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-icon | `button[data-slot=button] "Remover"` | contraste 2,22:1 (mínimo 3:1) (#AF93E2 sobre #EEEDF0) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-icon | `button[data-slot=button] "Remover"` | contraste 2,25:1 (mínimo 3:1) (#829DED sobre #ECEEF1) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-icon | `button[data-slot=button] "Remover"` | contraste 2,62:1 (mínimo 3:1) (#D8768B sobre #F1EDED) | soft/claro |
 
 ### atoms-file-uploader
 
@@ -504,145 +311,32 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=icon-button] "Favoritar"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=icon-button] "Favoritar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=icon-button] "Favoritar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=icon-button] "Favoritar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=icon-button] "Favoritar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=icon-button] "Favoritar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | destructive | `button[data-slot=icon-button] "Excluir"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=icon-button] "Excluir"` | contraste 1,4:1 (mínimo 3:1) (#E7C8CC sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=icon-button] "Excluir"` | contraste 1,4:1 (mínimo 3:1) (#E9C7C8 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=icon-button] "Excluir"` | contraste 1,4:1 (mínimo 3:1) (#EAC7C9 sobre #F6F3F2) | editorial/claro, soft/claro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=icon-button] "Excluir"` | contraste 1,41:1 (mínimo 3:1) (#E8C7CC sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=icon-button] "Excluir"` | contraste 1,45:1 (mínimo 3:1) (#5B1D21 sobre #121315) | tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=icon-button] "Excluir"` | contraste 1,45:1 (mínimo 3:1) (#5B1D21 sobre #131315) | midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=icon-button] "Excluir"` | contraste 1,45:1 (mínimo 3:1) (#5C1D1E sobre #141311) | default/escuro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=icon-button] "Excluir"` | contraste 1,46:1 (mínimo 3:1) (#5D1D1F sobre #151312) | editorial/escuro |
-| WCAG 2.4.7 (Foco) | séria | destructive | `button[data-slot=icon-button] "Excluir"` | contraste 1,46:1 (mínimo 3:1) (#5D1D1F sobre #151313) | soft/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=icon-button] "Baixar"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=icon-button] "Excluir"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=icon-button] "Favoritar"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=icon-button] "Fechar"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=icon-button] "Mais opções"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Baixar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Baixar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Baixar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Baixar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Baixar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Excluir"` | contraste 1,4:1 (mínimo 3:1) (#E7C8CC sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Excluir"` | contraste 1,4:1 (mínimo 3:1) (#E9C7C8 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Excluir"` | contraste 1,4:1 (mínimo 3:1) (#EAC7C9 sobre #F6F3F2) | editorial/claro, soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Excluir"` | contraste 1,41:1 (mínimo 3:1) (#E8C7CC sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Excluir"` | contraste 1,45:1 (mínimo 3:1) (#5B1D21 sobre #121315) | tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Excluir"` | contraste 1,45:1 (mínimo 3:1) (#5B1D21 sobre #131315) | midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Excluir"` | contraste 1,45:1 (mínimo 3:1) (#5C1D1E sobre #141311) | default/escuro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Excluir"` | contraste 1,46:1 (mínimo 3:1) (#5D1D1F sobre #151312) | editorial/escuro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Excluir"` | contraste 1,46:1 (mínimo 3:1) (#5D1D1F sobre #151313) | soft/escuro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Favoritar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Favoritar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Favoritar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Favoritar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Favoritar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Fechar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Fechar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Fechar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Fechar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Fechar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Mais opções"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Mais opções"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Mais opções"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Mais opções"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=icon-button] "Mais opções"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | ghost | `button[data-slot=icon-button] "Favoritar"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | ghost | `button[data-slot=icon-button] "Favoritar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | ghost | `button[data-slot=icon-button] "Favoritar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | ghost | `button[data-slot=icon-button] "Favoritar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | ghost | `button[data-slot=icon-button] "Favoritar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | ghost | `button[data-slot=icon-button] "Favoritar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=icon-button] "Favoritar"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=icon-button] "Favoritar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=icon-button] "Favoritar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=icon-button] "Favoritar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=icon-button] "Favoritar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=icon-button] "Favoritar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | secondary | `button[data-slot=icon-button] "Favoritar"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=icon-button] "Favoritar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=icon-button] "Favoritar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=icon-button] "Favoritar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=icon-button] "Favoritar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=icon-button] "Favoritar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | size-lg | `button[data-slot=icon-button] "Favoritar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size-lg | `button[data-slot=icon-button] "Favoritar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size-lg | `button[data-slot=icon-button] "Favoritar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size-lg | `button[data-slot=icon-button] "Favoritar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size-lg | `button[data-slot=icon-button] "Favoritar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | size-sm | `button[data-slot=icon-button] "Favoritar"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | size-sm | `button[data-slot=icon-button] "Favoritar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size-sm | `button[data-slot=icon-button] "Favoritar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size-sm | `button[data-slot=icon-button] "Favoritar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size-sm | `button[data-slot=icon-button] "Favoritar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size-sm | `button[data-slot=icon-button] "Favoritar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | size-xs | `button[data-slot=icon-button] "Favoritar"` | 24×24 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | size-xs | `button[data-slot=icon-button] "Favoritar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size-xs | `button[data-slot=icon-button] "Favoritar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size-xs | `button[data-slot=icon-button] "Favoritar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size-xs | `button[data-slot=icon-button] "Favoritar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size-xs | `button[data-slot=icon-button] "Favoritar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-input
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 1200×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | file | `input[data-slot=input]` | 384×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | file | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | file | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | file | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | file | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | file | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | fixed-label | `input[data-slot=input]` | 384×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | floating-label | `input[data-slot=input]` | 384×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-button | `button[data-slot=button] "Inscrever-se"` | 109,3×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-button | `button[data-slot=button] "Inscrever-se"` | 111,3×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-button | `input[data-slot=input]` | 264,7×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-button | `input[data-slot=input]` | 266,7×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Inscrever-se"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Inscrever-se"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Inscrever-se"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Inscrever-se"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Inscrever-se"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-label | `input[data-slot=input]` | 384×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | with-label | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-label | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-label | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-label | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-label | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-text | `input[data-slot=input]` | 384×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | with-text | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-input-otp
 
@@ -667,98 +361,23 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=button] "Ação"` | 57,7×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=button] "Ação"` | 59,7×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=item] "verifiedSeu perfil foi verific"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=item] "verifiedSeu perfil foi verific"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=item] "verifiedSeu perfil foi verific"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=item] "verifiedSeu perfil foi verific"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=item] "verifiedSeu perfil foi verific"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Ação"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Ação"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Ação"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Ação"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Ação"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: aria-required-children | crítica | group | `.group\/item-group` | Certain ARIA roles must contain particular children | todos |
 | axe: button-name | crítica | group | `.group\/item.flex-wrap.rounded-md:nth-child(1) > .gap-2.items-center[data-slot="item-actions"] > .inline-flex.whitespace-nowrap.transition-all .group\/item.flex-wrap.rounded-md:nth-child(3) > .gap-2.items-center[data-slot="item-actions"] > .inline-flex.whitespace-nowrap.transition-all .group\/item.flex-wrap.rounded-md:nth-child(5) > .gap-2.items-center[data-slot="item-actions"] > .inline-flex.whitespace-nowrap.transition-all` | Buttons must have discernible text | todos |
-| axe: image-alt | crítica | group | `img[src$="shadcn.png"] .group\/item.flex-wrap.rounded-md:nth-child(3) > .group-has-\[\[data-slot\=item-description\]\]\/item\:translate-y-0\.5.group-has-\[\[data-slot\=item-description\]\]\/item\:self-start[data-slot="item-media"] > .group\/avatar.relative.size-8 > img .group\/item.flex-wrap.rounded-md:nth-child(5) > .group-has-\[\[data-slot\=item-description\]\]\/item\:translate-y-0\.5.group-has-\[\[data-slot\=item-description\]\]\/item\:self-start[data-slot="item-media"] > .group\/avatar.relative.size-8 > img` | Images must have alternative text | default/escuro, editorial/claro, editorial/escuro, tech/claro, tech/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| axe: image-alt | crítica | group | `img[src$="shadcn.png"] .group\/item.flex-wrap.rounded-md:nth-child(3) > .group-has-\[\[data-slot\=item-description\]\]\/item\:translate-y-0\.5.group-has-\[\[data-slot\=item-description\]\]\/item\:self-start[data-slot="item-media"] > .group\/avatar.relative.size-8 > img .group\/item.flex-wrap.rounded-md:nth-child(5) > .group-has-\[\[data-slot\=item-description\]\]\/item\:translate-y-0\.5.group-has-\[\[data-slot\=item-description\]\]\/item\:self-start[data-slot="item-media"] > .group\/avatar.relative.size-8 > img` | Images must have alternative text | editorial/claro, editorial/escuro, tech/claro, tech/escuro, soft/claro, soft/escuro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | group | `button[data-slot=button] "add"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | group | `button[data-slot=button] "add"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | group | `button[data-slot=button] "add"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | group | `button[data-slot=button] "add"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | group | `button[data-slot=button] "add"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | group | `button[data-slot=button] "add"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | size-showcase | `button[data-slot=button] "Ação"` | 57,7×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | size-showcase | `button[data-slot=button] "Ação"` | 59,7×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `a[data-slot=item] "verifiedSeu perfil foi verific"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `a[data-slot=item] "verifiedSeu perfil foi verific"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `a[data-slot=item] "verifiedSeu perfil foi verific"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `a[data-slot=item] "verifiedSeu perfil foi verific"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `a[data-slot=item] "verifiedSeu perfil foi verific"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Ação"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Ação"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Ação"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Ação"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size-showcase | `button[data-slot=button] "Ação"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | variant-showcase | `button[data-slot=button] "Abrir"` | 57,9×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | variant-showcase | `button[data-slot=button] "Abrir"` | 59,9×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | variant-showcase | `button[data-slot=button] "Abrir"` | contraste 2,11:1 (mínimo 3:1) (#A8A7A6 sobre #F2F0EE) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | variant-showcase | `button[data-slot=button] "Abrir"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | variant-showcase | `button[data-slot=button] "Abrir"` | contraste 2,18:1 (mínimo 3:1) (#C89A89 sobre #F2F0EE) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | variant-showcase | `button[data-slot=button] "Abrir"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | variant-showcase | `button[data-slot=button] "Abrir"` | contraste 2,23:1 (mínimo 3:1) (#B095E4 sobre #F0F0F2) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | variant-showcase | `button[data-slot=button] "Abrir"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | variant-showcase | `button[data-slot=button] "Abrir"` | contraste 2,27:1 (mínimo 3:1) (#839EEE sobre #EEF0F3) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | variant-showcase | `button[data-slot=button] "Abrir"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | variant-showcase | `button[data-slot=button] "Abrir"` | contraste 2,64:1 (mínimo 3:1) (#D9788C sobre #F3F0EF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | variant-showcase | `button[data-slot=button] "Abrir"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-avatar | `button[data-slot=button] "Convidar"` | 32×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | with-avatar | `button[data-slot=button] "Convidar"` | 82,9×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-avatar | `button[data-slot=button] "Convidar"` | 84,9×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar | `button[data-slot=button] "Convidar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar | `button[data-slot=button] "Convidar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar | `button[data-slot=button] "Convidar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar | `button[data-slot=button] "Convidar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar | `button[data-slot=button] "Convidar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-dropdown | `button[data-slot=dropdown-menu-trigger] "Selecionar keyboard_arrow_down"` | 109,4×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-dropdown | `button[data-slot=dropdown-menu-trigger] "Selecionar keyboard_arrow_down"` | 111,4×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-dropdown | `button[data-slot=dropdown-menu-trigger] "Selecionar keyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-dropdown | `button[data-slot=dropdown-menu-trigger] "Selecionar keyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-dropdown | `button[data-slot=dropdown-menu-trigger] "Selecionar keyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-dropdown | `button[data-slot=dropdown-menu-trigger] "Selecionar keyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-dropdown | `button[data-slot=dropdown-menu-trigger] "Selecionar keyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: aria-required-children | crítica | with-header | `.group\/item-group` | Certain ARIA roles must contain particular children | todos |
 | Regra da Casa (Alvo) | 🟡 | with-icon | `button[data-slot=button] "Revisar"` | 71,1×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-icon | `button[data-slot=button] "Revisar"` | 73,1×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-icon | `button[data-slot=button] "Revisar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-icon | `button[data-slot=button] "Revisar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-icon | `button[data-slot=button] "Revisar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-icon | `button[data-slot=button] "Revisar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-icon | `button[data-slot=button] "Revisar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: aria-allowed-role | leve | with-image | `.group\/item.flex-wrap.rounded-md:nth-child(1) .group\/item.flex-wrap.rounded-md:nth-child(2) .group\/item.flex-wrap.rounded-md:nth-child(3)` | ARIA role should be appropriate for the element | todos |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Chuva Digital - Batidas Binári"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Chuva Digital - Batidas Binári"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Chuva Digital - Batidas Binári"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Chuva Digital - Batidas Binári"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Chuva Digital - Batidas Binári"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Conversas na Cafeteria - Histó"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Conversas na Cafeteria - Histó"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Conversas na Cafeteria - Histó"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Conversas na Cafeteria - Histó"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Conversas na Cafeteria - Histó"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Luzes da Cidade à Meia-noite -"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Luzes da Cidade à Meia-noite -"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Luzes da Cidade à Meia-noite -"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Luzes da Cidade à Meia-noite -"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-image | `a[data-slot=item][role=listitem] "Luzes da Cidade à Meia-noite -"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-link | `a[data-slot=item] "Recurso externoAbre em uma nov"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-link | `a[data-slot=item] "Recurso externoAbre em uma nov"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-link | `a[data-slot=item] "Recurso externoAbre em uma nov"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-link | `a[data-slot=item] "Recurso externoAbre em uma nov"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-link | `a[data-slot=item] "Recurso externoAbre em uma nov"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-link | `a[data-slot=item] "Visite nossa documentaçãoSaiba"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-link | `a[data-slot=item] "Visite nossa documentaçãoSaiba"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-link | `a[data-slot=item] "Visite nossa documentaçãoSaiba"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-link | `a[data-slot=item] "Visite nossa documentaçãoSaiba"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-link | `a[data-slot=item] "Visite nossa documentaçãoSaiba"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-kbd
 
@@ -768,99 +387,29 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | with-button | `button[data-slot=button] "Aceitar ⏎"` | 94,6×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-button | `button[data-slot=button] "Cancelar Esc"` | 107,4×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-button | `button[data-slot=button] "Cancelar Esc"` | 109,4×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Aceitar ⏎"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Aceitar ⏎"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Aceitar ⏎"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Aceitar ⏎"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Aceitar ⏎"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Cancelar Esc"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Cancelar Esc"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Cancelar Esc"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Cancelar Esc"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Cancelar Esc"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-input-group | `input[data-slot=input-group-control]` | 233,6×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-input-group | `input[data-slot=input-group-control]` | 235,6×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-tooltip | `button[data-slot=tooltip-trigger] "Imprimir"` | 80×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-tooltip | `button[data-slot=tooltip-trigger] "Imprimir"` | 81×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-tooltip | `button[data-slot=tooltip-trigger] "Salvar"` | 64×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-tooltip | `button[data-slot=tooltip-trigger] "Salvar"` | 66×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-tooltip | `button[data-slot=tooltip-trigger] "Imprimir"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-tooltip | `button[data-slot=tooltip-trigger] "Imprimir"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-tooltip | `button[data-slot=tooltip-trigger] "Imprimir"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-tooltip | `button[data-slot=tooltip-trigger] "Imprimir"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-tooltip | `button[data-slot=tooltip-trigger] "Imprimir"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-tooltip | `button[data-slot=tooltip-trigger] "Salvar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-tooltip | `button[data-slot=tooltip-trigger] "Salvar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-tooltip | `button[data-slot=tooltip-trigger] "Salvar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-tooltip | `button[data-slot=tooltip-trigger] "Salvar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-tooltip | `button[data-slot=tooltip-trigger] "Salvar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-label
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=checkbox][role=checkbox]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-link
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `a[data-slot=link] "Saiba mais"` | 99,4×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=link] "Saiba mais"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=link] "Saiba mais"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=link] "Saiba mais"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=link] "Saiba mais"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=link] "Saiba mais"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | examples | `a[data-slot=link] "Link externoopen_in_new"` | 126,5×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `a[data-slot=link] "Link padrão"` | 106,7×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `a[data-slot=link] "Link pequeno"` | 110,3×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link externoopen_in_new"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link externoopen_in_new"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link externoopen_in_new"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link externoopen_in_new"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link externoopen_in_new"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link grande"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link grande"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link grande"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link grande"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link grande"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link padrão"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link padrão"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link padrão"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link padrão"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link padrão"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link pequeno"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link pequeno"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link pequeno"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link pequeno"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `a[data-slot=link] "Link pequeno"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | external | `a[data-slot=link] "Saiba maisopen_in_new"` | 115,4×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | external | `a[data-slot=link] "Saiba maisopen_in_new"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | external | `a[data-slot=link] "Saiba maisopen_in_new"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | external | `a[data-slot=link] "Saiba maisopen_in_new"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | external | `a[data-slot=link] "Saiba maisopen_in_new"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | external | `a[data-slot=link] "Saiba maisopen_in_new"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `a[data-slot=link] "Saiba mais"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `a[data-slot=link] "Saiba mais"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `a[data-slot=link] "Saiba mais"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `a[data-slot=link] "Saiba mais"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `a[data-slot=link] "Saiba mais"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | small | `a[data-slot=link] "Saiba mais"` | 91,4×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | small | `a[data-slot=link] "Saiba mais"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `a[data-slot=link] "Saiba mais"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `a[data-slot=link] "Saiba mais"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `a[data-slot=link] "Saiba mais"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `a[data-slot=link] "Saiba mais"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-multiselect
 
@@ -870,11 +419,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=combobox-chip-remove] "close"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=combobox-chip-input][role=combobox] "Ramos de seguro"` | 1061,2×20 (exceção de espaçamento, < 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=combobox-chip-input][role=combobox] "Ramos de seguro"` | 1063,2×20 (exceção de espaçamento, < 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=combobox-chip-input][role=combobox] "Ramos de seguro"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=combobox-chip-input][role=combobox] "Ramos de seguro"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=combobox-chip-input][role=combobox] "Ramos de seguro"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=combobox-chip-input][role=combobox] "Ramos de seguro"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=combobox-chip-input][role=combobox] "Ramos de seguro"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-native-select
 
@@ -883,40 +427,15 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | axe: select-name | crítica | default | `select` | Select element must have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `select[data-slot=native-select] "Opção 1Opção 2"` | 102×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `select[data-slot=native-select] "Opção 1Opção 2"` | 104×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `select[data-slot=native-select] "Opção 1Opção 2"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `select[data-slot=native-select] "Opção 1Opção 2"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `select[data-slot=native-select] "Opção 1Opção 2"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `select[data-slot=native-select] "Opção 1Opção 2"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `select[data-slot=native-select] "Opção 1Opção 2"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: select-name | crítica | disabled | `select` | Select element must have an accessible name | todos |
 | axe: select-name | crítica | examples | `select` | Select element must have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `select[data-slot=native-select] "Selecionar statusA fazerEm and"` | 154×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `select[data-slot=native-select] "Selecionar statusA fazerEm and"` | 156×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | examples | `select[data-slot=native-select] "Selecionar statusA fazerEm and"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `select[data-slot=native-select] "Selecionar statusA fazerEm and"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `select[data-slot=native-select] "Selecionar statusA fazerEm and"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `select[data-slot=native-select] "Selecionar statusA fazerEm and"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `select[data-slot=native-select] "Selecionar statusA fazerEm and"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | fixed-label | `select[data-slot=native-select] "BrasilPortugal"` | 224×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `select[data-slot=native-select] "BrasilPortugal"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `select[data-slot=native-select] "BrasilPortugal"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `select[data-slot=native-select] "BrasilPortugal"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `select[data-slot=native-select] "BrasilPortugal"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `select[data-slot=native-select] "BrasilPortugal"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | floating-label | `select[data-slot=native-select] "SelecioneBrasilPortugal"` | 224×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `select[data-slot=native-select] "SelecioneBrasilPortugal"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `select[data-slot=native-select] "SelecioneBrasilPortugal"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `select[data-slot=native-select] "SelecioneBrasilPortugal"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `select[data-slot=native-select] "SelecioneBrasilPortugal"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `select[data-slot=native-select] "SelecioneBrasilPortugal"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: select-name | crítica | groups | `select` | Select element must have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | groups | `select[data-slot=native-select] "Selecionar departamentoFronten"` | 221×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | groups | `select[data-slot=native-select] "Selecionar departamentoFronten"` | 223×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | groups | `select[data-slot=native-select] "Selecionar departamentoFronten"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | groups | `select[data-slot=native-select] "Selecionar departamentoFronten"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | groups | `select[data-slot=native-select] "Selecionar departamentoFronten"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | groups | `select[data-slot=native-select] "Selecionar departamentoFronten"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | groups | `select[data-slot=native-select] "Selecionar departamentoFronten"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: select-name | crítica | invalid | `select` | Select element must have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | 160×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | 162×36 (< 44×44) | tech/claro, tech/escuro |
@@ -932,11 +451,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | axe: select-name | crítica | small | `select` | Select element must have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | small | `select[data-slot=native-select] "Opção 1Opção 2"` | 102×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | small | `select[data-slot=native-select] "Opção 1Opção 2"` | 104×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | small | `select[data-slot=native-select] "Opção 1Opção 2"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `select[data-slot=native-select] "Opção 1Opção 2"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `select[data-slot=native-select] "Opção 1Opção 2"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `select[data-slot=native-select] "Opção 1Opção 2"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `select[data-slot=native-select] "Opção 1Opção 2"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-popover
 
@@ -944,11 +458,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "Abrir popover"` | 122,9×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "Abrir popover"` | 124,9×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "Abrir popover"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "Abrir popover"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "Abrir popover"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "Abrir popover"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "Abrir popover"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-progress
 
@@ -962,11 +471,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=radio-group-item][role=radio]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=radio-group-item][role=radio] "circle"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-select
 
@@ -975,57 +479,22 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | axe: button-name | crítica | default | `.flex` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | 108,8×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | 110,8×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | disabled | `.flex` | Buttons must have discernible text | todos |
 | axe: button-name | crítica | examples | `.flex` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=select-trigger][role=combobox] "Selecione uma frutakeyboard_ar"` | 180×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=select-trigger][role=combobox] "Selecione uma frutakeyboard_ar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=select-trigger][role=combobox] "Selecione uma frutakeyboard_ar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=select-trigger][role=combobox] "Selecione uma frutakeyboard_ar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=select-trigger][role=combobox] "Selecione uma frutakeyboard_ar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=select-trigger][role=combobox] "Selecione uma frutakeyboard_ar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | fixed-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | 224×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | floating-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | 224×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `button[data-slot=select-trigger][role=combobox] "Selecione um planokeyboard_arr"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | scrollable | `.flex` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | scrollable | `button[data-slot=select-trigger][role=combobox] "Selecione um fuso horáriokeybo"` | 280×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | scrollable | `button[data-slot=select-trigger][role=combobox] "Selecione um fuso horáriokeybo"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | scrollable | `button[data-slot=select-trigger][role=combobox] "Selecione um fuso horáriokeybo"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | scrollable | `button[data-slot=select-trigger][role=combobox] "Selecione um fuso horáriokeybo"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | scrollable | `button[data-slot=select-trigger][role=combobox] "Selecione um fuso horáriokeybo"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | scrollable | `button[data-slot=select-trigger][role=combobox] "Selecione um fuso horáriokeybo"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | small | `.flex` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | 108,8×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | 110,8×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-slider
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | axe: aria-input-field-name | séria | default | `.block` | ARIA input fields must have an accessible name | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `span[data-slot=slider-thumb][role=slider]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `span[data-slot=slider-thumb][role=slider]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `span[data-slot=slider-thumb][role=slider]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `span[data-slot=slider-thumb][role=slider]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `span[data-slot=slider-thumb][role=slider]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-spinner
 
@@ -1033,25 +502,10 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | empty | `button[data-slot=button] "Cancelar"` | 80,3×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | empty | `button[data-slot=button] "Cancelar"` | 82,3×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | empty | `button[data-slot=button] "Cancelar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | empty | `button[data-slot=button] "Cancelar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | empty | `button[data-slot=button] "Cancelar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | empty | `button[data-slot=button] "Cancelar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | empty | `button[data-slot=button] "Cancelar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | input-group | `button[data-slot=button] "arrow_upwardEnviar"` | 30×24 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | input-group | `button[data-slot=button] "arrow_upwardEnviar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | input-group | `button[data-slot=button] "arrow_upwardEnviar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | input-group | `button[data-slot=button] "arrow_upwardEnviar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | input-group | `button[data-slot=button] "arrow_upwardEnviar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | input-group | `button[data-slot=button] "arrow_upwardEnviar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: aria-progressbar-name | séria | item | `.relative` | ARIA progressbar nodes must have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | item | `button[data-slot=button] "Cancelar"` | 80,3×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | item | `button[data-slot=button] "Cancelar"` | 82,3×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | item | `button[data-slot=button] "Cancelar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | item | `button[data-slot=button] "Cancelar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | item | `button[data-slot=button] "Cancelar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | item | `button[data-slot=button] "Cancelar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | item | `button[data-slot=button] "Cancelar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-switch
 
@@ -1059,122 +513,32 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | axe: button-name | crítica | checked | `.peer` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | checked | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | checked | `button[data-slot=switch][role=switch]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | checked | `button[data-slot=switch][role=switch]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | checked | `button[data-slot=switch][role=switch]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | checked | `button[data-slot=switch][role=switch]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | checked | `button[data-slot=switch][role=switch]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | default | `.peer` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=switch][role=switch]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=switch][role=switch]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=switch][role=switch]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=switch][role=switch]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=switch][role=switch]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | disabled | `.peer` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=switch][role=switch]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=switch][role=switch]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=switch][role=switch]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=switch][role=switch]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=switch][role=switch]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | small | `.peer` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=switch][role=switch]` | 24×14 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=switch][role=switch]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=switch][role=switch]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=switch][role=switch]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=switch][role=switch]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=switch][role=switch]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-textarea
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=textarea]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=textarea]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=textarea]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=textarea]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=textarea]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `textarea[data-slot=textarea]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `textarea[data-slot=textarea]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `textarea[data-slot=textarea]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `textarea[data-slot=textarea]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | fixed-label | `textarea[data-slot=textarea]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `textarea[data-slot=textarea]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `textarea[data-slot=textarea]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `textarea[data-slot=textarea]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `textarea[data-slot=textarea]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | floating-label | `textarea[data-slot=textarea]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-button | `button[data-slot=button] "Enviar mensagem"` | 1200×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Enviar mensagem"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Enviar mensagem"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Enviar mensagem"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Enviar mensagem"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `button[data-slot=button] "Enviar mensagem"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `textarea[data-slot=textarea]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `textarea[data-slot=textarea]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `textarea[data-slot=textarea]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `textarea[data-slot=textarea]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-button | `textarea[data-slot=textarea]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-label | `textarea[data-slot=textarea]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-label | `textarea[data-slot=textarea]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-label | `textarea[data-slot=textarea]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-label | `textarea[data-slot=textarea]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-label | `textarea[data-slot=textarea]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `textarea[data-slot=textarea]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `textarea[data-slot=textarea]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `textarea[data-slot=textarea]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `textarea[data-slot=textarea]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `textarea[data-slot=textarea]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-toggle
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=toggle] "Aa"` | 36×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=toggle] "Aa"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=toggle] "Aa"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=toggle] "Aa"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=toggle] "Aa"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=toggle] "Aa"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=toggle] "Alternar favorito"` | 87,6×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=toggle] "Alternar favorito"` | 89,6×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=toggle] "Alternar favorito"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=toggle] "Alternar favorito"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=toggle] "Alternar favorito"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=toggle] "Alternar favorito"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=toggle] "Alternar favorito"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | large | `button[data-slot=toggle] "Alternar itálico"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=toggle] "Aa"` | 36,2×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=toggle] "Aa"` | 36×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=toggle] "Aa"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=toggle] "Aa"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=toggle] "Aa"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=toggle] "Aa"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=toggle] "Aa"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | pressed | `button[data-slot=toggle] "Aa"` | 36×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | pressed | `button[data-slot=toggle] "Aa"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | pressed | `button[data-slot=toggle] "Aa"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | pressed | `button[data-slot=toggle] "Aa"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | pressed | `button[data-slot=toggle] "Aa"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | pressed | `button[data-slot=toggle] "Aa"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=toggle] "Alternar itálico"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-text | `button[data-slot=toggle] "Alternar itálico"` | 77×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | with-text | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-text | `button[data-slot=toggle] "Alternar itálico"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-tooltip
 
@@ -1182,11 +546,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=tooltip-trigger] "Passe o mouse"` | 127,1×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=tooltip-trigger] "Passe o mouse"` | 129,1×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tooltip-trigger] "Passe o mouse"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tooltip-trigger] "Passe o mouse"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tooltip-trigger] "Passe o mouse"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tooltip-trigger] "Passe o mouse"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tooltip-trigger] "Passe o mouse"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### atoms-treeselect
 
@@ -1219,21 +578,11 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | WCAG 2.4.7 (Foco) | séria | checkable | `button "Todos"` | contorno de 1px (mínimo 2px) (#B69AE8 sobre #FCFBFC) | midnight/claro |
 | WCAG 2.4.7 (Foco) | séria | checkable | `button "Todos"` | contorno de 1px (mínimo 2px) (#CC9F8F sobre #FCFBFB) | editorial/claro |
 | WCAG 2.4.7 (Foco) | séria | checkable | `button "Todos"` | contorno de 1px (mínimo 2px) (#DD7D92 sobre #FCFBFB) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | checkable | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | checkable | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | checkable | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | checkable | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | checkable | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | WCAG 2.4.7 (Foco) | séria | checkable | `input "Buscar na lista"` | foco só por preenchimento ou invisível | todos |
 | WCAG 2.4.7 (Foco) | séria | checkable | `span` | foco só por preenchimento ou invisível | todos |
 | WCAG 2.4.7 (Foco) | séria | checkable | `ul[role=tree] "Ramos de seguro"` | foco só por preenchimento ou invisível | todos |
 | Regra da Casa (Alvo) | 🟡 | checkable-show-parent | `button "Remover Patrimonial"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | checkable-show-parent | `button "Remover Vida"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | checkable-show-parent | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | checkable-show-parent | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | checkable-show-parent | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | checkable-show-parent | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | checkable-show-parent | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: aria-dialog-name | séria | custom-texts | `#radix-_r_9_` | ARIA dialog and alertdialog nodes should have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | custom-texts | `button "Limpar"` | 37,4×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | custom-texts | `button "Recolher"` | 20×20 (exceção de espaçamento, < 44×44) | todos |
@@ -1263,37 +612,17 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | WCAG 2.4.7 (Foco) | séria | custom-texts | `button "Todas"` | contorno de 1px (mínimo 2px) (#B69AE8 sobre #FCFBFC) | midnight/claro |
 | WCAG 2.4.7 (Foco) | séria | custom-texts | `button "Todas"` | contorno de 1px (mínimo 2px) (#CC9F8F sobre #FCFBFB) | editorial/claro |
 | WCAG 2.4.7 (Foco) | séria | custom-texts | `button "Todas"` | contorno de 1px (mínimo 2px) (#DD7D92 sobre #FCFBFB) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | custom-texts | `div[data-slot=tree-select][role=combobox] "Responsáveis"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | custom-texts | `div[data-slot=tree-select][role=combobox] "Responsáveis"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | custom-texts | `div[data-slot=tree-select][role=combobox] "Responsáveis"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | custom-texts | `div[data-slot=tree-select][role=combobox] "Responsáveis"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | custom-texts | `div[data-slot=tree-select][role=combobox] "Responsáveis"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | WCAG 2.4.7 (Foco) | séria | custom-texts | `input "Buscar na lista"` | foco só por preenchimento ou invisível | todos |
 | WCAG 2.4.7 (Foco) | séria | custom-texts | `span` | foco só por preenchimento ou invisível | todos |
 | WCAG 2.4.7 (Foco) | séria | custom-texts | `ul[role=tree] "Responsáveis"` | foco só por preenchimento ou invisível | todos |
 | Regra da Casa (Alvo) | 🟡 | multiple | `button "Remover Auto"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | multiple | `button "Remover Vida"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | multiple | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | single | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | single | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | single | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | single | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | single | `div[data-slot=tree-select][role=combobox] "Ramos de seguro"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-attachment
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=attachment-action] "Remover"` | 24×24 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=attachment-action] "Remover"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=attachment-action] "Remover"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=attachment-action] "Remover"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=attachment-action] "Remover"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=attachment-action] "Remover"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 
 ### molecules-breadcrumb
 
@@ -1466,46 +795,11 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Denunciar"` | 98,7×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Voltar"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=dropdown-menu-trigger] "Mais opções"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Adiar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Adiar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Adiar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Adiar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Adiar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Arquivar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Arquivar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Arquivar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Arquivar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Arquivar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Denunciar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Denunciar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Denunciar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Denunciar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Denunciar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Voltar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Voltar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Voltar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Voltar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Voltar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Mais opções"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Mais opções"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Mais opções"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Mais opções"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Mais opções"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | dropdown | `#radix-_r_2_` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=button] "Seguir"` | 74,5×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=button] "Seguir"` | 76,5×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=dropdown-menu-trigger] "keyboard_arrow_down"` | 37×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=dropdown-menu-trigger] "keyboard_arrow_down"` | 38×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=button] "Seguir"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=button] "Seguir"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=button] "Seguir"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=button] "Seguir"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=button] "Seguir"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "keyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "keyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "keyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "keyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "keyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "1"` | 31,6×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "1"` | 33,6×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "2"` | 32,8×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
@@ -1518,67 +812,12 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "5"` | 33,8×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "Anterior"` | 32×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "Próximo"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "1"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "1"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "1"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "1"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "1"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "2"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "2"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "2"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "2"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "2"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "3"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "3"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "3"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "3"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "3"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "4"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "4"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "4"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "4"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "4"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "5"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "5"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "5"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "5"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "5"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "Anterior"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "Anterior"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "Anterior"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "Anterior"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "Anterior"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "Próximo"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "Próximo"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "Próximo"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "Próximo"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | nested | `button[data-slot=button] "Próximo"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | orientation | `.inline-flex.items-center.justify-center:nth-child(1) .inline-flex.items-center.justify-center:nth-child(2)` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | orientation | `button[data-slot=button] "add"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | orientation | `button[data-slot=button] "remove"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=button] "add"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=button] "add"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=button] "add"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=button] "add"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=button] "add"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=button] "remove"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=button] "remove"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=button] "remove"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=button] "remove"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=button] "remove"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | popover | `button[data-slot=button] "smart_toy Copilot"` | 96,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | popover | `button[data-slot=button] "smart_toy Copilot"` | 98,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | popover | `button[data-slot=popover-trigger] "Abrir popover"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=button] "smart_toy Copilot"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=button] "smart_toy Copilot"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=button] "smart_toy Copilot"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=button] "smart_toy Copilot"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=button] "smart_toy Copilot"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=popover-trigger] "Abrir popover"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=popover-trigger] "Abrir popover"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=popover-trigger] "Abrir popover"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=popover-trigger] "Abrir popover"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=popover-trigger] "Abrir popover"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | size | `.size-8 .size-10 .size-12` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "add"` | 32×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "add"` | 40×40 (< 44×44) | todos |
@@ -1594,126 +833,31 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Padrão"` | 80,4×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Pequeno"` | 81,7×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Pequeno"` | 83,7×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "add"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "add"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "add"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "add"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "add"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Botão"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Botão"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Botão"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Botão"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Botão"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Grande"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Grande"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Grande"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Grande"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Grande"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Grupo"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Grupo"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Grupo"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Grupo"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Grupo"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Padrão"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Padrão"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Padrão"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Padrão"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Padrão"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Pequeno"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Pequeno"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Pequeno"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Pequeno"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=button] "Pequeno"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | split | `.size-10` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | split | `button[data-slot=button]` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | split | `button[data-slot=button] "Botão"` | 69,5×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | split | `button[data-slot=button]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | split | `button[data-slot=button]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | split | `button[data-slot=button]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | split | `button[data-slot=button]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | split | `button[data-slot=button]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | split | `button[data-slot=button] "Botão"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | split | `button[data-slot=button] "Botão"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | split | `button[data-slot=button] "Botão"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | split | `button[data-slot=button] "Botão"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | split | `button[data-slot=button] "Botão"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-input | `button[data-slot=button] "Buscar"` | 41×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-input | `button[data-slot=button] "Buscar"` | 42×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-input | `input[data-slot=input]` | 185×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-input | `input[data-slot=input]` | 187×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-input | `button[data-slot=button] "Buscar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input | `button[data-slot=button] "Buscar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input | `button[data-slot=button] "Buscar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input | `button[data-slot=button] "Buscar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input | `button[data-slot=button] "Buscar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | with-input-group | `.inline-flex .dark\:hover\:bg-accent\/50` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | with-input-group | `button[data-slot=button] "add"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | with-input-group | `button[data-slot=tooltip-trigger] "graphic_eq"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | with-input-group | `input[data-slot=input-group-control]` | 179×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `button[data-slot=button] "add"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `button[data-slot=button] "add"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `button[data-slot=button] "add"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `button[data-slot=button] "add"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `button[data-slot=button] "add"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `button[data-slot=tooltip-trigger] "graphic_eq"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `button[data-slot=tooltip-trigger] "graphic_eq"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `button[data-slot=tooltip-trigger] "graphic_eq"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `button[data-slot=tooltip-trigger] "graphic_eq"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `button[data-slot=tooltip-trigger] "graphic_eq"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | with-select | `.justify-between` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | with-select | `button[data-slot=button] "Enviar"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | with-select | `button[data-slot=select-trigger][role=combobox] "$keyboard_arrow_down"` | 57,7×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-select | `button[data-slot=select-trigger][role=combobox] "$keyboard_arrow_down"` | 59,7×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-select | `input[data-slot=input]` | 184×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-select | `input[data-slot=input]` | 185×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `button[data-slot=button] "Enviar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `button[data-slot=button] "Enviar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `button[data-slot=button] "Enviar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `button[data-slot=button] "Enviar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `button[data-slot=button] "Enviar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `button[data-slot=select-trigger][role=combobox] "$keyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `button[data-slot=select-trigger][role=combobox] "$keyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `button[data-slot=select-trigger][role=combobox] "$keyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `button[data-slot=select-trigger][role=combobox] "$keyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `button[data-slot=select-trigger][role=combobox] "$keyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-select | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-separator | `button[data-slot=button] "Colar"` | 57,2×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | with-separator | `button[data-slot=button] "Copiar"` | 65,6×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | with-separator | `button[data-slot=button] "Colar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-separator | `button[data-slot=button] "Colar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-separator | `button[data-slot=button] "Colar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-separator | `button[data-slot=button] "Colar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-separator | `button[data-slot=button] "Colar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-separator | `button[data-slot=button] "Copiar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-separator | `button[data-slot=button] "Copiar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-separator | `button[data-slot=button] "Copiar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-separator | `button[data-slot=button] "Copiar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-separator | `button[data-slot=button] "Copiar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-collapsible
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=collapsible-trigger] "unfold_moreAlternar"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=collapsible-trigger] "unfold_moreAlternar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=collapsible-trigger] "unfold_moreAlternar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=collapsible-trigger] "unfold_moreAlternar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=collapsible-trigger] "unfold_moreAlternar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=collapsible-trigger] "unfold_moreAlternar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-combobox
 
@@ -1721,30 +865,10 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | axe: button-name | crítica | default | `.inline-flex` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger][role=combobox] "Selecione um framework...unfol"` | 200×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger][role=combobox] "Selecione um framework...unfol"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger][role=combobox] "Selecione um framework...unfol"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger][role=combobox] "Selecione um framework...unfol"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger][role=combobox] "Selecione um framework...unfol"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger][role=combobox] "Selecione um framework...unfol"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | dropdown-menu | `#radix-_r_1_` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | dropdown-menu | `button[data-slot=dropdown-menu-trigger] "more_horiz"` | 36×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | dropdown-menu | `button[data-slot=dropdown-menu-trigger] "more_horiz"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown-menu | `button[data-slot=dropdown-menu-trigger] "more_horiz"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown-menu | `button[data-slot=dropdown-menu-trigger] "more_horiz"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown-menu | `button[data-slot=dropdown-menu-trigger] "more_horiz"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown-menu | `button[data-slot=dropdown-menu-trigger] "more_horiz"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | popover | `button[data-slot=popover-trigger] "+ Definir status"` | 150×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=popover-trigger] "+ Definir status"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=popover-trigger] "+ Definir status"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=popover-trigger] "+ Definir status"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=popover-trigger] "+ Definir status"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | popover | `button[data-slot=popover-trigger] "+ Definir status"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | responsive | `button[data-slot=popover-trigger] "+ Definir status"` | 150×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=popover-trigger] "+ Definir status"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=popover-trigger] "+ Definir status"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=popover-trigger] "+ Definir status"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=popover-trigger] "+ Definir status"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=popover-trigger] "+ Definir status"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-empty
 
@@ -1754,47 +878,12 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Criar projeto"` | 112,2×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Importar projeto"` | 140,5×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Importar projeto"` | 142,5×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=button] "Saiba mais arrow_outward"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=button] "Saiba mais arrow_outward"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=button] "Saiba mais arrow_outward"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=button] "Saiba mais arrow_outward"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=button] "Saiba mais arrow_outward"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Criar projeto"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Criar projeto"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Criar projeto"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Criar projeto"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Criar projeto"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Importar projeto"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Importar projeto"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Importar projeto"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Importar projeto"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Importar projeto"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=button] "Enviar arquivos"` | 122,5×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=button] "Enviar arquivos"` | 124,5×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Enviar arquivos"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Enviar arquivos"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Enviar arquivos"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Enviar arquivos"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Enviar arquivos"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-avatar | `button[data-slot=button] "Deixar mensagem"` | 138,1×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | with-avatar | `button[data-slot=button] "Deixar mensagem"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar | `button[data-slot=button] "Deixar mensagem"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar | `button[data-slot=button] "Deixar mensagem"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar | `button[data-slot=button] "Deixar mensagem"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar | `button[data-slot=button] "Deixar mensagem"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-avatar-group | `button[data-slot=button] "addConvidar membros"` | 162,9×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | with-avatar-group | `button[data-slot=button] "addConvidar membros"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar-group | `button[data-slot=button] "addConvidar membros"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar-group | `button[data-slot=button] "addConvidar membros"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar-group | `button[data-slot=button] "addConvidar membros"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-avatar-group | `button[data-slot=button] "addConvidar membros"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-background | `button[data-slot=button] "refreshAtualizar"` | 100×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-background | `button[data-slot=button] "refreshAtualizar"` | 102×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-background | `button[data-slot=button] "refreshAtualizar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-background | `button[data-slot=button] "refreshAtualizar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-background | `button[data-slot=button] "refreshAtualizar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-background | `button[data-slot=button] "refreshAtualizar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-background | `button[data-slot=button] "refreshAtualizar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-input-group | `input[data-slot=input-group-control]` | 229,6×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-input-group | `input[data-slot=input-group-control]` | 231,6×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | WCAG 2.4.7 (Foco) | séria | with-input-group | `a "Fale com o suporte"` | contorno de 1px (mínimo 2px) (#5F6D8A sobre #121315) | tech/escuro |
@@ -1807,11 +896,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | WCAG 2.4.7 (Foco) | séria | with-input-group | `a "Fale com o suporte"` | contorno de 1px (mínimo 2px) (#B296E5 sobre #F4F3F6) | midnight/claro |
 | WCAG 2.4.7 (Foco) | séria | with-input-group | `a "Fale com o suporte"` | contorno de 1px (mínimo 2px) (#C99B8B sobre #F6F3F2) | editorial/claro |
 | WCAG 2.4.7 (Foco) | séria | with-input-group | `a "Fale com o suporte"` | contorno de 1px (mínimo 2px) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-input-group | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-field
 
@@ -1819,24 +903,9 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=checkbox][role=checkbox]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=checkbox][role=checkbox] "check"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | choice-card | `#kubernetes-r2h #vm-z4k` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | choice-card | `button[data-slot=radio-group-item][role=radio]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | choice-card | `button[data-slot=radio-group-item][role=radio] "circle"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | choice-card | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,06:1 (mínimo 3:1) (#A3A3A2 sobre #EAE8E6) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | choice-card | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,15:1 (mínimo 3:1) (#C69684 sobre #EFE9E6) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | choice-card | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,21:1 (mínimo 3:1) (#AF91E5 sobre #EEEAF4) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | choice-card | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,26:1 (mínimo 3:1) (#7F9BEF sobre #E7ECF5) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | choice-card | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,59:1 (mínimo 3:1) (#DA7389 sobre #F5E8E9) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Cancelar"` | 88,3×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Cancelar"` | 90,3×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Enviar"` | 70,7×40 (< 44×44) | todos |
@@ -1845,48 +914,8 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=select-trigger][role=combobox] "MMkeyboard_arrow_down"` | 138,7×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 138,7×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 448×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Cancelar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Cancelar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Cancelar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Cancelar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Cancelar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Enviar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Enviar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Enviar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Enviar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Enviar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=checkbox][role=checkbox] "check"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "AAAAkeyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "AAAAkeyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "AAAAkeyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "AAAAkeyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "AAAAkeyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "MMkeyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "MMkeyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "MMkeyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "MMkeyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "MMkeyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=textarea]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=textarea]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=textarea]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=textarea]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=textarea]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | fieldset | `input[data-slot=input]` | 216×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | fieldset | `input[data-slot=input]` | 448×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | fieldset | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | fieldset | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | fieldset | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | fieldset | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | fieldset | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | group | `button[data-slot=checkbox][role=checkbox]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | WCAG 2.4.7 (Foco) | séria | group | `a "Gerenciar tarefas"` | contorno de 1px (mínimo 2px) (#5F6D8A sobre #121315) | tech/escuro |
 | WCAG 2.4.7 (Foco) | séria | group | `a "Gerenciar tarefas"` | contorno de 1px (mínimo 2px) (#6D6C6B sobre #141311) | default/escuro |
@@ -1898,88 +927,23 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | WCAG 2.4.7 (Foco) | séria | group | `a "Gerenciar tarefas"` | contorno de 1px (mínimo 2px) (#B296E5 sobre #F4F3F6) | midnight/claro |
 | WCAG 2.4.7 (Foco) | séria | group | `a "Gerenciar tarefas"` | contorno de 1px (mínimo 2px) (#C99B8B sobre #F6F3F2) | editorial/claro |
 | WCAG 2.4.7 (Foco) | séria | group | `a "Gerenciar tarefas"` | contorno de 1px (mínimo 2px) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | group | `button[data-slot=checkbox][role=checkbox]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | group | `button[data-slot=checkbox][role=checkbox]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | group | `button[data-slot=checkbox][role=checkbox]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | group | `button[data-slot=checkbox][role=checkbox]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | group | `button[data-slot=checkbox][role=checkbox]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | input | `input[data-slot=input]` | 448×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | input | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | radio | `button[data-slot=radio-group-item][role=radio]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | radio | `button[data-slot=radio-group-item][role=radio] "circle"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | radio | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | radio | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | radio | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | radio | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | radio | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | responsive | `button[data-slot=button] "Cancelar"` | 88,3×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | responsive | `button[data-slot=button] "Cancelar"` | 90,3×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | responsive | `button[data-slot=button] "Enviar"` | 70,7×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | responsive | `input[data-slot=input]` | 185×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | responsive | `input[data-slot=input]` | 187×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=button] "Cancelar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=button] "Cancelar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=button] "Cancelar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=button] "Cancelar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=button] "Cancelar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=button] "Enviar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=button] "Enviar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=button] "Enviar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=button] "Enviar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `button[data-slot=button] "Enviar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `textarea[data-slot=textarea]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `textarea[data-slot=textarea]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `textarea[data-slot=textarea]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `textarea[data-slot=textarea]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive | `textarea[data-slot=textarea]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | select | `.justify-between` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | select | `button[data-slot=select-trigger][role=combobox] "Escolha o departamentokeyboard"` | 448×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=select-trigger][role=combobox] "Escolha o departamentokeyboard"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=select-trigger][role=combobox] "Escolha o departamentokeyboard"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=select-trigger][role=combobox] "Escolha o departamentokeyboard"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=select-trigger][role=combobox] "Escolha o departamentokeyboard"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=select-trigger][role=combobox] "Escolha o departamentokeyboard"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | slider | `span[data-slot=slider-thumb][role=slider] "Maximum"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | slider | `span[data-slot=slider-thumb][role=slider] "Maximum"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | slider | `span[data-slot=slider-thumb][role=slider] "Maximum"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | slider | `span[data-slot=slider-thumb][role=slider] "Maximum"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | slider | `span[data-slot=slider-thumb][role=slider] "Maximum"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | slider | `span[data-slot=slider-thumb][role=slider] "Minimum"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | slider | `span[data-slot=slider-thumb][role=slider] "Minimum"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | slider | `span[data-slot=slider-thumb][role=slider] "Minimum"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | slider | `span[data-slot=slider-thumb][role=slider] "Minimum"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | slider | `span[data-slot=slider-thumb][role=slider] "Minimum"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | switch | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=switch][role=switch]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=switch][role=switch]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=switch][role=switch]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=switch][role=switch]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=switch][role=switch]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=textarea]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=textarea]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=textarea]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=textarea]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=textarea]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-hover-card
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=hover-card-trigger] "@nextjs"` | 82,8×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=hover-card-trigger] "@nextjs"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=hover-card-trigger] "@nextjs"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=hover-card-trigger] "@nextjs"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=hover-card-trigger] "@nextjs"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=hover-card-trigger] "@nextjs"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-input-group
 
@@ -1996,43 +960,8 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control]` | 319,5×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control]` | 351,2×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control]` | 353,2×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button] "Buscar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button] "Buscar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button] "Buscar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button] "Buscar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button] "Buscar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button] "Copiar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button] "Copiar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button] "Copiar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button] "Copiar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `button[data-slot=button] "Copiar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | button | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | button-group | `input[data-slot=input-group-control]` | 179×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | button-group | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | button-group | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | button-group | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | button-group | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | button-group | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | custom | `button[data-slot=button] "Enviar"` | 58,7×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | custom | `button[data-slot=button] "Enviar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | custom | `button[data-slot=button] "Enviar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | custom | `button[data-slot=button] "Enviar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | custom | `button[data-slot=button] "Enviar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | custom | `button[data-slot=button] "Enviar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | custom | `textarea[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | custom | `textarea[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | custom | `textarea[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | custom | `textarea[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | custom | `textarea[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | default | `button[data-slot="tooltip-trigger"] .dark\:border-input` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button]` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=dropdown-menu-trigger] "Automático"` | 90,3×24 (< 44×44) | todos |
@@ -2043,78 +972,23 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input-group-control]` | 293,5×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input-group-control]` | 352×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input-group-control]` | 354×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Automático"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Automático"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Automático"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Automático"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Automático"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tooltip-trigger]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tooltip-trigger]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tooltip-trigger]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tooltip-trigger]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tooltip-trigger]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=dropdown-menu-trigger] "Buscar em... keyboard_arrow_do"` | 94,8×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=dropdown-menu-trigger] "Mais"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `input[data-slot=input-group-control]` | 280,4×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `input[data-slot=input-group-control]` | 282,4×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `input[data-slot=input-group-control]` | 351,2×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `input[data-slot=input-group-control]` | 353,2×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "Buscar em... keyboard_arrow_do"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "Buscar em... keyboard_arrow_do"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "Buscar em... keyboard_arrow_do"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "Buscar em... keyboard_arrow_do"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "Buscar em... keyboard_arrow_do"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "Mais"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "Mais"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "Mais"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "Mais"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `button[data-slot=dropdown-menu-trigger] "Mais"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | dropdown | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | icon | `input[data-slot=input-group-control]` | 324×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | icon | `input[data-slot=input-group-control]` | 326×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | icon | `input[data-slot=input-group-control]` | 328×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | icon | `input[data-slot=input-group-control]` | 330×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | icon | `input[data-slot=input-group-control]` | 352×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | icon | `input[data-slot=input-group-control]` | 354×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | icon | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | icon | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | icon | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | icon | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | icon | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | label | `button[data-slot=tooltip-trigger] "Ajuda"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | label | `input[data-slot=input-group-control]` | 354,6×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | label | `input[data-slot=input-group-control]` | 356,6×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | label | `input[data-slot=input-group-control]` | 380×35 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | label | `input[data-slot=input-group-control]` | 382×35 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | label | `button[data-slot=tooltip-trigger] "Ajuda"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | label | `button[data-slot=tooltip-trigger] "Ajuda"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | label | `button[data-slot=tooltip-trigger] "Ajuda"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | label | `button[data-slot=tooltip-trigger] "Ajuda"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | label | `button[data-slot=tooltip-trigger] "Ajuda"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | label | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | label | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | label | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | label | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | label | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: color-contrast | séria | spinner | `.group\/input-group.relative.rounded-outer-md:nth-child(4) > .order-last.pr-3.has-\[\>button\]\:mr-\[calc\(--spacing\(-1\.8\)\)\] > .\[\&_svg\]\:pointer-events-none.\[\&_svg\:not\(\[class\*\=\'size-\'\]\)\]\:size-4.gap-2` | Elements must meet minimum color contrast ratio thresholds | default/claro |
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 266,5×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 268,5×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
@@ -2122,59 +996,14 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 279,6×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 320,7×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 322,7×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | text | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | text | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | text | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | text | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | text | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | text | `textarea[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | text | `textarea[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | text | `textarea[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | text | `textarea[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | text | `textarea[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: button-name | crítica | textarea | `.hover\:bg-accent.hover\:text-accent-foreground.dark\:hover\:bg-accent\/50:nth-child(2) .hover\:bg-accent.hover\:text-accent-foreground.dark\:hover\:bg-accent\/50:nth-child(3)` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | textarea | `button[data-slot=button]` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | textarea | `button[data-slot=button] "Executar"` | 95,8×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Executar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Executar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Executar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Executar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Executar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | tooltip | `button[data-slot=button] "Ajuda"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | tooltip | `button[data-slot=tooltip-trigger] "Ajuda"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | tooltip | `button[data-slot=tooltip-trigger] "Informações"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | tooltip | `input[data-slot=input-group-control]` | 351,2×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | tooltip | `input[data-slot=input-group-control]` | 353,2×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=button] "Ajuda"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=button] "Ajuda"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=button] "Ajuda"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=button] "Ajuda"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=button] "Ajuda"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=tooltip-trigger] "Ajuda"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=tooltip-trigger] "Ajuda"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=tooltip-trigger] "Ajuda"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=tooltip-trigger] "Ajuda"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=tooltip-trigger] "Ajuda"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=tooltip-trigger] "Informações"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=tooltip-trigger] "Informações"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=tooltip-trigger] "Informações"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=tooltip-trigger] "Informações"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `button[data-slot=tooltip-trigger] "Informações"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `input[data-slot=input-group-control]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `input[data-slot=input-group-control]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `input[data-slot=input-group-control]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `input[data-slot=input-group-control]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | tooltip | `input[data-slot=input-group-control]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-pagination
 
@@ -2185,31 +1014,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `a[data-slot=pagination-link] "3"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | 96,4×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | 95,8×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "1"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "1"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "1"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "1"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "1"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "2"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "2"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "2"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "2"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "2"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "3"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "3"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "3"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "3"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "3"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-scroll-area
 
@@ -2228,44 +1032,24 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=segmented-control-item][role=radio] "Mês"` | 54,4×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=segmented-control-item][role=radio] "Semana"` | 76,3×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=segmented-control-item][role=radio] "Semana"` | 78,3×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,1:1 (mínimo 3:1) (#A6A6A4 sobre #EFEEEB) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,18:1 (mínimo 3:1) (#C69888 sobre #F0EDEC) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,22:1 (mínimo 3:1) (#AF93E2 sobre #EEEDF0) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,25:1 (mínimo 3:1) (#829DED sobre #ECEEF1) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,62:1 (mínimo 3:1) (#D8768B sobre #F1EDED) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=segmented-control-item][role=radio] "Dia"` | 47×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=segmented-control-item][role=radio] "Dia"` | 49×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=segmented-control-item][role=radio] "Mês"` | 52,4×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=segmented-control-item][role=radio] "Mês"` | 54,4×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=segmented-control-item][role=radio] "Semana"` | 76,3×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=segmented-control-item][role=radio] "Semana"` | 78,3×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,1:1 (mínimo 3:1) (#A6A6A4 sobre #EFEEEB) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,18:1 (mínimo 3:1) (#C69888 sobre #F0EDEC) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,22:1 (mínimo 3:1) (#AF93E2 sobre #EEEDF0) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,25:1 (mínimo 3:1) (#829DED sobre #ECEEF1) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,62:1 (mínimo 3:1) (#D8768B sobre #F1EDED) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | large | `button[data-slot=segmented-control-item][role=radio] "Dia"` | 47×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | large | `button[data-slot=segmented-control-item][role=radio] "Dia"` | 49×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | large | `button[data-slot=segmented-control-item][role=radio] "Mês"` | 52,4×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | large | `button[data-slot=segmented-control-item][role=radio] "Mês"` | 54,4×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | large | `button[data-slot=segmented-control-item][role=radio] "Semana"` | 76,3×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | large | `button[data-slot=segmented-control-item][role=radio] "Semana"` | 78,3×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,1:1 (mínimo 3:1) (#A6A6A4 sobre #EFEEEB) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,18:1 (mínimo 3:1) (#C69888 sobre #F0EDEC) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,22:1 (mínimo 3:1) (#AF93E2 sobre #EEEDF0) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,25:1 (mínimo 3:1) (#829DED sobre #ECEEF1) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,62:1 (mínimo 3:1) (#D8768B sobre #F1EDED) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=segmented-control-item][role=radio] "Dia"` | 44×28 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=segmented-control-item][role=radio] "Dia"` | 46×28 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=segmented-control-item][role=radio] "Mês"` | 48,6×28 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=segmented-control-item][role=radio] "Mês"` | 50,6×28 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=segmented-control-item][role=radio] "Semana"` | 69,1×28 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=segmented-control-item][role=radio] "Semana"` | 71,1×28 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,1:1 (mínimo 3:1) (#A6A6A4 sobre #EFEEEB) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,18:1 (mínimo 3:1) (#C69888 sobre #F0EDEC) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,22:1 (mínimo 3:1) (#AF93E2 sobre #EEEDF0) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,25:1 (mínimo 3:1) (#829DED sobre #ECEEF1) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=segmented-control-item][role=radio] "Semana"` | contraste 2,62:1 (mínimo 3:1) (#D8768B sobre #F1EDED) | soft/claro |
 
 ### molecules-sonner
 
@@ -2273,11 +1057,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Mostrar notificação"` | 157,8×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Mostrar notificação"` | 159,8×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Mostrar notificação"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Mostrar notificação"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Mostrar notificação"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Mostrar notificação"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Mostrar notificação"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | types | `button[data-slot=button] "Aviso"` | 68,3×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | types | `button[data-slot=button] "Aviso"` | 70,3×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | types | `button[data-slot=button] "Erro"` | 59,9×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
@@ -2290,36 +1069,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | types | `button[data-slot=button] "Promessa"` | 96,8×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | types | `button[data-slot=button] "Sucesso"` | 84,3×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | types | `button[data-slot=button] "Sucesso"` | 86,3×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Aviso"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Aviso"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Aviso"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Aviso"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Aviso"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Erro"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Erro"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Erro"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Erro"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Erro"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Informação"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Informação"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Informação"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Informação"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Informação"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Padrão"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Padrão"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Padrão"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Padrão"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Padrão"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Promessa"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Promessa"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Promessa"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Promessa"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Promessa"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Sucesso"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Sucesso"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Sucesso"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Sucesso"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | types | `button[data-slot=button] "Sucesso"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-splitbutton
 
@@ -2327,75 +1076,15 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Salvar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Salvar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Salvar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Salvar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Salvar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=button] "Salvar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=button] "Salvar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=button] "Salvar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=button] "Salvar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=button] "Salvar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=button] "Salvar"` | 72×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=button] "Salvar"` | 74×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Salvar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Salvar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Salvar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Salvar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=button] "Salvar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | secondary | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | secondary | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=button] "Salvar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=button] "Salvar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=button] "Salvar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=button] "Salvar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=button] "Salvar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | secondary | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=button] "Salvar"` | 62×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=button] "Salvar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=button] "Salvar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=button] "Salvar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=button] "Salvar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=button] "Salvar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=dropdown-menu-trigger] "Mais ações"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### molecules-toggle-group
 
@@ -2403,116 +1092,31 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=toggle-group-item][role=radio] "A"` | 33×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=toggle-group-item][role=radio] "B"` | 32×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=toggle-group-item][role=radio] "A"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=toggle-group-item][role=radio] "A"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=toggle-group-item][role=radio] "A"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=toggle-group-item][role=radio] "A"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=toggle-group-item][role=radio] "A"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=toggle-group-item] "Alternar itálico"` | 41×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=toggle-group-item] "Alternar itálico"` | 42×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=toggle-group-item] "Alternar negrito"` | 42×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=toggle-group-item] "Alternar negrito"` | 44×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=toggle-group-item] "Alternar tachado"` | 41×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=toggle-group-item] "Alternar tachado"` | 42×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=toggle-group-item] "Alternar negrito"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=toggle-group-item] "Alternar negrito"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=toggle-group-item] "Alternar negrito"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=toggle-group-item] "Alternar negrito"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=toggle-group-item] "Alternar negrito"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | large | `button[data-slot=toggle-group-item] "Alternar itálico"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | large | `button[data-slot=toggle-group-item] "Alternar negrito"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | large | `button[data-slot=toggle-group-item] "Alternar tachado"` | 40×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=toggle-group-item] "Alternar negrito"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=toggle-group-item] "Alternar negrito"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=toggle-group-item] "Alternar negrito"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=toggle-group-item] "Alternar negrito"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | large | `button[data-slot=toggle-group-item] "Alternar negrito"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=toggle-group-item][role=radio] "A"` | 35×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=toggle-group-item][role=radio] "A"` | 37×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=toggle-group-item][role=radio] "B"` | 33×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | outline | `button[data-slot=toggle-group-item][role=radio] "B"` | 34×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=toggle-group-item][role=radio] "A"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=toggle-group-item][role=radio] "A"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=toggle-group-item][role=radio] "A"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=toggle-group-item][role=radio] "A"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | outline | `button[data-slot=toggle-group-item][role=radio] "A"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | single | `button[data-slot=toggle-group-item][role=radio] "Alternar itálico"` | 40×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | single | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | 40×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | single | `button[data-slot=toggle-group-item][role=radio] "Alternar tachado"` | 40×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | single | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | single | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | single | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | single | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | single | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=toggle-group-item][role=radio] "Alternar itálico"` | 40×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | 40×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=toggle-group-item][role=radio] "Alternar tachado"` | 40×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | small | `button[data-slot=toggle-group-item][role=radio] "Alternar negrito"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | spacing | `button[data-slot=toggle-group-item] "Alternar coração"` | 100,7×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | spacing | `button[data-slot=toggle-group-item] "Alternar coração"` | 102,7×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | spacing | `button[data-slot=toggle-group-item] "Alternar estrela"` | 90,5×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | spacing | `button[data-slot=toggle-group-item] "Alternar estrela"` | 92,5×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | spacing | `button[data-slot=toggle-group-item] "Alternar favorito"` | 101,6×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | spacing | `button[data-slot=toggle-group-item] "Alternar favorito"` | 99,6×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | spacing | `button[data-slot=toggle-group-item] "Alternar estrela"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | spacing | `button[data-slot=toggle-group-item] "Alternar estrela"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | spacing | `button[data-slot=toggle-group-item] "Alternar estrela"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | spacing | `button[data-slot=toggle-group-item] "Alternar estrela"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | spacing | `button[data-slot=toggle-group-item] "Alternar estrela"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-
-### organisms-accordion
-
-| Critério | Severidade | Story | Elemento | Medida | Contextos |
-|---|---|---|---|---|---|
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "Como cancelar a apólice?keyboa"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "Como cancelar a apólice?keyboa"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "Como cancelar a apólice?keyboa"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "Como cancelar a apólice?keyboa"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "Como cancelar a apólice?keyboa"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "O que a cobertura inclui?keybo"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "O que a cobertura inclui?keybo"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "O que a cobertura inclui?keybo"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "O que a cobertura inclui?keybo"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "O que a cobertura inclui?keybo"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "Qual o prazo de análise do sin"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "Qual o prazo de análise do sin"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "Qual o prazo de análise do sin"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "Qual o prazo de análise do sin"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=accordion-trigger] "Qual o prazo de análise do sin"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Detalhes de enviokeyboard_arro"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Detalhes de enviokeyboard_arro"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Detalhes de enviokeyboard_arro"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Detalhes de enviokeyboard_arro"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Detalhes de enviokeyboard_arro"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Informações do produtokeyboard"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Informações do produtokeyboard"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Informações do produtokeyboard"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Informações do produtokeyboard"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Informações do produtokeyboard"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Política de devoluçãokeyboard_"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Política de devoluçãokeyboard_"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Política de devoluçãokeyboard_"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Política de devoluçãokeyboard_"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=accordion-trigger] "Política de devoluçãokeyboard_"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "Como cancelar a apólice?keyboa"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "Como cancelar a apólice?keyboa"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "Como cancelar a apólice?keyboa"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "Como cancelar a apólice?keyboa"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "Como cancelar a apólice?keyboa"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "O que a cobertura inclui?keybo"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "O que a cobertura inclui?keybo"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "O que a cobertura inclui?keybo"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "O que a cobertura inclui?keybo"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "O que a cobertura inclui?keybo"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "Qual o prazo de análise do sin"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "Qual o prazo de análise do sin"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "Qual o prazo de análise do sin"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "Qual o prazo de análise do sin"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | multiple | `button[data-slot=accordion-trigger] "Qual o prazo de análise do sin"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### organisms-alert-dialog
 
@@ -2520,11 +1124,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=alert-dialog-trigger] "Mostrar diálogo"` | 136,1×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=alert-dialog-trigger] "Mostrar diálogo"` | 138,1×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Mostrar diálogo"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Mostrar diálogo"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Mostrar diálogo"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Mostrar diálogo"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Mostrar diálogo"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### organisms-calendar
 
@@ -2567,26 +1166,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "terça-feira, 29 de setembro de"` | 32×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "terça-feira, 6 de outubro de 2"` | 32×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button "Go to the Next Month"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button "Go to the Next Month"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button "Go to the Next Month"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button "Go to the Next Month"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button "Go to the Next Month"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button "Go to the Previous Month"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button "Go to the Previous Month"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button "Go to the Previous Month"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button "Go to the Previous Month"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button "Go to the Previous Month"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | contraste 2,01:1 (mínimo 3:1) (#A0A0A0 sobre #E2E2E2) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | contraste 2,08:1 (mínimo 3:1) (#C59466 sobre #EEE4A8) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | contraste 2,12:1 (mínimo 3:1) (#B789DE sobre #FFD8E8) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | contraste 2,18:1 (mínimo 3:1) (#8A91F4 sobre #FDD6FF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | contraste 2,44:1 (mínimo 3:1) (#A371A9 sobre #7D2452) | midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | contraste 2,45:1 (mínimo 3:1) (#8E77BB sobre #702777) | tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | contraste 2,45:1 (mínimo 3:1) (#DF6F66 sobre #FFDEA3) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | contraste 2,55:1 (mínimo 3:1) (#868686 sobre #474747) | default/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | contraste 2,55:1 (mínimo 3:1) (#A87E52 sobre #514709) | editorial/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Today, quinta-feira, 15 de out"` | contraste 2,57:1 (mínimo 3:1) (#AE7B58 sobre #5D4200) | soft/escuro |
 | WCAG 2.4.7 (Foco) | séria | default | `select "Choose the Month"` | contorno de 1px (mínimo 2px) (#5F6D8A sobre #121315) | tech/escuro |
 | WCAG 2.4.7 (Foco) | séria | default | `select "Choose the Month"` | contorno de 1px (mínimo 2px) (#6D6C6B sobre #141311) | default/escuro |
 | WCAG 2.4.7 (Foco) | séria | default | `select "Choose the Month"` | contorno de 1px (mínimo 2px) (#6E688A sobre #131315) | midnight/escuro |
@@ -2630,26 +1209,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | WCAG 2.4.7 (Foco) | séria | default | `a "Esqueceu sua senha?"` | contorno de 1px (mínimo 2px) (#B79CEA sobre #FFFFFF) | midnight/claro |
 | WCAG 2.4.7 (Foco) | séria | default | `a "Esqueceu sua senha?"` | contorno de 1px (mínimo 2px) (#CEA191 sobre #FFFFFF) | editorial/claro |
 | WCAG 2.4.7 (Foco) | séria | default | `a "Esqueceu sua senha?"` | contorno de 1px (mínimo 2px) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Criar conta"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Criar conta"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Criar conta"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Criar conta"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Criar conta"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Entrar com o Google"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Entrar com o Google"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Entrar com o Google"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Entrar com o Google"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Entrar com o Google"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Entrar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Entrar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Entrar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Entrar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Entrar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | with-form | `button[data-slot=button] "Cancelar"` | 88,3×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-form | `button[data-slot=button] "Cancelar"` | 90,3×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-form | `button[data-slot=button] "Publicar"` | 83,2×40 (< 44×44) | todos |
@@ -2657,67 +1216,17 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | with-form | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | 300×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-form | `input[data-slot=input]` | 298×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-form | `input[data-slot=input]` | 300×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=button] "Cancelar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=button] "Cancelar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=button] "Cancelar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=button] "Cancelar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=button] "Cancelar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=button] "Publicar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=button] "Publicar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=button] "Publicar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=button] "Publicar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=button] "Publicar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `button[data-slot=select-trigger][role=combobox] "Selecionekeyboard_arrow_down"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `input[data-slot=input]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `input[data-slot=input]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `input[data-slot=input]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `input[data-slot=input]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | with-form | `input[data-slot=input]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 
 ### organisms-carousel
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | api | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | api | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | api | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | api | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | api | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | api | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | orientation | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | orientation | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | plugin | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | plugin | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | plugin | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | plugin | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | plugin | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | plugin | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | size | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | spacing | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | spacing | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | spacing | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | spacing | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | spacing | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | spacing | `button[data-slot=carousel-next] "arrow_forwardNext slide"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### organisms-chart
 
@@ -2754,18 +1263,8 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | close-button | `button[data-slot=dialog-trigger] "Compartilhar"` | 117,6×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | close-button | `button[data-slot=dialog-trigger] "Compartilhar"` | 119,6×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | close-button | `button[data-slot=dialog-trigger] "Compartilhar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | close-button | `button[data-slot=dialog-trigger] "Compartilhar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | close-button | `button[data-slot=dialog-trigger] "Compartilhar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | close-button | `button[data-slot=dialog-trigger] "Compartilhar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | close-button | `button[data-slot=dialog-trigger] "Compartilhar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=dialog-trigger] "Abrir diálogo"` | 117,9×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=dialog-trigger] "Abrir diálogo"` | 119,9×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dialog-trigger] "Abrir diálogo"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dialog-trigger] "Abrir diálogo"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dialog-trigger] "Abrir diálogo"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dialog-trigger] "Abrir diálogo"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dialog-trigger] "Abrir diálogo"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### organisms-drawer
 
@@ -2773,18 +1272,8 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=drawer-trigger] "Abrir gaveta"` | 112,3×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=drawer-trigger] "Abrir gaveta"` | 114,3×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=drawer-trigger] "Abrir gaveta"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=drawer-trigger] "Abrir gaveta"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=drawer-trigger] "Abrir gaveta"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=drawer-trigger] "Abrir gaveta"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=drawer-trigger] "Abrir gaveta"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | responsive-dialog | `button[data-slot=dialog-trigger] "Editar perfil"` | 108,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | responsive-dialog | `button[data-slot=dialog-trigger] "Editar perfil"` | 110,2×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | responsive-dialog | `button[data-slot=dialog-trigger] "Editar perfil"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive-dialog | `button[data-slot=dialog-trigger] "Editar perfil"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive-dialog | `button[data-slot=dialog-trigger] "Editar perfil"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive-dialog | `button[data-slot=dialog-trigger] "Editar perfil"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | responsive-dialog | `button[data-slot=dialog-trigger] "Editar perfil"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### organisms-dropdown-menu
 
@@ -2792,31 +1281,11 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | checkboxes | `button[data-slot=dropdown-menu-trigger] "Abrir"` | 65,9×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | checkboxes | `button[data-slot=dropdown-menu-trigger] "Abrir"` | 67,9×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | checkboxes | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | checkboxes | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | checkboxes | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | checkboxes | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | checkboxes | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=dropdown-menu-trigger] "Abrir"` | 65,9×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=dropdown-menu-trigger] "Abrir"` | 67,9×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | dialog | `button[data-slot=dropdown-menu-trigger] "Abrir menu"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | dialog | `button[data-slot=dropdown-menu-trigger] "Abrir menu"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | dialog | `button[data-slot=dropdown-menu-trigger] "Abrir menu"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | dialog | `button[data-slot=dropdown-menu-trigger] "Abrir menu"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | dialog | `button[data-slot=dropdown-menu-trigger] "Abrir menu"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | dialog | `button[data-slot=dropdown-menu-trigger] "Abrir menu"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=dropdown-menu-trigger] "Abrir"` | 65,9×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=dropdown-menu-trigger] "Abrir"` | 67,9×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=dropdown-menu-trigger] "Abrir"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### organisms-form
 
@@ -2831,55 +1300,10 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | array | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | array | `input[data-slot=input-group-control]` | 363,2×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | array | `input[data-slot=input-group-control]` | 367,2×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Adicionar endereço de e-mail"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Adicionar endereço de e-mail"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Adicionar endereço de e-mail"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Adicionar endereço de e-mail"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Adicionar endereço de e-mail"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Redefinir"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Redefinir"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Redefinir"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Redefinir"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Redefinir"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Remover e-mail 1"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Remover e-mail 1"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Remover e-mail 1"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Remover e-mail 1"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Remover e-mail 1"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Remover e-mail 2"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Remover e-mail 2"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Remover e-mail 2"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Remover e-mail 2"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Remover e-mail 2"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Salvar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Salvar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Salvar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Salvar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `button[data-slot=button] "Salvar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `input[data-slot=input-group-control]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `input[data-slot=input-group-control]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `input[data-slot=input-group-control]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `input[data-slot=input-group-control]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | array | `input[data-slot=input-group-control]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=button] "Redefinir"` | 91,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=button] "Redefinir"` | 93,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=checkbox][role=checkbox]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=button] "Redefinir"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=button] "Redefinir"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=button] "Redefinir"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=button] "Redefinir"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=button] "Redefinir"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=button] "Salvar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=button] "Salvar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=button] "Salvar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=button] "Salvar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=button] "Salvar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | checkbox | `button[data-slot=checkbox][role=checkbox]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 | axe: button-name | crítica | complex | `#form-rhf-complex-basic #form-rhf-complex-pro` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=button] "Redefinir"` | 332×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=button] "Redefinir"` | 334×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
@@ -2891,81 +1315,16 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | 332×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | 334×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=button] "Redefinir"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=button] "Redefinir"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=button] "Redefinir"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=button] "Redefinir"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=button] "Redefinir"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=button] "Salvar preferências"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=button] "Salvar preferências"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=button] "Salvar preferências"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=button] "Salvar preferências"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=button] "Salvar preferências"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=checkbox][role=checkbox]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=checkbox][role=checkbox]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=checkbox][role=checkbox]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=checkbox][role=checkbox]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=checkbox][role=checkbox]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,14:1 (mínimo 3:1) (#A8A8A8 sobre #F3F3F3) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,22:1 (mínimo 3:1) (#CA9C8B sobre #F8F4F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,27:1 (mínimo 3:1) (#B497E9 sobre #F8F5FD) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,31:1 (mínimo 3:1) (#85A1F3 sobre #F3F6FE) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=radio-group-item][role=radio] "circle"` | contraste 2,67:1 (mínimo 3:1) (#DE798F sobre #FEF3F5) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=switch][role=switch]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=switch][role=switch]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=switch][role=switch]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=switch][role=switch]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | complex | `button[data-slot=switch][role=switch]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Enviar"` | 70,7×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Redefinir"` | 91,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Redefinir"` | 93,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 396×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 398×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Enviar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Enviar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Enviar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Enviar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Enviar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Redefinir"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Redefinir"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Redefinir"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Redefinir"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Redefinir"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=input-group-control]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=input-group-control]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=input-group-control]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=input-group-control]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `textarea[data-slot=input-group-control]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | input | `button[data-slot=button] "Redefinir"` | 91,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | input | `button[data-slot=button] "Redefinir"` | 93,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | input | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | input | `input[data-slot=input]` | 396×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | input | `input[data-slot=input]` | 398×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | input | `button[data-slot=button] "Redefinir"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `button[data-slot=button] "Redefinir"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `button[data-slot=button] "Redefinir"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `button[data-slot=button] "Redefinir"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `button[data-slot=button] "Redefinir"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `button[data-slot=button] "Salvar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `button[data-slot=button] "Salvar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `button[data-slot=button] "Salvar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `button[data-slot=button] "Salvar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `button[data-slot=button] "Salvar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `input[data-slot=input]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `input[data-slot=input]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `input[data-slot=input]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `input[data-slot=input]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | input | `input[data-slot=input]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 | axe: aria-progressbar-name | séria | password | `.h-2` | ARIA progressbar nodes must have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | password | `button[data-slot=button] "Criar senha"` | 396×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | password | `button[data-slot=button] "Criar senha"` | 398×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
@@ -2973,97 +1332,22 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | password | `button[data-slot=button] "Redefinir"` | 398×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | password | `input[data-slot=input-group-control]` | 364×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | password | `input[data-slot=input-group-control]` | 368×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | password | `button[data-slot=button] "Criar senha"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `button[data-slot=button] "Criar senha"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `button[data-slot=button] "Criar senha"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `button[data-slot=button] "Criar senha"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `button[data-slot=button] "Criar senha"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `button[data-slot=button] "Redefinir"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `button[data-slot=button] "Redefinir"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `button[data-slot=button] "Redefinir"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `button[data-slot=button] "Redefinir"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `button[data-slot=button] "Redefinir"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `input[data-slot=input-group-control]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `input[data-slot=input-group-control]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `input[data-slot=input-group-control]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `input[data-slot=input-group-control]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | password | `input[data-slot=input-group-control]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 | axe: button-name | crítica | radio-group | `#form-rhf-radiogroup-starter #form-rhf-radiogroup-pro #form-rhf-radiogroup-enterprise` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=button] "Redefinir"` | 91,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=button] "Redefinir"` | 93,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=radio-group-item][role=radio]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=button] "Redefinir"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=button] "Redefinir"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=button] "Redefinir"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=button] "Redefinir"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=button] "Redefinir"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=button] "Salvar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=button] "Salvar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=button] "Salvar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=button] "Salvar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=button] "Salvar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=radio-group-item][role=radio]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=radio-group-item][role=radio]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=radio-group-item][role=radio]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=radio-group-item][role=radio]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | radio-group | `button[data-slot=radio-group-item][role=radio]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | select | `button[data-slot=button] "Redefinir"` | 91,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | select | `button[data-slot=button] "Redefinir"` | 93,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | select | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | select | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | 120×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=button] "Redefinir"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=button] "Redefinir"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=button] "Redefinir"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=button] "Redefinir"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=button] "Redefinir"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=button] "Salvar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=button] "Salvar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=button] "Salvar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=button] "Salvar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=button] "Salvar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | select | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | switch | `button[data-slot=button] "Redefinir"` | 91,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | switch | `button[data-slot=button] "Redefinir"` | 93,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | switch | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | switch | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=button] "Redefinir"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=button] "Redefinir"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=button] "Redefinir"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=button] "Redefinir"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=button] "Redefinir"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=button] "Salvar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=button] "Salvar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=button] "Salvar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=button] "Salvar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=button] "Salvar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=switch][role=switch]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=switch][role=switch]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=switch][role=switch]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=switch][role=switch]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | switch | `button[data-slot=switch][role=switch]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | textarea | `button[data-slot=button] "Redefinir"` | 91,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | textarea | `button[data-slot=button] "Redefinir"` | 93,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | textarea | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Redefinir"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Redefinir"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Redefinir"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Redefinir"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Redefinir"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Salvar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Salvar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Salvar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Salvar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `button[data-slot=button] "Salvar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=textarea]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=textarea]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=textarea]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=textarea]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | textarea | `textarea[data-slot=textarea]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 
 ### organisms-menubar
 
@@ -3085,36 +1369,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=navigation-menu-trigger] "Início keyboard_arrow_down"` | 82,5×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=navigation-menu-trigger] "Lista keyboard_arrow_down"` | 76,9×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=navigation-menu-trigger] "Simples keyboard_arrow_down"` | 97,3×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=navigation-menu-link] "Documentação"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=navigation-menu-link] "Documentação"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=navigation-menu-link] "Documentação"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=navigation-menu-link] "Documentação"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=navigation-menu-link] "Documentação"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Com ícone keyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Com ícone keyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Com ícone keyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Com ícone keyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Com ícone keyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Componentes keyboard_arrow_dow"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Componentes keyboard_arrow_dow"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Componentes keyboard_arrow_dow"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Componentes keyboard_arrow_dow"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Componentes keyboard_arrow_dow"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Início keyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Início keyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Início keyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Início keyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Início keyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Lista keyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Lista keyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Lista keyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Lista keyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Lista keyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Simples keyboard_arrow_down"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Simples keyboard_arrow_down"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Simples keyboard_arrow_down"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Simples keyboard_arrow_down"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=navigation-menu-trigger] "Simples keyboard_arrow_down"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### organisms-resizable
 
@@ -3167,35 +1421,10 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=sheet-trigger] "Abrir"` | 65,9×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=sheet-trigger] "Abrir"` | 67,9×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=sheet-trigger] "Abrir"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=sheet-trigger] "Abrir"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=sheet-trigger] "Abrir"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=sheet-trigger] "Abrir"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=sheet-trigger] "Abrir"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | side | `button[data-slot=sheet-trigger] "direita"` | 596×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | side | `button[data-slot=sheet-trigger] "esquerda"` | 596×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | side | `button[data-slot=sheet-trigger] "inferior"` | 596×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | side | `button[data-slot=sheet-trigger] "superior"` | 596×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "direita"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "direita"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "direita"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "direita"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "direita"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "esquerda"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "esquerda"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "esquerda"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "esquerda"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "esquerda"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "inferior"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "inferior"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "inferior"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "inferior"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "inferior"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "superior"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "superior"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "superior"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "superior"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | side | `button[data-slot=sheet-trigger] "superior"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### organisms-sidebar
 
@@ -3210,31 +1439,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=button] "Próximo"` | 84,8×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Próximo"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Próximo"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Próximo"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Próximo"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=button] "Próximo"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "1Dados pessoais"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "1Dados pessoais"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "1Dados pessoais"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "1Dados pessoais"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "1Dados pessoais"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "2Endereço"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "2Endereço"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "2Endereço"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "2Endereço"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "2Endereço"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "3Pagamento"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "3Pagamento"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "3Pagamento"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "3Pagamento"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "3Pagamento"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "4Confirmação"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "4Confirmação"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "4Confirmação"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "4Confirmação"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | examples | `button[data-slot=stepper-trigger] "4Confirmação"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### organisms-tabs
 
@@ -3248,51 +1452,16 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=tabs-trigger][role=tab] "Senha"` | 58,7×29 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 332×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 334×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar alterações"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar alterações"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar alterações"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar alterações"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar alterações"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tabs-trigger][role=tab] "Conta"` | contorno de 1px (mínimo 2px) (#174CEA sobre #ECEEF1) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tabs-trigger][role=tab] "Conta"` | contorno de 1px (mínimo 2px) (#5E5E5E sobre #EFEEEB) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tabs-trigger][role=tab] "Conta"` | contorno de 1px (mínimo 2px) (#6F3AD5 sobre #EEEDF0) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tabs-trigger][role=tab] "Conta"` | contorno de 1px (mínimo 2px) (#9D4323 sobre #F0EDEC) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=tabs-trigger][role=tab] "Conta"` | contorno de 1px (mínimo 2px) (#BF002A sobre #F1EDED) | soft/claro |
 | WCAG 2.4.7 (Foco) | séria | default | `div[data-slot=tabs-content][role=tabpanel] "ContaFaça alterações na sua co"` | foco só por preenchimento ou invisível | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 
 ### organisms-timepicker
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "calendar_today14:30"` | 160×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "calendar_today14:30"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "calendar_today14:30"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "calendar_today14:30"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "calendar_today14:30"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "calendar_today14:30"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | empty | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | 160×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | empty | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | empty | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | empty | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | empty | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | empty | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | format-12-h | `button[data-slot=popover-trigger] "calendar_today02:30 PM"` | 160×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | format-12-h | `button[data-slot=popover-trigger] "calendar_today02:30 PM"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | format-12-h | `button[data-slot=popover-trigger] "calendar_today02:30 PM"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | format-12-h | `button[data-slot=popover-trigger] "calendar_today02:30 PM"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | format-12-h | `button[data-slot=popover-trigger] "calendar_today02:30 PM"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | format-12-h | `button[data-slot=popover-trigger] "calendar_today02:30 PM"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | Regra da Casa (Alvo) | 🟡 | minute-step-15 | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | 160×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | minute-step-15 | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | minute-step-15 | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | minute-step-15 | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | minute-step-15 | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | minute-step-15 | `button[data-slot=popover-trigger] "calendar_todaySelecione um hor"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-confirmation-dialog
 
@@ -3300,11 +1469,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=alert-dialog-trigger] "Cancelar assinatura do plano"` | 216,8×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=alert-dialog-trigger] "Cancelar assinatura do plano"` | 218,8×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Cancelar assinatura do plano"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Cancelar assinatura do plano"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Cancelar assinatura do plano"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Cancelar assinatura do plano"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Cancelar assinatura do plano"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-crud
 
@@ -3315,31 +1479,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "addNovo corretor"` | 131,5×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Editar Carla Souza"` | 32×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Editar João Batista"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Carla Souza"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Carla Souza"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Carla Souza"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Carla Souza"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Carla Souza"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir João Batista"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir João Batista"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir João Batista"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir João Batista"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir João Batista"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "addNovo corretor"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "addNovo corretor"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "addNovo corretor"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "addNovo corretor"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "addNovo corretor"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Editar Carla Souza"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Editar Carla Souza"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Editar Carla Souza"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Editar Carla Souza"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Editar Carla Souza"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Editar João Batista"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Editar João Batista"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Editar João Batista"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Editar João Batista"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Editar João Batista"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-delete-flow
 
@@ -3347,27 +1486,12 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=alert-dialog-trigger] "Excluir Boletim de ocorrência."` | 32×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=alert-dialog-trigger] "Excluir Laudo de vistoria.pdf"` | 32×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Boletim de ocorrência."` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Boletim de ocorrência."` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Boletim de ocorrência."` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Boletim de ocorrência."` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Boletim de ocorrência."` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Laudo de vistoria.pdf"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Laudo de vistoria.pdf"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Laudo de vistoria.pdf"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Laudo de vistoria.pdf"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=alert-dialog-trigger] "Excluir Laudo de vistoria.pdf"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-empty-state
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Nova apólice"` | 114,6×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Nova apólice"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Nova apólice"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Nova apólice"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Nova apólice"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Nova apólice"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-error-state
 
@@ -3375,11 +1499,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "refreshTentar novamente"` | 158,5×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "refreshTentar novamente"` | 160,5×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "refreshTentar novamente"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "refreshTentar novamente"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "refreshTentar novamente"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "refreshTentar novamente"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "refreshTentar novamente"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 
 ### patterns-filter-panel
 
@@ -3395,31 +1514,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "shieldCorretora"` | 104,6×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "shieldCorretora"` | 106,6×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=select-trigger][role=combobox] "assignmentStatuskeyboard_arrow"` | 160×32 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "bar_chartProduto"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "bar_chartProduto"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "bar_chartProduto"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "bar_chartProduto"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "bar_chartProduto"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "calendar_todayPeríodo"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "calendar_todayPeríodo"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "calendar_todayPeríodo"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "calendar_todayPeríodo"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "calendar_todayPeríodo"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "personSegurado ou Tomador"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "personSegurado ou Tomador"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "personSegurado ou Tomador"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "personSegurado ou Tomador"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "personSegurado ou Tomador"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "shieldCorretora"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "shieldCorretora"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "shieldCorretora"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "shieldCorretora"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "shieldCorretora"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "assignmentStatuskeyboard_arrow"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "assignmentStatuskeyboard_arrow"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "assignmentStatuskeyboard_arrow"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "assignmentStatuskeyboard_arrow"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=select-trigger][role=combobox] "assignmentStatuskeyboard_arrow"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-filters
 
@@ -3427,11 +1521,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "tuneFiltros"` | 82,9×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "tuneFiltros"` | 84,9×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "tuneFiltros"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "tuneFiltros"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "tuneFiltros"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "tuneFiltros"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=popover-trigger] "tuneFiltros"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-infinite-scroll
 
@@ -3446,11 +1535,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Atualizar"` | 90×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Atualizar"` | 92×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Atualizar"` | contraste 2,21:1 (mínimo 3:1) (#AEAEAE sobre #FFFFFF) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Atualizar"` | contraste 2,29:1 (mínimo 3:1) (#CEA191 sobre #FFFFFF) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Atualizar"` | contraste 2,34:1 (mínimo 3:1) (#B79CEA sobre #FFFFFF) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Atualizar"` | contraste 2,39:1 (mínimo 3:1) (#8BA5F4 sobre #FFFFFF) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Atualizar"` | contraste 2,76:1 (mínimo 3:1) (#DF7F94 sobre #FFFFFF) | soft/claro |
 
 ### patterns-multi-step-form
 
@@ -3460,16 +1544,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Avançar"` | 82,5×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 1148×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 1150×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Avançar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Avançar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Avançar"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Avançar"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Avançar"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-pagination
 
@@ -3482,41 +1556,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `a[data-slot=pagination-link] "5"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | 96,4×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | 95,8×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "1"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "1"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "1"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "1"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "1"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "2"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "2"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "2"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "2"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "2"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "3"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "3"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "3"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "3"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "3"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "4"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "4"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "4"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "4"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "4"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "5"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "5"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "5"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "5"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "5"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a página anterior"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `a[data-slot=pagination-link] "Ir para a próxima página"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-search-experience
 
@@ -3524,11 +1563,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input-group-control] "Buscar apólice"` | 1168×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input-group-control] "Buscar apólice"` | 1170×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input-group-control] "Buscar apólice"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input-group-control] "Buscar apólice"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input-group-control] "Buscar apólice"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input-group-control] "Buscar apólice"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `input[data-slot=input-group-control] "Buscar apólice"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-skeleton
 
@@ -3536,22 +1570,12 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Simular conteúdo carregado"` | 206,3×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Simular conteúdo carregado"` | 208,3×32 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Simular conteúdo carregado"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Simular conteúdo carregado"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Simular conteúdo carregado"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Simular conteúdo carregado"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Simular conteúdo carregado"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-success-feedback
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Salvar alterações"` | 138,1×40 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar alterações"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar alterações"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar alterações"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar alterações"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Salvar alterações"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-toast-strategy
 
@@ -3567,31 +1591,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Informação"` | 108,6×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Sucesso"` | 84,3×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Sucesso"` | 86,3×40 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Ação assíncrona"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Ação assíncrona"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Ação assíncrona"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Ação assíncrona"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Ação assíncrona"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Aviso"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Aviso"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Aviso"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Aviso"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Aviso"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Erro"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Erro"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Erro"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Erro"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Erro"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Informação"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Informação"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Informação"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Informação"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Informação"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Sucesso"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Sucesso"` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Sucesso"` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Sucesso"` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | default | `button[data-slot=button] "Sucesso"` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 
 ### patterns-upload
 
@@ -3632,11 +1631,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | combobox-corner | `div[data-slot=combobox-item][role=option] "Três"` | 312×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | combobox-corner | `div[data-slot=combobox-item][role=option] "Um"` | 312×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | combobox-corner | `input[data-slot=input-group-control][role=combobox]` | 179×36 (< 44×44) | todos |
-| WCAG 2.4.7 (Foco) | séria | combobox-corner | `input[data-slot=input-group-control][role=combobox]` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | combobox-corner | `input[data-slot=input-group-control][role=combobox]` | contraste 2,22:1 (mínimo 3:1) (#C99B8B sobre #F6F3F2) | editorial/claro |
-| WCAG 2.4.7 (Foco) | séria | combobox-corner | `input[data-slot=input-group-control][role=combobox]` | contraste 2,26:1 (mínimo 3:1) (#B296E5 sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | combobox-corner | `input[data-slot=input-group-control][role=combobox]` | contraste 2,3:1 (mínimo 3:1) (#85A0EF sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | combobox-corner | `input[data-slot=input-group-control][role=combobox]` | contraste 2,67:1 (mínimo 3:1) (#DA798E sobre #F6F3F2) | soft/claro |
 | axe: scrollable-region-focusable | séria | context-menu-corner | `.max-h-\(--radix-context-menu-content-available-height\)` | Scrollable region must have keyboard access | default/claro |
 | Regra da Casa (Alvo) | 🟡 | context-menu-corner | `div[data-slot=context-menu-item][role=menuitem] "Cinco"` | 116×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | context-menu-corner | `div[data-slot=context-menu-item][role=menuitem] "Cinco"` | 118×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
@@ -3818,28 +1812,3 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | concentrico | `input[data-slot=input-group-control] "Buscar"` | 223,9×36 (< 44×44) | default/claro |
 | Regra da Casa (Alvo) | 🟡 | concentrico | `input[data-slot=input-group-control] "Comando"` | 220,6×36 (< 44×44) | default/claro |
 | Regra da Casa (Alvo) | 🟡 | concentrico | `input[data-slot=input-group-control] "Comando"` | 222,6×36 (< 44×44) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=button] "Ir"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=button] "Ir"` | contraste 2,22:1 (mínimo 3:1) (#C99B8A sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=button] "Ir"` | contraste 2,26:1 (mínimo 3:1) (#B296E3 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=button] "Ir"` | contraste 2,31:1 (mínimo 3:1) (#869FED sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=button] "Ir"` | contraste 2,67:1 (mínimo 3:1) (#DA798D sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=segmented-control-item][role=radio] "Dia"` | contraste 2,1:1 (mínimo 3:1) (#A6A6A4 sobre #EFEEEB) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=segmented-control-item][role=radio] "Dia"` | contraste 2,18:1 (mínimo 3:1) (#C69888 sobre #F0EDEC) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=segmented-control-item][role=radio] "Dia"` | contraste 2,22:1 (mínimo 3:1) (#AF93E2 sobre #EEEDF0) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=segmented-control-item][role=radio] "Dia"` | contraste 2,25:1 (mínimo 3:1) (#829DED sobre #ECEEF1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=segmented-control-item][role=radio] "Dia"` | contraste 2,62:1 (mínimo 3:1) (#D8768B sobre #F1EDED) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=tabs-trigger][role=tab] "Conta"` | contorno de 1px (mínimo 2px) (#174CEA sobre #ECEEF1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=tabs-trigger][role=tab] "Conta"` | contorno de 1px (mínimo 2px) (#5E5E5E sobre #EFEEEB) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=tabs-trigger][role=tab] "Conta"` | contorno de 1px (mínimo 2px) (#6F3AD5 sobre #EEEDF0) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=tabs-trigger][role=tab] "Conta"` | contorno de 1px (mínimo 2px) (#9D4323 sobre #F0EDEC) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `button[data-slot=tabs-trigger][role=tab] "Conta"` | contorno de 1px (mínimo 2px) (#BF002A sobre #F1EDED) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `input[data-slot=input-group-control] "Buscar"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `input[data-slot=input-group-control] "Buscar"` | contraste 2,22:1 (mínimo 3:1) (#C99B8A sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `input[data-slot=input-group-control] "Buscar"` | contraste 2,26:1 (mínimo 3:1) (#B296E3 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `input[data-slot=input-group-control] "Buscar"` | contraste 2,31:1 (mínimo 3:1) (#869FED sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `input[data-slot=input-group-control] "Buscar"` | contraste 2,67:1 (mínimo 3:1) (#DA798D sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `input[data-slot=input-group-control] "Comando"` | contraste 2,14:1 (mínimo 3:1) (#A9A8A7 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `input[data-slot=input-group-control] "Comando"` | contraste 2,22:1 (mínimo 3:1) (#C99B8A sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `input[data-slot=input-group-control] "Comando"` | contraste 2,26:1 (mínimo 3:1) (#B296E3 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `input[data-slot=input-group-control] "Comando"` | contraste 2,31:1 (mínimo 3:1) (#869FED sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | concentrico | `input[data-slot=input-group-control] "Comando"` | contraste 2,67:1 (mínimo 3:1) (#DA798D sobre #F5F3F1) | default/claro |

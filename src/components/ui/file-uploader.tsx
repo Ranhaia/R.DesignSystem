@@ -81,7 +81,7 @@ function FileUploader({
       }}
       className={cn(
         "flex cursor-pointer flex-col items-center gap-2 rounded-xl border-2 border-dashed border-input p-8 text-center text-sm text-muted-foreground transition-colors",
-        "has-[:focus-visible]:border-ring has-[:focus-visible]:ring-[3px] has-[:focus-visible]:ring-ring/50",
+        "has-[:focus-visible]:border-ring has-[:focus-visible]:ring-[3px] has-[:focus-visible]:ring-ring",
         dragging && "border-primary bg-primary/5",
         disabled && "pointer-events-none cursor-not-allowed opacity-50",
         className
