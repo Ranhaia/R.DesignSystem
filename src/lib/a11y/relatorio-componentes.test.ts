@@ -123,4 +123,9 @@ describe("relatório de componentes", () => {
     for (const l of linhas) expect(l.replace(/\\\|/g, "").split("|").length).toBe(8)
     expect(md).not.toMatch(/^linha 2/m)
   })
+  it("tira os códigos de cor ANSI da mensagem de erro", () => {
+    const md = relatorioComponentes([base("default/claro", { erro: "\u001b[34mClique\u001b[39m aqui" })], ["default/claro"])
+    expect(md).toContain("Clique aqui")
+    expect(md).not.toContain("\u001b")
+  })
 })

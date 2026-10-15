@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { CONTEXTOS } from "./css-tokens"
-import { contextoDosGlobals, nomeProjeto, regrasAxe } from "./contexto-story"
+import { contextoDoProjeto, contextoDosGlobals, nomeProjeto, regrasAxe } from "./contexto-story"
 
 describe("contexto da story", () => {
   it("lê preset e modo dos globals, com padrão default/claro", () => {
@@ -20,5 +20,11 @@ describe("contexto da story", () => {
   it("color-contrast do axe só fica ligado no default claro", () => {
     expect(regrasAxe({ preset: "default", modo: "claro" })).toEqual([])
     for (const c of CONTEXTOS.slice(1)) expect(regrasAxe(c)).toEqual([{ id: "color-contrast", enabled: false }])
+  })
+  it("contexto a partir do nome do projeto, com ou sem o sufixo do navegador", () => {
+    expect(contextoDoProjeto("storybook")).toBe("default/claro")
+    expect(contextoDoProjeto("storybook-tech-claro (chromium)")).toBe("tech/claro")
+    expect(contextoDoProjeto("storybook-midnight-escuro")).toBe("midnight/escuro")
+    expect(contextoDoProjeto("unit")).toBe("unit")
   })
 })

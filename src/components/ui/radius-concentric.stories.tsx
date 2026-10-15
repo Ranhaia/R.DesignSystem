@@ -13,7 +13,9 @@ import { SegmentedControl, SegmentedControlItem } from "@/components/ui/segmente
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input-group"
 import { Kbd } from "@/components/ui/kbd"
 
-const meta: Meta = { title: "Testes/Raio concêntrico" }
+// Só no contexto padrão: a story aninha os 5 presets em wrappers, e com outro preset no <html> o aninhado
+// herda o que não redefine (ex.: --border-width do tech), coisa que no app, com o preset só no <html>, não acontece.
+const meta: Meta = { title: "Testes/Raio concêntrico", tags: ["so-contexto-padrao"] }
 export default meta
 type Story = StoryObj
 

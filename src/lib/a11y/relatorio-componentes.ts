@@ -32,8 +32,8 @@ const fmtNum = (n: number) => String(n).replace(".", ",")
 
 const fmtTexto = (s: string) => s.replace(/(\d+)\.(\d+)/g, "$1,$2")
 
-// Texto livre (nome acessível, ajuda do axe, erro) dentro de célula: | e quebra de linha quebrariam a tabela.
-const cel = (s: string) => s.replace(/\r?\n/g, " ").replace(/\|/g, "\\|")
+// Texto livre (nome acessível, ajuda do axe, erro) dentro de célula: | e quebra de linha quebrariam a tabela; cor ANSI do terminal é lixo.
+const cel = (s: string) => s.replace(/\u001b\[[0-9;]*m/g, "").replace(/\r?\n/g, " ").replace(/\|/g, "\\|")
 
 function traduzirImpacto(impacto: string): string {
   switch (impacto.toLowerCase()) {

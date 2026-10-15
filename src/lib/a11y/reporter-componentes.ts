@@ -5,19 +5,9 @@ import { dirname, join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import type { Reporter, TestModule } from "vitest/node"
 import { CONTEXTOS, nomeContexto } from "./css-tokens"
+import { contextoDoProjeto } from "./contexto-story"
 import { relatorioComponentes, type ResultadoStory } from "./relatorio-componentes"
 
-function contextoDoProjeto(nome: string): string {
-  if (nome === "storybook") return "default/claro"
-  if (nome.startsWith("storybook-")) {
-    const resto = nome.slice("storybook-".length)
-    const ultimoTraco = resto.lastIndexOf("-")
-    if (ultimoTraco > 0) {
-      return `${resto.slice(0, ultimoTraco)}/${resto.slice(ultimoTraco + 1)}`
-    }
-  }
-  return nome
-}
 
 export default class ReporterComponentes implements Reporter {
   onTestRunEnd(modulos: ReadonlyArray<TestModule>) {

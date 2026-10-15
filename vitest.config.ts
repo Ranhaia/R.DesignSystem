@@ -9,7 +9,7 @@ import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
 
 import { CONTEXTOS } from './src/lib/a11y/css-tokens';
-import { nomeProjeto } from './src/lib/a11y/contexto-story';
+import { ehPadrao, nomeProjeto } from './src/lib/a11y/contexto-story';
 import ReporterComponentes from './src/lib/a11y/reporter-componentes';
 
 import { MAX_NAVEGADORES, pegarTrava } from './scripts/a11y-trava.mjs';
@@ -59,6 +59,8 @@ export default defineConfig({
           storybookTest({
             configDir: path.join(dirname, '.storybook'),
             initialGlobals: { style: c.preset, modo: c.modo },
+            // stories que já percorrem os presets por conta própria (ex.: raio concêntrico) rodam uma vez só
+            tags: ehPadrao(c) ? undefined : { include: ['test'], exclude: ['so-contexto-padrao'] },
           }),
         ],
         test: {
