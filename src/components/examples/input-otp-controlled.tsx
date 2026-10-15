@@ -17,6 +17,7 @@ export default function InputOTPControlled() {
         maxLength={6}
         value={value}
         onChange={(value) => setValue(value)}
+        aria-label="Código de verificação"
       >
         <InputOTPGroup>
           <InputOTPSlot index={0} />

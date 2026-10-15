@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 function InputOTP({
   className,
   containerClassName,
+  "aria-label": ariaLabel = "Código de verificação",
   ...props
 }: React.ComponentProps<typeof OTPInput> & {
   containerClassName?: string
@@ -16,6 +17,7 @@ function InputOTP({
   return (
     <OTPInput
       data-slot="input-otp"
+      aria-label={ariaLabel}
       containerClassName={cn(
         "flex items-center gap-2 has-disabled:opacity-50",
         containerClassName

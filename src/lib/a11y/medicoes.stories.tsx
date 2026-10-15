@@ -99,3 +99,34 @@ export const FocoNoConteinerPassa: StoryObj = {
     await expect(f.motivo).toBeUndefined()
   },
 }
+
+export const FocoEmElementoOcultoMedeIndicadorAtivo: StoryObj = {
+  // padrão do input-otp: input invisível delega o foco para o slot com data-active="true"
+  render: () => (
+    <div style={{ position: 'relative' }}>
+      <input
+        aria-label="código"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          opacity: 1,
+          color: 'transparent',
+          background: 'transparent',
+        }}
+      />
+      <div
+        data-active="true"
+        className="outline-none ring-[3px] ring-black"
+        style={{ width: '2rem', height: '2rem' }}
+      >
+        1
+      </div>
+    </div>
+  ),
+  play: async () => {
+    const [f] = await medirFoco()
+    await expect(f.resultado).toBe('passa')
+    await expect(f.largura).toBeGreaterThanOrEqual(2)
+  },
+}
+
