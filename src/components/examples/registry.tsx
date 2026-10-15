@@ -236,4 +236,5 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "tree-select-multiple": dynamic(() => import("@/components/examples/tree-select-multiple")),
   "tree-select-checkable": dynamic(() => import("@/components/examples/tree-select-checkable")),
   "tree-select-checkable-parent": dynamic(() => import("@/components/examples/tree-select-checkable-parent")),
+  "files-demo": dynamic(() => import("@/components/examples/files-demo")),
 }
