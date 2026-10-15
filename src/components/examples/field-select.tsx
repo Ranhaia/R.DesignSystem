@@ -17,7 +17,7 @@ export default function FieldSelect() {
       <Field>
         <FieldLabel>Departamento</FieldLabel>
         <Select>
-          <SelectTrigger>
+          <SelectTrigger aria-label="Departamento">
             <SelectValue placeholder="Escolha o departamento" />
           </SelectTrigger>
           <SelectContent>

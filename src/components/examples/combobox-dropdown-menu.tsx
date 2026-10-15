@@ -50,7 +50,7 @@ export default function ComboboxDropdownMenu() {
       </p>
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="sm" aria-label="Mais opções">
             <Icon name="more_horiz" />
           </Button>
         </DropdownMenuTrigger>

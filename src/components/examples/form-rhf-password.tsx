@@ -167,6 +167,7 @@ export default function FormRhfPassword() {
                   <div className="space-y-2">
                     <Progress
                       value={strengthPercentage}
+                      aria-label="Força da senha"
                       className={getStrengthColor()}
                     />
 

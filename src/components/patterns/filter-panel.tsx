@@ -346,7 +346,7 @@ export function FilterPanelPattern() {
 
         {/* Status — Select nativo (lista curta, mutuamente exclusiva) */}
         <Select value={status} onValueChange={setStatus}>
-          <SelectTrigger size="sm" className="w-40">
+          <SelectTrigger size="sm" className="w-40" aria-label="Status">
             <Icon name="assignment" aria-hidden="true" />
             <SelectValue placeholder="Status" />
           </SelectTrigger>
