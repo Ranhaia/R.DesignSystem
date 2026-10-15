@@ -67,7 +67,7 @@ function CommandInput({
   return (
     <div
       data-slot="command-input-wrapper"
-      className="flex h-9 items-center gap-2 border-b px-3"
+      className="flex h-9 items-center gap-2 border-b px-3 has-[:focus-visible]:border-ring has-[:focus-visible]:ring-[3px] has-[:focus-visible]:ring-ring"
     >
       <Icon name="search" size={1} className="shrink-0 opacity-50" />
       <CommandPrimitive.Input
@@ -133,6 +133,7 @@ function CommandSeparator({
   return (
     <CommandPrimitive.Separator
       data-slot="command-separator"
+      aria-hidden="true"
       className={cn("-mx-1 h-px bg-border", className)}
       {...props}
     />
