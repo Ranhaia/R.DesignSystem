@@ -7,8 +7,8 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 ## Resumo
 
 - **Stories × Contextos:** 3851 medições (386 stories em 10 contextos)
-- **Componentes:** 94 componentes (1 reprovaram WCAG, 68 passaram com Regra da Casa 🟡, 25 passaram limpos)
-- **Falhas WCAG:** 1
+- **Componentes:** 94 componentes (0 reprovaram WCAG, 69 passaram com Regra da Casa 🟡, 25 passaram limpos)
+- **Falhas WCAG:** 0
 - **Regras da Casa (🟡):** 723
 
 ## Causas comuns
@@ -17,7 +17,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | alvo menor que 44×44 | - | 4725 | 63 | 204 |
 | Regra da Casa (Alvo) | exceção de espaçamento | - | 800 | 10 | 30 |
-| axe: scrollable-region-focusable | Scrollable region must have keyboard access | - | 1 | 1 | 1 |
 
 ## Visão geral por componente
 
@@ -106,7 +105,7 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | patterns-error-state | passou (🟡) | 0 | 2 |
 | patterns-filter-panel | passou (🟡) | 0 | 9 |
 | patterns-filters | passou (🟡) | 0 | 2 |
-| patterns-infinite-scroll | reprovou | 1 | 2 |
+| patterns-infinite-scroll | passou (🟡) | 0 | 2 |
 | patterns-loading | passou (🟡) | 0 | 2 |
 | patterns-multi-step-form | passou (🟡) | 0 | 3 |
 | patterns-pagination | passou (🟡) | 0 | 7 |
@@ -1021,7 +1020,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
-| axe: scrollable-region-focusable | séria | default | `.max-h-64` | Scrollable region must have keyboard access | tech/claro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Carregar mais"` | 113,9×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Carregar mais"` | 115,9×32 (< 44×44) | tech/claro, tech/escuro |
 
