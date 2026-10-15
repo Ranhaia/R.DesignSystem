@@ -51,6 +51,56 @@ describe("fixedValues", () => {
   })
 })
 
+// CSS escrito à mão (globals.css): valor de medida ou tempo só pode nascer
+// numa declaração de token (`--nome: valor`). Fora dela, só var()/--spacing().
+// Exceções: linha fina (≤3px) e o 0.01ms do bloco prefers-reduced-motion.
+const CSS_LITERAL = /(-?\d*\.?\d+)(px|rem|em|ms|s)\b/g
+
+export function cssFixedValues(source: string) {
+  const out: string[] = []
+  source
+    .replace(/\/\*[\s\S]*?\*\//g, (c) => c.replace(/[^\n]/g, "")) // mantém nº da linha
+    .split(/\r?\n/)
+    .forEach((line, i) => {
+      const t = line.trim()
+      if (!t || t.startsWith("--") || t.startsWith("@")) return
+      const value = t.match(/:\s*(.+)$/)?.[1]
+      if (!value) return
+      for (const [literal, num, unit] of value.matchAll(CSS_LITERAL)) {
+        if (unit === "px" && Math.abs(Number(num)) <= MAX_HAIRLINE_PX) continue
+        if (literal === "0.01ms") continue
+        out.push(`linha ${i + 1}: ${t}`)
+      }
+    })
+  return out
+}
+
+describe("cssFixedValues", () => {
+  it("aceita valor fixo dentro de declaração de token", () => {
+    expect(cssFixedValues(":root {\n  --motion-duration-fast: 150ms;\n  --radius: 0.625rem;\n}")).toEqual([])
+  })
+  it("reprova medida e tempo fixos fora de token", () => {
+    expect(cssFixedValues(".x {\n  padding: 0 1rem;\n  transition: all 150ms;\n  transform: translateY(12px);\n}")).toHaveLength(3)
+  })
+  it("aceita var(), --spacing(), linha fina, número sem unidade e reduced-motion", () => {
+    expect(
+      cssFixedValues(
+        ".x {\n  padding: calc(var(--spacing) * 4);\n  transform: translateY(--spacing(3)) scale(0.85);\n  border: 1px solid var(--border);\n  transition-duration: 0.01ms !important;\n}"
+      )
+    ).toEqual([])
+  })
+  it("ignora at-rules e comentários", () => {
+    expect(cssFixedValues("@media (min-width: 768px) {\n/* padding: 1rem; */\n}")).toEqual([])
+  })
+})
+
+describe("globals.css só usa token fora das declarações de token", () => {
+  it("src/app/globals.css", () => {
+    const css = readFileSync(join(__dirname, "../app/globals.css"), "utf8")
+    expect(cssFixedValues(css)).toEqual([])
+  })
+})
+
 describe("componentes do DS só usam token", () => {
   // ui, patterns, templates, examples, doc e demais pastas de src/components
   const files = (readdirSync(COMPONENTS_DIR, { recursive: true }) as string[])

@@ -41,7 +41,8 @@ Este projeto guarda **só código + planejamento corrente + documentação
 viva**. Não vira arquivo de histórico.
 
 ```
-tokens/        → não é pasta própria: é src/app/globals.css
+tokens/        → não é pasta própria: src/app/globals.css (medida, raio, sombra,
+                 movimento) + src/app/tokens-cor.css (cor, gerado; não editar)
 components/    → não é pasta própria: é src/components/ui/
 docs/
   active/
@@ -70,7 +71,8 @@ por enquanto.
 
 | Tarefa | Pastas a carregar |
 |---|---|
-| Ajustar tokens (cor, spacing, tipografia) | `src/app/globals.css` + `docs/active/decisoes/` (se houver decisão pendente sobre o token) |
+| Ajustar cor | `src/lib/cor/presets.ts` + `npm run tokens:gerar` (gera `src/app/tokens-cor.css`) + `docs/active/decisoes/` (se houver decisão pendente) |
+| Ajustar outros tokens (spacing, raio, tipografia, movimento) | `src/app/globals.css` + `docs/active/decisoes/` (se houver decisão pendente sobre o token) |
 | Criar/editar componente | `src/components/ui/` + `docs/active/componentes/<slug>/` (ou `docs/archive/componentes/<slug>/` pra consultar um já fechado) |
 | Construir tela (`/construir-telas`) | `docs/active/telas/<slug>/` + `src/lib/templates-registry.ts` + `src/lib/atomic-registry.ts` |
 | Documentar uma decisão nova (ADR) | `docs/active/decisoes/` |
@@ -129,6 +131,57 @@ não está disponível aqui:
   aceita numa chamada direta). A trava do mesmo arquivo recusa uma 2ª
   execução. Recusado? Espere a outra terminar, não contorne. Mudou um
   limite? Rode `node scripts/verificar-a11y-todos.mjs`.
+
+## Regras de trabalho
+
+- Nunca invente valor de token, cor, medida ou estado.
+- Toda validação técnica é reportada em linguagem de design.
+- Todo achado sai de `open` por uma decisão explícita. Nunca marque
+  `fixed` sem revalidar.
+- Quem usa pode não ler: abra com contexto curto e pergunta de múltipla
+  escolha.
+- Detecte o MCP antes de usar, não confie no estado.
+
+## Só token, num lugar só
+
+- **Medida, espaço, tempo e texto vêm de token.** Em componente: escala do
+  Tailwind, `--spacing(n)` ou `var(--token)`. No CSS à mão
+  (`globals.css`): valor literal só dentro de uma declaração de token
+  (`--nome: valor`); fora dela, `var()` ou `calc(var(--spacing) * n)`.
+  Exceções: linha fina (≤3px) e o `0.01ms` do `prefers-reduced-motion`.
+- **A trava é `src/lib/design-tokens.test.ts`**: reprova valor fixo em
+  `src/components/` e em `src/app/globals.css`. Teste vermelho se corrige
+  na causa, nunca afrouxando a regra.
+- **Token novo segue o padrão da família**: valor em `:root` (o preset pode
+  sobrescrever) e ponte em `@theme inline` quando precisa virar utilitário
+  (ex.: `--motion-ease-spring` → `--ease-spring` → `ease-spring`). Um nome
+  declarado uma vez só.
+- **Token é catálogo**: não sai só por estar sem uso hoje; ele define as
+  opções permitidas.
+- **Nada de classe CSS solta que repete componente** (`.btn`, `.card`,
+  `.badge`…). O visual mora no componente; o CSS global só tem token,
+  keyframes e regras de base.
+
+## Mudou X → atualize Y (no mesmo commit)
+
+Cada informação mora num lugar só; os outros apontam para ele. Ao mudar a
+coluna da esquerda, atualize a da direita junto, ou o repositório começa a
+se contradizer.
+
+| Mudou | Atualize junto |
+|---|---|
+| Componente novo em `src/components/ui/` | `components-registry.ts`, `atomic-registry.ts`, `examples-mapping.ts`, demo em `components/examples/` + `examples/registry.tsx`, `<slug>.stories.tsx`, `docs/active/componentes/<slug>/spec.md` |
+| Componente com arredondado dentro de arredondado | `src/components/ui/radius-concentric.stories.tsx` |
+| Pattern novo | `patterns-registry.ts`, `components/patterns/registry.tsx`, `pattern-docs.ts` |
+| Token novo ou família nova | `globals.css` (padrão acima) e a seção "Sistema de tokens" do `README.md` |
+| Cor de um preset | `src/lib/cor/presets.ts` (cor-fonte, ou sobrescrita com motivo) + `npm run tokens:gerar`. Nunca editar `tokens-cor.css` nem declarar cor no `globals.css` |
+| Como um projeto consome o DS (o que copiar, comando) | `README.md`, seções "Estrutura de pastas para novos projetos" e "Como importar os componentes" |
+| Onde as coisas ficam, regras deste repo | este `CLAUDE.md` |
+| Spec ou decisão finalizada | mover de `docs/active/` para `docs/archive/` |
+
+Quem é o quê: **`CLAUDE.md`** orienta quem trabalha *dentro* do DS;
+**`README.md`** orienta quem *usa* o DS num projeto. Não copie conteúdo de
+um para o outro; aponte.
 
 ## Idioma
 

@@ -64,6 +64,14 @@
   --duration-motion-fast: var(--motion-duration-fast);
   --duration-motion-base: var(--motion-duration-base);
   --duration-motion-slow: var(--motion-duration-slow);
+  --ease-spring: var(--motion-ease-spring);
+  --ease-out-expo: var(--motion-ease-out-expo);
+  --ease-in-out-smooth: var(--motion-ease-in-out-smooth);
+
+  --animate-accordion-down: accordion-down var(--motion-duration-base) var(--motion-ease-spring);
+  --animate-accordion-up: accordion-up var(--motion-duration-base) var(--motion-ease-spring);
+  --animate-collapsible-down: collapsible-down var(--motion-duration-base) var(--motion-ease-spring);
+  --animate-collapsible-up: collapsible-up var(--motion-duration-base) var(--motion-ease-spring);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -201,6 +209,11 @@
   --motion-duration-fast: 150ms;
   --motion-duration-base: 200ms;
   --motion-duration-slow: 350ms;
+  --motion-ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Quanto um controle encolhe ao ser pressionado (active:scale-(--scale-pressed)). */
+  --scale-pressed: 0.98;
 
   /* Espessura de borda padrão (Shape). 1px = mesmo valor que o Tailwind já
      usava fixo antes desse token existir — baseline não muda pra quem não
@@ -722,5 +735,50 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Motion & Keyframes ---------------------------------------------------- */
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes collapsible-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
   }
 }
