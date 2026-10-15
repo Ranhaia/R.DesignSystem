@@ -67,10 +67,12 @@ variável cada token (`--font-sans`, `--font-heading`) aponta.
 ## Sistema de tokens
 
 Toda a identidade visual passa por **tokens semânticos** definidos como
-variáveis CSS em `src/app/globals.css`. Componentes nunca usam valores
+variáveis CSS: cor em `src/app/tokens-cor.css` (gerado, ver abaixo) e o
+resto (raio, sombra, fonte, movimento) em `src/app/globals.css`, que importa
+o primeiro. Componentes nunca usam valores
 fixos (`bg-blue-600`, `rounded-lg`), eles usam papéis (`bg-primary`,
 `rounded-[var(--radius)]`, `shadow-md`). Trocar a aparência inteira do app
-é editar esse arquivo — nenhum componente precisa ser tocado.
+é editar esses tokens — nenhum componente precisa ser tocado.
 
 Camadas, em ordem de precedência:
 
@@ -95,13 +97,17 @@ Grupos de tokens disponíveis:
 | Estrutura | `border`, `input`, `ring`, `radius` | bordas, contornos de campo, anel de foco, raio |
 | Elevação | `shadow-2xs` a `shadow-xl` | sombra de cards, popovers, modais |
 | Tipografia | `font-sans`, `font-heading` | corpo de texto / títulos e headings |
+| Movimento | `duration-motion-fast/base/slow`, `ease-spring`, `ease-out-expo`, `ease-in-out-smooth`, `active:scale-(--scale-pressed)` | duração e curva das transições, encolher ao pressionar |
 | Gráficos | `chart-1` a `chart-5` | paleta usada pelo componente `chart.tsx` (recharts) |
 | Sidebar | `sidebar`, `sidebar-foreground`, `sidebar-primary`, `sidebar-accent`, `sidebar-border`, `sidebar-ring` (+ `-foreground`) | tokens dedicados à sidebar, podem divergir do resto do app |
 
-As cores usam **OKLCH** (`oklch(L C H)`). Para criar um preset novo, copie
-um bloco `[data-style="..."]` inteiro em `globals.css` e ajuste
-cor/fonte/radius/sombra juntos — é assim que se sente o efeito de "trocar
-de fornecedor" em vez de só recolorir.
+As cores **não se editam à mão**: cada preset tem uma cor-fonte em
+`src/lib/cor/presets.ts`, e `npm run tokens:gerar` gera o
+`src/app/tokens-cor.css` com todos os papéis já no contraste AA (claro e
+escuro). Ajuste pontual entra como sobrescrita, com motivo, no mesmo
+arquivo. Para criar um preset novo: cor-fonte em `presets.ts` + bloco
+`[data-style="..."]` em `globals.css` com fonte/radius/sombra — é assim
+que se sente o efeito de "trocar de fornecedor" em vez de só recolorir.
 
 ## Estrutura de pastas
 
@@ -109,7 +115,8 @@ de fornecedor" em vez de só recolorir.
 src/
   app/
     layout.tsx              # fontes (next/font/google) + script anti-flash de estilo
-    globals.css              # tokens de tema + 5 presets de identidade
+    globals.css              # tokens (raio, sombra, fonte, movimento) + 5 presets
+    tokens-cor.css           # cores geradas por src/lib/cor (não editar)
     page.tsx                  # Visão geral (dashboard genérico)
     estilo/page.tsx            # Folha de estilo (fontes, escala tipográfica, cores)
     components/[slug]/page.tsx  # página de cada componente (Composição + Exemplos)
@@ -162,7 +169,8 @@ src/
         page.tsx                  # lista
         [id]/page.tsx               # detalhe
     layout.tsx                    # fontes + shell global
-    globals.css                    # tokens copiados/importados deste DS (ver abaixo)
+    globals.css                    # tokens copiados deste DS (ver abaixo)
+    tokens-cor.css                  # cores copiadas deste DS (importado pelo globals.css)
   components/
     ui/                          # ATOMS/MOLECULES/ORGANISMS — vêm direto deste DS,
                                    # copiados via `npx shadcn@latest add` (ver "Como importar")
@@ -196,9 +204,10 @@ pasta nova) do que caçar 5 pastas diferentes (`components/`, `hooks/`,
 - `src/components/patterns/*` — Patterns (Empty State, Loading, CRUD,
   Multi-step Form etc.) quando o caso de uso do projeto novo bater com um
   já catalogado aqui.
-- Tokens de `globals.css` (papéis semânticos + os 5 presets) — copiar o
-  arquivo inteiro é mais seguro do que recriar os tokens à mão, evita
-  divergência de valor entre o catálogo e o projeto novo.
+- Tokens de `globals.css` e `tokens-cor.css` (papéis semânticos + os 5
+  presets) — copiar os dois arquivos inteiros é mais seguro do que recriar
+  os tokens à mão, evita divergência de valor entre o catálogo e o projeto
+  novo. Cor nova se pede ao DS (via `presets.ts`), não se edita na cópia.
 
 **O que é sempre próprio do projeto novo, nunca deste DS:**
 - `app/` (rotas), `lib/api/`, `lib/validations/`, `types/` — regra de

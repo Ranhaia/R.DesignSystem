@@ -44,7 +44,7 @@ function AccordionTrigger({
         <Icon
           name="keyboard_arrow_down"
           size={1}
-          className="pointer-events-none shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200"
+          className="pointer-events-none shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-motion-base ease-spring"
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
