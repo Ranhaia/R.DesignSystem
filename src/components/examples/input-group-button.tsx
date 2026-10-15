@@ -46,7 +46,11 @@ export default function InputGroupButtonExample() {
         <Popover>
           <PopoverTrigger asChild>
             <InputGroupAddon>
-              <InputGroupButton variant="secondary" size="icon-xs">
+              <InputGroupButton
+                variant="secondary"
+                size="icon-xs"
+                aria-label="Informações sobre segurança"
+              >
                 <IconInfoCircle />
               </InputGroupButton>
             </InputGroupAddon>
@@ -62,11 +66,12 @@ export default function InputGroupButtonExample() {
         <InputGroupAddon className="pl-1.5 text-muted-foreground">
           https://
         </InputGroupAddon>
-        <InputGroupInput id="input-secure-19" />
+        <InputGroupInput id="input-secure-19" aria-label="Endereço do site" />
         <InputGroupAddon align="inline-end">
           <InputGroupButton
             onClick={() => setIsFavorite(!isFavorite)}
             size="icon-xs"
+            aria-label={isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
           >
             <IconStar
               data-favorite={isFavorite}

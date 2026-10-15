@@ -21,6 +21,7 @@ export default function InputGroupTextareaExample() {
           id="textarea-code-32"
           placeholder="console.log('Hello, world!');"
           className="min-h-50"
+          aria-label="Código JavaScript"
         />
         <InputGroupAddon align="block-end" className="border-t">
           <InputGroupText>Linha 1, Coluna 1</InputGroupText>
@@ -33,10 +34,10 @@ export default function InputGroupTextareaExample() {
             <IconBrandJavascript />
             script.js
           </InputGroupText>
-          <InputGroupButton className="ml-auto" size="icon-xs">
+          <InputGroupButton className="ml-auto" size="icon-xs" aria-label="Recarregar script">
             <IconRefresh />
           </InputGroupButton>
-          <InputGroupButton variant="ghost" size="icon-xs">
+          <InputGroupButton variant="ghost" size="icon-xs" aria-label="Copiar script">
             <IconCopy />
           </InputGroupButton>
         </InputGroupAddon>
