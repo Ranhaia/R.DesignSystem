@@ -5,7 +5,7 @@ import {
 
 export default function NativeSelectInvalid() {
   return (
-    <NativeSelect aria-invalid="true">
+    <NativeSelect aria-invalid="true" aria-label="Função">
       <NativeSelectOption value="">Selecionar função</NativeSelectOption>
       <NativeSelectOption value="admin">Administrador</NativeSelectOption>
       <NativeSelectOption value="editor">Editor</NativeSelectOption>

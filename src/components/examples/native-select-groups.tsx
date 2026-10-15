@@ -6,7 +6,7 @@ import {
 
 export default function NativeSelectGroups() {
   return (
-    <NativeSelect>
+    <NativeSelect aria-label="Departamento">
       <NativeSelectOption value="">Selecionar departamento</NativeSelectOption>
       <NativeSelectOptGroup label="Engenharia">
         <NativeSelectOption value="frontend">Frontend</NativeSelectOption>

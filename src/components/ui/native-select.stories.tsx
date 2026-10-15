@@ -25,7 +25,7 @@ const meta: Meta<typeof NativeSelect> = {
     disabled: false,
   },
   render: (args) => (
-    <NativeSelect {...args} className="w-auto">
+    <NativeSelect {...args} aria-label="Opções" className="w-auto">
       <NativeSelectOption>Opção 1</NativeSelectOption>
       <NativeSelectOption>Opção 2</NativeSelectOption>
     </NativeSelect>

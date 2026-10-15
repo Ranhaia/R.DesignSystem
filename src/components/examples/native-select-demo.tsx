@@ -5,7 +5,7 @@ import {
 
 export default function NativeSelectDemo() {
   return (
-    <NativeSelect>
+    <NativeSelect aria-label="Status">
       <NativeSelectOption value="">Selecionar status</NativeSelectOption>
       <NativeSelectOption value="todo">A fazer</NativeSelectOption>
       <NativeSelectOption value="in-progress">Em andamento</NativeSelectOption>
