@@ -22,10 +22,10 @@ Resumo do que você precisa saber para não errar:
 
 ## Testes de navegador
 
-No máximo 4 Chromium e uma execução de testes por vez na máquina (RAM).
-Os 10 contextos do Storybook só via `npm run test:a11y:todos`. Se a trava
-recusar, espere a outra execução terminar; não contorne. Detalhes em
-`CLAUDE.md`.
+Uma execução de testes de navegador por vez na máquina (RAM). Todos os
+contextos do Storybook só via `npm run test:a11y:todos`. Se a trava
+recusar, espere a outra execução terminar; não contorne. Os limites ficam
+em `scripts/a11y-trava.mjs`; detalhes em `CLAUDE.md`.
 
 ## Sobre o projeto
 

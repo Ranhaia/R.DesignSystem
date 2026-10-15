@@ -120,12 +120,15 @@ não está disponível aqui:
   vai para outra. Ver `C:\dev\_protocolo\PROTOCOLO.md`, regra 3.
 - Nunca cor fixa fora de token, nunca componente inventado fora do
   catálogo em `src/components/ui/`
-- **Testes de navegador (Storybook/vitest): no máximo 4 Chromium e uma
-  execução por vez na máquina.** Cada Chromium headless come ~830 MB; em
-  15/10/2026 execuções empilhadas esgotaram os 16 GB. Os 10 contextos só
-  via `npm run test:a11y:todos` (lotes de 4); o `vitest.config.ts` recusa
-  pedir mais de 4 contextos e a trava em `scripts/a11y-trava.mjs` recusa
-  uma 2ª execução. Recusado? Espere a outra terminar, não contorne.
+- **Testes de navegador (Storybook/vitest): uma execução por vez na
+  máquina, com limite de Chromium.** Cada Chromium headless come ~830 MB;
+  em 15/10/2026 execuções empilhadas esgotaram os 16 GB. Todos os
+  contextos só via `npm run test:a11y:todos`. Os limites ficam em
+  `scripts/a11y-trava.mjs`, única fonte: `LOTE` (contextos por vez no
+  `test:a11y:todos`) e `MAX_NAVEGADORES` (teto que o `vitest.config.ts`
+  aceita numa chamada direta). A trava do mesmo arquivo recusa uma 2ª
+  execução. Recusado? Espere a outra terminar, não contorne. Mudou um
+  limite? Rode `node scripts/verificar-a11y-todos.mjs`.
 
 ## Idioma
 
