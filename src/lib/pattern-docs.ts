@@ -467,4 +467,34 @@ const CAMPO_ICONE = { produto: "bar_chart", corretora: "shield", /* ... */ }
   Ação assíncrona
 </Button>`,
   },
+
+  "reactive-dashboard-panel": {
+    description: "Orquestração de painéis interativos onde cada widget assina um Contrato Tridimensional (Exposed State, Event Triggers e Imperative Actions), permitindo sincronização reativa e desacoplada inspirada no ToolJet.",
+    whenToUse: "Dashboards analíticos, painéis operacionais, estúdios interativos ou telas onde a seleção em um componente altera múltiplos outros.",
+    composition: [
+      "PanelProvider / useWidgetContract / useWidgetState (reactive-panel)",
+      "Card / CardHeader / CardTitle / CardDescription / CardContent (ui/card)",
+      "Table / TableHeader / TableRow / TableHead / TableBody / TableCell (ui/table)",
+      "Badge (ui/badge)",
+      "Button (ui/button)",
+    ],
+    accessibility: [
+      "Cada card do painel usa títulos estruturados (h2/h3) para facilitar navegação por leitor de tela.",
+      "A tabela mantém marcação semântica de linhas interativas com foco por teclado e feedback de seleção visual com contraste auditado.",
+    ],
+    doGuidelines: [
+      "Use useWidgetContract em widgets emissores para expor apenas os dados necessários.",
+      "Consuma estados de outros widgets via useWidgetState sem acoplamento direto de referências.",
+    ],
+    dontGuidelines: [
+      "Não faça prop-drilling de estados entre múltiplos níveis de cards dentro do painel.",
+      "Não force re-renderizações globais da página quando apenas um widget dependente precisa atualizar.",
+    ],
+    code: `<PanelProvider id="analytics-panel">
+  <div className="grid grid-cols-12 gap-6">
+    <CustomerTableWidget />
+    <CustomerInspectorWidget />
+  </div>
+</PanelProvider>`,
+  },
 }

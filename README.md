@@ -246,3 +246,16 @@ npm) automaticamente, mesmo comportamento já usado neste catálogo (ver
   não fazem sentido como "exemplo de componente" isolado.
 
 Se precisar de algum desses depois, dá para trazer sob demanda.
+
+---
+
+## Frente de Painéis Reativos (Widget Contracts)
+
+Inspirada no modelo arquitetural do ToolJet e refinada para o ecossistema Shadcn, esta frente fornece orquestração desacoplada para painéis de visualização, estúdios interativos e dashboards operacionais:
+
+- **Especificação Completa:** [`docs/active/especificacoes/arquitetura-paineis-reativos-widgets.md`](docs/active/especificacoes/arquitetura-paineis-reativos-widgets.md)
+- **Camada Central (`src/lib/reactive-panel/`):**
+  - `types.ts`: Contrato tridimensional de Widget (`exposedState`, `events`, `actions`).
+  - `panel-context.tsx`: Contexto do painel com hooks reativos (`usePanel`, `useWidgetContract`, `useWidgetState`).
+- **Pattern de Referência (`src/components/patterns/reactive-dashboard-panel.tsx`):**
+  - Demonstração funcional de orquestração entre `CustomerTableWidget` e `CustomerInspectorWidget` sem prop-drilling.
