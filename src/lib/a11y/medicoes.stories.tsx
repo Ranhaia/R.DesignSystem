@@ -6,6 +6,8 @@ import { medirAlvos, medirFoco } from './medir-dom'
 const meta: Meta = {
   title: 'Testes/A11y medições',
   parameters: { a11yMedir: false }, // fixtures das próprias medições não entram no relatório
+  // Fundo branco fixo: o resultado esperado de cada fixture não pode depender do preset/modo do projeto (no escuro, contorno preto reprovaria).
+  decorators: [(Story) => <div style={{ background: '#fff', padding: '0.5rem' }}><Story /></div>],
 }
 export default meta
 

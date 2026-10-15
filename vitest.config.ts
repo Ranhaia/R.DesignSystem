@@ -10,6 +10,7 @@ import { playwright } from '@vitest/browser-playwright';
 
 import { CONTEXTOS } from './src/lib/a11y/css-tokens';
 import { nomeProjeto } from './src/lib/a11y/contexto-story';
+import ReporterComponentes from './src/lib/a11y/reporter-componentes';
 
 const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
@@ -20,6 +21,7 @@ export default defineConfig({
   // sem isso o Vite recusa servir o setup-file do addon-vitest no browser.
   server: { fs: { allow: [dirname, fs.realpathSync(path.join(dirname, 'node_modules'))] } },
   test: {
+    reporters: ['default', new ReporterComponentes()],
     projects: [
       {
         test: {
@@ -28,7 +30,7 @@ export default defineConfig({
           include: ['src/**/*.test.ts'],
         },
       },
-      ...CONTEXTOS.map((c) => ({
+      ...CONTEXTOS.map((c, i) => ({
         extends: true as const,
         plugins: [
           storybookTest({
@@ -38,6 +40,8 @@ export default defineConfig({
         ],
         test: {
           name: nomeProjeto(c),
+          // 10 Chromium juntos estouram o tempo dos testes (670 timeouts em 12 núcleos): 2 contextos por vez, grupos em sequência.
+          sequence: { groupOrder: Math.floor(i / 2) },
           browser: {
             enabled: true,
             headless: true,
