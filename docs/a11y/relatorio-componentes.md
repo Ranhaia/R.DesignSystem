@@ -7,9 +7,9 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 ## Resumo
 
 - **Stories × Contextos:** 3851 medições (386 stories em 10 contextos)
-- **Componentes:** 94 componentes (14 reprovaram WCAG, 58 passaram com Regra da Casa 🟡, 22 passaram limpos)
-- **Falhas WCAG:** 45
-- **Regras da Casa (🟡):** 719
+- **Componentes:** 94 componentes (1 reprovaram WCAG, 68 passaram com Regra da Casa 🟡, 25 passaram limpos)
+- **Falhas WCAG:** 1
+- **Regras da Casa (🟡):** 723
 
 ## Causas comuns
 
@@ -17,23 +17,7 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | alvo menor que 44×44 | - | 4725 | 63 | 204 |
 | Regra da Casa (Alvo) | exceção de espaçamento | - | 800 | 10 | 30 |
-| axe: button-name | Buttons must have discernible text | - | 200 | 7 | 20 |
-| axe: select-name | Select element must have an accessible name | - | 60 | 1 | 6 |
-| axe: aria-progressbar-name | ARIA progressbar nodes must have an accessible name | - | 40 | 4 | 4 |
-| axe: label | Form elements must have labels | - | 20 | 2 | 2 |
-| axe: aria-input-field-name | ARIA input fields must have an accessible name | - | 10 | 1 | 1 |
-| axe: nested-interactive | Interactive controls must not be nested | - | 10 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 1,4:1 (mínimo 3:1) | `#EAC7C9` / `#F6F3F2` | 2 | 1 | 1 |
-| axe: aria-valid-attr-value | ARIA attributes must conform to valid values | - | 1 | 1 | 1 |
-| axe: color-contrast | Elements must meet minimum color contrast ratio thresholds | - | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 1,4:1 (mínimo 3:1) | `#E7C8CC` / `#F2F4F6` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 1,4:1 (mínimo 3:1) | `#E9C7C8` / `#F5F3F1` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 1,41:1 (mínimo 3:1) | `#E8C7CC` / `#F4F3F6` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 1,45:1 (mínimo 3:1) | `#5B1D21` / `#131315` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 1,45:1 (mínimo 3:1) | `#5C1D1E` / `#141311` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 1,45:1 (mínimo 3:1) | `#5B1D21` / `#121315` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 1,46:1 (mínimo 3:1) | `#5D1D1F` / `#151313` | 1 | 1 | 1 |
-| WCAG 2.4.7 (Foco) | contraste 1,46:1 (mínimo 3:1) | `#5D1D1F` / `#151312` | 1 | 1 | 1 |
+| axe: scrollable-region-focusable | Scrollable region must have keyboard access | - | 1 | 1 | 1 |
 
 ## Visão geral por componente
 
@@ -58,16 +42,16 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | atoms-list | passou | 0 | 0 |
 | atoms-marker | passou | 0 | 0 |
 | atoms-multiselect | passou (🟡) | 0 | 3 |
-| atoms-native-select | reprovou | 15 | 12 |
+| atoms-native-select | passou (🟡) | 0 | 12 |
 | atoms-popover | passou (🟡) | 0 | 2 |
-| atoms-progress | reprovou | 1 | 0 |
+| atoms-progress | passou | 0 | 0 |
 | atoms-radio-group | passou (🟡) | 0 | 2 |
 | atoms-select | passou (🟡) | 0 | 8 |
 | atoms-separator | passou | 0 | 0 |
 | atoms-skeleton | passou | 0 | 0 |
-| atoms-slider | reprovou | 1 | 0 |
-| atoms-spinner | reprovou | 1 | 5 |
-| atoms-switch | reprovou | 4 | 4 |
+| atoms-slider | passou | 0 | 0 |
+| atoms-spinner | passou (🟡) | 0 | 5 |
+| atoms-switch | passou (🟡) | 0 | 4 |
 | atoms-tag | passou | 0 | 0 |
 | atoms-text | passou | 0 | 0 |
 | atoms-textarea | passou (🟡) | 0 | 1 |
@@ -79,13 +63,13 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | molecules-alert | passou | 0 | 0 |
 | molecules-attachment | passou (🟡) | 0 | 1 |
 | molecules-breadcrumb | passou (🟡) | 0 | 14 |
-| molecules-button-group | reprovou | 6 | 59 |
+| molecules-button-group | passou (🟡) | 0 | 59 |
 | molecules-collapsible | passou (🟡) | 0 | 1 |
-| molecules-combobox | reprovou | 2 | 4 |
+| molecules-combobox | passou (🟡) | 0 | 4 |
 | molecules-empty | passou (🟡) | 0 | 12 |
-| molecules-field | reprovou | 2 | 25 |
+| molecules-field | passou (🟡) | 0 | 25 |
 | molecules-hover-card | passou (🟡) | 0 | 1 |
-| molecules-input-group | reprovou | 5 | 50 |
+| molecules-input-group | passou (🟡) | 0 | 52 |
 | molecules-pagination | passou (🟡) | 0 | 5 |
 | molecules-scroll-area | passou | 0 | 0 |
 | molecules-segmentedcontrol | passou (🟡) | 0 | 24 |
@@ -104,7 +88,7 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | organisms-dialog | passou (🟡) | 0 | 4 |
 | organisms-drawer | passou (🟡) | 0 | 4 |
 | organisms-dropdown-menu | passou (🟡) | 0 | 7 |
-| organisms-form | reprovou | 3 | 54 |
+| organisms-form | passou (🟡) | 0 | 56 |
 | organisms-menubar | passou (🟡) | 0 | 4 |
 | organisms-message | passou | 0 | 0 |
 | organisms-navigation-menu | passou (🟡) | 0 | 6 |
@@ -120,19 +104,19 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | patterns-delete-flow | passou (🟡) | 0 | 2 |
 | patterns-empty-state | passou (🟡) | 0 | 1 |
 | patterns-error-state | passou (🟡) | 0 | 2 |
-| patterns-filter-panel | reprovou | 1 | 9 |
+| patterns-filter-panel | passou (🟡) | 0 | 9 |
 | patterns-filters | passou (🟡) | 0 | 2 |
-| patterns-infinite-scroll | passou (🟡) | 0 | 2 |
+| patterns-infinite-scroll | reprovou | 1 | 2 |
 | patterns-loading | passou (🟡) | 0 | 2 |
-| patterns-multi-step-form | reprovou | 1 | 3 |
+| patterns-multi-step-form | passou (🟡) | 0 | 3 |
 | patterns-pagination | passou (🟡) | 0 | 7 |
 | patterns-search-experience | passou (🟡) | 0 | 2 |
 | patterns-skeleton | passou (🟡) | 0 | 2 |
 | patterns-success-feedback | passou (🟡) | 0 | 1 |
 | patterns-toast-strategy | passou (🟡) | 0 | 10 |
-| patterns-upload | reprovou | 2 | 0 |
+| patterns-upload | passou | 0 | 0 |
 | testes-adaptação-à-tela | passou (🟡) | 0 | 79 |
-| testes-raio-concêntrico | reprovou | 1 | 13 |
+| testes-raio-concêntrico | passou (🟡) | 0 | 13 |
 
 ## Detalhes por componente
 
@@ -292,33 +276,18 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
-| axe: select-name | crítica | default | `select` | Select element must have an accessible name | todos |
-| Regra da Casa (Alvo) | 🟡 | default | `select[data-slot=native-select] "Opção 1Opção 2"` | 102×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| Regra da Casa (Alvo) | 🟡 | default | `select[data-slot=native-select] "Opção 1Opção 2"` | 104×36 (< 44×44) | tech/claro, tech/escuro |
-| axe: select-name | crítica | disabled | `select` | Select element must have an accessible name | todos |
-| axe: select-name | crítica | examples | `select` | Select element must have an accessible name | todos |
-| Regra da Casa (Alvo) | 🟡 | examples | `select[data-slot=native-select] "Selecionar statusA fazerEm and"` | 154×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| Regra da Casa (Alvo) | 🟡 | examples | `select[data-slot=native-select] "Selecionar statusA fazerEm and"` | 156×36 (< 44×44) | tech/claro, tech/escuro |
+| Regra da Casa (Alvo) | 🟡 | default | `select[data-slot=native-select] "Opções"` | 102×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| Regra da Casa (Alvo) | 🟡 | default | `select[data-slot=native-select] "Opções"` | 104×36 (< 44×44) | tech/claro, tech/escuro |
+| Regra da Casa (Alvo) | 🟡 | examples | `select[data-slot=native-select] "Status"` | 154×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| Regra da Casa (Alvo) | 🟡 | examples | `select[data-slot=native-select] "Status"` | 156×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | fixed-label | `select[data-slot=native-select] "BrasilPortugal"` | 224×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | floating-label | `select[data-slot=native-select] "SelecioneBrasilPortugal"` | 224×36 (< 44×44) | todos |
-| axe: select-name | crítica | groups | `select` | Select element must have an accessible name | todos |
-| Regra da Casa (Alvo) | 🟡 | groups | `select[data-slot=native-select] "Selecionar departamentoFronten"` | 221×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| Regra da Casa (Alvo) | 🟡 | groups | `select[data-slot=native-select] "Selecionar departamentoFronten"` | 223×36 (< 44×44) | tech/claro, tech/escuro |
-| axe: select-name | crítica | invalid | `select` | Select element must have an accessible name | todos |
-| Regra da Casa (Alvo) | 🟡 | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | 160×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| Regra da Casa (Alvo) | 🟡 | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | 162×36 (< 44×44) | tech/claro, tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | contraste 1,4:1 (mínimo 3:1) (#E7C8CC sobre #F2F4F6) | tech/claro |
-| WCAG 2.4.7 (Foco) | séria | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | contraste 1,4:1 (mínimo 3:1) (#E9C7C8 sobre #F5F3F1) | default/claro |
-| WCAG 2.4.7 (Foco) | séria | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | contraste 1,4:1 (mínimo 3:1) (#EAC7C9 sobre #F6F3F2) | editorial/claro, soft/claro |
-| WCAG 2.4.7 (Foco) | séria | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | contraste 1,41:1 (mínimo 3:1) (#E8C7CC sobre #F4F3F6) | midnight/claro |
-| WCAG 2.4.7 (Foco) | séria | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | contraste 1,45:1 (mínimo 3:1) (#5B1D21 sobre #121315) | tech/escuro |
-| WCAG 2.4.7 (Foco) | séria | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | contraste 1,45:1 (mínimo 3:1) (#5B1D21 sobre #131315) | midnight/escuro |
-| WCAG 2.4.7 (Foco) | séria | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | contraste 1,45:1 (mínimo 3:1) (#5C1D1E sobre #141311) | default/escuro |
-| WCAG 2.4.7 (Foco) | séria | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | contraste 1,46:1 (mínimo 3:1) (#5D1D1F sobre #151312) | editorial/escuro |
-| WCAG 2.4.7 (Foco) | séria | invalid | `select[data-slot=native-select] "Selecionar funçãoAdministrador"` | contraste 1,46:1 (mínimo 3:1) (#5D1D1F sobre #151313) | soft/escuro |
-| axe: select-name | crítica | small | `select` | Select element must have an accessible name | todos |
-| Regra da Casa (Alvo) | 🟡 | small | `select[data-slot=native-select] "Opção 1Opção 2"` | 102×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| Regra da Casa (Alvo) | 🟡 | small | `select[data-slot=native-select] "Opção 1Opção 2"` | 104×32 (< 44×44) | tech/claro, tech/escuro |
+| Regra da Casa (Alvo) | 🟡 | groups | `select[data-slot=native-select] "Departamento"` | 221×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| Regra da Casa (Alvo) | 🟡 | groups | `select[data-slot=native-select] "Departamento"` | 223×36 (< 44×44) | tech/claro, tech/escuro |
+| Regra da Casa (Alvo) | 🟡 | invalid | `select[data-slot=native-select] "Função"` | 160×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| Regra da Casa (Alvo) | 🟡 | invalid | `select[data-slot=native-select] "Função"` | 162×36 (< 44×44) | tech/claro, tech/escuro |
+| Regra da Casa (Alvo) | 🟡 | small | `select[data-slot=native-select] "Opções"` | 102×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| Regra da Casa (Alvo) | 🟡 | small | `select[data-slot=native-select] "Opções"` | 104×32 (< 44×44) | tech/claro, tech/escuro |
 
 ### atoms-popover
 
@@ -326,12 +295,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "Abrir popover"` | 122,9×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "Abrir popover"` | 124,9×40 (< 44×44) | tech/claro, tech/escuro |
-
-### atoms-progress
-
-| Critério | Severidade | Story | Elemento | Medida | Contextos |
-|---|---|---|---|---|---|
-| axe: aria-progressbar-name | séria | default | `.relative` | ARIA progressbar nodes must have an accessible name | todos |
 
 ### atoms-radio-group
 
@@ -353,12 +316,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=select-trigger][role=combobox] "Selecione uma opção"` | 108,8×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=select-trigger][role=combobox] "Selecione uma opção"` | 110,8×32 (< 44×44) | tech/claro, tech/escuro |
 
-### atoms-slider
-
-| Critério | Severidade | Story | Elemento | Medida | Contextos |
-|---|---|---|---|---|---|
-| axe: aria-input-field-name | séria | default | `.block` | ARIA input fields must have an accessible name | todos |
-
 ### atoms-spinner
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
@@ -366,7 +323,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | empty | `button[data-slot=button] "Cancelar"` | 80,3×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | empty | `button[data-slot=button] "Cancelar"` | 82,3×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | input-group | `button[data-slot=button] "arrow_upwardEnviar"` | 30×24 (< 44×44) | todos |
-| axe: aria-progressbar-name | séria | item | `.relative` | ARIA progressbar nodes must have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | item | `button[data-slot=button] "Cancelar"` | 80,3×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | item | `button[data-slot=button] "Cancelar"` | 82,3×32 (< 44×44) | tech/claro, tech/escuro |
 
@@ -374,14 +330,10 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
-| axe: button-name | crítica | checked | `.peer` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | checked | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
-| axe: button-name | crítica | default | `.peer` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
-| axe: button-name | crítica | disabled | `.peer` | Buttons must have discernible text | todos |
+| Regra da Casa (Alvo) | 🟡 | checked | `button[data-slot=switch][role=switch] "Notificações"` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=switch][role=switch] "Notificações"` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | examples | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
-| axe: button-name | crítica | small | `.peer` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=switch][role=switch]` | 24×14 (exceção de espaçamento, < 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | small | `button[data-slot=switch][role=switch] "Notificações"` | 24×14 (exceção de espaçamento, < 44×44) | todos |
 
 ### atoms-textarea
 
@@ -470,11 +422,10 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Denunciar"` | 98,7×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Voltar"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=dropdown-menu-trigger] "Mais opções"` | 40×40 (< 44×44) | todos |
-| axe: button-name | crítica | dropdown | `#radix-_r_2_` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=button] "Seguir"` | 74,5×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=button] "Seguir"` | 76,5×40 (< 44×44) | tech/claro, tech/escuro |
-| Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=dropdown-menu-trigger] "keyboard_arrow_down"` | 37×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=dropdown-menu-trigger] "keyboard_arrow_down"` | 38×40 (< 44×44) | tech/claro, tech/escuro |
+| Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=dropdown-menu-trigger] "Mais opções"` | 37×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| Regra da Casa (Alvo) | 🟡 | dropdown | `button[data-slot=dropdown-menu-trigger] "Mais opções"` | 38×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "1"` | 31,6×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "1"` | 33,6×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "2"` | 32,8×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
@@ -487,15 +438,13 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "5"` | 33,8×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "Anterior"` | 32×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | nested | `button[data-slot=button] "Próximo"` | 32×32 (< 44×44) | todos |
-| axe: button-name | crítica | orientation | `.inline-flex.items-center.justify-center:nth-child(1) .inline-flex.items-center.justify-center:nth-child(2)` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | orientation | `button[data-slot=button] "add"` | 40×40 (< 44×44) | todos |
-| Regra da Casa (Alvo) | 🟡 | orientation | `button[data-slot=button] "remove"` | 40×40 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | orientation | `button[data-slot=button] "Aumentar"` | 40×40 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | orientation | `button[data-slot=button] "Diminuir"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | popover | `button[data-slot=button] "smart_toy Copilot"` | 96,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | popover | `button[data-slot=button] "smart_toy Copilot"` | 98,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | popover | `button[data-slot=popover-trigger] "Abrir popover"` | 40×40 (< 44×44) | todos |
-| axe: button-name | crítica | size | `.size-8 .size-10 .size-12` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "add"` | 32×32 (< 44×44) | todos |
-| Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "add"` | 40×40 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Adicionar"` | 32×32 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Adicionar"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Botão"` | 62,5×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Botão"` | 63,5×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Botão"` | 70,5×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
@@ -508,23 +457,20 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Padrão"` | 80,4×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Pequeno"` | 81,7×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | size | `button[data-slot=button] "Pequeno"` | 83,7×32 (< 44×44) | tech/claro, tech/escuro |
-| axe: button-name | crítica | split | `.size-10` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | split | `button[data-slot=button]` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | split | `button[data-slot=button] "Botão"` | 69,5×40 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | split | `button[data-slot=button] "Mais opções"` | 40×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | with-input | `button[data-slot=button] "Buscar"` | 41×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-input | `button[data-slot=button] "Buscar"` | 42×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-input | `input[data-slot=input]` | 185×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-input | `input[data-slot=input]` | 187×36 (< 44×44) | tech/claro, tech/escuro |
-| axe: button-name | crítica | with-input-group | `.inline-flex .dark\:hover\:bg-accent\/50` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | with-input-group | `button[data-slot=button] "add"` | 40×40 (< 44×44) | todos |
-| Regra da Casa (Alvo) | 🟡 | with-input-group | `button[data-slot=tooltip-trigger] "graphic_eq"` | 24×24 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | with-input-group | `button[data-slot=button] "Adicionar"` | 40×40 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | with-input-group | `button[data-slot=tooltip-trigger] "Gravar áudio"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | with-input-group | `input[data-slot=input-group-control]` | 179×36 (< 44×44) | todos |
-| axe: button-name | crítica | with-select | `.justify-between` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | with-select | `button[data-slot=button] "Enviar"` | 40×40 (< 44×44) | todos |
-| Regra da Casa (Alvo) | 🟡 | with-select | `button[data-slot=select-trigger][role=combobox] "$keyboard_arrow_down"` | 57,7×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| Regra da Casa (Alvo) | 🟡 | with-select | `button[data-slot=select-trigger][role=combobox] "$keyboard_arrow_down"` | 59,7×36 (< 44×44) | tech/claro, tech/escuro |
-| Regra da Casa (Alvo) | 🟡 | with-select | `input[data-slot=input]` | 184×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| Regra da Casa (Alvo) | 🟡 | with-select | `input[data-slot=input]` | 185×36 (< 44×44) | tech/claro, tech/escuro |
+| Regra da Casa (Alvo) | 🟡 | with-select | `button[data-slot=select-trigger][role=combobox] "Moeda"` | 57,7×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| Regra da Casa (Alvo) | 🟡 | with-select | `button[data-slot=select-trigger][role=combobox] "Moeda"` | 59,7×36 (< 44×44) | tech/claro, tech/escuro |
+| Regra da Casa (Alvo) | 🟡 | with-select | `input[data-slot=input] "Valor"` | 184×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| Regra da Casa (Alvo) | 🟡 | with-select | `input[data-slot=input] "Valor"` | 185×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | with-separator | `button[data-slot=button] "Colar"` | 57,2×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | with-separator | `button[data-slot=button] "Copiar"` | 65,6×32 (< 44×44) | todos |
 
@@ -538,10 +484,8 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
-| axe: button-name | crítica | default | `.inline-flex` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger][role=combobox] "Selecione um framework...unfol"` | 200×40 (< 44×44) | todos |
-| axe: button-name | crítica | dropdown-menu | `#radix-_r_1_` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | dropdown-menu | `button[data-slot=dropdown-menu-trigger] "more_horiz"` | 36×32 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger][role=combobox] "Framework"` | 200×40 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | dropdown-menu | `button[data-slot=dropdown-menu-trigger] "Mais opções"` | 36×32 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | popover | `button[data-slot=popover-trigger] "+ Definir status"` | 150×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | responsive | `button[data-slot=popover-trigger] "+ Definir status"` | 150×40 (< 44×44) | todos |
 
@@ -568,9 +512,8 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 |---|---|---|---|---|---|
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=checkbox][role=checkbox]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=checkbox][role=checkbox] "check"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| axe: button-name | crítica | choice-card | `#kubernetes-r2h #vm-z4k` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | choice-card | `button[data-slot=radio-group-item][role=radio]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| Regra da Casa (Alvo) | 🟡 | choice-card | `button[data-slot=radio-group-item][role=radio] "circle"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | choice-card | `button[data-slot=radio-group-item][role=radio] "Kubernetes"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | choice-card | `button[data-slot=radio-group-item][role=radio] "Máquina virtual"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Cancelar"` | 88,3×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Cancelar"` | 90,3×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Enviar"` | 70,7×40 (< 44×44) | todos |
@@ -590,8 +533,7 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | responsive | `button[data-slot=button] "Enviar"` | 70,7×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | responsive | `input[data-slot=input]` | 185×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | responsive | `input[data-slot=input]` | 187×36 (< 44×44) | tech/claro, tech/escuro |
-| axe: button-name | crítica | select | `.justify-between` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | select | `button[data-slot=select-trigger][role=combobox] "Escolha o departamentokeyboard"` | 448×36 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | select | `button[data-slot=select-trigger][role=combobox] "Departamento"` | 448×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | switch | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
 
 ### molecules-hover-card
@@ -604,23 +546,21 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
-| axe: button-name | crítica | button | `.pl-3 > .bg-secondary.text-secondary-foreground.hover\:shadow-xs .\[--radius\:9999px\] > .order-last.pr-3.has-\[\>button\]\:mr-\[calc\(--spacing\(-1\.8\)\)\] > .hover\:bg-accent.hover\:text-accent-foreground.dark\:hover\:bg-accent\/50` | Buttons must have discernible text | todos |
-| axe: label | crítica | button | `#input-secure-19` | Form elements must have labels | todos |
-| Regra da Casa (Alvo) | 🟡 | button | `button[data-slot=button]` | 24×24 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | button | `button[data-slot=button] "Adicionar aos favoritos"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | button | `button[data-slot=button] "Buscar"` | 57,7×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | button | `button[data-slot=button] "Copiar"` | 24×24 (< 44×44) | todos |
-| Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control]` | 268,7×36 (< 44×44) | tech/claro, tech/escuro |
-| Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control]` | 270,7×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| Regra da Casa (Alvo) | 🟡 | button | `button[data-slot=button] "Informações sobre segurança"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control]` | 317,5×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control]` | 319,5×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control]` | 351,2×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control]` | 353,2×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
+| Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control] "Endereço do site"` | 268,7×36 (< 44×44) | tech/claro, tech/escuro |
+| Regra da Casa (Alvo) | 🟡 | button | `input[data-slot=input-group-control] "Endereço do site"` | 270,7×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | button-group | `input[data-slot=input-group-control]` | 179×36 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | custom | `button[data-slot=button] "Enviar"` | 58,7×32 (< 44×44) | todos |
-| axe: button-name | crítica | default | `button[data-slot="tooltip-trigger"] .dark\:border-input` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button]` | 24×24 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Adicionar anexo"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=dropdown-menu-trigger] "Automático"` | 90,3×24 (< 44×44) | todos |
-| Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=tooltip-trigger]` | 24×24 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=tooltip-trigger] "Informações"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input-group-control]` | 257,2×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input-group-control]` | 259,2×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input-group-control]` | 291,5×36 (< 44×44) | tech/claro, tech/escuro |
@@ -644,16 +584,15 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | label | `input[data-slot=input-group-control]` | 356,6×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | label | `input[data-slot=input-group-control]` | 380×35 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | label | `input[data-slot=input-group-control]` | 382×35 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| axe: color-contrast | séria | spinner | `.group\/input-group.relative.rounded-outer-md:nth-child(4) > .order-last.pr-3.has-\[\>button\]\:mr-\[calc\(--spacing\(-1\.8\)\)\] > .\[\&_svg\]\:pointer-events-none.\[\&_svg\:not\(\[class\*\=\'size-\'\]\)\]\:size-4.gap-2` | Elements must meet minimum color contrast ratio thresholds | default/claro |
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 266,5×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 268,5×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 277,6×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 279,6×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 320,7×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | text | `input[data-slot=input-group-control]` | 322,7×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| axe: button-name | crítica | textarea | `.hover\:bg-accent.hover\:text-accent-foreground.dark\:hover\:bg-accent\/50:nth-child(2) .hover\:bg-accent.hover\:text-accent-foreground.dark\:hover\:bg-accent\/50:nth-child(3)` | Buttons must have discernible text | todos |
-| Regra da Casa (Alvo) | 🟡 | textarea | `button[data-slot=button]` | 24×24 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | textarea | `button[data-slot=button] "Copiar script"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | textarea | `button[data-slot=button] "Executar"` | 95,8×32 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | textarea | `button[data-slot=button] "Recarregar script"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | tooltip | `button[data-slot=button] "Ajuda"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | tooltip | `button[data-slot=tooltip-trigger] "Ajuda"` | 24×24 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | tooltip | `button[data-slot=tooltip-trigger] "Informações"` | 24×24 (< 44×44) | todos |
@@ -910,14 +849,13 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=button] "Redefinir"` | 93,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | checkbox | `button[data-slot=checkbox][role=checkbox]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| axe: button-name | crítica | complex | `#form-rhf-complex-basic #form-rhf-complex-pro` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=button] "Redefinir"` | 332×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=button] "Redefinir"` | 334×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=button] "Salvar preferências"` | 332×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=button] "Salvar preferências"` | 334×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=checkbox][role=checkbox]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=radio-group-item][role=radio]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
-| Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=radio-group-item][role=radio] "circle"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=radio-group-item][role=radio] "Básico"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=radio-group-item][role=radio] "Pro"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | 332×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=select-trigger][role=combobox] "Selecionarkeyboard_arrow_down"` | 334×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | complex | `button[data-slot=switch][role=switch]` | 32×18,4 (exceção de espaçamento, < 44×44) | todos |
@@ -931,18 +869,18 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | input | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | input | `input[data-slot=input]` | 396×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | input | `input[data-slot=input]` | 398×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| axe: aria-progressbar-name | séria | password | `.h-2` | ARIA progressbar nodes must have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | password | `button[data-slot=button] "Criar senha"` | 396×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | password | `button[data-slot=button] "Criar senha"` | 398×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | password | `button[data-slot=button] "Redefinir"` | 396×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | password | `button[data-slot=button] "Redefinir"` | 398×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | password | `input[data-slot=input-group-control]` | 364×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | password | `input[data-slot=input-group-control]` | 368×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
-| axe: button-name | crítica | radio-group | `#form-rhf-radiogroup-starter #form-rhf-radiogroup-pro #form-rhf-radiogroup-enterprise` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=button] "Redefinir"` | 91,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=button] "Redefinir"` | 93,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
-| Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=radio-group-item][role=radio]` | 16×16 (exceção de espaçamento, < 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=radio-group-item][role=radio] "Empresarial (tokens ilimitados"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=radio-group-item][role=radio] "Inicial (100 mil tokens/mês)"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | radio-group | `button[data-slot=radio-group-item][role=radio] "Pro (1 milhão de tokens/mês)"` | 16×16 (exceção de espaçamento, < 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | select | `button[data-slot=button] "Redefinir"` | 91,2×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | select | `button[data-slot=button] "Redefinir"` | 93,2×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | select | `button[data-slot=button] "Salvar"` | 70×40 (< 44×44) | todos |
@@ -1062,7 +1000,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
-| axe: button-name | crítica | default | `.border-input` | Buttons must have discernible text | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "bar_chartProduto"` | 95,5×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "bar_chartProduto"` | 97,5×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "calendar_todayPeríodo"` | 93,2×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
@@ -1071,7 +1008,7 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "personSegurado ou Tomador"` | 187,6×32 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "shieldCorretora"` | 104,6×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=popover-trigger] "shieldCorretora"` | 106,6×32 (< 44×44) | tech/claro, tech/escuro |
-| Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=select-trigger][role=combobox] "assignmentStatuskeyboard_arrow"` | 160×32 (< 44×44) | todos |
+| Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=select-trigger][role=combobox] "Status"` | 160×32 (< 44×44) | todos |
 
 ### patterns-filters
 
@@ -1084,6 +1021,7 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
+| axe: scrollable-region-focusable | séria | default | `.max-h-64` | Scrollable region must have keyboard access | tech/claro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Carregar mais"` | 113,9×32 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Carregar mais"` | 115,9×32 (< 44×44) | tech/claro, tech/escuro |
 
@@ -1098,7 +1036,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
-| axe: aria-progressbar-name | séria | default | `.relative` | ARIA progressbar nodes must have an accessible name | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Avançar"` | 82,5×40 (< 44×44) | todos |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 1148×36 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `input[data-slot=input]` | 1150×36 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
@@ -1149,13 +1086,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Informação"` | 108,6×40 (< 44×44) | tech/claro, tech/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Sucesso"` | 84,3×40 (< 44×44) | default/claro, default/escuro, editorial/claro, editorial/escuro, soft/claro, soft/escuro, midnight/claro, midnight/escuro |
 | Regra da Casa (Alvo) | 🟡 | default | `button[data-slot=button] "Sucesso"` | 86,3×40 (< 44×44) | tech/claro, tech/escuro |
-
-### patterns-upload
-
-| Critério | Severidade | Story | Elemento | Medida | Contextos |
-|---|---|---|---|---|---|
-| axe: label | crítica | default | `input` | Form elements must have labels | todos |
-| axe: nested-interactive | séria | default | `.flex` | Interactive controls must not be nested | todos |
 
 ### testes-adaptação-à-tela
 
@@ -1245,7 +1175,6 @@ Isenções consideradas: controles desabilitados, link em texto corrido. Coluna 
 
 | Critério | Severidade | Story | Elemento | Medida | Contextos |
 |---|---|---|---|---|---|
-| axe: aria-valid-attr-value | crítica | concentrico | `#radix-_r_0_-trigger-a #radix-_r_7_-trigger-a #radix-_r_e_-trigger-a #radix-_r_l_-trigger-a #radix-_r_s_-trigger-a` | ARIA attributes must conform to valid values | default/claro |
 | Regra da Casa (Alvo) | 🟡 | concentrico | `button[data-slot=button] "Ir"` | 25,3×24 (< 44×44) | default/claro |
 | Regra da Casa (Alvo) | 🟡 | concentrico | `button[data-slot=segmented-control-item][role=radio] "Dia"` | 47×32 (< 44×44) | default/claro |
 | Regra da Casa (Alvo) | 🟡 | concentrico | `button[data-slot=segmented-control-item][role=radio] "Dia"` | 49×32 (< 44×44) | default/claro |
