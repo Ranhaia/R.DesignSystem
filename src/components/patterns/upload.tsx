@@ -56,13 +56,7 @@ export function UploadPattern() {
 
   return (
     <div className="space-y-3">
-      <div
-        role="button"
-        tabIndex={0}
-        onClick={() => inputRef.current?.click()}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") inputRef.current?.click()
-        }}
+      <label
         onDragOver={(e) => {
           e.preventDefault()
           setDragging(true)
@@ -74,7 +68,7 @@ export function UploadPattern() {
           addFiles(e.dataTransfer.files)
         }}
         className={
-          "flex cursor-pointer flex-col items-center gap-2 rounded-xl border-2 border-dashed p-8 text-center text-sm text-muted-foreground" +
+          "flex cursor-pointer flex-col items-center gap-2 rounded-xl border-2 border-dashed p-8 text-center text-sm text-muted-foreground focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring outline-none" +
           (dragging ? " border-primary bg-primary/5" : "")
         }
       >
@@ -84,10 +78,11 @@ export function UploadPattern() {
           ref={inputRef}
           type="file"
           multiple
+          aria-label="Upload de arquivos"
           className="sr-only"
           onChange={(e) => addFiles(e.target.files)}
         />
-      </div>
+      </label>
 
       {items.length > 0 && (
         <div className="flex flex-wrap gap-3">

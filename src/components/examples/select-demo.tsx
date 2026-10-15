@@ -13,7 +13,7 @@ import {
 export default function SelectDemo() {
   return (
     <Select>
-      <SelectTrigger className="w-45">
+      <SelectTrigger aria-label="Fruta" className="w-45">
         <SelectValue placeholder="Selecione uma fruta" />
       </SelectTrigger>
       <SelectContent>

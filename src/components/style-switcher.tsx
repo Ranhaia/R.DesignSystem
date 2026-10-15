@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { CHAVE_MODO } from "@/components/modo-tema"
 import { stylesList } from "@/lib/styles-registry"
 import { RDsLogo, RLogo } from "@/components/r-logo"
 import {
@@ -42,7 +43,12 @@ export function StyleSwitcher() {
     // mesma lógica do script inline em layout.tsx (que cobre o primeiro
     // carregamento). Sem isso, trocar para "Midnight" em runtime não
     // aplicaria o modo escuro que é a identidade nativa dele.
-    document.documentElement.classList.toggle("dark", style.nativeMode === "dark")
+    // A escolha manual do switch de modo (ModoTema) vence o modo nativo do preset.
+    let manual: string | null = null
+    try {
+      manual = window.localStorage.getItem(CHAVE_MODO)
+    } catch {}
+    document.documentElement.classList.toggle("dark", manual ? manual === "escuro" : style.nativeMode === "dark")
     window.localStorage.setItem(STORAGE_KEY, style.value)
   }
 

@@ -148,6 +148,7 @@ export default function FormRhfComplex() {
                           <RadioGroupItem
                             value="basic"
                             id="form-rhf-complex-basic"
+                            aria-label="Básico"
                           />
                         </Field>
                       </FieldLabel>
@@ -162,6 +163,7 @@ export default function FormRhfComplex() {
                           <RadioGroupItem
                             value="pro"
                             id="form-rhf-complex-pro"
+                            aria-label="Pro"
                           />
                         </Field>
                       </FieldLabel>

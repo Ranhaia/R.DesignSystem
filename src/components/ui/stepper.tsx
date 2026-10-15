@@ -152,7 +152,7 @@ function StepperTrigger({
 
   const sharedClassName = cn(
     "flex items-center gap-2 rounded-md border border-transparent text-left outline-none transition-colors",
-    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring",
     "group-data-[orientation=horizontal]/stepper:flex-col group-data-[orientation=horizontal]/stepper:text-center",
     clickable && "cursor-pointer",
     className

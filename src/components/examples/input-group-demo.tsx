@@ -40,7 +40,11 @@ export default function InputGroupDemo() {
         <InputGroupAddon align="inline-end">
           <Tooltip>
             <TooltipTrigger asChild>
-              <InputGroupButton className="rounded-full" size="icon-xs">
+              <InputGroupButton
+                className="rounded-full"
+                size="icon-xs"
+                aria-label="Informações"
+              >
                 <IconInfoCircle />
               </InputGroupButton>
             </TooltipTrigger>
@@ -49,12 +53,13 @@ export default function InputGroupDemo() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <InputGroupTextarea placeholder="Pergunte, busque ou converse..." />
+        <InputGroupTextarea placeholder="Pergunte, busque ou converse..." aria-label="Mensagem" />
         <InputGroupAddon align="block-end">
           <InputGroupButton
             variant="outline"
             className="rounded-full"
             size="icon-xs"
+            aria-label="Adicionar anexo"
           >
             <IconPlus />
           </InputGroupButton>

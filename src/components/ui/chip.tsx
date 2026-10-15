@@ -60,6 +60,7 @@ function Chip({
         disabled && "opacity-50",
         className
       )}
+      aria-disabled={disabled ? "true" : undefined}
       {...props}
     >
       {icon}

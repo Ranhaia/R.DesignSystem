@@ -6,6 +6,7 @@ import { NavComponents } from "@/components/sidebar-07/nav-components"
 import { NavPatterns } from "@/components/sidebar-07/nav-patterns"
 import { NavTemplates } from "@/components/sidebar-07/nav-templates"
 import { NavUser } from "@/components/sidebar-07/nav-user"
+import { ModoTema } from "@/components/modo-tema"
 import { StyleSwitcher } from "@/components/style-switcher"
 import { Icon } from "@/components/ui/icon"
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -46,6 +47,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="icon" side={side} {...props}>
       <SidebarHeader>
         <StyleSwitcher />
+        <ModoTema />
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>

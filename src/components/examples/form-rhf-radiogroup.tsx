@@ -123,6 +123,7 @@ export default function FormRhfRadioGroup() {
                           <RadioGroupItem
                             value={plan.id}
                             id={`form-rhf-radiogroup-${plan.id}`}
+                            aria-label={plan.title}
                             aria-invalid={fieldState.invalid}
                           />
                         </Field>

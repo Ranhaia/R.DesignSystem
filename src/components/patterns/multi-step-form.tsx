@@ -54,7 +54,10 @@ export function MultiStepFormPattern() {
   return (
     <div className="space-y-4 rounded-lg border p-6">
       <div className="space-y-2">
-        <Progress value={((step + 1) / steps.length) * 100} />
+        <Progress
+          value={((step + 1) / steps.length) * 100}
+          aria-label="Progresso do formulário"
+        />
         <p aria-live="polite" className="text-muted-foreground text-xs">
           Etapa {step + 1} de {steps.length}: {steps[step]}
         </p>

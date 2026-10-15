@@ -46,7 +46,11 @@ export function InfiniteScrollPattern() {
 
   return (
     <div className="space-y-3">
-      <div className="max-h-64 overflow-y-auto rounded-lg border p-2">
+      <div
+        tabIndex={0}
+        aria-label="Lista de sinistros"
+        className="max-h-64 overflow-y-auto rounded-lg border p-2 focus-visible:outline-2 focus-visible:outline-ring"
+      >
         <ul className="space-y-1">
           {items.map((item) => (
             <li key={item} className="rounded-md px-3 py-2 text-sm hover:bg-muted/50">

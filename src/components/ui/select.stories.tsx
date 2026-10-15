@@ -32,7 +32,7 @@ const meta: Meta<SelectArgs> = {
   },
   render: ({ size, disabled }) => (
     <Select disabled={disabled}>
-      <SelectTrigger size={size} className="w-auto">
+      <SelectTrigger aria-label="Selecione uma opção" size={size} className="w-auto">
         <SelectValue placeholder="Selecione" />
       </SelectTrigger>
       <SelectContent>

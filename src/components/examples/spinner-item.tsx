@@ -28,7 +28,7 @@ export default function SpinnerItem() {
           </Button>
         </ItemActions>
         <ItemFooter>
-          <Progress value={75} />
+          <Progress value={75} aria-label="Progresso do download" />
         </ItemFooter>
       </Item>
     </div>

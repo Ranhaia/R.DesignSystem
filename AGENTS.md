@@ -20,6 +20,13 @@ Resumo do que você precisa saber para não errar:
 - Ao terminar uma passada: atualize `tarefas`, acrescente linha em
   `## Contribuições`, esvazie `dono`.
 
+## Testes de navegador
+
+Uma execução de testes de navegador por vez na máquina (RAM). Todos os
+contextos do Storybook só via `npm run test:a11y:todos`. Se a trava
+recusar, espere a outra execução terminar; não contorne. Os limites ficam
+em `scripts/a11y-trava.mjs`; detalhes em `CLAUDE.md`.
+
 ## Sobre o projeto
 
 Ver `CLAUDE.md` para contexto técnico do Design System.

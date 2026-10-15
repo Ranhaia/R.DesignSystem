@@ -8,12 +8,14 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { expect } from "storybook/test"
 
 import { stylesList } from "@/lib/styles-registry"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { SegmentedControl, SegmentedControlItem } from "@/components/ui/segmented-control"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input-group"
 import { Kbd } from "@/components/ui/kbd"
 
-const meta: Meta = { title: "Testes/Raio concêntrico" }
+// Só no contexto padrão: a story aninha os 5 presets em wrappers, e com outro preset no <html> o aninhado
+// herda o que não redefine (ex.: --border-width do tech), coisa que no app, com o preset só no <html>, não acontece.
+const meta: Meta = { title: "Testes/Raio concêntrico", tags: ["so-contexto-padrao"] }
 export default meta
 type Story = StoryObj
 
@@ -29,6 +31,8 @@ function Casos() {
               <TabsTrigger value="a" data-child>Conta</TabsTrigger>
               <TabsTrigger value="b">Senha</TabsTrigger>
             </TabsList>
+            <TabsContent value="a">Conteúdo da conta</TabsContent>
+            <TabsContent value="b">Conteúdo da senha</TabsContent>
           </Tabs>
           <SegmentedControl defaultValue="a" data-case="segmented" aria-label="Período">
             <SegmentedControlItem value="a" data-child>Dia</SegmentedControlItem>

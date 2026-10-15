@@ -445,7 +445,7 @@ function TreeSelect(props: TreeSelectProps) {
           data-placeholder={hasValue ? undefined : ""}
           data-checkable={checkable ? "" : undefined}
           className={cn(
-            "flex min-h-9 w-64 cursor-pointer items-center justify-between gap-2 rounded-md border border-input bg-transparent px-3 py-1.5 text-sm shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-disabled:cursor-not-allowed aria-disabled:opacity-50 data-[placeholder]:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50",
+            "flex min-h-9 w-64 cursor-pointer items-center justify-between gap-2 rounded-md border border-input bg-transparent px-3 py-1.5 text-sm shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring aria-disabled:cursor-not-allowed aria-disabled:opacity-50 data-[placeholder]:text-muted-foreground dark:hover:bg-input/50",
             className
           )}
         >
@@ -522,6 +522,7 @@ function TreeSelect(props: TreeSelectProps) {
       </PopoverTrigger>
       <PopoverContent
         align="start"
+        aria-label={ariaLabel ?? placeholder ?? "Opções em árvore"}
         className={cn(
           "w-(--radix-popover-trigger-width) min-w-75 max-w-115 p-0 shadow-md",
           dropdownClassName
@@ -541,7 +542,7 @@ function TreeSelect(props: TreeSelectProps) {
         }}
       >
         {showSearch && (
-          <div className="flex items-center gap-1.5 border-b px-2.5 py-2 text-muted-foreground">
+          <div className="flex items-center gap-1.5 border-b px-2.5 py-2 text-muted-foreground has-[:focus-visible]:border-ring has-[:focus-visible]:ring-[2px] has-[:focus-visible]:ring-ring">
             <Icon name="search" size={0.875} className="shrink-0 opacity-60" />
             <input
               type="text"
@@ -549,7 +550,7 @@ function TreeSelect(props: TreeSelectProps) {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={searchPlaceholder}
               aria-label="Buscar na lista"
-              className="w-full bg-transparent text-xs text-foreground outline-none placeholder:text-muted-foreground"
+              className="w-full bg-transparent text-xs text-foreground outline-none placeholder:text-muted-foreground focus-visible:outline-hidden"
             />
             {searchQuery && (
               <button
@@ -576,7 +577,7 @@ function TreeSelect(props: TreeSelectProps) {
               aria-activedescendant={activeDescendant}
               tabIndex={0}
               onKeyDown={onKeyDown}
-              className="max-h-72 overflow-y-auto outline-none"
+              className="max-h-72 overflow-y-auto outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-ring focus-visible:-outline-offset-2"
             >
               {visible.map((value) => {
                 const { node, level } = index.get(value)!
@@ -602,7 +603,7 @@ function TreeSelect(props: TreeSelectProps) {
                     data-active={activeValue === value ? "" : undefined}
                     data-selected={selected ? "" : undefined}
                     className={cn(
-                      "flex cursor-pointer items-center gap-1.5 rounded-sm py-1 pr-2 text-sm select-none transition-colors data-[active]:bg-accent data-[active]:text-accent-foreground aria-disabled:pointer-events-none aria-disabled:opacity-50",
+                      "flex cursor-pointer items-center gap-1.5 rounded-sm py-1 pr-2 text-sm select-none transition-colors data-[active]:bg-accent data-[active]:text-accent-foreground data-[active]:outline-solid data-[active]:outline-2 data-[active]:outline-ring data-[active]:-outline-offset-2 aria-disabled:pointer-events-none aria-disabled:opacity-50",
                       !checkable && selected && "font-medium"
                     )}
                     style={{ paddingLeft: `${(level - 1) * 1.125 + 0.25}rem` }}

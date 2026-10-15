@@ -23,7 +23,7 @@ export default function ButtonGroupInputGroup() {
   return (
     <ButtonGroup className="[--radius:9999rem]">
       <ButtonGroup>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" aria-label="Adicionar">
           <Icon name="add" />
         </Button>
       </ButtonGroup>
@@ -44,6 +44,7 @@ export default function ButtonGroupInputGroup() {
                   data-active={voiceEnabled}
                   className="data-[active=true]:bg-orange-100 data-[active=true]:text-orange-700 dark:data-[active=true]:bg-orange-800 dark:data-[active=true]:text-orange-100"
                   aria-pressed={voiceEnabled}
+                  aria-label="Gravar áudio"
                 >
                   <Icon name="graphic_eq" />
                 </InputGroupButton>

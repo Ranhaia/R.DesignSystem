@@ -35,7 +35,7 @@ export default function ButtonGroupSelect() {
     <ButtonGroup>
       <ButtonGroup>
         <Select value={currency} onValueChange={setCurrency}>
-          <SelectTrigger className="font-mono">{currency}</SelectTrigger>
+          <SelectTrigger className="font-mono" aria-label="Moeda">{currency}</SelectTrigger>
           <SelectContent className="min-w-24">
             {CURRENCIES.map((currency) => (
               <SelectItem key={currency.value} value={currency.value}>
@@ -45,7 +45,7 @@ export default function ButtonGroupSelect() {
             ))}
           </SelectContent>
         </Select>
-        <Input placeholder="10.00" pattern="[0-9]*" />
+        <Input placeholder="10.00" pattern="[0-9]*" aria-label="Valor" />
       </ButtonGroup>
       <ButtonGroup>
         <Button aria-label="Enviar" size="icon" variant="outline">

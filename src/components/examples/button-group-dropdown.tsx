@@ -18,7 +18,7 @@ export default function ButtonGroupDropdown() {
       <Button variant="outline">Seguir</Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="pl-2!">
+          <Button variant="outline" className="pl-2!" aria-label="Mais opções">
             <Icon name="keyboard_arrow_down" />
           </Button>
         </DropdownMenuTrigger>
