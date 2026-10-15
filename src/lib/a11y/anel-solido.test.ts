@@ -18,4 +18,27 @@ describe("anel de foco sólido", () => {
       })
     expect(achados).toEqual([])
   })
+
+  it("contorno de foco tem pelo menos 2px (nada de outline-1 / ring-1 no foco)", () => {
+    const achados = readdirSync(UI)
+      .filter((f) => f.endsWith(".tsx") && !f.endsWith(".stories.tsx"))
+      .flatMap((f) => [...readFileSync(resolve(UI, f), "utf8").matchAll(/focus(?:-visible)?:(?:outline|ring)-1(?![\w.])/g)].map((m) => `${f}: ${m[0]}`))
+    expect(achados).toEqual([])
+  })
+
+  it("globals.css não deixa o contorno padrão translúcido (outline-ring/<n>)", () => {
+    const css = readFileSync(resolve(__dirname, "../../app/globals.css"), "utf8")
+    expect(css.match(/outline-ring\/\d+/g) ?? []).toEqual([])
+  })
+
+  // Item de menu que mostra foco só pelo fundo precisa também de contorno no foco por teclado.
+  it("item com foco por preenchimento também tem contorno no focus-visible", () => {
+    const achados = readdirSync(UI)
+      .filter((f) => f.endsWith(".tsx") && !f.endsWith(".stories.tsx"))
+      .filter((f) => {
+        const t = readFileSync(resolve(UI, f), "utf8")
+        return /focus:bg-/.test(t) && !/focus-visible:(?:outline-2|ring-2|ring-\[3px\])/.test(t)
+      })
+    expect(achados).toEqual([])
+  })
 })
