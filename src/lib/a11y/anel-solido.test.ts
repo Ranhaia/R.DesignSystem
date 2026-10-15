@@ -31,6 +31,11 @@ describe("anel de foco sólido", () => {
     expect(css.match(/outline-ring\/\d+/g) ?? []).toEqual([])
   })
 
+  it("globals.css define o foco por teclado padrão com 2px sólidos", () => {
+    const css = readFileSync(resolve(__dirname, "../../app/globals.css"), "utf8")
+    expect(css).toMatch(/:focus-visible\s*\{\s*@apply[^;]*outline-2[^;]*outline-solid/)
+  })
+
   // Item de menu que mostra foco só pelo fundo precisa também de contorno no foco por teclado.
   it("item com foco por preenchimento também tem contorno no focus-visible", () => {
     const achados = readdirSync(UI)

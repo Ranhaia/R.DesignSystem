@@ -467,7 +467,13 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring;
+  }
+  /* Foco por teclado padrão: 2px sólidos na cor do anel (SC 2.4.7). Sem isto, elemento sem foco próprio
+     (link, input/select nativo) cai no contorno de 1px do navegador. Componentes com foco próprio vencem
+     esta regra porque as classes utilitárias ficam numa camada acima da base. */
+  :focus-visible {
+    @apply outline-2 outline-solid outline-offset-2;
   }
   body {
     @apply bg-background text-foreground;
