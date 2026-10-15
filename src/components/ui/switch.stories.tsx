@@ -14,6 +14,7 @@ const meta: Meta<typeof Switch> = {
     },
   },
   args: {
+    "aria-label": "Notificações",
     size: "default" as never,
     disabled: false,
     checked: false,
