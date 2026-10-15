@@ -279,10 +279,8 @@ function ComboboxChip({
       {children}
       {showRemove && (
         <ComboboxPrimitive.ChipRemove
-          // Mesmo motivo do ComboboxClear acima: label só pra satisfazer o
-          // tipo, o Base UI substitui pelo children real (<Icon name="close" />
-          // abaixo).
-          render={<Button variant="ghost" size="icon-xs" label="Remover" />}
+          aria-label="Remover"
+          render={<Button variant="ghost" size="icon-xs" aria-label="Remover" label="Remover" />}
           className="-ml-1 opacity-50 hover:opacity-100"
           data-slot="combobox-chip-remove"
         >
