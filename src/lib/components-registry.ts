@@ -35,6 +35,7 @@ export const componentsList: ComponentEntry[] = [
   { slug: "empty", name: "Empty" },
   { slug: "field", name: "Field" },
   { slug: "file-uploader", name: "File Uploader" },
+  { slug: "files", name: "Files" },
   { slug: "form", name: "Form" },
   { slug: "hover-card", name: "Hover Card" },
   { slug: "icon", name: "Icon" },
