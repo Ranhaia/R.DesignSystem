@@ -28,6 +28,7 @@ export const examplesMapping: Record<string, string[]> = {
   "empty": ["empty-avatar", "empty-avatar-group", "empty-background", "empty-demo", "empty-icon", "empty-input-group", "empty-outline"],
   "field": ["field-checkbox", "field-choice-card", "field-demo", "field-fieldset", "field-group", "field-input", "field-radio", "field-responsive", "field-select", "field-slider", "field-switch", "field-textarea"],
   "file-uploader": ["file-uploader-demo"],
+  "files": ["files-demo"],
   "form": ["form-rhf-array", "form-rhf-checkbox", "form-rhf-complex", "form-rhf-demo", "form-rhf-input", "form-rhf-password", "form-rhf-radiogroup", "form-rhf-select", "form-rhf-switch", "form-rhf-textarea"],
   "hover-card": ["hover-card-demo"],
   "icon-button": ["icon-button-demo"],
