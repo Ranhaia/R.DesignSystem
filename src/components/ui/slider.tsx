@@ -53,6 +53,17 @@ function Slider({
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
+          aria-label={
+            props["aria-label"]
+              ? _values.length > 1
+                ? `${props["aria-label"]} ${index + 1}`
+                : props["aria-label"]
+              : _values.length > 1
+                ? index === 0
+                  ? "Valor mínimo"
+                  : "Valor máximo"
+                : "Valor"
+          }
           className="block size-4 shrink-0 rounded-full border border-primary bg-white shadow-sm ring-ring transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
         />
       ))}

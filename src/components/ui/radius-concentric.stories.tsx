@@ -8,7 +8,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { expect } from "storybook/test"
 
 import { stylesList } from "@/lib/styles-registry"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { SegmentedControl, SegmentedControlItem } from "@/components/ui/segmented-control"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input-group"
 import { Kbd } from "@/components/ui/kbd"
@@ -31,6 +31,8 @@ function Casos() {
               <TabsTrigger value="a" data-child>Conta</TabsTrigger>
               <TabsTrigger value="b">Senha</TabsTrigger>
             </TabsList>
+            <TabsContent value="a">Conteúdo da conta</TabsContent>
+            <TabsContent value="b">Conteúdo da senha</TabsContent>
           </Tabs>
           <SegmentedControl defaultValue="a" data-case="segmented" aria-label="Período">
             <SegmentedControlItem value="a" data-child>Dia</SegmentedControlItem>
