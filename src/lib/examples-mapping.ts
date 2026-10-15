@@ -60,6 +60,7 @@ export const examplesMapping: Record<string, string[]> = {
   "skeleton": ["skeleton-card", "skeleton-demo"],
   "slider": ["slider-demo"],
   "sonner": ["sonner-demo", "sonner-types"],
+  "speed-dial": ["speed-dial-demo"],
   "spinner": ["spinner-badge", "spinner-basic", "spinner-button", "spinner-color", "spinner-custom", "spinner-demo", "spinner-empty", "spinner-input-group", "spinner-item", "spinner-size"],
   "split-button": ["split-button-demo"],
   "stepper": ["stepper-demo"],

@@ -87,6 +87,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   "segmented-control": "molecule",
   "split-button": "molecule",
   attachment: "molecule",
+  "speed-dial": "molecule",
 
   // Organisms
   accordion: "organism",
