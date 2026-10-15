@@ -120,6 +120,12 @@ não está disponível aqui:
   vai para outra. Ver `C:\dev\_protocolo\PROTOCOLO.md`, regra 3.
 - Nunca cor fixa fora de token, nunca componente inventado fora do
   catálogo em `src/components/ui/`
+- **Testes de navegador (Storybook/vitest): no máximo 4 Chromium e uma
+  execução por vez na máquina.** Cada Chromium headless come ~830 MB; em
+  15/10/2026 execuções empilhadas esgotaram os 16 GB. Os 10 contextos só
+  via `npm run test:a11y:todos` (lotes de 4); o `vitest.config.ts` recusa
+  pedir mais de 4 contextos e a trava em `scripts/a11y-trava.mjs` recusa
+  uma 2ª execução. Recusado? Espere a outra terminar, não contorne.
 
 ## Idioma
 

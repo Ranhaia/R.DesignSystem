@@ -1,7 +1,7 @@
 // Junta os reports das stories (axe do addon-a11y + medições de alvo/foco) e grava docs/a11y/relatorio-componentes.md.
-// Só grava quando a execução cobriu os 10 contextos (test:a11y:todos); execução parcial só imprime o resumo.
-import { mkdirSync, writeFileSync } from "node:fs"
-import { dirname, resolve } from "node:path"
+// Só grava quando a execução cobriu os 10 contextos (test:a11y:todos, somando os lotes); execução parcial só imprime o resumo.
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs"
+import { dirname, join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import type { Reporter, TestModule } from "vitest/node"
 import { CONTEXTOS, nomeContexto } from "./css-tokens"
@@ -46,6 +46,12 @@ export default class ReporterComponentes implements Reporter {
       }
     }
     if (!rs.length) return
+    // test:a11y:todos roda em lotes (um processo cada): cada lote deixa sua parte na pasta e o último junta tudo.
+    const pasta = process.env.A11Y_PARCIAL
+    if (pasta) {
+      writeFileSync(join(pasta, `${process.pid}.json`), JSON.stringify(rs), "utf8")
+      rs.splice(0, rs.length, ...readdirSync(pasta).flatMap((f) => JSON.parse(readFileSync(join(pasta, f), "utf8"))))
+    }
     const medidos = new Set(rs.map((r) => r.contexto))
     const todos = CONTEXTOS.map(nomeContexto)
     if (!todos.every((c) => medidos.has(c))) {

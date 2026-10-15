@@ -20,6 +20,13 @@ Resumo do que você precisa saber para não errar:
 - Ao terminar uma passada: atualize `tarefas`, acrescente linha em
   `## Contribuições`, esvazie `dono`.
 
+## Testes de navegador
+
+No máximo 4 Chromium e uma execução de testes por vez na máquina (RAM).
+Os 10 contextos do Storybook só via `npm run test:a11y:todos`. Se a trava
+recusar, espere a outra execução terminar; não contorne. Detalhes em
+`CLAUDE.md`.
+
 ## Sobre o projeto
 
 Ver `CLAUDE.md` para contexto técnico do Design System.
