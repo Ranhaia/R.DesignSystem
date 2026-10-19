@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 
 import { patternDocs } from "@/lib/pattern-docs"
 import { patternsList } from "@/lib/patterns-registry"
+import { TocScrollSpy, tocLinkClass } from "@/components/doc/toc-scroll-spy"
 import { patternRegistry } from "@/components/patterns/registry"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -132,17 +133,18 @@ export default async function PatternPage({
       </div>
 
       <nav className="sticky top-20 hidden h-fit w-48 shrink-0 space-y-3 xl:block">
+        <TocScrollSpy />
         <p className="text-sm font-medium">Nesta página</p>
         <ul className="space-y-2 text-sm text-muted-foreground">
           {doc && (
             <>
               <li>
-                <a href="#descricao" className="hover:text-foreground">
+                <a href="#descricao" className={tocLinkClass}>
                   Descrição
                 </a>
               </li>
               <li>
-                <a href="#quando-utilizar" className="hover:text-foreground">
+                <a href="#quando-utilizar" className={tocLinkClass}>
                   Quando utilizar
                 </a>
               </li>
@@ -150,21 +152,21 @@ export default async function PatternPage({
           )}
           {doc && doc.composition.length > 0 && (
             <li>
-              <a href="#composicao" className="hover:text-foreground">
+              <a href="#composicao" className={tocLinkClass}>
                 Composição
               </a>
             </li>
           )}
           {Example && (
             <li>
-              <a href="#exemplo" className="hover:text-foreground">
+              <a href="#exemplo" className={tocLinkClass}>
                 Exemplo
               </a>
             </li>
           )}
           {doc && doc.accessibility.length > 0 && (
             <li>
-              <a href="#acessibilidade" className="hover:text-foreground">
+              <a href="#acessibilidade" className={tocLinkClass}>
                 Acessibilidade
               </a>
             </li>
@@ -172,17 +174,17 @@ export default async function PatternPage({
           {doc && (
             <>
               <li>
-                <a href="#boas-praticas" className="hover:text-foreground">
+                <a href="#boas-praticas" className={tocLinkClass}>
                   Boas práticas
                 </a>
               </li>
               <li>
-                <a href="#evite" className="hover:text-foreground">
+                <a href="#evite" className={tocLinkClass}>
                   Evite
                 </a>
               </li>
               <li>
-                <a href="#codigo" className="hover:text-foreground">
+                <a href="#codigo" className={tocLinkClass}>
                   Código
                 </a>
               </li>

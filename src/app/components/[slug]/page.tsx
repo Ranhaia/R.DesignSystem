@@ -9,6 +9,7 @@ import { exampleRegistry } from "@/components/examples/registry"
 import { ButtonPlayground } from "@/components/doc/button-playground"
 import { GenericPlayground, genericPlaygroundRegistry } from "@/components/doc/generic-playground"
 import { renderSizePreview, renderVariantPreview } from "@/components/doc/variant-preview"
+import { TocScrollSpy, tocLinkClass } from "@/components/doc/toc-scroll-spy"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -264,22 +265,23 @@ export default async function ComponentPage({
       </div>
 
       <nav className="sticky top-20 hidden h-fit w-48 shrink-0 space-y-3 xl:block">
+        <TocScrollSpy />
         <p className="text-sm font-medium">Nesta página</p>
         <ul className="space-y-2 text-sm text-muted-foreground">
           {doc && (
             <>
               <li>
-                <a href="#descricao" className="hover:text-foreground">
+                <a href="#descricao" className={tocLinkClass}>
                   Descrição
                 </a>
               </li>
               <li>
-                <a href="#quando-utilizar" className="hover:text-foreground">
+                <a href="#quando-utilizar" className={tocLinkClass}>
                   Quando utilizar
                 </a>
               </li>
               <li>
-                <a href="#anatomia" className="hover:text-foreground">
+                <a href="#anatomia" className={tocLinkClass}>
                   Anatomia
                 </a>
               </li>
@@ -287,34 +289,34 @@ export default async function ComponentPage({
           )}
           {composition.length > 0 && (
             <li>
-              <a href="#composicao" className="hover:text-foreground">
+              <a href="#composicao" className={tocLinkClass}>
                 Composição
               </a>
             </li>
           )}
           {doc && doc.variants.length > 0 && (
             <li>
-              <a href="#variantes" className="hover:text-foreground">
+              <a href="#variantes" className={tocLinkClass}>
                 Variantes
               </a>
             </li>
           )}
           {doc && doc.states.length > 0 && (
             <li>
-              <a href="#estados" className="hover:text-foreground">
+              <a href="#estados" className={tocLinkClass}>
                 Estados
               </a>
             </li>
           )}
           {doc && doc.sizes.length > 0 && (
             <li>
-              <a href="#tamanhos" className="hover:text-foreground">
+              <a href="#tamanhos" className={tocLinkClass}>
                 Tamanhos
               </a>
             </li>
           )}
           <li>
-            <a href="#exemplos" className="hover:text-foreground">
+            <a href="#exemplos" className={tocLinkClass}>
               Exemplos
             </a>
             {exampleNames.length > 1 && (
@@ -323,7 +325,7 @@ export default async function ComponentPage({
                   <li key={exampleName}>
                     <a
                       href={`#exemplo-${exampleName}`}
-                      className="hover:text-foreground"
+                      className={tocLinkClass}
                     >
                       {exampleTitle(slug, exampleName)}
                     </a>
@@ -335,29 +337,29 @@ export default async function ComponentPage({
           {doc && (
             <>
               <li>
-                <a href="#boas-praticas" className="hover:text-foreground">
+                <a href="#boas-praticas" className={tocLinkClass}>
                   Boas práticas
                 </a>
               </li>
               <li>
-                <a href="#evite" className="hover:text-foreground">
+                <a href="#evite" className={tocLinkClass}>
                   Evite
                 </a>
               </li>
               <li>
-                <a href="#codigo" className="hover:text-foreground">
+                <a href="#codigo" className={tocLinkClass}>
                   Código
                 </a>
               </li>
               {showPlayground && (
                 <li>
-                  <a href="#playground" className="hover:text-foreground">
+                  <a href="#playground" className={tocLinkClass}>
                     Playground
                   </a>
                 </li>
               )}
               <li>
-                <a href="#propriedades" className="hover:text-foreground">
+                <a href="#propriedades" className={tocLinkClass}>
                   Propriedades
                 </a>
               </li>

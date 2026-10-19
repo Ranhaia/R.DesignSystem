@@ -155,7 +155,10 @@ não está disponível aqui:
 - **Token novo segue o padrão da família**: valor em `:root` (o preset pode
   sobrescrever) e ponte em `@theme inline` quando precisa virar utilitário
   (ex.: `--motion-ease-spring` → `--ease-spring` → `ease-spring`). Um nome
-  declarado uma vez só.
+  declarado uma vez só. Exceção: família sem namespace de tema no
+  Tailwind v4 (ex.: duração) não vira classe pelo `@theme`; a ponte é um
+  `@utility` (ver `duration-motion-*` no `globals.css`). O teste de tokens
+  reprova duração nomeada usada em componente sem esse `@utility`.
 - **Token é catálogo**: não sai só por estar sem uso hoje; ele define as
   opções permitidas.
 - **Nada de classe CSS solta que repete componente** (`.btn`, `.card`,
