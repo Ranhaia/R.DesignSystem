@@ -80,7 +80,7 @@ export default function AssistentePage() {
         />
         <div className="flex flex-wrap items-center gap-2">
           <Button type="submit" disabled={carregando || contexto.trim().length < 10}>
-            {carregando ? <Spinner /> : <Icon name="manage_search" />}
+            {carregando && <Spinner />}
             Recomendar
           </Button>
           <span className="text-xs text-muted-foreground">{contexto.length}/1000</span>
