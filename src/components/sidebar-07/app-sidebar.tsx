@@ -63,7 +63,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuItem>
               <SidebarMenuButton asChild isActive={pathname === "/assistente"} tooltip="Assistente">
                 <Link href="/assistente">
-                  <Icon name="smart_toy" />
+                  <Icon name="lightbulb" />
                   <span>Assistente</span>
                 </Link>
               </SidebarMenuButton>

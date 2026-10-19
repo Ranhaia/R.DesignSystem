@@ -79,8 +79,8 @@ export default function AssistentePage() {
           rows={4}
         />
         <div className="flex flex-wrap items-center gap-2">
-          <Button type="submit" variant="ai-primary" disabled={carregando || contexto.trim().length < 10}>
-            {carregando ? <Spinner /> : <Icon name="wand_stars" />}
+          <Button type="submit" disabled={carregando || contexto.trim().length < 10}>
+            {carregando ? <Spinner /> : <Icon name="manage_search" />}
             Recomendar
           </Button>
           <span className="text-xs text-muted-foreground">{contexto.length}/1000</span>
