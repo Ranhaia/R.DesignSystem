@@ -12,6 +12,7 @@ import { componentsList } from "@/lib/components-registry"
 import { patternsList } from "@/lib/patterns-registry"
 import { templatesList } from "@/lib/templates-registry"
 import { AppSidebar } from "@/components/sidebar-07/app-sidebar"
+import { BuscaComponentes } from "@/components/busca-componentes"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -218,8 +219,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               </BreadcrumbList>
             </Breadcrumb>
           </div>
-          <div className="ml-auto px-4 md:hidden">
-            <MobileSidebarTrigger />
+          {/* Busca nominal do catálogo (⌘K / Ctrl+K) à direita, antes do
+              hambúrguer no mobile. */}
+          <div className="ml-auto flex items-center gap-2 px-4">
+            <BuscaComponentes />
+            <div className="md:hidden">
+              <MobileSidebarTrigger />
+            </div>
           </div>
         </header>
         {/* 2026-07-23: pt-6 (24px) em vez de pt-0 — header sticky não
