@@ -7,10 +7,10 @@
 // continuam com a página no formato antigo (Composição + Exemplos), sem
 // quebrar nada.
 //
-// doGuidelines/dontGuidelines continuam como placeholder "[a preencher]"
-// em todos os 59 componentes — combinado com o Rafael para não inventar
-// conteúdo, e a doc oficial do shadcn/ui não publica orientação de
-// faça/não faça por componente. Anatomia, Variantes, Estados, Tamanhos e
+// doGuidelines/dontGuidelines: preenchidos na maioria; continuam como
+// placeholder "[a preencher]" nos componentes próprios (box, chip, tag,
+// multi-select, files, speed-dial…) — combinado com o Rafael para não
+// inventar conteúdo; esse texto é dele. Anatomia, Variantes, Estados, Tamanhos e
 // Propriedades são derivados do código real de cada componente.
 
 export interface ComponentDocOption {
@@ -3399,6 +3399,87 @@ import { toast } from "sonner"
         type: 'React.ComponentProps<"svg">',
         description: "Todos os atributos nativos de <svg> (aria-label, role, className, style, etc.), exceto `name` e `fill` (sobrescritos pela API pública do componente).",
       },
+    ],
+  },
+  // 2026-10-19: Files e Speed Dial entram aqui pra não ficarem fora do
+  // catálogo consultado por IA. description/whenToUse vêm da Visão Geral dos
+  // specs em docs/active/componentes/<slug>/spec.md; o resto é derivado do
+  // código. Boas práticas/Evite seguem a regra do projeto: texto do Rafael.
+  files: {
+    description: "Árvore de pastas e arquivos (file tree / explorer) que expande e recolhe diretórios com animação.",
+    whenToUse: "Use para navegar por uma estrutura hierárquica de pastas e arquivos, em que o usuário abre e fecha diretórios e seleciona um item.",
+    anatomy: [
+      { part: "Files", description: 'Contêiner raiz com role="tree" e aria-label (prop `label`).' },
+      { part: "Folder", description: "Diretório, construído sobre Collapsible; guarda o estado aberto/fechado." },
+      { part: "FolderTrigger", description: "Botão que abre/fecha a pasta, com chevron que gira e ícone de pasta que alterna entre fechada e aberta (ou `icon` customizado)." },
+      { part: "FolderContent", description: 'Conteúdo recolhível com os filhos (subpastas e arquivos), dentro de um role="group" com guia vertical à esquerda.' },
+      { part: "File", description: 'Item final com role="treeitem", focável, com ícone (padrão "description" ou `icon`) e nome.' },
+    ],
+    variants: [],
+    states: [
+      { name: "Pasta fechada / aberta", description: "Controlado pelo Collapsible (`defaultOpen`, `open`, `onOpenChange` em Folder)." },
+      { name: "Arquivo ativo", description: "prop `active` em File: fundo de destaque e texto em peso médio." },
+      { name: "Hover e foco", description: "Fundo de destaque no hover; anel de foco na navegação por teclado." },
+    ],
+    sizes: [],
+    doGuidelines: ["[a preencher]"],
+    dontGuidelines: ["[a preencher]"],
+    code: `import { Files, Folder, FolderTrigger, FolderContent, File } from "@/components/ui/files"
+
+<Files label="Arquivos do projeto">
+  <Folder value="src" defaultOpen>
+    <FolderTrigger>src</FolderTrigger>
+    <FolderContent>
+      <File value="index.ts" active />
+    </FolderContent>
+  </Folder>
+</Files>`,
+    props: [
+      { name: "label (Files)", type: "string", default: '"Navegador de arquivos"', description: "Nome acessível da árvore (aria-label)." },
+      { name: "value (Folder, File)", type: "string", description: "Identificador do nó. Em File, vira o texto exibido quando não há children." },
+      { name: "defaultOpen (Folder)", type: "boolean", default: "false", description: "Pasta começa aberta." },
+      { name: "icon (FolderTrigger, File)", type: "React.ReactNode", description: "Substitui o ícone padrão de pasta ou de arquivo." },
+      { name: "active (File)", type: "boolean", default: "false", description: "Marca o arquivo selecionado." },
+    ],
+  },
+  "speed-dial": {
+    description: "Botão de ação flutuante (FAB) que, ao ser acionado, se expande em uma sequência de ações secundárias relacionadas.",
+    whenToUse: "Use quando várias ações secundárias relacionadas precisam ficar a um toque, sem ocupar espaço na tela até serem pedidas. Abre por clique/toque, não por hover, então funciona em mobile.",
+    anatomy: [
+      { part: "Raiz", description: 'Contêiner com data-slot="speed-dial" e data-state (open/closed); fecha ao clicar fora.' },
+      { part: "Botão principal", description: "FAB que abre e fecha o menu; nome acessível vem de `triggerLabel`." },
+      { part: "Ações", description: "Lista de botões (`actionButtons`) que surgem em sequência escalonada na direção escolhida." },
+    ],
+    variants: [
+      { name: "Para cima", value: "up", description: "Ações acima do botão (padrão)." },
+      { name: "Para baixo", value: "down", description: "Ações abaixo do botão." },
+      { name: "Para a esquerda", value: "left", description: "Ações à esquerda do botão." },
+      { name: "Para a direita", value: "right", description: "Ações à direita do botão." },
+    ],
+    states: [
+      { name: "Fechado / aberto", description: "Controlado (`open` + `onOpenChange`) ou não controlado (`defaultOpen`)." },
+      { name: "Ação desabilitada", description: "`disabled` em um item de `actionButtons`." },
+      { name: "Teclado", description: "Escape fecha e devolve o foco ao botão principal; setas percorrem as ações no eixo da direção." },
+    ],
+    sizes: [],
+    doGuidelines: ["[a preencher]"],
+    dontGuidelines: ["[a preencher]"],
+    code: `import { SpeedDial } from "@/components/ui/speed-dial"
+import { Icon } from "@/components/ui/icon"
+
+<SpeedDial
+  direction="up"
+  triggerLabel="Ações rápidas"
+  actionButtons={[
+    { key: "share", label: "Compartilhar", icon: <Icon name="share" />, action: () => {} },
+    { key: "print", label: "Imprimir", icon: <Icon name="print" />, action: () => {} },
+  ]}
+/>`,
+    props: [
+      { name: "actionButtons", type: "{ key, label, icon, action, disabled? }[]", description: "Ações secundárias exibidas ao abrir." },
+      { name: "direction", type: '"up" | "down" | "left" | "right"', default: '"up"', description: "Para onde as ações se expandem." },
+      { name: "triggerLabel", type: "string", default: '"Ações rápidas"', description: "Nome acessível do botão principal." },
+      { name: "open / defaultOpen / onOpenChange", type: "boolean / boolean / (open: boolean) => void", description: "Estado controlado ou não controlado." },
     ],
   },
 }
