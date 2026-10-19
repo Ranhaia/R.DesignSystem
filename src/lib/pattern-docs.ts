@@ -104,7 +104,7 @@ useEffect(() => { titleRef.current?.focus() }, [hasError])
   skeleton: {
     description: "[a preencher]",
     whenToUse: "[a preencher]",
-    composition: ["Skeleton (Atom)", "Avatar / AvatarFallback (Atom)", "Button (Atom)"],
+    composition: ["Skeleton (Primitivo)", "Avatar / AvatarFallback (Atom)", "Button (Atom)"],
     accessibility: [
       "Contêiner com aria-busy enquanto o Skeleton está visível.",
       "Região aria-live=\"polite\" (sr-only) anuncia a transição carregando/carregado — o Skeleton em si (só animate-pulse) não tem papel ARIA próprio.",
@@ -346,7 +346,7 @@ useEffect(() => { headingRef.current?.focus() }, [step])
     whenToUse: "Qualquer listagem que precise de refinamento por critérios.",
     composition: [
       "Popover / PopoverTrigger / PopoverContent (Atom popover)",
-      "Checkbox, Label (Atom)",
+      "Checkbox (Atom), Label (Primitivo)",
       "Badge (Atom)",
     ],
     accessibility: [

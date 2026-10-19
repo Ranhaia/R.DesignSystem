@@ -16,7 +16,7 @@ import { Icon } from "@/components/ui/icon"
 import SplitButtonDemo from "@/components/examples/split-button-demo"
 
 const meta: Meta<typeof SplitButton> = {
-  title: "Molecules/SplitButton",
+  title: "Organisms/SplitButton",
   component: SplitButton,
   tags: ["autodocs"],
   argTypes: {

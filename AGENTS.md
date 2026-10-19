@@ -1,4 +1,4 @@
-# AGENTS.md — shadcn-local
+# AGENTS.md — R.DS
 
 ## Regras de trabalho
 

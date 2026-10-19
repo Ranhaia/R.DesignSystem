@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { Files, Folder, FolderTrigger, FolderContent, File } from "@/components/ui/files"
 
 const meta: Meta<typeof Files> = {
-  title: "Molecules/Files",
+  title: "Organisms/Files",
   component: Files,
   tags: ["autodocs"],
 }

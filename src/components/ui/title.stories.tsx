@@ -4,7 +4,7 @@ import { Title } from "@/components/ui/title"
 import TitleDemo from "@/components/examples/title-demo"
 
 const meta: Meta<typeof Title> = {
-  title: "Atoms/Title",
+  title: "Primitivos/Title",
   component: Title,
   tags: ["autodocs"],
   argTypes: {

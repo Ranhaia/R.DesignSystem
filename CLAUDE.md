@@ -1,6 +1,10 @@
-# shadcn-local — Instruções para Claude
+# R.DS — Instruções para Claude
 
 ## O que é este projeto
+
+O nome do sistema é **R.DS** (decisão de 2026-10-19). "shadcn-local" é só o
+nome antigo da pasta (`C:\dev\shadcn-local`) e aparece em notas
+históricas; não use como nome do produto.
 
 Este é o **Design System operacional de Rafael** — não é o DS decorativo do
 portfólio (esse fica em outro projeto, `P-portfolio-design-system`, no
@@ -111,8 +115,10 @@ não está disponível aqui:
 
 ## Convenções já estabelecidas neste projeto
 
-- Categorização atomic design (Atoms / Molecules / Organisms) — ver
-  `plans/done/loop-80-20-log-resumo.md`, Fase 0
+- Categorização atomic design (Primitivos / Atoms / Molecules / Organisms):
+  a camada sai do que o componente importa do DS. Critério e trava em
+  `src/lib/atomic-registry.ts` + `atomic-registry.test.ts`; decisão em
+  `docs/archive/decisoes/criterio-camadas.md`
 - Tokens semânticos (não direction-aware vs. direction-aware) e os 5
   presets de estilo — ver `README.md`, seção "Sistema de tokens"
 - ~~Regras do loop autônomo (decisão provisória em vez de travar quando

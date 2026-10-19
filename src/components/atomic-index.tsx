@@ -8,18 +8,19 @@ import { componentDocs } from "@/lib/component-docs"
 import { componentsList } from "@/lib/components-registry"
 
 const categoryTitles: Record<AtomicCategory, string> = {
+  primitive: "Primitivos",
   atom: "Atoms",
   molecule: "Molecules",
   organism: "Organisms",
 }
 
-// Descrições curtas de orientação (não são o conteúdo narrativo que fica
-// pra Rafael escrever depois — são só o critério de categorização, pra
-// contextualizar quem está navegando o catálogo).
+// Descrições curtas de orientação: o critério de cada camada, igual ao do
+// comentário em atomic-registry.ts (é ele que vale; isto só resume).
 const categoryDescriptions: Record<AtomicCategory, string> = {
-  atom: "Menor unidade funcional do catálogo — não se decompõe em outros componentes.",
-  molecule: "Combinação de poucos atoms com um propósito único e reutilizável.",
-  organism: "Composição maior, geralmente reunindo várias molecules/atoms com lógica própria.",
+  primitive: "Fundação usada por todos os componentes. Não compõe nenhum outro componente do sistema.",
+  atom: "Menor peça com função própria. Usa no máximo primitivos.",
+  molecule: "Combina átomos num conjunto com um único propósito.",
+  organism: "Combina moléculas ou organismos, com regiões e estado próprios.",
 }
 
 export function AtomicIndexPage({ category }: { category: AtomicCategory }) {

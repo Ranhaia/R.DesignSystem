@@ -9,7 +9,7 @@ import TreeSelectCheckable from "@/components/examples/tree-select-checkable"
 import TreeSelectCheckableParent from "@/components/examples/tree-select-checkable-parent"
 
 const meta: Meta<typeof TreeSelect> = {
-  title: "Atoms/TreeSelect",
+  title: "Molecules/TreeSelect",
   component: TreeSelect,
   tags: ["autodocs"],
 }

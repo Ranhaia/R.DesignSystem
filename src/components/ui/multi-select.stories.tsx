@@ -9,7 +9,7 @@ import { MultiSelect } from "@/components/ui/multi-select"
 import MultiSelectDemo from "@/components/examples/multi-select-demo"
 
 const meta: Meta<typeof MultiSelect> = {
-  title: "Atoms/MultiSelect",
+  title: "Organisms/MultiSelect",
   component: MultiSelect,
   tags: ["autodocs"],
 }
