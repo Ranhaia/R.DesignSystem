@@ -35,10 +35,13 @@ export const rotulosGrupo: Record<GrupoBusca, string> = {
 }
 
 // Ordem dos grupos no resultado: do mais usado pra montar tela ao menos.
+// Precisa ter todas as camadas do atomic-registry: grupo fora desta lista
+// some da busca (o teste "termo vazio devolve o índice inteiro" pega isso).
 export const ordemGrupos: GrupoBusca[] = [
   "atom",
   "molecule",
   "organism",
+  "primitive",
   "pattern",
   "template",
   "foundation",
