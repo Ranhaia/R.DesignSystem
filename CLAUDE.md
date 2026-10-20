@@ -2,9 +2,10 @@
 
 ## O que é este projeto
 
-O nome do sistema é **R.DS** (decisão de 2026-10-19). "shadcn-local" é só o
-nome antigo da pasta (`C:\dev\shadcn-local`) e aparece em notas
-históricas; não use como nome do produto.
+O nome do sistema é **R.DS** (decisão de 2026-10-19). A pasta do projeto é
+`C:\dev\R.DS`, uma só; "shadcn-local" (pasta antiga) e "shadcn-local-a11y"
+(worktree da branch `feat/a11y-trava`, já incorporada na `main`) só
+aparecem em notas históricas. Não use esses nomes para o produto.
 
 Este é o **Design System operacional de Rafael** — não é o DS decorativo do
 portfólio (esse fica em outro projeto, `P-portfolio-design-system`, no
