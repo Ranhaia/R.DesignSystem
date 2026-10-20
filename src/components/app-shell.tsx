@@ -53,16 +53,12 @@ function useBreadcrumb() {
     return { section: null, sectionHref: null, page: "Portfólio" }
   }
 
-  if (pathname === "/atoms") {
-    return { section: null, sectionHref: null, page: "Atoms" }
-  }
-
-  if (pathname === "/molecules") {
-    return { section: null, sectionHref: null, page: "Molecules" }
-  }
-
-  if (pathname === "/organisms") {
-    return { section: null, sectionHref: null, page: "Organisms" }
+  // Índices das camadas (/primitivos, /atoms, /molecules, /organisms).
+  const layer = (Object.keys(categoryHref) as (keyof typeof categoryHref)[]).find(
+    (c) => categoryHref[c] === pathname
+  )
+  if (layer) {
+    return { section: null, sectionHref: null, page: categoryLabels[layer] }
   }
 
   if (pathname === "/templates") {

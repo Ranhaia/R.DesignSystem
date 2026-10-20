@@ -1,6 +1,11 @@
-# shadcn-local — Instruções para Claude
+# R.DS — Instruções para Claude
 
 ## O que é este projeto
+
+O nome do sistema é **R.DS** (decisão de 2026-10-19). A pasta do projeto é
+`C:\dev\R.DS`, uma só; "shadcn-local" (pasta antiga) e "shadcn-local-a11y"
+(worktree da branch `feat/a11y-trava`, já incorporada na `main`) só
+aparecem em notas históricas. Não use esses nomes para o produto.
 
 Este é o **Design System operacional de Rafael** — não é o DS decorativo do
 portfólio (esse fica em outro projeto, `P-portfolio-design-system`, no
@@ -111,8 +116,10 @@ não está disponível aqui:
 
 ## Convenções já estabelecidas neste projeto
 
-- Categorização atomic design (Atoms / Molecules / Organisms) — ver
-  `plans/done/loop-80-20-log-resumo.md`, Fase 0
+- Categorização atomic design (Primitivos / Atoms / Molecules / Organisms):
+  a camada sai do que o componente importa do DS. Critério e trava em
+  `src/lib/atomic-registry.ts` + `atomic-registry.test.ts`; decisão em
+  `docs/archive/decisoes/criterio-camadas.md`
 - Tokens semânticos (não direction-aware vs. direction-aware) e os 5
   presets de estilo — ver `README.md`, seção "Sistema de tokens"
 - ~~Regras do loop autônomo (decisão provisória em vez de travar quando
@@ -155,7 +162,10 @@ não está disponível aqui:
 - **Token novo segue o padrão da família**: valor em `:root` (o preset pode
   sobrescrever) e ponte em `@theme inline` quando precisa virar utilitário
   (ex.: `--motion-ease-spring` → `--ease-spring` → `ease-spring`). Um nome
-  declarado uma vez só.
+  declarado uma vez só. Exceção: família sem namespace de tema no
+  Tailwind v4 (ex.: duração) não vira classe pelo `@theme`; a ponte é um
+  `@utility` (ver `duration-motion-*` no `globals.css`). O teste de tokens
+  reprova duração nomeada usada em componente sem esse `@utility`.
 - **Token é catálogo**: não sai só por estar sem uso hoje; ele define as
   opções permitidas.
 - **Nada de classe CSS solta que repete componente** (`.btn`, `.card`,

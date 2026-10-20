@@ -513,7 +513,7 @@ function TreeSelect(props: TreeSelectProps) {
               name="keyboard_arrow_down"
               size={1}
               className={cn(
-                "pointer-events-none text-muted-foreground opacity-50 transition-transform duration-200",
+                "pointer-events-none text-muted-foreground opacity-50 transition-transform duration-motion-base",
                 open && "rotate-180"
               )}
             />
@@ -625,7 +625,7 @@ function TreeSelect(props: TreeSelectProps) {
                           name="chevron_right"
                           size={1}
                           className={cn(
-                            "transition-transform duration-150",
+                            "transition-transform duration-motion-fast",
                             isExpanded && "rotate-90"
                           )}
                         />

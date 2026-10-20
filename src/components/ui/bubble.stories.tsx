@@ -4,7 +4,7 @@ import { Bubble, BubbleContent } from "@/components/ui/bubble"
 import BubbleDemo from "@/components/examples/bubble-demo"
 
 const meta: Meta<typeof Bubble> = {
-  title: "Organisms/Bubble",
+  title: "Molecules/Bubble",
   component: Bubble,
   tags: ["autodocs"],
   argTypes: {

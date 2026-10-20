@@ -12,7 +12,7 @@ import MessageDemo from "@/components/examples/message-demo"
 // existe pra ter o componente navegável no catálogo do Storybook, com
 // addon-a11y auditando o exemplo real (não um placeholder).
 const meta: Meta<typeof Message> = {
-  title: "Organisms/Message",
+  title: "Molecules/Message",
   component: Message,
   tags: ["autodocs"],
 }

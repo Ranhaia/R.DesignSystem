@@ -4,7 +4,7 @@ import { Text } from "@/components/ui/text"
 import TextDemo from "@/components/examples/text-demo"
 
 const meta: Meta<typeof Text> = {
-  title: "Atoms/Text",
+  title: "Primitivos/Text",
   component: Text,
   tags: ["autodocs"],
   argTypes: {

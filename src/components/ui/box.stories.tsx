@@ -14,7 +14,7 @@ import BoxDemo from "@/components/examples/box-demo"
 // um placeholder). Único controle real é `asChild`, que troca o
 // elemento raiz.
 const meta: Meta<typeof Box> = {
-  title: "Atoms/Box",
+  title: "Primitivos/Box",
   component: Box,
   tags: ["autodocs"],
   argTypes: {

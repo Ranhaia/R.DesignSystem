@@ -59,11 +59,12 @@
   --shadow-xl: var(--shadow-xl);
 
   /* Fundação de motion — ver docs/superpowers/specs/2026-07-31-motion-label-flutuante-design.md.
-     Mesma mecânica de --radius-sm acima: ponte de :root pra utilitário
-     Tailwind (duration-motion-fast/base/slow). */
-  --duration-motion-fast: var(--motion-duration-fast);
-  --duration-motion-base: var(--motion-duration-base);
-  --duration-motion-slow: var(--motion-duration-slow);
+     Curvas: ponte de :root pra utilitário (ease-spring etc.), mesma
+     mecânica de --radius-sm acima. Durações NÃO passam por aqui: o
+     Tailwind v4 não tem namespace de tema para duration, então
+     `--duration-*` neste bloco não gerava classe nenhuma e
+     duration-motion-* caía no padrão de 150ms. A ponte das durações é o
+     @utility duration-motion-* mais abaixo. */
   --ease-spring: var(--motion-ease-spring);
   --ease-out-expo: var(--motion-ease-out-expo);
   --ease-in-out-smooth: var(--motion-ease-in-out-smooth);
@@ -473,6 +474,20 @@
 }
 @utility radius-inset-* {
   --radius-inset: --spacing(--value(number));
+}
+/* Duração das transições e das animações do tw-animate-css (animate-in/out
+   leem --tw-duration). Ver o comentário da fundação de motion no @theme. */
+@utility duration-motion-fast {
+  --tw-duration: var(--motion-duration-fast);
+  transition-duration: var(--motion-duration-fast);
+}
+@utility duration-motion-base {
+  --tw-duration: var(--motion-duration-base);
+  transition-duration: var(--motion-duration-base);
+}
+@utility duration-motion-slow {
+  --tw-duration: var(--motion-duration-slow);
+  transition-duration: var(--motion-duration-slow);
 }
 @utility rounded-inner {
   border-radius: max(0px, calc(var(--radius-outer, 0px) - var(--radius-inset, 0px)));
