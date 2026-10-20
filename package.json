@@ -14,10 +14,12 @@
     "test:a11y:todos": "node scripts/a11y-todos.mjs"
   },
   "dependencies": {
+    "@ai-sdk/google": "^4.0.45",
     "@base-ui/react": "^1.6.0",
     "@hookform/resolvers": "^5.2.2",
     "@tabler/icons-react": "^3.35.0",
     "@vercel/analytics": "^2.0.1",
+    "ai": "^7.0.68",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
