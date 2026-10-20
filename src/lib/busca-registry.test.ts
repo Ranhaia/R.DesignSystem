@@ -59,3 +59,10 @@ describe("buscar", () => {
     expect(buscar("xyzzy")).toEqual([])
   })
 })
+
+describe("ordemGrupos", () => {
+  it("cobre toda categoria do atomic-registry, para nenhum componente sumir da busca", () => {
+    const grupos = new Set(buscar("").map((g) => g.grupo))
+    for (const item of indiceBusca) expect(grupos).toContain(item.grupo)
+  })
+})

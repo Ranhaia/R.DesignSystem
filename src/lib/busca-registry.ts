@@ -36,6 +36,7 @@ export const rotulosGrupo: Record<GrupoBusca, string> = {
 
 // Ordem dos grupos no resultado: do mais usado pra montar tela ao menos.
 export const ordemGrupos: GrupoBusca[] = [
+  "primitive",
   "atom",
   "molecule",
   "organism",
