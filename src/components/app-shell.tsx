@@ -49,6 +49,10 @@ function useBreadcrumb() {
     return { section: null, sectionHref: null, page: "Folha de estilo" }
   }
 
+  if (pathname === "/assistente") {
+    return { section: null, sectionHref: null, page: "Assistente" }
+  }
+
   if (pathname === "/portfolio") {
     return { section: null, sectionHref: null, page: "Portfólio" }
   }
