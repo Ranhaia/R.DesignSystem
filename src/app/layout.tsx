@@ -59,8 +59,8 @@ const fontVariables = [
 ].join(" ");
 
 export const metadata: Metadata = {
-  title: "R.ds",
-  description: "Projeto local com shadcn/ui, todos os componentes e tokens de tema",
+  title: "R.DS",
+  description: "R.DS: componentes, tokens e telas funcionais para protótipos",
   // 2026-07-22: pasta de favicon que o Rafael colocou na raiz do projeto —
   // movida pra public/ (Next.js só serve arquivos estáticos de lá; os
   // paths "/xxx.png" dentro do site.webmanifest já eram root-relative,

@@ -1,4 +1,4 @@
-export type AtomicCategory = "atom" | "molecule" | "organism"
+export type AtomicCategory = "primitive" | "atom" | "molecule" | "organism"
 
 // Label e rota de índice por categoria — únicas (antes duplicadas como
 // consts locais em nav-components.tsx). Movidas pra cá 2026-07-22 pra
@@ -8,50 +8,65 @@ export type AtomicCategory = "atom" | "molecule" | "organism"
 // que rota de índice cada componente pertence, em vez de um bucket fixo
 // que nunca teve página própria.
 export const categoryLabels: Record<AtomicCategory, string> = {
+  primitive: "Primitivos",
   atom: "Atoms",
   molecule: "Molecules",
   organism: "Organisms",
 }
 
 export const categoryHref: Record<AtomicCategory, string> = {
+  primitive: "/primitivos",
   atom: "/atoms",
   molecule: "/molecules",
   organism: "/organisms",
 }
 
+// Critério (aprovado por Rafael em 2026-10-19): a camada mínima de um
+// componente sai do que ele importa do DS.
+// - Primitivo: fundação sem composição, usada por todo mundo (ícone,
+//   rótulo, texto, título, separador, skeleton, box). Não importa nada do DS.
+// - Átomo: importa no máximo primitivos.
+// - Molécula: combina átomos (e primitivos).
+// - Organismo: combina moléculas ou organismos.
+// Reusar só estilo (`buttonVariants`) ou tipo não é composição. A regra dá o
+// piso; subir de camada sem dependência que justifique é decisão explícita
+// (ex.: Accordion é molécula por ser um conjunto de peças). A trava é
+// atomic-registry.test.ts.
+//
 // Fonte da verdade da categorização Atomic Design dos componentes já
 // existentes em src/components/ui/. Aprovada por Rafael na Fase 0 do
 // plans/current/loop-80-20-templates.md (2026-07-20). Qualquer mudança de
 // categoria deve ser feita só aqui — o resto do projeto (nav, páginas de
 // índice) consome este mapa, nunca lista hardcoded em outro lugar.
 export const atomicRegistry: Record<string, AtomicCategory> = {
+  // Primitivos
+  icon: "primitive",
+  label: "primitive",
+  skeleton: "primitive",
+  separator: "primitive",
+  text: "primitive",
+  title: "primitive",
+  box: "primitive",
+
   // Atoms
   avatar: "atom",
   badge: "atom",
-  box: "atom",
   button: "atom",
   checkbox: "atom",
-  chip: "atom",
   "file-uploader": "atom",
-  icon: "atom",
-  "icon-button": "atom",
   input: "atom",
   "input-otp": "atom",
   kbd: "atom",
-  label: "atom",
   link: "atom",
+  list: "atom",
   progress: "atom",
   "radio-group": "atom",
-  separator: "atom",
-  skeleton: "atom",
   slider: "atom",
   spinner: "atom",
   switch: "atom",
   tag: "atom",
-  text: "atom",
   textarea: "atom",
   thumbnail: "atom",
-  title: "atom",
   toggle: "atom",
   tooltip: "atom",
   "aspect-ratio": "atom",
@@ -60,10 +75,17 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   popover: "atom",
   item: "atom",
   marker: "atom",
-  "multi-select": "atom",
-  "tree-select": "atom",
 
   // Molecules
+  accordion: "molecule",
+  bubble: "molecule",
+  card: "molecule",
+  message: "molecule",
+  table: "molecule",
+  tabs: "molecule",
+  chip: "molecule",
+  "icon-button": "molecule",
+  "tree-select": "molecule",
   alert: "molecule",
   // Sonner substituiu o Toast antigo do shadcn/ui — é uma composição de
   // ícone + texto + ação (igual em complexidade ao Alert, que também é
@@ -76,7 +98,6 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   breadcrumb: "molecule",
   "button-group": "molecule",
   collapsible: "molecule",
-  combobox: "molecule",
   empty: "molecule",
   field: "molecule",
   "hover-card": "molecule",
@@ -85,16 +106,16 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   "toggle-group": "molecule",
   "scroll-area": "molecule",
   "segmented-control": "molecule",
-  "split-button": "molecule",
   attachment: "molecule",
-  files: "molecule",
   "speed-dial": "molecule",
 
   // Organisms
-  accordion: "organism",
+  combobox: "organism",
+  files: "organism",
+  "multi-select": "organism",
+  "split-button": "organism",
   "alert-dialog": "organism",
   calendar: "organism",
-  card: "organism",
   carousel: "organism",
   chart: "organism",
   command: "organism",
@@ -104,15 +125,11 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   drawer: "organism",
   form: "organism",
   menubar: "organism",
-  message: "organism",
-  bubble: "organism",
   "navigation-menu": "organism",
   resizable: "organism",
   sheet: "organism",
   sidebar: "organism",
   stepper: "organism",
-  table: "organism",
-  tabs: "organism",
   "time-picker": "organism",
 }
 

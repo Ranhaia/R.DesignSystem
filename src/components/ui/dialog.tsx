@@ -70,7 +70,7 @@ function DialogContent({
           // de --muted, ver fix de contraste do Alert) enquanto --popover
           // continuou branco puro — então o modal "herdava" o tom da
           // página em vez do branco de superfície flutuante.
-          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-(--spacing(8)))] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-popover p-6 text-popover-foreground shadow-lg duration-200 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg",
+          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-(--spacing(8)))] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-popover p-6 text-popover-foreground shadow-lg duration-motion-base outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg",
           className
         )}
         {...props}

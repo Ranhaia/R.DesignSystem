@@ -12,7 +12,7 @@ import SeparatorDemo from "@/components/examples/separator-demo"
 // existe pra ter o componente navegável no catálogo do Storybook, com
 // addon-a11y auditando o exemplo real (não um placeholder).
 const meta: Meta<typeof Separator> = {
-  title: "Atoms/Separator",
+  title: "Primitivos/Separator",
   component: Separator,
   tags: ["autodocs"],
 }

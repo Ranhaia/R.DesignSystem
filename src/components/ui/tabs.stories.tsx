@@ -12,7 +12,7 @@ import TabsDemo from "@/components/examples/tabs-demo"
 // existe pra ter o componente navegável no catálogo do Storybook, com
 // addon-a11y auditando o exemplo real (não um placeholder).
 const meta: Meta<typeof Tabs> = {
-  title: "Organisms/Tabs",
+  title: "Molecules/Tabs",
   component: Tabs,
   tags: ["autodocs"],
 }

@@ -12,7 +12,7 @@ import LabelDemo from "@/components/examples/label-demo"
 // existe pra ter o componente navegável no catálogo do Storybook, com
 // addon-a11y auditando o exemplo real (não um placeholder).
 const meta: Meta<typeof Label> = {
-  title: "Atoms/Label",
+  title: "Primitivos/Label",
   component: Label,
   tags: ["autodocs"],
 }
