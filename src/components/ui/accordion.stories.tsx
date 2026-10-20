@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/accordion"
 
 const meta: Meta<typeof Accordion> = {
-  title: "Organisms/Accordion",
+  title: "Molecules/Accordion",
   component: Accordion,
   tags: ["autodocs"],
   argTypes: {

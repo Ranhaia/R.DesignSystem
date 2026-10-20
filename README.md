@@ -1,4 +1,4 @@
-# shadcn/ui local — portal de estilos
+# R.DS — portal de estilos
 
 Projeto Next.js (App Router + TypeScript + Tailwind CSS v4) com a biblioteca
 completa de componentes do [shadcn/ui](https://ui.shadcn.com) instalada

@@ -1,7 +1,7 @@
 # Exceção arquitetural: Input/SelectTrigger/NativeSelect deixam de ser Atoms "burros"
 
 Data: 2026-07-31
-Status: aprovada (Rafael, via spec de motion design)
+Status: superada em 2026-10-19 por `criterio-camadas.md` (Label virou primitivo; não há mais exceção)
 
 ## Contexto
 

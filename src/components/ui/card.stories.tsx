@@ -13,7 +13,7 @@ import CardWithForm from "@/components/examples/card-with-form"
 // existe pra ter o componente navegável no catálogo do Storybook, com
 // addon-a11y auditando o exemplo real (não um placeholder).
 const meta: Meta<typeof Card> = {
-  title: "Organisms/Card",
+  title: "Molecules/Card",
   component: Card,
   tags: ["autodocs"],
 }

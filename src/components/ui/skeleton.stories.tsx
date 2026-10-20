@@ -13,7 +13,7 @@ import SkeletonCard from "@/components/examples/skeleton-card"
 // existe pra ter o componente navegável no catálogo do Storybook, com
 // addon-a11y auditando o exemplo real (não um placeholder).
 const meta: Meta<typeof Skeleton> = {
-  title: "Atoms/Skeleton",
+  title: "Primitivos/Skeleton",
   component: Skeleton,
   tags: ["autodocs"],
 }

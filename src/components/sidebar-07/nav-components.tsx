@@ -46,6 +46,7 @@ const categoryLabels: Record<NavCategory, string> = {
 // (juntar peças) pra Molecules, Network (composição interconectada) pra
 // Organisms, Puzzle pra utilitários/infra que não entram no catálogo.
 const categoryIcons: Record<NavCategory, MaterialSymbol> = {
+  primitive: "category",
   atom: "orbit",
   molecule: "call_merge",
   organism: "hub",
@@ -58,13 +59,13 @@ const categoryHref: Partial<Record<NavCategory, string>> = {
   ...atomicCategoryHref,
 }
 
-// Ordem fixa: segue a hierarquia Atomic Design (Atoms → Molecules →
+// Ordem fixa: segue a hierarquia Atomic Design (Primitivos → Atoms → Molecules →
 // Organisms). "other" (utilitários, hoje só "direction") ficou de fora da
 // nav a pedido do Rafael em 2026-07-22 — o PuzzleIcon que era dele foi
 // reaproveitado no botão de troca de tema (StyleSwitcher). O item
 // "direction" continua existindo e acessível por link direto
 // (/components/direction), só não aparece mais como grupo na sidebar.
-const categoryOrder: NavCategory[] = ["atom", "molecule", "organism"]
+const categoryOrder: NavCategory[] = ["primitive", "atom", "molecule", "organism"]
 
 export function NavComponents() {
   const pathname = usePathname()

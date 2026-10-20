@@ -5,7 +5,7 @@ import { Icon } from "@/components/ui/icon"
 import IconButtonDemo from "@/components/examples/icon-button-demo"
 
 const meta: Meta<typeof IconButton> = {
-  title: "Atoms/Icon Button",
+  title: "Molecules/Icon Button",
   component: IconButton,
   tags: ["autodocs"],
   argTypes: {

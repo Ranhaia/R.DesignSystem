@@ -110,3 +110,22 @@ describe("componentes do DS só usam token", () => {
     expect(fixedValues(readFileSync(join(COMPONENTS_DIR, file), "utf8"))).toEqual([])
   })
 })
+
+// Utilitário de token que o Tailwind não gera falha em silêncio: a classe
+// fica no componente e o navegador usa o padrão. Foi o que aconteceu com
+// duration-motion-* (o v4 não tem namespace de tema para duration, então a
+// ponte em @theme não criava classe). Toda duração nomeada usada em
+// componente precisa de um @utility no globals.css.
+describe("durações nomeadas usadas em componente existem no globals.css", () => {
+  const css = readFileSync(join(__dirname, "../app/globals.css"), "utf8")
+  const declared = new Set([...css.matchAll(/@utility (duration-[a-z-]+)\s*\{/g)].map((m) => m[1]))
+  const used = new Set<string>()
+  for (const f of readdirSync(COMPONENTS_DIR, { recursive: true }) as string[]) {
+    if (!f.endsWith(".tsx")) continue
+    const src = readFileSync(join(COMPONENTS_DIR, f), "utf8")
+    for (const [, name] of src.matchAll(/(?:^|[\s"'`:])(duration-[a-z][a-z-]*)(?=[\s"'`])/g)) used.add(name)
+  }
+  it.each([...used])("%s", (name) => {
+    expect(declared.has(name)).toBe(true)
+  })
+})

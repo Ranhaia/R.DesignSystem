@@ -15,7 +15,7 @@ import ComboboxResponsive from "@/components/examples/combobox-responsive"
 // existe pra ter o componente navegável no catálogo do Storybook, com
 // addon-a11y auditando o exemplo real (não um placeholder).
 const meta: Meta<typeof Combobox> = {
-  title: "Molecules/Combobox",
+  title: "Organisms/Combobox",
   component: Combobox,
   tags: ["autodocs"],
 }

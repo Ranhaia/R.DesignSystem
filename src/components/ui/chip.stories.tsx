@@ -5,7 +5,7 @@ import { Icon } from "@/components/ui/icon"
 import ChipDemo from "@/components/examples/chip-demo"
 
 const meta: Meta<typeof Chip> = {
-  title: "Atoms/Chip",
+  title: "Molecules/Chip",
   component: Chip,
   tags: ["autodocs"],
   argTypes: {

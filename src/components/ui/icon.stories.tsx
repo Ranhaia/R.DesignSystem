@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { Icon } from "@/components/ui/icon"
 
 const meta: Meta<typeof Icon> = {
-  title: "Atoms/Icon",
+  title: "Primitivos/Icon",
   component: Icon,
   tags: ["autodocs"],
   args: { name: "home" },
