@@ -12,7 +12,7 @@ import TableDemo from "@/components/examples/table-demo"
 // existe pra ter o componente navegável no catálogo do Storybook, com
 // addon-a11y auditando o exemplo real (não um placeholder).
 const meta: Meta<typeof Table> = {
-  title: "Organisms/Table",
+  title: "Molecules/Table",
   component: Table,
   tags: ["autodocs"],
 }

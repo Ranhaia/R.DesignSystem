@@ -78,6 +78,11 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
 
   // Molecules
   accordion: "molecule",
+  bubble: "molecule",
+  card: "molecule",
+  message: "molecule",
+  table: "molecule",
+  tabs: "molecule",
   chip: "molecule",
   "icon-button": "molecule",
   "tree-select": "molecule",
@@ -111,7 +116,6 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   "split-button": "organism",
   "alert-dialog": "organism",
   calendar: "organism",
-  card: "organism",
   carousel: "organism",
   chart: "organism",
   command: "organism",
@@ -121,15 +125,11 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   drawer: "organism",
   form: "organism",
   menubar: "organism",
-  message: "organism",
-  bubble: "organism",
   "navigation-menu": "organism",
   resizable: "organism",
   sheet: "organism",
   sidebar: "organism",
   stepper: "organism",
-  table: "organism",
-  tabs: "organism",
   "time-picker": "organism",
 }
 

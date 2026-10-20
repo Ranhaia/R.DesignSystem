@@ -50,7 +50,7 @@ import { Icon } from "@/components/ui/icon"
   loading: {
     description: "Indica que uma operação está em andamento e o conteúdo será exibido em breve.",
     whenToUse: "Ao carregar dados de API, processar uploads, ou navegar entre páginas.",
-    composition: ["Card / CardContent (Organism)", "Button (Atom)", "Spinner (Atom)"],
+    composition: ["Card / CardContent (Molecule)", "Button (Atom)", "Spinner (Atom)"],
     accessibility: [
       "Spinner já tem role=\"status\" + aria-label embutidos (Atom).",
       "Região aria-live=\"polite\" (sr-only) anuncia a transição carregando → carregado pra quem usa leitor de tela.",
@@ -179,7 +179,7 @@ useEffect(() => { titleRef.current?.focus() }, [hasError])
     description: "Padroniza o fluxo de criar, ler, atualizar e deletar recursos.",
     whenToUse: "Qualquer entidade gerenciável no sistema (produtos, usuários, pedidos).",
     composition: [
-      "Table (Organism)",
+      "Table (Molecule)",
       "Dialog (Organism) — criar/editar",
       "AlertDialog (Organism) — confirmar exclusão",
       "Field / FieldLabel / FieldContent (Molecule field)",
@@ -291,7 +291,7 @@ useEffect(() => { headingRef.current?.focus() }, [step])
     whenToUse: "Listas com mais de 20 itens, resultados de busca, tabelas grandes.",
     composition: [
       "Pagination / PaginationContent / PaginationItem / PaginationLink / PaginationPrevious / PaginationNext (Molecule pagination)",
-      "Table (Organism)",
+      "Table (Molecule)",
     ],
     accessibility: [
       "Pagination já inclui nav role=\"navigation\" aria-label=\"pagination\" e aria-current=\"page\" no link ativo — embutido no Molecule, sem ajuste necessário.",

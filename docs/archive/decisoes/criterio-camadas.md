@@ -34,8 +34,29 @@ A camada mínima sai do que o componente importa do DS:
 
 - `accordion` é **molécula** (Rafael): conjunto de peças com um propósito,
   embora só importe primitivo.
-- Os organismos que não compõem molécula (`card`, `table`, `tabs`,
-  `message`, `bubble` e outros) ficaram onde estavam; revisão pendente.
+- `card`, `table`, `tabs`, `message` e `bubble` são **moléculas** (Rafael,
+  2026-10-19): mesmo raciocínio do Accordion, conferido com o mercado
+  (abaixo).
+- Os demais organismos que não compõem molécula (overlays e menus como
+  `dialog`, `sheet`, `drawer`, `dropdown-menu`; e `calendar`, `carousel`,
+  `chart`, `form`, `stepper`, `time-picker`, `resizable`) continuam
+  organismos; revisão pendente.
+
+## Conferência com o mercado (2026-10-19)
+
+| Referência | Níveis | Onde ficam Card, Tabs, Accordion, Table |
+|---|---|---|
+| Pattern Lab (ferramenta oficial do Atomic Design), starterkit twig | atoms / molecules / organisms | `molecules`: card, tabs, accordion, alert, pagination. `atoms`: table (tabela HTML simples). No starterkit handlebars, `organisms/tables` |
+| Nimbus (Nuvemshop), `packages/react/src` | atomic / composite | `composite`: Accordion, Alert, Card, Collapsible, Pagination, SegmentedControl, SplitButton, Table, Tabs (e também Modal, Sidebar, Stepper, TimePicker) |
+| Material 3, Polaris, Carbon, Radix | não usam Atomic Design | sem equivalente |
+
+- Card, Tabs e Accordion como molécula batem com as duas referências que
+  classificam. Table varia; aqui o `table` é só a estrutura HTML (sem
+  ordenação, filtro ou paginação), o que fica mais perto da molécula.
+- Divergência consciente: o Nimbus põe Chip, IconButton, MultiSelect,
+  Popover e Select como `atomic` ("indivisível para quem usa"). Aqui a
+  regra olha a composição no código, então Chip e IconButton são
+  moléculas e MultiSelect é organismo.
 
 ## Mudanças aplicadas
 
@@ -50,6 +71,7 @@ A camada mínima sai do que o componente importa do DS:
 | split-button | molecule | organism | compõe `ButtonGroup` e `DropdownMenu` |
 | multi-select | atom | organism | compõe `Combobox` (organismo) |
 | list | sem camada | atom | não importa nada; estava fora dos índices |
+| card, table, tabs, message, bubble | organism | molecule | decisão explícita, conferida com o mercado |
 
 ## Consequências
 
