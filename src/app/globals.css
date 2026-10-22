@@ -206,6 +206,8 @@
   (fácil de gerar tons consistentes) e melhor interpolação entre cores.
 */
 :root {
+  /* Controles nativos (rolagem, select, data, autofill) seguem o modo. */
+  color-scheme: light;
   --radius: 0.625rem;
   --motion-duration-fast: 150ms;
   --motion-duration-base: 200ms;
@@ -439,6 +441,7 @@
   app/layout.tsx) — nenhum componente precisa saber se está claro ou escuro.
 */
 .dark {
+  color-scheme: dark;
   --shadow-2xs: 0 1px 2px 0 oklch(0% 0 0 / 0.3);
   --shadow-xs: 0 1px 3px 0 oklch(0% 0 0 / 0.35);
   --shadow-sm: 0 1px 3px 0 oklch(0% 0 0 / 0.4), 0 1px 2px -1px oklch(0% 0 0 / 0.4);
@@ -564,6 +567,14 @@
 }
 .dark[data-style="editorial"] {
   /* Primitivos deste tema (editorial/escuro) */
+  /* Sombras: sem isto herdaria a do claro do preset (vem depois do .dark base), invisível no escuro.
+     Mesma geometria achatada do claro, opacidade do .dark base. Trava: src/lib/a11y/tema-escuro.test.ts. */
+  --shadow-2xs: 0 1px 0 0 oklch(0% 0 0 / 0.3);
+  --shadow-xs: 0 1px 1px 0 oklch(0% 0 0 / 0.35);
+  --shadow-sm: 0 1px 2px 0 oklch(0% 0 0 / 0.4);
+  --shadow-md: 0 2px 4px 0 oklch(0% 0 0 / 0.4);
+  --shadow-lg: 0 4px 8px 0 oklch(0% 0 0 / 0.4);
+  --shadow-xl: 0 8px 16px 0 oklch(0% 0 0 / 0.45);
 
 
   /* 2026-10-14 (trava de acessibilidade): papéis que vazavam do bloco claro do preset.
@@ -606,9 +617,12 @@
 .dark[data-style="tech"] {
   /* Primitivos deste tema (tech/escuro) */
 
+  --shadow-2xs: 0 1px 0 0 oklch(100% 0 0 / 0.1);
+  --shadow-xs: 0 2px 0 0 oklch(100% 0 0 / 0.12);
   --shadow-sm: 0 2px 0 0 oklch(100% 0 0 / 0.15);
   --shadow-md: 0 3px 0 0 oklch(100% 0 0 / 0.15);
   --shadow-lg: 0 4px 0 0 oklch(100% 0 0 / 0.15);
+  --shadow-xl: 0 6px 0 0 oklch(100% 0 0 / 0.15);
 
   /* 2026-10-14 (trava de acessibilidade): papéis que vazavam do bloco claro do preset.
      Tons pelo Material Design 3 (material-color-utilities, color_spec_2021): fundo 6, texto 90,
@@ -656,6 +670,14 @@
 }
 .dark[data-style="soft"] {
   /* Primitivos deste tema (soft/escuro) */
+  /* Sombras: mesmo motivo do editorial/escuro. Geometria difusa do claro; o tom rosado some no escuro,
+     então vira preto com a opacidade do .dark base. */
+  --shadow-2xs: 0 2px 8px -2px oklch(0% 0 0 / 0.3);
+  --shadow-xs: 0 4px 12px -2px oklch(0% 0 0 / 0.35);
+  --shadow-sm: 0 6px 16px -4px oklch(0% 0 0 / 0.4);
+  --shadow-md: 0 10px 24px -6px oklch(0% 0 0 / 0.4);
+  --shadow-lg: 0 16px 36px -8px oklch(0% 0 0 / 0.4);
+  --shadow-xl: 0 24px 48px -10px oklch(0% 0 0 / 0.45);
 
 
   /* 2026-10-14 (trava de acessibilidade): papéis que vazavam do bloco claro do preset.
