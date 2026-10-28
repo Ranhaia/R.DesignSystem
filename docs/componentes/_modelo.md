@@ -14,8 +14,11 @@ referencias: []                     # ex.: passi:abas, shadcn:tabs, nimbus:segme
 Modelo do MD de componente do R.DS. Regras:
 - Seções sempre nesta ordem e com estes nomes. O agente procura pelo título.
 - Até ~4 KB. Passou disso, provavelmente são dois componentes.
-- Anatomia, Props, Variantes, Tamanhos e Estados saem do código. Nunca
-  descreva algo que o .tsx não faz.
+- Anatomia, Props, Variantes, Tamanhos e Tokens usados são escritos por
+  `npm run docs:registrar -- <slug>`, lendo o .tsx. À mão, só a coluna de
+  descrição e as linhas que o código não vê (parte visual, prop herdada do
+  Radix). O registro preserva essas; `npm run docs:check` reprova o resto.
+- Estados também descrevem o código: nunca algo que o .tsx não faz.
 - Todo item de "NÃO faça" e de "Quando NÃO usar" termina com a alternativa.
 - Texto adaptado de referência leva a origem em `referencias`.
 - Apague este comentário no arquivo real.

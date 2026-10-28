@@ -30,7 +30,7 @@ alterações", não "OK".
 
 | Parte | O que é |
 |---|---|
-| Raiz | `<button>` com `data-slot="button"`, `data-variant` e `data-size`. Com `asChild`, as props vão para o filho (Radix Slot). |
+| `Button` | Raiz: `<button>` com `data-slot="button"`, `data-variant` e `data-size`. Com `asChild`, as props vão para o filho (Radix Slot). |
 | Ícone (opcional) | SVG antes ou depois do texto. Tamanho herdado (`size-4`, `size-3` no `xs`). |
 | Texto | Via `label` ou `children`. O tipo exige `children`, `icon` ou `label` — nunca botão vazio. |
 | `Button.Skeleton` | Placeholder com a mesma altura e canto do tamanho escolhido. |
@@ -39,26 +39,30 @@ alterações", não "OK".
 
 | Prop | Tipo | Padrão | O que faz |
 |---|---|---|---|
-| `variant` | `default` · `secondary` · `outline` · `ghost` · `destructive` · `link` · `ai-primary` · `ai-secondary` | `default` | Hierarquia visual |
-| `size` | `xs` · `sm` · `md` · `default` · `lg` · `xl` · `icon-xs` · `icon-sm` · `icon` · `icon-md` · `icon-lg` · `icon-xl` | `default` | Altura. `default` = `md`; `icon` = `icon-md` |
+| `variant` | `default` · `destructive` · `outline` · `secondary` · `ghost` · `link` · `ai-primary` · `ai-secondary` | `default` | Hierarquia visual |
+| `size` | `xs` · `sm` · `default` · `md` · `lg` · `xl` · `icon-xs` · `icon-sm` · `icon` · `icon-md` · `icon-lg` · `icon-xl` | `default` | Altura. `default` = `md`; `icon` = `icon-md` |
 | `fullWidth` | `boolean` | `false` | Ocupa 100% da largura |
 | `asChild` | `boolean` | `false` | Renderiza no elemento filho |
-| `icon` · `label` | `ReactNode` | — | Conteúdo explícito (alternativa a `children`) |
+| `icon` · `label` | `React.ReactNode` | — | Conteúdo explícito (alternativa a `children`) |
 | `disabled` | `boolean` | `false` | Desabilita e tira do foco |
 | `aria-disabled` | `boolean` | — | Mesmo visual de desabilitado, mas continua focável e anunciado |
 | `...props` | `ComponentProps<"button">` | — | `onClick`, `type`, `form`… |
+| `children` | `React.ReactNode` | — | Conteúdo livre; obrigatório com `asChild` |
+| `size` (ButtonSkeleton) | `xs` · `sm` · `default` · `md` · `lg` · `xl` · `icon-xs` · `icon-sm` · `icon` · `icon-md` · `icon-lg` · `icon-xl` | `default` | Mesma altura do botão que ele substitui |
+| `fullWidth` (ButtonSkeleton) | `boolean` | `false` | Ocupa 100% da largura, como o botão |
 
 ## Variantes
 
 | Valor | Quando usar |
 |---|---|
 | `default` | Ação principal. **Uma por contexto.** |
-| `secondary` | Ação forte que não é a principal |
-| `outline` | Ação alternativa; fundo transparente, herda o do container |
-| `ghost` | Ação discreta, sem superfície até o hover |
 | `destructive` | Ação que não se desfaz (excluir) |
+| `outline` | Ação alternativa; fundo transparente, herda o do container |
+| `secondary` | Ação forte que não é a principal |
+| `ghost` | Ação discreta, sem superfície até o hover |
 | `link` | Ação com cara de texto |
-| `ai-primary` · `ai-secondary` | Ação que dispara IA. ⚠️ Em revisão: o PASSI desaconselha gradiente como marca de IA (atrito A3 em `H-referencia-passi-ds`) |
+| `ai-primary` | Ação que dispara IA. ⚠️ Em revisão: o PASSI desaconselha gradiente como marca de IA (atrito A3 em `H-referencia-passi-ds`) |
+| `ai-secondary` | Ação que dispara IA. ⚠️ Em revisão: o PASSI desaconselha gradiente como marca de IA (atrito A3 em `H-referencia-passi-ds`) |
 
 ## Tamanhos
 
@@ -66,10 +70,16 @@ alterações", não "OK".
 |---|---|---|
 | `xs` | 24 px | Barras de ferramenta densas |
 | `sm` | 32 px | Tabelas, filtros |
-| `md` / `default` | 40 px | Padrão; mínimo no celular |
+| `default` | 40 px | Padrão; mínimo no celular |
+| `md` | 40 px, igual a `default` | Padrão; mínimo no celular |
 | `lg` | 48 px | Chamada principal, telas de celular |
 | `xl` | 56 px | Destaque de página |
-| `icon-*` | 24 a 56 px, quadrado | Só ícone — exige `aria-label` |
+| `icon-xs` | 24 px | Só ícone — exige `aria-label` |
+| `icon-sm` | 32 px | Só ícone — exige `aria-label` |
+| `icon` | 40 px | Só ícone, tamanho padrão — exige `aria-label` |
+| `icon-md` | 40 px, igual a `icon` | Só ícone — exige `aria-label` |
+| `icon-lg` | 48 px | Só ícone — exige `aria-label` |
+| `icon-xl` | 56 px | Só ícone — exige `aria-label` |
 
 ## Estados
 
@@ -97,11 +107,14 @@ alterações", não "OK".
 
 ## Tokens usados
 
-`bg-primary` `text-primary-foreground` `bg-secondary` `bg-destructive`
-`bg-accent` `border-input` `ring` · IA: `--ai-gradient-rest`
-`--ai-gradient-hover` `bg-ai-surface` `border-ai-interactive`
-`text-ai-text-high` · Movimento: `duration-motion-fast` `ease-spring`
-`--scale-pressed` · `shadow-sm` `shadow-xs` `rounded-md`.
+`--ai-gradient-hover` `--ai-gradient-rest` `--scale-pressed` `bg-accent`
+`bg-ai-surface` `bg-ai-surface-highlight` `bg-destructive` `bg-input`
+`bg-primary` `bg-secondary` `border-ai-interactive`
+`border-ai-interactive-hover` `border-destructive` `border-input`
+`border-ring` `duration-motion-fast` `ease-spring` `ring-destructive`
+`ring-ring` `rounded-md` `shadow-sm` `shadow-xs`
+`text-accent-foreground` `text-ai-text-high` `text-primary`
+`text-primary-foreground` `text-secondary-foreground`
 
 ## Faça
 

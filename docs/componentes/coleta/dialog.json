@@ -1,0 +1,42 @@
+{
+  "slug": "dialog",
+  "partes": [
+    "Dialog",
+    "DialogTrigger",
+    "DialogPortal",
+    "DialogClose",
+    "DialogOverlay",
+    "DialogContent",
+    "DialogHeader",
+    "DialogFooter",
+    "DialogTitle",
+    "DialogDescription"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "showCloseButton",
+      "parte": "DialogContent",
+      "tipo": "`boolean`",
+      "padrao": "true"
+    },
+    {
+      "nome": "showCloseButton",
+      "parte": "DialogFooter",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-popover",
+    "duration-motion-base",
+    "ring-offset-background",
+    "ring-ring",
+    "rounded-lg",
+    "shadow-lg",
+    "text-muted-foreground",
+    "text-popover-foreground"
+  ]
+}

@@ -79,9 +79,9 @@ Um só. No celular ocupa a largura menos 32 px de margem.
 
 ## Tokens usados
 
-`bg-popover` `text-popover-foreground` `text-muted-foreground` `border`
-`bg-accent` `ring` `shadow-lg` `rounded-lg` · `--spacing(8)` ·
-`duration-motion-base` · Sobreposição: `bg-black/50`.
+`bg-accent` `bg-popover` `duration-motion-base` `ring-offset-background`
+`ring-ring` `rounded-lg` `shadow-lg` `text-muted-foreground`
+`text-popover-foreground`
 
 ## Faça
 

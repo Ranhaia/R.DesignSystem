@@ -14,6 +14,20 @@ da documentação** do componente (decisão de 2026-10-27, ver
 > **construção** de um componente novo. Quando o componente fica pronto,
 > o que vale para quem usa passa a morar aqui.
 
+## Memória: vivo, coleta e histórico
+
+Modelo do Rayner Lemos (TIM DS Brain), decidido em `_trabalho/E-memoria-componentes.md`:
+
+- `<slug>.md` — **descritivo vivo**: o componente como ele é hoje.
+- `coleta/<slug>.json` — o que o script leu do `.tsx` no último registro.
+- `historico/<slug>.md` — **só acrescenta**: o que mudou na estrutura e por quê.
+
+Mudou um componente? `npm run docs:registrar -- <slug> --motivo "por quê"`.
+É o único que grava as seções geradas, a coleta e o histórico. O teste
+`src/lib/memoria-componentes.test.ts` reprova código mudado sem registro.
+O que a coleta não conseguiu ler e o auditor completou vai para
+[historico/_lacunas.md](historico/_lacunas.md).
+
 ## Antes de tudo
 
 1. Só componente do catálogo (`src/components/ui/`). Não invente peça.

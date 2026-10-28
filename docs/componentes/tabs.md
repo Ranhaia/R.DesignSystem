@@ -83,10 +83,11 @@ Um só: lista com 36 px (`h-9`) na horizontal.
 
 ## Tokens usados
 
-`bg-muted` `bg-background` `bg-secondary` (escuro) `text-muted-foreground`
-`text-foreground` `bg-foreground` (linha) `border-input` `ring` ·
-`rounded-outer-lg` `rounded-inner` `radius-inset-0.75` ·
-`duration-motion-fast` `duration-motion-base` `ease-spring` `--scale-pressed`.
+`--scale-pressed` `bg-background` `bg-foreground` `bg-muted`
+`bg-secondary` `border-input` `border-ring` `duration-motion-base`
+`duration-motion-fast` `ease-spring` `outline-ring` `radius-inset-0.75`
+`ring-ring` `rounded-inner` `rounded-outer-lg` `shadow-sm`
+`text-foreground` `text-muted-foreground`
 
 ## Faça
 

@@ -52,7 +52,7 @@ export function parseComponentMd(content) {
 
   // Description from top level (after # Title and before first ##)
   const topMatch = headerPart.match(/^#\s+[^\n]+\n([\s\S]*)$/)
-  const description = topMatch ? topMatch[1].trim() : ""
+  const description = topMatch ? topMatch[1].trim().replace(/\s*\n\s*/g, " ") : ""
 
   // whenToUse
   let whenToUse = ""
@@ -159,20 +159,23 @@ export function parseComponentMd(content) {
     code = codeMatch[1].trim()
   }
 
+  // A página não interpreta Markdown: tira negrito e crase do texto (o código fica intacto).
+  const semMd = (v) =>
+    typeof v === "string"
+      ? v.replace(/\*\*|`/g, "")
+      : Array.isArray(v)
+        ? v.map(semMd)
+        : v && typeof v === "object"
+          ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, semMd(x)]))
+          : v
+
   return {
     slug: frontmatter.slug || "",
     frontmatter,
     doc: {
-      description,
-      whenToUse,
-      anatomy,
-      variants,
-      states,
-      sizes,
-      doGuidelines,
-      dontGuidelines,
+      ...semMd({ description, whenToUse, anatomy, variants, states, sizes, doGuidelines, dontGuidelines }),
       code,
-      props,
+      props: semMd(props),
     },
   }
 }
