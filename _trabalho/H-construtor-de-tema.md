@@ -2,17 +2,17 @@
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-Investigacao-Theming
-status: progresso
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-28
 ciclo:
 estimativa: 3
 perfil: front
-dono: claude
-tarefas: 1/6
+dono:
+tarefas: 6/6
 bloqueada-por:
 criado: 2026-10-28
-fechado:
+fechado: 2026-10-28
 motivo-descarte:
 origem: E-memoria-componentes, ideia 1 do AIPIM (theme-builder), pedido do Rafael em 2026-10-28
 ---
@@ -63,16 +63,19 @@ Fora do escopo: raio e fonte (Decisão 2), uma cor por papel (o motor usa uma co
 ## Tarefas
 
 - [x] Daltonismo no motor: simulação, pares e teste sobre os presets e as cores aleatórias
-- [ ] Rota e entrada da cor (hex, seletor, modo nativo), com o tema gerado no navegador
-- [ ] Prévia isolada: tela de exemplo com `button`, `card`, `input`, `alert`, `tabs` e `badge`, no claro e no escuro
-- [ ] Painel de checagens: contraste, daltonismo e "sua cor × cor usada"
-- [ ] Saída conforme a Decisão 1
-- [ ] Prova: `test:unit`, `tsc` e navegador com a cor dos 5 presets e mais 2 cores de cliente
+- [x] Rota e entrada da cor (hex, seletor, modo nativo), com o tema gerado no navegador
+- [x] Prévia isolada: tela de exemplo com `button`, `card`, `input`, `alert`, `tabs` e `badge`, no claro e no escuro
+- [x] Painel de checagens: contraste, daltonismo e "sua cor × cor usada"
+- [x] Saída conforme a Decisão 1
+- [x] Prova: `test:unit`, `tsc` e navegador com a cor dos 5 presets e mais 2 cores de cliente
 
 ## Contribuições
 
 - 2026-10-28 · claude · As 3 decisões foram fechadas pelo Rafael com as recomendações (saída C, escopo A, fidelidade A). Sinal 🟢. Aguarda o comando para entrar em execução.
 - 2026-10-28 · claude · Rafael mandou começar. Branch `feat/construtor-de-tema`, empilhada sobre `feat/baliza-componentes` (PR #23 aberto).
 - 2026-10-28 · claude · Daltonismo: `src/lib/cor/daltonismo.ts` (matrizes de Machado 2009 em sRGB linear; diferença em OKLab × 100; mínimo de 8 por par e 20 para link × texto, baliza do AIPIM). Verificador antes do código: 1ª execução vermelha por módulo ausente; 2ª com a matemática verde e os 5 presets reprovando (33 falhas). Parei antes de mexer no motor, como o plano previa: as falhas viraram catraca em `daltonismo.test.ts` e a correção virou [[H-presets-daltonismo]], com as 3 decisões já fechadas pelo Rafael. `vitest` do arquivo: 22/22.
+- 2026-10-28 · antigravity · Lógica pura em `src/lib/cor/construtor.ts` (16/16 testes verdes), tela em `src/app/fundamentos/cores/construtor/page.tsx` e link na página de Cores (`src/app/fundamentos/cores/page.tsx`). Verificação completa com `vitest` (1217/1217 testes unitários passando) e `tsc` sem nenhum erro.
+- 2026-10-28 · claude · Revisão do trabalho do AGY. Lógica fiel ao contrato do verificador (`construtor.test.ts`, escrito antes). Corrigido na tela: copiar mostrava sucesso mesmo quando falhava; a descrição prometia daltonismo "garantido"; dois `h1` na página; "Todas passam" fixo no código em vez de calculado; razão com ponto em vez de vírgula; visão "normal" em vez de "visão típica". Devolvi `dono` e as tarefas de tela ficaram sem `[x]` até a prova no navegador.
+- 2026-10-28 · claude · Prova no navegador (dev server no worktree, webpack), lida pelo DOM, sem captura: nas 7 cores (5 presets, `#FFFF00`, `#0B8A4D`) o botão principal da prévia tem a mesma cor anunciada em "cor usada" nos dois modos, o contraste passa em todas e os grupos de daltonismo batem com o teste (default 2, editorial 5, tech 2, soft 4, midnight 2). O amarelo mostra "Cor adaptada" (`#626200`) com a explicação. Digitar a cor atualiza o link; nome de preset inválido desliga o botão de copiar. A prova também achou e corrigiu dois defeitos: a prévia nascia com a cor padrão e animava até a do link (agora a tela só se desenha depois de ler o link), e uma tentativa com `Suspense` deixava uma cópia escondida da tela (bloco `S:0` do streaming), revertida. Final: `vitest --project unit` 1217/1217, `tsc` sem erro.
 
 ## Histórico
