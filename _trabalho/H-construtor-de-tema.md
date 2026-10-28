@@ -2,14 +2,14 @@
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-Investigacao-Theming
-status: aguardando
+status: progresso
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-28
 ciclo:
 estimativa: 3
 perfil: front
-dono:
-tarefas: 0/6
+dono: claude
+tarefas: 1/6
 bloqueada-por:
 criado: 2026-10-28
 fechado:
@@ -62,7 +62,7 @@ Fora do escopo: raio e fonte (Decisão 2), uma cor por papel (o motor usa uma co
 
 ## Tarefas
 
-- [ ] Daltonismo no motor: simulação, pares e teste sobre os presets e as cores aleatórias
+- [x] Daltonismo no motor: simulação, pares e teste sobre os presets e as cores aleatórias
 - [ ] Rota e entrada da cor (hex, seletor, modo nativo), com o tema gerado no navegador
 - [ ] Prévia isolada: tela de exemplo com `button`, `card`, `input`, `alert`, `tabs` e `badge`, no claro e no escuro
 - [ ] Painel de checagens: contraste, daltonismo e "sua cor × cor usada"
@@ -72,5 +72,7 @@ Fora do escopo: raio e fonte (Decisão 2), uma cor por papel (o motor usa uma co
 ## Contribuições
 
 - 2026-10-28 · claude · As 3 decisões foram fechadas pelo Rafael com as recomendações (saída C, escopo A, fidelidade A). Sinal 🟢. Aguarda o comando para entrar em execução.
+- 2026-10-28 · claude · Rafael mandou começar. Branch `feat/construtor-de-tema`, empilhada sobre `feat/baliza-componentes` (PR #23 aberto).
+- 2026-10-28 · claude · Daltonismo: `src/lib/cor/daltonismo.ts` (matrizes de Machado 2009 em sRGB linear; diferença em OKLab × 100; mínimo de 8 por par e 20 para link × texto, baliza do AIPIM). Verificador antes do código: 1ª execução vermelha por módulo ausente; 2ª com a matemática verde e os 5 presets reprovando (33 falhas). Parei antes de mexer no motor, como o plano previa: as falhas viraram catraca em `daltonismo.test.ts` e a correção virou [[H-presets-daltonismo]], com as 3 decisões já fechadas pelo Rafael. `vitest` do arquivo: 22/22.
 
 ## Histórico

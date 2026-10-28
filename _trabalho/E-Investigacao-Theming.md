@@ -40,6 +40,7 @@ A base atômica configurada por este Épico preparará o terreno para a futura f
 ## Histórias
 
 - [[H-construtor-de-tema]] — tela que recebe a cor da marca do cliente e mostra o tema aplicado, com checagens
+- [[H-presets-daltonismo]] — corrigir as 33 falhas de daltonismo dos 5 presets
 
 ## 🔌 Infraestrutura: Setup do Figma MCP
 Quando formos retomar este projeto, a extração visual não será manual. O ambiente precisará do **Figma MCP** configurado:
