@@ -9,7 +9,7 @@ ciclo:
 estimativa: 2
 perfil: front
 dono: antigravity
-tarefas: 0/3
+tarefas: 1/3
 criado: 2026-08-23
 fechado:
 motivo-descarte:
@@ -49,10 +49,12 @@ Nenhum.
 
 ## Tarefas
 
-- [ ] Reorganizar a sidebar em Foundations / Components / Patterns
+- [x] Reorganizar a sidebar em Foundations / Components / Patterns
 - [ ] Agrupar Components por Atoms / Molecules / Organisms / Templates
 - [ ] Criar as rotas-índice de cada grupo
 
 ## Contribuições
+
+- 2026-10-28 · antigravity · Reorganização da sidebar com grupo Foundations (`src/components/sidebar-07/nav-foundations.tsx`) e registro central (`src/lib/foundations-registry.ts`). Validação com `npx tsc --noEmit` (0 erros) e `npm run test:unit` (1218/1218 testes passando).
 
 ## Histórico
