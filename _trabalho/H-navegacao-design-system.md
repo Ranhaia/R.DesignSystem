@@ -8,8 +8,8 @@ sinal-desde: 2026-08-23
 ciclo:
 estimativa: 2
 perfil: front
-dono: antigravity
-tarefas: 2/3
+dono:
+tarefas: 3/3
 criado: 2026-08-23
 fechado:
 motivo-descarte:
@@ -51,11 +51,12 @@ Nenhum.
 
 - [x] Reorganizar a sidebar em Foundations / Components / Patterns
 - [x] Agrupar Components por Atoms / Molecules / Organisms / Templates
-- [ ] Criar as rotas-índice de cada grupo
+- [x] Criar as rotas-índice de cada grupo
 
 ## Contribuições
 
 - 2026-10-28 · antigravity · Reorganização da sidebar com grupo Foundations (`src/components/sidebar-07/nav-foundations.tsx`) e registro central (`src/lib/foundations-registry.ts`). Validação com `npx tsc --noEmit` (0 erros) e `npm run test:unit` (1218/1218 testes passando).
 - 2026-10-28 · antigravity · Agrupamento de Components por Atoms, Molecules, Organisms e Templates em `src/components/sidebar-07/nav-components.tsx` com sub-accordions e cabeçalho unificado. Validação com `npx tsc --noEmit` (0 erros) e `npm run test:unit` (1218/1218 testes passando).
+- 2026-10-28 · antigravity · Criação das rotas-índice `/fundamentos` (`src/app/fundamentos/page.tsx`), `/components` (`src/app/components/page.tsx` + `src/components/components-index.tsx`), alias `/foundations` e rotas base dos fundamentos faltantes (`grid`, `motion`, `icones`, `acessibilidade`). Breadcrumbs atualizados no `AppShell`. Validação com `npx tsc --noEmit` (0 erros) e `npm run test:unit` (1219/1219 testes passando).
 
 ## Histórico
