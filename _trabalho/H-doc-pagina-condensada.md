@@ -8,7 +8,7 @@ sinal-desde: 2026-10-28
 ciclo:
 estimativa: 4
 perfil: front
-dono:
+dono: antigravity
 tarefas: 1/5
 bloqueada-por:
 criado: 2026-10-28
@@ -37,7 +37,8 @@ Visão geral | Exemplos | Código | Tokens | Acessibilidade
 
 - **Visão geral:** Quando usar (lista), Quando NÃO usar (→ slug), uma tabela só de Variantes e props (tamanhos
   inclusos), Estados, Faça / Não faça (texto com ✓ e ✕), linha "Nesta página".
-- **Exemplos:** matriz de variantes × estados, Playground, exemplos recolhidos.
+- **Exemplos:** variantes e tamanhos vivos (hoje na Visão geral), Playground, exemplos recolhidos. A matriz de
+  variantes × estados, prometida no plano, fica de fora: exigiria forçar hover e foco por classe em cada componente.
 - **Código:** Exemplo mínimo, Anatomia, Composição.
 - **Tokens** e **Acessibilidade:** o que o MD já tem.
 - Anterior / Próxima no fim, na ordem da camada. Aba na URL, para link direto.
@@ -87,5 +88,6 @@ Pausar `H-memoria-replicar-lotes` até a Fase 4, para os MDs dos lotes já nasce
 ## Contribuições
 
 - 2026-10-28 · antigravity · Fase 1 (dado da página condensada): adicionados campos opcionais em `ComponentDoc`, extração de listas, metadados, acessibilidade e tokens em `scripts/parse-component-md.mjs`, formatação em `scripts/gerar-component-docs.mjs` e sincronização de `src/lib/component-docs.ts`. Validações: `npx vitest run --project unit src/lib/component-docs.campos.test.ts` (83 pass), `npm run test:unit` (22 arquivos, 1302 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok).
+- 2026-10-28 · claude (orquestrador) · Fase 1 conferida. O teste do contrato (Checker, escrito antes) foi vermelho com 7 falhas e não foi alterado pelo AGY. Reroda minha: o teste do contrato (83 pass), `npm run test:unit` (22 arquivos, 1302 pass), `npx tsc --noEmit` (0 erros) e `npm run docs:check` (ok). O diff de `src/lib/component-docs.ts` só acrescenta (0 remoções) e só as 4 entradas com MD ganharam campos novos (button, separator, dialog, tabs); as demais não mudaram. Li o parser: funções genéricas, sem valor escrito para passar o teste. O job do AGY acabou com `status ERROR` (chamada de função malformada no final), mas o commit estava completo e a árvore limpa. Não rodei teste de navegador nem servidor dev: a Fase 1 não tem tela.
 
 ## Histórico
