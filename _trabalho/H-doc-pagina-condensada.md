@@ -8,8 +8,8 @@ sinal-desde: 2026-10-28
 ciclo:
 estimativa: 4
 perfil: front
-dono: antigravity
-tarefas: 1/5
+dono:
+tarefas: 2/5
 bloqueada-por:
 criado: 2026-10-28
 fechado:
@@ -80,14 +80,15 @@ Pausar `H-memoria-replicar-lotes` até a Fase 4, para os MDs dos lotes já nasce
 ## Tarefas
 
 - [x] Fase 1 — Dado: estender `ComponentDoc`, parser e gerador (teste: `src/lib/component-docs.campos.test.ts`)
-- [ ] Fase 2 — Página do Button com as 5 abas
+- [x] Fase 2 — Página do Button com as 5 abas
 - [ ] Fase 3 — Mesmo molde em dialog, tabs e separator, e componentes sem MD degradando bem
 - [ ] Fase 4 — Molde e régua com limite por seção (`docs/componentes/_modelo.md`, `_baliza.md`)
 - [ ] Fase 5 — PR, preview na Vercel e revisão do Rafael
 
 ## Contribuições
 
-- 2026-10-28 · antigravity · Fase 1 (dado da página condensada): adicionados campos opcionais em `ComponentDoc`, extração de listas, metadados, acessibilidade e tokens em `scripts/parse-component-md.mjs`, formatação em `scripts/gerar-component-docs.mjs` e sincronização de `src/lib/component-docs.ts`. Validações: `npx vitest run --project unit src/lib/component-docs.campos.test.ts` (83 pass), `npm run test:unit` (22 arquivos, 1302 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok).
+- 2026-10-28 · antigravity · Fase 2 (página de componente em abas): criada lógica pura em `src/lib/doc-abas.ts` (7 funções + mapa de rótulos), componentes modulares em `src/components/doc/` (`doc-header`, `doc-live-preview`, `doc-meta-strip`, `doc-tabs`, `doc-visao-geral`, `doc-pagination`) e reescrita de `src/app/components/[slug]/page.tsx` no molde condensado em 5 abas com sincronia de URL hash via `history.replaceState` e remoção do `TocScrollSpy` lateral fixo. Validações: `npx vitest run --project unit src/lib/doc-abas.test.ts` (22 pass), `npm run test:unit` (23 arquivos, 1330 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok), `npx next build --webpack` (133 páginas estáticas geradas com sucesso).
 - 2026-10-28 · claude (orquestrador) · Fase 1 conferida. O teste do contrato (Checker, escrito antes) foi vermelho com 7 falhas e não foi alterado pelo AGY. Reroda minha: o teste do contrato (83 pass), `npm run test:unit` (22 arquivos, 1302 pass), `npx tsc --noEmit` (0 erros) e `npm run docs:check` (ok). O diff de `src/lib/component-docs.ts` só acrescenta (0 remoções) e só as 4 entradas com MD ganharam campos novos (button, separator, dialog, tabs); as demais não mudaram. Li o parser: funções genéricas, sem valor escrito para passar o teste. O job do AGY acabou com `status ERROR` (chamada de função malformada no final), mas o commit estava completo e a árvore limpa. Não rodei teste de navegador nem servidor dev: a Fase 1 não tem tela.
+- 2026-10-28 · antigravity · Fase 1 (dado da página condensada): adicionados campos opcionais em `ComponentDoc`, extração de listas, metadados, acessibilidade e tokens em `scripts/parse-component-md.mjs`, formatação em `scripts/gerar-component-docs.mjs` e sincronização de `src/lib/component-docs.ts`. Validações: `npx vitest run --project unit src/lib/component-docs.campos.test.ts` (83 pass), `npm run test:unit` (22 arquivos, 1302 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok).
 
 ## Histórico
