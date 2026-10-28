@@ -100,7 +100,7 @@ Leitura completa em 2026-10-28: repositório `github.com/talis-galhardi/aipim`
 com as afirmações principais conferidas nas fontes. Cada ideia vira História
 só se o Rafael quiser. Por valor para o uso do R.DS (a IA monta telas na marca do cliente):
 
-1. **Construtor de tema do cliente.** O R.DS já gera o tema inteiro a partir de uma cor (`gerarTema`), mas só no build. Falta a tela: digitar a cor da marca, ver as checagens, receber sugestão de ajuste e gravar o preset. (AIPIM: `theme-builder/`)
+1. **Construtor de tema do cliente.** O R.DS já gera o tema inteiro a partir de uma cor (`gerarTema`), mas só no build. Falta a tela: digitar a cor da marca, ver as checagens, receber sugestão de ajuste e gravar o preset. (AIPIM: `theme-builder/`) → virou [[H-construtor-de-tema]], junto com a ideia 2.
 2. **Daltonismo no motor de cor.** Simular protanopia, deuteranopia e tritanopia (OKLab) com diferença mínima entre os pares que importam (erro × sucesso, ação × fundo, link × texto). O R.DS não tem nada disso. (`tools/build_tokens.py`)
 3. **Checagens além do axe:** zoom 200%, reflow a 320 px, fonte raiz em 200% (testa a regra do rem), espaçamento WCAG 1.4.12 e cores forçadas. (`tools/verify_web.py`, `docs/pt-br/verification.md`)
 4. **Seção "Decisão" no MD do componente:** o porquê de um comportamento proposital, para a IA não "consertar". (8 de 24 componentes, ex.: `brazilian-field.md`)

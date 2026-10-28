@@ -35,6 +35,11 @@ A base atômica configurada por este Épico preparará o terreno para a futura f
 ## ✋ Estado Atual (Handoff)
 - **Status:** Metodologia definida e documentada.
 - **Bloqueio/Próximo Passo:** Configurar o Figma MCP e aguardar o Designer fornecer o arquivo do cliente.
+- **2026-10-28:** o MCP oficial do Figma já está conectado na conta do Rafael (confirmado com `whoami`). O passo "Tradução + Auditoria" ganhou uma ferramenta própria: [[H-construtor-de-tema]], que gera o tema a partir da cor do cliente com o motor de cor (`src/lib/cor/`), que já garante AA.
+
+## Histórias
+
+- [[H-construtor-de-tema]] — tela que recebe a cor da marca do cliente e mostra o tema aplicado, com checagens
 
 ## 🔌 Infraestrutura: Setup do Figma MCP
 Quando formos retomar este projeto, a extração visual não será manual. O ambiente precisará do **Figma MCP** configurado:
