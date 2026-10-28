@@ -95,6 +95,55 @@ export function formatDocEntry(key, doc, indent = "  ") {
     lines.push(`${i2}],`)
   }
 
+  // meta
+  if (doc.meta) {
+    const vizinhosStr = doc.meta.vizinhos && doc.meta.vizinhos.length > 0
+      ? doc.meta.vizinhos.map((v) => escapeString(v)).join(", ")
+      : ""
+    lines.push(`${i2}meta: {`)
+    lines.push(`${i3}nome: ${escapeString(doc.meta.nome || "")},`)
+    lines.push(`${i3}camada: ${escapeString(doc.meta.camada || "")},`)
+    lines.push(`${i3}status: ${escapeString(doc.meta.status || "")},`)
+    lines.push(`${i3}codigo: ${escapeString(doc.meta.codigo || "")},`)
+    lines.push(`${i3}story: ${escapeString(doc.meta.story || "")},`)
+    lines.push(`${i3}vizinhos: [${vizinhosStr}],`)
+    lines.push(`${i2}},`)
+  }
+
+  // whenToUseItems
+  if (doc.whenToUseItems && doc.whenToUseItems.length > 0) {
+    const items = doc.whenToUseItems.map((item) => escapeString(item)).join(", ")
+    lines.push(`${i2}whenToUseItems: [${items}],`)
+  }
+
+  // whenNotToUse
+  if (doc.whenNotToUse && doc.whenNotToUse.length > 0) {
+    const items = doc.whenNotToUse.map((item) => escapeString(item)).join(", ")
+    lines.push(`${i2}whenNotToUse: [${items}],`)
+  }
+
+  // content
+  if (doc.content && doc.content.length > 0) {
+    const items = doc.content.map((item) => escapeString(item)).join(", ")
+    lines.push(`${i2}content: [${items}],`)
+  }
+
+  // accessibility
+  if (doc.accessibility) {
+    lines.push(`${i2}accessibility: {`)
+    lines.push(`${i3}keyboard: ${escapeString(doc.accessibility.keyboard || "")},`)
+    lines.push(`${i3}screenReader: ${escapeString(doc.accessibility.screenReader || "")},`)
+    lines.push(`${i3}focus: ${escapeString(doc.accessibility.focus || "")},`)
+    lines.push(`${i3}cautions: ${escapeString(doc.accessibility.cautions || "")},`)
+    lines.push(`${i2}},`)
+  }
+
+  // tokens
+  if (doc.tokens && doc.tokens.length > 0) {
+    const items = doc.tokens.map((t) => escapeString(t)).join(", ")
+    lines.push(`${i2}tokens: [${items}],`)
+  }
+
   lines.push(`${indent}},`)
   return lines.join("\n")
 }
@@ -150,6 +199,24 @@ export interface ComponentDoc {
   dontGuidelines: string[]
   code: string
   props: ComponentDocProp[]
+  meta?: {
+    nome: string
+    camada: string
+    status: string
+    codigo: string
+    story: string
+    vizinhos: string[]
+  }
+  whenToUseItems?: string[]
+  whenNotToUse?: string[]
+  content?: string[]
+  accessibility?: {
+    keyboard: string
+    screenReader: string
+    focus: string
+    cautions: string
+  }
+  tokens?: string[]
 }
 
 export const componentDocs: Record<string, ComponentDoc> = {

@@ -8,8 +8,8 @@ sinal-desde: 2026-10-28
 ciclo:
 estimativa: 4
 perfil: front
-dono: antigravity
-tarefas: 0/5
+dono:
+tarefas: 1/5
 bloqueada-por:
 criado: 2026-10-28
 fechado:
@@ -78,12 +78,14 @@ Pausar `H-memoria-replicar-lotes` até a Fase 4, para os MDs dos lotes já nasce
 
 ## Tarefas
 
-- [ ] Fase 1 — Dado: estender `ComponentDoc`, parser e gerador (teste: `src/lib/component-docs.campos.test.ts`)
+- [x] Fase 1 — Dado: estender `ComponentDoc`, parser e gerador (teste: `src/lib/component-docs.campos.test.ts`)
 - [ ] Fase 2 — Página do Button com as 5 abas
 - [ ] Fase 3 — Mesmo molde em dialog, tabs e separator, e componentes sem MD degradando bem
 - [ ] Fase 4 — Molde e régua com limite por seção (`docs/componentes/_modelo.md`, `_baliza.md`)
 - [ ] Fase 5 — PR, preview na Vercel e revisão do Rafael
 
 ## Contribuições
+
+- 2026-10-28 · antigravity · Fase 1 (dado da página condensada): adicionados campos opcionais em `ComponentDoc`, extração de listas, metadados, acessibilidade e tokens em `scripts/parse-component-md.mjs`, formatação em `scripts/gerar-component-docs.mjs` e sincronização de `src/lib/component-docs.ts`. Validações: `npx vitest run --project unit src/lib/component-docs.campos.test.ts` (83 pass), `npm run test:unit` (22 arquivos, 1302 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok).
 
 ## Histórico

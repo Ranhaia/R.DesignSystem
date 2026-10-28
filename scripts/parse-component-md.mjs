@@ -12,6 +12,72 @@ export function parseMarkdownTable(tableText) {
   return rows
 }
 
+function parseBulletList(text) {
+  if (!text) return undefined
+  const lines = text.split("\n")
+  const items = []
+  let current = null
+  for (const raw of lines) {
+    const line = raw.trim()
+    if (!line) continue
+    if (/^[-*]\s+/.test(line)) {
+      if (current) items.push(current)
+      current = line.replace(/^[-*]\s+/, "").trim()
+    } else if (current) {
+      current += " " + line
+    }
+  }
+  if (current) items.push(current)
+  return items.length > 0 ? items : undefined
+}
+
+function parseAccessibility(text) {
+  if (!text) return undefined
+  const acc = { keyboard: "", screenReader: "", focus: "", cautions: "" }
+  const lines = text.split("\n")
+  let currentKey = null
+
+  for (const raw of lines) {
+    const line = raw.trim()
+    if (!line) continue
+    const m = line.match(/^[-*]\s+\*\*([^*:]+)(?:\*\*:\s*|:\*\*\s*)(.*)$/)
+    if (m) {
+      const label = m[1].toLowerCase().trim()
+      const val = m[2].trim()
+      if (label === "teclado") {
+        currentKey = "keyboard"
+        acc.keyboard = val
+      } else if (label === "leitor de tela") {
+        currentKey = "screenReader"
+        acc.screenReader = val
+      } else if (label === "foco") {
+        currentKey = "focus"
+        acc.focus = val
+      } else if (label === "cuidados") {
+        currentKey = "cautions"
+        acc.cautions = val
+      } else {
+        currentKey = null
+      }
+    } else if (currentKey && !/^[-*#]/.test(line)) {
+      acc[currentKey] = acc[currentKey] ? `${acc[currentKey]} ${line}` : line
+    }
+  }
+
+  if (acc.keyboard || acc.screenReader || acc.focus || acc.cautions) {
+    return acc
+  }
+  return undefined
+}
+
+function parseTokens(text) {
+  if (!text) return undefined
+  const matches = Array.from(text.matchAll(/`([^`]+)`/g))
+    .map((m) => m[1].trim())
+    .filter(Boolean)
+  return matches.length > 0 ? matches : undefined
+}
+
 export function parseComponentMd(content) {
   // Normalize newlines
   const text = content.replace(/\r\n/g, "\n")
@@ -27,7 +93,7 @@ export function parseComponentMd(content) {
       if (kv) {
         let val = kv[2].trim()
         if (val.startsWith("[") && val.endsWith("]")) {
-          val = val.slice(1, -1).split(",").map((s) => s.trim().replace(/^['"]|['"]$/g, ""))
+          val = val.slice(1, -1).split(",").map((s) => s.trim().replace(/^['"]|['"]$/g, "")).filter(Boolean)
         }
         frontmatter[kv[1]] = val
       }
@@ -47,6 +113,9 @@ export function parseComponentMd(content) {
       const title = p.slice(0, firstLineEnd).replace(/^##\s+/, "").trim()
       const content = p.slice(firstLineEnd + 1).trim()
       sections[title] = content
+    } else {
+      const title = p.replace(/^##\s+/, "").trim()
+      sections[title] = ""
     }
   }
 
@@ -159,6 +228,24 @@ export function parseComponentMd(content) {
     code = codeMatch[1].trim()
   }
 
+  // Campos novos da página condensada
+  const meta = frontmatter.nome
+    ? {
+        nome: frontmatter.nome,
+        camada: frontmatter.camada || "",
+        status: frontmatter.status || "",
+        codigo: frontmatter.codigo || "",
+        story: frontmatter.story || "",
+        vizinhos: Array.isArray(frontmatter.vizinhos) ? frontmatter.vizinhos : [],
+      }
+    : undefined
+
+  const whenToUseItems = parseBulletList(sections["Quando usar"])
+  const whenNotToUse = parseBulletList(sections["Quando NÃO usar"])
+  const contentList = parseBulletList(sections["Conteúdo"])
+  const accessibility = parseAccessibility(sections["Acessibilidade"])
+  const tokens = parseTokens(sections["Tokens usados"])
+
   // A página não interpreta Markdown: tira negrito e crase do texto (o código fica intacto).
   const semMd = (v) =>
     typeof v === "string"
@@ -169,13 +256,22 @@ export function parseComponentMd(content) {
           ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, semMd(x)]))
           : v
 
+  const doc = {
+    ...semMd({ description, whenToUse, anatomy, variants, states, sizes, doGuidelines, dontGuidelines }),
+    code,
+    props: semMd(props),
+  }
+
+  if (meta) doc.meta = semMd(meta)
+  if (whenToUseItems) doc.whenToUseItems = semMd(whenToUseItems)
+  if (whenNotToUse) doc.whenNotToUse = semMd(whenNotToUse)
+  if (contentList) doc.content = semMd(contentList)
+  if (accessibility) doc.accessibility = semMd(accessibility)
+  if (tokens) doc.tokens = tokens
+
   return {
     slug: frontmatter.slug || "",
     frontmatter,
-    doc: {
-      ...semMd({ description, whenToUse, anatomy, variants, states, sizes, doGuidelines, dontGuidelines }),
-      code,
-      props: semMd(props),
-    },
+    doc,
   }
 }
