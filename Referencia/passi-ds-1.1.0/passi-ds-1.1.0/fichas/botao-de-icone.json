@@ -1,0 +1,105 @@
+{
+  "nome": "Botão de ícone",
+  "slug": "botao-de-icone",
+  "versao": "1.1.0",
+  "descricao": "O botão de ícone executa uma ação usando só um símbolo, como fechar, curtir ou compartilhar. Ele economiza espaço, mas só funciona com ícones que todo mundo reconhece.",
+  "resumo": "Botão de ícone · ação representada só por um ícone, como fechar, curtir ou mais opções. Sempre acompanhe de uma dica flutuante e de um nome acessível (texto alternativo).",
+  "diretrizes": "diretrizes/componentes/botao-de-icone.md",
+  "figma": {
+    "pagina": "Botão de ícone",
+    "componente": "Botão de ícone"
+  },
+  "propriedades": [
+    {
+      "nome": "Ícone",
+      "tipo": "troca"
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Primário",
+        "Secundário",
+        "Contorno",
+        "Fantasma"
+      ],
+      "padrao": "Primário"
+    },
+    {
+      "nome": "Tamanho",
+      "tipo": "variante",
+      "opcoes": [
+        "P",
+        "M",
+        "G"
+      ],
+      "padrao": "P"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Foco",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Primário",
+      "Secundário",
+      "Contorno",
+      "Fantasma"
+    ],
+    "Tamanho": [
+      "P",
+      "M",
+      "G"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Foco",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab chega ao botão. Enter ou Espaço executam a ação.",
+    "leitor": "Papel button. Como não há texto visível, dê um nome em texto, por exemplo Fechar ou Compartilhar capítulo. O ícone fica escondido do leitor.",
+    "foco": "Anel de foco de 2 px, ou borda azul por fora nos tipos sem fundo.",
+    "cuidados": "Sempre com Dica flutuante mostrando o mesmo nome. Área de toque de pelo menos 24 px, mesmo no tamanho P. Botões de alternar, como curtir, anunciam se estão ligados ou desligados."
+  },
+  "conteudo": [
+    "O nome acessível e a dica flutuante dizem a ação com verbo: Fechar, Copiar link.",
+    "Use o mesmo nome em todas as telas para o mesmo ícone."
+  ],
+  "faca": [
+    "Use ícones conhecidos: fechar, busca, mais opções, compartilhar.",
+    "Adicione uma dica flutuante com o nome da ação.",
+    "Dê um nome acessível para leitores de tela."
+  ],
+  "naoFaca": [
+    "Usar ícone sozinho para ações raras ou ambíguas.",
+    "Colocar muitos botões de ícone lado a lado sem espaço.",
+    "Usar o tipo Primário para várias ações na mesma área."
+  ],
+  "tokens": [
+    "--cor-fundo-marca",
+    "--cor-fundo-invertido",
+    "--cor-fundo-sutil",
+    "--cor-fundo-fantasma-hover",
+    "--cor-fundo-marca-pressionado",
+    "--cor-fundo-invertido-pressionado",
+    "--cor-fundo-sutil-hover",
+    "--cor-fundo-fantasma-pressionado",
+    "--cor-borda-forte",
+    "--cor-borda-foco",
+    "--raio-pilula"
+  ],
+  "codigo": null
+}

@@ -1,0 +1,80 @@
+{
+  "$description": "Modo Reduzido da coleção Movimento: durações zeradas para quem pede menos movimento no sistema operacional.",
+  "duracao": {
+    "instantanea": {
+      "$type": "duration",
+      "$value": {
+        "value": 0,
+        "unit": "ms"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--duracao-instantanea)"
+          }
+        }
+      }
+    },
+    "rapida": {
+      "$type": "duration",
+      "$value": {
+        "value": 0,
+        "unit": "ms"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--duracao-rapida)"
+          }
+        }
+      }
+    },
+    "media": {
+      "$type": "duration",
+      "$value": {
+        "value": 0,
+        "unit": "ms"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--duracao-media)"
+          }
+        }
+      }
+    },
+    "lenta": {
+      "$type": "duration",
+      "$value": {
+        "value": 0,
+        "unit": "ms"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--duracao-lenta)"
+          }
+        }
+      }
+    },
+    "expressiva": {
+      "$type": "duration",
+      "$value": {
+        "value": 0,
+        "unit": "ms"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--duracao-expressiva)"
+          }
+        }
+      }
+    }
+  }
+}

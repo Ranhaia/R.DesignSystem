@@ -1,0 +1,483 @@
+# PASSI DS · regras de conteúdo para IA
+
+> Como escrever textos de interface no PASSI DS, em português do Brasil. Use estas regras ao gerar botões, rótulos, mensagens de erro, avisos, telas vazias e qualquer texto de tela.
+
+## Voz e tom
+
+A voz do PASSI é sempre a mesma: clara, direta, próxima e honesta. O tom muda conforme o momento da pessoa. Quem acabou de errar precisa de calma e de um caminho; quem acabou de concluir algo precisa só de uma confirmação curta.
+
+### Voz
+
+Quatro traços que valem para todo texto da interface, do botão à mensagem de erro.
+
+- **Clara**: Frases curtas, em ordem direta, com uma ideia por frase. Palavras do dia a dia.
+- **Direta**: Diga o que fazer. Comece pelo verbo. Corte rodeios e explicações que ninguém pediu.
+- **Próxima**: Fale com você, como uma pessoa experiente explicando a alguém. Sem gírias e sem formalidade de ofício.
+- **Honesta**: Não prometa o que o produto não cumpre. Quando o erro for do sistema, assuma. Nunca culpe a pessoa.
+
+### Tom por situação
+
+O tom acompanha o que a pessoa sente naquele momento.
+
+| Situação | Como a pessoa está | Tom | Exemplo |
+|---|---|---|---|
+| Sucesso | Aliviada | Breve e positivo, sem festa | Capítulo salvo. |
+| Erro da pessoa | Frustrada | Calmo, diz como resolver, sem culpar | Digite o CPF com 11 números. |
+| Erro do sistema | Insegura | Assume a falha e oferece saída | Não conseguimos salvar agora. Tente de novo em alguns minutos. |
+| Ação que não tem volta | Atenta | Sério, diz a consequência | Excluir o capítulo 3? Essa ação não pode ser desfeita. |
+| Tela vazia | Curiosa | Convida e mostra o primeiro passo | Você ainda não tem projetos. Crie o primeiro. |
+| Espera | Impaciente | Diz o que está acontecendo e quanto falta | Gerando seu PDF. Leva cerca de 1 minuto. |
+| Primeiro uso | Animada e insegura | Acolhedor e objetivo | Boas-vindas ao PASSI. Comece pelo seu primeiro projeto. |
+
+### Faça
+
+- Escreva como você explicaria pessoalmente a alguém que respeita.
+- Mude o tom conforme a situação, nunca a voz.
+- Leia o texto em voz alta antes de publicar.
+
+### NÃO faça
+
+- Exclamações e entusiasmo exagerado, como Uhuu! ou Parabéns!!!
+- Humor em mensagens de erro.
+- Jargão técnico ou de negócio, como payload, input ou alavancar.
+
+## Microtexto
+
+Microtexto é todo texto curto da interface: botões, rótulos, ajudas, erros, avisos e telas vazias. Ele decide se a pessoa entende o que fazer. Estes padrões valem para todos os componentes.
+
+### Padrões por elemento
+
+Cada elemento tem uma função e uma forma de escrever.
+
+| Elemento | Regra | Escreva | Evite |
+|---|---|---|---|
+| Botão | Verbo e objeto, até 3 palavras | Salvar alterações | OK |
+| Link | Diga para onde leva | Ler o capítulo 1 | Clique aqui |
+| Rótulo de campo | Nome curto, sem dois-pontos | E-mail | Digite aqui seu e-mail: |
+| Texto de exemplo | Um exemplo real, nunca a instrução | nome@empresa.com.br | Campo obrigatório |
+| Ajuda | O que saber antes de digitar | Use pelo menos 8 caracteres. | Senha inválida |
+| Erro | O que houve e como resolver | Digite o CPF no formato 000.000.000-00. | CPF inválido. |
+| Confirmação | O que mudou, no passado | Link copiado. | Operação realizada com sucesso! |
+| Janela de confirmação | Pergunta, consequência e verbo no botão | Excluir capítulo? Ele sai do sumário. | Tem certeza? Sim ou Não |
+| Tela vazia | O que vai aparecer e o primeiro passo | Seus projetos aparecem aqui. Crie o primeiro. | Nenhum dado encontrado. |
+| Título | Frase normal, só a primeira letra maiúscula | Configurações da conta | Configurações Da Conta |
+
+### Regras de escrita
+
+Pequenas regras que deixam todo o produto com o mesmo jeito.
+
+- Maiúscula só no começo da frase e em nomes próprios, inclusive em títulos e botões.
+- Sem ponto final em botões, rótulos, títulos e itens de menu. Com ponto final em frases completas de ajuda, erro e confirmação.
+- Números em algarismos: 3 capítulos, não três capítulos.
+- Sem exclamação. A interface não grita.
+- Reticências só para algo em andamento: Salvando…
+- Você no lugar de o usuário. Nós quando o sistema age: Enviamos o código para o seu e-mail.
+- Uma ação principal por tela, e o texto dela é o mais específico de todos.
+
+### Faça
+
+- Escreva o erro dizendo como resolver.
+- Use o mesmo verbo do botão no título da janela: Excluir capítulo.
+- Teste se o texto do botão faz sentido sozinho, fora da tela.
+
+### NÃO faça
+
+- Sim e Não em janelas de confirmação.
+- Texto de exemplo no lugar do rótulo.
+- Mensagens genéricas como Erro inesperado ou Algo deu errado sem saída.
+
+## Glossário
+
+As palavras da interface do PASSI, sempre as mesmas, em todas as telas. Um glossário evita que o mesmo gesto se chame Entrar numa tela e Login na outra.
+
+### Termos
+
+Use a coluna da esquerda. Quando houver dúvida, prefira a palavra que uma pessoa usaria conversando.
+
+| Use | Evite | Observação |
+|---|---|---|
+| Entrar | Login, Logar, Acessar | Botão e título da tela de entrada. |
+| Sair | Logout, Deslogar |  |
+| Criar conta | Cadastre-se, Sign up |  |
+| Esqueci minha senha | Recuperar credenciais |  |
+| E-mail | Email, Endereço eletrônico | Sempre com hífen. |
+| Senha | Password, Credencial |  |
+| Excluir | Deletar, Apagar | Quando a coisa deixa de existir. |
+| Remover | Excluir | Quando a coisa sai de uma lista, mas continua existindo. |
+| Editar | Alterar, Modificar |  |
+| Salvar | Gravar, Submeter |  |
+| Enviar | Submeter, Submit |  |
+| Baixar | Fazer download |  |
+| Enviar arquivo | Upload, Fazer upload |  |
+| Buscar | Pesquisar, Search | Busca como substantivo. |
+| Configurações | Ajustes, Settings, Preferências |  |
+| Painel | Dashboard |  |
+| Notificações | Alertas | Alerta é o componente de mensagem na página. |
+| Você | O usuário, O cliente | Fale com a pessoa. |
+| IA | A.I., Inteligência Artificial com iniciais maiúsculas | Por extenso: inteligência artificial. |
+
+### Faça
+
+- Consulte o glossário antes de criar um texto novo.
+- Proponha um termo novo quando surgir uma palavra que se repete.
+- Use o mesmo termo no botão, no título e na mensagem de confirmação.
+
+### NÃO faça
+
+- Misturar inglês e português no mesmo produto.
+- Sinônimos para o mesmo gesto em telas diferentes.
+- Siglas sem explicar na primeira vez.
+
+## Linguagem inclusiva
+
+Texto que inclui todo mundo sem pedir esforço extra para ler. O PASSI usa linguagem inclusiva dentro da norma da língua portuguesa e linguagem simples, o que serve tanto para empresas quanto para governo.
+
+### O que diz a lei
+
+A Lei 15.263/2025, da Política Nacional de Linguagem Simples, pede que órgãos públicos usem linguagem simples e proíbe que usem novas formas de flexão de gênero e de número, como todes e elu. A regra vale para a administração pública. O STF derrubou leis estaduais e municipais que proibiam a linguagem neutra, por uma questão de competência. Para servir a empresas e a governo, o PASSI inclui pessoas usando a própria norma da língua.
+
+### Estratégias dentro da norma
+
+Troque a palavra marcada por gênero por uma que inclui todo mundo.
+
+| Em vez de | Prefira |
+|---|---|
+| Bem-vindo(a) | Boas-vindas |
+| Os usuários | As pessoas que usam o produto, ou você |
+| Todos os alunos | Toda a turma |
+| Os inscritos | Quem se inscreveu |
+| Caro cliente | Olá, Ana |
+| Os desenvolvedores | O time de desenvolvimento |
+| Obrigado pela compra | Agradecemos pela compra |
+| Portador de deficiência | Pessoa com deficiência |
+
+### Linguagem simples
+
+Escreva para que qualquer pessoa entenda na primeira leitura.
+
+- Frases de até 20 palavras, em ordem direta: quem faz, o que faz, o resto.
+- Verbos no lugar de substantivos: Cancele a assinatura, não Efetue o cancelamento da assinatura.
+- Uma ideia por frase e a informação mais importante primeiro.
+- Palavras comuns. Se precisar de um termo técnico, explique na primeira vez.
+- Listas para passos e opções, em vez de parágrafos longos.
+
+### Faça
+
+- Fale com você sempre que possível: resolve o gênero e aproxima.
+- Use linguagem centrada na pessoa: pessoa com deficiência, pessoa idosa.
+- Mostre diversidade real em fotos, avatares e exemplos.
+
+### NÃO faça
+
+- Barras e parênteses como bem-vindo(a) e caro(a).
+- Expressões capacitistas, como dar uma de cego ou fingir demência.
+- Presumir gênero, idade ou família da pessoa em exemplos e textos.
+
+## Formatos brasileiros
+
+Como escrever dinheiro, números, datas, horas, documentos e endereços do jeito que o Brasil lê. No código, use as funções de formatação do navegador com a localidade pt-BR em vez de montar o texto à mão.
+
+### Números, dinheiro e tempo
+
+Ponto separa milhares e vírgula separa decimais.
+
+| Tipo | Formato | Exemplo | No código |
+|---|---|---|---|
+| Moeda | R$, espaço, valor com 2 casas | R$ 1.234,56 | Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }) |
+| Número | Ponto no milhar, vírgula no decimal | 12.345,6 | Intl.NumberFormat('pt-BR') |
+| Porcentagem | Número e % sem espaço | 12,5% | Intl.NumberFormat('pt-BR', { style: 'percent' }) |
+| Data | dd/mm/aaaa, ou por extenso | 20/10/2026 · 20 de outubro de 2026 | Intl.DateTimeFormat('pt-BR') |
+| Hora | 24 horas | 14h30 ou 14:30 | Intl.DateTimeFormat('pt-BR', { hour: '2-digit', minute: '2-digit' }) |
+| Tempo relativo | Há ou em, por extenso | há 2 dias · ontem · em 3 horas | Intl.RelativeTimeFormat('pt-BR', { numeric: 'auto' }) |
+| Plural | 0 e 1 ficam no singular | 0 item · 1 item · 2 itens | Intl.PluralRules('pt-BR') |
+
+### Documentos, telefone e endereço
+
+Mostre o formato na ajuda do campo, aceite colar com ou sem pontuação e coloque a pontuação sozinho.
+
+| Campo | Formato | Exemplo | No código |
+|---|---|---|---|
+| CPF | 000.000.000-00 | 123.456.789-09 | inputmode='numeric' |
+| CNPJ | 00.000.000/0000-00. Desde julho de 2026, novos CNPJs podem ter letras nas 12 primeiras posições | 12.ABC.345/01DE-35 | Aceite letras e números |
+| CEP | 00000-000 | 01310-100 | inputmode='numeric', autocomplete='postal-code' |
+| Celular | (00) 00000-0000 | (11) 91234-5678 | inputmode='tel', autocomplete='tel' |
+| Telefone fixo | (00) 0000-0000 | (11) 3123-4567 | inputmode='tel' |
+| Endereço | Rua, número, complemento, bairro, cidade, UF e CEP | Av. Paulista, 1000, apto 12, Bela Vista, São Paulo, SP, 01310-100 | Preencha cidade e UF a partir do CEP |
+
+### Faça
+
+- Use as funções Intl do navegador com pt-BR.
+- Aceite colar documentos com ou sem pontos e traços.
+- Mostre o exemplo do formato na ajuda do campo.
+
+### NÃO faça
+
+- Bloquear a digitação de quem digita a pontuação.
+- Datas no formato americano, como 10/20/2026.
+- Montar plural à mão com (s), como 1 item(s).
+
+## Regras por componente
+
+### Botão
+
+- Verbo e objeto, até 3 palavras: Salvar alterações, Criar conta.
+- Use o mesmo verbo do título da janela ou da página.
+- Sem ponto final e sem exclamação.
+
+### Botão de ícone
+
+- O nome acessível e a dica flutuante dizem a ação com verbo: Fechar, Copiar link.
+- Use o mesmo nome em todas as telas para o mesmo ícone.
+
+### Grupo de botões
+
+- Cada botão diz a própria ação. Cancelar não precisa de objeto; a ação principal precisa: Salvar capítulo.
+- Evite pares como Sim e Não ou OK e Cancelar.
+
+### Link
+
+- O texto diz o destino: Ler o capítulo 1.
+- Evite Clique aqui e Saiba mais soltos.
+- Avise no texto quando o link abre outro site ou baixa um arquivo.
+
+### Campo de texto
+
+- Rótulo curto, sem dois-pontos: E-mail.
+- Ajuda diz o que saber antes de digitar; o erro diz como resolver.
+- O texto de exemplo é um exemplo real e nunca substitui o rótulo.
+
+### Área de texto
+
+- O rótulo diz o que escrever: Sua mensagem.
+- A ajuda informa o limite: Até 280 caracteres.
+- O contador mostra quanto falta, não quanto foi usado, quando o limite estiver perto.
+
+### Seleção
+
+- Rótulo com o que está sendo escolhido: Cargo.
+- Opções curtas, em ordem lógica, começando com letra maiúscula.
+- Selecione uma opção enquanto nada foi escolhido.
+
+### Checkbox
+
+- Rótulo como afirmação positiva: Quero receber novidades.
+- Evite negações duplas, como Não quero deixar de receber.
+
+### Rádio
+
+- O título do grupo é uma pergunta: Como prefere receber o livro?
+- Opções curtas e paralelas, todas no mesmo formato.
+
+### Interruptor
+
+- O rótulo é o nome da configuração: Modo escuro.
+- Não troque o rótulo conforme o estado; o interruptor já mostra ligado ou desligado.
+
+### Controle deslizante
+
+- Mostre o valor com a unidade: 24 páginas por dia.
+- Os limites usam o mesmo formato do valor.
+
+### Controle segmentado
+
+- Uma ou duas palavras por opção: Mensal, Anual.
+- Todas as opções no mesmo formato e com tamanho parecido.
+
+### Código de verificação
+
+- Diga para onde o código foi enviado: Enviamos um código para ana@empresa.com.br.
+- No erro, diga o que fazer: Código errado. Confira os números ou peça outro.
+
+### Envio de arquivo
+
+- Diga os formatos e o tamanho máximo antes do envio: PDF ou DOCX, até 10 MB.
+- No erro, diga o motivo e o que fazer: Arquivo maior que 10 MB. Escolha um menor.
+
+### Etiqueta
+
+- Uma ou duas palavras: Design system.
+- Use o mesmo nome do filtro em todas as telas.
+
+### Selo
+
+- Uma ou duas palavras que dizem o estado: Publicado, Em revisão.
+- Use sempre o mesmo nome para o mesmo status.
+
+### Avatar
+
+- O texto alternativo é o nome da pessoa.
+- Iniciais com até duas letras: primeira letra do nome e do sobrenome.
+
+### Card
+
+- Título curto, de até duas linhas, que faça sentido sozinho.
+- Descrição de uma ou duas frases.
+- A ação do card diz o destino: Ler artigo.
+
+### Acordeão
+
+- A pergunta faz sentido sozinha, sem o texto aberto.
+- A resposta começa pela resposta direta e depois explica.
+
+### Abas
+
+- Uma ou duas palavras por aba: Capítulos, Notas.
+- Substantivos, não verbos.
+
+### Migalhas de pão
+
+- Use os mesmos nomes dos títulos das páginas.
+- A página atual aparece por extenso; os níveis anteriores podem ser abreviados.
+
+### Paginação
+
+- Anterior e Próxima, com nome completo para leitor de tela: Página 3.
+- Mostre o total quando ajudar: Página 3 de 12.
+
+### Indicador de página
+
+- Para leitor de tela, diga a posição: Tela 2 de 4.
+
+### Passos
+
+- Títulos curtos que dizem o que acontece na etapa: Dados pessoais.
+- Mostre o total desde o início: Etapa 2 de 4.
+
+### Barra de progresso
+
+- Diga o que está acontecendo e quanto falta: Enviando 2 de 5 arquivos.
+- No fim, confirme: Envio concluído.
+
+### Carregando
+
+- Para esperas longas, diga o que está acontecendo: Gerando seu PDF…
+- Use reticências só enquanto algo acontece.
+
+### Alerta
+
+- Título diz o que aconteceu; descrição diz o que fazer.
+- A ação é um verbo: Baixar agora, Tentar de novo.
+
+### Aviso rápido
+
+- Uma linha, no passado: Link copiado.
+- Ofereça Desfazer quando a ação puder ser revertida.
+
+### Dica flutuante
+
+- Até uma linha. Diga o que o elemento faz, com verbo: Copiar link do capítulo.
+- Não repita o texto que já está visível.
+
+### Popover
+
+- Título curto e uma ou duas frases.
+- Até duas ações, com verbo.
+
+### Janela modal
+
+- Título como pergunta ou ação: Excluir capítulo?
+- Diga a consequência na descrição.
+- O botão principal repete o verbo do título: Excluir capítulo.
+
+### Menu
+
+- Cada item começa com verbo: Editar, Duplicar, Excluir.
+- Atalhos no formato do sistema: ⌘E no Mac, Ctrl+E no Windows.
+
+### Item de lista
+
+- Título com a informação mais importante; descrição com o detalhe.
+- Meta curta: datas, contagens ou status em uma ou duas palavras.
+
+### Barra de ferramentas
+
+- Cada botão de ícone tem nome com verbo na dica flutuante.
+- Na seleção, diga quantos itens estão marcados: 3 capítulos selecionados.
+
+### Sobreposição
+
+- Não tem texto. O que importa está na janela por cima.
+
+### Atalho de teclado
+
+- Use os nomes do sistema: ⌘ no Mac, Ctrl no Windows.
+- Para leitor de tela, escreva por extenso: Command mais K.
+
+### Divisor
+
+- O divisor com texto usa uma ou duas palavras em minúsculas: ou.
+
+### Botão em bloco
+
+- Título curto com a escolha; descrição de uma linha com o que acontece depois.
+- Opções paralelas, no mesmo formato.
+
+### Seletor de cor
+
+- Dê nome às amostras: Azul da marca.
+- Mostre o código da cor para quem precisa copiar.
+
+### Campo com sugestões
+
+- Sem resultados, diga isso e ofereça saída: Nenhuma cidade com esse nome. Confira a grafia.
+- Opção de criar novo diz o que será criado: Criar o tema Governança.
+
+### Índice alfabético
+
+- Letras maiúsculas, sem acento: A, B, C.
+- Para leitor de tela, diga a seção: Ir para a letra G.
+
+### Rótulo informativo
+
+- A dica explica em uma ou duas frases como o dado é calculado ou para que serve.
+- Escreva opcional por extenso quando a maioria dos campos for obrigatória.
+
+### Lista em árvore
+
+- Nomes curtos, que caibam em uma linha.
+- Mostre a quantidade dentro de pastas quando ajudar.
+
+### Proporção de imagem
+
+- Todo texto importante fica fora da imagem, em texto de verdade.
+- O texto alternativo diz o que a imagem mostra, não como ela é.
+
+### Área de destaque
+
+- Sobretítulo diz o tipo do conteúdo: Na prática, Para cobrar.
+- Texto curto: o quadro complementa, não substitui o texto principal.
+
+### Rótulo de IA
+
+- Use IA, sem pontos e em maiúsculas.
+- No tipo Com texto, diga o que a IA fez: Gerado por IA, Resumo da IA.
+
+### Explicação da IA
+
+- Uma ou duas frases sobre de onde veio o conteúdo.
+- Diga a limitação sem pedir desculpas: A IA pode errar. Confira o original.
+
+### Campo sugerido por IA
+
+- A ajuda diz de onde veio a sugestão: Sugerido pela IA a partir do seu perfil.
+- O botão de desfazer diz o valor que volta: Voltar à sugestão da IA: Líder de design.
+
+### Campo de pedido
+
+- O texto de exemplo convida a perguntar: Pergunte algo sobre o livro.
+- Sugestões são pedidos completos e curtos: Resuma o capítulo 3.
+
+### Mensagem da conversa
+
+- A IA não usa primeira pessoa emotiva nem finge ser humana.
+- No erro, diga o que houve e ofereça saída: Tentar de novo ou Falar com uma pessoa.
+
+### Plano de ação
+
+- Cada passo começa com verbo e diz se só lê ou se muda algo.
+- O botão de confirmar diz o que vai acontecer: Confirmar e executar.
+
+### Aviso de IA
+
+- Frases curtas e diretas, sem letras miúdas: Você está conversando com uma IA.
+- Diga o limite em termos concretos: Ela não vê os seus dados nem a internet.

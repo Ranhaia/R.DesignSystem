@@ -1,0 +1,140 @@
+# PASSI DS
+
+> Design system aberto e em português que acompanha o livro "Design System: o que você também precisa saber", de João Passini. 182 tokens (claro, escuro e alto contraste), 52 componentes, 20 padrões de tela e 201 ícones, no Figma e em arquivos legíveis por máquina. Licença CC BY 4.0.
+
+Comece por diretrizes/Guidelines.md. Use os tokens de css/passi.css e nunca valores soltos. Os nomes estão em português.
+
+## Diretrizes
+
+- [Guidelines.md](diretrizes/Guidelines.md): porta de entrada, regras gerais e árvore de decisão
+- [Regras para ferramentas de código](AGENTS.md): o que uma IA deve seguir ao escrever código com o PASSI DS
+- [Decisões](diretrizes/decisoes.md): o porquê das escolhas do sistema, com data
+
+## Tokens
+
+- [Cores](diretrizes/tokens/cores.md): cores com função, claro, escuro e alto contraste
+- [Acessibilidade](diretrizes/fundamentos/acessibilidade.md): meta WCAG 2.2 AA e NBR 17225, contraste, foco e modos
+- [IA no produto](diretrizes/fundamentos/ia-no-produto.md): como mostrar a IA nas telas, cores, lei e escrita
+- [Espaçamento, raio e grade](diretrizes/tokens/espacamento-raio-e-grade.md)
+- [Tipografia](diretrizes/tokens/tipografia.md)
+- [Movimento](diretrizes/tokens/movimento.md)
+- [Sombras, desfoques e gradientes](diretrizes/tokens/sombras-desfoques-e-gradientes.md)
+- [Arquivos de tokens no padrão W3C DTCG 2025.10](tokens/passi.resolver.json)
+- [Variáveis CSS](css/passi.css)
+- [Tema para Tailwind v4](tailwind/passi-tailwind.css)
+
+## Código
+
+- [Componentes em código](componentes/README.md): Botão, Link, Campo de texto, Checkbox e Alerta como web components
+- [Fichas de componente](fichas/indice.json): propriedades, estados, acessibilidade e regras de cada componente em JSON
+- [Verificador](scripts/verificar.mjs): aponta o que foge do sistema num arquivo HTML, CSS ou JSX
+
+## Conteúdo
+
+- [Regras de conteúdo condensadas para IA](llms-content.txt)
+- [Voz e tom](diretrizes/conteudo/voz-e-tom.md)
+- [Microtexto](diretrizes/conteudo/microtexto.md)
+- [Glossário](diretrizes/conteudo/glossario.md)
+- [Linguagem inclusiva](diretrizes/conteudo/linguagem-inclusiva.md)
+- [Formatos brasileiros](diretrizes/conteudo/formatos-brasileiros.md)
+
+## Componentes
+
+- [Botão](diretrizes/componentes/botao.md)
+- [Botão de ícone](diretrizes/componentes/botao-de-icone.md)
+- [Grupo de botões](diretrizes/componentes/grupo-de-botoes.md)
+- [Link](diretrizes/componentes/link.md)
+- [Campo de texto](diretrizes/componentes/campo-de-texto.md)
+- [Área de texto](diretrizes/componentes/area-de-texto.md)
+- [Seleção](diretrizes/componentes/selecao.md)
+- [Checkbox](diretrizes/componentes/checkbox.md)
+- [Rádio](diretrizes/componentes/radio.md)
+- [Interruptor](diretrizes/componentes/interruptor.md)
+- [Controle deslizante](diretrizes/componentes/controle-deslizante.md)
+- [Controle segmentado](diretrizes/componentes/controle-segmentado.md)
+- [Código de verificação](diretrizes/componentes/codigo-de-verificacao.md)
+- [Envio de arquivo](diretrizes/componentes/envio-de-arquivo.md)
+- [Etiqueta](diretrizes/componentes/etiqueta.md)
+- [Selo](diretrizes/componentes/selo.md)
+- [Avatar](diretrizes/componentes/avatar.md)
+- [Card](diretrizes/componentes/card.md)
+- [Acordeão](diretrizes/componentes/acordeao.md)
+- [Abas](diretrizes/componentes/abas.md)
+- [Migalhas de pão](diretrizes/componentes/migalhas-de-pao.md)
+- [Paginação](diretrizes/componentes/paginacao.md)
+- [Indicador de página](diretrizes/componentes/indicador-de-pagina.md)
+- [Passos](diretrizes/componentes/passos.md)
+- [Barra de progresso](diretrizes/componentes/barra-de-progresso.md)
+- [Carregando](diretrizes/componentes/carregando.md)
+- [Alerta](diretrizes/componentes/alerta.md)
+- [Aviso rápido](diretrizes/componentes/aviso-rapido.md)
+- [Dica flutuante](diretrizes/componentes/dica-flutuante.md)
+- [Popover](diretrizes/componentes/popover.md)
+- [Janela modal](diretrizes/componentes/janela-modal.md)
+- [Menu](diretrizes/componentes/menu.md)
+- [Item de lista](diretrizes/componentes/item-de-lista.md)
+- [Barra de ferramentas](diretrizes/componentes/barra-de-ferramentas.md)
+- [Sobreposição](diretrizes/componentes/sobreposicao.md)
+- [Atalho de teclado](diretrizes/componentes/atalho-de-teclado.md)
+- [Divisor](diretrizes/componentes/divisor.md)
+- [Botão em bloco](diretrizes/componentes/botao-em-bloco.md)
+- [Seletor de cor](diretrizes/componentes/seletor-de-cor.md)
+- [Campo com sugestões](diretrizes/componentes/campo-com-sugestoes.md)
+- [Índice alfabético](diretrizes/componentes/indice-alfabetico.md)
+- [Rótulo informativo](diretrizes/componentes/rotulo-informativo.md)
+- [Lista em árvore](diretrizes/componentes/lista-em-arvore.md)
+- [Proporção de imagem](diretrizes/componentes/proporcao-de-imagem.md)
+- [Área de destaque](diretrizes/componentes/area-de-destaque.md)
+- [Rótulo de IA](diretrizes/componentes/rotulo-de-ia.md)
+- [Explicação da IA](diretrizes/componentes/explicacao-da-ia.md)
+- [Campo sugerido por IA](diretrizes/componentes/campo-sugerido-por-ia.md)
+- [Campo de pedido](diretrizes/componentes/campo-de-pedido.md)
+- [Mensagem da conversa](diretrizes/componentes/mensagem-da-conversa.md)
+- [Plano de ação](diretrizes/componentes/plano-de-acao.md)
+- [Aviso de IA](diretrizes/componentes/aviso-de-ia.md)
+
+## Padrões
+
+- [Entrar e criar conta](diretrizes/padroes/entrar-e-criar-conta.md)
+- [Cabeçalho do site](diretrizes/padroes/cabecalho-do-site.md)
+- [Rodapé do site](diretrizes/padroes/rodape-do-site.md)
+- [Seções de página](diretrizes/padroes/secoes-de-pagina.md)
+- [Menu lateral](diretrizes/padroes/menu-lateral.md)
+- [Navegação do celular](diretrizes/padroes/navegacao-do-celular.md)
+- [Busca](diretrizes/padroes/busca.md)
+- [Calendário](diretrizes/padroes/calendario.md)
+- [Gráficos](diretrizes/padroes/graficos.md)
+- [Tabela de dados](diretrizes/padroes/tabela-de-dados.md)
+- [Cards de conteúdo](diretrizes/padroes/cards-de-conteudo.md)
+- [Card de produto](diretrizes/padroes/card-de-produto.md)
+- [Card de equipe](diretrizes/padroes/card-de-equipe.md)
+- [Planos e preços](diretrizes/padroes/planos-e-precos.md)
+- [Trecho de código](diretrizes/padroes/trecho-de-codigo.md)
+- [Player de vídeo](diretrizes/padroes/player-de-video.md)
+- [Menus suspensos](diretrizes/padroes/menus-suspensos.md)
+- [Janela de ações](diretrizes/padroes/janela-de-acoes.md)
+- [Central de notificações](diretrizes/padroes/central-de-notificacoes.md)
+- [Conversa com IA](diretrizes/padroes/conversa-com-ia.md)
+
+## Optional
+
+- [Cores](diretrizes/fundamentos/cores.md)
+- [Tipografia](diretrizes/fundamentos/tipografia.md)
+- [Espaçamento e grid](diretrizes/fundamentos/espacamento-e-grid.md)
+- [Cantos e sombras](diretrizes/fundamentos/cantos-e-sombras.md)
+- [Ícones](diretrizes/fundamentos/icones.md)
+- [Gradientes](diretrizes/fundamentos/gradientes.md)
+- [Vidro e desfoque](diretrizes/fundamentos/vidro-e-desfoque.md)
+- [Movimento](diretrizes/fundamentos/movimento.md)
+- [Logo](diretrizes/fundamentos/logo.md)
+- [Utilitários](diretrizes/fundamentos/utilitarios.md)
+- [Acessibilidade](diretrizes/fundamentos/acessibilidade.md)
+- [IA no produto](diretrizes/fundamentos/ia-no-produto.md)
+- [Molduras de aparelho](diretrizes/miscelanea/molduras-de-aparelho.md)
+- [Tipos de arquivo](diretrizes/miscelanea/tipos-de-arquivo.md)
+- [Bandeiras](diretrizes/miscelanea/bandeiras.md)
+- [Formas](diretrizes/miscelanea/formas.md)
+- [Status](diretrizes/miscelanea/status.md)
+- [Seleção de texto](diretrizes/miscelanea/selecao-de-texto.md)
+- [Reações](diretrizes/miscelanea/reacoes.md)
+- [Texto completo de todas as diretrizes](llms-full.txt)

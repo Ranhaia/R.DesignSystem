@@ -1,0 +1,87 @@
+{
+  "nome": "Acordeão",
+  "slug": "acordeao",
+  "versao": "1.1.0",
+  "descricao": "O acordeão organiza conteúdos em seções que abrem e fecham. A pessoa lê só o que interessa, sem rolar por textos longos. É o formato clássico de perguntas frequentes.",
+  "resumo": "Acordeão · lista de perguntas ou seções que abrem e fecham. Bom para perguntas frequentes e conteúdos longos que nem todos precisam ler.",
+  "diretrizes": "diretrizes/componentes/acordeao.md",
+  "figma": {
+    "pagina": "Acordeão",
+    "componente": "Acordeão"
+  },
+  "propriedades": [
+    {
+      "nome": "Pergunta",
+      "tipo": "texto",
+      "padrao": "Preciso saber programar para ler o livro?"
+    },
+    {
+      "nome": "Resposta",
+      "tipo": "texto",
+      "padrao": "Não. O livro foi escrito para quem decide e cobra resultados: lideranças de produto, design e negócio. Os exemplos técnicos aparecem só quando ajudam a entender uma decisão."
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Fechado",
+        "Aberto"
+      ],
+      "padrao": "Fechado"
+    },
+    {
+      "nome": "Interação",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Foco"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Interação": [
+      "Padrão",
+      "Hover",
+      "Foco",
+      "Pressionado"
+    ]
+  },
+  "estados": [
+    "Fechado",
+    "Aberto"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab chega a cada pergunta. Enter ou Espaço abrem e fecham.",
+    "leitor": "A pergunta é um botão dentro de um título, e anuncia se está expandida ou recolhida. A resposta fica ligada ao botão no código.",
+    "foco": "Borda azul de 2 px por dentro do cabeçalho. Ao abrir, o foco continua na pergunta.",
+    "cuidados": "Não esconda informação obrigatória, como preço ou prazo, dentro de um acordeão fechado."
+  },
+  "conteudo": [
+    "A pergunta faz sentido sozinha, sem o texto aberto.",
+    "A resposta começa pela resposta direta e depois explica."
+  ],
+  "faca": [
+    "Escreva títulos que façam sentido sozinhos.",
+    "Mantenha aberto, no máximo, um item por vez em listas longas.",
+    "Deixe toda a linha do título clicável."
+  ],
+  "naoFaca": [
+    "Esconder informação essencial dentro do acordeão.",
+    "Acordeões dentro de acordeões.",
+    "Títulos genéricos como “Saiba mais”."
+  ],
+  "tokens": [
+    "--cor-fundo-sutil",
+    "--cor-fundo-sutil-hover",
+    "--cor-borda-padrao",
+    "--cor-borda-foco",
+    "--cor-texto-padrao",
+    "--cor-texto-secundario",
+    "--espaco-4",
+    "--espaco-5"
+  ],
+  "codigo": null
+}

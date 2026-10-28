@@ -1,17 +1,9 @@
-// Registro de documentação estilo atomic design (Descrição, Quando
-// utilizar, Anatomia, Variantes, Estados, Tamanhos, Boas práticas, Evite,
-// Código, Propriedades). "button" foi o piloto que validou o template;
-// desde 2026-07-21 os outros 58 componentes (todos os que têm entrada
-// aqui) já têm description/whenToUse reais, sourced de ui.shadcn.com e
-// traduzidos (ver plans/current/loop-80-20-templates.md). Slugs sem entrada aqui
-// continuam com a página no formato antigo (Composição + Exemplos), sem
-// quebrar nada.
+// Arquivo gerado a partir de docs/componentes/*.md pelo comando `npm run docs:gerar`.
+// Para editar a documentação de um componente, altere o arquivo correspondente em
+// docs/componentes/<slug>.md.
 //
-// doGuidelines/dontGuidelines: preenchidos na maioria; continuam como
-// placeholder "[a preencher]" nos componentes próprios (box, chip, tag,
-// multi-select, files, speed-dial…) — combinado com o Rafael para não
-// inventar conteúdo; esse texto é dele. Anatomia, Variantes, Estados, Tamanhos e
-// Propriedades são derivados do código real de cada componente.
+// Teste de sincronia em src/lib/component-docs.sincronia.test.ts reprova se este arquivo
+// divergir dos MDs fonte.
 
 export interface ComponentDocOption {
   name: string
@@ -41,134 +33,64 @@ export interface ComponentDoc {
 
 export const componentDocs: Record<string, ComponentDoc> = {
   button: {
-    description: "Exibe um botão ou um componente com aparência de botão.",
-    whenToUse: "Use para ações que o usuário aciona diretamente, como confirmar, enviar ou navegar.",
+    description: "Dispara uma ação. O texto diz exatamente o que vai acontecer: \"Salvar\nalterações\", não \"OK\".",
+    whenToUse: "Confirmar, enviar, criar, excluir: ações que mudam algo. Abrir uma janela ou painel desta mesma tela.",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description:
-          'Um <button> (ou o elemento filho, via asChild) com data-slot="button" e data-variant/data-size.',
-      },
-      {
-        part: "Ícone (opcional)",
-        description:
-          "SVG antes e/ou depois do label. O tamanho é herdado automaticamente pelo seletor [&_svg]. Pode vir via prop `icon` ou dentro de `children`.",
-      },
-      {
-        part: "Label",
-        description:
-          'Texto do botão — via prop `label` ou dentro de `children`. O tipo exige pelo menos ícone OU label (nunca os dois ausentes ao mesmo tempo, pra nunca existir um botão sem nome acessível). Botões ícone-only (`icon` sem `label`) ainda precisam de `aria-label`.',
-      },
-      {
-        part: "Skeleton (Button.Skeleton)",
-        description:
-          "Placeholder de carregamento com o mesmo formato do botão real (altura por size), pra evitar layout shift. Aceita as props size e fullWidth.",
-      },
+      { part: "Raiz", description: "`<button>` com `data-slot=\"button\"`, `data-variant` e `data-size`. Com `asChild`, as props vão para o filho (Radix Slot)." },
+      { part: "Ícone (opcional)", description: "SVG antes ou depois do texto. Tamanho herdado (`size-4`, `size-3` no `xs`)." },
+      { part: "Texto", description: "Via `label` ou `children`. O tipo exige `children`, `icon` ou `label` — nunca botão vazio." },
+      { part: "Button.Skeleton", description: "Placeholder com a mesma altura e canto do tamanho escolhido." },
     ],
     variants: [
-      { name: "Primary", value: "default", description: "Ação principal da tela. Usa --primary." },
-      { name: "Secondary", value: "secondary", description: "Ação secundária, menor ênfase." },
-      { name: "Outline", value: "outline", description: "Contorno, fundo transparente (herda o fundo do container — card, popover etc.), para ações alternativas." },
-      { name: "Ghost", value: "ghost", description: "Sem fundo nem borda até o hover." },
-      { name: "Destructive", value: "destructive", description: "Ações irreversíveis ou de risco (excluir, remover)." },
-      { name: "Link", value: "link", description: "Aparência de link de texto, sem fundo." },
-      { name: "AI Primary", value: "ai-primary", description: "Ação de IA com hierarquia principal (ex: disparar uma geração). Gradiente de 3 cores (azul/violeta/rosa), tokens reais da Nimbus Design System." },
-      { name: "AI Secondary", value: "ai-secondary", description: "Ação de IA complementar — fundo e borda suaves em tom violeta claro, mesmos tokens de IA da Nimbus." },
+      { name: "Default", value: "default", description: "Ação principal. **Uma por contexto.**" },
+      { name: "Secondary", value: "secondary", description: "Ação forte que não é a principal" },
+      { name: "Outline", value: "outline", description: "Ação alternativa; fundo transparente, herda o do container" },
+      { name: "Ghost", value: "ghost", description: "Ação discreta, sem superfície até o hover" },
+      { name: "Destructive", value: "destructive", description: "Ação que não se desfaz (excluir)" },
+      { name: "Link", value: "link", description: "Ação com cara de texto" },
+      { name: "Ai-primary · ai-secondary", value: "ai-primary · ai-secondary", description: "Ação que dispara IA. ⚠️ Em revisão: o PASSI desaconselha gradiente como marca de IA (atrito A3 em `H-referencia-passi-ds`)" },
     ],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Hover", description: "Cursor sobre o botão — muda fundo/opacidade conforme a variante. No variant default, a elevação (shadow) diminui e o botão desloca 1px pra baixo, simulando uma \"descida\" como feedback físico da interação." },
-      { name: "Active", description: "Durante o clique/pressionamento." },
-      { name: "Focus", description: "Navegação por teclado — anel de foco (focus-visible:ring)." },
-      { name: "Disabled", description: 'prop "disabled" — opacidade reduzida, pointer-events desativado. No variant default, a elevação (shadow) some completamente, reforçando visualmente que não está mais interativo.' },
-      { name: "Loading", description: 'Padrão de composição (ver exemplo "loading"): <Spinner /> + disabled.' },
+      { name: "Padrão", description: "Variantes com superfície têm `shadow-sm`" },
+      { name: "Hover", description: "Fundo um tom abaixo; sombra diminui e desce 1 px" },
+      { name: "Pressionado", description: "`active:scale-(--scale-pressed)`" },
+      { name: "Foco", description: "Anel de 3 px em `ring` (`focus-visible`)" },
+      { name: "Desabilitado", description: "`opacity-50`, sem sombra, sem clique (`disabled` ou `aria-disabled`)" },
+      { name: "Carregando", description: "Composição: `<Spinner />` + `aria-disabled`. Não é prop" },
     ],
     sizes: [
-      { name: "xs", value: "xs", description: "h-6 (24px) — toolbars densas." },
-      { name: "sm", value: "sm", description: "h-8 (32px)." },
-      { name: "md (default)", value: "default", description: "h-10 (40px) — tamanho padrão. \"default\" é alias de \"md\"." },
-      { name: "lg", value: "lg", description: "h-12 (48px)." },
-      { name: "xl", value: "xl", description: "h-14 (56px)." },
-      { name: "icon", value: "icon", description: 'size-10 (40px), quadrado, sem label — use com aria-label. "icon" é alias de "icon-md".' },
-      { name: "icon-xs", value: "icon-xs", description: "size-6 (24px), quadrado — use com aria-label." },
-      { name: "icon-sm", value: "icon-sm", description: "size-8 (32px), quadrado — use com aria-label." },
-      { name: "icon-lg", value: "icon-lg", description: "size-12 (48px), quadrado — use com aria-label." },
-      { name: "icon-xl", value: "icon-xl", description: "size-14 (56px), quadrado — use com aria-label." },
+      { name: "xs", value: "xs", description: "24 px — Barras de ferramenta densas" },
+      { name: "sm", value: "sm", description: "32 px — Tabelas, filtros" },
+      { name: "md / default", value: "md / default", description: "40 px — Padrão; mínimo no celular" },
+      { name: "lg", value: "lg", description: "48 px — Chamada principal, telas de celular" },
+      { name: "xl", value: "xl", description: "56 px — Destaque de página" },
+      { name: "icon-*", value: "icon-*", description: "24 a 56 px, quadrado — Só ícone — exige `aria-label`" },
     ],
-    doGuidelines: ["Nomeie a ação com verbo no infinitivo (Salvar, Excluir, Criar). Use primary uma única vez por contexto."],
-    dontGuidelines: ["Não use button para navegar entre páginas — use Link. Não use labels genéricos como \"Excluir isto\"."],
+    doGuidelines: ["Comece o texto com verbo: Salvar, Enviar, Criar conta.", "Deixe a ação principal à direita em janelas e formulários.", "Explique perto do botão por que ele está desabilitado."],
+    dontGuidelines: ["Texto vago (\"OK\", \"Clique aqui\", \"Sim\") → diga a ação: \"Excluir capítulo\".", "Dois `default` lado a lado → um vira `outline` ou `secondary`.", "`destructive` em ação que se desfaz → `default` ou `outline`.", "`<Button onClick={navegar}>` para trocar de página → `link`."],
     code: `import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 
-<Button variant="outline" size="sm">
-  Button
-</Button>
-
-// Ação de IA (tokens Nimbus) + largura total
-<Button variant="ai-primary" fullWidth>
-  Gerar com IA
-</Button>
-
-// Placeholder de carregamento
+<Button>Salvar alterações</Button>
+<Button variant="outline" size="sm">Cancelar</Button>
+<Button size="icon" aria-label="Fechar" icon={<Icon name="close" />} />
 <Button.Skeleton size="sm" />`,
     props: [
-      {
-        name: "variant",
-        type: '"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "ai-primary" | "ai-secondary"',
-        default: '"default"',
-        description: "Estilo visual do botão. ai-primary/ai-secondary seguem os tokens de IA da Nimbus Design System (ver globals.css).",
-      },
-      {
-        name: "size",
-        type: '"default" | "xs" | "sm" | "lg" | "icon" | "icon-xs" | "icon-sm" | "icon-lg"',
-        default: '"default"',
-        description: "Dimensão do botão.",
-      },
-      {
-        name: "fullWidth",
-        type: "boolean",
-        default: "false",
-        description: "Faz o botão ocupar 100% da largura do container (w-full). Mesmo nome e default da prop equivalente na Nimbus.",
-      },
-      {
-        name: "asChild",
-        type: "boolean",
-        default: "false",
-        description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <button>.",
-      },
-      {
-        name: "icon",
-        type: "React.ReactNode",
-        description: 'Ícone do botão. Exige pelo menos `icon` ou `label` (nunca os dois ausentes) — mutuamente exclusivo com `children`.',
-      },
-      {
-        name: "label",
-        type: "React.ReactNode",
-        description: 'Texto do botão. Exige pelo menos `icon` ou `label` (nunca os dois ausentes) — mutuamente exclusivo com `children`.',
-      },
-      {
-        name: "children",
-        type: "React.ReactNode",
-        description: "Composição livre (usada com asChild, ButtonGroup, ou conteúdo condicional como Spinner + texto) — mutuamente exclusivo com icon/label.",
-      },
-      {
-        name: "disabled",
-        type: "boolean",
-        default: "false",
-        description: "Desativa interação e reduz opacidade.",
-      },
-      {
-        name: "...props",
-        type: 'React.ComponentProps<"button">',
-        description: "Todos os atributos nativos de <button> (onClick, type, form, etc.).",
-      },
+      { name: "variant", type: "default · secondary · outline · ghost · destructive · link · ai-primary · ai-secondary", default: "default", description: "Hierarquia visual" },
+      { name: "size", type: "xs · sm · md · default · lg · xl · icon-xs · icon-sm · icon · icon-md · icon-lg · icon-xl", default: "default", description: "Altura. `default` = `md`; `icon` = `icon-md`" },
+      { name: "fullWidth", type: "boolean", default: "false", description: "Ocupa 100% da largura" },
+      { name: "asChild", type: "boolean", default: "false", description: "Renderiza no elemento filho" },
+      { name: "icon · label", type: "ReactNode", default: "—", description: "Conteúdo explícito (alternativa a `children`)" },
+      { name: "disabled", type: "boolean", default: "false", description: "Desabilita e tira do foco" },
+      { name: "aria-disabled", type: "boolean", default: "—", description: "Mesmo visual de desabilitado, mas continua focável e anunciado" },
+      { name: "...props", type: "ComponentProps<\"button\">", default: "—", description: "`onClick`, `type`, `form`…" },
     ],
   },
-
   avatar: {
     description: "Um elemento de imagem com um fallback para representar o usuário.",
     whenToUse: "Use para representar visualmente uma pessoa ou conta, com uma alternativa (iniciais/ícone) para quando a imagem não carregar.",
     anatomy: [
-      { part: "Root", description: 'AvatarPrimitive.Root — data-slot="avatar", data-size.' },
+      { part: "Root", description: "AvatarPrimitive.Root — data-slot=\"avatar\", data-size." },
       { part: "Image", description: "Foto do usuário. Some automaticamente se falhar ao carregar." },
       { part: "Fallback", description: "Iniciais ou ícone exibido enquanto a imagem carrega ou se falhar." },
       { part: "Badge (opcional)", description: "Indicador pequeno no canto (ex: status online) — AvatarBadge." },
@@ -193,16 +115,15 @@ export const componentDocs: Record<string, ComponentDoc> = {
   <AvatarFallback>RA</AvatarFallback>
 </Avatar>`,
     props: [
-      { name: "size", type: '"default" | "sm" | "lg"', default: '"default"', description: "Dimensão do avatar." },
+      { name: "size", type: "\"default\" | \"sm\" | \"lg\"", default: "\"default\"", description: "Dimensão do avatar." },
       { name: "...props", type: "React.ComponentProps<typeof AvatarPrimitive.Root>", description: "Props nativas do Radix Avatar." },
     ],
   },
-
   badge: {
     description: "Exibe um selo (badge) ou um componente com aparência de selo.",
     whenToUse: "Use para destacar um status, contagem ou rótulo curto associado a um item.",
     anatomy: [
-      { part: "Elemento raiz", description: 'Um <span> (ou o filho, via asChild) com data-slot="badge" e data-variant.' },
+      { part: "Elemento raiz", description: "Um <span> (ou o filho, via asChild) com data-slot=\"badge\" e data-variant." },
     ],
     variants: [
       { name: "Default", value: "default", description: "Usa --primary." },
@@ -220,21 +141,16 @@ export const componentDocs: Record<string, ComponentDoc> = {
 
 <Badge variant="secondary">Badge</Badge>`,
     props: [
-      { name: "variant", type: '"default" | "secondary" | "destructive" | "outline" | "ghost" | "link"', default: '"default"', description: "Estilo visual do badge." },
+      { name: "variant", type: "\"default\" | \"secondary\" | \"destructive\" | \"outline\" | \"ghost\" | \"link\"", default: "\"default\"", description: "Estilo visual do badge." },
       { name: "asChild", type: "boolean", default: "false", description: "Renderiza no elemento filho (ex: <a>) em vez de <span>." },
-      { name: "...props", type: 'React.ComponentProps<"span">', description: "Atributos nativos de <span>." },
+      { name: "...props", type: "React.ComponentProps<\"span\">", description: "Atributos nativos de <span>." },
     ],
   },
-
   box: {
     description: "Utilitário de layout para agrupar e espaçar elementos ou componentes — um container flexível, sem estilo próprio.",
     whenToUse: "Use para construir containers, agrupar elementos e posicionar/espaçar conteúdo (padding, margin, borda, cor de fundo) via classes Tailwind aplicadas em `className` — Box não expõe props de estilo nomeadas, o estilo é 100% via `className`.",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description:
-          'Um <div> (ou o filho, via asChild) com data-slot="box". Nenhuma classe de estilo própria — 100% do visual vem de `className`.',
-      },
+      { part: "Elemento raiz", description: "Um <div> (ou o filho, via asChild) com data-slot=\"box\". Nenhuma classe de estilo própria — 100% do visual vem de `className`." },
     ],
     variants: [],
     states: [
@@ -262,27 +178,22 @@ export const componentDocs: Record<string, ComponentDoc> = {
 </Box>`,
     props: [
       { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <div> — mecanismo de polimorfismo já convencionado no catálogo (Chip/Badge/Button), equivalente funcional à prop `as` do Nimbus." },
-      { name: "...props", type: 'React.ComponentProps<"div">', description: "Demais atributos nativos do elemento raiz, incluindo `className` — mecanismo real de estilização do Box (padding, margin, display, flex, cor via token, etc.), já que o componente não expõe props de estilo nomeadas." },
+      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Demais atributos nativos do elemento raiz, incluindo `className` — mecanismo real de estilização do Box (padding, margin, display, flex, cor via token, etc.), já que o componente não expõe props de estilo nomeadas." },
     ],
   },
-
   checkbox: {
     description: "Um controle que permite ao usuário alternar entre marcado e desmarcado.",
     whenToUse: "Use quando o usuário precisar marcar ou desmarcar uma opção, sozinha ou em um grupo de seleção múltipla.",
     anatomy: [
-      { part: "Root", description: 'CheckboxPrimitive.Root — data-slot="checkbox", data-state.' },
+      { part: "Root", description: "CheckboxPrimitive.Root — data-slot=\"checkbox\", data-state." },
       { part: "Indicator", description: "Ícone de check, visível só quando marcado (data-state=checked)." },
-      {
-        part: "Tamanho",
-        description:
-          "Controlado por --form-control-size (globals.css), não por classe fixa. O mesmo token também escala RadioGroupItem — trocar essa variável por preset ajusta os dois componentes juntos.",
-      },
+      { part: "Tamanho", description: "Controlado por --form-control-size (globals.css), não por classe fixa. O mesmo token também escala RadioGroupItem — trocar essa variável por preset ajusta os dois componentes juntos." },
     ],
     variants: [],
     states: [
       { name: "Unchecked", description: "Estado de repouso." },
       { name: "Checked", description: "data-state=checked — fundo e borda em --primary." },
-      { name: "Indeterminate", description: 'checked="indeterminate" — usado em seleção parcial de grupo.' },
+      { name: "Indeterminate", description: "checked=\"indeterminate\" — usado em seleção parcial de grupo." },
       { name: "Focus", description: "Navegação por teclado — focus-visible:ring." },
       { name: "Disabled", description: "opacidade reduzida, sem interação." },
     ],
@@ -303,34 +214,15 @@ import { Label } from "@/components/ui/label"
       { name: "...props", type: "React.ComponentProps<typeof CheckboxPrimitive.Root>", description: "Demais props do Radix Checkbox." },
     ],
   },
-
   chip: {
     description: "Sinaliza um critério ou atributo relacionado a uma busca ou filtro de uma lista de informações.",
     whenToUse: "Use para representar um filtro ou critério ativo aplicado a uma lista (ex: um filtro de busca que o usuário pode remover). Não confunda com componentes vizinhos: use Tag para categorizar informação de forma estática (não removível); use Badge para reportar contagem de itens pendentes/status. Chip é especificamente para critério de filtro/busca ativo, tipicamente removível.",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description:
-          'Um <span> (ou o filho, via asChild) com data-slot="chip" e data-variant. Não é ele mesmo um <button> — a interatividade fica isolada no botão de remover.',
-      },
-      {
-        part: "Ícone (opcional)",
-        description:
-          "Nó antes do label, via prop `icon`. Deve ter relação direta com o critério representado. Tamanho herdado via [&>svg]:size-3, mesmo mecanismo do Badge.",
-      },
-      {
-        part: "Label",
-        description: "Texto do chip — via `children`. Sem verbo (é rótulo, não ação).",
-      },
-      {
-        part: "Botão de remover (opcional)",
-        description:
-          'Só existe quando removable=true. Renderizado como <Button variant="ghost" size="icon-xs"> contendo <Icon name="close" />, com aria-label próprio (prop removeLabel).',
-      },
-      {
-        part: "Skeleton (Chip.Skeleton)",
-        description: "Placeholder de carregamento com o mesmo formato do chip real, pra evitar layout shift.",
-      },
+      { part: "Elemento raiz", description: "Um <span> (ou o filho, via asChild) com data-slot=\"chip\" e data-variant. Não é ele mesmo um <button> — a interatividade fica isolada no botão de remover." },
+      { part: "Ícone (opcional)", description: "Nó antes do label, via prop `icon`. Deve ter relação direta com o critério representado. Tamanho herdado via [&>svg]:size-3, mesmo mecanismo do Badge." },
+      { part: "Label", description: "Texto do chip — via `children`. Sem verbo (é rótulo, não ação)." },
+      { part: "Botão de remover (opcional)", description: "Só existe quando removable=true. Renderizado como <Button variant=\"ghost\" size=\"icon-xs\"> contendo <Icon name=\"close\" />, com aria-label próprio (prop removeLabel)." },
+      { part: "Skeleton (Chip.Skeleton)", description: "Placeholder de carregamento com o mesmo formato do chip real, pra evitar layout shift." },
     ],
     variants: [
       { name: "Default", value: "default", description: "Aparência neutra padrão — fundo --muted, texto --foreground." },
@@ -374,36 +266,21 @@ import { Icon } from "@/components/ui/icon"
       { name: "icon", type: "React.ReactNode", description: "Ícone opcional antes do label. Deve estar relacionado ao critério representado." },
       { name: "removable", type: "boolean", default: "false", description: "Mostra o botão de remover (o \"x\")." },
       { name: "onRemove", type: "() => void", description: "Callback disparado ao clicar/ativar o botão de remover." },
-      { name: "variant", type: '"default" | "ai-generated"', default: '"default"', description: "Estilo visual do chip." },
-      { name: "removeLabel", type: "string", default: '"Remover"', description: "Texto usado como aria-label do botão de remover." },
+      { name: "variant", type: "\"default\" | \"ai-generated\"", default: "\"default\"", description: "Estilo visual do chip." },
+      { name: "removeLabel", type: "string", default: "\"Remover\"", description: "Texto usado como aria-label do botão de remover." },
       { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <span>." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa o botão de remover e reduz a opacidade do chip." },
-      { name: "...props", type: 'React.ComponentProps<"span">', description: "Demais atributos nativos do elemento raiz." },
+      { name: "...props", type: "React.ComponentProps<\"span\">", description: "Demais atributos nativos do elemento raiz." },
     ],
   },
-
   "icon-button": {
     description: "Um botão cujo único conteúdo é um ícone, sem texto visível.",
     whenToUse: "Use quando há limitação de espaço ou quando uma ação pode ser perfeitamente representada por um ícone só. Pode ser combinado com Tooltip para mostrar uma descrição breve da ação. Se não for possível resumir a ação num ícone, considere Button com label em vez de Icon Button.",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description:
-          'O próprio Button interno com data-slot="icon-button" (sobrescreve o data-slot="button" do Button interno) e data-variant/data-size preservados.',
-      },
-      {
-        part: "Ícone",
-        description: "Nó via prop `icon`, sempre obrigatório — único conteúdo do botão.",
-      },
-      {
-        part: "Nome acessível",
-        description:
-          '`aria-label`, obrigatório via tipo (não opcional) — impossível montar um <IconButton /> sem ele, o TypeScript barra antes do runtime.',
-      },
-      {
-        part: "Skeleton (IconButton.Skeleton)",
-        description: "Reaproveita Button.Skeleton, restrito às 4 escalas quadradas (icon/icon-xs/icon-sm/icon-lg).",
-      },
+      { part: "Elemento raiz", description: "O próprio Button interno com data-slot=\"icon-button\" (sobrescreve o data-slot=\"button\" do Button interno) e data-variant/data-size preservados." },
+      { part: "Ícone", description: "Nó via prop `icon`, sempre obrigatório — único conteúdo do botão." },
+      { part: "Nome acessível", description: "`aria-label`, obrigatório via tipo (não opcional) — impossível montar um <IconButton /> sem ele, o TypeScript barra antes do runtime." },
+      { part: "Skeleton (IconButton.Skeleton)", description: "Reaproveita Button.Skeleton, restrito às 4 escalas quadradas (icon/icon-xs/icon-sm/icon-lg)." },
     ],
     variants: [
       { name: "Primary", value: "default", description: "Ação principal ícone-only. Usa --primary." },
@@ -420,7 +297,7 @@ import { Icon } from "@/components/ui/icon"
       { name: "Hover", description: "Muda fundo/opacidade conforme a variante; no variant default, a elevação (shadow) diminui e o botão desce 1px, mesmo feedback físico do Button." },
       { name: "Active", description: "Durante o clique/pressionamento." },
       { name: "Focus", description: "Navegação por teclado — anel de foco (focus-visible:ring), herdado do Button." },
-      { name: "Disabled", description: 'prop "disabled" — opacidade reduzida, pointer-events desativado.' },
+      { name: "Disabled", description: "prop \"disabled\" — opacidade reduzida, pointer-events desativado." },
     ],
     sizes: [
       { name: "icon (default)", value: "icon", description: "size-9 (36px) — tamanho padrão." },
@@ -454,53 +331,20 @@ import { Icon } from "@/components/ui/icon"
 // Placeholder de carregamento
 <IconButton.Skeleton size="icon" />`,
     props: [
-      {
-        name: "icon",
-        type: "React.ReactNode",
-        description: "Ícone exibido — único conteúdo do botão, sempre obrigatório.",
-      },
-      {
-        name: "aria-label",
-        type: "string",
-        description: "Nome acessível. Obrigatório via tipo — não opcional como no Button.",
-      },
-      {
-        name: "variant",
-        type: '"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "ai-primary" | "ai-secondary"',
-        default: '"default"',
-        description: "Estilo visual, idêntico ao variant do Button — nenhuma variante nova.",
-      },
-      {
-        name: "size",
-        type: '"icon" | "icon-xs" | "icon-sm" | "icon-lg"',
-        default: '"icon"',
-        description: "Dimensão — restrito às 4 escalas quadradas do Button.",
-      },
-      {
-        name: "asChild",
-        type: "boolean",
-        default: "false",
-        description: "Renderiza as props no elemento filho (via Radix Slot, herdado do Button) em vez de <button>.",
-      },
-      {
-        name: "disabled",
-        type: "boolean",
-        default: "false",
-        description: "Desativa interação e reduz opacidade.",
-      },
-      {
-        name: "...props",
-        type: 'Omit<React.ComponentProps<typeof Button>, "icon" | "label" | "children" | "size" | "aria-label">',
-        description: "Demais atributos nativos de <button> e props do Button (fullWidth, onClick, type, etc.).",
-      },
+      { name: "icon", type: "React.ReactNode", description: "Ícone exibido — único conteúdo do botão, sempre obrigatório." },
+      { name: "aria-label", type: "string", description: "Nome acessível. Obrigatório via tipo — não opcional como no Button." },
+      { name: "variant", type: "\"default\" | \"destructive\" | \"outline\" | \"secondary\" | \"ghost\" | \"link\" | \"ai-primary\" | \"ai-secondary\"", default: "\"default\"", description: "Estilo visual, idêntico ao variant do Button — nenhuma variante nova." },
+      { name: "size", type: "\"icon\" | \"icon-xs\" | \"icon-sm\" | \"icon-lg\"", default: "\"icon\"", description: "Dimensão — restrito às 4 escalas quadradas do Button." },
+      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot, herdado do Button) em vez de <button>." },
+      { name: "disabled", type: "boolean", default: "false", description: "Desativa interação e reduz opacidade." },
+      { name: "...props", type: "Omit<React.ComponentProps<typeof Button>, \"icon\" | \"label\" | \"children\" | \"size\" | \"aria-label\">", description: "Demais atributos nativos de <button> e props do Button (fullWidth, onClick, type, etc.)." },
     ],
   },
-
   input: {
     description: "Um componente de campo de texto para formulários e entrada de dados do usuário, com estilo e recursos de acessibilidade já incorporados.",
     whenToUse: "Use para capturar texto, números ou outros dados digitados pelo usuário em um formulário.",
     anatomy: [
-      { part: "Elemento raiz", description: 'Um <input> nativo com data-slot="input". Ícone/addon acoplado é composição via InputGroup (Molecule), não parte do Atom.' },
+      { part: "Elemento raiz", description: "Um <input> nativo com data-slot=\"input\". Ícone/addon acoplado é composição via InputGroup (Molecule), não parte do Atom." },
     ],
     variants: [],
     states: [
@@ -516,18 +360,17 @@ import { Icon } from "@/components/ui/icon"
 
 <Input type="email" placeholder="voce@email.com" />`,
     props: [
-      { name: "type", type: "string", default: '"text"', description: "Tipo nativo do input (email, password, number...)." },
+      { name: "type", type: "string", default: "\"text\"", description: "Tipo nativo do input (email, password, number...)." },
       { name: "label", type: "React.ReactNode", description: "Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
       { name: "animatedLabel", type: "boolean", default: "false", description: "Com label presente, ativa o padrão de label flutuante (motion) em vez da label fixa acima do campo." },
-      { name: "...props", type: 'React.ComponentProps<"input">', description: "Todos os atributos nativos de <input>." },
+      { name: "...props", type: "React.ComponentProps<\"input\">", description: "Todos os atributos nativos de <input>." },
     ],
   },
-
   "input-otp": {
     description: "Componente acessível de senha de uso único (OTP), com suporte a copiar e colar.",
     whenToUse: "Use para capturar códigos de verificação enviados por SMS ou e-mail, com um campo por dígito.",
     anatomy: [
-      { part: "InputOTP", description: 'Root — envolve o input real (invisível) que captura o valor completo.' },
+      { part: "InputOTP", description: "Root — envolve o input real (invisível) que captura o valor completo." },
       { part: "InputOTPGroup", description: "Agrupa visualmente um bloco de slots." },
       { part: "InputOTPSlot", description: "Uma casa/dígito — requer prop index." },
       { part: "InputOTPSeparator", description: "Traço decorativo entre grupos de slots (ex: 000 - 000)." },
@@ -560,12 +403,11 @@ import { Icon } from "@/components/ui/icon"
       { name: "index", type: "number", description: "(InputOTPSlot) posição do slot — obrigatório." },
     ],
   },
-
   kbd: {
     description: "Usado para exibir uma entrada de teclado do usuário em formato textual.",
     whenToUse: "Use para indicar teclas ou atalhos de teclado dentro de textos, tooltips ou menus.",
     anatomy: [
-      { part: "Elemento raiz", description: 'Um <kbd> com data-slot="kbd".' },
+      { part: "Elemento raiz", description: "Um <kbd> com data-slot=\"kbd\"." },
       { part: "KbdGroup", description: "Agrupa duas ou mais teclas de um atalho (ex: Ctrl + K)." },
     ],
     variants: [],
@@ -580,15 +422,14 @@ import { Icon } from "@/components/ui/icon"
   <Kbd>K</Kbd>
 </KbdGroup>`,
     props: [
-      { name: "...props", type: 'React.ComponentProps<"kbd">', description: "Atributos nativos de <kbd>." },
+      { name: "...props", type: "React.ComponentProps<\"kbd\">", description: "Atributos nativos de <kbd>." },
     ],
   },
-
   label: {
     description: "Renderiza um rótulo acessível associado a controles de formulário.",
     whenToUse: "Use para nomear um campo ou controle, associando-o via htmlFor para leitores de tela.",
     anatomy: [
-      { part: "Elemento raiz", description: 'LabelPrimitive.Root, renderiza <label> com data-slot="label".' },
+      { part: "Elemento raiz", description: "LabelPrimitive.Root, renderiza <label> com data-slot=\"label\"." },
     ],
     variants: [],
     states: [
@@ -606,12 +447,11 @@ import { Icon } from "@/components/ui/icon"
       { name: "...props", type: "React.ComponentProps<typeof LabelPrimitive.Root>", description: "Demais props do Radix Label." },
     ],
   },
-
   progress: {
     description: "Exibe um indicador que mostra o progresso de conclusão de uma tarefa, geralmente representado como uma barra de progresso.",
     whenToUse: "Use para comunicar o andamento de um processo com duração determinada, como upload, carregamento ou etapas.",
     anatomy: [
-      { part: "Root", description: 'ProgressPrimitive.Root — trilho de fundo (bg-primary/20).' },
+      { part: "Root", description: "ProgressPrimitive.Root — trilho de fundo (bg-primary/20)." },
       { part: "Indicator", description: "Barra preenchida — translateX calculado a partir de value." },
     ],
     variants: [],
@@ -631,7 +471,6 @@ import { Icon } from "@/components/ui/icon"
       { name: "...props", type: "React.ComponentProps<typeof ProgressPrimitive.Root>", description: "Demais props do Radix Progress." },
     ],
   },
-
   "radio-group": {
     description: "Um conjunto de botões marcáveis — conhecidos como radio buttons — no qual no máximo um pode estar marcado por vez.",
     whenToUse: "Use quando o usuário precisar escolher exatamente uma opção entre um conjunto pequeno e visível de alternativas.",
@@ -639,11 +478,7 @@ import { Icon } from "@/components/ui/icon"
       { part: "RadioGroup", description: "Root — grid que agrupa os itens, controla qual valor está selecionado." },
       { part: "RadioGroupItem", description: "Cada opção — requer prop value." },
       { part: "Indicator", description: "Ícone circle preenchido (Icon com prop fill, cor text-primary), visível só no item selecionado." },
-      {
-        part: "Tamanho",
-        description:
-          "Controlado por --form-control-size (globals.css), não por classe fixa. O mesmo token também escala Checkbox — trocar essa variável por preset ajusta os dois componentes juntos.",
-      },
+      { part: "Tamanho", description: "Controlado por --form-control-size (globals.css), não por classe fixa. O mesmo token também escala Checkbox — trocar essa variável por preset ajusta os dois componentes juntos." },
     ],
     variants: [],
     states: [
@@ -675,12 +510,11 @@ import { Label } from "@/components/ui/label"
       { name: "disabled", type: "boolean", default: "false", description: "Desativa o grupo ou o item." },
     ],
   },
-
   separator: {
     description: "Separa conteúdo visualmente ou semanticamente.",
     whenToUse: "Use para dividir seções ou agrupamentos de conteúdo relacionados.",
     anatomy: [
-      { part: "Elemento raiz", description: 'SeparatorPrimitive.Root — linha de 1px (bg-border), horizontal ou vertical.' },
+      { part: "Elemento raiz", description: "SeparatorPrimitive.Root — linha de 1px (bg-border), horizontal ou vertical." },
     ],
     variants: [],
     states: [],
@@ -692,16 +526,15 @@ import { Label } from "@/components/ui/label"
 <Separator />
 <Separator orientation="vertical" className="h-4" />`,
     props: [
-      { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "Direção da linha." },
+      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção da linha." },
       { name: "decorative", type: "boolean", default: "true", description: "Marca o elemento como puramente visual pra leitores de tela (role=none)." },
     ],
   },
-
   skeleton: {
     description: "Use para mostrar um espaço reservado (placeholder) enquanto o conteúdo está carregando.",
     whenToUse: "Use enquanto os dados reais ainda não chegaram, para indicar onde o conteúdo vai aparecer.",
     anatomy: [
-      { part: "Elemento raiz", description: 'Um <div> com animate-pulse — o tamanho/forma vem 100% da className (h-4 w-32, rounded-full, etc.).' },
+      { part: "Elemento raiz", description: "Um <div> com animate-pulse — o tamanho/forma vem 100% da className (h-4 w-32, rounded-full, etc.)." },
     ],
     variants: [],
     states: [],
@@ -712,10 +545,9 @@ import { Label } from "@/components/ui/label"
 
 <Skeleton className="h-4 w-32" />`,
     props: [
-      { name: "...props", type: 'React.ComponentProps<"div">', description: "Atributos nativos de <div> — a forma é controlada via className." },
+      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Atributos nativos de <div> — a forma é controlada via className." },
     ],
   },
-
   slider: {
     description: "Um controle de entrada em que o usuário seleciona um valor dentro de um intervalo definido.",
     whenToUse: "Use quando o usuário precisar ajustar um valor numérico dentro de um intervalo, de forma visual e contínua.",
@@ -741,16 +573,15 @@ import { Label } from "@/components/ui/label"
     props: [
       { name: "value / defaultValue", type: "number[]", description: "Um valor = thumb único; dois valores = range." },
       { name: "min / max / step", type: "number", default: "0 / 100 / —", description: "Limites e granularidade." },
-      { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "Direção do slider." },
+      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção do slider." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa interação." },
     ],
   },
-
   spinner: {
     description: "Um indicador que pode ser usado para mostrar um estado de carregamento.",
     whenToUse: "Use para sinalizar que uma ação está em andamento e o resultado ainda não está disponível.",
     anatomy: [
-      { part: "Elemento raiz", description: 'Ícone Loader2 girando (animate-spin), role="status" e aria-label="Loading" pra leitor de tela.' },
+      { part: "Elemento raiz", description: "Ícone Loader2 girando (animate-spin), role=\"status\" e aria-label=\"Loading\" pra leitor de tela." },
     ],
     variants: [],
     states: [],
@@ -761,27 +592,26 @@ import { Label } from "@/components/ui/label"
 
 <Spinner className="size-5" />`,
     props: [
-      { name: "...props", type: 'React.ComponentProps<"svg">', description: "Tamanho e cor via className (size-4, text-primary, etc.)." },
+      { name: "...props", type: "React.ComponentProps<\"svg\">", description: "Tamanho e cor via className (size-4, text-primary, etc.)." },
     ],
   },
-
   stepper: {
     description: "Indicador de progresso que guia o usuário através de um processo dividido em múltiplas etapas, mostrando quais já foram concluídas, qual está em andamento e quais ainda faltam.",
     whenToUse: "Use em formulários e assistentes (wizards) com múltiplas etapas, fluxos de onboarding, ou processos complexos divididos em etapas (ex.: checkout, configuração de conta).",
     anatomy: [
-      { part: "Stepper (root)", description: '<ol data-slot="stepper"> — controla `value` (índice 0-based da etapa atual) e `orientation`. Injeta o estado (completed/current/upcoming) de cada StepperItem filho via Context, pela posição do filho na lista de children — numeração automática, o chamador nunca passa um índice à mão. Também gera o conector entre etapas automaticamente (não é subcomponente exportado).' },
-      { part: "StepperItem", description: '<li data-slot="stepper-item" data-state> — uma etapa. Não recebe índice explícito; lê o próprio estado do Context injetado pelo Stepper pai.' },
+      { part: "Stepper (root)", description: "<ol data-slot=\"stepper\"> — controla `value` (índice 0-based da etapa atual) e `orientation`. Injeta o estado (completed/current/upcoming) de cada StepperItem filho via Context, pela posição do filho na lista de children — numeração automática, o chamador nunca passa um índice à mão. Também gera o conector entre etapas automaticamente (não é subcomponente exportado)." },
+      { part: "StepperItem", description: "<li data-slot=\"stepper-item\" data-state> — uma etapa. Não recebe índice explícito; lê o próprio estado do Context injetado pelo Stepper pai." },
       { part: "StepperTrigger", description: "Elemento clicável (<button>) ou não (<div>) — decide sozinho com base em onValueChange estar presente no Stepper pai. Agrupa StepperIndicator + StepperTitle. Carrega aria-current=\"step\" na etapa atual." },
       { part: "StepperIndicator", description: "Círculo numerado — contorno neutro se upcoming, contorno --primary se current, preenchido --primary com ícone de check se completed." },
       { part: "StepperTitle", description: "Label textual da etapa." },
-      { part: "Conector (interno)", description: '<li aria-hidden="true" data-slot="stepper-separator"> gerado pelo Stepper entre cada par de StepperItem — linha horizontal ou vertical, colorida em --primary quando a etapa anterior está completed.' },
+      { part: "Conector (interno)", description: "<li aria-hidden=\"true\" data-slot=\"stepper-separator\"> gerado pelo Stepper entre cada par de StepperItem — linha horizontal ou vertical, colorida em --primary quando a etapa anterior está completed." },
     ],
     variants: [],
     states: [
       { name: "Upcoming", description: "Etapa ainda não alcançada — indicador com contorno neutro (--border), número visível, título em --muted-foreground." },
-      { name: "Current", description: 'Etapa ativa — indicador com contorno --primary, aria-current="step" no trigger.' },
+      { name: "Current", description: "Etapa ativa — indicador com contorno --primary, aria-current=\"step\" no trigger." },
       { name: "Completed", description: "Etapa já concluída — indicador preenchido --primary com ícone de check (aria-hidden), conector adjacente também em --primary." },
-      { name: "Clicável (opcional)", description: 'Só quando Stepper recebe onValueChange — o trigger vira <button> real: focável via Tab, ativável via Enter/Space (comportamento nativo), com focus-visible:ring herdado do padrão do catálogo (mesmas classes de AccordionTrigger).' },
+      { name: "Clicável (opcional)", description: "Só quando Stepper recebe onValueChange — o trigger vira <button> real: focável via Tab, ativável via Enter/Space (comportamento nativo), com focus-visible:ring herdado do padrão do catálogo (mesmas classes de AccordionTrigger)." },
       { name: "Somente-leitura", description: "Sem onValueChange — trigger vira <div> não-interativo (não focável, sem cursor de ponteiro). Uso típico: mostrar progresso sem permitir navegação livre entre etapas." },
     ],
     sizes: [],
@@ -822,40 +652,20 @@ function Exemplo() {
     props: [
       { name: "value", type: "number", description: "(Stepper) Índice (0-based) da etapa atual. Sempre controlado — sem modo não-controlado/defaultValue." },
       { name: "onValueChange", type: "(step: number) => void", description: "(Stepper) Callback disparado ao clicar numa etapa. Presença desta prop decide se StepperTrigger renderiza <button> (clicável) ou <div> (somente-leitura)." },
-      { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "(Stepper) Direção do layout." },
+      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "(Stepper) Direção do layout." },
       { name: "children", type: "React.ReactNode", description: "(StepperIndicator) Conteúdo do círculo quando a etapa não está completed. Default: número da etapa (step + 1). Ignorado quando completed (sempre mostra o ícone de check)." },
-      { name: "...props", type: 'React.ComponentProps<"ol"> | React.ComponentProps<"li"> | React.ComponentProps<"button"> | React.ComponentProps<"span">', description: "Demais atributos nativos do elemento raiz de cada subcomponente." },
+      { name: "...props", type: "React.ComponentProps<\"ol\"> | React.ComponentProps<\"li\"> | React.ComponentProps<\"button\"> | React.ComponentProps<\"span\">", description: "Demais atributos nativos do elemento raiz de cada subcomponente." },
     ],
   },
-
   "split-button": {
     description: "Combina um botão de ação primária com um menu suspenso de ações secundárias relacionadas, permitindo que o usuário acesse rapidamente a opção mais usada, com a opção de escolher outras ações relacionadas através de um menu.",
     whenToUse: "Use quando existe uma ação principal clara e mais frequente, mas também existem uma ou mais ações secundárias relacionadas que fazem sentido no mesmo lugar (ex: \"Salvar\" como principal, com \"Salvar como rascunho\"/\"Salvar e sair\" como secundárias). Não é substituto de um DropdownMenu genérico: o botão principal precisa executar uma ação por si só, sem abrir o menu. Se todas as opções tiverem peso igual (nenhuma é \"a ação mais comum\"), prefira um DropdownMenu simples ou um ButtonGroup com botões separados.",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description:
-          'ButtonGroup (já existente no catálogo) com data-slot="split-button" sobrescrevendo o data-slot="button-group" padrão — visual "colado" herdado de graça do ButtonGroup.',
-      },
-      {
-        part: "Botão de ação principal",
-        description: "Button com label/icon/onClick repassados diretamente. Sempre a primeira peça do grupo.",
-      },
-      {
-        part: "Trigger do menu (ícone-only)",
-        description:
-          'Button size="icon"/"icon-sm"/"icon-lg" dentro de DropdownMenuTrigger asChild, contendo <Icon name="keyboard_arrow_down" />. Precisa de aria-label próprio (prop triggerLabel) por ser ícone-only.',
-      },
-      {
-        part: "Menu suspenso",
-        description:
-          'DropdownMenu + DropdownMenuContent (já existentes) — abre a partir do trigger, alinhamento controlável via prop align (default "end").',
-      },
-      {
-        part: "Itens do menu",
-        description:
-          "Composição via children — DropdownMenuItem/DropdownMenuSeparator/DropdownMenuLabel etc., os mesmos subcomponentes já exportados por dropdown-menu.tsx.",
-      },
+      { part: "Elemento raiz", description: "ButtonGroup (já existente no catálogo) com data-slot=\"split-button\" sobrescrevendo o data-slot=\"button-group\" padrão — visual \"colado\" herdado de graça do ButtonGroup." },
+      { part: "Botão de ação principal", description: "Button com label/icon/onClick repassados diretamente. Sempre a primeira peça do grupo." },
+      { part: "Trigger do menu (ícone-only)", description: "Button size=\"icon\"/\"icon-sm\"/\"icon-lg\" dentro de DropdownMenuTrigger asChild, contendo <Icon name=\"keyboard_arrow_down\" />. Precisa de aria-label próprio (prop triggerLabel) por ser ícone-only." },
+      { part: "Menu suspenso", description: "DropdownMenu + DropdownMenuContent (já existentes) — abre a partir do trigger, alinhamento controlável via prop align (default \"end\")." },
+      { part: "Itens do menu", description: "Composição via children — DropdownMenuItem/DropdownMenuSeparator/DropdownMenuLabel etc., os mesmos subcomponentes já exportados por dropdown-menu.tsx." },
     ],
     variants: [
       { name: "Default", value: "default", description: "Ação principal com maior ênfase visual (bg-primary)." },
@@ -897,22 +707,21 @@ import { Icon } from "@/components/ui/icon"
       { name: "label", type: "React.ReactNode", description: "Texto da ação principal — nome acessível do botão principal (obrigatório)." },
       { name: "icon", type: "React.ReactNode", description: "Ícone opcional antes do label, na ação principal." },
       { name: "onClick", type: "() => void", description: "Handler da ação principal." },
-      { name: "variant", type: '"default" | "secondary" | "outline" | "ghost" | "destructive" | "link"', default: '"default"', description: "Estilo visual — aplicado ao botão principal e ao trigger do menu." },
-      { name: "size", type: '"default" | "sm" | "lg"', default: '"default"', description: "Tamanho do botão principal; o trigger deriva o size ícone-only correspondente." },
+      { name: "variant", type: "\"default\" | \"secondary\" | \"outline\" | \"ghost\" | \"destructive\" | \"link\"", default: "\"default\"", description: "Estilo visual — aplicado ao botão principal e ao trigger do menu." },
+      { name: "size", type: "\"default\" | \"sm\" | \"lg\"", default: "\"default\"", description: "Tamanho do botão principal; o trigger deriva o size ícone-only correspondente." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa toda a composição (botão principal + trigger do menu)." },
-      { name: "triggerLabel", type: "string", default: '"Mais ações"', description: "aria-label do botão-trigger do menu (ícone-only)." },
-      { name: "align", type: '"start" | "center" | "end"', default: '"end"', description: "Alinhamento do menu suspenso em relação ao trigger." },
+      { name: "triggerLabel", type: "string", default: "\"Mais ações\"", description: "aria-label do botão-trigger do menu (ícone-only)." },
+      { name: "align", type: "\"start\" | \"center\" | \"end\"", default: "\"end\"", description: "Alinhamento do menu suspenso em relação ao trigger." },
       { name: "children", type: "React.ReactNode", description: "Itens do menu, compostos via DropdownMenuItem/DropdownMenuSeparator/etc (obrigatório)." },
       { name: "className", type: "string", description: "Aplicado ao ButtonGroup raiz." },
-      { name: "...props", type: 'Omit<React.ComponentProps<typeof ButtonGroup>, "children" | "orientation">', description: "Demais atributos nativos repassados ao ButtonGroup raiz." },
+      { name: "...props", type: "Omit<React.ComponentProps<typeof ButtonGroup>, \"children\" | \"orientation\">", description: "Demais atributos nativos repassados ao ButtonGroup raiz." },
     ],
   },
-
   switch: {
     description: "Um controle que permite ao usuário alternar entre ativado e desativado.",
     whenToUse: "Use para ativar ou desativar uma configuração imediatamente, sem precisar de um botão de confirmação separado.",
     anatomy: [
-      { part: "Root", description: 'SwitchPrimitive.Root — trilho (data-state=checked altera a cor de fundo).' },
+      { part: "Root", description: "SwitchPrimitive.Root — trilho (data-state=checked altera a cor de fundo)." },
       { part: "Thumb", description: "Bolinha que deslinza — translateX conforme o estado." },
     ],
     variants: [],
@@ -938,29 +747,17 @@ import { Label } from "@/components/ui/label"
     props: [
       { name: "checked / defaultChecked", type: "boolean", description: "Estado controlado ou inicial." },
       { name: "onCheckedChange", type: "(checked: boolean) => void", description: "Callback de mudança." },
-      { name: "size", type: '"sm" | "default"', default: '"default"', description: "Dimensão do switch." },
+      { name: "size", type: "\"sm\" | \"default\"", default: "\"default\"", description: "Dimensão do switch." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa interação." },
     ],
   },
-
   tag: {
     description: "Categoriza informação, organiza ou indica o status de elementos usando palavras-chave, ícones ou cores.",
     whenToUse: "Use para categorizar informação de forma estática — rótulo fixo, não removível (ex.: categoria de um item, status de um registro). Não confunda com componentes vizinhos: use Chip para representar um critério de filtro/busca ativo, tipicamente removível; use Badge para reportar contagem de itens pendentes/status pontual. Tag é especificamente para categorização estática, sem botão de remover, sem interatividade própria.",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description:
-          'Um <span> (ou o filho, via asChild) com data-slot="tag" e data-variant. Não é interativo por padrão — sem foco, sem onClick próprio.',
-      },
-      {
-        part: "Conteúdo (ícone opcional + label)",
-        description:
-          'Via children — não existe prop icon dedicada. Ícone, quando usado, é composto livremente junto do texto (ex.: <Tag><Icon name="sell" />Promoção</Tag>). Tamanho de ícone herdado via [&>svg]:size-3.',
-      },
-      {
-        part: "Skeleton (Tag.Skeleton)",
-        description: "Placeholder de carregamento com o mesmo formato do tag real, pra evitar layout shift.",
-      },
+      { part: "Elemento raiz", description: "Um <span> (ou o filho, via asChild) com data-slot=\"tag\" e data-variant. Não é interativo por padrão — sem foco, sem onClick próprio." },
+      { part: "Conteúdo (ícone opcional + label)", description: "Via children — não existe prop icon dedicada. Ícone, quando usado, é composto livremente junto do texto (ex.: <Tag><Icon name=\"sell\" />Promoção</Tag>). Tamanho de ícone herdado via [&>svg]:size-3." },
+      { part: "Skeleton (Tag.Skeleton)", description: "Placeholder de carregamento com o mesmo formato do tag real, pra evitar layout shift." },
     ],
     variants: [
       { name: "Default", value: "default", description: "Fundo --muted, borda --border, texto --muted-foreground — aparência neutra padrão. Sem escala de 10 passos própria (só existe pra info/success/warning/danger), por isso reaproveita os tokens semânticos neutros já existentes em vez de uma escala nova." },
@@ -1004,22 +801,17 @@ import { Icon } from "@/components/ui/icon"
 <Tag.Skeleton />`,
     props: [
       { name: "children", type: "React.ReactNode", description: "Conteúdo do tag — texto e, opcionalmente, um ícone composto junto (obrigatório)." },
-      { name: "variant", type: '"default" | "primary" | "success" | "warning" | "danger" | "ai-generated"', default: '"default"', description: "Aparência visual do tag — sempre fundo claro + borda + texto, na mesma paleta de tom." },
+      { name: "variant", type: "\"default\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"ai-generated\"", default: "\"default\"", description: "Aparência visual do tag — sempre fundo claro + borda + texto, na mesma paleta de tom." },
       { name: "highlight", type: "boolean", default: "false", description: "Inverte fundo⇄texto do variant ativo e remove a borda, pra destacar o tag sem trocar de variant." },
       { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <span>." },
-      { name: "...props", type: 'React.ComponentProps<"span">', description: "Demais atributos nativos do elemento raiz." },
+      { name: "...props", type: "React.ComponentProps<\"span\">", description: "Demais atributos nativos do elemento raiz." },
     ],
   },
-
   text: {
     description: "O componente de texto, usado para escrever e formatar blocos de conteúdo dentro de páginas ou componentes.",
     whenToUse: "Use para escrever texto de corpo com hierarquia básica (tamanho, peso, cor) e para formatar trechos específicos de conteúdo. Controle o elemento HTML renderizado via prop `as` para manter a semântica correta (parágrafo vs. texto inline vs. contêiner de bloco).",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description:
-          'Um <p>, <span> ou <div> (controlado pela prop `as`, default "p") com data-slot="text", data-size e data-weight. Sem subcomponentes — wrapper tipográfico único, mesma lógica do Label.',
-      },
+      { part: "Elemento raiz", description: "Um <p>, <span> ou <div> (controlado pela prop `as`, default \"p\") com data-slot=\"text\", data-size e data-weight. Sem subcomponentes — wrapper tipográfico único, mesma lógica do Label." },
     ],
     variants: [
       { name: "Regular", value: "regular", description: "Peso padrão da fonte — font-normal." },
@@ -1051,20 +843,19 @@ import { Icon } from "@/components/ui/icon"
 // Trecho inline, dentro de outro bloco de texto
 <Text as="span" weight="medium">Texto inline.</Text>`,
     props: [
-      { name: "as", type: '"p" | "span" | "div"', default: '"p"', description: "Elemento HTML renderizado. O Nimbus real só documenta \"p\"|\"span\" — \"div\" foi incluído por pedido explícito do escopo desta tarefa." },
-      { name: "size", type: '"caption" | "base" | "highlight"', default: '"base"', description: "Tamanho do texto (nomes iguais ao fontSize do Nimbus)." },
-      { name: "weight", type: '"regular" | "medium" | "bold"', default: '"regular"', description: "Peso da fonte (mesmos nomes do fontWeight do Nimbus)." },
+      { name: "as", type: "\"p\" | \"span\" | \"div\"", default: "\"p\"", description: "Elemento HTML renderizado. O Nimbus real só documenta \"p\"|\"span\" — \"div\" foi incluído por pedido explícito do escopo desta tarefa." },
+      { name: "size", type: "\"caption\" | \"base\" | \"highlight\"", default: "\"base\"", description: "Tamanho do texto (nomes iguais ao fontSize do Nimbus)." },
+      { name: "weight", type: "\"regular\" | \"medium\" | \"bold\"", default: "\"regular\"", description: "Peso da fonte (mesmos nomes do fontWeight do Nimbus)." },
       { name: "muted", type: "boolean", default: "false", description: "Quando true, usa text-muted-foreground em vez de text-foreground. Substitui a prop `color` (22 variações) do Nimbus — este catálogo ainda não tem tokens de cor de texto por família semântica." },
       { name: "children", type: "React.ReactNode", description: "Conteúdo de texto (obrigatório)." },
-      { name: "...props", type: 'React.ComponentProps<"p">', description: "Demais atributos nativos do elemento raiz (compatível com p/span/div)." },
+      { name: "...props", type: "React.ComponentProps<\"p\">", description: "Demais atributos nativos do elemento raiz (compatível com p/span/div)." },
     ],
   },
-
   textarea: {
     description: "Exibe uma área de texto (textarea) de formulário ou um componente com aparência de textarea.",
     whenToUse: "Use para capturar textos mais longos, como comentários, descrições ou mensagens.",
     anatomy: [
-      { part: "Elemento raiz", description: 'Um <textarea> com field-sizing-content — cresce com o conteúdo até o min-h-16.' },
+      { part: "Elemento raiz", description: "Um <textarea> com field-sizing-content — cresce com o conteúdo até o min-h-16." },
     ],
     variants: [],
     states: [
@@ -1082,38 +873,19 @@ import { Icon } from "@/components/ui/icon"
     props: [
       { name: "label", type: "React.ReactNode", description: "Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
       { name: "animatedLabel", type: "boolean", default: "false", description: "Com label presente, ativa o padrão de label flutuante (motion) em vez da label fixa acima do campo." },
-      { name: "...props", type: 'React.ComponentProps<"textarea">', description: "Todos os atributos nativos de <textarea>." },
+      { name: "...props", type: "React.ComponentProps<\"textarea\">", description: "Todos os atributos nativos de <textarea>." },
     ],
   },
-
   thumbnail: {
     description: "O Thumbnail serve para exibir miniaturas de imagem, com um container de cantos arredondados para apresentar conteúdo visual.",
     whenToUse: "Use para visualização de imagem de produto, exibição em galeria de imagens ou apresentação de foto em detalhe de pedido/anexo. Sem dimensões fixas — altura e largura são customizáveis, sempre respeitando a proporção escolhida para não distorcer a imagem.",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description: 'Um <div> com data-slot="thumbnail" e data-size, controla o tamanho (largura) via cva.',
-      },
-      {
-        part: "Wrapper de proporção",
-        description: "AspectRatio (Radix, mesmo componente de aspect-ratio.tsx) — mantém a proporção (ratio numérico) sem distorcer a imagem.",
-      },
-      {
-        part: "Imagem",
-        description: 'Um <img> nativo com data-slot="thumbnail-image", object-cover, tratamento de erro via onError.',
-      },
-      {
-        part: "Fallback",
-        description: 'Mostrado quando src está vazio/ausente ou a imagem falha ao carregar. <div role="img" aria-label={alt}>, sem ícone — só a cor de fundo do token --muted.',
-      },
-      {
-        part: "Conteúdo sobreposto (opcional)",
-        description: "children — nó sobreposto à imagem (ex.: badge de status), via composição.",
-      },
-      {
-        part: "Skeleton (Thumbnail.Skeleton)",
-        description: "Placeholder de carregamento com o mesmo tamanho e proporção do thumbnail real, evita layout shift.",
-      },
+      { part: "Elemento raiz", description: "Um <div> com data-slot=\"thumbnail\" e data-size, controla o tamanho (largura) via cva." },
+      { part: "Wrapper de proporção", description: "AspectRatio (Radix, mesmo componente de aspect-ratio.tsx) — mantém a proporção (ratio numérico) sem distorcer a imagem." },
+      { part: "Imagem", description: "Um <img> nativo com data-slot=\"thumbnail-image\", object-cover, tratamento de erro via onError." },
+      { part: "Fallback", description: "Mostrado quando src está vazio/ausente ou a imagem falha ao carregar. <div role=\"img\" aria-label={alt}>, sem ícone — só a cor de fundo do token --muted." },
+      { part: "Conteúdo sobreposto (opcional)", description: "children — nó sobreposto à imagem (ex.: badge de status), via composição." },
+      { part: "Skeleton (Thumbnail.Skeleton)", description: "Placeholder de carregamento com o mesmo tamanho e proporção do thumbnail real, evita layout shift." },
     ],
     variants: [],
     states: [
@@ -1149,26 +921,25 @@ import { Icon } from "@/components/ui/icon"
     props: [
       { name: "src", type: "string", description: "Origem da imagem. Vazio/ausente aciona o fallback direto." },
       { name: "alt", type: "string", description: "Nome acessível da imagem (obrigatório). Usado também como aria-label do fallback." },
-      { name: "size", type: '"sm" | "default" | "lg"', default: '"default"', description: "Largura do thumbnail." },
-      { name: "aspectRatio", type: '"1/1" | "4/3" | "3/4" | "16/9" | "9/16" | "2/1" | "1/2"', default: '"1/1"', description: "Proporção largura/altura." },
+      { name: "size", type: "\"sm\" | \"default\" | \"lg\"", default: "\"default\"", description: "Largura do thumbnail." },
+      { name: "aspectRatio", type: "\"1/1\" | \"4/3\" | \"3/4\" | \"16/9\" | \"9/16\" | \"2/1\" | \"1/2\"", default: "\"1/1\"", description: "Proporção largura/altura." },
       { name: "children", type: "React.ReactNode", description: "Conteúdo sobreposto à imagem (ex.: badge)." },
-      { name: "...props", type: 'Omit<React.ComponentProps<"img">, "className" | "alt">', description: "Demais atributos nativos de <img> (loading, decoding, crossOrigin, onError...)." },
+      { name: "...props", type: "Omit<React.ComponentProps<\"img\">, \"className\" | \"alt\">", description: "Demais atributos nativos de <img> (loading, decoding, crossOrigin, onError...)." },
     ],
   },
-
   "time-picker": {
     description: "Permite que o usuário selecione um horário (hora e minuto), com suporte a formato 24h ou 12h com AM/PM.",
     whenToUse: "Use quando o usuário precisar informar um horário específico (ex: horário de um agendamento, de uma notificação, de um evento). Para datas, use Calendar/DatePicker — TimePicker cobre só a parte de hora:minuto.",
     anatomy: [
-      { part: "Trigger", description: 'Um <Button variant="outline"> com <Icon name="calendar_today" /> e o horário formatado (ou o placeholder em text-muted-foreground quando vazio), dentro de um PopoverTrigger asChild.' },
-      { part: "PopoverContent", description: 'Linha com 2 ou 3 Selects (Hora, Minuto e, quando format="12h", Período), cada um com um rótulo de texto pequeno acima.' },
-      { part: "Select Hora", description: 'Lista "00"–"23" (format 24h) ou "1"–"12" (format 12h), sempre exibida com 2 dígitos.' },
+      { part: "Trigger", description: "Um <Button variant=\"outline\"> com <Icon name=\"calendar_today\" /> e o horário formatado (ou o placeholder em text-muted-foreground quando vazio), dentro de um PopoverTrigger asChild." },
+      { part: "PopoverContent", description: "Linha com 2 ou 3 Selects (Hora, Minuto e, quando format=\"12h\", Período), cada um com um rótulo de texto pequeno acima." },
+      { part: "Select Hora", description: "Lista \"00\"–\"23\" (format 24h) ou \"1\"–\"12\" (format 12h), sempre exibida com 2 dígitos." },
       { part: "Select Minuto", description: "Lista de 0 a <60 em incrementos de minuteStep (default 5)." },
-      { part: "Select Período", description: 'Só existe quando format="12h" — AM ou PM.' },
+      { part: "Select Período", description: "Só existe quando format=\"12h\" — AM ou PM." },
     ],
     variants: [],
     states: [
-      { name: "Vazio", description: 'value ausente/inválido — trigger mostra placeholder, Selects mostram "--".' },
+      { name: "Vazio", description: "value ausente/inválido — trigger mostra placeholder, Selects mostram \"--\"." },
       { name: "Preenchido", description: "value válido — trigger mostra o horário formatado conforme format." },
       { name: "Aberto", description: "Popover aberto — não fecha sozinho ao escolher hora/minuto (escolha composta em 2-3 passos), só fecha por Escape/clique fora/novo clique no trigger." },
       { name: "Disabled", description: "prop disabled — desativa o trigger (não abre o Popover) e os Selects internos." },
@@ -1195,27 +966,22 @@ function Exemplo() {
 // Desabilitado
 <TimePicker value="09:00" disabled />`,
     props: [
-      { name: "value", type: "string", description: 'Horário controlado, sempre em "HH:mm" 24h (ex.: "14:30"), independente do format de exibição.' },
-      { name: "onValueChange", type: "(value: string) => void", description: 'Callback disparado ao escolher hora/minuto/período, com o value já recomposto em "HH:mm" 24h.' },
-      { name: "format", type: '"24h" | "12h"', default: '"24h"', description: "Formato de exibição/seleção — o value armazenado continua sempre 24h em qualquer um dos dois." },
+      { name: "value", type: "string", description: "Horário controlado, sempre em \"HH:mm\" 24h (ex.: \"14:30\"), independente do format de exibição." },
+      { name: "onValueChange", type: "(value: string) => void", description: "Callback disparado ao escolher hora/minuto/período, com o value já recomposto em \"HH:mm\" 24h." },
+      { name: "format", type: "\"24h\" | \"12h\"", default: "\"24h\"", description: "Formato de exibição/seleção — o value armazenado continua sempre 24h em qualquer um dos dois." },
       { name: "minuteStep", type: "number", default: "5", description: "Intervalo entre minutos selecionáveis (1–60)." },
-      { name: "placeholder", type: "string", default: '"Selecione um horário"', description: "Texto do trigger quando value está vazio." },
+      { name: "placeholder", type: "string", default: "\"Selecione um horário\"", description: "Texto do trigger quando value está vazio." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa o trigger e os Selects internos." },
       { name: "className", type: "string", description: "Classes aplicadas ao Button de trigger." },
       { name: "contentClassName", type: "string", description: "Classes aplicadas ao PopoverContent." },
-      { name: "...props", type: 'React.ComponentProps<"button">', description: "Demais atributos nativos repassados ao Button de trigger (exceto value/onChange/children)." },
+      { name: "...props", type: "React.ComponentProps<\"button\">", description: "Demais atributos nativos repassados ao Button de trigger (exceto value/onChange/children)." },
     ],
   },
-
   title: {
     description: "Aplica hierarquia visual e semântica ao conteúdo de uma página.",
     whenToUse: "Use para títulos e subtítulos de telas, páginas, blocos de texto, seções ou outros componentes. A hierarquia semântica (elemento HTML real, h1-h6) é controlada pela prop `as`; a hierarquia visual (tamanho/peso) é controlada pela prop `size` — as duas são independentes por design, não só por implementação.",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description:
-          'Um dos elementos <h1>-<h6>, escolhido via prop `as` (default "h2"), com data-slot="title", data-as e data-size.',
-      },
+      { part: "Elemento raiz", description: "Um dos elementos <h1>-<h6>, escolhido via prop `as` (default \"h2\"), com data-slot=\"title\", data-as e data-size." },
     ],
     variants: [],
     states: [],
@@ -1243,18 +1009,17 @@ function Exemplo() {
   Destaque desta seção
 </Title>`,
     props: [
-      { name: "as", type: '"h1" | "h2" | "h3" | "h4" | "h5" | "h6"', default: '"h2"', description: "Elemento HTML real renderizado — controla a hierarquia semântica do documento." },
-      { name: "size", type: '"h1" | "h2" | "h3" | "h4" | "h5" | "h6"', description: "Escala visual aplicada (ver Tamanhos). Independente de `as` — quando omitida, acompanha o valor de `as`." },
+      { name: "as", type: "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"", default: "\"h2\"", description: "Elemento HTML real renderizado — controla a hierarquia semântica do documento." },
+      { name: "size", type: "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"", description: "Escala visual aplicada (ver Tamanhos). Independente de `as` — quando omitida, acompanha o valor de `as`." },
       { name: "children", type: "React.ReactNode", description: "Texto do título (obrigatório)." },
-      { name: "...props", type: 'React.ComponentProps<"h1">', description: "Demais atributos nativos do elemento raiz (id, onClick, aria-*, etc.)." },
+      { name: "...props", type: "React.ComponentProps<\"h1\">", description: "Demais atributos nativos do elemento raiz (id, onClick, aria-*, etc.)." },
     ],
   },
-
   toggle: {
     description: "Um botão de dois estados, que pode estar ativado ou desativado.",
     whenToUse: "Use para uma ação isolada com estado binário, como favoritar ou negrito/itálico numa toolbar, sem formar um grupo.",
     anatomy: [
-      { part: "Elemento raiz", description: 'TogglePrimitive.Root — data-state="on"/"off".' },
+      { part: "Elemento raiz", description: "TogglePrimitive.Root — data-state=\"on\"/\"off\"." },
     ],
     variants: [
       { name: "Default", value: "default", description: "Fundo transparente até ativar." },
@@ -1279,13 +1044,12 @@ function Exemplo() {
   Negrito
 </Toggle>`,
     props: [
-      { name: "variant", type: '"default" | "outline"', default: '"default"', description: "Estilo visual." },
-      { name: "size", type: '"default" | "sm" | "lg"', default: '"default"', description: "Dimensão." },
+      { name: "variant", type: "\"default\" | \"outline\"", default: "\"default\"", description: "Estilo visual." },
+      { name: "size", type: "\"default\" | \"sm\" | \"lg\"", default: "\"default\"", description: "Dimensão." },
       { name: "pressed / defaultPressed", type: "boolean", description: "Estado controlado ou inicial." },
       { name: "onPressedChange", type: "(pressed: boolean) => void", description: "Callback de mudança." },
     ],
   },
-
   tooltip: {
     description: "Um popup que exibe informações relacionadas a um elemento quando ele recebe foco de teclado ou o mouse passa sobre ele.",
     whenToUse: "Use para complementar um elemento com uma explicação curta, sem ocupar espaço permanente na tela.",
@@ -1310,17 +1074,16 @@ function Exemplo() {
   <TooltipContent>Conteúdo do tooltip</TooltipContent>
 </Tooltip>`,
     props: [
-      { name: "side", type: '"top" | "right" | "bottom" | "left"', default: '"top"', description: "(TooltipContent) lado preferido de exibição." },
+      { name: "side", type: "\"top\" | \"right\" | \"bottom\" | \"left\"", default: "\"top\"", description: "(TooltipContent) lado preferido de exibição." },
       { name: "sideOffset", type: "number", default: "0", description: "Distância do trigger." },
-      { name: "align", type: '"start" | "center" | "end"', default: '"center"', description: "Alinhamento em relação ao trigger." },
+      { name: "align", type: "\"start\" | \"center\" | \"end\"", default: "\"center\"", description: "Alinhamento em relação ao trigger." },
     ],
   },
-
   "aspect-ratio": {
     description: "Exibe conteúdo dentro de uma proporção desejada.",
     whenToUse: "Use para manter a proporção de imagens, vídeos ou embeds ao redimensionar o layout.",
     anatomy: [
-      { part: "Elemento raiz", description: 'AspectRatioPrimitive.Root — wrapper que reserva o espaço proporcional pro conteúdo filho (ex: uma imagem).' },
+      { part: "Elemento raiz", description: "AspectRatioPrimitive.Root — wrapper que reserva o espaço proporcional pro conteúdo filho (ex: uma imagem)." },
     ],
     variants: [],
     states: [],
@@ -1336,7 +1099,6 @@ function Exemplo() {
       { name: "ratio", type: "number", default: "1", description: "Proporção largura/altura (ex: 16 / 9)." },
     ],
   },
-
   "tree-select": {
     description: "Campo de seleção em árvore: escolhe valores de uma lista hierárquica dentro de um painel flutuante. Tem três variações: single (um valor), multiple (vários valores, nó a nó) e checkable (vários valores com caixa de marcação e cascata pai/filhos).",
     whenToUse: "Use quando as opções têm hierarquia (grupo > item) e o usuário precisa escolher entre elas. Prefira checkable quando marcar um grupo deve marcar tudo dentro dele; multiple quando cada nó é independente; single para um valor só. Para listas planas, use Select (um valor) ou MultiSelect (vários).",
@@ -1396,23 +1158,22 @@ function Exemplo() {
       { name: "onValueChange", type: "(value) => void", description: "Em checkable devolve sempre as folhas marcadas." },
       { name: "multiple", type: "boolean", default: "false", description: "Vários valores, nó a nó." },
       { name: "checkable", type: "boolean", default: "false", description: "Caixas de marcação com cascata pai/filhos (implica multiple)." },
-      { name: "showCheckedStrategy", type: '"child" | "parent" | "all"', default: '"child"', description: "Só checkable. Como as marcações aparecem no campo." },
+      { name: "showCheckedStrategy", type: "\"child\" | \"parent\" | \"all\"", default: "\"child\"", description: "Só checkable. Como as marcações aparecem no campo." },
       { name: "defaultExpandAll", type: "boolean", default: "false", description: "Abre com todos os nós expandidos." },
       { name: "defaultExpandedValues", type: "string[]", description: "Nós expandidos no primeiro render." },
-      { name: "placeholder", type: "string", default: '"Selecione..."', description: "Texto com o campo vazio." },
+      { name: "placeholder", type: "string", default: "\"Selecione...\"", description: "Texto com o campo vazio." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa o campo." },
       { name: "aria-label", type: "string", description: "Nome acessível do campo e da árvore." },
       { name: "showSearch", type: "boolean", default: "true", description: "Campo de busca no topo do painel." },
       { name: "allowClear", type: "boolean", default: "false", description: "Botão de limpar a seleção (X) no campo." },
       { name: "maxTagCount", type: "number", description: "Multiple/checkable: máximo de tags visíveis no campo; o resto vira +N." },
-      { name: "emptyText", type: "string", default: '"Nenhum resultado encontrado."', description: "Texto quando a busca não encontra nós." },
+      { name: "emptyText", type: "string", default: "\"Nenhum resultado encontrado.\"", description: "Texto quando a busca não encontra nós." },
       { name: "dropdownClassName", type: "string", description: "Classes extras para o painel flutuante." },
-      { name: "searchPlaceholder", type: "string", default: '"Buscar..."', description: "Texto do campo de busca. Use para o vocabulário do produto." },
-      { name: "selectAllLabel", type: "string", default: '"Todos"', description: "Só checkable: rótulo da ação que marca todas as folhas." },
-      { name: "selectedCountText", type: "(count: number) => string", default: '"Nenhum item selecionado" / "N selecionado(s)"', description: "Só checkable: frase do contador no rodapé." },
+      { name: "searchPlaceholder", type: "string", default: "\"Buscar...\"", description: "Texto do campo de busca. Use para o vocabulário do produto." },
+      { name: "selectAllLabel", type: "string", default: "\"Todos\"", description: "Só checkable: rótulo da ação que marca todas as folhas." },
+      { name: "selectedCountText", type: "(count: number) => string", default: "\"Nenhum item selecionado\" / \"N selecionado(s)\"", description: "Só checkable: frase do contador no rodapé." },
     ],
   },
-
   "multi-select": {
     description: "Campo de seleção múltipla: permite escolher mais de uma opção de uma lista, exibindo cada escolha como um chip removível dentro do próprio campo.",
     whenToUse: "Use quando o usuário precisar escolher mais de uma opção de uma lista de opções pré-definidas, com as seleções visíveis e removíveis individualmente sem reabrir a lista completa. Não confunda com componentes vizinhos: use Select quando só uma opção pode ser escolhida por vez; use Combobox em modo single para buscar-e-escolher um único valor com autocompletar.",
@@ -1433,7 +1194,7 @@ function Exemplo() {
       { name: "Item em destaque", description: "Navegação por teclado dentro do painel (herdado do Combobox)." },
       { name: "Busca sem resultado", description: "ComboboxEmpty visível com o texto de emptyText." },
       { name: "Disabled", description: "Campo, chips e busca desativados (prop disabled)." },
-      { name: "Removendo um chip", description: 'Clique no botão "x" do chip ou Backspace com o campo de busca vazio remove a última seleção — comportamento nativo do ComboboxChips.' },
+      { name: "Removendo um chip", description: "Clique no botão \"x\" do chip ou Backspace com o campo de busca vazio remove a última seleção — comportamento nativo do ComboboxChips." },
     ],
     sizes: [],
     doGuidelines: ["[a preencher]"],
@@ -1467,8 +1228,8 @@ function Exemplo() {
       { name: "options", type: "{ label: string; value: string }[]", description: "Lista de opções disponíveis (obrigatório)." },
       { name: "value", type: "string[]", description: "Valores selecionados atualmente — sempre controlado (obrigatório)." },
       { name: "onValueChange", type: "(value: string[]) => void", description: "Disparado quando a seleção muda (clique num item, remoção de chip ou Backspace)." },
-      { name: "placeholder", type: "string", default: '"Selecione..."', description: "Texto do campo de busca quando não há seleção." },
-      { name: "emptyText", type: "string", default: '"Nenhum resultado encontrado."', description: "Texto exibido quando a busca não encontra nenhuma opção." },
+      { name: "placeholder", type: "string", default: "\"Selecione...\"", description: "Texto do campo de busca quando não há seleção." },
+      { name: "emptyText", type: "string", default: "\"Nenhum resultado encontrado.\"", description: "Texto exibido quando a busca não encontra nenhuma opção." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa campo, chips e busca." },
       { name: "className", type: "string", description: "Aplicada ao container de chips (ComboboxChips)." },
       { name: "id", type: "string", description: "Repassado à raiz do Combobox (uso em formulários)." },
@@ -1476,13 +1237,12 @@ function Exemplo() {
       { name: "aria-label", type: "string", description: "Nome acessível do campo de busca. Sem ele, cai no placeholder como fallback — prefira passar explicitamente." },
     ],
   },
-
   "native-select": {
     description: "Um elemento <select> nativo do HTML, estilizado e integrado de forma consistente ao design system.",
     whenToUse: "Use quando quiser o comportamento nativo do navegador para seleção (melhor em mobile e acessibilidade) em vez do Select customizado.",
     anatomy: [
       { part: "Wrapper", description: "div relativo que posiciona o ícone sobre o <select>." },
-      { part: "Elemento raiz", description: 'Um <select> nativo do navegador — data-slot="native-select".' },
+      { part: "Elemento raiz", description: "Um <select> nativo do navegador — data-slot=\"native-select\"." },
       { part: "Ícone", description: "Chevron decorativo (aria-hidden), não captura clique." },
       { part: "NativeSelectOption / OptGroup", description: "<option>/<optgroup> estilizados pra contraste em qualquer tema do SO." },
     ],
@@ -1506,24 +1266,23 @@ function Exemplo() {
   <NativeSelectOption value="pt">Portugal</NativeSelectOption>
 </NativeSelect>`,
     props: [
-      { name: "size", type: '"sm" | "default"', default: '"default"', description: "Dimensão do select." },
+      { name: "size", type: "\"sm\" | \"default\"", default: "\"default\"", description: "Dimensão do select." },
       { name: "label", type: "React.ReactNode", description: "Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
       { name: "animatedLabel", type: "boolean", default: "false", description: "Com label presente, ativa o padrão de label flutuante (motion). O gatilho de \"tem valor\" é estado React, não CSS puro — ver decisão provisória se precisar revisar." },
-      { name: "...props", type: 'React.ComponentProps<"select">', description: "Todos os atributos nativos de <select>." },
+      { name: "...props", type: "React.ComponentProps<\"select\">", description: "Todos os atributos nativos de <select>." },
     ],
   },
-
   "segmented-control": {
     description: "Um grupo de opções mutuamente excludentes em formato de pílula, com seleção sempre única.",
     whenToUse: "Use para alternar entre um pequeno número de visões/modos mutuamente excludentes do mesmo conteúdo (ex.: \"Dia / Semana / Mês\"), quando o item ativo precisa de destaque visual mais evidente do que o ToggleGroup padrão oferece. Não confunda com componentes vizinhos: use ToggleGroup quando precisar de seleção múltipla ou visual de botões com borda; use Tabs quando as opções também controlam a troca de um painel de conteúdo — SegmentedControl não tem painel associado, é só o seletor.",
     anatomy: [
-      { part: "SegmentedControl", description: 'Root — ToggleGroupPrimitive.Root da Radix com type="single" fixado internamente (não é uma prop exposta). Define size compartilhado via contexto e o fundo bg-muted + p-[3px] do "trilho" da pílula.' },
-      { part: "SegmentedControlItem", description: 'Cada opção — ToggleGroupPrimitive.Item. Herda size do grupo se não especificar o próprio. Fica com data-state="on" (fundo bg-background + sombra) quando selecionado.' },
+      { part: "SegmentedControl", description: "Root — ToggleGroupPrimitive.Root da Radix com type=\"single\" fixado internamente (não é uma prop exposta). Define size compartilhado via contexto e o fundo bg-muted + p-[3px] do \"trilho\" da pílula." },
+      { part: "SegmentedControlItem", description: "Cada opção — ToggleGroupPrimitive.Item. Herda size do grupo se não especificar o próprio. Fica com data-state=\"on\" (fundo bg-background + sombra) quando selecionado." },
     ],
     variants: [],
     states: [
       { name: "Off", description: "Item não selecionado — texto text-muted-foreground, sem fundo." },
-      { name: "On (selecionado)", description: 'data-state="on" — fundo bg-background, texto text-foreground, shadow-sm. Sempre exatamente um item selecionado por grupo.' },
+      { name: "On (selecionado)", description: "data-state=\"on\" — fundo bg-background, texto text-foreground, shadow-sm. Sempre exatamente um item selecionado por grupo." },
       { name: "Hover", description: "Item não selecionado ganha hover:text-foreground." },
       { name: "Focus", description: "focus-visible:ring com z-10, pra não ser cortado pelo item vizinho." },
       { name: "Disabled", description: "opacidade reduzida e pointer-events desativados — por item ou pelo grupo inteiro." },
@@ -1545,13 +1304,12 @@ function Exemplo() {
     props: [
       { name: "value / onValueChange", type: "string / (value: string) => void", description: "Valor selecionado (controlado). Sempre string — nunca array, porque type é fixado em \"single\"." },
       { name: "defaultValue", type: "string", description: "Valor inicial (não controlado)." },
-      { name: "size", type: '"sm" | "default" | "lg"', default: '"default"', description: "Aplicado a todos os itens via contexto, salvo item que sobrescreva o próprio size." },
+      { name: "size", type: "\"sm\" | \"default\" | \"lg\"", default: "\"default\"", description: "Aplicado a todos os itens via contexto, salvo item que sobrescreva o próprio size." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa o grupo inteiro (repassado a cada item)." },
-      { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "Direção de navegação por teclado (herdado da Radix)." },
-      { name: "...props", type: 'Omit<ToggleGroupPrimitive.ToggleGroupSingleProps, "type">', description: 'Demais props nativas do ToggleGroup.Root da Radix, exceto "type" (fixado internamente).' },
+      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção de navegação por teclado (herdado da Radix)." },
+      { name: "...props", type: "Omit<ToggleGroupPrimitive.ToggleGroupSingleProps, \"type\">", description: "Demais props nativas do ToggleGroup.Root da Radix, exceto \"type\" (fixado internamente)." },
     ],
   },
-
   select: {
     description: "Exibe uma lista de opções para o usuário escolher, acionada por um botão.",
     whenToUse: "Use para seleção única entre várias opções, quando quiser um menu customizado (com ícones, grupos etc.) em vez do select nativo.",
@@ -1596,13 +1354,12 @@ function Exemplo() {
     props: [
       { name: "value / defaultValue", type: "string", description: "(Select) valor selecionado." },
       { name: "onValueChange", type: "(value: string) => void", description: "(Select) callback de mudança." },
-      { name: "size", type: '"sm" | "default"', default: '"default"', description: "(SelectTrigger) dimensão." },
+      { name: "size", type: "\"sm\" | \"default\"", default: "\"default\"", description: "(SelectTrigger) dimensão." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa o select ou um item." },
       { name: "label", type: "React.ReactNode", description: "(SelectTrigger) Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
       { name: "animatedLabel", type: "boolean", default: "false", description: "(SelectTrigger) Com label presente, ativa o padrão de label flutuante (motion)." },
     ],
   },
-
   popover: {
     description: "Exibe conteúdo rico em um portal, acionado por um botão.",
     whenToUse: "Use para mostrar conteúdo adicional (formulário curto, opções, detalhes) ancorado a um elemento, sem sair da tela atual.",
@@ -1631,11 +1388,10 @@ import { Button } from "@/components/ui/button"
   <PopoverContent>Conteúdo do popover.</PopoverContent>
 </Popover>`,
     props: [
-      { name: "align", type: '"start" | "center" | "end"', default: '"center"', description: "(PopoverContent) alinhamento." },
+      { name: "align", type: "\"start\" | \"center\" | \"end\"", default: "\"center\"", description: "(PopoverContent) alinhamento." },
       { name: "sideOffset", type: "number", default: "4", description: "(PopoverContent) distância do trigger." },
     ],
   },
-
   item: {
     description: "Um componente versátil para exibir conteúdo com mídia, título, descrição e ações.",
     whenToUse: "Use como linha de lista genérica — contatos, arquivos, notificações — combinando ícone ou imagem, texto e ações.",
@@ -1676,34 +1432,19 @@ import { Icon } from "@/components/ui/icon"
   </ItemContent>
 </Item>`,
     props: [
-      { name: "variant", type: '"default" | "outline" | "muted"', default: '"default"', description: "Estilo visual da linha." },
-      { name: "size", type: '"default" | "sm"', default: '"default"', description: "Densidade (padding/gap)." },
+      { name: "variant", type: "\"default\" | \"outline\" | \"muted\"", default: "\"default\"", description: "Estilo visual da linha." },
+      { name: "size", type: "\"default\" | \"sm\"", default: "\"default\"", description: "Densidade (padding/gap)." },
       { name: "asChild", type: "boolean", default: "false", description: "Renderiza no elemento filho (ex: <a>)." },
     ],
   },
-
   link: {
     description: "O Link é um componente que possibilita a navegação entre páginas internas ou externas. É composto por texto e, opcionalmente, ícones.",
     whenToUse: "Use para navegar entre seções de um app ou site, para direcionar o usuário a páginas ou aplicações externas (nesse caso, inclua um ícone indicando a saída do contexto atual), ou para executar ações de menor destaque. O texto deve descrever claramente a ação, em linguagem coloquial e endereçada diretamente ao usuário. Ícones podem aparecer antes ou depois do texto — omita quando o link aparece dentro de um parágrafo corrido.",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description:
-          'Um <a> (ou o elemento filho, via asChild) com data-slot="link" e data-size. Reaproveita exatamente as classes de buttonVariants({ variant: "link", size }) — mesma cor (--primary), mesmo underline-offset-4 hover:underline.',
-      },
-      {
-        part: "Label",
-        description: "Texto do link — via `children` (obrigatório, é o nome acessível do link).",
-      },
-      {
-        part: "Ícone de saída (opcional)",
-        description:
-          'Só aparece quando `external=true`. <Icon name="open_in_new" /> renderizado depois do texto.',
-      },
-      {
-        part: "Skeleton (Link.Skeleton)",
-        description: "Placeholder de carregamento com o mesmo formato do link real por tamanho, pra evitar layout shift.",
-      },
+      { part: "Elemento raiz", description: "Um <a> (ou o elemento filho, via asChild) com data-slot=\"link\" e data-size. Reaproveita exatamente as classes de buttonVariants({ variant: \"link\", size }) — mesma cor (--primary), mesmo underline-offset-4 hover:underline." },
+      { part: "Label", description: "Texto do link — via `children` (obrigatório, é o nome acessível do link)." },
+      { part: "Ícone de saída (opcional)", description: "Só aparece quando `external=true`. <Icon name=\"open_in_new\" /> renderizado depois do texto." },
+      { part: "Skeleton (Link.Skeleton)", description: "Placeholder de carregamento com o mesmo formato do link real por tamanho, pra evitar layout shift." },
     ],
     variants: [],
     states: [
@@ -1746,27 +1487,26 @@ import NextLink from "next/link"
     props: [
       { name: "children", type: "React.ReactNode", description: "Texto do link (obrigatório)." },
       { name: "href", type: "string", description: "Herdado de React.ComponentProps<\"a\"> (nativo)." },
-      { name: "size", type: '"default" | "xs" | "sm" | "lg"', default: '"default"', description: "Reaproveita a escala de tamanho do Button (subconjunto sem os tamanhos icon-*)." },
-      { name: "external", type: "boolean", default: "false", description: 'Força target="_blank" + rel="noopener noreferrer" + ícone open_in_new depois do texto.' },
+      { name: "size", type: "\"default\" | \"xs\" | \"sm\" | \"lg\"", default: "\"default\"", description: "Reaproveita a escala de tamanho do Button (subconjunto sem os tamanhos icon-*)." },
+      { name: "external", type: "boolean", default: "false", description: "Força target=\"_blank\" + rel=\"noopener noreferrer\" + ícone open_in_new depois do texto." },
       { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <a>. Uso pretendido: compor com next/link." },
-      { name: "...props", type: 'React.ComponentProps<"a">', description: "Demais atributos nativos do elemento raiz (target, rel, etc., sobrescritos quando external=true)." },
+      { name: "...props", type: "React.ComponentProps<\"a\">", description: "Demais atributos nativos do elemento raiz (target, rel, etc., sobrescritos quando external=true)." },
     ],
   },
-
   list: {
     description: "Organiza informações em formato de texto numa lista.",
     whenToUse: "Use para organizar informações textuais verticalmente, quando fizer sentido apresentá-las como uma sequência numerada ou com marcadores. Use as=\"ol\" para sequências onde a ordem importa (passo a passo, instruções); use as=\"ul\" (default) quando a ordem não é relevante.",
     anatomy: [
-      { part: "List (elemento raiz)", description: 'Um <ul> ou <ol> (controlado pela prop as, default "ul") com data-slot="list", data-as e data-variant. Container que define o espaçamento vertical entre itens.' },
-      { part: "ListItem", description: 'Um <li> com data-slot="list-item". Cada linha da lista — pode conter texto simples ou qualquer composição (ex.: Item/ItemContent).' },
+      { part: "List (elemento raiz)", description: "Um <ul> ou <ol> (controlado pela prop as, default \"ul\") com data-slot=\"list\", data-as e data-variant. Container que define o espaçamento vertical entre itens." },
+      { part: "ListItem", description: "Um <li> com data-slot=\"list-item\". Cada linha da lista — pode conter texto simples ou qualquer composição (ex.: Item/ItemContent)." },
     ],
     variants: [
       { name: "Sem marcador", value: "none", description: "list-none — nenhum bullet/numerador visível. Uso mais comum neste catálogo: agrupar ListItem (com Item/ItemContent dentro, ou texto livre) numa lista vertical de layout." },
-      { name: "Com marcador", value: "marker", description: 'Bullet nativo (as="ul") ou numerador nativo (as="ol"), com a cor do marcador em --muted-foreground.' },
+      { name: "Com marcador", value: "marker", description: "Bullet nativo (as=\"ul\") ou numerador nativo (as=\"ol\"), com a cor do marcador em --muted-foreground." },
     ],
     states: [
-      { name: "Default", description: 'Estado de repouso — variant="none", as="ul".' },
-      { name: "Com marcador", description: 'variant="marker" — bullet ou numerador nativo, conforme as.' },
+      { name: "Default", description: "Estado de repouso — variant=\"none\", as=\"ul\"." },
+      { name: "Com marcador", description: "variant=\"marker\" — bullet ou numerador nativo, conforme as." },
     ],
     sizes: [],
     doGuidelines: ["[a preencher]"],
@@ -1798,13 +1538,12 @@ import { Item, ItemContent, ItemTitle, ItemDescription } from "@/components/ui/i
   <ListItem>Envie os documentos exigidos.</ListItem>
 </List>`,
     props: [
-      { name: "as", type: '"ul" | "ol"', default: '"ul"', description: "Elemento HTML renderizado." },
-      { name: "variant", type: '"none" | "marker"', default: '"none"', description: "Controla a visibilidade do marcador nativo. Decisão provisória, diverge do Nimbus (que não tem essa prop)." },
+      { name: "as", type: "\"ul\" | \"ol\"", default: "\"ul\"", description: "Elemento HTML renderizado." },
+      { name: "variant", type: "\"none\" | \"marker\"", default: "\"none\"", description: "Controla a visibilidade do marcador nativo. Decisão provisória, diverge do Nimbus (que não tem essa prop)." },
       { name: "children", type: "React.ReactNode", description: "Os ListItem (ou qualquer conteúdo)." },
-      { name: "...props", type: 'React.ComponentPropsWithoutRef<"ul">', description: "Demais atributos nativos do elemento raiz (compatível também com <ol>)." },
+      { name: "...props", type: "React.ComponentPropsWithoutRef<\"ul\">", description: "Demais atributos nativos do elemento raiz (compatível também com <ol>)." },
     ],
   },
-
   marker: {
     description: "Exibe um status em linha, uma nota do sistema, uma linha com borda ou um separador rotulado dentro de uma conversa.",
     whenToUse: "Use em interfaces de conversa (chat) para marcar eventos do sistema, status ou separadores entre mensagens.",
@@ -1832,16 +1571,15 @@ import { Icon } from "@/components/ui/icon"
   <MarkerContent>Etapa concluída</MarkerContent>
 </Marker>`,
     props: [
-      { name: "variant", type: '"default" | "separator" | "border"', default: '"default"', description: "Estilo visual da marca." },
+      { name: "variant", type: "\"default\" | \"separator\" | \"border\"", default: "\"default\"", description: "Estilo visual da marca." },
       { name: "asChild", type: "boolean", default: "false", description: "Renderiza no elemento filho." },
     ],
   },
-
   alert: {
     description: "Exibe um destaque para chamar a atenção do usuário.",
     whenToUse: "Use para comunicar uma informação importante, confirmação ou erro relacionado ao contexto atual da tela.",
     anatomy: [
-      { part: "Alert", description: 'Elemento raiz — <div role="alert"> em grid (ícone opcional na 1ª coluna).' },
+      { part: "Alert", description: "Elemento raiz — <div role=\"alert\"> em grid (ícone opcional na 1ª coluna)." },
       { part: "AlertTitle", description: "Linha de título, uma linha só (line-clamp-1)." },
       { part: "AlertDescription", description: "Corpo do texto, pode ter múltiplos parágrafos." },
     ],
@@ -1864,16 +1602,15 @@ import { Icon } from "@/components/ui/icon"
   </AlertDescription>
 </Alert>`,
     props: [
-      { name: "variant", type: '"default" | "destructive"', default: '"default"', description: "Estilo visual do alerta." },
-      { name: "...props", type: 'React.ComponentProps<"div">', description: "Atributos nativos de <div>." },
+      { name: "variant", type: "\"default\" | \"destructive\"", default: "\"default\"", description: "Estilo visual do alerta." },
+      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Atributos nativos de <div>." },
     ],
   },
-
   breadcrumb: {
     description: "Exibe o caminho até o recurso atual usando uma hierarquia de links.",
     whenToUse: "Use para mostrar a localização da página atual dentro da estrutura de navegação do produto.",
     anatomy: [
-      { part: "Breadcrumb", description: 'Elemento raiz — <nav aria-label="breadcrumb">.' },
+      { part: "Breadcrumb", description: "Elemento raiz — <nav aria-label=\"breadcrumb\">." },
       { part: "BreadcrumbList", description: "<ol> que envolve os itens." },
       { part: "BreadcrumbItem", description: "<li> — um nível da trilha." },
       { part: "BreadcrumbLink", description: "Item navegável (<a> ou filho via asChild)." },
@@ -1910,12 +1647,11 @@ import { Icon } from "@/components/ui/icon"
       { name: "asChild", type: "boolean", default: "false", description: "(BreadcrumbLink) renderiza no elemento filho." },
     ],
   },
-
   "button-group": {
     description: "Um contêiner que agrupa botões relacionados com um estilo visual consistente.",
     whenToUse: "Use para agrupar botões que executam ações relacionadas, mantendo bordas coladas e alinhamento consistente.",
     anatomy: [
-      { part: "ButtonGroup", description: 'Elemento raiz — role="group", junta os botões visualmente (bordas coladas).' },
+      { part: "ButtonGroup", description: "Elemento raiz — role=\"group\", junta os botões visualmente (bordas coladas)." },
       { part: "ButtonGroupText", description: "Rótulo não clicável dentro do grupo (ex: prefixo)." },
       { part: "ButtonGroupSeparator", description: "Divisor entre sub-grupos de botões." },
     ],
@@ -1932,10 +1668,9 @@ import { ButtonGroup } from "@/components/ui/button-group"
   <Button variant="outline">Denunciar</Button>
 </ButtonGroup>`,
     props: [
-      { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "Direção do agrupamento." },
+      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção do agrupamento." },
     ],
   },
-
   collapsible: {
     description: "Um componente interativo que expande ou recolhe um painel.",
     whenToUse: "Use para esconder ou mostrar um bloco de conteúdo opcional sob demanda, sem a formalidade de um Accordion.",
@@ -1970,7 +1705,6 @@ import { ButtonGroup } from "@/components/ui/button-group"
       { name: "disabled", type: "boolean", default: "false", description: "Desativa o trigger." },
     ],
   },
-
   combobox: {
     description: "Campo de entrada com autocompletar e uma lista de sugestões.",
     whenToUse: "Use quando o usuário precisar buscar e selecionar uma opção entre muitas, digitando para filtrar a lista.",
@@ -2017,14 +1751,13 @@ import { ButtonGroup } from "@/components/ui/button-group"
       { name: "disabled", type: "boolean", default: "false", description: "Desativa o combobox." },
     ],
   },
-
   empty: {
     description: "Use o componente Empty para exibir um estado vazio.",
     whenToUse: "Use quando uma lista, busca ou seção não tiver conteúdo para mostrar, orientando o próximo passo do usuário.",
     anatomy: [
       { part: "Empty", description: "Elemento raiz — borda tracejada, conteúdo centralizado." },
       { part: "EmptyHeader", description: "Envolve ícone, título e descrição." },
-      { part: "EmptyMedia", description: 'Ícone — variantes "default" (sem fundo) e "icon" (fundo circular/quadrado).' },
+      { part: "EmptyMedia", description: "Ícone — variantes \"default\" (sem fundo) e \"icon\" (fundo circular/quadrado)." },
       { part: "EmptyTitle / EmptyDescription", description: "Texto principal e secundário do estado vazio." },
       { part: "EmptyContent", description: "Ação disponível (ex: botão) abaixo do texto." },
     ],
@@ -2059,22 +1792,21 @@ import { Button } from "@/components/ui/button"
   </EmptyContent>
 </Empty>`,
     props: [
-      { name: "variant", type: '"default" | "icon"', default: '"default"', description: "(EmptyMedia) estilo do ícone." },
+      { name: "variant", type: "\"default\" | \"icon\"", default: "\"default\"", description: "(EmptyMedia) estilo do ícone." },
     ],
   },
-
   field: {
     description: "Combine labels, controles e textos de ajuda para compor campos de formulário acessíveis e agrupamentos de campos.",
     whenToUse: "Use para estruturar qualquer campo de formulário, garantindo que label, texto de ajuda e mensagem de erro fiquem conectados corretamente para acessibilidade.",
     anatomy: [
       { part: "FieldSet / FieldLegend", description: "Agrupam vários Fields relacionados, com título (legend)." },
       { part: "FieldGroup", description: "Espaçamento vertical entre Fields." },
-      { part: "Field", description: 'Elemento raiz de um campo — role="group", orientação vertical/horizontal/responsive.' },
+      { part: "Field", description: "Elemento raiz de um campo — role=\"group\", orientação vertical/horizontal/responsive." },
       { part: "FieldLabel", description: "Label do campo (usa o Atom Label internamente)." },
       { part: "FieldContent", description: "Envolve o controle e a descrição." },
       { part: "FieldDescription", description: "Texto de ajuda abaixo do controle." },
       { part: "FieldSeparator", description: "Divisor entre Fields, com texto central opcional (ex: \"ou\")." },
-      { part: "FieldError", description: 'Mensagem de erro — role="alert", aceita lista de erros (react-hook-form).' },
+      { part: "FieldError", description: "Mensagem de erro — role=\"alert\", aceita lista de erros (react-hook-form)." },
     ],
     variants: [],
     states: [
@@ -2099,11 +1831,10 @@ import { Input } from "@/components/ui/input"
   <FieldDescription>Como aparece no seu perfil.</FieldDescription>
 </Field>`,
     props: [
-      { name: "orientation", type: '"vertical" | "horizontal" | "responsive"', default: '"vertical"', description: "Direção do layout do campo." },
+      { name: "orientation", type: "\"vertical\" | \"horizontal\" | \"responsive\"", default: "\"vertical\"", description: "Direção do layout do campo." },
       { name: "errors", type: "Array<{ message?: string }>", description: "(FieldError) lista de erros — mescla mensagens duplicadas." },
     ],
   },
-
   "hover-card": {
     description: "Para usuários com visão, permite pré-visualizar conteúdo disponível atrás de um link.",
     whenToUse: "Use para mostrar uma pré-visualização de informação (perfil, card) ao passar o mouse sobre um link ou elemento, sem navegar até ele.",
@@ -2131,11 +1862,10 @@ import { Input } from "@/components/ui/input"
   <HoverCardContent>Product Designer Sênior.</HoverCardContent>
 </HoverCard>`,
     props: [
-      { name: "align", type: '"start" | "center" | "end"', default: '"center"', description: "(HoverCardContent) alinhamento." },
+      { name: "align", type: "\"start\" | \"center\" | \"end\"", default: "\"center\"", description: "(HoverCardContent) alinhamento." },
       { name: "sideOffset", type: "number", default: "4", description: "(HoverCardContent) distância do trigger." },
     ],
   },
-
   "input-group": {
     description: "Adicione complementos, botões e conteúdo auxiliar a campos de entrada.",
     whenToUse: "Use quando um Input ou Textarea precisar de um ícone, prefixo, sufixo, botão ou texto de apoio acoplado.",
@@ -2169,16 +1899,15 @@ import { Icon } from "@/components/ui/icon"
   <InputGroupInput placeholder="Buscar..." />
 </InputGroup>`,
     props: [
-      { name: "align", type: '"inline-start" | "inline-end" | "block-start" | "block-end"', default: '"inline-start"', description: "(InputGroupAddon) posição do addon." },
-      { name: "size", type: '"xs" | "sm" | "icon-xs" | "icon-sm"', default: '"xs"', description: "(InputGroupButton) dimensão." },
+      { name: "align", type: "\"inline-start\" | \"inline-end\" | \"block-start\" | \"block-end\"", default: "\"inline-start\"", description: "(InputGroupAddon) posição do addon." },
+      { name: "size", type: "\"xs\" | \"sm\" | \"icon-xs\" | \"icon-sm\"", default: "\"xs\"", description: "(InputGroupButton) dimensão." },
     ],
   },
-
   pagination: {
     description: "Paginação com navegação entre páginas e links de próxima/anterior.",
     whenToUse: "Use para dividir uma lista longa de resultados em páginas navegáveis.",
     anatomy: [
-      { part: "Pagination", description: '<nav aria-label="pagination"> — elemento raiz.' },
+      { part: "Pagination", description: "<nav aria-label=\"pagination\"> — elemento raiz." },
       { part: "PaginationContent", description: "<ul> que envolve os itens." },
       { part: "PaginationItem", description: "<li> — um item da paginação." },
       { part: "PaginationLink", description: "Link de página — reaproveita buttonVariants do Button." },
@@ -2188,7 +1917,7 @@ import { Icon } from "@/components/ui/icon"
     variants: [],
     states: [
       { name: "Default", description: "Link normal — variant ghost." },
-      { name: "Active", description: 'isActive=true — variant outline, aria-current="page".' },
+      { name: "Active", description: "isActive=true — variant outline, aria-current=\"page\"." },
     ],
     sizes: [],
     doGuidelines: ["Use para navegar entre páginas de uma lista ou tabela com muitos itens. Mostre o total de páginas."],
@@ -2212,10 +1941,9 @@ import { Icon } from "@/components/ui/icon"
 </Pagination>`,
     props: [
       { name: "isActive", type: "boolean", default: "false", description: "(PaginationLink) marca a página atual." },
-      { name: "size", type: 'Button["size"]', default: '"icon"', description: "(PaginationLink) dimensão herdada do Button." },
+      { name: "size", type: "Button[\"size\"]", default: "\"icon\"", description: "(PaginationLink) dimensão herdada do Button." },
     ],
   },
-
   "toggle-group": {
     description: "Um conjunto de botões de dois estados que podem ser ativados ou desativados.",
     whenToUse: "Use para um grupo de opções que alternam estado (ativo/inativo), com seleção única ou múltipla, como alinhamento de texto ou filtros.",
@@ -2248,13 +1976,12 @@ import { Icon } from "@/components/ui/icon"
   <ToggleGroupItem value="right">Direita</ToggleGroupItem>
 </ToggleGroup>`,
     props: [
-      { name: "type", type: '"single" | "multiple"', description: "Seleção única ou múltipla — obrigatório (do Radix)." },
+      { name: "type", type: "\"single\" | \"multiple\"", description: "Seleção única ou múltipla — obrigatório (do Radix)." },
       { name: "value / onValueChange", type: "string | string[]", description: "Valor(es) selecionado(s)." },
-      { name: "variant / size", type: '"default" | "outline" / "default" | "sm" | "lg"', description: "Aplicados a todos os itens via contexto." },
+      { name: "variant / size", type: "\"default\" | \"outline\" / \"default\" | \"sm\" | \"lg\"", description: "Aplicados a todos os itens via contexto." },
       { name: "spacing", type: "number", default: "0", description: "Espaço entre itens — 0 mantém bordas coladas." },
     ],
   },
-
   "scroll-area": {
     description: "Amplia a funcionalidade nativa de rolagem para permitir um estilo customizado e consistente entre navegadores.",
     whenToUse: "Use quando precisar de uma área de rolagem com barra estilizada, dentro de um espaço de altura ou largura fixa.",
@@ -2275,10 +2002,9 @@ import { Icon } from "@/components/ui/icon"
   Conteúdo longo que rola dentro de uma altura fixa.
 </ScrollArea>`,
     props: [
-      { name: "orientation", type: '"vertical" | "horizontal"', default: '"vertical"', description: "(ScrollBar) direção da barra customizada." },
+      { name: "orientation", type: "\"vertical\" | \"horizontal\"", default: "\"vertical\"", description: "(ScrollBar) direção da barra customizada." },
     ],
   },
-
   attachment: {
     description: "Exibe um anexo de arquivo ou imagem com mídia, metadados, estado de upload e ações.",
     whenToUse: "Use para listar arquivos anexados em um formulário, composer de chat ou upload, mostrando nome, tamanho e status.",
@@ -2330,17 +2056,16 @@ import { Icon } from "@/components/ui/icon"
   </AttachmentActions>
 </Attachment>`,
     props: [
-      { name: "state", type: '"idle" | "uploading" | "processing" | "error" | "done"', default: '"done"', description: "Estado do upload/anexo." },
-      { name: "size", type: '"default" | "sm" | "xs"', default: '"default"', description: "Dimensão do componente." },
-      { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "Direção do layout." },
+      { name: "state", type: "\"idle\" | \"uploading\" | \"processing\" | \"error\" | \"done\"", default: "\"done\"", description: "Estado do upload/anexo." },
+      { name: "size", type: "\"default\" | \"sm\" | \"xs\"", default: "\"default\"", description: "Dimensão do componente." },
+      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção do layout." },
     ],
   },
-
   accordion: {
     description: "Um conjunto de cabeçalhos interativos empilhados verticalmente, cada um revelando uma seção de conteúdo.",
     whenToUse: "Use para organizar conteúdo extenso em seções que podem ser expandidas uma a uma, como perguntas frequentes.",
     anatomy: [
-      { part: "Accordion", description: 'Root — type="single" (um item aberto por vez) ou "multiple".' },
+      { part: "Accordion", description: "Root — type=\"single\" (um item aberto por vez) ou \"multiple\"." },
       { part: "AccordionItem", description: "Cada seção — requer value único, borda inferior separando itens." },
       { part: "AccordionTrigger", description: "Cabeçalho clicável — inclui o chevron que gira 180° ao abrir." },
       { part: "AccordionContent", description: "Conteúdo animado (altura) — escondido quando fechado." },
@@ -2369,19 +2094,18 @@ import { Icon } from "@/components/ui/icon"
   </AccordionItem>
 </Accordion>`,
     props: [
-      { name: "type", type: '"single" | "multiple"', description: "Um item aberto por vez ou vários — obrigatório." },
-      { name: "collapsible", type: "boolean", default: "false", description: 'Com type="single", permite fechar o item aberto.' },
+      { name: "type", type: "\"single\" | \"multiple\"", description: "Um item aberto por vez ou vários — obrigatório." },
+      { name: "collapsible", type: "boolean", default: "false", description: "Com type=\"single\", permite fechar o item aberto." },
       { name: "value / defaultValue", type: "string | string[]", description: "Item(s) aberto(s) — controlado ou inicial." },
     ],
   },
-
   "alert-dialog": {
     description: "Um diálogo modal que interrompe o usuário com um conteúdo importante e espera uma resposta.",
     whenToUse: "Use para confirmar ações irreversíveis ou críticas, como excluir ou cancelar, exigindo uma escolha explícita antes de continuar.",
     anatomy: [
       { part: "AlertDialog", description: "Root — controla abertura. Diferente do Dialog, exige uma ação explícita (não fecha ao clicar fora)." },
       { part: "AlertDialogTrigger", description: "Elemento que abre o diálogo." },
-      { part: "AlertDialogContent", description: 'Painel modal (portal + overlay) — data-size "default" ou "sm".' },
+      { part: "AlertDialogContent", description: "Painel modal (portal + overlay) — data-size \"default\" ou \"sm\"." },
       { part: "AlertDialogMedia (opcional)", description: "Ícone de destaque acima do título." },
       { part: "AlertDialogHeader / Title / Description", description: "Título e descrição da confirmação." },
       { part: "AlertDialogFooter", description: "Envolve os botões de ação." },
@@ -2426,11 +2150,10 @@ import { Button } from "@/components/ui/button"
   </AlertDialogContent>
 </AlertDialog>`,
     props: [
-      { name: "size", type: '"default" | "sm"', default: '"default"', description: "(AlertDialogContent) largura máxima do painel." },
+      { name: "size", type: "\"default\" | \"sm\"", default: "\"default\"", description: "(AlertDialogContent) largura máxima do painel." },
       { name: "variant / size", type: "Button[\"variant\"] / Button[\"size\"]", description: "(Action/Cancel) herdados do Button." },
     ],
   },
-
   calendar: {
     description: "Um componente de calendário que permite ao usuário selecionar uma data ou um intervalo de datas.",
     whenToUse: "Use quando o usuário precisar escolher uma ou mais datas visualmente, como agendamento de vistoria ou vigência de apólice.",
@@ -2453,13 +2176,12 @@ import { Button } from "@/components/ui/button"
 
 <Calendar mode="single" selected={date} onSelect={setDate} />`,
     props: [
-      { name: "mode", type: '"single" | "multiple" | "range"', description: "Tipo de seleção (do react-day-picker)." },
+      { name: "mode", type: "\"single\" | \"multiple\" | \"range\"", description: "Tipo de seleção (do react-day-picker)." },
       { name: "selected / onSelect", type: "Date | Date[] | DateRange", description: "Valor selecionado — controlado." },
-      { name: "captionLayout", type: '"label" | "dropdown"', default: '"label"', description: "Navegação por texto ou dropdowns de mês/ano." },
+      { name: "captionLayout", type: "\"label\" | \"dropdown\"", default: "\"label\"", description: "Navegação por texto ou dropdowns de mês/ano." },
       { name: "showOutsideDays", type: "boolean", default: "true", description: "Mostra dias do mês anterior/seguinte." },
     ],
   },
-
   card: {
     description: "Exibe um cartão com cabeçalho, conteúdo e rodapé.",
     whenToUse: "Use para agrupar informações relacionadas em um bloco visualmente delimitado, com título, corpo e ações opcionais.",
@@ -2492,10 +2214,9 @@ import { Button } from "@/components/ui/button"
   <CardContent>Conteúdo do card.</CardContent>
 </Card>`,
     props: [
-      { name: "...props", type: 'React.ComponentProps<"div">', description: "Atributos nativos de <div> em todas as peças." },
+      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Atributos nativos de <div> em todas as peças." },
     ],
   },
-
   carousel: {
     description: "Um carrossel com movimento e suporte a swipe, construído com a biblioteca Embla.",
     whenToUse: "Use para exibir uma sequência de itens (imagens, cards) navegável horizontalmente, um ou poucos por vez.",
@@ -2530,12 +2251,11 @@ import { Button } from "@/components/ui/button"
   <CarouselNext />
 </Carousel>`,
     props: [
-      { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "Direção do carrossel." },
+      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção do carrossel." },
       { name: "opts", type: "EmblaOptionsType", description: "Opções nativas do Embla Carousel." },
       { name: "setApi", type: "(api: CarouselApi) => void", description: "Expõe a API do Embla pro componente pai." },
     ],
   },
-
   chart: {
     description: "Gráficos com boa aparência visual, construídos com Recharts, prontos para copiar e colar no app.",
     whenToUse: "Use para visualizar dados numéricos ao longo do tempo ou por categoria — barras, linhas, pizza — com tooltip e legenda integrados.",
@@ -2566,7 +2286,6 @@ const chartConfig = {
       { name: "config", type: "ChartConfig", description: "Mapa série → { label, color } — vira variável CSS --color-{série}." },
     ],
   },
-
   command: {
     description: "Menu de comandos para busca e ações rápidas.",
     whenToUse: "Use para uma paleta de comandos (estilo atalho ⌘K) que permite buscar e executar ações rapidamente pelo teclado.",
@@ -2611,7 +2330,6 @@ const chartConfig = {
       { name: "showCloseButton", type: "boolean", default: "true", description: "(CommandDialog) mostra botão de fechar no Dialog." },
     ],
   },
-
   "context-menu": {
     description: "Exibe um menu de ações acionado pelo clique com o botão direito do mouse.",
     whenToUse: "Use para oferecer ações contextuais a um item específico, sem ocupar espaço fixo na tela.",
@@ -2619,7 +2337,7 @@ const chartConfig = {
       { part: "ContextMenu", description: "Root — controla abertura." },
       { part: "ContextMenuTrigger", description: "Área que abre o menu no clique com o botão direito." },
       { part: "ContextMenuContent", description: "Painel flutuante (portal) posicionado no ponto do clique." },
-      { part: "ContextMenuItem", description: 'Item de ação — variantes "default" e "destructive".' },
+      { part: "ContextMenuItem", description: "Item de ação — variantes \"default\" e \"destructive\"." },
       { part: "ContextMenuCheckboxItem / RadioGroup / RadioItem", description: "Itens com estado marcável (checkbox/radio)." },
       { part: "ContextMenuLabel / Separator / Shortcut", description: "Rótulo de grupo, divisor e atalho de teclado." },
       { part: "ContextMenuSub / SubTrigger / SubContent", description: "Submenu aninhado." },
@@ -2652,36 +2370,32 @@ const chartConfig = {
 </ContextMenu>`,
     props: [
       { name: "inset", type: "boolean", default: "false", description: "(Item/Label/SubTrigger) recuo extra à esquerda." },
-      { name: "variant", type: '"default" | "destructive"', default: '"default"', description: "(ContextMenuItem) estilo do item." },
+      { name: "variant", type: "\"default\" | \"destructive\"", default: "\"default\"", description: "(ContextMenuItem) estilo do item." },
     ],
   },
-
   dialog: {
-    description: "Uma janela sobreposta à janela principal ou a outro diálogo, tornando o conteúdo abaixo inerte.",
-    whenToUse: "Use para tarefas focadas que precisam da atenção total do usuário antes de voltar ao fluxo principal, como editar ou confirmar dados.",
+    description: "Janela por cima da tela para uma tarefa curta e focada — editar,\npreencher, escolher. O resto da página fica inerte e escurecido.",
+    whenToUse: "Tarefa curta que precisa de atenção total antes de voltar ao fluxo. Formulário de poucos campos ligado ao que está na tela.",
     anatomy: [
-      { part: "Dialog", description: "Root — controla abertura." },
-      { part: "DialogTrigger", description: "Elemento que abre o modal." },
-      { part: "DialogContent", description: "Painel modal (portal + overlay) — já inclui botão de fechar (X)." },
-      { part: "DialogHeader / Title / Description", description: "Título e descrição do modal." },
-      { part: "DialogFooter", description: "Ações — pode incluir botão de fechar automático (showCloseButton)." },
-      { part: "DialogClose", description: "Fecha o modal ao ser acionado — some com asChild em qualquer elemento." },
+      { part: "Dialog", description: "Raiz (Radix). Controla aberto/fechado" },
+      { part: "DialogTrigger", description: "Elemento que abre (use `asChild` com `Button`)" },
+      { part: "DialogContent", description: "Painel centralizado, em portal, com sobreposição e o \"X\" de fechar" },
+      { part: "DialogHeader · DialogTitle · DialogDescription", description: "Título (nome acessível) e descrição (ligada)" },
+      { part: "DialogFooter", description: "Ações. Empilha no celular, à direita no desktop" },
+      { part: "DialogClose", description: "Fecha ao acionar (use `asChild`)" },
+      { part: "DialogOverlay · DialogPortal", description: "Internos; já usados pelo `DialogContent`" },
     ],
     variants: [],
     states: [
-      { name: "Closed", description: "Estado padrão." },
-      { name: "Open", description: "Overlay + conteúdo visíveis, anima fade + zoom." },
+      { name: "Fechado", description: "Nada renderizado" },
+      { name: "Aberto", description: "Sobreposição + painel `bg-popover` com `shadow-lg`; entra com fade + zoom 95%" },
     ],
     sizes: [],
-    doGuidelines: ["Use para tarefas de foco completo que interrompem o fluxo atual."],
-    dontGuidelines: ["Não use dialog para ações simples que cabem em um popover."],
+    doGuidelines: ["Feche com Esc, com o \"X\" e com \"Cancelar\".", "Ação principal à direita no `DialogFooter`.", "Abra só quando a pessoa pedir."],
+    dontGuidelines: ["Dialog sobre dialog → feche o primeiro, ou use um passo dentro do mesmo.", "Mensagem que poderia sumir sozinha → `sonner`.", "Formulário longo → página própria ou `sheet`."],
     code: `import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
+  Dialog, DialogClose, DialogContent, DialogDescription,
+  DialogFooter, DialogHeader, DialogTitle, DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 
@@ -2692,17 +2406,22 @@ import { Button } from "@/components/ui/button"
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Editar perfil</DialogTitle>
-      <DialogDescription>
-        Altere suas informações e salve.
-      </DialogDescription>
+      <DialogDescription>As mudanças aparecem para toda a equipe.</DialogDescription>
     </DialogHeader>
+    {/* campos */}
+    <DialogFooter>
+      <DialogClose asChild><Button variant="outline">Cancelar</Button></DialogClose>
+      <Button>Salvar perfil</Button>
+    </DialogFooter>
   </DialogContent>
 </Dialog>`,
     props: [
-      { name: "showCloseButton", type: "boolean", default: "true", description: "(DialogContent) mostra o X no canto superior direito." },
+      { name: "open · defaultOpen · onOpenChange (Dialog)", type: "—", default: "—", description: "Controle de abertura (Radix)" },
+      { name: "showCloseButton (DialogContent)", type: "boolean", default: "true", description: "Mostra o \"X\" no canto" },
+      { name: "showCloseButton (DialogFooter)", type: "boolean", default: "false", description: "Acrescenta um botão `outline` de fechar" },
+      { name: "onEscapeKeyDown · onPointerDownOutside (Content)", type: "evento", default: "—", description: "Impedir fechar por Esc ou clique fora" },
     ],
   },
-
   "dropdown-menu": {
     description: "Exibe um menu para o usuário — como um conjunto de ações ou funções — acionado por um botão.",
     whenToUse: "Use para agrupar ações relacionadas a um elemento, como o menu de opções de uma linha de tabela, atrás de um botão gatilho.",
@@ -2710,7 +2429,7 @@ import { Button } from "@/components/ui/button"
       { part: "DropdownMenu", description: "Root — controla abertura." },
       { part: "DropdownMenuTrigger", description: "Elemento que abre o menu ao clicar." },
       { part: "DropdownMenuContent", description: "Painel flutuante (portal), ancorado no trigger." },
-      { part: "DropdownMenuItem", description: 'Item de ação — variantes "default" e "destructive".' },
+      { part: "DropdownMenuItem", description: "Item de ação — variantes \"default\" e \"destructive\"." },
       { part: "DropdownMenuCheckboxItem / RadioGroup / RadioItem", description: "Itens marcáveis." },
       { part: "DropdownMenuLabel / Separator / Shortcut", description: "Rótulo, divisor e atalho de teclado." },
       { part: "DropdownMenuSub / SubTrigger / SubContent", description: "Submenu aninhado." },
@@ -2744,11 +2463,10 @@ import { Button } from "@/components/ui/button"
 </DropdownMenu>`,
     props: [
       { name: "inset", type: "boolean", default: "false", description: "(Item/Label/SubTrigger) recuo extra à esquerda." },
-      { name: "variant", type: '"default" | "destructive"', default: '"default"', description: "(DropdownMenuItem) estilo do item." },
+      { name: "variant", type: "\"default\" | \"destructive\"", default: "\"default\"", description: "(DropdownMenuItem) estilo do item." },
       { name: "sideOffset", type: "number", default: "4", description: "(DropdownMenuContent) distância do trigger." },
     ],
   },
-
   drawer: {
     description: "Um componente de painel deslizante (drawer) para React.",
     whenToUse: "Use para exibir conteúdo complementar em um painel que desliza de uma borda da tela, especialmente em mobile.",
@@ -2790,18 +2508,17 @@ import { Button } from "@/components/ui/button"
   </DrawerContent>
 </Drawer>`,
     props: [
-      { name: "direction", type: '"top" | "bottom" | "left" | "right"', default: '"bottom"', description: "Lado de onde o drawer desliza (do vaul)." },
+      { name: "direction", type: "\"top\" | \"bottom\" | \"left\" | \"right\"", default: "\"bottom\"", description: "Lado de onde o drawer desliza (do vaul)." },
     ],
   },
-
   "file-uploader": {
     description: "Componente para receber arquivos por upload — uma caixa com um ícone e um rótulo opcional.",
     whenToUse: "Use para capturar arquivos enviados pelo usuário: comprovantes/recibos, imagens (ex.: fotos de sinistro), planilhas ou outros documentos anexados a um formulário.",
     anatomy: [
-      { part: "Elemento raiz", description: 'Um <label> com data-slot="file-uploader", data-dragging e data-disabled. Recebe os handlers de drag-and-drop (onDragOver/onDragLeave/onDrop) como reforço visual — arrastar não é a única forma de anexar.' },
-      { part: "Ícone", description: 'Icon name="cloud_upload" — mesmo ícone já confirmado em uso real no Pattern Upload (src/components/patterns/upload.tsx) e em src/app/templates/novo-sinistro/page.tsx.' },
+      { part: "Elemento raiz", description: "Um <label> com data-slot=\"file-uploader\", data-dragging e data-disabled. Recebe os handlers de drag-and-drop (onDragOver/onDragLeave/onDrop) como reforço visual — arrastar não é a única forma de anexar." },
+      { part: "Ícone", description: "Icon name=\"cloud_upload\" — mesmo ícone já confirmado em uso real no Pattern Upload (src/components/patterns/upload.tsx) e em src/app/templates/novo-sinistro/page.tsx." },
       { part: "Texto", description: "Rótulo visível explicando a ação (prop label, default \"Arraste um arquivo ou clique para selecionar\")." },
-      { part: "Input nativo", description: '<input type="file"> real, associado ao label via htmlFor/id, visualmente escondido com sr-only (nunca display:none) mas focável e navegável por teclado — herda toda a acessibilidade nativa do elemento.' },
+      { part: "Input nativo", description: "<input type=\"file\"> real, associado ao label via htmlFor/id, visualmente escondido com sr-only (nunca display:none) mas focável e navegável por teclado — herda toda a acessibilidade nativa do elemento." },
     ],
     variants: [],
     states: [
@@ -2833,18 +2550,17 @@ import { Button } from "@/components/ui/button"
   onFilesRejected={(files) => console.log("rejeitados (muito grandes)", files)}
 />`,
     props: [
-      { name: "label", type: "string", default: '"Arraste um arquivo ou clique para selecionar"', description: "Texto visível dentro da zona de drop, explicando a ação." },
-      { name: "accept", type: "string", description: 'Repassado direto ao <input type="file"> nativo (tipos de arquivo aceitos).' },
+      { name: "label", type: "string", default: "\"Arraste um arquivo ou clique para selecionar\"", description: "Texto visível dentro da zona de drop, explicando a ação." },
+      { name: "accept", type: "string", description: "Repassado direto ao <input type=\"file\"> nativo (tipos de arquivo aceitos)." },
       { name: "multiple", type: "boolean", default: "false", description: "Repassado direto ao <input> nativo — permite selecionar mais de um arquivo." },
       { name: "maxSize", type: "number", description: "Tamanho máximo aceito por arquivo, em bytes. Sem limite quando ausente." },
       { name: "onFilesSelected", type: "(files: File[]) => void", description: "Chamado com os arquivos aceitos (dentro do limite de maxSize, quando informado)." },
       { name: "onFilesRejected", type: "(files: File[]) => void", description: "Chamado com os arquivos que excederam maxSize. Só dispara quando maxSize é informado." },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa o <input> nativamente e bloqueia clique/drag." },
       { name: "id", type: "string", default: "auto-gerado via React.useId()", description: "Associa <label htmlFor> ao <input id>." },
-      { name: "...props", type: 'React.ComponentProps<"input">', description: 'Demais atributos nativos repassados ao <input type="file"> (ex.: name, required, capture, aria-describedby).' },
+      { name: "...props", type: "React.ComponentProps<\"input\">", description: "Demais atributos nativos repassados ao <input type=\"file\"> (ex.: name, required, capture, aria-describedby)." },
     ],
   },
-
   form: {
     description: "Construa formulários com React e shadcn/ui.",
     whenToUse: "Use para compor formulários completos, conectando os campos (Field) a uma biblioteca de validação como o React Hook Form.",
@@ -2898,7 +2614,6 @@ import { Input } from "@/components/ui/input"
       { name: "errors", type: "Array<{ message?: string }>", description: "(FormMessage) opcional — normalmente vem do fieldState automaticamente." },
     ],
   },
-
   menubar: {
     description: "Um menu visualmente persistente, comum em aplicações desktop, que dá acesso rápido a um conjunto consistente de comandos.",
     whenToUse: "Use em interfaces densas, estilo aplicativo desktop, quando quiser uma barra de menus sempre visível, como Arquivo, Editar e Exibir.",
@@ -2907,7 +2622,7 @@ import { Input } from "@/components/ui/input"
       { part: "MenubarMenu", description: "Cada menu da barra (ex: Arquivo, Editar)." },
       { part: "MenubarTrigger", description: "Rótulo clicável de cada menu." },
       { part: "MenubarContent", description: "Painel flutuante (portal) com os itens do menu." },
-      { part: "MenubarItem", description: 'Item de ação — variantes "default" e "destructive".' },
+      { part: "MenubarItem", description: "Item de ação — variantes \"default\" e \"destructive\"." },
       { part: "MenubarCheckboxItem / RadioGroup / RadioItem", description: "Itens marcáveis." },
       { part: "MenubarLabel / Separator / Shortcut", description: "Rótulo, divisor e atalho de teclado." },
       { part: "MenubarSub / SubTrigger / SubContent", description: "Submenu aninhado." },
@@ -2941,16 +2656,15 @@ import { Input } from "@/components/ui/input"
 </Menubar>`,
     props: [
       { name: "inset", type: "boolean", default: "false", description: "(Item/Label/SubTrigger) recuo extra à esquerda." },
-      { name: "variant", type: '"default" | "destructive"', default: '"default"', description: "(MenubarItem) estilo do item." },
+      { name: "variant", type: "\"default\" | \"destructive\"", default: "\"default\"", description: "(MenubarItem) estilo do item." },
     ],
   },
-
   message: {
     description: "Exibe uma mensagem em uma conversa, com avatar, cabeçalho, rodapé e alinhamento opcionais.",
     whenToUse: "Use para estruturar cada linha de uma conversa (chat, atendimento, assistente de IA), cuidando de avatar, alinhamento e metadados.",
     anatomy: [
       { part: "MessageGroup", description: "Agrupa várias mensagens em sequência (ex: histórico de chat)." },
-      { part: "Message", description: 'Elemento raiz de uma mensagem — align "start" (recebida) ou "end" (enviada), inverte a direção do flex.' },
+      { part: "Message", description: "Elemento raiz de uma mensagem — align \"start\" (recebida) ou \"end\" (enviada), inverte a direção do flex." },
       { part: "MessageAvatar", description: "Avatar do autor — alinhado à base da mensagem." },
       { part: "MessageContent", description: "Envolve o corpo da mensagem e o header/footer." },
       { part: "MessageHeader / MessageFooter", description: "Metadado (nome, hora) acima ou abaixo do conteúdo." },
@@ -2980,16 +2694,15 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
   </MessageContent>
 </Message>`,
     props: [
-      { name: "align", type: '"start" | "end"', default: '"start"', description: "Lado da mensagem — recebida ou enviada." },
+      { name: "align", type: "\"start\" | \"end\"", default: "\"start\"", description: "Lado da mensagem — recebida ou enviada." },
     ],
   },
-
   bubble: {
     description: "Exibe conteúdo de conversa em um balão de mensagem. Suporta variantes visuais, alinhamento, agrupamento, reações e conteúdo recolhível.",
     whenToUse: "Use como a superfície visível de uma mensagem de chat — o balão de texto — dentro do componente Message.",
     anatomy: [
       { part: "BubbleGroup", description: "Agrupa várias bolhas em sequência." },
-      { part: "Bubble", description: 'Elemento raiz — variant de cor + align "start"/"end".' },
+      { part: "Bubble", description: "Elemento raiz — variant de cor + align \"start\"/\"end\"." },
       { part: "BubbleContent", description: "O balão em si — texto ou ação (button/a), com foco visível." },
       { part: "BubbleReactions (opcional)", description: "Reações flutuantes (ex: emojis) ancoradas num canto da bolha." },
     ],
@@ -3017,11 +2730,10 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
   </Bubble>
 </BubbleGroup>`,
     props: [
-      { name: "variant", type: '"default" | "secondary" | "muted" | "tinted" | "outline" | "ghost" | "destructive"', default: '"default"', description: "Cor/estilo da bolha." },
-      { name: "align", type: '"start" | "end"', default: '"start"', description: "Lado da bolha — recebida ou enviada." },
+      { name: "variant", type: "\"default\" | \"secondary\" | \"muted\" | \"tinted\" | \"outline\" | \"ghost\" | \"destructive\"", default: "\"default\"", description: "Cor/estilo da bolha." },
+      { name: "align", type: "\"start\" | \"end\"", default: "\"start\"", description: "Lado da bolha — recebida ou enviada." },
     ],
   },
-
   "navigation-menu": {
     description: "Uma coleção de links para navegar em um site.",
     whenToUse: "Use para a navegação principal do produto, com suporte a submenus e painéis de conteúdo maiores que um dropdown simples.",
@@ -3067,7 +2779,6 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
       { name: "viewport", type: "boolean", default: "true", description: "Usa um viewport compartilhado entre os itens." },
     ],
   },
-
   resizable: {
     description: "Grupos de painéis redimensionáveis e acessíveis, com suporte a teclado.",
     whenToUse: "Use quando o usuário precisar ajustar manualmente o tamanho de painéis lado a lado, como em um editor de código ou um layout com sidebar.",
@@ -3093,12 +2804,11 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
   <ResizablePanel defaultSize={50}>Painel B</ResizablePanel>
 </ResizablePanelGroup>`,
     props: [
-      { name: "direction", type: '"horizontal" | "vertical"', description: "(ResizablePanelGroup) direção da divisão — obrigatório." },
+      { name: "direction", type: "\"horizontal\" | \"vertical\"", description: "(ResizablePanelGroup) direção da divisão — obrigatório." },
       { name: "defaultSize / minSize / maxSize", type: "number", description: "(ResizablePanel) tamanho em percentual do grupo." },
       { name: "withHandle", type: "boolean", default: "false", description: "(ResizableHandle) mostra a alça visual de arraste." },
     ],
   },
-
   sheet: {
     description: "Estende o componente Dialog para exibir conteúdo que complementa o conteúdo principal da tela.",
     whenToUse: "Use para painéis laterais (ou de qualquer borda) que complementam a tela atual, como filtros avançados ou detalhes de um item.",
@@ -3140,17 +2850,16 @@ import { Button } from "@/components/ui/button"
   </SheetContent>
 </Sheet>`,
     props: [
-      { name: "side", type: '"top" | "right" | "bottom" | "left"', default: '"right"', description: "(SheetContent) lado de onde o painel desliza." },
+      { name: "side", type: "\"top\" | \"right\" | \"bottom\" | \"left\"", default: "\"right\"", description: "(SheetContent) lado de onde o painel desliza." },
       { name: "showCloseButton", type: "boolean", default: "true", description: "(SheetContent) mostra o X no canto superior direito." },
     ],
   },
-
   sidebar: {
     description: "Um componente de barra lateral (sidebar) componível, tematizável e customizável.",
     whenToUse: "Use como a navegação lateral principal do produto, com suporte a estado colapsado, ícones e submenus.",
     anatomy: [
       { part: "SidebarProvider", description: "Contexto raiz — estado aberto/colapsado, persistido em cookie, TooltipProvider embutido." },
-      { part: "Sidebar", description: 'Elemento raiz — collapsible "offcanvas" (mobile), "icon" (encolhe pra ícones) ou "none".' },
+      { part: "Sidebar", description: "Elemento raiz — collapsible \"offcanvas\" (mobile), \"icon\" (encolhe pra ícones) ou \"none\"." },
       { part: "SidebarHeader / SidebarFooter", description: "Áreas fixas no topo/base (ex: logo, usuário)." },
       { part: "SidebarContent", description: "Área rolável com os grupos de navegação." },
       { part: "SidebarGroup / SidebarGroupLabel", description: "Agrupa itens relacionados, com rótulo — some no modo ícone." },
@@ -3164,7 +2873,7 @@ import { Button } from "@/components/ui/button"
     variants: [],
     states: [
       { name: "Expanded", description: "Largura total, labels visíveis." },
-      { name: "Collapsed (ícone)", description: 'collapsible="icon" — só ícones, labels em tooltip.' },
+      { name: "Collapsed (ícone)", description: "collapsible=\"icon\" — só ícones, labels em tooltip." },
       { name: "Mobile", description: "Renderiza como Sheet (painel deslizante) abaixo do breakpoint md." },
     ],
     sizes: [],
@@ -3194,14 +2903,13 @@ import { Button } from "@/components/ui/button"
   </Sidebar>
 </SidebarProvider>`,
     props: [
-      { name: "collapsible", type: '"offcanvas" | "icon" | "none"', default: '"offcanvas"', description: "(Sidebar) comportamento ao recolher." },
-      { name: "side", type: '"left" | "right"', default: '"left"', description: "(Sidebar) lado da tela." },
-      { name: "mobileSide", type: '"left" | "right"', default: 'mesmo valor de "side"', description: "(Sidebar) lado da tela na gaveta mobile." },
-      { name: "variant", type: '"sidebar" | "floating" | "inset"', default: '"sidebar"', description: "(Sidebar) estilo visual do contêiner." },
+      { name: "collapsible", type: "\"offcanvas\" | \"icon\" | \"none\"", default: "\"offcanvas\"", description: "(Sidebar) comportamento ao recolher." },
+      { name: "side", type: "\"left\" | \"right\"", default: "\"left\"", description: "(Sidebar) lado da tela." },
+      { name: "mobileSide", type: "\"left\" | \"right\"", default: "mesmo valor de \"side\"", description: "(Sidebar) lado da tela na gaveta mobile." },
+      { name: "variant", type: "\"sidebar\" | \"floating\" | \"inset\"", default: "\"sidebar\"", description: "(Sidebar) estilo visual do contêiner." },
       { name: "tooltip", type: "string", description: "(SidebarMenuButton) texto mostrado quando a sidebar está recolhida." },
     ],
   },
-
   table: {
     description: "Um componente de tabela responsivo.",
     whenToUse: "Use para exibir dados tabulares — linhas e colunas — como listas de apólices, sinistros ou transações.",
@@ -3244,45 +2952,52 @@ import { Button } from "@/components/ui/button"
   </TableBody>
 </Table>`,
     props: [
-      { name: "...props", type: 'React.ComponentProps<"table">', description: "Atributos nativos de <table> e das demais peças." },
+      { name: "...props", type: "React.ComponentProps<\"table\">", description: "Atributos nativos de <table> e das demais peças." },
     ],
   },
-
   tabs: {
-    description: "Um conjunto de seções de conteúdo em camadas — conhecidas como painéis de aba — exibidas uma por vez.",
-    whenToUse: "Use para alternar entre visões relacionadas do mesmo contexto, sem navegar para outra página.",
+    description: "Divide um conteúdo em partes e mostra uma de cada vez, sem sair da\npágina. A aba ativa fica destacada para a pessoa saber onde está.",
+    whenToUse: "Visões relacionadas do mesmo contexto: Detalhes, Histórico, Arquivos. Conteúdo que a pessoa consulta uma parte por vez.",
     anatomy: [
-      { part: "Tabs", description: "Root — orientation horizontal ou vertical." },
-      { part: "TabsList", description: 'Envolve os gatilhos — variant "default" (fundo bg-muted) ou "line" (sublinhado, sem fundo).' },
-      { part: "TabsTrigger", description: "Cada aba — data-state=active quando selecionada." },
-      { part: "TabsContent", description: "Conteúdo de cada aba — só a ativa é exibida." },
+      { part: "Tabs", description: "Raiz (Radix). Define `orientation` e a aba ativa" },
+      { part: "TabsList", description: "Envolve os gatilhos. Define a `variant`" },
+      { part: "TabsTrigger", description: "Cada aba. `data-state=\"active\"` quando selecionada" },
+      { part: "TabsContent", description: "Painel de cada aba. Só o ativo aparece" },
     ],
-    variants: [],
+    variants: [
+      { name: "Default", value: "default", description: "Trilho `bg-muted`, aba ativa com fundo e `shadow-sm`. Áreas compactas, dentro de card" },
+      { name: "Line", value: "line", description: "Sem fundo; aba ativa ganha linha de 2 px. Topo de página ou seção" },
+    ],
     states: [
-      { name: "Active", description: "data-state=active — fundo/sublinhado conforme a variante da lista." },
-      { name: "Focus", description: "focus-visible:ring." },
-      { name: "Disabled", description: "opacidade reduzida, sem interação." },
+      { name: "Padrão", description: "Texto `text-muted-foreground`" },
+      { name: "Hover", description: "Texto vira `text-foreground`" },
+      { name: "Pressionado", description: "`active:scale-(--scale-pressed)`" },
+      { name: "Ativa", description: "Fundo `bg-background` (default) ou linha de 2 px (line)" },
+      { name: "Foco", description: "Anel de 3 px em `ring`" },
+      { name: "Desabilitada", description: "`opacity-50`, sem clique" },
     ],
     sizes: [],
-    doGuidelines: ["Use para organizar conteúdo relacionado em abas, permitindo alternar entre visualizações."],
-    dontGuidelines: ["Não use tabs para conteúdo que o usuário precisa ver simultaneamente."],
+    doGuidelines: ["Nomes curtos, de uma ou duas palavras.", "Ordem das abas fixa.", "Primeira aba aberta por padrão."],
+    dontGuidelines: ["Mais de 6 abas lado a lado → agrupe, ou use `select` para escolher a seção.", "Abas para etapas em sequência → `stepper`.", "Abas que levam a outras páginas → `navigation-menu`."],
     code: `import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-<Tabs defaultValue="todos">
-  <TabsList>
-    <TabsTrigger value="todos">Todos</TabsTrigger>
-    <TabsTrigger value="meus">Meus itens</TabsTrigger>
+<Tabs defaultValue="detalhes">
+  <TabsList variant="line">
+    <TabsTrigger value="detalhes">Detalhes</TabsTrigger>
+    <TabsTrigger value="historico">Histórico</TabsTrigger>
   </TabsList>
-  <TabsContent value="todos">Conteúdo de todos.</TabsContent>
-  <TabsContent value="meus">Conteúdo filtrado.</TabsContent>
+  <TabsContent value="detalhes">…</TabsContent>
+  <TabsContent value="historico">…</TabsContent>
 </Tabs>`,
     props: [
-      { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "(Tabs) direção do layout." },
-      { name: "variant", type: '"default" | "line"', default: '"default"', description: "(TabsList) estilo visual da lista de abas." },
-      { name: "value / defaultValue", type: "string", description: "(Tabs) aba ativa — controlada ou inicial." },
+      { name: "value · defaultValue (Tabs)", type: "string", default: "—", description: "Aba ativa, controlada ou inicial" },
+      { name: "onValueChange (Tabs)", type: "(v: string) => void", default: "—", description: "Troca de aba" },
+      { name: "orientation (Tabs)", type: "horizontal · vertical", default: "horizontal", description: "Direção do layout e das setas" },
+      { name: "variant (TabsList)", type: "default · line", default: "default", description: "Estilo da lista" },
+      { name: "value (Trigger, Content)", type: "string", default: "—", description: "Liga a aba ao painel. Obrigatório" },
+      { name: "disabled (Trigger)", type: "boolean", default: "false", description: "Desabilita uma aba" },
     ],
   },
-
   sonner: {
     description: "Um componente de notificação toast opinativo para React.",
     whenToUse: "Use para dar feedback rápido e não bloqueante sobre o resultado de uma ação (sucesso, erro, carregamento), sem interromper o fluxo do usuário.",
@@ -3315,25 +3030,16 @@ import { toast } from "sonner"
   Salvar
 </Button>`,
     props: [
-      { name: "position", type: '"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"', default: '"bottom-right"', description: "(Toaster) posição das notificações na tela." },
+      { name: "position", type: "\"top-left\" | \"top-center\" | \"top-right\" | \"bottom-left\" | \"bottom-center\" | \"bottom-right\"", default: "\"bottom-right\"", description: "(Toaster) posição das notificações na tela." },
       { name: "richColors", type: "boolean", default: "false", description: "(Toaster) usa cores mais vivas por tipo de toast." },
     ],
   },
-
   icon: {
     description: "Renderiza um ícone do Google Material Symbols com suporte a variantes (fill, weight, grade, optical size) e cores do tema.",
     whenToUse: "Para ilustrar ações, estados ou seções dentro de botões, menus, cards e mensagens. Use quando um conceito é mais claro visualmente do que com texto.",
     anatomy: [
-      {
-        part: "Elemento raiz",
-        description:
-          'Um <svg viewBox="0 0 24 24"> com data-slot="icon". Recebe aria-hidden="true" automaticamente, exceto quando o chamador já passou aria-label/aria-labelledby/role (ex.: Spinner).',
-      },
-      {
-        part: "Glifo (<text>)",
-        description:
-          'Ligadura de texto (nome do ícone do Material Symbols) renderizada via <text>, com fontVariationSettings controlando os eixos FILL/wght/GRAD/opsz do glifo variável.',
-      },
+      { part: "Elemento raiz", description: "Um <svg viewBox=\"0 0 24 24\"> com data-slot=\"icon\". Recebe aria-hidden=\"true\" automaticamente, exceto quando o chamador já passou aria-label/aria-labelledby/role (ex.: Spinner)." },
+      { part: "Glifo (<text>)", description: "Ligadura de texto (nome do ícone do Material Symbols) renderizada via <text>, com fontVariationSettings controlando os eixos FILL/wght/GRAD/opsz do glifo variável." },
     ],
     variants: [
       { name: "Rounded", value: "rounded", description: "Family Material Symbols Rounded — default do preset ativo se a prop `rounded` não for informada." },
@@ -3359,61 +3065,25 @@ import { toast } from "sonner"
   <Icon name="delete" aria-label="Excluir" />
 </Button>`,
     props: [
-      {
-        name: "name",
-        type: "MaterialSymbol",
-        description: "Nome do ícone no catálogo do Google Material Symbols (tipagem via pacote material-symbols).",
-      },
-      {
-        name: "size",
-        type: "number",
-        description: "Tamanho em rem. Ausente = herda o auto-tamanho ambiente.",
-      },
-      {
-        name: "rounded",
-        type: "boolean",
-        description: "true = Material Symbols Rounded, false = Sharp. Ausente = default do preset ativo (--icon-font-family).",
-      },
-      {
-        name: "fill",
-        type: "boolean",
-        description: "Ativa a variação FILL do glifo (preenchido). Ausente = usa --icon-fill do preset.",
-      },
-      {
-        name: "weight",
-        type: "number",
-        description: "Eixo wght do glifo variável. Ausente = usa --icon-weight do preset.",
-      },
-      {
-        name: "grade",
-        type: "number",
-        description: "Eixo GRAD do glifo variável. Ausente = usa --icon-grade do preset.",
-      },
-      {
-        name: "opticalSize",
-        type: "number",
-        description: "Eixo opsz do glifo variável. Ausente = calculado automaticamente a partir de `size` (computeOpticalSize) ou usa --icon-optical-size do preset.",
-      },
-      {
-        name: "...props",
-        type: 'React.ComponentProps<"svg">',
-        description: "Todos os atributos nativos de <svg> (aria-label, role, className, style, etc.), exceto `name` e `fill` (sobrescritos pela API pública do componente).",
-      },
+      { name: "name", type: "MaterialSymbol", description: "Nome do ícone no catálogo do Google Material Symbols (tipagem via pacote material-symbols)." },
+      { name: "size", type: "number", description: "Tamanho em rem. Ausente = herda o auto-tamanho ambiente." },
+      { name: "rounded", type: "boolean", description: "true = Material Symbols Rounded, false = Sharp. Ausente = default do preset ativo (--icon-font-family)." },
+      { name: "fill", type: "boolean", description: "Ativa a variação FILL do glifo (preenchido). Ausente = usa --icon-fill do preset." },
+      { name: "weight", type: "number", description: "Eixo wght do glifo variável. Ausente = usa --icon-weight do preset." },
+      { name: "grade", type: "number", description: "Eixo GRAD do glifo variável. Ausente = usa --icon-grade do preset." },
+      { name: "opticalSize", type: "number", description: "Eixo opsz do glifo variável. Ausente = calculado automaticamente a partir de `size` (computeOpticalSize) ou usa --icon-optical-size do preset." },
+      { name: "...props", type: "React.ComponentProps<\"svg\">", description: "Todos os atributos nativos de <svg> (aria-label, role, className, style, etc.), exceto `name` e `fill` (sobrescritos pela API pública do componente)." },
     ],
   },
-  // 2026-10-19: Files e Speed Dial entram aqui pra não ficarem fora do
-  // catálogo consultado por IA. description/whenToUse vêm da Visão Geral dos
-  // specs em docs/active/componentes/<slug>/spec.md; o resto é derivado do
-  // código. Boas práticas/Evite seguem a regra do projeto: texto do Rafael.
   files: {
     description: "Árvore de pastas e arquivos (file tree / explorer) que expande e recolhe diretórios com animação.",
     whenToUse: "Use para navegar por uma estrutura hierárquica de pastas e arquivos, em que o usuário abre e fecha diretórios e seleciona um item.",
     anatomy: [
-      { part: "Files", description: 'Contêiner raiz com role="tree" e aria-label (prop `label`).' },
+      { part: "Files", description: "Contêiner raiz com role=\"tree\" e aria-label (prop `label`)." },
       { part: "Folder", description: "Diretório, construído sobre Collapsible; guarda o estado aberto/fechado." },
       { part: "FolderTrigger", description: "Botão que abre/fecha a pasta, com chevron que gira e ícone de pasta que alterna entre fechada e aberta (ou `icon` customizado)." },
-      { part: "FolderContent", description: 'Conteúdo recolhível com os filhos (subpastas e arquivos), dentro de um role="group" com guia vertical à esquerda.' },
-      { part: "File", description: 'Item final com role="treeitem", focável, com ícone (padrão "description" ou `icon`) e nome.' },
+      { part: "FolderContent", description: "Conteúdo recolhível com os filhos (subpastas e arquivos), dentro de um role=\"group\" com guia vertical à esquerda." },
+      { part: "File", description: "Item final com role=\"treeitem\", focável, com ícone (padrão \"description\" ou `icon`) e nome." },
     ],
     variants: [],
     states: [
@@ -3435,7 +3105,7 @@ import { toast } from "sonner"
   </Folder>
 </Files>`,
     props: [
-      { name: "label (Files)", type: "string", default: '"Navegador de arquivos"', description: "Nome acessível da árvore (aria-label)." },
+      { name: "label (Files)", type: "string", default: "\"Navegador de arquivos\"", description: "Nome acessível da árvore (aria-label)." },
       { name: "value (Folder, File)", type: "string", description: "Identificador do nó. Em File, vira o texto exibido quando não há children." },
       { name: "defaultOpen (Folder)", type: "boolean", default: "false", description: "Pasta começa aberta." },
       { name: "icon (FolderTrigger, File)", type: "React.ReactNode", description: "Substitui o ícone padrão de pasta ou de arquivo." },
@@ -3446,7 +3116,7 @@ import { toast } from "sonner"
     description: "Botão de ação flutuante (FAB) que, ao ser acionado, se expande em uma sequência de ações secundárias relacionadas.",
     whenToUse: "Use quando várias ações secundárias relacionadas precisam ficar a um toque, sem ocupar espaço na tela até serem pedidas. Abre por clique/toque, não por hover, então funciona em mobile.",
     anatomy: [
-      { part: "Raiz", description: 'Contêiner com data-slot="speed-dial" e data-state (open/closed); fecha ao clicar fora.' },
+      { part: "Raiz", description: "Contêiner com data-slot=\"speed-dial\" e data-state (open/closed); fecha ao clicar fora." },
       { part: "Botão principal", description: "FAB que abre e fecha o menu; nome acessível vem de `triggerLabel`." },
       { part: "Ações", description: "Lista de botões (`actionButtons`) que surgem em sequência escalonada na direção escolhida." },
     ],
@@ -3477,8 +3147,8 @@ import { Icon } from "@/components/ui/icon"
 />`,
     props: [
       { name: "actionButtons", type: "{ key, label, icon, action, disabled? }[]", description: "Ações secundárias exibidas ao abrir." },
-      { name: "direction", type: '"up" | "down" | "left" | "right"', default: '"up"', description: "Para onde as ações se expandem." },
-      { name: "triggerLabel", type: "string", default: '"Ações rápidas"', description: "Nome acessível do botão principal." },
+      { name: "direction", type: "\"up\" | \"down\" | \"left\" | \"right\"", default: "\"up\"", description: "Para onde as ações se expandem." },
+      { name: "triggerLabel", type: "string", default: "\"Ações rápidas\"", description: "Nome acessível do botão principal." },
       { name: "open / defaultOpen / onOpenChange", type: "boolean / boolean / (open: boolean) => void", description: "Estado controlado ou não controlado." },
     ],
   },

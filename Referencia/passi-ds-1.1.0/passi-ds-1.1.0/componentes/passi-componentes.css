@@ -1,0 +1,315 @@
+/* PASSI DS 1.1.0 · estilos dos componentes em código (web components).
+ * Use junto com ../css/passi.css. Só variáveis do passi.css: nenhuma cor, tamanho de texto ou espaço solto.
+ * Medidas tiradas do arquivo Figma (páginas Botão, Link, Campo de texto, Checkbox e Alerta).
+ * Licença CC BY 4.0 · João Passini · joaopassini.com.br */
+
+/* ---------- Partes comuns ---------- */
+
+.passi-icone { flex: none; display: block; width: var(--espaco-5); height: var(--espaco-5); }
+
+/* Texto só para leitor de tela */
+.passi-oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ---------- Botão ---------- */
+
+passi-botao { display: inline-flex; vertical-align: middle; }
+
+passi-botao > button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-2);
+  min-height: var(--espaco-10);
+  margin: 0;
+  padding: 0 var(--espaco-4);
+  border: var(--borda-fina) solid transparent;
+  border-radius: var(--raio-pilula);
+  font: var(--texto-rotulo-medio);
+  letter-spacing: var(--texto-rotulo-medio-espacamento-letras);
+  white-space: nowrap;
+  background: var(--cor-fundo-marca);
+  color: var(--cor-texto-sobre-marca);
+  cursor: pointer;
+  transition: background-color var(--duracao-rapida) var(--curva-padrao), border-color var(--duracao-rapida) var(--curva-padrao);
+}
+
+/* Tamanhos: P 32 px, M 40 px, G 48 px */
+passi-botao[tamanho="p"] > button { min-height: var(--espaco-8); padding: 0 var(--espaco-3); }
+passi-botao[tamanho="p"] .passi-icone { width: var(--espaco-4); height: var(--espaco-4); }
+passi-botao[tamanho="g"] > button { min-height: var(--espaco-12); padding: 0 var(--espaco-5); font: var(--texto-rotulo-grande); letter-spacing: var(--texto-rotulo-grande-espacamento-letras); }
+
+/* No celular, o P ganha área de toque invisível até 40 px */
+@media (pointer: coarse) {
+  passi-botao[tamanho="p"] > button { position: relative; }
+  passi-botao[tamanho="p"] > button::after { content: ""; position: absolute; inset: calc(var(--espaco-1) * -1) 0; }
+}
+
+/* Primário (padrão) */
+passi-botao > button:hover:not(:disabled) { background: var(--cor-fundo-marca-hover); }
+passi-botao > button:active:not(:disabled) { background: var(--cor-fundo-marca-pressionado); }
+
+/* Secundário */
+passi-botao[tipo="secundario"] > button { background: var(--cor-fundo-invertido); color: var(--cor-texto-invertido); }
+passi-botao[tipo="secundario"] > button:hover:not(:disabled) { background: var(--cor-fundo-invertido-hover); }
+passi-botao[tipo="secundario"] > button:active:not(:disabled) { background: var(--cor-fundo-invertido-pressionado); }
+
+/* Contorno */
+passi-botao[tipo="contorno"] > button { background: transparent; color: var(--cor-texto-padrao); border-color: var(--cor-borda-forte); }
+passi-botao[tipo="contorno"] > button:hover:not(:disabled) { background: var(--cor-fundo-sutil); }
+passi-botao[tipo="contorno"] > button:active:not(:disabled) { background: var(--cor-fundo-sutil-hover); }
+
+/* Fantasma */
+passi-botao[tipo="fantasma"] > button { background: transparent; color: var(--cor-texto-padrao); }
+passi-botao[tipo="fantasma"] > button:hover:not(:disabled) { background: var(--cor-fundo-fantasma-hover); }
+passi-botao[tipo="fantasma"] > button:active:not(:disabled) { background: var(--cor-fundo-fantasma-pressionado); }
+
+/* Perigo: o anel de foco também fica vermelho, como no Figma */
+passi-botao[tipo="perigo"] > button { background: var(--cor-fundo-erro); color: var(--cor-texto-sobre-marca); }
+passi-botao[tipo="perigo"] > button:hover:not(:disabled) { background: var(--cor-fundo-erro-hover); }
+passi-botao[tipo="perigo"] > button:active:not(:disabled) { background: var(--cor-fundo-erro-pressionado); }
+passi-botao[tipo="perigo"] > button:focus-visible { outline-color: var(--cor-borda-erro); }
+
+/* Desabilitado */
+passi-botao > button:disabled { background: var(--cor-fundo-desabilitado); color: var(--cor-texto-desabilitado); cursor: not-allowed; }
+passi-botao[tipo="contorno"] > button:disabled { background: transparent; border-color: var(--cor-borda-padrao); }
+passi-botao[tipo="fantasma"] > button:disabled { background: transparent; }
+
+/* ---------- Link ---------- */
+
+passi-link { display: inline; }
+
+passi-link > a {
+  padding: 0 var(--espaco-0-5);
+  border-radius: var(--raio-pequeno);
+  font: var(--texto-link-medio);
+  letter-spacing: var(--texto-link-medio-espacamento-letras);
+  color: var(--cor-texto-marca);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color var(--duracao-rapida) var(--curva-padrao);
+}
+passi-link > a .passi-icone { display: inline-block; vertical-align: middle; width: var(--espaco-4); height: var(--espaco-4); margin-left: var(--espaco-1); }
+passi-link[tamanho="p"] > a { font: var(--texto-link-pequeno); letter-spacing: var(--texto-link-pequeno-espacamento-letras); }
+/* 14 px no P, como no Figma */
+passi-link[tamanho="p"] > a .passi-icone { width: calc(var(--espaco-3) + var(--espaco-0-5)); height: calc(var(--espaco-3) + var(--espaco-0-5)); }
+
+/* Foco: borda de 2 px em volta do texto, sem afastamento */
+passi-link > a:focus-visible { outline-offset: 0; }
+
+passi-link > a[href]:hover { color: var(--cor-texto-marca-hover); }
+passi-link > a[href]:active { color: var(--cor-texto-marca-pressionado); }
+passi-link[tipo="neutro"] > a { color: var(--cor-texto-padrao); }
+passi-link[tipo="neutro"] > a[href]:hover { color: var(--cor-texto-marca); }
+passi-link[tipo="neutro"] > a[href]:active { color: var(--cor-texto-marca-hover); }
+passi-link > a[aria-disabled="true"] { color: var(--cor-texto-desabilitado); cursor: not-allowed; }
+
+/* ---------- Campo de texto ---------- */
+
+passi-campo-de-texto { display: block; }
+
+/* 6 px entre rótulo, campo e ajuda, como no Figma */
+.passi-campo { display: flex; flex-direction: column; gap: calc(var(--espaco-1) + var(--espaco-0-5)); }
+
+.passi-campo__rotulo { font: var(--texto-rotulo-medio); letter-spacing: var(--texto-rotulo-medio-espacamento-letras); color: var(--cor-texto-padrao); }
+.passi-campo__opcional { font: var(--texto-corpo-pequeno); color: var(--cor-texto-secundario); }
+
+.passi-campo__caixa {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  min-height: var(--espaco-10);
+  padding: 0 var(--espaco-3);
+  background: var(--cor-fundo-superficie);
+  border: var(--borda-fina) solid var(--cor-borda-controle);
+  border-radius: var(--raio-medio);
+  color: var(--cor-texto-padrao);
+  cursor: text;
+  transition: border-color var(--duracao-rapida) var(--curva-padrao);
+}
+passi-campo-de-texto[tamanho="g"] .passi-campo__caixa { min-height: var(--espaco-12); }
+
+/* O foco aparece na caixa inteira (borda azul de 2 px), por isso o campo interno não tem contorno próprio */
+.passi-campo__entrada {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: var(--texto-corpo-medio);
+  letter-spacing: var(--texto-corpo-medio-espacamento-letras);
+  color: inherit;
+}
+.passi-campo__entrada::placeholder { color: var(--cor-texto-terciario); opacity: 1; }
+
+.passi-campo__caixa:hover { border-color: var(--cor-texto-terciario); }
+.passi-campo__caixa:has(.passi-campo__entrada:focus) { border-color: var(--cor-borda-marca); outline: var(--borda-fina) solid var(--cor-borda-marca); outline-offset: 0; }
+
+.passi-campo__ajuda { font: var(--texto-legenda); letter-spacing: var(--texto-legenda-espacamento-letras); color: var(--cor-texto-secundario); }
+
+.passi-campo__estado { display: none; }
+passi-campo-de-texto[erro] .passi-campo__caixa { border-color: var(--cor-borda-erro); border-width: calc(var(--borda-fina) * 1.5); }
+passi-campo-de-texto[erro] .passi-campo__ajuda { color: var(--cor-texto-erro); }
+passi-campo-de-texto[erro] .passi-campo__estado--erro { display: block; color: var(--cor-texto-erro); }
+passi-campo-de-texto[sucesso]:not([erro]) .passi-campo__caixa { border-color: var(--cor-borda-sucesso); }
+passi-campo-de-texto[sucesso]:not([erro]) .passi-campo__ajuda { color: var(--cor-texto-sucesso); }
+passi-campo-de-texto[sucesso]:not([erro]) .passi-campo__estado--sucesso { display: block; color: var(--cor-texto-sucesso); }
+
+/* Botão de mostrar a senha, com área de toque de 24 px */
+.passi-campo__mostrar {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--espaco-6);
+  height: var(--espaco-6);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--raio-pequeno);
+  background: transparent;
+  color: var(--cor-texto-secundario);
+  cursor: pointer;
+}
+.passi-campo__mostrar:hover { background: var(--cor-fundo-fantasma-hover); }
+.passi-campo__mostrar:active { background: var(--cor-fundo-fantasma-pressionado); }
+
+passi-campo-de-texto[desabilitado] .passi-campo__caixa { background: var(--cor-fundo-desabilitado); border-color: var(--cor-borda-padrao); cursor: not-allowed; }
+passi-campo-de-texto[desabilitado] .passi-campo__rotulo,
+passi-campo-de-texto[desabilitado] .passi-campo__ajuda,
+passi-campo-de-texto[desabilitado] .passi-campo__caixa { color: var(--cor-texto-desabilitado); }
+passi-campo-de-texto[desabilitado] .passi-campo__entrada { cursor: not-allowed; }
+passi-campo-de-texto[desabilitado] .passi-campo__entrada::placeholder { color: var(--cor-texto-desabilitado); }
+
+/* ---------- Checkbox ---------- */
+
+passi-checkbox { display: block; }
+
+/* A linha inteira (caixa e texto) é clicável */
+.passi-checkbox { display: flex; align-items: flex-start; gap: var(--espaco-3); cursor: pointer; }
+
+/* Caixa de 20 px, centrada na primeira linha de texto (24 px) */
+.passi-checkbox__caixa { position: relative; flex: none; width: var(--espaco-5); height: var(--espaco-5); margin-top: var(--espaco-0-5); }
+
+.passi-checkbox__entrada {
+  box-sizing: border-box;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: calc(var(--borda-fina) * 1.5) solid var(--cor-borda-controle);
+  border-radius: var(--raio-pequeno);
+  background: var(--cor-fundo-superficie);
+  cursor: pointer;
+  transition: background-color var(--duracao-rapida) var(--curva-padrao), border-color var(--duracao-rapida) var(--curva-padrao);
+}
+.passi-checkbox__caixa .passi-icone {
+  position: absolute;
+  top: var(--espaco-0-5);
+  left: var(--espaco-0-5);
+  width: var(--espaco-4);
+  height: var(--espaco-4);
+  color: var(--cor-texto-sobre-marca);
+  pointer-events: none;
+  visibility: hidden;
+}
+.passi-checkbox__entrada:checked ~ .passi-checkbox__marcado,
+.passi-checkbox__entrada:indeterminate ~ .passi-checkbox__indeterminado { visibility: visible; }
+.passi-checkbox__entrada:checked ~ .passi-checkbox__indeterminado { visibility: hidden; }
+
+.passi-checkbox__entrada:checked,
+.passi-checkbox__entrada:indeterminate { background: var(--cor-fundo-marca); border-color: transparent; }
+
+/* Hover e pressionado valem para a linha toda */
+.passi-checkbox:hover .passi-checkbox__entrada:not(:disabled) { border-color: var(--cor-borda-marca); }
+.passi-checkbox:hover .passi-checkbox__entrada:not(:disabled):checked,
+.passi-checkbox:hover .passi-checkbox__entrada:not(:disabled):indeterminate { background: var(--cor-fundo-marca-hover); border-color: transparent; }
+.passi-checkbox:active .passi-checkbox__entrada:not(:disabled) { background: var(--cor-fundo-marca-sutil); border-color: var(--cor-borda-marca); }
+.passi-checkbox:active .passi-checkbox__entrada:not(:disabled):checked,
+.passi-checkbox:active .passi-checkbox__entrada:not(:disabled):indeterminate { background: var(--cor-fundo-marca-pressionado); border-color: transparent; }
+
+.passi-checkbox__textos { display: flex; flex-direction: column; gap: var(--espaco-0-5); }
+.passi-checkbox__rotulo { font: var(--texto-corpo-medio); letter-spacing: var(--texto-corpo-medio-espacamento-letras); color: var(--cor-texto-padrao); }
+.passi-checkbox__descricao { font: var(--texto-corpo-pequeno); letter-spacing: var(--texto-corpo-pequeno-espacamento-letras); color: var(--cor-texto-secundario); }
+
+passi-checkbox[erro] .passi-checkbox__entrada { border-color: var(--cor-borda-erro); }
+passi-checkbox[erro] .passi-checkbox__entrada:checked,
+passi-checkbox[erro] .passi-checkbox__entrada:indeterminate { background: var(--cor-fundo-erro); border-color: transparent; }
+passi-checkbox[erro] .passi-checkbox__descricao { color: var(--cor-texto-erro); }
+
+passi-checkbox[desabilitado] .passi-checkbox { cursor: not-allowed; }
+passi-checkbox[desabilitado] .passi-checkbox__entrada,
+passi-checkbox[desabilitado] .passi-checkbox__entrada:checked,
+passi-checkbox[desabilitado] .passi-checkbox__entrada:indeterminate { background: var(--cor-fundo-desabilitado); border-color: var(--cor-borda-padrao); cursor: not-allowed; }
+passi-checkbox[desabilitado] .passi-checkbox__caixa .passi-icone,
+passi-checkbox[desabilitado] .passi-checkbox__rotulo,
+passi-checkbox[desabilitado] .passi-checkbox__descricao { color: var(--cor-texto-desabilitado); }
+
+/* ---------- Alerta ---------- */
+
+passi-alerta { display: block; }
+passi-alerta[hidden] { display: none; }
+
+.passi-alerta {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espaco-3);
+  padding: var(--espaco-4);
+  border-radius: var(--raio-grande);
+  background: var(--cor-fundo-marca-sutil);
+  /* Borda a 40%, como no Figma */
+  border: var(--borda-fina) solid color-mix(in srgb, var(--cor-borda-marca) 40%, transparent);
+  color: var(--cor-texto-marca);
+}
+.passi-alerta__conteudo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--espaco-1); }
+.passi-alerta__titulo { margin: 0; font: var(--texto-rotulo-medio); letter-spacing: var(--texto-rotulo-medio-espacamento-letras); color: var(--cor-texto-padrao); }
+.passi-alerta__descricao { font: var(--texto-corpo-pequeno); letter-spacing: var(--texto-corpo-pequeno-espacamento-letras); color: var(--cor-texto-secundario); }
+.passi-alerta__descricao:empty { display: none; }
+.passi-alerta__descricao > :first-child { margin-top: 0; }
+.passi-alerta__descricao > :last-child { margin-bottom: 0; }
+
+/* A ação herda a cor do tipo (texto/marca, sucesso, alerta ou erro) */
+.passi-alerta__acao {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--raio-pequeno);
+  background: transparent;
+  font: var(--texto-rotulo-medio);
+  letter-spacing: var(--texto-rotulo-medio-espacamento-letras);
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.passi-alerta__acao:hover { text-decoration: underline; }
+.passi-alerta__acao:active { text-decoration: underline; text-decoration-thickness: var(--borda-grossa); }
+
+/* Fechar: ícone de 18 px numa área de toque de 24 px */
+.passi-alerta__fechar {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--espaco-6);
+  height: var(--espaco-6);
+  margin: calc(var(--espaco-0-5) * -1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--raio-pequeno);
+  background: transparent;
+  color: var(--cor-texto-secundario);
+  cursor: pointer;
+}
+.passi-alerta__fechar .passi-icone { width: calc(var(--espaco-4) + var(--espaco-0-5)); height: calc(var(--espaco-4) + var(--espaco-0-5)); }
+.passi-alerta__fechar:hover { background: var(--cor-fundo-fantasma-hover); color: var(--cor-texto-padrao); }
+.passi-alerta__fechar:active { background: var(--cor-fundo-fantasma-pressionado); color: var(--cor-texto-padrao); }
+
+passi-alerta[tipo="sucesso"] .passi-alerta { background: var(--cor-fundo-sucesso-sutil); border-color: color-mix(in srgb, var(--cor-borda-sucesso) 40%, transparent); color: var(--cor-texto-sucesso); }
+passi-alerta[tipo="atencao"] .passi-alerta { background: var(--cor-fundo-alerta-sutil); border-color: color-mix(in srgb, var(--cor-borda-alerta) 40%, transparent); color: var(--cor-texto-alerta); }
+passi-alerta[tipo="erro"] .passi-alerta { background: var(--cor-fundo-erro-sutil); border-color: color-mix(in srgb, var(--cor-borda-erro) 40%, transparent); color: var(--cor-texto-erro); }

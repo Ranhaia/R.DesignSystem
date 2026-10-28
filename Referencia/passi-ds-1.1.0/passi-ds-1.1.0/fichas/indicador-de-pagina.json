@@ -1,0 +1,69 @@
+{
+  "nome": "Indicador de página",
+  "slug": "indicador-de-pagina",
+  "versao": "1.1.0",
+  "descricao": "O indicador de página mostra, com pontos, em qual tela de um carrossel ou de uma introdução a pessoa está. O ponto alongado é a tela atual.",
+  "resumo": "Indicador de página · pontos que mostram em qual tela de um carrossel ou introdução a pessoa está. O ponto ativo é alongado. Para mudar a posição, reordene o ponto “Ativo”.",
+  "diretrizes": "diretrizes/componentes/indicador-de-pagina.md",
+  "figma": {
+    "pagina": "Indicador de página",
+    "componente": "Indicador de página"
+  },
+  "propriedades": [
+    {
+      "nome": "Fundo",
+      "tipo": "variante",
+      "opcoes": [
+        "Claro",
+        "Sobre imagem"
+      ],
+      "padrao": "Claro"
+    },
+    {
+      "nome": "Quantidade",
+      "tipo": "variante",
+      "opcoes": [
+        "3",
+        "4",
+        "5"
+      ],
+      "padrao": "3"
+    }
+  ],
+  "variantes": {
+    "Fundo": [
+      "Claro",
+      "Sobre imagem"
+    ],
+    "Quantidade": [
+      "3",
+      "4",
+      "5"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Pontos só informativos não recebem foco. Se forem clicáveis, cada ponto é um botão.",
+    "leitor": "Anuncie a posição em texto, por exemplo Tela 2 de 4, em vez de ler cada ponto.",
+    "foco": "Anel de foco nos pontos clicáveis.",
+    "cuidados": "A tela atual se diferencia pela forma alongada, não só pela cor. Pontos clicáveis precisam de área de toque de 24 px."
+  },
+  "conteudo": [
+    "Para leitor de tela, diga a posição: Tela 2 de 4."
+  ],
+  "faca": [
+    "Use em sequências curtas, de até 5 telas.",
+    "Combine com setas ou gesto de arrastar.",
+    "Centralize abaixo do conteúdo."
+  ],
+  "naoFaca": [
+    "Usar como única forma de navegar.",
+    "Sequências longas com muitos pontos.",
+    "Pontos pequenos demais para tocar, se forem clicáveis."
+  ],
+  "tokens": [
+    "--cor-fundo-marca",
+    "--cor-borda-forte"
+  ],
+  "codigo": null
+}

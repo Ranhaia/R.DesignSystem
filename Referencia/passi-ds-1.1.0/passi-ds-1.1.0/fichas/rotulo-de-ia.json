@@ -1,0 +1,76 @@
+{
+  "nome": "Rótulo de IA",
+  "slug": "rotulo-de-ia",
+  "versao": "1.1.0",
+  "descricao": "O rótulo de IA avisa que um conteúdo, uma sugestão ou uma resposta veio de inteligência artificial. Ao ser clicado, abre a explicação: de onde veio, quais fontes usou e quais são os limites. Ele identifica, não enfeita.",
+  "resumo": "Rótulo de IA · marca o que foi feito ou sugerido por inteligência artificial e abre a Explicação da IA ao ser clicado. Só identifica: não é decoração. Padrão (IA) ao lado de títulos e blocos; Compacto (só o brilho) em campos e espaços pequenos, sempre com nome acessível; Com texto onde a mensagem precisa ser explícita.",
+  "diretrizes": "diretrizes/componentes/rotulo-de-ia.md",
+  "figma": {
+    "pagina": "Rótulo de IA",
+    "componente": "Rótulo de IA"
+  },
+  "propriedades": [
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Compacto",
+        "Com texto"
+      ],
+      "padrao": "Padrão"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Foco"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Padrão",
+      "Compacto",
+      "Com texto"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Foco"
+  ],
+  "acessibilidade": {
+    "teclado": "É um botão: Tab chega ao rótulo e Enter ou Espaço abrem a Explicação da IA.",
+    "leitor": "Papel button com nome completo, por exemplo Conteúdo gerado por IA, ver explicação. No tipo Compacto, o nome em texto é obrigatório, porque não há palavra visível.",
+    "foco": "Anel de foco de 2 px. Ao abrir a explicação, o foco vai para ela; ao fechar, volta para o rótulo.",
+    "cuidados": "A cor não é o único sinal: o rótulo sempre tem o brilho e, nos tipos Padrão e Com texto, a palavra IA."
+  },
+  "conteudo": [
+    "Use IA, sem pontos e em maiúsculas.",
+    "No tipo Com texto, diga o que a IA fez: Gerado por IA, Resumo da IA."
+  ],
+  "faca": [
+    "Coloque o rótulo ao lado de cada conteúdo feito ou sugerido pela IA.",
+    "Deixe o rótulo abrir a explicação: de onde veio e quais os limites.",
+    "Use o tipo Com texto quando a lei ou o contexto pedirem aviso explícito."
+  ],
+  "naoFaca": [
+    "Usar a cor ou o brilho da IA como enfeite em botões, fundos ou telas inteiras.",
+    "Rotular algo que a IA não fez, só para parecer moderno.",
+    "Esconder o rótulo depois que a pessoa aceita a sugestão."
+  ],
+  "tokens": [
+    "--cor-fundo-ia-sutil",
+    "--cor-borda-ia",
+    "--cor-texto-ia",
+    "--raio-pilula",
+    "--cor-borda-foco"
+  ],
+  "codigo": null
+}

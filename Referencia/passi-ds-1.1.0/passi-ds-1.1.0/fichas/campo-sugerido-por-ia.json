@@ -1,0 +1,64 @@
+{
+  "nome": "Campo sugerido por IA",
+  "slug": "campo-sugerido-por-ia",
+  "versao": "1.1.0",
+  "descricao": "Quando a IA preenche um campo por você, o PASSI mostra isso com clareza: rótulo de IA, borda própria e uma frase dizendo de onde veio a sugestão. Se a pessoa mudar o valor, o campo volta ao normal e oferece voltar à sugestão.",
+  "resumo": "Campo sugerido por IA · campo de formulário que chega preenchido por uma sugestão da IA. Mostra o Rótulo de IA compacto e a borda da IA enquanto o valor é o sugerido. Se a pessoa editar, volta ao visual normal e ganha o botão “Voltar à sugestão da IA”. A pessoa sempre confirma antes de salvar.",
+  "diretrizes": "diretrizes/componentes/campo-sugerido-por-ia.md",
+  "figma": {
+    "pagina": "Campo sugerido por IA",
+    "componente": "Campo sugerido por IA"
+  },
+  "propriedades": [
+    {
+      "nome": "Rótulo",
+      "tipo": "texto",
+      "padrao": "Cargo"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Sugerido",
+        "Foco",
+        "Editado"
+      ],
+      "padrao": "Sugerido"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Sugerido",
+    "Foco",
+    "Editado"
+  ],
+  "acessibilidade": {
+    "teclado": "Funciona como o Campo de texto. O botão Voltar à sugestão da IA recebe Tab e responde a Enter.",
+    "leitor": "O nome do campo é o rótulo. A frase de ajuda, lida junto, diz que o valor foi sugerido pela IA. Ao voltar à sugestão, anuncie a troca de forma discreta.",
+    "foco": "Borda azul de 2 px no foco. Ao voltar à sugestão, o foco volta para o campo.",
+    "cuidados": "A marca da IA nunca é só a cor da borda: há o rótulo com o brilho e a frase de ajuda."
+  },
+  "conteudo": [
+    "A ajuda diz de onde veio a sugestão: Sugerido pela IA a partir do seu perfil.",
+    "O botão de desfazer diz o valor que volta: Voltar à sugestão da IA: Líder de design."
+  ],
+  "faca": [
+    "Diga de onde veio a sugestão, em uma frase.",
+    "Peça confirmação antes de salvar dados sugeridos.",
+    "Ofereça voltar à sugestão depois que a pessoa editar."
+  ],
+  "naoFaca": [
+    "Salvar sugestões da IA sem a pessoa revisar.",
+    "Marcar como IA um campo que a pessoa digitou.",
+    "Sugerir dados sensíveis, como renda ou saúde, sem a pessoa pedir."
+  ],
+  "tokens": [
+    "--cor-borda-ia",
+    "--cor-borda-marca",
+    "--cor-borda-controle",
+    "--cor-fundo-superficie",
+    "--cor-texto-ia",
+    "--raio-medio"
+  ],
+  "codigo": null
+}

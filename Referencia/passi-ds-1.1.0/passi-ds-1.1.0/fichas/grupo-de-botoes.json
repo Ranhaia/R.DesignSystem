@@ -1,0 +1,59 @@
+{
+  "nome": "Grupo de botões",
+  "slug": "grupo-de-botoes",
+  "versao": "1.1.0",
+  "descricao": "O grupo de botões organiza duas ou mais ações relacionadas, como cancelar e salvar. A ordem e o espaçamento são sempre os mesmos, então a pessoa encontra a ação principal sem pensar.",
+  "resumo": "Grupo de botões · combinações prontas de ações. A ação principal fica à direita no computador e em cima no celular. Troque os textos e tipos nas instâncias internas.",
+  "diretrizes": "diretrizes/componentes/grupo-de-botoes.md",
+  "figma": {
+    "pagina": "Grupo de botões",
+    "componente": "Grupo de botões"
+  },
+  "propriedades": [
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Formulário",
+        "Destrutivo",
+        "Três ações",
+        "Empilhado"
+      ],
+      "padrao": "Formulário"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Formulário",
+      "Destrutivo",
+      "Três ações",
+      "Empilhado"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Cada botão recebe Tab na ordem visual: primeiro a ação secundária, por último a principal.",
+    "leitor": "Cada botão tem seu próprio nome. Quando o grupo é uma barra de opções, use o papel group com um nome, por exemplo Ações do capítulo.",
+    "foco": "Segue a ordem visual da esquerda para a direita. Nunca mude a ordem só no código.",
+    "cuidados": "No celular, quando os botões ficam empilhados, a ação principal vai em cima e a ordem do foco acompanha."
+  },
+  "conteudo": [
+    "Cada botão diz a própria ação. Cancelar não precisa de objeto; a ação principal precisa: Salvar capítulo.",
+    "Evite pares como Sim e Não ou OK e Cancelar."
+  ],
+  "faca": [
+    "Mantenha a ação principal sempre na mesma posição.",
+    "Use 12 px entre botões no computador e 8 px no celular.",
+    "Deixe claro no texto o que cada botão faz."
+  ],
+  "naoFaca": [
+    "Mais de três botões no mesmo grupo.",
+    "Dois botões Primários juntos.",
+    "Mudar a ordem das ações de uma tela para outra."
+  ],
+  "tokens": [
+    "--espaco-3",
+    "--espaco-2"
+  ],
+  "codigo": null
+}

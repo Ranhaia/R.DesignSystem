@@ -1,0 +1,842 @@
+{
+  "$description": "Estilos de texto do PASSI DS. Fontes gratuitas no Google Fonts: Archivo (títulos), Inter (textos) e IBM Plex Mono (rótulos técnicos e código). Família, peso e tamanho apontam para as variáveis da coleção Tipografia; o nome do tamanho e da entrelinha é o valor em px no Figma.",
+  "fonte": {
+    "titulos": {
+      "$type": "fontFamily",
+      "$value": [
+        "Archivo",
+        "sans-serif"
+      ],
+      "$description": "Títulos e display.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_FAMILY"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--fonte-titulos)"
+          }
+        }
+      }
+    },
+    "textos": {
+      "$type": "fontFamily",
+      "$value": [
+        "Inter",
+        "sans-serif"
+      ],
+      "$description": "Textos corridos, rótulos e interface.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_FAMILY"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--fonte-textos)"
+          }
+        }
+      }
+    },
+    "codigo": {
+      "$type": "fontFamily",
+      "$value": [
+        "IBM Plex Mono",
+        "monospace"
+      ],
+      "$description": "Código, sobretítulos e valores técnicos.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_FAMILY"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--fonte-codigo)"
+          }
+        }
+      }
+    }
+  },
+  "peso": {
+    "regular": {
+      "$type": "fontWeight",
+      "$value": 400,
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--peso-regular)"
+          }
+        }
+      }
+    },
+    "medio": {
+      "$type": "fontWeight",
+      "$value": 500,
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--peso-medio)"
+          }
+        }
+      }
+    },
+    "seminegrito": {
+      "$type": "fontWeight",
+      "$value": 600,
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--peso-seminegrito)"
+          }
+        }
+      }
+    },
+    "negrito": {
+      "$type": "fontWeight",
+      "$value": 700,
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--peso-negrito)"
+          }
+        }
+      }
+    },
+    "extranegrito": {
+      "$type": "fontWeight",
+      "$value": 800,
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--peso-extranegrito)"
+          }
+        }
+      }
+    }
+  },
+  "tamanho": {
+    "10": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.625,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-10)"
+          }
+        }
+      }
+    },
+    "11": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.6875,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-11)"
+          }
+        }
+      }
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.75,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-12)"
+          }
+        }
+      }
+    },
+    "14": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.875,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-14)"
+          }
+        }
+      }
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-16)"
+          }
+        }
+      }
+    },
+    "18": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.125,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-18)"
+          }
+        }
+      }
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.25,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-20)"
+          }
+        }
+      }
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-24)"
+          }
+        }
+      }
+    },
+    "32": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-32)"
+          }
+        }
+      }
+    },
+    "40": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2.5,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-40)"
+          }
+        }
+      }
+    },
+    "56": {
+      "$type": "dimension",
+      "$value": {
+        "value": 3.5,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-56)"
+          }
+        }
+      }
+    },
+    "72": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4.5,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--tamanho-72)"
+          }
+        }
+      }
+    }
+  },
+  "entrelinha": {
+    "14": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.875,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-14)"
+          }
+        }
+      }
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-16)"
+          }
+        }
+      }
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.25,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-20)"
+          }
+        }
+      }
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-24)"
+          }
+        }
+      }
+    },
+    "26": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.625,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-26)"
+          }
+        }
+      }
+    },
+    "28": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.75,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-28)"
+          }
+        }
+      }
+    },
+    "30": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.875,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-30)"
+          }
+        }
+      }
+    },
+    "38": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2.375,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-38)"
+          }
+        }
+      }
+    },
+    "46": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2.875,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-46)"
+          }
+        }
+      }
+    },
+    "60": {
+      "$type": "dimension",
+      "$value": {
+        "value": 3.75,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-60)"
+          }
+        }
+      }
+    },
+    "76": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4.75,
+        "unit": "rem"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--entrelinha-76)"
+          }
+        }
+      }
+    }
+  },
+  "tipografia": {
+    "display": {
+      "grande": {
+        "$type": "typography",
+        "$description": "Títulos de capa e abertura de seção.",
+        "$value": {
+          "fontFamily": "{fonte.titulos}",
+          "fontSize": "{tamanho.72}",
+          "fontWeight": "{peso.extranegrito}",
+          "letterSpacing": {
+            "value": -0.1125,
+            "unit": "rem"
+          },
+          "lineHeight": 1.0556
+        }
+      },
+      "medio": {
+        "$type": "typography",
+        "$description": "Títulos de destaque em páginas de marketing.",
+        "$value": {
+          "fontFamily": "{fonte.titulos}",
+          "fontSize": "{tamanho.56}",
+          "fontWeight": "{peso.extranegrito}",
+          "letterSpacing": {
+            "value": -0.07,
+            "unit": "rem"
+          },
+          "lineHeight": 1.0714
+        }
+      }
+    },
+    "titulo": {
+      "1": {
+        "$type": "typography",
+        "$description": "Título principal da página (h1).",
+        "$value": {
+          "fontFamily": "{fonte.titulos}",
+          "fontSize": "{tamanho.40}",
+          "fontWeight": "{peso.negrito}",
+          "letterSpacing": {
+            "value": -0.0375,
+            "unit": "rem"
+          },
+          "lineHeight": 1.15
+        }
+      },
+      "2": {
+        "$type": "typography",
+        "$description": "Título de seção (h2).",
+        "$value": {
+          "fontFamily": "{fonte.titulos}",
+          "fontSize": "{tamanho.32}",
+          "fontWeight": "{peso.negrito}",
+          "letterSpacing": {
+            "value": -0.02,
+            "unit": "rem"
+          },
+          "lineHeight": 1.1875
+        }
+      },
+      "3": {
+        "$type": "typography",
+        "$description": "Título de bloco ou card grande (h3).",
+        "$value": {
+          "fontFamily": "{fonte.titulos}",
+          "fontSize": "{tamanho.24}",
+          "fontWeight": "{peso.negrito}",
+          "letterSpacing": {
+            "value": -0.0075,
+            "unit": "rem"
+          },
+          "lineHeight": 1.25
+        }
+      },
+      "4": {
+        "$type": "typography",
+        "$description": "Título de card, janela ou grupo (h4).",
+        "$value": {
+          "fontFamily": "{fonte.titulos}",
+          "fontSize": "{tamanho.20}",
+          "fontWeight": "{peso.seminegrito}",
+          "letterSpacing": {
+            "value": -0.0031,
+            "unit": "rem"
+          },
+          "lineHeight": 1.3
+        }
+      }
+    },
+    "corpo": {
+      "grande": {
+        "$type": "typography",
+        "$description": "Textos de leitura longa e introduções.",
+        "$value": {
+          "fontFamily": "{fonte.textos}",
+          "fontSize": "{tamanho.18}",
+          "fontWeight": "{peso.regular}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.5556
+        }
+      },
+      "medio": {
+        "$type": "typography",
+        "$description": "Texto padrão de interface.",
+        "$value": {
+          "fontFamily": "{fonte.textos}",
+          "fontSize": "{tamanho.16}",
+          "fontWeight": "{peso.regular}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.5
+        }
+      },
+      "pequeno": {
+        "$type": "typography",
+        "$description": "Textos de apoio e descrições.",
+        "$value": {
+          "fontFamily": "{fonte.textos}",
+          "fontSize": "{tamanho.14}",
+          "fontWeight": "{peso.regular}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.4286
+        }
+      }
+    },
+    "rotulo": {
+      "grande": {
+        "$type": "typography",
+        "$description": "Botões grandes e destaques curtos.",
+        "$value": {
+          "fontFamily": "{fonte.textos}",
+          "fontSize": "{tamanho.16}",
+          "fontWeight": "{peso.seminegrito}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.5
+        }
+      },
+      "medio": {
+        "$type": "typography",
+        "$description": "Botões, abas, rótulos de campo.",
+        "$value": {
+          "fontFamily": "{fonte.textos}",
+          "fontSize": "{tamanho.14}",
+          "fontWeight": "{peso.seminegrito}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.4286
+        }
+      },
+      "pequeno": {
+        "$type": "typography",
+        "$description": "Selos, etiquetas e botões pequenos.",
+        "$value": {
+          "fontFamily": "{fonte.textos}",
+          "fontSize": "{tamanho.12}",
+          "fontWeight": "{peso.seminegrito}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.3333
+        }
+      },
+      "minimo": {
+        "$type": "typography",
+        "$description": "Rótulos mínimos: contadores, letras do índice, barra inferior do celular e medidas. Só para textos de 1 a 2 palavras.",
+        "$value": {
+          "fontFamily": "{fonte.textos}",
+          "fontSize": "{tamanho.11}",
+          "fontWeight": "{peso.seminegrito}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.2727
+        }
+      },
+      "sigla": {
+        "$type": "typography",
+        "$description": "Siglas de formato em ícones de arquivo (PDF, DOC, ZIP).",
+        "$value": {
+          "fontFamily": "{fonte.textos}",
+          "fontSize": "{tamanho.10}",
+          "fontWeight": "{peso.negrito}",
+          "letterSpacing": {
+            "value": 0.025,
+            "unit": "rem"
+          },
+          "lineHeight": 1.6
+        }
+      }
+    },
+    "legenda": {
+      "$type": "typography",
+      "$description": "Mensagens de ajuda, datas e notas.",
+      "$value": {
+        "fontFamily": "{fonte.textos}",
+        "fontSize": "{tamanho.12}",
+        "fontWeight": "{peso.regular}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "rem"
+        },
+        "lineHeight": 1.3333
+      }
+    },
+    "sobretitulo": {
+      "$type": "typography",
+      "$description": "Rótulo em caixa alta acima de títulos.",
+      "$value": {
+        "fontFamily": "{fonte.codigo}",
+        "fontSize": "{tamanho.12}",
+        "fontWeight": "{peso.medio}",
+        "letterSpacing": {
+          "value": 0.06,
+          "unit": "rem"
+        },
+        "lineHeight": 1.3333
+      }
+    },
+    "codigo": {
+      "$type": "typography",
+      "$description": "Trechos de código e atalhos.",
+      "$value": {
+        "fontFamily": "{fonte.codigo}",
+        "fontSize": "{tamanho.14}",
+        "fontWeight": "{peso.regular}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "rem"
+        },
+        "lineHeight": 1.4286
+      },
+      "pequeno": {
+        "$type": "typography",
+        "$description": "Teclas de atalho e nomes de arquivo em trechos de código.",
+        "$value": {
+          "fontFamily": "{fonte.codigo}",
+          "fontSize": "{tamanho.12}",
+          "fontWeight": "{peso.medio}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.3333
+        }
+      },
+      "bloco": {
+        "$type": "typography",
+        "$description": "Código em várias linhas: blocos, terminal e números de linha.",
+        "$value": {
+          "fontFamily": "{fonte.codigo}",
+          "fontSize": "{tamanho.14}",
+          "fontWeight": "{peso.regular}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.7143
+        }
+      }
+    },
+    "link": {
+      "medio": {
+        "$type": "typography",
+        "$description": "Links de 16 px. Mesmo texto do Corpo/Médio, sempre sublinhado.",
+        "$extensions": {
+          "br.com.passi": {
+            "textDecoration": "underline"
+          }
+        },
+        "$value": {
+          "fontFamily": "{fonte.textos}",
+          "fontSize": "{tamanho.16}",
+          "fontWeight": "{peso.regular}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.5
+        }
+      },
+      "pequeno": {
+        "$type": "typography",
+        "$description": "Links de 14 px. Mesmo texto do Corpo/Pequeno, sempre sublinhado.",
+        "$extensions": {
+          "br.com.passi": {
+            "textDecoration": "underline"
+          }
+        },
+        "$value": {
+          "fontFamily": "{fonte.textos}",
+          "fontSize": "{tamanho.14}",
+          "fontWeight": "{peso.regular}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.4286
+        }
+      }
+    }
+  }
+}

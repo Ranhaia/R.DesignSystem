@@ -1,0 +1,96 @@
+{
+  "$description": "Grades de colunas e larguras de referência. Abaixo de 768 px, use a grade de celular.",
+  "grade": {
+    "computador": {
+      "colunas": {
+        "$type": "number",
+        "$value": 12
+      },
+      "espaco-entre-colunas": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        }
+      },
+      "margem": {
+        "$type": "dimension",
+        "$value": {
+          "value": 5,
+          "unit": "rem"
+        }
+      }
+    },
+    "tablet": {
+      "colunas": {
+        "$type": "number",
+        "$value": 8
+      },
+      "espaco-entre-colunas": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        }
+      },
+      "margem": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2.5,
+          "unit": "rem"
+        }
+      }
+    },
+    "celular": {
+      "colunas": {
+        "$type": "number",
+        "$value": 4
+      },
+      "espaco-entre-colunas": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1,
+          "unit": "rem"
+        }
+      },
+      "margem": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1,
+          "unit": "rem"
+        }
+      }
+    }
+  },
+  "largura-de-referencia": {
+    "computador": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1440,
+        "unit": "px"
+      }
+    },
+    "tablet": {
+      "$type": "dimension",
+      "$value": {
+        "value": 768,
+        "unit": "px"
+      }
+    },
+    "celular": {
+      "$type": "dimension",
+      "$value": {
+        "value": 375,
+        "unit": "px"
+      }
+    }
+  },
+  "conteudo-maximo": {
+    "$type": "dimension",
+    "$value": {
+      "value": 1280,
+      "unit": "px"
+    },
+    "$description": "Largura máxima do conteúdo no computador."
+  }
+}

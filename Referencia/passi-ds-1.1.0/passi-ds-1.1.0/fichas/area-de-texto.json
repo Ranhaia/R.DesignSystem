@@ -1,0 +1,100 @@
+{
+  "nome": "Área de texto",
+  "slug": "area-de-texto",
+  "versao": "1.1.0",
+  "descricao": "A área de texto recebe respostas longas, de várias linhas, como comentários, descrições e mensagens. Quando existe um limite, o contador mostra quanto ainda cabe.",
+  "resumo": "Área de texto · entrada de várias linhas para comentários, descrições e mensagens. Mostre um contador quando houver limite de caracteres.",
+  "diretrizes": "diretrizes/componentes/area-de-texto.md",
+  "figma": {
+    "pagina": "Área de texto",
+    "componente": "Área de texto"
+  },
+  "propriedades": [
+    {
+      "nome": "Rótulo",
+      "tipo": "texto",
+      "padrao": "Sua mensagem"
+    },
+    {
+      "nome": "Valor",
+      "tipo": "texto",
+      "padrao": "Conte o que você achou do livro"
+    },
+    {
+      "nome": "Ajuda",
+      "tipo": "texto",
+      "padrao": "Seja breve. Até 280 caracteres."
+    },
+    {
+      "nome": "Contador",
+      "tipo": "texto",
+      "padrao": "0/280"
+    },
+    {
+      "nome": "Mostrar contador",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Mostrar ajuda",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Foco",
+        "Preenchido",
+        "Erro",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Foco",
+    "Preenchido",
+    "Erro",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab chega à área. Enter cria uma linha nova; Tab sai do campo.",
+    "leitor": "O rótulo é o nome. A ajuda e o contador são lidos junto. Quando o limite está perto, anuncie o que falta sem interromper a digitação a cada letra.",
+    "foco": "Borda azul de 2 px.",
+    "cuidados": "Não corte o texto ao passar do limite sem avisar. Deixe a área crescer ou permitir redimensionar."
+  },
+  "conteudo": [
+    "O rótulo diz o que escrever: Sua mensagem.",
+    "A ajuda informa o limite: Até 280 caracteres.",
+    "O contador mostra quanto falta, não quanto foi usado, quando o limite estiver perto."
+  ],
+  "faca": [
+    "Ajuste a altura ao tamanho esperado da resposta.",
+    "Mostre o limite antes de a pessoa passar dele.",
+    "Deixe o campo crescer conforme o texto, quando possível."
+  ],
+  "naoFaca": [
+    "Usar para respostas curtas, como nome ou e-mail.",
+    "Cortar o texto sem avisar quando passar do limite.",
+    "Placeholders longos com instruções importantes."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-fundo-desabilitado",
+    "--cor-borda-controle",
+    "--cor-borda-marca",
+    "--cor-borda-erro",
+    "--cor-texto-padrao",
+    "--cor-texto-terciario",
+    "--cor-texto-erro",
+    "--espaco-3",
+    "--raio-medio"
+  ],
+  "codigo": null
+}

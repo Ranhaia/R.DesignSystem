@@ -1,0 +1,181 @@
+{
+  "nome": "Checkbox",
+  "slug": "checkbox",
+  "versao": "1.1.0",
+  "descricao": "O checkbox permite escolher uma ou mais opções de uma lista, ou confirmar algo de forma independente, como aceitar os termos de uso.",
+  "resumo": "Checkbox · permite marcar uma ou várias opções independentes. Use Indeterminado no item “selecionar todos” quando só parte da lista está marcada. A caixa tem 20 px; toda a linha (caixa + texto) deve ser clicável.",
+  "diretrizes": "diretrizes/componentes/checkbox.md",
+  "figma": {
+    "pagina": "Checkbox",
+    "componente": "Checkbox"
+  },
+  "propriedades": [
+    {
+      "nome": "Rótulo",
+      "tipo": "texto",
+      "padrao": "Quero receber novidades do livro"
+    },
+    {
+      "nome": "Descrição",
+      "tipo": "texto",
+      "padrao": "Um e-mail por mês, sem spam."
+    },
+    {
+      "nome": "Mostrar descrição",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Marcação",
+      "tipo": "variante",
+      "opcoes": [
+        "Desmarcado",
+        "Marcado",
+        "Indeterminado"
+      ],
+      "padrao": "Desmarcado"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Foco",
+        "Erro",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Marcação": [
+      "Desmarcado",
+      "Marcado",
+      "Indeterminado"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Foco",
+    "Erro",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab chega a cada checkbox. Espaço marca e desmarca.",
+    "leitor": "Papel checkbox. O nome é o rótulo. Anuncia marcado, desmarcado ou parcialmente marcado.",
+    "foco": "Anel de foco de 2 px em volta da caixa.",
+    "cuidados": "Clicar no rótulo também marca. Para um grupo, use um título de grupo (fieldset e legend no código). A área de clique inclui o texto, não só a caixa."
+  },
+  "conteudo": [
+    "Rótulo como afirmação positiva: Quero receber novidades.",
+    "Evite negações duplas, como Não quero deixar de receber."
+  ],
+  "faca": [
+    "Escreva o rótulo como uma afirmação positiva: “Quero receber novidades”.",
+    "Deixe a linha inteira clicável, não só a caixa.",
+    "Use para opções independentes, que podem ser marcadas juntas."
+  ],
+  "naoFaca": [
+    "Usar checkbox quando só uma opção pode ser escolhida. Nesse caso use Rádio.",
+    "Rótulos negativos, como “Não quero receber e-mails”.",
+    "Disparar uma ação imediata ao marcar. Para isso use o Interruptor."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-fundo-marca",
+    "--cor-fundo-marca-hover",
+    "--cor-fundo-marca-pressionado",
+    "--cor-fundo-marca-sutil",
+    "--cor-fundo-erro",
+    "--cor-fundo-desabilitado",
+    "--cor-borda-controle",
+    "--cor-borda-marca",
+    "--cor-borda-erro",
+    "--cor-texto-padrao",
+    "--cor-texto-secundario",
+    "--cor-texto-sobre-marca",
+    "--raio-pequeno"
+  ],
+  "codigo": {
+    "elemento": "passi-checkbox",
+    "arquivo": "componentes/passi-componentes.js",
+    "conteudo": {
+      "descricao": "Rótulo do checkbox, se precisar de link dentro dele. Senão, use o atributo rotulo.",
+      "figma": "Rótulo",
+      "obrigatorio": false
+    },
+    "atributos": [
+      {
+        "nome": "rotulo",
+        "figma": "Rótulo",
+        "tipo": "texto",
+        "obrigatorio": true,
+        "descricao": "Afirmação positiva. Pode vir no conteúdo em vez do atributo."
+      },
+      {
+        "nome": "descricao",
+        "figma": "Descrição + Mostrar descrição",
+        "tipo": "texto"
+      },
+      {
+        "nome": "marcado",
+        "figma": "Marcação = Marcado",
+        "tipo": "booleano"
+      },
+      {
+        "nome": "indeterminado",
+        "figma": "Marcação = Indeterminado",
+        "tipo": "booleano",
+        "descricao": "Para o item selecionar todos quando só parte da lista está marcada."
+      },
+      {
+        "nome": "erro",
+        "figma": "Estado = Erro",
+        "tipo": "texto",
+        "descricao": "Mensagem quando o item é obrigatório e não foi marcado."
+      },
+      {
+        "nome": "nome",
+        "figma": null,
+        "tipo": "texto"
+      },
+      {
+        "nome": "valor",
+        "figma": null,
+        "tipo": "texto"
+      },
+      {
+        "nome": "obrigatorio",
+        "figma": null,
+        "tipo": "booleano"
+      },
+      {
+        "nome": "desabilitado",
+        "figma": "Estado = Desabilitado",
+        "tipo": "booleano"
+      }
+    ],
+    "eventos": {
+      "change": "O evento nativo chega ao componente. A marcação está em .checked."
+    },
+    "estados": "Hover, Pressionado e Foco vêm do navegador, na linha inteira. Erro vem do atributo erro. Desabilitado vem do atributo desabilitado.",
+    "regras": [
+      {
+        "id": "checkbox-negativo",
+        "nivel": "aviso",
+        "tipo": "comeca-com",
+        "alvo": "rotulo",
+        "valores": [
+          "não ",
+          "nao "
+        ],
+        "mensagem": "Rótulo negativo. Escreva como afirmação positiva, como \"Quero receber novidades\".",
+        "fonte": "checkbox.md · NÃO faça"
+      }
+    ]
+  }
+}

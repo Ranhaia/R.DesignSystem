@@ -1,0 +1,279 @@
+{
+  "$description": "Sombras (elementos que flutuam) e desfoques de fundo (efeito de vidro).",
+  "sombra": {
+    "pequena": {
+      "$type": "shadow",
+      "$description": "Barras de ferramentas e o segmento selecionado. Cards parados na página usam borda, não sombra.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.04,
+              0.04,
+              0.04
+            ],
+            "hex": "#0a0a0a",
+            "alpha": 0.06
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 2,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.04,
+              0.04,
+              0.04
+            ],
+            "hex": "#0a0a0a",
+            "alpha": 0.08
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 3,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        }
+      ]
+    },
+    "media": {
+      "$type": "shadow",
+      "$description": "Menus, popovers e dicas flutuantes.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.04,
+              0.04,
+              0.04
+            ],
+            "hex": "#0a0a0a",
+            "alpha": 0.05
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 2,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 4,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.04,
+              0.04,
+              0.04
+            ],
+            "hex": "#0a0a0a",
+            "alpha": 0.08
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 8,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 16,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        }
+      ]
+    },
+    "grande": {
+      "$type": "shadow",
+      "$description": "Janelas modais e avisos rápidos.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.04,
+              0.04,
+              0.04
+            ],
+            "hex": "#0a0a0a",
+            "alpha": 0.05
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 4,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 8,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.04,
+              0.04,
+              0.04
+            ],
+            "hex": "#0a0a0a",
+            "alpha": 0.12
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 20,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 40,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        }
+      ]
+    },
+    "extra": {
+      "$type": "shadow",
+      "$description": "Elementos flutuando sobre tudo.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.04,
+              0.04,
+              0.04
+            ],
+            "hex": "#0a0a0a",
+            "alpha": 0.06
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 8,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 16,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.04,
+              0.04,
+              0.04
+            ],
+            "hex": "#0a0a0a",
+            "alpha": 0.16
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 32,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 64,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        }
+      ]
+    }
+  },
+  "desfoque": {
+    "pequeno": {
+      "$type": "dimension",
+      "$description": "Desfoque de fundo de 8 px. Barras fixas sobre conteúdo.",
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      }
+    },
+    "medio": {
+      "$type": "dimension",
+      "$description": "Desfoque de fundo de 16 px. Painéis de vidro e menus.",
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      }
+    },
+    "grande": {
+      "$type": "dimension",
+      "$description": "Desfoque de fundo de 32 px. Sobreposições e janelas sobre imagens.",
+      "$value": {
+        "value": 32,
+        "unit": "px"
+      }
+    }
+  }
+}

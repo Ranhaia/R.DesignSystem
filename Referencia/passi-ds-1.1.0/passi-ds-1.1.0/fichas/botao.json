@@ -1,0 +1,256 @@
+{
+  "nome": "Botão",
+  "slug": "botao",
+  "versao": "1.1.0",
+  "descricao": "Botões disparam ações. O texto diz exatamente o que vai acontecer: “Salvar alterações”, e não “OK”. Use um único botão Primário por tela, para a ação mais importante.",
+  "resumo": "Botão · dispara uma ação. Use um único Primário por tela para a ação principal. Secundário para ações fortes que não são a principal, Contorno e Fantasma para ações de apoio, Perigo para ações destrutivas (excluir, cancelar assinatura). Tamanhos: P 32 px, M 40 px, G 48 px.",
+  "diretrizes": "diretrizes/componentes/botao.md",
+  "figma": {
+    "pagina": "Botão",
+    "componente": "Botão"
+  },
+  "propriedades": [
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Botão"
+    },
+    {
+      "nome": "Ícone à esquerda",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Ícone à direita",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Trocar ícone esquerdo",
+      "tipo": "troca"
+    },
+    {
+      "nome": "Trocar ícone direito",
+      "tipo": "troca"
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Primário",
+        "Secundário",
+        "Contorno",
+        "Fantasma",
+        "Perigo"
+      ],
+      "padrao": "Primário"
+    },
+    {
+      "nome": "Tamanho",
+      "tipo": "variante",
+      "opcoes": [
+        "P",
+        "M",
+        "G"
+      ],
+      "padrao": "M"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Foco",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Primário",
+      "Secundário",
+      "Contorno",
+      "Fantasma",
+      "Perigo"
+    ],
+    "Tamanho": [
+      "P",
+      "M",
+      "G"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Foco",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab chega ao botão. Enter ou Espaço executam a ação.",
+    "leitor": "Papel button. O nome é o texto do botão. Botão desabilitado é anunciado como indisponível; se a pessoa precisa saber por quê, explique perto dele.",
+    "foco": "Anel de foco de 2 px. Depois da ação, o foco fica no botão, a não ser que a ação abra uma janela ou leve para outra tela.",
+    "cuidados": "Texto que diz a ação, nunca só OK. Durante um carregamento, mantenha o texto ou anuncie Salvando para quem usa leitor de tela."
+  },
+  "conteudo": [
+    "Verbo e objeto, até 3 palavras: Salvar alterações, Criar conta.",
+    "Use o mesmo verbo do título da janela ou da página.",
+    "Sem ponto final e sem exclamação."
+  ],
+  "faca": [
+    "Comece o texto com um verbo: “Salvar”, “Enviar”, “Criar conta”.",
+    "Use um único botão Primário por tela.",
+    "Deixe a ação principal à direita em janelas e formulários.",
+    "Mantenha a área de toque com pelo menos 40 px de altura no celular."
+  ],
+  "naoFaca": [
+    "Textos vagos como “OK”, “Clique aqui” ou “Sim”.",
+    "Dois botões Primários lado a lado.",
+    "Desabilitar um botão sem explicar o motivo.",
+    "Usar o tipo Perigo para ações que podem ser desfeitas."
+  ],
+  "tokens": [
+    "--espaco-2",
+    "--espaco-3",
+    "--espaco-4",
+    "--espaco-5",
+    "--cor-fundo-marca",
+    "--cor-fundo-invertido",
+    "--cor-fundo-erro",
+    "--cor-fundo-marca-hover",
+    "--cor-fundo-marca-pressionado",
+    "--cor-fundo-sutil",
+    "--cor-fundo-sutil-hover",
+    "--cor-fundo-fantasma-hover",
+    "--cor-fundo-fantasma-pressionado",
+    "--cor-texto-sobre-marca",
+    "--cor-texto-padrao",
+    "--cor-borda-forte",
+    "--cor-borda-foco",
+    "--raio-pilula"
+  ],
+  "codigo": {
+    "elemento": "passi-botao",
+    "arquivo": "componentes/passi-componentes.js",
+    "conteudo": {
+      "descricao": "Texto do botão. Começa com verbo e diz o que acontece.",
+      "figma": "Texto",
+      "obrigatorio": true
+    },
+    "atributos": [
+      {
+        "nome": "tipo",
+        "figma": "Tipo",
+        "tipo": "lista",
+        "opcoes": {
+          "primario": "Primário",
+          "secundario": "Secundário",
+          "contorno": "Contorno",
+          "fantasma": "Fantasma",
+          "perigo": "Perigo"
+        },
+        "padrao": "primario"
+      },
+      {
+        "nome": "tamanho",
+        "figma": "Tamanho",
+        "tipo": "lista",
+        "opcoes": {
+          "p": "P",
+          "m": "M",
+          "g": "G"
+        },
+        "padrao": "m"
+      },
+      {
+        "nome": "icone-esquerda",
+        "figma": "Ícone à esquerda + Trocar ícone esquerdo",
+        "tipo": "icone",
+        "descricao": "Nome de um dos 201 ícones. Reforça a ação."
+      },
+      {
+        "nome": "icone-direita",
+        "figma": "Ícone à direita + Trocar ícone direito",
+        "tipo": "icone",
+        "descricao": "Nome de um dos 201 ícones. Indica avanço ou abertura."
+      },
+      {
+        "nome": "desabilitado",
+        "figma": "Estado = Desabilitado",
+        "tipo": "booleano",
+        "descricao": "Explique perto do botão por que ele está indisponível."
+      },
+      {
+        "nome": "tipo-html",
+        "figma": null,
+        "tipo": "lista",
+        "opcoes": {
+          "button": "Botão comum",
+          "submit": "Envia o formulário",
+          "reset": "Limpa o formulário"
+        },
+        "padrao": "button",
+        "descricao": "Só existe no código: o papel do botão dentro de um formulário."
+      }
+    ],
+    "estados": "Hover, Pressionado e Foco vêm do navegador (:hover, :active, :focus-visible). Desabilitado vem do atributo desabilitado.",
+    "regras": [
+      {
+        "id": "botao-texto-vago",
+        "nivel": "erro",
+        "tipo": "texto-proibido",
+        "alvo": "conteudo",
+        "valores": [
+          "ok",
+          "clique aqui",
+          "sim",
+          "não",
+          "nao",
+          "aqui",
+          "confirmar",
+          "submit",
+          "send"
+        ],
+        "mensagem": "Texto vago no botão. Comece com um verbo que diga o que acontece, como \"Salvar alterações\".",
+        "fonte": "botao.md · NÃO faça"
+      },
+      {
+        "id": "botao-exclamacao",
+        "nivel": "erro",
+        "tipo": "contem",
+        "alvo": "conteudo",
+        "valores": [
+          "!"
+        ],
+        "mensagem": "Botão sem exclamação.",
+        "fonte": "botao.md · Conteúdo"
+      },
+      {
+        "id": "botao-ponto-final",
+        "nivel": "aviso",
+        "tipo": "termina-com",
+        "alvo": "conteudo",
+        "valores": [
+          "."
+        ],
+        "mensagem": "Botão sem ponto final.",
+        "fonte": "botao.md · Conteúdo"
+      },
+      {
+        "id": "botao-um-primario",
+        "nivel": "erro",
+        "tipo": "maximo-por-arquivo",
+        "alvo": "tipo",
+        "valores": [
+          "primario"
+        ],
+        "maximo": 1,
+        "mensagem": "Mais de um botão Primário na mesma tela. Use um único Primário, para a ação mais importante.",
+        "fonte": "botao.md · Faça"
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "nome": "Selo",
+  "slug": "selo",
+  "versao": "1.1.0",
+  "descricao": "O selo mostra o status ou a categoria de algo, como “Publicado” ou “Em revisão”. Ele só informa, não é clicável. O contador mostra quantidades, como notificações novas.",
+  "resumo": "Selo · rótulo curto de status ou categoria, só para leitura (não é clicável). Use Sutil na maior parte das vezes e Forte para chamar atenção.",
+  "diretrizes": "diretrizes/componentes/selo.md",
+  "figma": {
+    "pagina": "Selo",
+    "componente": "Selo"
+  },
+  "propriedades": [
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Novo"
+    },
+    {
+      "nome": "Mostrar ponto",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Cor",
+      "tipo": "variante",
+      "opcoes": [
+        "Neutro",
+        "Marca",
+        "Sucesso",
+        "Alerta",
+        "Erro"
+      ],
+      "padrao": "Neutro"
+    },
+    {
+      "nome": "Estilo",
+      "tipo": "variante",
+      "opcoes": [
+        "Sutil",
+        "Forte"
+      ],
+      "padrao": "Sutil"
+    }
+  ],
+  "variantes": {
+    "Cor": [
+      "Neutro",
+      "Marca",
+      "Sucesso",
+      "Alerta",
+      "Erro"
+    ],
+    "Estilo": [
+      "Sutil",
+      "Forte"
+    ]
+  },
+  "estados": [],
+  "outrasPartes": [
+    {
+      "nome": "Contador",
+      "resumo": "Contador · número pequeno sobre ícones e abas, como notificações não lidas. Acima de 99, mostre “99+”.",
+      "propriedades": [
+        {
+          "nome": "Número",
+          "tipo": "texto",
+          "padrao": "3"
+        },
+        {
+          "nome": "Cor",
+          "tipo": "variante",
+          "opcoes": [
+            "Marca",
+            "Erro",
+            "Neutro"
+          ],
+          "padrao": "Marca"
+        }
+      ]
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Não recebe foco: só informa.",
+    "leitor": "Lido como texto comum. O contador precisa de contexto em texto, por exemplo 3 notificações novas, e não só o número.",
+    "foco": "Nenhum.",
+    "cuidados": "Status nunca só pela cor: o texto do selo diz o estado. Quando o número muda enquanto a pessoa usa a tela, anuncie de forma discreta."
+  },
+  "conteudo": [
+    "Uma ou duas palavras que dizem o estado: Publicado, Em revisão.",
+    "Use sempre o mesmo nome para o mesmo status."
+  ],
+  "faca": [
+    "Use uma ou duas palavras.",
+    "Mantenha o mesmo significado de cor em todo o produto.",
+    "Prefira o estilo Sutil; reserve o Forte para o que exige atenção."
+  ],
+  "naoFaca": [
+    "Usar selo como botão ou filtro clicável. Para isso use Etiqueta.",
+    "Muitos selos fortes na mesma tela.",
+    "Criar cores novas fora das cinco definidas."
+  ],
+  "tokens": [
+    "--cor-fundo-marca",
+    "--cor-fundo-sucesso",
+    "--cor-fundo-alerta",
+    "--cor-fundo-erro",
+    "--cor-fundo-invertido",
+    "--raio-pilula"
+  ],
+  "codigo": null
+}

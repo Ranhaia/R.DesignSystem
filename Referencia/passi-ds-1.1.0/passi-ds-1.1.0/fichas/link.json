@@ -1,0 +1,192 @@
+{
+  "nome": "Link",
+  "slug": "link",
+  "versao": "1.1.0",
+  "descricao": "O link leva a pessoa para outra página, seção ou site. No meio de um texto ele é sempre sublinhado, para ser reconhecido mesmo por quem não distingue cores.",
+  "resumo": "Link · leva a outra página, seção ou site. No meio de textos é sempre sublinhado, para não depender só da cor. Marca para links de destaque, Neutro para links dentro de textos longos. Ligue Abre outro site para mostrar o ícone de abrir fora.",
+  "diretrizes": "diretrizes/componentes/link.md",
+  "figma": {
+    "pagina": "Link",
+    "componente": "Link"
+  },
+  "propriedades": [
+    {
+      "nome": "Mostrar seta",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Ler o primeiro capítulo"
+    },
+    {
+      "nome": "Abre outro site",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Marca",
+        "Neutro"
+      ],
+      "padrao": "Marca"
+    },
+    {
+      "nome": "Tamanho",
+      "tipo": "variante",
+      "opcoes": [
+        "M",
+        "P"
+      ],
+      "padrao": "M"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Foco",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Marca",
+      "Neutro"
+    ],
+    "Tamanho": [
+      "M",
+      "P"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Foco",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab chega ao link. Enter abre o destino.",
+    "leitor": "Papel link. O nome é o próprio texto. Links que abrem outro site mostram o ícone de abrir fora e avisam no nome, com o texto escondido “(abre em outra aba)”.",
+    "foco": "Borda azul de 2 px em volta do texto.",
+    "cuidados": "Sublinhado no meio de textos. Em navegação, como migalhas de pão e menus, o sublinhado pode sair, porque a posição já mostra que dá para clicar. Texto que diz o destino, nunca Clique aqui. Link leva a outro lugar; para executar uma ação, use Botão."
+  },
+  "conteudo": [
+    "O texto diz o destino: Ler o capítulo 1.",
+    "Evite Clique aqui e Saiba mais soltos.",
+    "Avise no texto quando o link abre outro site ou baixa um arquivo."
+  ],
+  "faca": [
+    "Escreva o destino no texto: “Ler o primeiro capítulo”.",
+    "Mantenha o sublinhado no meio de textos.",
+    "Use o ícone de abrir fora quando o link abre outro site."
+  ],
+  "naoFaca": [
+    "Textos como “clique aqui” ou “saiba mais” soltos.",
+    "Usar link para ações, como salvar ou enviar. Use Botão.",
+    "Diferenciar o link só pela cor."
+  ],
+  "tokens": [
+    "--cor-texto-marca",
+    "--cor-texto-marca-hover",
+    "--cor-texto-marca-pressionado",
+    "--cor-texto-padrao",
+    "--cor-texto-desabilitado",
+    "--cor-borda-foco"
+  ],
+  "codigo": {
+    "elemento": "passi-link",
+    "arquivo": "componentes/passi-componentes.js",
+    "conteudo": {
+      "descricao": "Texto do link. Diz o destino.",
+      "figma": "Texto",
+      "obrigatorio": true
+    },
+    "atributos": [
+      {
+        "nome": "href",
+        "figma": null,
+        "tipo": "texto",
+        "obrigatorio": true,
+        "descricao": "Endereço de destino. Link leva a outro lugar; para executar uma ação, use Botão."
+      },
+      {
+        "nome": "tipo",
+        "figma": "Tipo",
+        "tipo": "lista",
+        "opcoes": {
+          "marca": "Marca",
+          "neutro": "Neutro"
+        },
+        "padrao": "marca"
+      },
+      {
+        "nome": "tamanho",
+        "figma": "Tamanho",
+        "tipo": "lista",
+        "opcoes": {
+          "m": "M",
+          "p": "P"
+        },
+        "padrao": "m"
+      },
+      {
+        "nome": "seta",
+        "figma": "Mostrar seta",
+        "tipo": "booleano",
+        "descricao": "Seta à direita: avança para outra etapa ou página."
+      },
+      {
+        "nome": "nova-aba",
+        "figma": "Abre outro site",
+        "tipo": "booleano",
+        "descricao": "Abre outro site em outra aba. O componente põe o ícone link-externo e avisa o leitor de tela com “(abre em outra aba)”."
+      },
+      {
+        "nome": "desabilitado",
+        "figma": "Estado = Desabilitado",
+        "tipo": "booleano"
+      }
+    ],
+    "estados": "Hover, Pressionado e Foco vêm do navegador. Desabilitado vem do atributo desabilitado.",
+    "regras": [
+      {
+        "id": "link-texto-vago",
+        "nivel": "erro",
+        "tipo": "texto-proibido",
+        "alvo": "conteudo",
+        "valores": [
+          "clique aqui",
+          "saiba mais",
+          "leia mais",
+          "veja mais",
+          "aqui",
+          "link",
+          "clique"
+        ],
+        "mensagem": "Texto de link solto. Escreva o destino, como \"Ler o primeiro capítulo\".",
+        "fonte": "link.md · Conteúdo"
+      },
+      {
+        "id": "link-acao",
+        "nivel": "aviso",
+        "tipo": "href-de-acao",
+        "alvo": "href",
+        "valores": [
+          "#",
+          "javascript:"
+        ],
+        "mensagem": "Link sem destino real. Para executar uma ação, use passi-botao.",
+        "fonte": "link.md · NÃO faça"
+      }
+    ]
+  }
+}

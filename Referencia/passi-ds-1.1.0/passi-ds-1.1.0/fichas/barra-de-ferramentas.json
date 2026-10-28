@@ -1,0 +1,65 @@
+{
+  "nome": "Barra de ferramentas",
+  "slug": "barra-de-ferramentas",
+  "versao": "1.1.0",
+  "descricao": "A barra de ferramentas reúne ações rápidas sobre um conteúdo, como editar, copiar ou compartilhar. Os botões de ícone ficam agrupados por assunto, separados por pequenos divisores.",
+  "resumo": "Barra de ferramentas · agrupa ações rápidas sobre um conteúdo. Separe grupos de ações com divisores. A versão Seleção aparece flutuando quando há itens selecionados.",
+  "diretrizes": "diretrizes/componentes/barra-de-ferramentas.md",
+  "figma": {
+    "pagina": "Barra de ferramentas",
+    "componente": "Barra de ferramentas"
+  },
+  "propriedades": [
+    {
+      "nome": "Contagem",
+      "tipo": "texto",
+      "padrao": "3 capítulos selecionados"
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Editor",
+        "Seleção",
+        "Vertical"
+      ],
+      "padrao": "Editor"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Editor",
+      "Seleção",
+      "Vertical"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Tab entra na barra uma vez. Setas passam de um botão para outro. Tab sai da barra.",
+    "leitor": "Papel toolbar com um nome, por exemplo Formatação do texto. Cada botão de ícone tem nome em texto.",
+    "foco": "Anel de foco no botão ativo. Os divisores não recebem foco.",
+    "cuidados": "Todo botão com Dica flutuante. Botões de alternar, como negrito, anunciam se estão ligados."
+  },
+  "conteudo": [
+    "Cada botão de ícone tem nome com verbo na dica flutuante.",
+    "Na seleção, diga quantos itens estão marcados: 3 capítulos selecionados."
+  ],
+  "faca": [
+    "Agrupe ações relacionadas e separe com divisores.",
+    "Mostre dica flutuante com o nome de cada ícone.",
+    "Coloque as ações mais usadas primeiro."
+  ],
+  "naoFaca": [
+    "Mais de 10 ícones na mesma barra. Mova o resto para “mais opções”.",
+    "Ícones sem nome acessível.",
+    "Misturar ações de navegação com ações de edição."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-borda-padrao",
+    "--espaco-1",
+    "--espaco-2",
+    "--raio-grande"
+  ],
+  "codigo": null
+}

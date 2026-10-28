@@ -1,0 +1,66 @@
+{
+  "nome": "Área de destaque",
+  "slug": "area-de-destaque",
+  "versao": "1.1.0",
+  "descricao": "A área de destaque separa um trecho do texto principal para chamar atenção: uma dica, um exemplo prático, um alerta ou um resumo. É o mesmo recurso usado nos quadros do livro.",
+  "resumo": "Área de destaque · caixa que separa um conteúdo do texto principal: dicas (Neutra), exemplos práticos (Marca), alertas para quem decide (Atenção), resumos (Escura) e espaços vazios esperando conteúdo (Tracejada).",
+  "diretrizes": "diretrizes/componentes/area-de-destaque.md",
+  "figma": {
+    "pagina": "Área de destaque",
+    "componente": "Área de destaque"
+  },
+  "propriedades": [
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Neutra",
+        "Marca",
+        "Atenção",
+        "Escura",
+        "Tracejada"
+      ],
+      "padrao": "Neutra"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Neutra",
+      "Marca",
+      "Atenção",
+      "Escura",
+      "Tracejada"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Não recebe foco, só os links e botões dentro dela.",
+    "leitor": "Use um título curto no começo, como Dica ou Atenção, para o leitor de tela saber que é um trecho à parte. Quando é um aviso importante, marque como região com nome.",
+    "foco": "Nenhum.",
+    "cuidados": "O tipo não depende só da cor da barra: o título ou o ícone dizem se é dica, exemplo, alerta ou resumo."
+  },
+  "conteudo": [
+    "Sobretítulo diz o tipo do conteúdo: Na prática, Para cobrar.",
+    "Texto curto: o quadro complementa, não substitui o texto principal."
+  ],
+  "faca": [
+    "Use no máximo um quadro a cada poucos parágrafos.",
+    "Dê um sobretítulo que diga o tipo de conteúdo: “Na prática”, “Para cobrar”.",
+    "Mantenha o texto do quadro curto."
+  ],
+  "naoFaca": [
+    "Colocar o conteúdo principal dentro do quadro.",
+    "Vários quadros seguidos.",
+    "Usar a cor de atenção para conteúdos comuns."
+  ],
+  "tokens": [
+    "--cor-fundo-sutil",
+    "--cor-fundo-marca-sutil",
+    "--cor-borda-marca",
+    "--cor-fundo-alerta-sutil",
+    "--cor-borda-alerta",
+    "--cor-borda-forte",
+    "--raio-grande"
+  ],
+  "codigo": null
+}

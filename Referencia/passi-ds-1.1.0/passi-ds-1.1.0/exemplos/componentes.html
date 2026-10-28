@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PASSI DS · componentes em código</title>
+<!-- Vitrine: mostra todos os tipos lado a lado. passi-ignorar-regras: botao-um-primario, alerta-varios -->
+
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/passi.css">
+<link rel="stylesheet" href="../componentes/passi-componentes.css">
+<script src="../componentes/passi-componentes.js" defer></script>
+<style>
+  /* Só a moldura da página. Tudo usa variáveis do passi.css. */
+  body { margin: 0; background: var(--cor-fundo-pagina); color: var(--cor-texto-padrao); font: var(--texto-corpo-medio); }
+  main { max-width: var(--conteudo-maximo); margin: 0 auto; padding: var(--espaco-12) var(--espaco-6); display: grid; gap: var(--espaco-16); }
+  header, section { display: grid; gap: var(--espaco-6); }
+  h1, h2, h3, p { margin: 0; }
+  .secundario { color: var(--cor-texto-secundario); }
+  .linha { display: flex; flex-wrap: wrap; gap: var(--espaco-3); align-items: center; }
+  .grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: var(--espaco-6); align-items: start; }
+  .pilha { display: grid; gap: var(--espaco-4); }
+  .card { background: var(--cor-fundo-superficie); border: var(--borda-fina) solid var(--cor-borda-padrao); border-radius: var(--raio-grande); padding: var(--espaco-6); display: grid; gap: var(--espaco-4); }
+  .legenda { font: var(--texto-sobretitulo); letter-spacing: var(--texto-sobretitulo-espacamento-letras); text-transform: uppercase; color: var(--cor-texto-secundario); }
+  code { font: var(--texto-codigo); }
+  fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: var(--espaco-3); }
+  legend { font: var(--texto-rotulo-medio); padding: 0; margin-bottom: var(--espaco-3); }
+  .formulario { max-width: 26rem; }
+  .acoes { display: flex; justify-content: flex-end; gap: var(--espaco-3); flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="legenda">PASSI DS · 1.1.0 · piloto</p>
+    <h1 class="texto-display-medio">Componentes em código</h1>
+    <p class="texto-corpo-grande secundario">Botão, Link, Campo de texto, Checkbox e Alerta como web components. Passe o mouse, clique e use só o teclado (Tab, Enter, Espaço) para ver os cinco estados. Troque o modo de cor:</p>
+    <div class="linha" role="group" aria-label="Modo de cor">
+      <passi-botao tipo="contorno" tamanho="p" data-tema-alvo="claro">Claro</passi-botao>
+      <passi-botao tipo="contorno" tamanho="p" data-tema-alvo="escuro">Escuro</passi-botao>
+      <passi-botao tipo="contorno" tamanho="p" data-tema-alvo="alto-contraste-claro">Alto contraste claro</passi-botao>
+      <passi-botao tipo="contorno" tamanho="p" data-tema-alvo="alto-contraste-escuro">Alto contraste escuro</passi-botao>
+      <passi-botao tipo="fantasma" tamanho="p" data-tema-alvo="">Seguir o sistema</passi-botao>
+    </div>
+  </header>
+
+  <section aria-labelledby="t-botao">
+    <h2 id="t-botao" class="texto-titulo-2">Botão</h2>
+    <p class="secundario">Atributos: <code>tipo</code> (primario, secundario, contorno, fantasma, perigo), <code>tamanho</code> (p, m, g), <code>icone-esquerda</code>, <code>icone-direita</code>, <code>desabilitado</code>, <code>tipo-html</code>.</p>
+    <div class="card">
+      <p class="legenda">Tipos</p>
+      <div class="linha">
+        <passi-botao>Salvar alterações</passi-botao>
+        <passi-botao tipo="secundario">Baixar arquivo</passi-botao>
+        <passi-botao tipo="contorno">Ver capítulos</passi-botao>
+        <passi-botao tipo="fantasma">Cancelar</passi-botao>
+        <passi-botao tipo="perigo">Excluir capítulo</passi-botao>
+      </div>
+      <p class="legenda">Tamanhos e ícones</p>
+      <div class="linha">
+        <passi-botao tipo="secundario" tamanho="p" icone-esquerda="mais">Criar pasta</passi-botao>
+        <passi-botao tipo="secundario" icone-esquerda="baixar">Baixar PDF</passi-botao>
+        <passi-botao tipo="secundario" tamanho="g" icone-direita="seta-direita">Continuar</passi-botao>
+      </div>
+      <p class="legenda">Desabilitado</p>
+      <div class="linha">
+        <passi-botao desabilitado aria-describedby="porque">Publicar</passi-botao>
+        <passi-botao tipo="secundario" desabilitado>Publicar</passi-botao>
+        <passi-botao tipo="contorno" desabilitado>Publicar</passi-botao>
+        <passi-botao tipo="fantasma" desabilitado>Publicar</passi-botao>
+        <passi-botao tipo="perigo" desabilitado>Excluir</passi-botao>
+      </div>
+      <p id="porque" class="texto-corpo-pequeno secundario">Para publicar, preencha o título do capítulo.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-link">
+    <h2 id="t-link" class="texto-titulo-2">Link</h2>
+    <p class="secundario">Atributos: <code>href</code>, <code>tipo</code> (marca, neutro), <code>tamanho</code> (m, p), <code>seta</code>, <code>nova-aba</code>, <code>desabilitado</code>.</p>
+    <div class="card">
+      <div class="linha">
+        <passi-link href="#t-link">Ler o primeiro capítulo</passi-link>
+        <passi-link href="#t-link" seta>Ver todos os componentes</passi-link>
+        <passi-link href="https://www.figma.com/community/file/1694426075578751653" nova-aba>Abrir o arquivo no Figma</passi-link>
+        <passi-link href="#t-link" tamanho="p">Ler o sumário</passi-link>
+        <passi-link href="#t-link" desabilitado>Capítulo 12 (em breve)</passi-link>
+      </div>
+      <p>No meio de um texto, use o tipo Neutro: o livro tem um capítulo sobre <passi-link href="#t-link" tipo="neutro">governança de design system</passi-link> que vale a leitura.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-campo">
+    <h2 id="t-campo" class="texto-titulo-2">Campo de texto</h2>
+    <p class="secundario">Atributos: <code>rotulo</code>, <code>ajuda</code>, <code>erro</code>, <code>sucesso</code>, <code>valor</code>, <code>exemplo</code>, <code>tamanho</code> (m, g), <code>tipo</code> (texto, email, senha, telefone, numero, busca, url), <code>icone-esquerda</code>, <code>nome</code>, <code>autocomplete</code>, <code>obrigatorio</code>, <code>opcional</code>, <code>desabilitado</code>.</p>
+    <div class="grade">
+      <passi-campo-de-texto rotulo="Nome completo" ajuda="Como aparece no seu documento." exemplo="Maria da Silva" autocomplete="name"></passi-campo-de-texto>
+      <passi-campo-de-texto rotulo="E-mail" tipo="email" valor="maria@empresa" erro="Digite um e-mail completo, como maria@empresa.com.br."></passi-campo-de-texto>
+      <passi-campo-de-texto rotulo="CEP" tipo="numero" valor="01310-100" sucesso="Endereço encontrado: Avenida Paulista, São Paulo."></passi-campo-de-texto>
+      <passi-campo-de-texto rotulo="Senha" tipo="senha" ajuda="Pelo menos 8 caracteres."></passi-campo-de-texto>
+      <passi-campo-de-texto rotulo="Buscar no livro" tipo="busca" icone-esquerda="busca" exemplo="tokens, governança, acessibilidade" tamanho="g"></passi-campo-de-texto>
+      <passi-campo-de-texto rotulo="Empresa" opcional exemplo="Nome da empresa"></passi-campo-de-texto>
+      <passi-campo-de-texto rotulo="CPF" valor="123.456.789-09" desabilitado ajuda="Para mudar o CPF, fale com o suporte."></passi-campo-de-texto>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-checkbox">
+    <h2 id="t-checkbox" class="texto-titulo-2">Checkbox</h2>
+    <p class="secundario">Atributos: <code>rotulo</code> (ou o conteúdo), <code>descricao</code>, <code>marcado</code>, <code>indeterminado</code>, <code>erro</code>, <code>nome</code>, <code>valor</code>, <code>obrigatorio</code>, <code>desabilitado</code>.</p>
+    <div class="grade">
+      <div class="card">
+        <fieldset id="capitulos">
+          <legend>Capítulos que você quer receber</legend>
+          <passi-checkbox rotulo="Selecionar todos" indeterminado data-todos></passi-checkbox>
+          <passi-checkbox rotulo="Fundamentos" nome="capitulos" valor="fundamentos" marcado></passi-checkbox>
+          <passi-checkbox rotulo="Componentes" nome="capitulos" valor="componentes"></passi-checkbox>
+          <passi-checkbox rotulo="Governança" nome="capitulos" valor="governanca" marcado></passi-checkbox>
+        </fieldset>
+      </div>
+      <div class="card pilha">
+        <passi-checkbox rotulo="Quero receber novidades do livro" descricao="Um e-mail por mês, sem spam." marcado></passi-checkbox>
+        <passi-checkbox obrigatorio erro="Para criar a conta, aceite os termos de uso.">Li e aceito os <passi-link href="#t-checkbox" tipo="neutro">termos de uso</passi-link></passi-checkbox>
+        <passi-checkbox rotulo="Receber por SMS" descricao="Disponível em breve." desabilitado></passi-checkbox>
+        <passi-checkbox rotulo="Receber por e-mail" marcado desabilitado></passi-checkbox>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-alerta">
+    <h2 id="t-alerta" class="texto-titulo-2">Alerta</h2>
+    <p class="secundario">Atributos: <code>tipo</code> (informacao, sucesso, atencao, erro), <code>titulo</code>, <code>acao</code>, <code>acao-href</code>, <code>pode-fechar</code>, <code>anunciar</code>. A descrição vai no conteúdo. Eventos: <code>passi-acao</code> e <code>passi-fechar</code>.</p>
+    <div class="pilha">
+      <passi-alerta titulo="Nova versão do arquivo disponível" acao="Baixar agora" pode-fechar>Baixe a versão 1.1 para ter os componentes de gráficos.</passi-alerta>
+      <passi-alerta tipo="sucesso" titulo="Alterações salvas" pode-fechar>Elas já aparecem para toda a equipe.</passi-alerta>
+      <passi-alerta tipo="atencao" titulo="Seu plano vence em 3 dias" acao="Renovar plano" acao-href="#t-alerta">Renove para não perder o acesso aos arquivos.</passi-alerta>
+      <passi-alerta tipo="erro" titulo="Não conseguimos salvar o capítulo" acao="Tentar de novo">Confira sua conexão com a internet e tente de novo.</passi-alerta>
+      <passi-alerta tipo="informacao" titulo="Versão curta: só o título, para mensagens simples"></passi-alerta>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-uso">
+    <h2 id="t-uso" class="texto-titulo-2">Em uso: entrar</h2>
+    <p class="secundario">Os cinco componentes juntos num formulário de verdade. Envie em branco para ver os erros e o resumo no topo.</p>
+    <div class="card formulario">
+      <form id="entrar" class="pilha" novalidate>
+        <h3 class="texto-titulo-3">Entrar</h3>
+        <passi-alerta id="resumo" tipo="erro" titulo="Confira os campos destacados" hidden tabindex="-1">Corrija os itens abaixo e tente de novo.</passi-alerta>
+        <passi-campo-de-texto id="email" rotulo="E-mail" tipo="email" nome="email" obrigatorio exemplo="nome@empresa.com.br"></passi-campo-de-texto>
+        <passi-campo-de-texto id="senha" rotulo="Senha" tipo="senha" nome="senha" obrigatorio></passi-campo-de-texto>
+        <passi-checkbox rotulo="Continuar conectado neste aparelho" nome="lembrar"></passi-checkbox>
+        <div class="acoes">
+          <passi-link href="#t-uso" tamanho="p">Esqueci minha senha</passi-link>
+          <passi-botao tipo-html="submit">Entrar</passi-botao>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script>
+  // Troca do modo de cor
+  document.querySelectorAll("[data-tema-alvo]").forEach((b) =>
+    b.addEventListener("click", () => {
+      const t = b.getAttribute("data-tema-alvo");
+      t ? document.documentElement.setAttribute("data-tema", t) : document.documentElement.removeAttribute("data-tema");
+    })
+  );
+
+  // "Selecionar todos" com estado indeterminado
+  const grupo = document.getElementById("capitulos");
+  const todos = grupo.querySelector("[data-todos]");
+  const itens = [...grupo.querySelectorAll("passi-checkbox:not([data-todos])")];
+  const sincronizar = () => {
+    const n = itens.filter((i) => i.checked).length;
+    todos.indeterminate = n > 0 && n < itens.length;
+    todos.checked = n === itens.length;
+  };
+  grupo.addEventListener("change", (e) => {
+    if (todos.contains(e.target)) { itens.forEach((i) => (i.checked = todos.checked)); todos.indeterminate = false; }
+    else sincronizar();
+  });
+
+  // Ação dos alertas de exemplo
+  document.addEventListener("passi-acao", (e) => console.log("Ação do alerta:", e.target.getAttribute("titulo")));
+
+  // Validação do formulário de exemplo: erro diz como resolver, foco vai para o resumo
+  const form = document.getElementById("entrar");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email");
+    const senha = document.getElementById("senha");
+    const resumo = document.getElementById("resumo");
+    email.toggleAttribute("erro", false);
+    senha.toggleAttribute("erro", false);
+    let erros = 0;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) { email.setAttribute("erro", "Digite seu e-mail completo, como nome@empresa.com.br."); erros++; }
+    if (senha.value.length < 8) { senha.setAttribute("erro", "Digite sua senha. Ela tem pelo menos 8 caracteres."); erros++; }
+    resumo.hidden = erros === 0;
+    if (erros) resumo.focus();
+  });
+</script>
+</body>
+</html>

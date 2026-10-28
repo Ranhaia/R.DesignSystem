@@ -1,0 +1,66 @@
+{
+  "nome": "Rótulo informativo",
+  "slug": "rotulo-informativo",
+  "versao": "1.1.0",
+  "descricao": "O rótulo informativo dá nome a um campo ou a um número e oferece uma explicação curta num ícone de ajuda, sem poluir a tela. Também indica se o campo é obrigatório ou opcional.",
+  "resumo": "Rótulo informativo · nome de um campo ou dado com ícone que abre uma dica curta. Mostra também se o campo é obrigatório (*) ou opcional.",
+  "diretrizes": "diretrizes/componentes/rotulo-informativo.md",
+  "figma": {
+    "pagina": "Rótulo informativo",
+    "componente": "Rótulo informativo"
+  },
+  "propriedades": [
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Orçamento anual"
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Com ícone",
+        "Obrigatório",
+        "Opcional",
+        "Com dica aberta"
+      ],
+      "padrao": "Com ícone"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Com ícone",
+      "Obrigatório",
+      "Opcional",
+      "Com dica aberta"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "O ícone de ajuda é um botão e recebe Tab; Enter ou Espaço mostram a explicação.",
+    "leitor": "O rótulo é o nome do campo. Obrigatório e opcional são lidos em texto, não só pelo asterisco. O botão de ajuda tem o nome Mais informações sobre, seguido do rótulo.",
+    "foco": "Anel de foco no ícone de ajuda.",
+    "cuidados": "Informação necessária para preencher o campo fica visível, não escondida na ajuda."
+  },
+  "conteudo": [
+    "A dica explica em uma ou duas frases como o dado é calculado ou para que serve.",
+    "Escreva opcional por extenso quando a maioria dos campos for obrigatória."
+  ],
+  "faca": [
+    "Use a dica para explicar termos técnicos ou como um número é calculado.",
+    "Escreva dicas de uma ou duas frases.",
+    "Marque o que é opcional quando a maioria dos campos for obrigatória."
+  ],
+  "naoFaca": [
+    "Esconder na dica uma informação necessária para preencher o campo.",
+    "Colocar ícone de ajuda em todos os rótulos.",
+    "Usar só o asterisco vermelho sem explicar o que significa no formulário."
+  ],
+  "tokens": [
+    "--cor-texto-padrao",
+    "--cor-texto-secundario",
+    "--cor-texto-erro",
+    "--cor-texto-marca"
+  ],
+  "codigo": null
+}

@@ -1,0 +1,76 @@
+{
+  "nome": "Janela modal",
+  "slug": "janela-modal",
+  "versao": "1.1.0",
+  "descricao": "A janela modal aparece por cima da tela e pede uma decisão ou uma informação curta antes de continuar. O fundo escurece para focar a atenção na janela.",
+  "resumo": "Janela modal · interrompe a tela para pedir uma decisão ou uma informação curta. Sempre com Sobreposição atrás, título claro e ação principal à direita. Tipos: Padrão (560 px), Confirmação (420 px) e Formulário (560 px).",
+  "diretrizes": "diretrizes/componentes/janela-modal.md",
+  "figma": {
+    "pagina": "Janela modal",
+    "componente": "Janela modal"
+  },
+  "propriedades": [
+    {
+      "nome": "Título",
+      "tipo": "texto",
+      "padrao": "Baixar o arquivo do PASSI DS"
+    },
+    {
+      "nome": "Descrição",
+      "tipo": "texto",
+      "padrao": "O arquivo será duplicado na sua conta do Figma."
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Confirmação",
+        "Formulário"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Padrão",
+      "Confirmação",
+      "Formulário"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Tab e Shift+Tab ficam presos dentro da janela. Esc fecha, a não ser em decisões que exigem resposta.",
+    "leitor": "Papel dialog marcado como modal, com o título como nome e a descrição ligada. O resto da página fica inacessível enquanto a janela está aberta.",
+    "foco": "Ao abrir, o foco vai para o primeiro campo ou para o título. Ao fechar, volta para o botão que abriu.",
+    "cuidados": "Na janela de perigo, o foco inicial vai para Cancelar, não para Excluir. Use para decisões curtas; formulários longos merecem uma página."
+  },
+  "conteudo": [
+    "Título como pergunta ou ação: Excluir capítulo?",
+    "Diga a consequência na descrição.",
+    "O botão principal repete o verbo do título: Excluir capítulo."
+  ],
+  "faca": [
+    "Escreva o título como uma pergunta ou ação clara.",
+    "Use o verbo da ação no botão: “Excluir capítulo”, não “Sim”.",
+    "Feche com Esc, com o “x” e com “Cancelar”.",
+    "Leve o foco do teclado para dentro da janela."
+  ],
+  "naoFaca": [
+    "Abrir uma modal sobre outra modal.",
+    "Usar para mensagens que poderiam ser um Aviso rápido.",
+    "Formulários longos dentro da modal. Prefira uma página.",
+    "Abrir sem que a pessoa tenha pedido."
+  ],
+  "tokens": [
+    "--espaco-3",
+    "--espaco-4",
+    "--espaco-5",
+    "--espaco-6",
+    "--cor-fundo-superficie",
+    "--raio-extra",
+    "--cor-borda-padrao",
+    "--cor-fundo-sobreposicao"
+  ],
+  "codigo": null
+}

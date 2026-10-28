@@ -1,0 +1,826 @@
+{
+  "_sobre": "Índice das fichas de componente do PASSI DS. Cada ficha (fichas/<slug>.json) traz propriedades, variantes, estados, acessibilidade, conteúdo, tokens e, quando já existe em código, o elemento e os atributos.",
+  "versao": "1.1.0",
+  "componentes": [
+    {
+      "nome": "Botão",
+      "slug": "botao",
+      "ficha": "fichas/botao.json",
+      "elemento": "passi-botao"
+    },
+    {
+      "nome": "Botão de ícone",
+      "slug": "botao-de-icone",
+      "ficha": "fichas/botao-de-icone.json",
+      "elemento": null
+    },
+    {
+      "nome": "Grupo de botões",
+      "slug": "grupo-de-botoes",
+      "ficha": "fichas/grupo-de-botoes.json",
+      "elemento": null
+    },
+    {
+      "nome": "Link",
+      "slug": "link",
+      "ficha": "fichas/link.json",
+      "elemento": "passi-link"
+    },
+    {
+      "nome": "Campo de texto",
+      "slug": "campo-de-texto",
+      "ficha": "fichas/campo-de-texto.json",
+      "elemento": "passi-campo-de-texto"
+    },
+    {
+      "nome": "Área de texto",
+      "slug": "area-de-texto",
+      "ficha": "fichas/area-de-texto.json",
+      "elemento": null
+    },
+    {
+      "nome": "Seleção",
+      "slug": "selecao",
+      "ficha": "fichas/selecao.json",
+      "elemento": null
+    },
+    {
+      "nome": "Checkbox",
+      "slug": "checkbox",
+      "ficha": "fichas/checkbox.json",
+      "elemento": "passi-checkbox"
+    },
+    {
+      "nome": "Rádio",
+      "slug": "radio",
+      "ficha": "fichas/radio.json",
+      "elemento": null
+    },
+    {
+      "nome": "Interruptor",
+      "slug": "interruptor",
+      "ficha": "fichas/interruptor.json",
+      "elemento": null
+    },
+    {
+      "nome": "Controle deslizante",
+      "slug": "controle-deslizante",
+      "ficha": "fichas/controle-deslizante.json",
+      "elemento": null
+    },
+    {
+      "nome": "Controle segmentado",
+      "slug": "controle-segmentado",
+      "ficha": "fichas/controle-segmentado.json",
+      "elemento": null
+    },
+    {
+      "nome": "Código de verificação",
+      "slug": "codigo-de-verificacao",
+      "ficha": "fichas/codigo-de-verificacao.json",
+      "elemento": null
+    },
+    {
+      "nome": "Envio de arquivo",
+      "slug": "envio-de-arquivo",
+      "ficha": "fichas/envio-de-arquivo.json",
+      "elemento": null
+    },
+    {
+      "nome": "Etiqueta",
+      "slug": "etiqueta",
+      "ficha": "fichas/etiqueta.json",
+      "elemento": null
+    },
+    {
+      "nome": "Selo",
+      "slug": "selo",
+      "ficha": "fichas/selo.json",
+      "elemento": null
+    },
+    {
+      "nome": "Avatar",
+      "slug": "avatar",
+      "ficha": "fichas/avatar.json",
+      "elemento": null
+    },
+    {
+      "nome": "Card",
+      "slug": "card",
+      "ficha": "fichas/card.json",
+      "elemento": null
+    },
+    {
+      "nome": "Acordeão",
+      "slug": "acordeao",
+      "ficha": "fichas/acordeao.json",
+      "elemento": null
+    },
+    {
+      "nome": "Abas",
+      "slug": "abas",
+      "ficha": "fichas/abas.json",
+      "elemento": null
+    },
+    {
+      "nome": "Migalhas de pão",
+      "slug": "migalhas-de-pao",
+      "ficha": "fichas/migalhas-de-pao.json",
+      "elemento": null
+    },
+    {
+      "nome": "Paginação",
+      "slug": "paginacao",
+      "ficha": "fichas/paginacao.json",
+      "elemento": null
+    },
+    {
+      "nome": "Indicador de página",
+      "slug": "indicador-de-pagina",
+      "ficha": "fichas/indicador-de-pagina.json",
+      "elemento": null
+    },
+    {
+      "nome": "Passos",
+      "slug": "passos",
+      "ficha": "fichas/passos.json",
+      "elemento": null
+    },
+    {
+      "nome": "Barra de progresso",
+      "slug": "barra-de-progresso",
+      "ficha": "fichas/barra-de-progresso.json",
+      "elemento": null
+    },
+    {
+      "nome": "Carregando",
+      "slug": "carregando",
+      "ficha": "fichas/carregando.json",
+      "elemento": null
+    },
+    {
+      "nome": "Alerta",
+      "slug": "alerta",
+      "ficha": "fichas/alerta.json",
+      "elemento": "passi-alerta"
+    },
+    {
+      "nome": "Aviso rápido",
+      "slug": "aviso-rapido",
+      "ficha": "fichas/aviso-rapido.json",
+      "elemento": null
+    },
+    {
+      "nome": "Dica flutuante",
+      "slug": "dica-flutuante",
+      "ficha": "fichas/dica-flutuante.json",
+      "elemento": null
+    },
+    {
+      "nome": "Popover",
+      "slug": "popover",
+      "ficha": "fichas/popover.json",
+      "elemento": null
+    },
+    {
+      "nome": "Janela modal",
+      "slug": "janela-modal",
+      "ficha": "fichas/janela-modal.json",
+      "elemento": null
+    },
+    {
+      "nome": "Menu",
+      "slug": "menu",
+      "ficha": "fichas/menu.json",
+      "elemento": null
+    },
+    {
+      "nome": "Item de lista",
+      "slug": "item-de-lista",
+      "ficha": "fichas/item-de-lista.json",
+      "elemento": null
+    },
+    {
+      "nome": "Barra de ferramentas",
+      "slug": "barra-de-ferramentas",
+      "ficha": "fichas/barra-de-ferramentas.json",
+      "elemento": null
+    },
+    {
+      "nome": "Sobreposição",
+      "slug": "sobreposicao",
+      "ficha": "fichas/sobreposicao.json",
+      "elemento": null
+    },
+    {
+      "nome": "Atalho de teclado",
+      "slug": "atalho-de-teclado",
+      "ficha": "fichas/atalho-de-teclado.json",
+      "elemento": null
+    },
+    {
+      "nome": "Divisor",
+      "slug": "divisor",
+      "ficha": "fichas/divisor.json",
+      "elemento": null
+    },
+    {
+      "nome": "Botão em bloco",
+      "slug": "botao-em-bloco",
+      "ficha": "fichas/botao-em-bloco.json",
+      "elemento": null
+    },
+    {
+      "nome": "Seletor de cor",
+      "slug": "seletor-de-cor",
+      "ficha": "fichas/seletor-de-cor.json",
+      "elemento": null
+    },
+    {
+      "nome": "Campo com sugestões",
+      "slug": "campo-com-sugestoes",
+      "ficha": "fichas/campo-com-sugestoes.json",
+      "elemento": null
+    },
+    {
+      "nome": "Índice alfabético",
+      "slug": "indice-alfabetico",
+      "ficha": "fichas/indice-alfabetico.json",
+      "elemento": null
+    },
+    {
+      "nome": "Rótulo informativo",
+      "slug": "rotulo-informativo",
+      "ficha": "fichas/rotulo-informativo.json",
+      "elemento": null
+    },
+    {
+      "nome": "Lista em árvore",
+      "slug": "lista-em-arvore",
+      "ficha": "fichas/lista-em-arvore.json",
+      "elemento": null
+    },
+    {
+      "nome": "Proporção de imagem",
+      "slug": "proporcao-de-imagem",
+      "ficha": "fichas/proporcao-de-imagem.json",
+      "elemento": null
+    },
+    {
+      "nome": "Área de destaque",
+      "slug": "area-de-destaque",
+      "ficha": "fichas/area-de-destaque.json",
+      "elemento": null
+    },
+    {
+      "nome": "Rótulo de IA",
+      "slug": "rotulo-de-ia",
+      "ficha": "fichas/rotulo-de-ia.json",
+      "elemento": null
+    },
+    {
+      "nome": "Explicação da IA",
+      "slug": "explicacao-da-ia",
+      "ficha": "fichas/explicacao-da-ia.json",
+      "elemento": null
+    },
+    {
+      "nome": "Campo sugerido por IA",
+      "slug": "campo-sugerido-por-ia",
+      "ficha": "fichas/campo-sugerido-por-ia.json",
+      "elemento": null
+    },
+    {
+      "nome": "Campo de pedido",
+      "slug": "campo-de-pedido",
+      "ficha": "fichas/campo-de-pedido.json",
+      "elemento": null
+    },
+    {
+      "nome": "Mensagem da conversa",
+      "slug": "mensagem-da-conversa",
+      "ficha": "fichas/mensagem-da-conversa.json",
+      "elemento": null
+    },
+    {
+      "nome": "Plano de ação",
+      "slug": "plano-de-acao",
+      "ficha": "fichas/plano-de-acao.json",
+      "elemento": null
+    },
+    {
+      "nome": "Aviso de IA",
+      "slug": "aviso-de-ia",
+      "ficha": "fichas/aviso-de-ia.json",
+      "elemento": null
+    }
+  ],
+  "icones": [
+    "seta-direita",
+    "seta-esquerda",
+    "seta-cima",
+    "seta-baixo",
+    "chevron-baixo",
+    "chevron-cima",
+    "chevron-direita",
+    "chevron-esquerda",
+    "check",
+    "fechar",
+    "mais",
+    "menos",
+    "info",
+    "ajuda",
+    "alerta",
+    "sucesso",
+    "erro",
+    "busca",
+    "usuario",
+    "sino",
+    "casa",
+    "menu",
+    "mais-opcoes",
+    "calendario",
+    "relogio",
+    "enviar-arquivo",
+    "baixar",
+    "olho",
+    "cadeado",
+    "estrela",
+    "coracao",
+    "arquivo",
+    "imagem",
+    "editar",
+    "lixeira",
+    "ajustes",
+    "sair",
+    "link",
+    "copiar",
+    "filtro",
+    "grade",
+    "livro",
+    "enviar",
+    "pasta",
+    "carrinho",
+    "compartilhar",
+    "atualizar",
+    "grafico",
+    "seta-diagonal",
+    "seta-diagonal-baixo",
+    "expandir",
+    "recolher",
+    "chevrons-direita",
+    "chevrons-esquerda",
+    "seletor",
+    "desfazer",
+    "refazer",
+    "trocar",
+    "entrar",
+    "link-externo",
+    "mover",
+    "arrastar",
+    "mais-opcoes-vertical",
+    "barra-lateral",
+    "painel",
+    "lista",
+    "lista-numerada",
+    "lista-de-tarefas",
+    "ordenar",
+    "aproximar",
+    "afastar",
+    "sincronizar",
+    "desligar",
+    "cadeado-aberto",
+    "chave",
+    "escudo",
+    "escudo-check",
+    "olho-fechado",
+    "engrenagem",
+    "etiqueta",
+    "marcador",
+    "bandeira",
+    "alfinete",
+    "anexo",
+    "imprimir",
+    "salvar",
+    "nuvem",
+    "nuvem-envio",
+    "pasta-mais",
+    "arquivo-texto",
+    "arquivo-mais",
+    "caixa-de-entrada",
+    "arquivar",
+    "terminal",
+    "codigo",
+    "tesoura",
+    "colar",
+    "quebra-cabeca",
+    "mensagem",
+    "conversa",
+    "email",
+    "telefone",
+    "celular",
+    "computador",
+    "notebook",
+    "tablet",
+    "microfone",
+    "microfone-mudo",
+    "camera-video",
+    "camera",
+    "video",
+    "tocar",
+    "pausar",
+    "parar",
+    "avancar",
+    "retroceder",
+    "volume",
+    "volume-mudo",
+    "musica",
+    "fone-de-ouvido",
+    "legendas",
+    "usuarios",
+    "usuario-mais",
+    "usuario-check",
+    "cracha",
+    "sacola",
+    "cartao",
+    "carteira",
+    "dinheiro",
+    "moeda",
+    "porcentagem",
+    "presente",
+    "entrega",
+    "loja",
+    "recibo",
+    "grafico-pizza",
+    "grafico-linha",
+    "tendencia-alta",
+    "tendencia-baixa",
+    "alvo",
+    "trofeu",
+    "raio",
+    "foguete",
+    "lampada",
+    "calendario-check",
+    "cronometro",
+    "ampulheta",
+    "historico",
+    "sol",
+    "lua",
+    "contraste",
+    "globo",
+    "mapa",
+    "localizacao",
+    "bussola",
+    "navegar",
+    "predio",
+    "graduacao",
+    "maleta",
+    "xicara",
+    "folha",
+    "fogo",
+    "gota",
+    "conta-gotas",
+    "pincel",
+    "paleta",
+    "camadas",
+    "cubo",
+    "recortar",
+    "regua",
+    "texto",
+    "negrito",
+    "italico",
+    "sublinhado",
+    "tachado",
+    "alinhar-esquerda",
+    "alinhar-centro",
+    "alinhar-direita",
+    "citacao",
+    "titulo",
+    "tabela",
+    "colunas",
+    "alerta-circulo",
+    "proibido",
+    "check-duplo",
+    "mais-circulo",
+    "menos-circulo",
+    "curtir",
+    "nao-curtir",
+    "sorriso",
+    "acessibilidade",
+    "sino-desligado",
+    "wifi",
+    "bateria",
+    "qr-code",
+    "codigo-de-barras",
+    "varinha",
+    "medalha",
+    "coroa",
+    "diamante",
+    "brilho"
+  ],
+  "sinonimos": {
+    "button": "botao",
+    "btn": "botao",
+    "botao-primario": "botao",
+    "cta": "botao",
+    "input": "campo-de-texto",
+    "text-field": "campo-de-texto",
+    "textfield": "campo-de-texto",
+    "campo": "campo-de-texto",
+    "campo-texto": "campo-de-texto",
+    "input-text": "campo-de-texto",
+    "form-field": "campo-de-texto",
+    "campo-de-senha": "campo-de-texto",
+    "password": "campo-de-texto",
+    "senha": "campo-de-texto",
+    "email": "campo-de-texto",
+    "check-box": "checkbox",
+    "caixa-de-selecao": "checkbox",
+    "alert": "alerta",
+    "callout": "alerta",
+    "banner": "alerta",
+    "mensagem": "alerta",
+    "notice": "alerta",
+    "anchor": "link",
+    "a": "link",
+    "toast": "aviso-rapido",
+    "snackbar": "aviso-rapido",
+    "notification": "aviso-rapido",
+    "notificacao": "aviso-rapido",
+    "modal": "janela-modal",
+    "dialog": "janela-modal",
+    "dialogo": "janela-modal",
+    "badge": "selo",
+    "tag": "etiqueta",
+    "chip": "etiqueta",
+    "tooltip": "dica-flutuante",
+    "dica": "dica-flutuante",
+    "tabs": "abas",
+    "accordion": "acordeao",
+    "select": "selecao",
+    "dropdown": "selecao",
+    "combobox": "campo-com-sugestoes",
+    "autocomplete": "campo-com-sugestoes",
+    "radio-button": "radio",
+    "switch": "interruptor",
+    "toggle": "interruptor",
+    "textarea": "area-de-texto",
+    "breadcrumb": "migalhas-de-pao",
+    "breadcrumbs": "migalhas-de-pao",
+    "pagination": "paginacao",
+    "spinner": "carregando",
+    "loader": "carregando",
+    "loading": "carregando",
+    "progress": "barra-de-progresso",
+    "progress-bar": "barra-de-progresso",
+    "slider": "controle-deslizante",
+    "range": "controle-deslizante",
+    "divider": "divisor",
+    "separator": "divisor",
+    "hr": "divisor",
+    "stepper": "passos",
+    "steps": "passos",
+    "icon-button": "botao-de-icone",
+    "card": "card",
+    "avatar": "avatar",
+    "menu": "menu",
+    "popover": "popover",
+    "list-item": "item-de-lista",
+    "otp": "codigo-de-verificacao",
+    "file-upload": "envio-de-arquivo",
+    "upload": "envio-de-arquivo"
+  },
+  "sinonimosIcones": {
+    "trash": "lixeira",
+    "trash-2": "lixeira",
+    "delete": "lixeira",
+    "close": "fechar",
+    "x": "fechar",
+    "search": "busca",
+    "plus": "mais",
+    "add": "mais",
+    "minus": "menos",
+    "arrow-right": "seta-direita",
+    "arrow-left": "seta-esquerda",
+    "arrow-up": "seta-cima",
+    "arrow-down": "seta-baixo",
+    "chevron-down": "chevron-baixo",
+    "chevron-up": "chevron-cima",
+    "chevron-right": "chevron-direita",
+    "chevron-left": "chevron-esquerda",
+    "user": "usuario",
+    "users": "usuarios",
+    "edit": "editar",
+    "pencil": "editar",
+    "download": "baixar",
+    "upload": "enviar-arquivo",
+    "mail": "email",
+    "envelope": "email",
+    "lock": "cadeado",
+    "unlock": "cadeado-aberto",
+    "eye": "olho",
+    "eye-off": "olho-fechado",
+    "settings": "engrenagem",
+    "gear": "engrenagem",
+    "cog": "engrenagem",
+    "home": "casa",
+    "info": "info",
+    "warning": "alerta",
+    "alert-triangle": "alerta",
+    "alert-circle": "alerta-circulo",
+    "error": "erro",
+    "x-circle": "erro",
+    "success": "sucesso",
+    "check-circle": "sucesso",
+    "external-link": "link-externo",
+    "logout": "sair",
+    "log-out": "sair",
+    "login": "entrar",
+    "log-in": "entrar",
+    "calendar": "calendario",
+    "bell": "sino",
+    "heart": "coracao",
+    "star": "estrela",
+    "copy": "copiar",
+    "share": "compartilhar",
+    "filter": "filtro",
+    "phone": "telefone",
+    "clock": "relogio",
+    "send": "enviar",
+    "save": "salvar",
+    "refresh": "atualizar",
+    "help": "ajuda",
+    "question": "ajuda",
+    "more-horizontal": "mais-opcoes",
+    "more-vertical": "mais-opcoes-vertical",
+    "sparkles": "brilho",
+    "sparkle": "brilho",
+    "file": "arquivo",
+    "folder": "pasta",
+    "image": "imagem",
+    "cart": "carrinho",
+    "shopping-cart": "carrinho",
+    "credit-card": "cartao",
+    "map-pin": "localizacao",
+    "globe": "globo",
+    "sun": "sol",
+    "moon": "lua",
+    "key": "chave",
+    "shield": "escudo",
+    "link": "link",
+    "menu": "menu",
+    "grid": "grade",
+    "list": "lista"
+  },
+  "glossario": [
+    {
+      "use": "Entrar",
+      "evite": [
+        "Login",
+        "Logar",
+        "Acessar"
+      ],
+      "observacao": "Botão e título da tela de entrada."
+    },
+    {
+      "use": "Sair",
+      "evite": [
+        "Logout",
+        "Deslogar"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "Criar conta",
+      "evite": [
+        "Cadastre-se",
+        "Sign up"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "Esqueci minha senha",
+      "evite": [
+        "Recuperar credenciais"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "E-mail",
+      "evite": [
+        "Email",
+        "Endereço eletrônico"
+      ],
+      "observacao": "Sempre com hífen."
+    },
+    {
+      "use": "Senha",
+      "evite": [
+        "Password",
+        "Credencial"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "Excluir",
+      "evite": [
+        "Deletar",
+        "Apagar"
+      ],
+      "observacao": "Quando a coisa deixa de existir."
+    },
+    {
+      "use": "Remover",
+      "evite": [
+        "Excluir"
+      ],
+      "observacao": "Quando a coisa sai de uma lista, mas continua existindo."
+    },
+    {
+      "use": "Editar",
+      "evite": [
+        "Alterar",
+        "Modificar"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "Salvar",
+      "evite": [
+        "Gravar",
+        "Submeter"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "Enviar",
+      "evite": [
+        "Submeter",
+        "Submit"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "Baixar",
+      "evite": [
+        "Fazer download"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "Enviar arquivo",
+      "evite": [
+        "Upload",
+        "Fazer upload"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "Buscar",
+      "evite": [
+        "Pesquisar",
+        "Search"
+      ],
+      "observacao": "Busca como substantivo."
+    },
+    {
+      "use": "Configurações",
+      "evite": [
+        "Ajustes",
+        "Settings",
+        "Preferências"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "Painel",
+      "evite": [
+        "Dashboard"
+      ],
+      "observacao": ""
+    },
+    {
+      "use": "Notificações",
+      "evite": [
+        "Alertas"
+      ],
+      "observacao": "Alerta é o componente de mensagem na página."
+    },
+    {
+      "use": "Você",
+      "evite": [
+        "O usuário",
+        "O cliente"
+      ],
+      "observacao": "Fale com a pessoa."
+    },
+    {
+      "use": "IA",
+      "evite": [
+        "A.I.",
+        "Inteligência Artificial com iniciais maiúsculas"
+      ],
+      "observacao": "Por extenso: inteligência artificial."
+    }
+  ]
+}

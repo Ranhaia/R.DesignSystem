@@ -1,0 +1,81 @@
+{
+  "nome": "Card",
+  "slug": "card",
+  "versao": "1.1.0",
+  "descricao": "O card agrupa informações sobre um mesmo assunto, como um artigo, um produto ou um indicador. Ele funciona como uma pequena vitrine que leva para o conteúdo completo.",
+  "resumo": "Card · agrupa informações sobre um mesmo assunto em uma superfície. Tipos: Conteúdo (imagem em cima), Horizontal (imagem ao lado), Destaque (chamada na cor da marca) e Métrica (número em evidência). Troque a imagem pelo preenchimento do bloco “Imagem”.",
+  "diretrizes": "diretrizes/componentes/card.md",
+  "figma": {
+    "pagina": "Card",
+    "componente": "Card"
+  },
+  "propriedades": [
+    {
+      "nome": "Título",
+      "tipo": "texto",
+      "padrao": "Governança sem burocracia"
+    },
+    {
+      "nome": "Descrição",
+      "tipo": "texto",
+      "padrao": "Quem decide, quem mantém e como evoluir o design system sem travar os times de produto."
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Conteúdo",
+        "Horizontal",
+        "Destaque",
+        "Métrica"
+      ],
+      "padrao": "Conteúdo"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Conteúdo",
+      "Horizontal",
+      "Destaque",
+      "Métrica"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Quando o card inteiro é clicável, só o título é o link e recebe Tab. Botões dentro do card recebem Tab separados.",
+    "leitor": "O título do card é um título de seção (h2 ou h3, conforme a página) e é o nome do link. A imagem de capa costuma ser decorativa.",
+    "foco": "Anel de foco em volta do card quando o título-link recebe foco.",
+    "cuidados": "Não transforme o card inteiro em um link gigante com vários textos: o leitor de tela leria tudo como nome do link."
+  },
+  "conteudo": [
+    "Título curto, de até duas linhas, que faça sentido sozinho.",
+    "Descrição de uma ou duas frases.",
+    "A ação do card diz o destino: Ler artigo."
+  ],
+  "faca": [
+    "Mantenha uma única ação principal por card.",
+    "Use títulos curtos, de até duas linhas.",
+    "Mantenha cards de uma mesma lista com a mesma altura."
+  ],
+  "naoFaca": [
+    "Colocar vários botões e links dentro do mesmo card.",
+    "Cards dentro de cards.",
+    "Textos longos que deveriam estar na página de detalhe."
+  ],
+  "tokens": [
+    "--espaco-2",
+    "--espaco-3",
+    "--espaco-4",
+    "--espaco-5",
+    "--espaco-6",
+    "--espaco-8",
+    "--cor-fundo-superficie",
+    "--cor-fundo-marca",
+    "--cor-borda-padrao",
+    "--cor-texto-padrao",
+    "--cor-texto-secundario",
+    "--cor-texto-sobre-marca",
+    "--raio-grande"
+  ],
+  "codigo": null
+}

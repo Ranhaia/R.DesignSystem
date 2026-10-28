@@ -1,0 +1,67 @@
+{
+  "nome": "Campo de pedido",
+  "slug": "campo-de-pedido",
+  "versao": "1.1.0",
+  "descricao": "O campo de pedido é onde a pessoa escreve para a IA. Ele sugere por onde começar, mostra quando a IA está gerando e deixa parar a qualquer momento. Embaixo, um aviso curto lembra que a IA pode errar.",
+  "resumo": "Campo de pedido · onde a pessoa escreve para a IA. Vazio mostra sugestões de pedido e o botão de enviar desabilitado. Digitando habilita o envio. Gerando troca o envio pelo botão Parar. O aviso de que a IA pode errar fica sempre visível embaixo.",
+  "diretrizes": "diretrizes/componentes/campo-de-pedido.md",
+  "figma": {
+    "pagina": "Campo de pedido",
+    "componente": "Campo de pedido"
+  },
+  "propriedades": [
+    {
+      "nome": "Mostrar aviso",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Vazio",
+        "Digitando",
+        "Gerando"
+      ],
+      "padrao": "Vazio"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Vazio",
+    "Digitando",
+    "Gerando"
+  ],
+  "acessibilidade": {
+    "teclado": "Enter envia e Shift+Enter quebra a linha. Tab passa por anexar e enviar. Durante a geração, Esc ou o botão Parar interrompem.",
+    "leitor": "O campo tem rótulo, mesmo que escondido na tela, por exemplo Pergunte algo sobre o livro. As sugestões são botões. O início e o fim da geração são anunciados de forma discreta, nunca palavra por palavra.",
+    "foco": "O foco fica no campo depois de enviar, para a pessoa continuar a conversa.",
+    "cuidados": "O botão Parar precisa estar sempre ao alcance do teclado enquanto a IA gera. O aviso de erro da IA fica visível, não só no leitor de tela."
+  },
+  "conteudo": [
+    "O texto de exemplo convida a perguntar: Pergunte algo sobre o livro.",
+    "Sugestões são pedidos completos e curtos: Resuma o capítulo 3."
+  ],
+  "faca": [
+    "Ofereça de 2 a 4 sugestões curtas para começar.",
+    "Deixe a pessoa parar a geração a qualquer momento.",
+    "Mantenha o aviso de que a IA pode errar sempre visível."
+  ],
+  "naoFaca": [
+    "Enviar o pedido sozinho enquanto a pessoa digita.",
+    "Apagar o pedido se a geração falhar.",
+    "Usar o campo de pedido onde um formulário comum resolve."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-borda-controle",
+    "--cor-borda-marca",
+    "--raio-extra",
+    "--cor-borda-padrao",
+    "--raio-pilula",
+    "--cor-texto-padrao",
+    "--cor-texto-terciario",
+    "--cor-texto-secundario"
+  ],
+  "codigo": null
+}

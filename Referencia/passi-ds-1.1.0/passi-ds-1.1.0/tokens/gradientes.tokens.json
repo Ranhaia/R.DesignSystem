@@ -1,0 +1,232 @@
+{
+  "$description": "Gradientes feitos com as cores do sistema. Use em áreas grandes, um por tela.",
+  "gradiente": {
+    "marca": {
+      "$type": "gradient",
+      "$description": "Azul da marca com profundidade. Chamadas e capas.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3569,
+              0.4549,
+              0.949
+            ],
+            "hex": "#5b74f2"
+          },
+          "position": 0
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1059,
+              0.1843,
+              0.7216
+            ],
+            "hex": "#1b2fb8"
+          },
+          "position": 1
+        }
+      ],
+      "$extensions": {
+        "br.com.passi": {
+          "tipo": "linear",
+          "angulo": "135deg"
+        }
+      }
+    },
+    "noite": {
+      "$type": "gradient",
+      "$description": "Do azul ao quase preto. Fundos escuros e seções de destaque.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1451,
+              0.2667,
+              0.9255
+            ],
+            "hex": "#2544ec"
+          },
+          "position": 0
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0431,
+              0.0627,
+              0.2118
+            ],
+            "hex": "#0b1036"
+          },
+          "position": 1
+        }
+      ],
+      "$extensions": {
+        "br.com.passi": {
+          "tipo": "linear",
+          "angulo": "180deg"
+        }
+      }
+    },
+    "aurora": {
+      "$type": "gradient",
+      "$description": "Azul para verde. Conquistas e boas notícias.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1451,
+              0.2667,
+              0.9255
+            ],
+            "hex": "#2544ec"
+          },
+          "position": 0
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3569,
+              0.4549,
+              0.949
+            ],
+            "hex": "#5b74f2"
+          },
+          "position": 0.55
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.498,
+              0.8275,
+              0.6275
+            ],
+            "hex": "#7fd3a0"
+          },
+          "position": 1
+        }
+      ],
+      "$extensions": {
+        "br.com.passi": {
+          "tipo": "linear",
+          "angulo": "135deg"
+        }
+      }
+    },
+    "por-do-sol": {
+      "$type": "gradient",
+      "$description": "Âmbar para vermelho. Use com moderação, para campanhas.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              0.6902,
+              0.1255
+            ],
+            "hex": "#ffb020"
+          },
+          "position": 0
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8627,
+              0.149,
+              0.149
+            ],
+            "hex": "#dc2626"
+          },
+          "position": 1
+        }
+      ],
+      "$extensions": {
+        "br.com.passi": {
+          "tipo": "linear",
+          "angulo": "135deg"
+        }
+      }
+    },
+    "sutil": {
+      "$type": "gradient",
+      "$description": "Creme para azul bem claro. Fundos de seção e imagens de espera.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9804,
+              0.9804,
+              0.9686
+            ],
+            "hex": "#fafaf7"
+          },
+          "position": 0
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8667,
+              0.8902,
+              0.9922
+            ],
+            "hex": "#dde3fd"
+          },
+          "position": 1
+        }
+      ],
+      "$extensions": {
+        "br.com.passi": {
+          "tipo": "linear",
+          "angulo": "180deg"
+        }
+      }
+    },
+    "brilho": {
+      "$type": "gradient",
+      "$description": "Luz no centro. Fundos de ícones grandes e ilustrações.",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.5608,
+              0.6314,
+              0.9686
+            ],
+            "hex": "#8fa1f7"
+          },
+          "position": 0
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1451,
+              0.2667,
+              0.9255
+            ],
+            "hex": "#2544ec"
+          },
+          "position": 1
+        }
+      ],
+      "$extensions": {
+        "br.com.passi": {
+          "tipo": "radial"
+        }
+      }
+    }
+  }
+}

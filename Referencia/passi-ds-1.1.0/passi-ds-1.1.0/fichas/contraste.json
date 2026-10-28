@@ -1,0 +1,842 @@
+{
+  "_sobre": "Tabela de contraste do PASSI DS (a mesma de diretrizes/fundamentos/acessibilidade.md) e a cor de cada token em cada modo. O verificador usa estes dados para medir qualquer par de texto e fundo. Cores translúcidas são misturadas com fundo/pagina antes de medir.",
+  "versao": "1.1.0",
+  "modos": [
+    "claro",
+    "escuro",
+    "alto-contraste-claro",
+    "alto-contraste-escuro"
+  ],
+  "limites": {
+    "t": {
+      "normal": 4.5,
+      "altoContraste": 7
+    },
+    "e": {
+      "normal": 3,
+      "altoContraste": 4.5
+    },
+    "g": {
+      "normal": 3,
+      "altoContraste": 3
+    }
+  },
+  "isentos": [
+    "--cor-texto-desabilitado",
+    "--cor-borda-padrao",
+    "--cor-borda-forte"
+  ],
+  "pares": [
+    {
+      "frente": "--cor-texto-padrao",
+      "fundo": "--cor-fundo-pagina",
+      "tipo": "t",
+      "contraste": {
+        "claro": 18.93,
+        "escuro": 18.93,
+        "alto-contraste-claro": 19.79,
+        "alto-contraste-escuro": 19.79
+      }
+    },
+    {
+      "frente": "--cor-texto-padrao",
+      "fundo": "--cor-fundo-sutil",
+      "tipo": "t",
+      "contraste": {
+        "claro": 17.78,
+        "escuro": 14.48,
+        "alto-contraste-claro": 17.78,
+        "alto-contraste-escuro": 18.1
+      }
+    },
+    {
+      "frente": "--cor-texto-secundario",
+      "fundo": "--cor-fundo-pagina",
+      "tipo": "t",
+      "contraste": {
+        "claro": 10.57,
+        "escuro": 13.56,
+        "alto-contraste-claro": 15.14,
+        "alto-contraste-escuro": 16.1
+      }
+    },
+    {
+      "frente": "--cor-texto-secundario",
+      "fundo": "--cor-fundo-sutil",
+      "tipo": "t",
+      "contraste": {
+        "claro": 9.93,
+        "escuro": 10.37,
+        "alto-contraste-claro": 13.6,
+        "alto-contraste-escuro": 14.72
+      }
+    },
+    {
+      "frente": "--cor-texto-terciario",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "t",
+      "contraste": {
+        "claro": 5.32,
+        "escuro": 5.57,
+        "alto-contraste-claro": 7.83,
+        "alto-contraste-escuro": 9.93
+      }
+    },
+    {
+      "frente": "--cor-texto-terciario",
+      "fundo": "--cor-fundo-sutil",
+      "tipo": "t",
+      "contraste": {
+        "claro": 4.78,
+        "escuro": 4.66,
+        "alto-contraste-claro": 7.03,
+        "alto-contraste-escuro": 9.08
+      }
+    },
+    {
+      "frente": "--cor-texto-marca",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "t",
+      "contraste": {
+        "claro": 6.73,
+        "escuro": 7.42,
+        "alto-contraste-claro": 12.06,
+        "alto-contraste-escuro": 8.11
+      }
+    },
+    {
+      "frente": "--cor-texto-marca",
+      "fundo": "--cor-fundo-marca-sutil",
+      "tipo": "t",
+      "contraste": {
+        "claro": 5.98,
+        "escuro": 7.54,
+        "alto-contraste-claro": 10.7,
+        "alto-contraste-escuro": 7.54
+      }
+    },
+    {
+      "frente": "--cor-texto-sucesso",
+      "fundo": "--cor-fundo-sucesso-sutil",
+      "tipo": "t",
+      "contraste": {
+        "claro": 4.96,
+        "escuro": 7.28,
+        "alto-contraste-claro": 11.88,
+        "alto-contraste-escuro": 7.28
+      }
+    },
+    {
+      "frente": "--cor-texto-alerta",
+      "fundo": "--cor-fundo-alerta-sutil",
+      "tipo": "t",
+      "contraste": {
+        "claro": 5.71,
+        "escuro": 8.18,
+        "alto-contraste-claro": 11.22,
+        "alto-contraste-escuro": 8.18
+      }
+    },
+    {
+      "frente": "--cor-texto-alerta",
+      "fundo": "--cor-fundo-sutil",
+      "tipo": "t",
+      "contraste": {
+        "claro": 5.47,
+        "escuro": 10.36,
+        "alto-contraste-claro": 10.74,
+        "alto-contraste-escuro": 12.39
+      }
+    },
+    {
+      "frente": "--cor-texto-erro",
+      "fundo": "--cor-fundo-erro-sutil",
+      "tipo": "t",
+      "contraste": {
+        "claro": 6.6,
+        "escuro": 6.42,
+        "alto-contraste-claro": 13.57,
+        "alto-contraste-escuro": 11.07
+      }
+    },
+    {
+      "frente": "--cor-texto-sobre-marca",
+      "fundo": "--cor-fundo-marca",
+      "tipo": "t",
+      "contraste": {
+        "claro": 6.73,
+        "escuro": 6.73,
+        "alto-contraste-claro": 12.06,
+        "alto-contraste-escuro": 8.11
+      }
+    },
+    {
+      "frente": "--cor-texto-sobre-marca",
+      "fundo": "--cor-fundo-marca-hover",
+      "tipo": "t",
+      "contraste": {
+        "claro": 9.78,
+        "escuro": 9.78,
+        "alto-contraste-claro": 14.29,
+        "alto-contraste-escuro": 11.97
+      }
+    },
+    {
+      "frente": "--cor-texto-sobre-marca",
+      "fundo": "--cor-fundo-marca-pressionado",
+      "tipo": "t",
+      "contraste": {
+        "claro": 12.06,
+        "escuro": 12.06,
+        "alto-contraste-claro": 16.03,
+        "alto-contraste-escuro": 15.53
+      }
+    },
+    {
+      "frente": "--cor-texto-sobre-marca",
+      "fundo": "--cor-fundo-sucesso",
+      "tipo": "t",
+      "contraste": {
+        "claro": 5.44,
+        "escuro": 5.44,
+        "alto-contraste-claro": 13.04,
+        "alto-contraste-escuro": 11.05
+      }
+    },
+    {
+      "frente": "--cor-texto-sobre-marca",
+      "fundo": "--cor-fundo-erro",
+      "tipo": "t",
+      "contraste": {
+        "claro": 4.82,
+        "escuro": 4.82,
+        "alto-contraste-claro": 7.54,
+        "alto-contraste-escuro": 8.2
+      }
+    },
+    {
+      "frente": "--cor-texto-sobre-marca",
+      "fundo": "--cor-fundo-erro-hover",
+      "tipo": "t",
+      "contraste": {
+        "claro": 7.54,
+        "escuro": 7.54,
+        "alto-contraste-claro": 15.5,
+        "alto-contraste-escuro": 14.14
+      }
+    },
+    {
+      "frente": "--cor-texto-sobre-marca",
+      "fundo": "--cor-fundo-erro-pressionado",
+      "tipo": "t",
+      "contraste": {
+        "claro": 15.5,
+        "escuro": 15.5,
+        "alto-contraste-claro": 15.5,
+        "alto-contraste-escuro": 17.33
+      }
+    },
+    {
+      "frente": "--cor-texto-invertido",
+      "fundo": "--cor-fundo-invertido",
+      "tipo": "t",
+      "contraste": {
+        "claro": 18.93,
+        "escuro": 18.93,
+        "alto-contraste-claro": 19.79,
+        "alto-contraste-escuro": 19.79
+      }
+    },
+    {
+      "frente": "--cor-texto-invertido",
+      "fundo": "--cor-fundo-invertido-hover",
+      "tipo": "t",
+      "contraste": {
+        "claro": 14.48,
+        "escuro": 13.56,
+        "alto-contraste-claro": 15.14,
+        "alto-contraste-escuro": 13.56
+      }
+    },
+    {
+      "frente": "--cor-texto-invertido",
+      "fundo": "--cor-fundo-invertido-pressionado",
+      "tipo": "t",
+      "contraste": {
+        "claro": 10.57,
+        "escuro": 9.93,
+        "alto-contraste-claro": 11.05,
+        "alto-contraste-escuro": 9.93
+      }
+    },
+    {
+      "frente": "--cor-texto-marca-hover",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "t",
+      "contraste": {
+        "claro": 9.78,
+        "escuro": 10.95,
+        "alto-contraste-claro": 14.29,
+        "alto-contraste-escuro": 11.97
+      }
+    },
+    {
+      "frente": "--cor-texto-marca-pressionado",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "t",
+      "contraste": {
+        "claro": 12.06,
+        "escuro": 14.21,
+        "alto-contraste-claro": 16.03,
+        "alto-contraste-escuro": 15.53
+      }
+    },
+    {
+      "frente": "--cor-texto-padrao",
+      "fundo": "--cor-fundo-sutil-hover",
+      "tipo": "t",
+      "contraste": {
+        "claro": 16.1,
+        "escuro": 10.57,
+        "alto-contraste-claro": 16.1,
+        "alto-contraste-escuro": 15.14
+      }
+    },
+    {
+      "frente": "--cor-texto-padrao",
+      "fundo": "--cor-fundo-fantasma-hover",
+      "tipo": "t",
+      "contraste": {
+        "claro": 16,
+        "escuro": 14.13,
+        "alto-contraste-claro": 15.22,
+        "alto-contraste-escuro": 13.43
+      }
+    },
+    {
+      "frente": "--cor-texto-padrao",
+      "fundo": "--cor-fundo-fantasma-pressionado",
+      "tipo": "t",
+      "contraste": {
+        "claro": 14.57,
+        "escuro": 8.85,
+        "alto-contraste-claro": 8.44,
+        "alto-contraste-escuro": 9.25
+      }
+    },
+    {
+      "frente": "--cor-texto-padrao",
+      "fundo": "--cor-fundo-selecao",
+      "tipo": "t",
+      "contraste": {
+        "claro": 11.97,
+        "escuro": 13.67,
+        "alto-contraste-claro": 11.97,
+        "alto-contraste-escuro": 14.29
+      }
+    },
+    {
+      "frente": "--cor-texto-padrao",
+      "fundo": "--cor-fundo-marca-texto",
+      "tipo": "t",
+      "contraste": {
+        "claro": 16.86,
+        "escuro": 11.44,
+        "alto-contraste-claro": 16.86,
+        "alto-contraste-escuro": 11.96
+      }
+    },
+    {
+      "frente": "--cor-texto-ia",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "t",
+      "contraste": {
+        "claro": 8.54,
+        "escuro": 7.8,
+        "alto-contraste-claro": 8.54,
+        "alto-contraste-escuro": 8.53
+      }
+    },
+    {
+      "frente": "--cor-texto-ia",
+      "fundo": "--cor-fundo-ia-sutil",
+      "tipo": "t",
+      "contraste": {
+        "claro": 7.65,
+        "escuro": 7.76,
+        "alto-contraste-claro": 7.65,
+        "alto-contraste-escuro": 7.76
+      }
+    },
+    {
+      "frente": "--cor-borda-ia",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "e",
+      "contraste": {
+        "claro": 5.23,
+        "escuro": 7.8,
+        "alto-contraste-claro": 8.54,
+        "alto-contraste-escuro": 8.53
+      }
+    },
+    {
+      "frente": "--cor-borda-controle",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "e",
+      "contraste": {
+        "claro": 3.24,
+        "escuro": 3.39,
+        "alto-contraste-claro": 11.05,
+        "alto-contraste-escuro": 9.93
+      }
+    },
+    {
+      "frente": "--cor-borda-controle",
+      "fundo": "--cor-fundo-pagina",
+      "tipo": "e",
+      "contraste": {
+        "claro": 3.1,
+        "escuro": 3.71,
+        "alto-contraste-claro": 11.05,
+        "alto-contraste-escuro": 9.93
+      }
+    },
+    {
+      "frente": "--cor-borda-foco",
+      "fundo": "--cor-fundo-pagina",
+      "tipo": "e",
+      "contraste": {
+        "claro": 6.44,
+        "escuro": 4.92,
+        "alto-contraste-claro": 12.06,
+        "alto-contraste-escuro": 8.11
+      }
+    },
+    {
+      "frente": "--cor-borda-marca",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "e",
+      "contraste": {
+        "claro": 6.73,
+        "escuro": 4.5,
+        "alto-contraste-claro": 12.06,
+        "alto-contraste-escuro": 8.11
+      }
+    },
+    {
+      "frente": "--cor-borda-erro",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "e",
+      "contraste": {
+        "claro": 4.82,
+        "escuro": 7.5,
+        "alto-contraste-claro": 7.54,
+        "alto-contraste-escuro": 8.2
+      }
+    },
+    {
+      "frente": "--cor-fundo-controle-desligado",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "e",
+      "contraste": {
+        "claro": 3.24,
+        "escuro": 3.39,
+        "alto-contraste-claro": 7.83,
+        "alto-contraste-escuro": 6.09
+      }
+    },
+    {
+      "frente": "--cor-dados-1",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "g",
+      "contraste": {
+        "claro": 6.73,
+        "escuro": 4.5,
+        "alto-contraste-claro": 12.06,
+        "alto-contraste-escuro": 8.11
+      }
+    },
+    {
+      "frente": "--cor-dados-2",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "g",
+      "contraste": {
+        "claro": 2.43,
+        "escuro": 7.42,
+        "alto-contraste-claro": 6.73,
+        "alto-contraste-escuro": 15.53
+      }
+    },
+    {
+      "frente": "--cor-dados-3",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "g",
+      "contraste": {
+        "claro": 1.82,
+        "escuro": 9.9,
+        "alto-contraste-claro": 6.09,
+        "alto-contraste-escuro": 13.54
+      }
+    },
+    {
+      "frente": "--cor-dados-4",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "g",
+      "contraste": {
+        "claro": 3.29,
+        "escuro": 10.11,
+        "alto-contraste-claro": 5.44,
+        "alto-contraste-escuro": 11.05
+      }
+    },
+    {
+      "frente": "--cor-dados-5",
+      "fundo": "--cor-fundo-superficie",
+      "tipo": "g",
+      "contraste": {
+        "claro": 3.24,
+        "escuro": 3.39,
+        "alto-contraste-claro": 7.83,
+        "alto-contraste-escuro": 9.93
+      }
+    }
+  ],
+  "cores": {
+    "--cor-fundo-pagina": {
+      "claro": "#fafaf7",
+      "escuro": "#0a0a0a",
+      "alto-contraste-claro": "#ffffff",
+      "alto-contraste-escuro": "#0a0a0a"
+    },
+    "--cor-fundo-superficie": {
+      "claro": "#ffffff",
+      "escuro": "#161615",
+      "alto-contraste-claro": "#ffffff",
+      "alto-contraste-escuro": "#0a0a0a"
+    },
+    "--cor-fundo-sutil": {
+      "claro": "#f3f3ee",
+      "escuro": "#262625",
+      "alto-contraste-claro": "#f3f3ee",
+      "alto-contraste-escuro": "#161615"
+    },
+    "--cor-fundo-sutil-hover": {
+      "claro": "#e8e8e3",
+      "escuro": "#3c3c3a",
+      "alto-contraste-claro": "#e8e8e3",
+      "alto-contraste-escuro": "#262625"
+    },
+    "--cor-fundo-invertido": {
+      "claro": "#0a0a0a",
+      "escuro": "#fafaf7",
+      "alto-contraste-claro": "#0a0a0a",
+      "alto-contraste-escuro": "#ffffff"
+    },
+    "--cor-fundo-marca": {
+      "claro": "#2544ec",
+      "escuro": "#2544ec",
+      "alto-contraste-claro": "#172694",
+      "alto-contraste-escuro": "#8fa1f7"
+    },
+    "--cor-fundo-marca-hover": {
+      "claro": "#1b2fb8",
+      "escuro": "#1b2fb8",
+      "alto-contraste-claro": "#141f72",
+      "alto-contraste-escuro": "#bcc7fb"
+    },
+    "--cor-fundo-marca-sutil": {
+      "claro": "#eef1fe",
+      "escuro": "#0b1036",
+      "alto-contraste-claro": "#eef1fe",
+      "alto-contraste-escuro": "#0b1036"
+    },
+    "--cor-fundo-sucesso": {
+      "claro": "#0f7a36",
+      "escuro": "#0f7a36",
+      "alto-contraste-claro": "#08391a",
+      "alto-contraste-escuro": "#7fd3a0"
+    },
+    "--cor-fundo-sucesso-sutil": {
+      "claro": "#e9f8ef",
+      "escuro": "#08391a",
+      "alto-contraste-claro": "#e9f8ef",
+      "alto-contraste-escuro": "#08391a"
+    },
+    "--cor-fundo-alerta": {
+      "claro": "#ffb020",
+      "escuro": "#ffb020",
+      "alto-contraste-claro": "#ffb020",
+      "alto-contraste-escuro": "#ffb020"
+    },
+    "--cor-fundo-alerta-sutil": {
+      "claro": "#fff7e6",
+      "escuro": "#4d3100",
+      "alto-contraste-claro": "#fff7e6",
+      "alto-contraste-escuro": "#4d3100"
+    },
+    "--cor-fundo-erro": {
+      "claro": "#dc2626",
+      "escuro": "#dc2626",
+      "alto-contraste-claro": "#a51c1c",
+      "alto-contraste-escuro": "#f08a8a"
+    },
+    "--cor-fundo-erro-hover": {
+      "claro": "#a51c1c",
+      "escuro": "#a51c1c",
+      "alto-contraste-claro": "#4a0d0d",
+      "alto-contraste-escuro": "#fad0d0"
+    },
+    "--cor-fundo-erro-sutil": {
+      "claro": "#fdecec",
+      "escuro": "#4a0d0d",
+      "alto-contraste-claro": "#fdecec",
+      "alto-contraste-escuro": "#4a0d0d"
+    },
+    "--cor-fundo-desabilitado": {
+      "claro": "#e8e8e3",
+      "escuro": "#262625",
+      "alto-contraste-claro": "#e8e8e3",
+      "alto-contraste-escuro": "#262625"
+    },
+    "--cor-fundo-sobreposicao": {
+      "claro": "#0a0a0a99",
+      "escuro": "#0a0a0a99",
+      "alto-contraste-claro": "#0a0a0abf",
+      "alto-contraste-escuro": "#0a0a0abf"
+    },
+    "--cor-fundo-fantasma-hover": {
+      "claro": "#0a0a0a14",
+      "escuro": "#ffffff1f",
+      "alto-contraste-claro": "#0a0a0a1f",
+      "alto-contraste-escuro": "#ffffff26"
+    },
+    "--cor-texto-padrao": {
+      "claro": "#0a0a0a",
+      "escuro": "#fafaf7",
+      "alto-contraste-claro": "#0a0a0a",
+      "alto-contraste-escuro": "#ffffff"
+    },
+    "--cor-texto-secundario": {
+      "claro": "#3c3c3a",
+      "escuro": "#d6d6d0",
+      "alto-contraste-claro": "#262625",
+      "alto-contraste-escuro": "#e8e8e3"
+    },
+    "--cor-texto-terciario": {
+      "claro": "#6b6b6b",
+      "escuro": "#8f8f8a",
+      "alto-contraste-claro": "#525250",
+      "alto-contraste-escuro": "#b8b8b2"
+    },
+    "--cor-texto-invertido": {
+      "claro": "#fafaf7",
+      "escuro": "#0a0a0a",
+      "alto-contraste-claro": "#ffffff",
+      "alto-contraste-escuro": "#0a0a0a"
+    },
+    "--cor-texto-marca": {
+      "claro": "#2544ec",
+      "escuro": "#8fa1f7",
+      "alto-contraste-claro": "#172694",
+      "alto-contraste-escuro": "#8fa1f7"
+    },
+    "--cor-texto-sobre-marca": {
+      "claro": "#ffffff",
+      "escuro": "#ffffff",
+      "alto-contraste-claro": "#ffffff",
+      "alto-contraste-escuro": "#0a0a0a"
+    },
+    "--cor-texto-sucesso": {
+      "claro": "#0f7a36",
+      "escuro": "#7fd3a0",
+      "alto-contraste-claro": "#08391a",
+      "alto-contraste-escuro": "#7fd3a0"
+    },
+    "--cor-texto-alerta": {
+      "claro": "#8a5700",
+      "escuro": "#ffcf66",
+      "alto-contraste-claro": "#4d3100",
+      "alto-contraste-escuro": "#ffcf66"
+    },
+    "--cor-texto-erro": {
+      "claro": "#a51c1c",
+      "escuro": "#f08a8a",
+      "alto-contraste-claro": "#4a0d0d",
+      "alto-contraste-escuro": "#fad0d0"
+    },
+    "--cor-texto-desabilitado": {
+      "claro": "#b8b8b2",
+      "escuro": "#525250",
+      "alto-contraste-claro": "#6b6b6b",
+      "alto-contraste-escuro": "#6b6b6b"
+    },
+    "--cor-borda-padrao": {
+      "claro": "#e8e8e3",
+      "escuro": "#262625",
+      "alto-contraste-claro": "#8f8f8a",
+      "alto-contraste-escuro": "#525250"
+    },
+    "--cor-borda-forte": {
+      "claro": "#b8b8b2",
+      "escuro": "#525250",
+      "alto-contraste-claro": "#525250",
+      "alto-contraste-escuro": "#8f8f8a"
+    },
+    "--cor-borda-marca": {
+      "claro": "#2544ec",
+      "escuro": "#5b74f2",
+      "alto-contraste-claro": "#172694",
+      "alto-contraste-escuro": "#8fa1f7"
+    },
+    "--cor-borda-foco": {
+      "claro": "#2544ec",
+      "escuro": "#5b74f2",
+      "alto-contraste-claro": "#172694",
+      "alto-contraste-escuro": "#8fa1f7"
+    },
+    "--cor-borda-sucesso": {
+      "claro": "#16a34a",
+      "escuro": "#16a34a",
+      "alto-contraste-claro": "#0f7a36",
+      "alto-contraste-escuro": "#7fd3a0"
+    },
+    "--cor-borda-alerta": {
+      "claro": "#ffb020",
+      "escuro": "#ffb020",
+      "alto-contraste-claro": "#8a5700",
+      "alto-contraste-escuro": "#ffcf66"
+    },
+    "--cor-borda-erro": {
+      "claro": "#dc2626",
+      "escuro": "#f08a8a",
+      "alto-contraste-claro": "#a51c1c",
+      "alto-contraste-escuro": "#f08a8a"
+    },
+    "--cor-fundo-invertido-hover": {
+      "claro": "#262625",
+      "escuro": "#d6d6d0",
+      "alto-contraste-claro": "#262625",
+      "alto-contraste-escuro": "#d6d6d0"
+    },
+    "--cor-fundo-controle-desligado": {
+      "claro": "#8f8f8a",
+      "escuro": "#6b6b6b",
+      "alto-contraste-claro": "#525250",
+      "alto-contraste-escuro": "#8f8f8a"
+    },
+    "--cor-dados-1": {
+      "claro": "#2544ec",
+      "escuro": "#5b74f2",
+      "alto-contraste-claro": "#172694",
+      "alto-contraste-escuro": "#8fa1f7"
+    },
+    "--cor-dados-2": {
+      "claro": "#8fa1f7",
+      "escuro": "#8fa1f7",
+      "alto-contraste-claro": "#2544ec",
+      "alto-contraste-escuro": "#dde3fd"
+    },
+    "--cor-dados-3": {
+      "claro": "#ffb020",
+      "escuro": "#ffb020",
+      "alto-contraste-claro": "#8a5700",
+      "alto-contraste-escuro": "#ffcf66"
+    },
+    "--cor-dados-4": {
+      "claro": "#16a34a",
+      "escuro": "#7fd3a0",
+      "alto-contraste-claro": "#0f7a36",
+      "alto-contraste-escuro": "#7fd3a0"
+    },
+    "--cor-dados-5": {
+      "claro": "#8f8f8a",
+      "escuro": "#6b6b6b",
+      "alto-contraste-claro": "#525250",
+      "alto-contraste-escuro": "#b8b8b2"
+    },
+    "--cor-dados-grade": {
+      "claro": "#e8e8e3",
+      "escuro": "#262625",
+      "alto-contraste-claro": "#b8b8b2",
+      "alto-contraste-escuro": "#3c3c3a"
+    },
+    "--cor-fundo-selecao": {
+      "claro": "#bcc7fb",
+      "escuro": "#141f72",
+      "alto-contraste-claro": "#bcc7fb",
+      "alto-contraste-escuro": "#141f72"
+    },
+    "--cor-fundo-marca-texto": {
+      "claro": "#ffebbf",
+      "escuro": "#4d3100",
+      "alto-contraste-claro": "#ffebbf",
+      "alto-contraste-escuro": "#4d3100"
+    },
+    "--cor-borda-controle": {
+      "claro": "#8f8f8a",
+      "escuro": "#6b6b6b",
+      "alto-contraste-claro": "#3c3c3a",
+      "alto-contraste-escuro": "#b8b8b2"
+    },
+    "--cor-texto-sobre-imagem": {
+      "claro": "#ffffff",
+      "escuro": "#ffffff",
+      "alto-contraste-claro": "#ffffff",
+      "alto-contraste-escuro": "#ffffff"
+    },
+    "--cor-texto-ia": {
+      "claro": "#4b2fbf",
+      "escuro": "#ad9ff5",
+      "alto-contraste-claro": "#4b2fbf",
+      "alto-contraste-escuro": "#ad9ff5"
+    },
+    "--cor-fundo-ia-sutil": {
+      "claro": "#f3f1fe",
+      "escuro": "#170e3d",
+      "alto-contraste-claro": "#f3f1fe",
+      "alto-contraste-escuro": "#170e3d"
+    },
+    "--cor-borda-ia": {
+      "claro": "#6e52e6",
+      "escuro": "#ad9ff5",
+      "alto-contraste-claro": "#4b2fbf",
+      "alto-contraste-escuro": "#ad9ff5"
+    },
+    "--cor-fundo-marca-pressionado": {
+      "claro": "#172694",
+      "escuro": "#172694",
+      "alto-contraste-claro": "#111a57",
+      "alto-contraste-escuro": "#dde3fd"
+    },
+    "--cor-fundo-erro-pressionado": {
+      "claro": "#4a0d0d",
+      "escuro": "#4a0d0d",
+      "alto-contraste-claro": "#4a0d0d",
+      "alto-contraste-escuro": "#fdecec"
+    },
+    "--cor-fundo-fantasma-pressionado": {
+      "claro": "#0a0a0a1f",
+      "escuro": "#ffffff40",
+      "alto-contraste-claro": "#0a0a0a59",
+      "alto-contraste-escuro": "#ffffff40"
+    },
+    "--cor-fundo-invertido-pressionado": {
+      "claro": "#3c3c3a",
+      "escuro": "#b8b8b2",
+      "alto-contraste-claro": "#3c3c3a",
+      "alto-contraste-escuro": "#b8b8b2"
+    },
+    "--cor-texto-marca-hover": {
+      "claro": "#1b2fb8",
+      "escuro": "#bcc7fb",
+      "alto-contraste-claro": "#141f72",
+      "alto-contraste-escuro": "#bcc7fb"
+    },
+    "--cor-texto-marca-pressionado": {
+      "claro": "#172694",
+      "escuro": "#dde3fd",
+      "alto-contraste-claro": "#111a57",
+      "alto-contraste-escuro": "#dde3fd"
+    }
+  }
+}

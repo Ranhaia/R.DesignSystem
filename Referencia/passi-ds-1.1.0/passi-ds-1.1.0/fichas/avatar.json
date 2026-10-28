@@ -1,0 +1,101 @@
+{
+  "nome": "Avatar",
+  "slug": "avatar",
+  "versao": "1.1.0",
+  "descricao": "O avatar representa uma pessoa. Mostra a foto quando existe, as iniciais como alternativa e um ícone quando não há nenhuma informação. Pode exibir um ponto de status, como “online”.",
+  "resumo": "Avatar · representa uma pessoa ou organização. Use Imagem quando houver foto (troque o preenchimento do círculo), Iniciais como alternativa e Ícone quando não houver nenhuma informação.",
+  "diretrizes": "diretrizes/componentes/avatar.md",
+  "figma": {
+    "pagina": "Avatar",
+    "componente": "Avatar"
+  },
+  "propriedades": [
+    {
+      "nome": "Iniciais",
+      "tipo": "texto",
+      "padrao": "JP"
+    },
+    {
+      "nome": "Mostrar status",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Iniciais",
+        "Ícone",
+        "Imagem"
+      ],
+      "padrao": "Iniciais"
+    },
+    {
+      "nome": "Tamanho",
+      "tipo": "variante",
+      "opcoes": [
+        "P",
+        "M",
+        "G",
+        "XG"
+      ],
+      "padrao": "P"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Iniciais",
+      "Ícone",
+      "Imagem"
+    ],
+    "Tamanho": [
+      "P",
+      "M",
+      "G",
+      "XG"
+    ]
+  },
+  "estados": [],
+  "outrasPartes": [
+    {
+      "nome": "Grupo de avatares",
+      "resumo": "Grupo de avatares · mostra quem participa de algo. Até 4 rostos e um contador com o restante.",
+      "propriedades": [
+        {
+          "nome": "Quantidade",
+          "tipo": "texto",
+          "padrao": "+12"
+        }
+      ]
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Só recebe foco quando é um link ou botão, por exemplo para abrir o perfil.",
+    "leitor": "A foto tem texto alternativo com o nome da pessoa. Ao lado do nome escrito, a foto é decorativa e fica escondida do leitor. O ponto de status é lido em texto, por exemplo online.",
+    "foco": "Anel de foco quando é clicável.",
+    "cuidados": "No Grupo de avatares, o +3 diz em texto quem são ou quantas pessoas faltam."
+  },
+  "conteudo": [
+    "O texto alternativo é o nome da pessoa.",
+    "Iniciais com até duas letras: primeira letra do nome e do sobrenome."
+  ],
+  "faca": [
+    "Use iniciais com até duas letras.",
+    "Mantenha o mesmo tamanho dentro de uma lista.",
+    "Mostre o nome completo por perto ou em uma dica flutuante."
+  ],
+  "naoFaca": [
+    "Fotos de baixa resolução ou cortadas no rosto.",
+    "Cores aleatórias para iniciais sem garantir contraste.",
+    "Grupos com mais de 5 rostos visíveis."
+  ],
+  "tokens": [
+    "--cor-fundo-marca-sutil",
+    "--cor-texto-marca",
+    "--cor-fundo-sutil-hover",
+    "--cor-texto-secundario",
+    "--cor-fundo-superficie",
+    "--cor-fundo-sucesso"
+  ],
+  "codigo": null
+}

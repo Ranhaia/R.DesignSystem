@@ -1,0 +1,88 @@
+{
+  "nome": "Controle segmentado",
+  "slug": "controle-segmentado",
+  "versao": "1.1.0",
+  "descricao": "O controle segmentado alterna entre poucas opções que se excluem, como mensal e anual. A troca é imediata e todas as opções ficam sempre visíveis.",
+  "resumo": "Segmento · uma opção dentro do Controle segmentado. Use o componente completo, não este item solto.",
+  "diretrizes": "diretrizes/componentes/controle-segmentado.md",
+  "figma": {
+    "pagina": "Controle segmentado",
+    "componente": "Segmento"
+  },
+  "propriedades": [
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Mensal"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Selecionado",
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Desabilitado"
+      ],
+      "padrao": "Selecionado"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Selecionado",
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Desabilitado"
+  ],
+  "outrasPartes": [
+    {
+      "nome": "Controle segmentado",
+      "resumo": "Controle segmentado · alterna entre 2 a 4 visões ou opções exclusivas, como “Mensal / Anual”. Troque o estado de cada opção para mudar a seleção. Substitui o estilo Pílula das Abas, que está descontinuado.",
+      "propriedades": [
+        {
+          "nome": "Opções",
+          "tipo": "variante",
+          "opcoes": [
+            "2",
+            "3",
+            "4"
+          ],
+          "padrao": "2"
+        }
+      ]
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Tab entra no controle e para na opção ativa. Setas mudam a opção.",
+    "leitor": "Funciona como um grupo de rádios: papel radiogroup com nome e cada segmento como radio. Anuncia a opção selecionada.",
+    "foco": "Anel de foco na opção que recebe o teclado.",
+    "cuidados": "Use no máximo 5 opções, com textos curtos. A opção ativa se diferencia também pelo fundo branco e pela sombra, não só pela cor do texto."
+  },
+  "conteudo": [
+    "Uma ou duas palavras por opção: Mensal, Anual.",
+    "Todas as opções no mesmo formato e com tamanho parecido."
+  ],
+  "faca": [
+    "Use de 2 a 4 opções com textos curtos.",
+    "Mostre o resultado da troca na hora, na mesma tela.",
+    "Mantenha as opções com larguras parecidas.",
+    "Use para filtrar ou alternar a visão de uma área, no lugar do estilo Pílula das Abas."
+  ],
+  "naoFaca": [
+    "Trocar entre partes de um mesmo conteúdo, como capítulos e notas. Para isso use Abas.",
+    "Textos longos que quebram em duas linhas.",
+    "Mais de 4 opções. Prefira Seleção."
+  ],
+  "tokens": [
+    "--cor-fundo-sutil",
+    "--cor-fundo-fantasma-hover",
+    "--cor-fundo-fantasma-pressionado",
+    "--cor-fundo-superficie",
+    "--cor-texto-padrao",
+    "--cor-texto-secundario",
+    "--raio-pilula"
+  ],
+  "codigo": null
+}

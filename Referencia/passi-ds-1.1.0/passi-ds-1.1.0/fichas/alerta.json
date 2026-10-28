@@ -1,0 +1,185 @@
+{
+  "nome": "Alerta",
+  "slug": "alerta",
+  "versao": "1.1.0",
+  "descricao": "O alerta é uma mensagem que fica na página, perto do conteúdo a que se refere. Ele informa, confirma, avisa ou explica um erro, e diz o que fazer em seguida.",
+  "resumo": "Alerta · mensagem fixa dentro da página, ligada a um contexto. Diferente do Aviso rápido, que aparece e some. Use Informação, Sucesso, Atenção ou Erro conforme a gravidade.",
+  "diretrizes": "diretrizes/componentes/alerta.md",
+  "figma": {
+    "pagina": "Alerta",
+    "componente": "Alerta"
+  },
+  "propriedades": [
+    {
+      "nome": "Título",
+      "tipo": "texto",
+      "padrao": "Nova versão do arquivo disponível"
+    },
+    {
+      "nome": "Descrição",
+      "tipo": "texto",
+      "padrao": "Baixe a versão 1.1 para ter os componentes de gráficos."
+    },
+    {
+      "nome": "Ação",
+      "tipo": "texto",
+      "padrao": "Baixar agora"
+    },
+    {
+      "nome": "Mostrar descrição",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Mostrar ação",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Pode fechar",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Informação",
+        "Sucesso",
+        "Atenção",
+        "Erro"
+      ],
+      "padrao": "Informação"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Informação",
+      "Sucesso",
+      "Atenção",
+      "Erro"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "A ação e o botão de fechar recebem Tab.",
+    "leitor": "Alertas que aparecem depois de uma ação usam uma região que anuncia sozinha (status para sucesso e informação, alert para erro). Alertas que já estão na página são lidos na ordem normal.",
+    "foco": "Não roube o foco. A exceção é o resumo de erros de um formulário, que recebe o foco ao enviar.",
+    "cuidados": "Tipo sempre com ícone e título, nunca só pela cor. O botão de fechar tem o nome Fechar alerta."
+  },
+  "conteudo": [
+    "Título diz o que aconteceu; descrição diz o que fazer.",
+    "A ação é um verbo: Baixar agora, Tentar de novo."
+  ],
+  "faca": [
+    "Diga o que aconteceu e o que fazer agora.",
+    "Coloque o alerta perto do conteúdo a que ele se refere.",
+    "Use o tipo certo para a gravidade."
+  ],
+  "naoFaca": [
+    "Mostrar vários alertas ao mesmo tempo.",
+    "Mensagens técnicas, como códigos de erro sem explicação.",
+    "Usar Erro para avisos que não impedem nada."
+  ],
+  "tokens": [
+    "--cor-fundo-marca-sutil",
+    "--cor-fundo-sucesso-sutil",
+    "--cor-fundo-alerta-sutil",
+    "--cor-fundo-erro-sutil",
+    "--cor-borda-marca",
+    "--cor-borda-sucesso",
+    "--cor-borda-alerta",
+    "--cor-borda-erro",
+    "--cor-texto-marca",
+    "--cor-texto-sucesso",
+    "--cor-texto-alerta",
+    "--cor-texto-erro",
+    "--raio-grande"
+  ],
+  "codigo": {
+    "elemento": "passi-alerta",
+    "arquivo": "componentes/passi-componentes.js",
+    "conteudo": {
+      "descricao": "Descrição: o que fazer agora.",
+      "figma": "Descrição + Mostrar descrição",
+      "obrigatorio": false
+    },
+    "atributos": [
+      {
+        "nome": "tipo",
+        "figma": "Tipo",
+        "tipo": "lista",
+        "opcoes": {
+          "informacao": "Informação",
+          "sucesso": "Sucesso",
+          "atencao": "Atenção",
+          "erro": "Erro"
+        },
+        "padrao": "informacao"
+      },
+      {
+        "nome": "titulo",
+        "figma": "Título",
+        "tipo": "texto",
+        "obrigatorio": true,
+        "descricao": "O que aconteceu."
+      },
+      {
+        "nome": "acao",
+        "figma": "Ação + Mostrar ação",
+        "tipo": "texto",
+        "descricao": "Verbo, como Tentar de novo. Dispara o evento passi-acao."
+      },
+      {
+        "nome": "acao-href",
+        "figma": null,
+        "tipo": "texto",
+        "descricao": "Se a ação leva a outra página, o endereço dela."
+      },
+      {
+        "nome": "pode-fechar",
+        "figma": "Pode fechar",
+        "tipo": "booleano",
+        "descricao": "Mostra o botão Fechar alerta. No Figma vem ligado; no código, ligue quando fizer sentido."
+      },
+      {
+        "nome": "anunciar",
+        "figma": null,
+        "tipo": "booleano",
+        "descricao": "Para alertas que aparecem depois de uma ação: o leitor de tela anuncia sozinho (status, ou alert no tipo erro)."
+      }
+    ],
+    "eventos": {
+      "passi-acao": "A pessoa clicou na ação (quando não há acao-href).",
+      "passi-fechar": "A pessoa fechou o alerta. Pode ser cancelado com preventDefault(); senão o alerta some e o foco vai para o próximo item clicável."
+    },
+    "estados": "O alerta não é clicável. A ação e o fechar têm os cinco estados.",
+    "regras": [
+      {
+        "id": "alerta-varios",
+        "nivel": "aviso",
+        "tipo": "maximo-por-arquivo",
+        "alvo": null,
+        "valores": [],
+        "maximo": 1,
+        "mensagem": "Vários alertas na mesma tela. Mostre um de cada vez, perto do conteúdo a que se refere.",
+        "fonte": "alerta.md · NÃO faça"
+      },
+      {
+        "id": "alerta-codigo-tecnico",
+        "nivel": "aviso",
+        "tipo": "regex",
+        "alvo": "titulo",
+        "valores": [
+          "\\b(erro|error)\\s*\\d{3}\\b",
+          "\\b[45]\\d\\d\\b",
+          "exception",
+          "null",
+          "undefined"
+        ],
+        "mensagem": "Mensagem técnica no alerta. Diga o que aconteceu em palavras simples.",
+        "fonte": "alerta.md · NÃO faça"
+      }
+    ]
+  }
+}
