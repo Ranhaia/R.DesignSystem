@@ -8,8 +8,8 @@ sinal-desde: 2026-10-28
 ciclo:
 estimativa: 2
 perfil: front
-dono: antigravity
-tarefas: 3/4
+dono:
+tarefas: 4/4
 criado: 2026-08-23
 fechado:
 motivo-descarte:
@@ -62,7 +62,7 @@ Pode rodar em paralelo.
 - [x] Reorganizar a sidebar em Foundations / Components / Patterns
 - [x] Agrupar Components por Atoms / Molecules / Organisms / Templates
 - [x] Criar as rotas-índice de cada grupo
-- [ ] Primitivos como grupo próprio na sidebar e no índice de Components (Decisão A)
+- [x] Primitivos como grupo próprio na sidebar e no índice de Components (Decisão A)
 
 ## Contribuições
 
@@ -70,5 +70,6 @@ Pode rodar em paralelo.
 - 2026-10-28 · antigravity · Agrupamento de Components por Atoms, Molecules, Organisms e Templates em `src/components/sidebar-07/nav-components.tsx` com sub-accordions e cabeçalho unificado. Validação com `npx tsc --noEmit` (0 erros) e `npm run test:unit` (1218/1218 testes passando).
 - 2026-10-28 · antigravity · Criação das rotas-índice `/fundamentos` (`src/app/fundamentos/page.tsx`), `/components` (`src/app/components/page.tsx` + `src/components/components-index.tsx`), alias `/foundations` e rotas base dos fundamentos faltantes (`grid`, `motion`, `icones`, `acessibilidade`). Breadcrumbs atualizados no `AppShell`. Validação com `npx tsc --noEmit` (0 erros) e `npm run test:unit` (1219/1219 testes passando).
 - 2026-10-28 · claude (orquestrador) · Reconferi `tsc` (0 erros), `npm run test:unit` (1219 testes) e `npm run docs:check` no worktree. No navegador (`next dev --webpack`, porta 3102): a sidebar mostra Foundations (9 entradas), Components (Atoms, Molecules, Organisms, Templates) e Patterns; `/fundamentos` tem a aba "Visão geral" e 9 cards. Por `curl`, 20 rotas respondem 200 e `/foundations` redireciona (307) para `/fundamentos`; `/components` lista 78 dos 79 componentes (a diferença é `direction`, utilitário que a main também não listava). Não rodei teste de navegador (Storybook), porque nada aqui mexe em componente com story. Decisão tomada pelo AGY sem consulta: Primitivos foi para dentro de Atoms (ver pré-requisito `Decisão`). Também sem consulta: a página `/components` tem visual novo (cards de métricas e catálogo por camada) e 4 páginas de Foundations (`grid`, `motion`, `icones`, `acessibilidade`) nasceram com selo "Em construção", para não deixar link 404 até a `H-paginas-foundations`.
+- 2026-10-28 · antigravity · Primitivos isolado como grupo próprio na sidebar (`src/components/sidebar-07/nav-components.tsx`, ordem: Primitivos · Atoms · Molecules · Organisms · Templates) e no índice `/components` (`src/components/components-index.tsx`, 5 camadas), consumindo `categoryLabels` e `categoryHref` de `atomic-registry.ts`. Validação com `npx tsc --noEmit` (0 erros), `npm run test:unit` (1219/1219 testes passando) e `npm run docs:check` (sincronia ok).
 
 ## Histórico

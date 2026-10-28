@@ -6,7 +6,12 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { componentsList } from "@/lib/components-registry"
-import { atomicRegistry } from "@/lib/atomic-registry"
+import {
+  atomicRegistry,
+  categoryHref,
+  categoryLabels,
+  type AtomicCategory,
+} from "@/lib/atomic-registry"
 import { templatesList } from "@/lib/templates-registry"
 import {
   Collapsible,
@@ -26,7 +31,7 @@ import {
 } from "@/components/ui/sidebar"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 
-export type ComponentCategory = "atom" | "molecule" | "organism" | "template"
+export type ComponentCategory = AtomicCategory | "template"
 
 interface CategoryConfig {
   key: ComponentCategory
@@ -36,13 +41,23 @@ interface CategoryConfig {
   items: { slug: string; name: string; href: string }[]
 }
 
-// Grupo "Components" na navegação — agrupa Atoms, Molecules, Organisms e
-// Templates sob um cabeçalho único "Components" (com link pra /components),
-// conforme definido no Épico (E-documentacao-ds) e na História H-navegacao-design-system.
+// Ícones por categoria — mantêm os mesmos símbolos da convenção histórica (origin/main)
+const categoryIcons: Record<ComponentCategory, MaterialSymbol> = {
+  primitive: "category",
+  atom: "orbit",
+  molecule: "call_merge",
+  organism: "hub",
+  template: "space_dashboard",
+}
+
+// Grupo "Components" na navegação — agrupa Primitivos, Atoms, Molecules,
+// Organisms e Templates sob um cabeçalho único "Components" (com link pra /components),
+// conforme definido no Épico (E-documentacao-ds) e ratificado na Decisão A (2026-10-28).
 export function NavComponents() {
   const pathname = usePathname()
   const [isComponentsOpen, setIsComponentsOpen] = React.useState(true)
   const [openSubGroups, setOpenSubGroups] = React.useState<Record<string, boolean>>({
+    primitive: false,
     atom: false,
     molecule: false,
     organism: false,
@@ -50,23 +65,33 @@ export function NavComponents() {
   })
 
   // Agrupamento dos componentes por camada Atomic Design + Templates:
-  // - Atoms: inclui atoms e primitivos do atomic-registry (box, icon, label, etc.)
-  // - Molecules: combinações de átomos
-  // - Organisms: estruturas complexas com estado
-  // - Templates: jornadas e páginas completas
+  // 1. Primitivos (box, icon, label, separator, skeleton, text, title)
+  // 2. Atoms
+  // 3. Molecules
+  // 4. Organisms
+  // 5. Templates (jornadas em Next.js)
   const categories: CategoryConfig[] = React.useMemo(
     () => [
       {
-        key: "atom",
-        label: "Atoms",
-        href: "/atoms",
-        icon: "orbit",
+        key: "primitive",
+        label: categoryLabels.primitive,
+        href: categoryHref.primitive,
+        icon: categoryIcons.primitive,
         items: componentsList
-          .filter(
-            (c) =>
-              atomicRegistry[c.slug] === "atom" ||
-              atomicRegistry[c.slug] === "primitive"
-          )
+          .filter((c) => atomicRegistry[c.slug] === "primitive")
+          .map((c) => ({
+            slug: c.slug,
+            name: c.name,
+            href: `/components/${c.slug}`,
+          })),
+      },
+      {
+        key: "atom",
+        label: categoryLabels.atom,
+        href: categoryHref.atom,
+        icon: categoryIcons.atom,
+        items: componentsList
+          .filter((c) => atomicRegistry[c.slug] === "atom")
           .map((c) => ({
             slug: c.slug,
             name: c.name,
@@ -75,9 +100,9 @@ export function NavComponents() {
       },
       {
         key: "molecule",
-        label: "Molecules",
-        href: "/molecules",
-        icon: "call_merge",
+        label: categoryLabels.molecule,
+        href: categoryHref.molecule,
+        icon: categoryIcons.molecule,
         items: componentsList
           .filter((c) => atomicRegistry[c.slug] === "molecule")
           .map((c) => ({
@@ -88,9 +113,9 @@ export function NavComponents() {
       },
       {
         key: "organism",
-        label: "Organisms",
-        href: "/organisms",
-        icon: "hub",
+        label: categoryLabels.organism,
+        href: categoryHref.organism,
+        icon: categoryIcons.organism,
         items: componentsList
           .filter((c) => atomicRegistry[c.slug] === "organism")
           .map((c) => ({
@@ -103,7 +128,7 @@ export function NavComponents() {
         key: "template",
         label: "Templates",
         href: "/templates",
-        icon: "space_dashboard",
+        icon: categoryIcons.template,
         items: templatesList.map((t) => ({
           slug: t.slug,
           name: t.name,
@@ -124,7 +149,7 @@ export function NavComponents() {
               href="/components"
               className="gap-2 truncate hover:text-sidebar-foreground"
             >
-              <Icon name="category" className="size-4 shrink-0 max-md:size-3.5" />
+              <Icon name="widgets" className="size-4 shrink-0 max-md:size-3.5" />
               Components
             </Link>
           </SidebarGroupLabel>
@@ -148,7 +173,7 @@ export function NavComponents() {
               href="/components"
               className="mx-auto hidden size-8 items-center justify-center rounded-md text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground group-data-[collapsible=icon]:flex"
             >
-              <Icon name="category" size={1} />
+              <Icon name="widgets" size={1} />
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right" align="center">
