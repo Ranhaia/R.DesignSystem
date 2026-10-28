@@ -1,0 +1,76 @@
+---
+tipo: historia
+projeto: 🎨 P-DS-SHADCN
+epico: E-Investigacao-Theming
+status: aguardando
+sinal: 🟢 Pronto para desenvolver
+sinal-desde: 2026-10-28
+ciclo:
+estimativa: 3
+perfil: front
+dono:
+tarefas: 0/6
+bloqueada-por:
+criado: 2026-10-28
+fechado:
+motivo-descarte:
+origem: E-memoria-componentes, ideia 1 do AIPIM (theme-builder), pedido do Rafael em 2026-10-28
+---
+
+# Construtor de tema do cliente
+
+Uma tela no site do R.DS onde se digita a cor da marca de um cliente e se
+vê, na hora, uma tela de exemplo com componentes reais, no claro e no
+escuro, já com o tema dele. É o caso de uso principal do R.DS (protótipo
+na identidade do cliente para teste de usabilidade), hoje só possível
+editando `src/lib/cor/presets.ts` e rodando `npm run tokens:gerar`.
+
+## Plano
+
+**O que já existe e se reaproveita:**
+- `gerarTema(fonte)` (`src/lib/cor/gerar.ts`) gera todos os tokens de cor dos dois modos a partir de uma cor só.
+- O motor **já garante contraste AA para qualquer cor**: `gerar.test.ts` testa os 5 presets, 60 cores aleatórias e os extremos. Por isso a tela não precisa reprovar contraste, como faz a do AIPIM; ela mostra que passou.
+- `src/lib/a11y/pares.ts` (os pares medidos) e `perfil.ts` (os pisos) dão a lista de checagens.
+
+**O que o construtor acrescenta:**
+1. **Daltonismo no motor.** Simular protanopia, deuteranopia e tritanopia (diferença de cor em OKLab, baliza do AIPIM em `tools/build_tokens.py`) para os pares que só a cor separa: `--destructive` × `--primary` (marca vermelha perto do vermelho de erro), `--chart-1` a `--chart-5` entre si e link × texto. Com teste sobre os 5 presets e as cores aleatórias do `gerar.test.ts`. **Se algum preset atual reprovar, para e vira Decisão** antes de mexer no motor.
+2. **Fidelidade à marca.** Quando o motor troca a cor da marca para passar no contraste (ex.: usa o tom 40 em vez da cor digitada), a tela mostra lado a lado "sua cor" × "cor usada" e o porquê.
+3. **A tela:** campo de cor (hex e seletor), modo nativo (claro ou escuro) e prévia isolada: o tema vale só na área de prévia, aplicado como variáveis CSS nos mesmos tokens. Nada de cor fixa fora de token.
+4. **Painel de checagens:** contraste (todos passam, com a razão) e daltonismo (pode reprovar, com sugestão de ajuste).
+
+Sugestão de lugar: `/fundamentos/cores/construtor`, com link na página de Cores.
+Fora do escopo: raio e fonte (Decisão 2), uma cor por papel (o motor usa uma cor-fonte).
+
+## Pré-requisitos
+
+- [x] **Decisão** — O que sai do construtor.
+      A) Só aplicar na hora, com a cor guardada no link (`?cor=E31A39`) → serve para protótipo e teste com cliente sem tocar no repositório; some quando fecha.
+      B) Gerar o trecho para `presets.ts` (nome, cor, modo) para colar e rodar `tokens:gerar` → vira preset fixo do catálogo, mas exige commit.
+      C) Os dois.
+      Recomendo C: A atende a sessão de protótipo, e B é só copiar um texto quando o cliente vira preset. · pedido por: claude · 2026-10-28
+      **Resolvido pelo Rafael em 2026-10-28: C, os dois.**
+- [x] **Decisão** — Escopo do tema.
+      A) Só cor → usa o motor como está; raio, sombra e fonte continuam dos 5 presets de estilo.
+      B) Cor, raio e fonte → mais fiel à marca, mas mexe no sistema de presets de estilo e no `globals.css`.
+      Recomendo A no primeiro corte, porque o motor de cor já está pronto e testado. · pedido por: claude · 2026-10-28
+      **Resolvido pelo Rafael em 2026-10-28: A, só cor.**
+- [x] **Decisão** — Quando a cor da marca não passa no contraste e o motor usa outra.
+      A) Mostrar "sua cor" × "cor usada" e seguir com a usada → o protótipo continua AA.
+      B) Deixar forçar a cor exata, com aviso → mais fiel ao cliente, mas o protótipo pode reprovar no teste com pessoas.
+      Recomendo A porque o R.DS garante AA por construção, e B quebraria essa garantia. · pedido por: claude · 2026-10-28
+      **Resolvido pelo Rafael em 2026-10-28: A, mostrar e seguir com a cor usada.**
+
+## Tarefas
+
+- [ ] Daltonismo no motor: simulação, pares e teste sobre os presets e as cores aleatórias
+- [ ] Rota e entrada da cor (hex, seletor, modo nativo), com o tema gerado no navegador
+- [ ] Prévia isolada: tela de exemplo com `button`, `card`, `input`, `alert`, `tabs` e `badge`, no claro e no escuro
+- [ ] Painel de checagens: contraste, daltonismo e "sua cor × cor usada"
+- [ ] Saída conforme a Decisão 1
+- [ ] Prova: `test:unit`, `tsc` e navegador com a cor dos 5 presets e mais 2 cores de cliente
+
+## Contribuições
+
+- 2026-10-28 · claude · As 3 decisões foram fechadas pelo Rafael com as recomendações (saída C, escopo A, fidelidade A). Sinal 🟢. Aguarda o comando para entrar em execução.
+
+## Histórico

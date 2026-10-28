@@ -1,0 +1,26 @@
+{
+  "slug": "separator",
+  "partes": [
+    "Separator"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "orientation",
+      "parte": "Separator",
+      "tipo": null,
+      "padrao": "horizontal"
+    },
+    {
+      "nome": "decorative",
+      "parte": "Separator",
+      "tipo": null,
+      "padrao": "true"
+    }
+  ],
+  "tokens": [
+    "bg-border"
+  ],
+  "compoe": []
+}

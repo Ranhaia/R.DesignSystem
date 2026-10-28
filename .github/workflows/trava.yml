@@ -1,0 +1,22 @@
+# Trava do DS em todo PR: tokens, camadas, cor, a11y estático e memória de
+# componentes (docs/componentes). Os testes de navegador (Storybook) ficam de
+# fora: rodam na máquina, um por vez, com `npm run test:a11y:todos`.
+name: Trava do DS
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run test:unit
+      - run: npm run docs:check

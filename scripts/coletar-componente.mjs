@@ -109,7 +109,18 @@ export function coletarFonte(slug, source, conhecidos) {
   }
   visitar(sf)
 
+  // Composição: componentes do R.DS importados; import só de estilo (`xxxVariants`) ou de tipo não conta.
+  const compoe = []
   for (const st of sf.statements) {
+    if (ts.isImportDeclaration(st) && ts.isStringLiteral(st.moduleSpecifier)) {
+      const alvo = st.moduleSpecifier.text.match(/^@\/components\/ui\/([\w-]+)$/)?.[1]
+      const clausula = st.importClause
+      const usados = clausula && !clausula.isTypeOnly
+        ? [clausula.name?.text, ...(clausula.namedBindings && ts.isNamedImports(clausula.namedBindings) ? clausula.namedBindings.elements.filter((e) => !e.isTypeOnly).map((e) => e.name.text) : [])]
+            .filter((n) => n && !/Variants$/.test(n))
+        : []
+      if (alvo && alvo !== slug && usados.length && !compoe.includes(alvo)) compoe.push(alvo)
+    }
     if (ts.isTypeAliasDeclaration(st)) aliases[st.name.text] = st.type
     if (ts.isFunctionDeclaration(st) && st.name && /^[A-Z]/.test(st.name.text)) funcoes.push({ nome: st.name.text, fn: st })
     if (ts.isVariableStatement(st))
@@ -181,7 +192,7 @@ export function coletarFonte(slug, source, conhecidos) {
 
   const tokens = [...new Set(classes.flatMap((c) => tokensDaClasse(c, conhecidos)))].sort()
 
-  return { slug, partes: funcoes.map((f) => f.nome), variantes: valoresDe("variant"), tamanhos, props, tokens }
+  return { slug, partes: funcoes.map((f) => f.nome), variantes: valoresDe("variant"), tamanhos, props, tokens, compoe }
 }
 
 export function coletarComponente(slug, root) {

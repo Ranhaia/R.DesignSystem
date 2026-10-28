@@ -38,5 +38,9 @@
     "shadow-lg",
     "text-muted-foreground",
     "text-popover-foreground"
+  ],
+  "compoe": [
+    "button",
+    "icon"
   ]
 }

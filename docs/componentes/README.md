@@ -39,6 +39,23 @@ O que a coleta não conseguiu ler e o auditor completou vai para
    `src/components/patterns/`.
 5. Texto de interface em português do Brasil, botão começa com verbo.
 
+## Regras gerais (valem para todo componente)
+
+Moram só aqui; os MDs não repetem. Adaptadas do PASSI DS para o que o R.DS já mede.
+
+- **Meta de acessibilidade:** WCAG 2.2 AA, tendo a ABNT NBR 17225 como base brasileira. Contraste e alvo são medidos em `docs/a11y/` (`npm run test:a11y:todos`).
+- **Só token** para cor, medida, raio, sombra, tempo e texto (`CLAUDE.md`, "Só token, num lugar só").
+- **Claro e escuro, nos 5 presets,** sem mudar a marcação: quem muda são os tokens.
+- **Foco visível** em tudo que é clicável: anel de 3 px em `ring`, só no `focus-visible`. Alvo mínimo de 24 px (44 px é a Regra da Casa).
+- **Clicável tem 5 estados:** padrão, hover, pressionado, foco e desabilitado.
+- **A cor nunca é o único sinal:** estado também tem ícone, forma ou texto.
+
+## Como escrever um MD
+
+Cada seção tem critério de aceite em [_baliza.md](_baliza.md), junto com a
+tabela completa de "quando não usar → use". O passo a passo de criar,
+mudar ou documentar um componente está em `.claude/skills/componente-rds/SKILL.md`.
+
 ## Árvore de decisão
 
 Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
@@ -79,6 +96,7 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 
 - [button](button.md) — Dispara uma ação. Um primário por contexto.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
+- [separator](separator.md) — Linha fina entre grupos do mesmo container.
 - [tabs](tabs.md) — Alterna visões do mesmo conteúdo sem sair da página.
 
 ## Crédito

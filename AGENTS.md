@@ -20,6 +20,13 @@ Resumo do que você precisa saber para não errar:
 - Ao terminar uma passada: atualize `tarefas`, acrescente linha em
   `## Contribuições`, esvazie `dono`.
 
+## Componentes
+
+Criar, mudar ou documentar um componente de `src/components/ui/` segue
+`.claude/skills/componente-rds/SKILL.md`: provar que a peça ainda não
+existe, registrar (`npm run docs:registrar`), declarar todas as partes do
+MD e deixar a trava verde. Vale para qualquer agente, não só o Claude.
+
 ## Testes de navegador
 
 Uma execução de testes de navegador por vez na máquina (RAM). Todos os
