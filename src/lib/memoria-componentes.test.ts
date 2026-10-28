@@ -3,7 +3,7 @@ import { join, resolve } from "node:path"
 import { describe, expect, it } from "vitest"
 
 import { coletarComponente, coletarFonte } from "../../scripts/coletar-componente.mjs"
-import { diffColeta, mesclarMd, verificar } from "../../scripts/registrar-componente.mjs"
+import { alinharAoModelo, diffColeta, mdNovo, mesclarMd, verificar } from "../../scripts/registrar-componente.mjs"
 import { atomicRegistry, utilitySlugs } from "./atomic-registry"
 import { componentDocs } from "./component-docs"
 import { componentsList } from "./components-registry"
@@ -50,6 +50,10 @@ describe("coleta do código: button", () => {
     expect(c.partes).toEqual(["Button", "ButtonSkeleton"])
   })
 
+  it("lista os componentes do R.DS que ele usa (composição)", () => {
+    expect(c.compoe).toEqual(["skeleton"])
+  })
+
   it("lê props próprias com tipo e padrão, inclusive de type alias local e VariantProps", () => {
     const p = Object.fromEntries(c.props.filter((x) => x.parte === "Button").map((x) => [x.nome, x]))
     expect(p.variant.padrao).toBe("default")
@@ -93,6 +97,8 @@ describe("coleta do código: tabs e dialog", () => {
   it("dialog: sem cva, props de partes diferentes ficam separadas", () => {
     const c = coletarComponente("dialog", ROOT)
     expect(c.variantes).toEqual([])
+    expect(c.compoe).toEqual(["button", "icon"])
+    expect(coletarComponente("tabs", ROOT).compoe).toEqual([])
     expect(c.partes).toEqual(expect.arrayContaining(["Dialog", "DialogContent", "DialogFooter", "DialogTitle"]))
     const close = c.props.filter((p) => p.nome === "showCloseButton")
     expect(close).toEqual([
@@ -117,6 +123,11 @@ describe("coleta: casos de borda", () => {
     ])
   })
 
+  it("composição ignora import só de estilo ou de tipo", () => {
+    const src = `import { buttonVariants } from "@/components/ui/button"\nimport type { X } from "@/components/ui/x"\nimport { Icon } from "@/components/ui/icon"\nfunction Y() { return null }`
+    expect(coletarFonte("y", src, new Set()).compoe).toEqual(["icon"])
+  })
+
   it("token atrás de variante com colchete e barra", () => {
     const tokens = new Set(["bg-accent", "bg-input", "bg-muted"])
     const src = `function X() { return <div className="hover:bg-accent dark:hover:bg-input/50 group-data-[orientation=vertical]/tabs:bg-muted" /> }`
@@ -138,6 +149,7 @@ const coletaBase = {
     { nome: "dense", parte: "XItem", tipo: "`boolean`", padrao: "false" },
   ],
   tokens: ["bg-primary", "ring-ring"],
+  compoe: ["button", "icon"],
 }
 
 const mdBase = `---
@@ -158,6 +170,10 @@ Descrição.
 |---|---|
 | \`X\` | Raiz |
 | Ícone (opcional) | Parte visual escrita pelo auditor |
+
+## Composição
+
+Texto velho.
 
 ## Props
 
@@ -227,6 +243,13 @@ describe("mesclarMd", () => {
     expect(md).toContain("| `XItem` | [a preencher] |")
   })
 
+  it("Composição: lista gerada dos componentes usados, com link para o MD", () => {
+    expect(md).toContain("## Composição\n\nUsa: [`button`](button.md) · [`icon`](icon.md).\n")
+    expect(md).not.toContain("Texto velho.")
+    const sozinho = mesclarMd(mdBase, { ...coletaBase, compoe: [] }, coletaBase)
+    expect(sozinho).toContain("## Composição\n\nNão usa outro componente do R.DS.\n")
+  })
+
   it("Tokens usados: lista inteira vem da coleta", () => {
     expect(md).toContain("`bg-primary` `ring-ring`")
     expect(md).not.toContain("bg-velho")
@@ -245,6 +268,63 @@ describe("mesclarMd", () => {
 
   it("é idempotente", () => {
     expect(mesclarMd(md, coletaBase, coletaBase)).toBe(md)
+  })
+})
+
+const modeloMini = `---
+slug: exemplo                       # comentário do campo
+nome: Exemplo
+camada: atom
+sinonimos: []
+vizinhos: []
+---
+
+<!--
+Instruções do modelo.
+-->
+
+# Exemplo
+
+[a preencher: uma frase]
+
+## Quando usar
+
+- [a preencher]
+
+## Anatomia
+
+| Parte | O que é |
+|---|---|
+
+## Composição
+
+## Faça
+
+- [a preencher]
+`
+
+describe("componente novo nasce do modelo", () => {
+  const md = mdNovo("meu-item", modeloMini, { nome: "Meu Item", camada: "molecule", sinonimos: ["item-meu"] })
+
+  it("preenche o que já se sabe e mantém o resto por preencher", () => {
+    expect(md).toMatch(/^---\nslug: meu-item\nnome: Meu Item\ncamada: molecule\nsinonimos: \[item-meu\]\nvizinhos: \[\]\n---\n/)
+    expect(md).toContain("# Meu Item\n")
+    expect(md).toContain("[a preencher: uma frase]")
+    expect(md).not.toContain("<!--")
+  })
+
+  it("alinhar insere a seção que falta no lugar do modelo e não mexe no resto", () => {
+    const velho = md.replace("## Composição\n\n", "").replace("- [a preencher]\n\n## Anatomia", "- Escrito.\n\n## Anatomia")
+    const alinhado = alinharAoModelo(velho, modeloMini)
+    expect(secoesDe(alinhado)).toEqual(["Quando usar", "Anatomia", "Composição", "Faça"])
+    expect(alinhado).toContain("- Escrito.")
+    expect(alinharAoModelo(alinhado, modeloMini)).toBe(alinhado)
+  })
+
+  it("registrar duas vezes dá o mesmo MD, inclusive com seção que nasceu vazia", () => {
+    const uma = mesclarMd(alinharAoModelo(md, modeloMini), coletaBase, coletaBase)
+    expect(uma).toContain("## Composição\n\nUsa: [`button`](button.md) · [`icon`](icon.md).\n\n## Faça")
+    expect(mesclarMd(alinharAoModelo(uma, modeloMini), coletaBase, coletaBase)).toBe(uma)
   })
 })
 
@@ -296,6 +376,68 @@ describe("trava da memória (repositório real)", () => {
   })
 })
 
+// Declaração completa: todo MD tem as mesmas seções e campos do _modelo.md
+// (a lista mora só lá), acessibilidade nas 4 chaves, toda proibição aponta a
+// alternativa e nada fica por preencher. Régua: docs/componentes/_baliza.md.
+const modelo = readFileSync(join(DOCS, "_modelo.md"), "utf8").replace(/\r\n/g, "\n")
+const secoesDe = (md: string) => [...md.replace(/```[\s\S]*?```/g, "").matchAll(/^## (.+)$/gm)].map((m) => m[1].trim())
+const camposDe = (md: string) =>
+  Object.fromEntries([...(md.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? "").matchAll(/^([\w-]+):[ \t]*([^#\n]*?)[ \t]*(?:#.*)?$/gm)].map((m) => [m[1], m[2]]))
+const lista = (v: string | undefined) => (v ?? "").replace(/^\[|\]$/g, "").split(",").map((s) => s.trim()).filter(Boolean)
+const secao = (md: string, titulo: string) => md.match(new RegExp(`^## ${titulo}\\n([\\s\\S]*?)(?=^## |(?![\\s\\S]))`, "m"))?.[1] ?? ""
+const sinonimos: Record<string, string[]> = JSON.parse(readFileSync(join(ROOT, "docs/sinonimos.json"), "utf8"))
+// PASSI sugere ~4 KB de intenção; as tabelas geradas somam o resto.
+const LIMITE_BYTES = 8 * 1024
+
+describe.each(slugsComMd)("%s declara todas as partes", (slug) => {
+  const md = readFileSync(join(DOCS, `${slug}.md`), "utf8").replace(/\r\n/g, "\n")
+  const fm = camposDe(md)
+
+  it("mesmas seções do _modelo.md, na mesma ordem", () => {
+    expect(secoesDe(md)).toEqual(secoesDe(modelo))
+  })
+
+  it("frontmatter completo e coerente com o código", () => {
+    expect(Object.keys(fm)).toEqual(Object.keys(camposDe(modelo)))
+    expect(fm.slug).toBe(slug)
+    expect(fm.camada).toBe(atomicRegistry[slug])
+    expect(existsSync(join(ROOT, fm.codigo)), fm.codigo).toBe(true)
+    expect(existsSync(join(ROOT, fm.story)), fm.story).toBe(true)
+    expect(lista(fm.vizinhos).length, "ao menos um vizinho").toBeGreaterThan(0)
+    for (const v of lista(fm.vizinhos)) expect(slugsUi, `vizinho ${v}`).toContain(v)
+    expect(lista(fm.referencias).length, "ao menos uma referência").toBeGreaterThan(0)
+    // shortcut: sinônimos moram em dois lugares até todos os MDs existirem; depois o JSON passa a ser gerado dos MDs.
+    expect(lista(fm.sinonimos)).toEqual(sinonimos[slug])
+  })
+
+  it("acessibilidade nas 4 chaves, todas preenchidas", () => {
+    const a11y = secao(md, "Acessibilidade")
+    for (const chave of ["Teclado", "Leitor de tela", "Foco", "Cuidados"])
+      expect(a11y, chave).toMatch(new RegExp(`^- \\*\\*${chave}:\\*\\* \\S`, "m"))
+  })
+
+  it("toda proibição aponta a alternativa (→)", () => {
+    for (const titulo of ["Quando NÃO usar", "NÃO faça"]) {
+      const itens = secao(md, titulo).split("\n").filter((l) => l.startsWith("- "))
+      expect(itens.length, titulo).toBeGreaterThan(0)
+      for (const item of itens) expect(item, titulo).toContain("→")
+    }
+  })
+
+  it("nada por preencher, sem comentário do modelo", () => {
+    expect(md).not.toContain("[a preencher")
+    expect(md).not.toContain("<!--")
+  })
+
+  it("exemplo mínimo importa do próprio componente", () => {
+    expect(secao(md, "Exemplo mínimo")).toContain(`from "@/components/ui/${slug}"`)
+  })
+
+  it(`cabe em ${LIMITE_BYTES / 1024} KB`, () => {
+    expect(Buffer.byteLength(md)).toBeLessThanOrEqual(LIMITE_BYTES)
+  })
+})
+
 // Componentes que ainda não passaram pelo ciclo (H-memoria-replicar-lotes).
 // Catraca: a lista só diminui. Ganhou MD → sai daqui.
 const PENDENTES_MD = [
@@ -308,7 +450,7 @@ const PENDENTES_MD = [
   "item", "kbd", "label", "link", "list", "marker", "menubar", "message",
   "multi-select", "native-select", "navigation-menu", "pagination",
   "popover", "progress", "radio-group", "resizable", "scroll-area",
-  "segmented-control", "select", "separator", "sheet", "sidebar", "skeleton",
+  "segmented-control", "select", "sheet", "sidebar", "skeleton",
   "slider", "sonner", "speed-dial", "spinner", "split-button", "stepper",
   "switch", "table", "tag", "text", "textarea", "thumbnail", "time-picker",
   "title", "toggle-group", "toggle", "tooltip", "tree-select",

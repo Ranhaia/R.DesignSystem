@@ -36,6 +36,10 @@ página. A aba ativa fica destacada para a pessoa saber onde está.
 | `TabsTrigger` | Cada aba. `data-state="active"` quando selecionada |
 | `TabsContent` | Painel de cada aba. Só o ativo aparece |
 
+## Composição
+
+Não usa outro componente do R.DS.
+
 ## Props
 
 | Prop | Tipo | Padrão | O que faz |

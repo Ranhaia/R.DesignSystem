@@ -40,6 +40,10 @@ preencher, escolher. O resto da página fica inerte e escurecido.
 | `DialogClose` | Fecha ao acionar (use `asChild`) |
 | `DialogOverlay` · `DialogPortal` | Internos; já usados pelo `DialogContent` |
 
+## Composição
+
+Usa: [`button`](button.md) · [`icon`](icon.md).
+
 ## Props
 
 | Prop | Tipo | Padrão | O que faz |

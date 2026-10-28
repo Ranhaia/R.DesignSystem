@@ -42,12 +42,10 @@ function trocarSecao(md, titulo, fn) {
   const corpoIni = inicio + `## ${titulo}\n`.length
   const prox = md.slice(corpoIni).search(/^## /m)
   const corpoFim = prox < 0 ? md.length : corpoIni + prox
-  const corpo = md.slice(corpoIni, corpoFim)
-  const antes = corpo.match(/^\n*/)[0]
-  const depois = corpo.match(/\n*$/)[0]
-  const novo = fn(corpo.slice(antes.length, corpo.length - depois.length))
+  const novo = fn(md.slice(corpoIni, corpoFim).replace(/^\n+|\n+$/g, ""))
   if (novo == null) return md
-  return md.slice(0, corpoIni) + antes + novo + depois + md.slice(corpoFim)
+  // Forma fixa (linha em branco antes e depois) para registrar duas vezes dar o mesmo MD.
+  return md.slice(0, corpoIni) + `\n${novo}\n` + (prox < 0 ? "" : "\n") + md.slice(corpoFim)
 }
 
 // Separa o corpo em texto antes da tabela, tabela e texto depois.
@@ -152,13 +150,66 @@ export function mesclarMd(md, coleta, anterior) {
       return [[t.px != null ? `${t.px} px` : "—", t.igualA ? `igual a ${cod(t.igualA)}` : null].filter(Boolean).join(", ")]
     })
   )
+  out = trocarSecao(out, "Composição", () =>
+    coleta.compoe?.length ? `Usa: ${coleta.compoe.map((s) => `[${cod(s)}](${s}.md)`).join(" · ")}.` : "Não usa outro componente do R.DS."
+  )
   out = trocarSecao(out, "Tokens usados", () => (coleta.tokens.length ? quebrar(coleta.tokens) : "Nenhum."))
   return out
 }
 
+const semComentario = (md) => md.replace(/<!--[\s\S]*?-->\n*/g, "")
+
+function partirSecoes(md) {
+  const [preambulo, ...resto] = md.split(/^(?=## )/m)
+  return { preambulo, secoes: resto.map((texto) => ({ titulo: texto.match(/^## (.+)/)[1].trim(), texto })) }
+}
+
+// Põe as seções na ordem do _modelo.md e insere as que faltam com o texto do
+// modelo (os `[a preencher]` dele). Seção que o modelo não tem vai para o fim.
+export function alinharAoModelo(md, modelo) {
+  const m = partirSecoes(semComentario(modelo))
+  const a = partirSecoes(md)
+  const doMd = new Map(a.secoes.map((s) => [s.titulo, s]))
+  const titulos = new Set(m.secoes.map((s) => s.titulo))
+  const secoes = [...m.secoes.map((s) => doMd.get(s.titulo) ?? s), ...a.secoes.filter((s) => !titulos.has(s.titulo))]
+  return a.preambulo.replace(/\n*$/, "\n\n") + secoes.map((s) => s.texto.replace(/\n*$/, "\n")).join("\n")
+}
+
+// MD de componente novo: o modelo com o que o repositório já sabe preenchido.
+export function mdNovo(slug, modelo, { nome, camada, sinonimos }) {
+  const conhecido = {
+    slug,
+    nome,
+    camada,
+    codigo: `src/components/ui/${slug}.tsx`,
+    story: `src/components/ui/${slug}.stories.tsx`,
+    status: "piloto",
+    sinonimos: `[${(sinonimos ?? []).join(", ")}]`,
+  }
+  return semComentario(modelo)
+    .replace(/^---\n([\s\S]*?)\n---/, (_, fm) =>
+      `---\n${fm.split("\n").map((l) => {
+        const k = l.match(/^([\w-]+):/)?.[1]
+        return k && conhecido[k] !== undefined ? `${k}: ${conhecido[k]}` : l.replace(/\s+#.*$/, "")
+      }).join("\n")}\n---`
+    )
+    .replace(/^# .+$/m, `# ${nome}`)
+}
+
+function dadosDoRepositorio(root, slug) {
+  const ler = (f) => fs.readFileSync(path.join(root, f), "utf8")
+  const esc = slug.replace(/-/g, "\\-")
+  return {
+    nome: ler("src/lib/components-registry.ts").match(new RegExp(`slug: "${esc}", name: "([^"]+)"`))?.[1] ?? pascal(slug),
+    camada: ler("src/lib/atomic-registry.ts").match(new RegExp(`^\\s*"?${esc}"?: "(\\w+)"`, "m"))?.[1] ?? "",
+    sinonimos: JSON.parse(ler("docs/sinonimos.json"))[slug] ?? [],
+  }
+}
+
 export function diffColeta(anterior, nova) {
+  const n = (lista, um, varios) => `${lista.length} ${lista.length === 1 ? um : varios}`
   if (!anterior)
-    return [`Primeiro registro: ${nova.partes.length} partes, ${nova.variantes.length} variantes, ${nova.tamanhos.length} tamanhos, ${nova.props.length} props, ${nova.tokens.length} tokens.`]
+    return [`Primeiro registro: ${[n(nova.partes, "parte", "partes"), n(nova.variantes, "variante", "variantes"), n(nova.tamanhos, "tamanho", "tamanhos"), n(nova.props, "prop", "props"), n(nova.tokens, "token", "tokens")].join(", ")}.`]
   const linhas = []
   const comparar = (rotulo, a, b, mudancas = []) => {
     const itens = [...b.filter((x) => !a.includes(x)).map((x) => `+ ${cod(x)}`), ...a.filter((x) => !b.includes(x)).map((x) => `− ${cod(x)}`), ...mudancas]
@@ -191,6 +242,7 @@ export function diffColeta(anterior, nova) {
     })
   )
   comparar("Tokens", anterior.tokens, nova.tokens)
+  comparar("Composição", anterior.compoe ?? [], nova.compoe ?? [])
   return linhas
 }
 
@@ -215,13 +267,18 @@ export function registrar(slug, { root, data, branch, motivo }) {
   const coleta = coletarComponente(slug, root)
   const anterior = lerJson(c.coleta)
   const linhas = diffColeta(anterior, coleta)
-  const md = lerMd(c.md)
-  const novoMd = mesclarMd(md, coleta, anterior ?? coleta)
+  const modelo = lerMd(path.join(root, "docs/componentes/_modelo.md"))
+  const md = fs.existsSync(c.md) ? lerMd(c.md) : ""
+  const base = md || mdNovo(slug, modelo, dadosDoRepositorio(root, slug))
+  const novoMd = mesclarMd(alinharAoModelo(base, modelo), coleta, anterior ?? coleta)
   if (novoMd !== md) fs.writeFileSync(c.md, novoMd, "utf8")
-  if (linhas.length) {
+  // Coleta regravada a cada diferença, inclusive campo novo sem efeito no histórico.
+  if (JSON.stringify(anterior) !== JSON.stringify(coleta)) {
     fs.mkdirSync(path.dirname(c.coleta), { recursive: true })
-    fs.mkdirSync(path.dirname(c.historico), { recursive: true })
     fs.writeFileSync(c.coleta, JSON.stringify(coleta, null, 2) + "\n", "utf8")
+  }
+  if (linhas.length) {
+    fs.mkdirSync(path.dirname(c.historico), { recursive: true })
     const cabecalho = fs.existsSync(c.historico)
       ? ""
       : `# Histórico — ${slug}\n\nSó acrescenta. Escrito por \`npm run docs:registrar\`; não edite entradas antigas.\n`
@@ -234,6 +291,7 @@ export function registrar(slug, { root, data, branch, motivo }) {
 // Lista o que está fora de data; vazio = memória em dia com o código.
 export function verificar(root) {
   const problemas = []
+  const modelo = lerMd(path.join(root, "docs/componentes/_modelo.md"))
   for (const slug of slugsComMd(root)) {
     const c = caminhos(root, slug)
     const guardada = lerJson(c.coleta)
@@ -244,8 +302,8 @@ export function verificar(root) {
     const coleta = coletarComponente(slug, root)
     if (JSON.stringify(coleta) !== JSON.stringify(guardada))
       problemas.push(`${slug}: o código mudou desde o último registro — rode \`npm run docs:registrar -- ${slug} --motivo "…"\``)
-    else if (mesclarMd(lerMd(c.md), coleta, guardada) !== lerMd(c.md))
-      problemas.push(`${slug}: seção gerada do MD foi editada à mão — rode \`npm run docs:registrar -- ${slug}\``)
+    else if (mesclarMd(alinharAoModelo(lerMd(c.md), modelo), coleta, guardada) !== lerMd(c.md))
+      problemas.push(`${slug}: seção gerada editada à mão ou MD fora do _modelo.md — rode \`npm run docs:registrar -- ${slug}\``)
     if (!fs.existsSync(c.historico)) problemas.push(`${slug}: sem histórico em docs/componentes/historico/`)
   }
   return problemas

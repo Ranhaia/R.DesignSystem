@@ -78,7 +78,7 @@ por enquanto.
 |---|---|
 | Ajustar cor | `src/lib/cor/presets.ts` + `npm run tokens:gerar` (gera `src/app/tokens-cor.css`) + `docs/active/decisoes/` (se houver decisão pendente) |
 | Ajustar outros tokens (spacing, raio, tipografia, movimento) | `src/app/globals.css` + `docs/active/decisoes/` (se houver decisão pendente sobre o token) |
-| Criar/editar componente | `src/components/ui/` + `docs/active/componentes/<slug>/` (ou `docs/archive/componentes/<slug>/` pra consultar um já fechado) |
+| Criar/editar componente | Skill `.claude/skills/componente-rds/SKILL.md` + `src/components/ui/` + `docs/componentes/<slug>.md` e `_baliza.md` (+ `docs/archive/componentes/<slug>/` pra consultar um spec antigo) |
 | Construir tela (`/construir-telas`) | `docs/active/telas/<slug>/` + `src/lib/templates-registry.ts` + `src/lib/atomic-registry.ts` |
 | Documentar uma decisão nova (ADR) | `docs/active/decisoes/` |
 | Revisar/aprovar um plano | `plans/current/` + o `docs/active/` correspondente à fase |
@@ -180,7 +180,7 @@ se contradizer.
 
 | Mudou | Atualize junto |
 |---|---|
-| Componente novo em `src/components/ui/` | `components-registry.ts`, `atomic-registry.ts`, `examples-mapping.ts`, demo em `components/examples/` + `examples/registry.tsx`, `<slug>.stories.tsx`, `docs/active/componentes/<slug>/spec.md`, `docs/componentes/<slug>.md` (de `_modelo.md`) + `npm run docs:registrar -- <slug>`. A trava é `src/lib/memoria-componentes.test.ts` |
+| Componente novo em `src/components/ui/` | `components-registry.ts`, `atomic-registry.ts`, `examples-mapping.ts`, demo em `components/examples/` + `examples/registry.tsx`, `<slug>.stories.tsx`, `docs/active/componentes/<slug>/spec.md`, `docs/componentes/<slug>.md` (nasce de `_modelo.md` com `npm run docs:registrar -- <slug>`), chave em `docs/sinonimos.json`, linha no `docs/componentes/README.md`. Passo a passo na skill `componente-rds`; a trava é `src/lib/memoria-componentes.test.ts` |
 | Estrutura de um componente (`cva`, props, partes, classes) | `npm run docs:registrar -- <slug> --motivo "por quê"` — grava o MD, a coleta e o histórico. Nunca editar à mão `docs/componentes/coleta/` nem `historico/` |
 | Componente com arredondado dentro de arredondado | `src/components/ui/radius-concentric.stories.tsx` |
 | Pattern novo | `patterns-registry.ts`, `components/patterns/registry.tsx`, `pattern-docs.ts` |

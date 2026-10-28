@@ -1,99 +1,90 @@
 ---
 slug: exemplo                       # igual ao nome do arquivo em src/components/ui/
 nome: Exemplo
-camada: atom                        # atom | molecule | organism — copie de src/lib/atomic-registry.ts
+camada: atom                        # primitive | atom | molecule | organism — de src/lib/atomic-registry.ts
 codigo: src/components/ui/exemplo.tsx
 story: src/components/ui/exemplo.stories.tsx
-status: estavel                     # estavel | piloto | descontinuado
-sinonimos: []                       # nomes que alguém pode usar para pedir esta peça
-vizinhos: []                        # slugs que costumam ser confundidos com este
-referencias: []                     # ex.: passi:abas, shadcn:tabs, nimbus:segmented-control
+status: piloto                      # piloto até a revisão do Rafael; depois estavel | descontinuado
+sinonimos: []                       # igual à chave do slug em docs/sinonimos.json
+vizinhos: []                        # slugs que costumam ser confundidos com este (ao menos 1)
+referencias: []                     # ex.: passi:abas, shadcn:tabs, spec:tabs (ao menos 1)
 ---
 
 <!--
-Modelo do MD de componente do R.DS. Regras:
+Modelo do MD de componente do R.DS. Não copie à mão: `npm run docs:registrar -- <slug>`
+cria o MD a partir daqui, põe as seções na ordem e preenche as geradas.
 - Seções sempre nesta ordem e com estes nomes. O agente procura pelo título.
-- Até ~4 KB. Passou disso, provavelmente são dois componentes.
-- Anatomia, Props, Variantes, Tamanhos e Tokens usados são escritos por
-  `npm run docs:registrar -- <slug>`, lendo o .tsx. À mão, só a coluna de
-  descrição e as linhas que o código não vê (parte visual, prop herdada do
-  Radix). O registro preserva essas; `npm run docs:check` reprova o resto.
-- Estados também descrevem o código: nunca algo que o .tsx não faz.
-- Todo item de "NÃO faça" e de "Quando NÃO usar" termina com a alternativa.
-- Texto adaptado de referência leva a origem em `referencias`.
-- Apague este comentário no arquivo real.
+- Geradas do .tsx: Anatomia, Composição, Props, Variantes, Tamanhos e Tokens usados.
+  À mão, só a coluna de descrição e as linhas que o código não vê.
+- Como escrever cada seção: _baliza.md. A trava reprova `[a preencher]` restante.
 -->
 
 # Exemplo
 
-Uma frase: o que é e o que resolve.
+[a preencher: 1 ou 2 frases — o que é e o que resolve]
 
 ## Quando usar
 
-- 
+- [a preencher]
 
 ## Quando NÃO usar
 
-- Situação → `outro-slug`.
+- [a preencher: situação → `outro-slug`]
 
 ## Anatomia
 
 | Parte | O que é |
 |---|---|
-| `Exemplo` | |
+
+## Composição
 
 ## Props
 
 | Prop | Tipo | Padrão | O que faz |
 |---|---|---|---|
-| | | | |
+| [a preencher: props herdadas que importam, ou apague a linha] | | | |
 
 ## Variantes
 
 | Valor | Quando usar |
 |---|---|
-| | |
+| [a preencher: sem variante no código, troque a tabela por uma frase] | |
 
 ## Tamanhos
 
 | Valor | Medida | Quando usar |
 |---|---|---|
-| | | |
+| [a preencher: sem tamanho no código, troque a tabela por uma frase] | | |
 
 ## Estados
 
-Clicável tem cinco: padrão, hover, pressionado, foco, desabilitado.
-
 | Estado | Como aparece |
 |---|---|
-| | |
+| [a preencher] | |
 
 ## Conteúdo
 
-Regras de texto desta peça. Gerais em `docs/conteudo/` (quando existir).
-
-- 
+- [a preencher]
 
 ## Acessibilidade
 
-- **Teclado:** 
-- **Leitor de tela:** 
-- **Foco:** 
-- **Cuidados:** 
+- **Teclado:** [a preencher]
+- **Leitor de tela:** [a preencher]
+- **Foco:** [a preencher]
+- **Cuidados:** [a preencher]
 
 ## Tokens usados
 
-Classes e variáveis que a peça consome (de `globals.css` / `tokens-cor.css`).
-
 ## Faça
 
-- 
+- [a preencher]
 
 ## NÃO faça
 
-- Erro → alternativa.
+- [a preencher: erro → alternativa]
 
 ## Exemplo mínimo
 
 ```tsx
+[a preencher]
 ```

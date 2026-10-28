@@ -35,6 +35,10 @@ alterações", não "OK".
 | Texto | Via `label` ou `children`. O tipo exige `children`, `icon` ou `label` — nunca botão vazio. |
 | `Button.Skeleton` | Placeholder com a mesma altura e canto do tamanho escolhido. |
 
+## Composição
+
+Usa: [`skeleton`](skeleton.md).
+
 ## Props
 
 | Prop | Tipo | Padrão | O que faz |

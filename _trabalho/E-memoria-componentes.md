@@ -38,6 +38,30 @@ lendo `src/lib/component-docs.ts`, agora gerado a partir dos MDs.
    do escopo** deste Épico. (Rafael, 2026-10-28)
 6. **Spike em worktree, em Loop Engineering** (verificador antes do
    código). (Rafael, 2026-10-28)
+7. **O PASSI é baliza, não cópia.** Os 109 MDs foram lidos inteiros, e a
+   régua do R.DS está em `docs/componentes/_baliza.md`. (Rafael, 2026-10-28)
+8. **Todo componente passa pelo ciclo**, inclusive os novos. O passo a passo
+   está em `.claude/skills/componente-rds/SKILL.md`, e a trava roda no CI
+   (`.github/workflows/trava.yml`). (Rafael, 2026-10-28)
+9. **Replicação por camada**, de primitivos a organismos. (Rafael, 2026-10-28)
+
+## Decisões pendentes (visuais, do Rafael)
+
+O PASSI e o R.DS divergem nestes pontos (detalhe em `_baliza.md`). Até
+haver decisão, vale o código atual:
+
+- [ ] **Decisão** — Gradiente de IA no `button` (atrito A3).
+      A) Manter `ai-primary` com gradiente → a ação de IA continua chamando atenção, contra o PASSI e o `ia-no-produto.md`.
+      B) Trocar por cor plana com rótulo e ícone de IA → mais sóbrio, mas muda o visual de quem já usa a variante.
+      Sem recomendação: é escolha de marca. · pedido por: claude · 2026-10-28
+- [ ] **Decisão** — Sombra em superfície parada (`card`, elevação do `button`).
+      A) Manter `shadow-sm` → o visual atual não muda.
+      B) Superfície só com cor e borda, sombra só no que flutua (PASSI) → visual mais plano, revisar os 5 presets.
+      Recomendo A até rodar teste com cliente, porque B mexe em todos os presets. · pedido por: claude · 2026-10-28
+- [ ] **Decisão** — Tipos de `alert`.
+      A) Manter `default` e `destructive` → nada muda.
+      B) Criar os 4 do PASSI (informação, sucesso, atenção, erro) → cobre mais casos, mas pede tokens de status novos.
+      Recomendo B quando as telas de seguro precisarem de sucesso ou atenção; até lá, A. · pedido por: claude · 2026-10-28
 
 ## Como o ciclo do Rayner fica no R.DS
 
@@ -56,8 +80,18 @@ lendo `src/lib/component-docs.ts`, agora gerado a partir dos MDs.
 ## Histórias
 
 - [[H-memoria-componentes-spike]] — fases 0 a 3, piloto com button, tabs e dialog
-- [[H-memoria-replicar-lotes]] — fase 4, os demais componentes em lotes
+- [[H-memoria-baliza-skill]] — leitura do PASSI, baliza, modelo equalizado, skill e CI
+- [[H-memoria-replicar-lotes]] — fase 4, os demais componentes por camada
 - [[H-conteudo-transversal]] — fase 5, `docs/conteudo/`
+- [[H-pagina-secoes-memoria]] — a página do site mostrar o que o MD já declara
+
+## Ideias para avaliar depois (do PASSI)
+
+- Doc de padrões no formato do PASSI (`padroes/`), com a seção "Feito com", para os 15 patterns.
+- Formato de ADR do PASSI ("o que a regra diz", decisão, por quê, consequências, alternativa descartada) em `docs/active/decisoes/`.
+- Lint semântico como o `verificar.mjs`: `aria-label` em `size="icon"`, glossário nas telas, um primário por tela.
+- Contraste também em APCA e um preset de alto contraste (`prefers-contrast: more`).
+- 10 componentes ainda sem chave em `docs/sinonimos.json`.
 
 ## Ideias para avaliar depois (do AIPIM, de Talis Galhardi)
 

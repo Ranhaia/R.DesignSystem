@@ -44,5 +44,6 @@
     "shadow-sm",
     "text-foreground",
     "text-muted-foreground"
-  ]
+  ],
+  "compoe": []
 }

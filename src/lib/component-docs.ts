@@ -521,23 +521,28 @@ import { Label } from "@/components/ui/label"
     ],
   },
   separator: {
-    description: "Separa conteúdo visualmente ou semanticamente.",
-    whenToUse: "Use para dividir seções ou agrupamentos de conteúdo relacionados.",
+    description: "Linha fina que separa grupos de conteúdo dentro do mesmo container. Use com moderação: espaço costuma separar melhor do que linha.",
+    whenToUse: "Separar grupos dentro do mesmo container: blocos de um card, grupos de um painel. Separar itens lado a lado numa barra de texto: Blog | Documentação | Código-fonte.",
     anatomy: [
-      { part: "Elemento raiz", description: "SeparatorPrimitive.Root — linha de 1px (bg-border), horizontal ou vertical." },
+      { part: "Separator", description: "Linha de 1 px em bg-border (Radix Separator). Na horizontal ocupa a largura; na vertical, a altura do pai" },
     ],
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["Use para separar blocos de conteúdo distintos dentro de um mesmo container."],
-    dontGuidelines: ["Não use separator como substituto de margens ou padding. Não use em excesso para não fragmentar a interface."],
+    doGuidelines: ["Separe grupos de conteúdo diferentes dentro do mesmo container.", "Na vertical, dê altura ao pai (ex.: flex h-5), porque a linha ocupa h-full.", "Use decorative={false} só quando a divisão precisa ser anunciada ao leitor de tela."],
+    dontGuidelines: ["Linha entre todos os itens de uma lista curta → espaço no container (gap-*).", "Separator para criar margem → espaçamento do container (my-*, gap-*).", "Linha grossa ou colorida para chamar atenção → bg-border de 1 px; para destacar, um título ou card."],
     code: `import { Separator } from "@/components/ui/separator"
 
-<Separator />
-<Separator orientation="vertical" className="h-4" />`,
+<Separator className="my-4" />
+
+<div className="flex h-5 items-center gap-4 text-sm">
+  <span>Blog</span>
+  <Separator orientation="vertical" />
+  <span>Documentação</span>
+</div>`,
     props: [
-      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção da linha." },
-      { name: "decorative", type: "boolean", default: "true", description: "Marca o elemento como puramente visual pra leitores de tela (role=none)." },
+      { name: "orientation", type: "horizontal · vertical", default: "horizontal", description: "Direção da linha" },
+      { name: "decorative", type: "boolean", default: "true", description: "true esconde do leitor de tela (role=\"none\"). false anuncia como separador (role=\"separator\")" },
     ],
   },
   skeleton: {
