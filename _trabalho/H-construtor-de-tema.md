@@ -3,7 +3,7 @@ tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-Investigacao-Theming
 status: aguardando
-sinal: 🟡 Aguardando definição
+sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-28
 ciclo:
 estimativa: 3
@@ -43,19 +43,22 @@ Fora do escopo: raio e fonte (Decisão 2), uma cor por papel (o motor usa uma co
 
 ## Pré-requisitos
 
-- [ ] **Decisão** — O que sai do construtor.
+- [x] **Decisão** — O que sai do construtor.
       A) Só aplicar na hora, com a cor guardada no link (`?cor=E31A39`) → serve para protótipo e teste com cliente sem tocar no repositório; some quando fecha.
       B) Gerar o trecho para `presets.ts` (nome, cor, modo) para colar e rodar `tokens:gerar` → vira preset fixo do catálogo, mas exige commit.
       C) Os dois.
       Recomendo C: A atende a sessão de protótipo, e B é só copiar um texto quando o cliente vira preset. · pedido por: claude · 2026-10-28
-- [ ] **Decisão** — Escopo do tema.
+      **Resolvido pelo Rafael em 2026-10-28: C, os dois.**
+- [x] **Decisão** — Escopo do tema.
       A) Só cor → usa o motor como está; raio, sombra e fonte continuam dos 5 presets de estilo.
       B) Cor, raio e fonte → mais fiel à marca, mas mexe no sistema de presets de estilo e no `globals.css`.
       Recomendo A no primeiro corte, porque o motor de cor já está pronto e testado. · pedido por: claude · 2026-10-28
-- [ ] **Decisão** — Quando a cor da marca não passa no contraste e o motor usa outra.
+      **Resolvido pelo Rafael em 2026-10-28: A, só cor.**
+- [x] **Decisão** — Quando a cor da marca não passa no contraste e o motor usa outra.
       A) Mostrar "sua cor" × "cor usada" e seguir com a usada → o protótipo continua AA.
       B) Deixar forçar a cor exata, com aviso → mais fiel ao cliente, mas o protótipo pode reprovar no teste com pessoas.
       Recomendo A porque o R.DS garante AA por construção, e B quebraria essa garantia. · pedido por: claude · 2026-10-28
+      **Resolvido pelo Rafael em 2026-10-28: A, mostrar e seguir com a cor usada.**
 
 ## Tarefas
 
@@ -67,5 +70,7 @@ Fora do escopo: raio e fonte (Decisão 2), uma cor por papel (o motor usa uma co
 - [ ] Prova: `test:unit`, `tsc` e navegador com a cor dos 5 presets e mais 2 cores de cliente
 
 ## Contribuições
+
+- 2026-10-28 · claude · As 3 decisões foram fechadas pelo Rafael com as recomendações (saída C, escopo A, fidelidade A). Sinal 🟢. Aguarda o comando para entrar em execução.
 
 ## Histórico
