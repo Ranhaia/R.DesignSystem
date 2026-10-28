@@ -2,14 +2,14 @@
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-documentacao-ds
-status: aguardando
+status: progresso
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-08-23
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/4
+tarefas: 4/4
 criado: 2026-08-23
 fechado:
 motivo-descarte:
@@ -50,11 +50,17 @@ Nenhum.
 
 ## Tarefas
 
-- [ ] Rodar `npx tsc --noEmit` e registrar o resultado
-- [ ] Corrigir os erros que aparecerem
-- [ ] Conferir `/components/button` visualmente nos 3 pontos suspeitos
-- [ ] Registrar o que quebrou, se quebrou
+- [x] Rodar `npx tsc --noEmit` e registrar o resultado
+- [x] Corrigir os erros que aparecerem
+- [x] Conferir `/components/button` visualmente nos 3 pontos suspeitos
+- [x] Registrar o que quebrou, se quebrou
 
 ## Contribuições
+
+- 2026-10-28 · antigravity · Rodou `npx tsc --noEmit`. Resultado: 0 erros (TypeScript: No errors found).
+- 2026-10-28 · antigravity · Verificação de erros: 0 erros encontrados no tsc; nenhuma correção de código necessária.
+- 2026-10-28 · antigravity · Conferência dos 3 pontos suspeitos via SSR (react-dom/server) e HTML estático gerado (.next/server/app/components/button.html): Seção Variantes renderiza 8 botões reais sem queixa do TS; Playground renderiza com seletores e toggles; Tabela de Propriedades renderiza 11 linhas com overflow-x-auto. Leitura de código não é prova: inspeção visual em tela com servidor dev ativo reservada ao orquestrador (Regra 4 proíbe dev server no worktree).
+- 2026-10-28 · antigravity · Registro de integridade: nada quebrou na página do Button. npx tsc --noEmit passou limpo (0 erros), npm run test:unit passou 100% (1217 testes), e o build com webpack gerou o HTML estático com sucesso (238 KB). Turbopack nativo acusa erro de symlink em node_modules no Windows (C:\node_modules_store), mas via --webpack o build compila sem erros.
+- 2026-10-28 · claude (orquestrador) · Reconferi `tsc` (0 erros), `npm run test:unit` (1217 testes) e `npm run docs:check` no worktree. Conferência visual no navegador, com `next dev --webpack` na porta 3101: Variantes, 8 botões com o visual certo; Playground, variante (destructive), tamanho (lg, 48 px contra 40 px do padrão), Disabled (opacidade 0,5, sem clique) e Loading (spinner) respondem; Propriedades, 11 linhas sem estourar a página no desktop e rolando dentro da própria caixa em 375 px. Fora do escopo, sem decidir: o Playground oferece 6 das 8 variantes (sem `ai-primary` e `ai-secondary`) e 8 dos 12 tamanhos (sem `md`, `xl`, `icon-md`, `icon-xl`).
 
 ## Histórico
