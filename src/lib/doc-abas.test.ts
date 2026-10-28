@@ -4,6 +4,7 @@ import {
   abaAtiva,
   abasDoComponente,
   blocosVisaoGeral,
+  exemploPrincipal,
   faixaMeta,
   itensQuandoUsar,
   linhasVariantesProps,
@@ -165,6 +166,29 @@ describe("linhasVariantesProps: uma tabela só", () => {
       { grupo: "Tamanhos", nome: "size", detalhe: "sm · lg", descricao: "" },
     ])
     expect(linhasVariantesProps(doc())).toEqual([])
+  })
+
+  it('padrão "—" do MD significa "sem padrão": só o tipo aparece', () => {
+    const d = doc({
+      props: [
+        { name: "children", type: "React.ReactNode", default: "—", description: "Conteúdo" },
+        { name: "disabled", type: "boolean", default: "false", description: "Desabilita" },
+      ],
+    })
+    expect(linhasVariantesProps(d).map((l) => l.detalhe)).toEqual(["React.ReactNode", "boolean = false"])
+  })
+})
+
+describe("exemploPrincipal: o exemplo do topo da página", () => {
+  it("prefere o Default, depois o Demo, e por último o primeiro da lista", () => {
+    // nomes no formato real de src/lib/examples-mapping.ts
+    expect(exemploPrincipal(["button-as-child", "button-default", "button-demo"])).toBe("button-default")
+    expect(exemploPrincipal(["dialog-close-button", "dialog-demo"])).toBe("dialog-demo")
+    expect(exemploPrincipal(["alert-a", "alert-b"])).toBe("alert-a")
+  })
+
+  it("sem exemplo, nada", () => {
+    expect(exemploPrincipal([])).toBeUndefined()
   })
 })
 

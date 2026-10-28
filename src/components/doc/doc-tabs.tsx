@@ -40,16 +40,19 @@ export function DocTabs({ abas, children }: DocTabsProps) {
       onValueChange={handleValueChange}
       className="w-full space-y-6"
     >
-      <TabsList
-        variant="line"
-        className="w-full justify-start border-b rounded-none bg-transparent p-0"
-      >
-        {abas.map((aba) => (
-          <TabsTrigger key={aba.id} value={aba.id}>
-            {aba.label}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+      {/* Em celular as 5 abas passam da largura: a lista rola por dentro em vez de alargar a página. */}
+      <div className="overflow-x-auto">
+        <TabsList
+          variant="line"
+          className="w-max min-w-full justify-start border-b rounded-none bg-transparent p-0"
+        >
+          {abas.map((aba) => (
+            <TabsTrigger key={aba.id} value={aba.id}>
+              {aba.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </div>
       {children}
     </Tabs>
   )

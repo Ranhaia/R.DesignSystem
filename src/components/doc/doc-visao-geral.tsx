@@ -106,7 +106,7 @@ export function DocVisaoGeral({ doc }: DocVisaoGeralProps) {
                       <tr key={`${linha.grupo}-${linha.nome}-${idx}`}>
                         <td className="p-3 font-mono text-xs">{linha.nome}</td>
                         <td className="p-3 font-mono text-xs text-muted-foreground">
-                          {linha.detalhe || "—"}
+                          {linha.detalhe}
                         </td>
                         <td className="p-3 text-muted-foreground">
                           {linha.descricao}

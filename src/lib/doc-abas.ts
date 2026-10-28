@@ -140,6 +140,12 @@ export function itensQuandoUsar(doc: ComponentDoc): string[] {
   return []
 }
 
+// Os nomes são arquivos em kebab-case (button-default, dialog-demo) e a lista vem em ordem alfabética: sem isto o
+// topo da página mostraria "button-as-child" em vez do uso padrão.
+export function exemploPrincipal(nomes: string[]): string | undefined {
+  return nomes.find((n) => /-default$/.test(n)) ?? nomes.find((n) => /-demo$/.test(n)) ?? nomes[0]
+}
+
 export function linhasVariantesProps(doc: ComponentDoc): LinhaVarianteProp[] {
   const linhas: LinhaVarianteProp[] = []
 
@@ -172,7 +178,9 @@ export function linhasVariantesProps(doc: ComponentDoc): LinhaVarianteProp[] {
       if (temVariantes && p.name === "variant") continue
       if (temTamanhos && p.name === "size") continue
 
-      const detalhe = p.default ? `${p.type} = ${p.default}` : p.type
+      // No MD, "—" quer dizer "sem padrão".
+      const temPadrao = Boolean(p.default) && p.default?.trim() !== "—"
+      const detalhe = temPadrao ? `${p.type} = ${p.default}` : p.type
 
       linhas.push({
         grupo: "Props",

@@ -16,7 +16,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { TabsContent } from "@/components/ui/tabs"
-import { abasDoComponente } from "@/lib/doc-abas"
+import { abasDoComponente, exemploPrincipal } from "@/lib/doc-abas"
 import { DocHeader } from "@/components/doc/doc-header"
 import { DocLivePreview } from "@/components/doc/doc-live-preview"
 import { DocMetaStrip } from "@/components/doc/doc-meta-strip"
@@ -51,7 +51,7 @@ export default async function ComponentPage({
   const hasGenericPlayground = !Playground && Boolean(genericPlaygroundRegistry[slug])
   const showPlayground = Boolean(Playground) || hasGenericPlayground
 
-  const firstExampleName = exampleNames[0]
+  const firstExampleName = exemploPrincipal(exampleNames)
   const FirstExampleComponent = firstExampleName ? exampleRegistry[firstExampleName] : null
 
   const abas = abasDoComponente(doc, {

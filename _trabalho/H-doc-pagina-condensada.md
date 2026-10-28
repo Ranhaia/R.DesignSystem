@@ -9,7 +9,7 @@ ciclo:
 estimativa: 4
 perfil: front
 dono:
-tarefas: 2/5
+tarefas: 3/5
 bloqueada-por:
 criado: 2026-10-28
 fechado:
@@ -81,13 +81,14 @@ Pausar `H-memoria-replicar-lotes` até a Fase 4, para os MDs dos lotes já nasce
 
 - [x] Fase 1 — Dado: estender `ComponentDoc`, parser e gerador (teste: `src/lib/component-docs.campos.test.ts`)
 - [x] Fase 2 — Página do Button com as 5 abas
-- [ ] Fase 3 — Mesmo molde em dialog, tabs e separator, e componentes sem MD degradando bem
+- [x] Fase 3 — Mesmo molde em dialog, tabs e separator, e componentes sem MD degradando bem
 - [ ] Fase 4 — Molde e régua com limite por seção (`docs/componentes/_modelo.md`, `_baliza.md`)
 - [ ] Fase 5 — PR, preview na Vercel e revisão do Rafael
 
 ## Contribuições
 
 - 2026-10-28 · antigravity · Fase 2 (página de componente em abas): criada lógica pura em `src/lib/doc-abas.ts` (7 funções + mapa de rótulos), componentes modulares em `src/components/doc/` (`doc-header`, `doc-live-preview`, `doc-meta-strip`, `doc-tabs`, `doc-visao-geral`, `doc-pagination`) e reescrita de `src/app/components/[slug]/page.tsx` no molde condensado em 5 abas com sincronia de URL hash via `history.replaceState` e remoção do `TocScrollSpy` lateral fixo. Validações: `npx vitest run --project unit src/lib/doc-abas.test.ts` (22 pass), `npm run test:unit` (23 arquivos, 1330 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok), `npx next build --webpack` (133 páginas estáticas geradas com sucesso).
+- 2026-10-28 · claude (orquestrador) · Fase 2 conferida e Fase 3 verificada. Reroda minha: `doc-abas.test.ts` (25 pass, 22 do Checker e 3 que acrescentei), `npm run test:unit` (23 arquivos, 1333 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok) e `npx next build --webpack` (exit 0, 133 páginas estáticas). No navegador (`next dev --webpack`, porta 3103): o Button tem cabeçalho, preview, faixa de metadados, 5 abas e "Nesta página"; o hash `#exemplos`, `#codigo`, `#tokens` e `#acessibilidade` abre a aba certa, também com a página já aberta; Relacionados linka os 4 componentes (todos existem). Achei e corrigi 4 defeitos que o AGY não podia ver: (1) a 375 px a lista de abas vazava e alargava a página (455 px); agora rola por dentro; (2) props sem padrão apareciam como `boolean = —`, porque o MD usa "—" para "sem padrão"; (3) a coluna "Tipo e padrão" mostrava "—" em todas as variantes; fica vazia; (4) o preview do topo mostrava o exemplo `button-as-child` por ser o primeiro em ordem alfabética; novo `exemploPrincipal` prefere `-default`, depois `-demo`. Erro meu no caminho: escrevi a regra do item 4 em PascalCase a partir do mapa de código, e o dado real é kebab-case; o teste passou com dado inventado e o navegador mostrou o erro. Corrigi regra e teste para o formato real. Fase 3: dialog, tabs e separator renderizam as 5 abas (separator sem o bloco Estados, por não ter estados), `accordion` (sem MD novo) fica com 3 abas e nenhum `[a preencher]`, e o build gera as 79 páginas. Visual por imagem só do Button; os outros, por DOM e HTML.
 - 2026-10-28 · claude (orquestrador) · Fase 1 conferida. O teste do contrato (Checker, escrito antes) foi vermelho com 7 falhas e não foi alterado pelo AGY. Reroda minha: o teste do contrato (83 pass), `npm run test:unit` (22 arquivos, 1302 pass), `npx tsc --noEmit` (0 erros) e `npm run docs:check` (ok). O diff de `src/lib/component-docs.ts` só acrescenta (0 remoções) e só as 4 entradas com MD ganharam campos novos (button, separator, dialog, tabs); as demais não mudaram. Li o parser: funções genéricas, sem valor escrito para passar o teste. O job do AGY acabou com `status ERROR` (chamada de função malformada no final), mas o commit estava completo e a árvore limpa. Não rodei teste de navegador nem servidor dev: a Fase 1 não tem tela.
 - 2026-10-28 · antigravity · Fase 1 (dado da página condensada): adicionados campos opcionais em `ComponentDoc`, extração de listas, metadados, acessibilidade e tokens em `scripts/parse-component-md.mjs`, formatação em `scripts/gerar-component-docs.mjs` e sincronização de `src/lib/component-docs.ts`. Validações: `npx vitest run --project unit src/lib/component-docs.campos.test.ts` (83 pass), `npm run test:unit` (22 arquivos, 1302 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok).
 
