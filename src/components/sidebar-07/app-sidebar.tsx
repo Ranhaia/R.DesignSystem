@@ -2,9 +2,9 @@
 
 import * as React from "react"
 
+import { NavFoundations } from "@/components/sidebar-07/nav-foundations"
 import { NavComponents } from "@/components/sidebar-07/nav-components"
 import { NavPatterns } from "@/components/sidebar-07/nav-patterns"
-import { NavTemplates } from "@/components/sidebar-07/nav-templates"
 import { NavUser } from "@/components/sidebar-07/nav-user"
 import { ModoTema } from "@/components/modo-tema"
 import { StyleSwitcher } from "@/components/style-switcher"
@@ -68,19 +68,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={pathname.startsWith("/fundamentos")} tooltip="Fundamentos">
-                <Link href="/fundamentos/tipografia">
-                  <Icon name="foundation" />
-                  <span>Fundamentos</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
+        <NavFoundations />
         <NavComponents />
         <NavPatterns />
-        <NavTemplates />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={user} />

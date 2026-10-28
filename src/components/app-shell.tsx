@@ -8,6 +8,7 @@ import {
   categoryHref,
   categoryLabels,
 } from "@/lib/atomic-registry"
+import { foundationsList } from "@/lib/foundations-registry"
 import { componentsList } from "@/lib/components-registry"
 import { patternsList } from "@/lib/patterns-registry"
 import { templatesList } from "@/lib/templates-registry"
@@ -58,6 +59,14 @@ function useBreadcrumb() {
     return { section: null, sectionHref: null, page: "Portfólio" }
   }
 
+  if (pathname === "/fundamentos" || pathname === "/foundations") {
+    return { section: null, sectionHref: null, page: "Foundations" }
+  }
+
+  if (pathname === "/components") {
+    return { section: null, sectionHref: null, page: "Components" }
+  }
+
   // Índices das camadas (/primitivos, /atoms, /molecules, /organisms).
   const layer = (Object.keys(categoryHref) as (keyof typeof categoryHref)[]).find(
     (c) => categoryHref[c] === pathname
@@ -94,6 +103,18 @@ function useBreadcrumb() {
       section: "Patterns",
       sectionHref: "/patterns",
       page: entry?.name ?? patternMatch[1],
+    }
+  }
+
+  const foundationMatch = pathname.match(/^\/fundamentos\/(.+)$/)
+  if (foundationMatch) {
+    const entry = foundationsList.find(
+      (f) => f.slug === foundationMatch[1] || f.href === pathname
+    )
+    return {
+      section: "Foundations",
+      sectionHref: "/fundamentos",
+      page: entry?.name ?? foundationMatch[1],
     }
   }
 

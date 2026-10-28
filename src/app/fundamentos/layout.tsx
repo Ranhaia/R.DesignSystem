@@ -6,11 +6,16 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 
 const tabs = [
-  { href: "/fundamentos/tipografia", label: "Tipografia" },
-  { href: "/fundamentos/cores", label: "Cores" },
-  { href: "/fundamentos/elevacao", label: "Elevação" },
-  { href: "/fundamentos/espacamento", label: "Espaçamento" },
-  { href: "/fundamentos/bordas", label: "Bordas" },
+  { href: "/fundamentos", label: "Visão geral" },
+  { href: "/fundamentos/cores", label: "Colors" },
+  { href: "/fundamentos/tipografia", label: "Typography" },
+  { href: "/fundamentos/espacamento", label: "Spacing" },
+  { href: "/fundamentos/grid", label: "Grid" },
+  { href: "/fundamentos/bordas", label: "Radius" },
+  { href: "/fundamentos/elevacao", label: "Elevation" },
+  { href: "/fundamentos/motion", label: "Motion" },
+  { href: "/fundamentos/icones", label: "Icons" },
+  { href: "/fundamentos/acessibilidade", label: "Accessibility" },
 ]
 
 export default function FundamentosLayout({
