@@ -3,13 +3,13 @@ tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-documentacao-ds
 status: progresso
-sinal: 🟡 Aguardando definição
+sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-28
 ciclo:
 estimativa: 2
 perfil: front
-dono:
-tarefas: 3/3
+dono: antigravity
+tarefas: 3/4
 criado: 2026-08-23
 fechado:
 motivo-descarte:
@@ -30,7 +30,7 @@ Foundations
 ├── Colors · Typography · Spacing · Grid · Radius · Elevation
 │   Motion · Icons · Accessibility
 Components
-├── Atoms · Molecules · Organisms · Templates
+├── Primitivos · Atoms · Molecules · Organisms · Templates
 Patterns
 ├── os 15 já existentes
 ```
@@ -45,7 +45,7 @@ Pode rodar em paralelo.
 
 ## Pré-requisitos
 
-- [ ] **Decisão** — Box, Icon, Label, Separator, Skeleton, Text e Title (a camada Primitivos) continuam como
+- [x] **Decisão** — Box, Icon, Label, Separator, Skeleton, Text e Title (a camada Primitivos) continuam como
       grupo próprio na sidebar e no índice de Components?
       A) Grupo próprio (Primitivos · Atoms · Molecules · Organisms · Templates) → a sidebar segue mostrando a
       camada que o DS já tem e testa (`atomic-registry.test.ts`, `categoryOrder` da main); o mapa do Épico, de
@@ -55,12 +55,14 @@ Pode rodar em paralelo.
       respondendo). Custo: some da navegação uma distinção que o DS já faz.
       Recomendo A porque o DS já nomeia e testa Primitivos como camada, e o mapa do Épico é anterior a ela.
       · pedido por: claude · 2026-10-28
+      Decidido: **A, grupo próprio** · Rafael · 2026-10-28
 
 ## Tarefas
 
 - [x] Reorganizar a sidebar em Foundations / Components / Patterns
 - [x] Agrupar Components por Atoms / Molecules / Organisms / Templates
 - [x] Criar as rotas-índice de cada grupo
+- [ ] Primitivos como grupo próprio na sidebar e no índice de Components (Decisão A)
 
 ## Contribuições
 
