@@ -116,7 +116,7 @@ export function ComponentsIndexPage() {
         <h2 className="font-heading text-lg font-semibold tracking-tight">
           Camadas do catálogo
         </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {categories.map((cat) => (
             <Link
               key={cat.key}
