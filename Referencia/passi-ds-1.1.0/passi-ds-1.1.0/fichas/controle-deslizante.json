@@ -1,0 +1,88 @@
+{
+  "nome": "Controle deslizante",
+  "slug": "controle-deslizante",
+  "versao": "1.1.0",
+  "descricao": "O controle deslizante escolhe um valor aproximado dentro de um limite, arrastando um pegador. A versão de intervalo escolhe uma faixa, com valor mínimo e máximo.",
+  "resumo": "Controle deslizante · escolhe um valor ou uma faixa dentro de um limite, arrastando o pegador. Mostre sempre o valor atual em texto.",
+  "diretrizes": "diretrizes/componentes/controle-deslizante.md",
+  "figma": {
+    "pagina": "Controle deslizante",
+    "componente": "Controle deslizante"
+  },
+  "propriedades": [
+    {
+      "nome": "Rótulo",
+      "tipo": "texto",
+      "padrao": "Páginas por dia"
+    },
+    {
+      "nome": "Valor",
+      "tipo": "texto",
+      "padrao": "24"
+    },
+    {
+      "nome": "Mostrar limites",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Simples",
+        "Intervalo"
+      ],
+      "padrao": "Simples"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Foco",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Simples",
+      "Intervalo"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Foco",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab chega ao pegador. Setas mudam um passo; Page Up e Page Down mudam passos maiores; Home e End vão ao mínimo e ao máximo.",
+    "leitor": "Papel slider. O rótulo é o nome e o valor atual é lido, com a unidade, por exemplo 24 páginas por dia.",
+    "foco": "Anel de foco de 2 px em volta do pegador. No tipo intervalo, cada pegador recebe foco separado.",
+    "cuidados": "Arrastar nunca pode ser o único jeito (WCAG 2.5.7): aceite setas do teclado e clique no trilho, e ofereça um campo numérico quando o valor exato importa."
+  },
+  "conteudo": [
+    "Mostre o valor com a unidade: 24 páginas por dia.",
+    "Os limites usam o mesmo formato do valor."
+  ],
+  "faca": [
+    "Use quando um valor aproximado é suficiente, como volume ou faixa de preço.",
+    "Mostre o valor atual e os limites.",
+    "Ofereça um campo de texto ao lado quando o valor exato importar."
+  ],
+  "naoFaca": [
+    "Usar para valores exatos, como CPF ou quantidade de parcelas.",
+    "Faixas muito grandes, em que cada pixel vale muito.",
+    "Esconder o valor escolhido."
+  ],
+  "tokens": [
+    "--cor-fundo-sutil-hover",
+    "--cor-fundo-marca",
+    "--neutro-0",
+    "--cor-texto-padrao",
+    "--cor-texto-marca",
+    "--cor-texto-terciario"
+  ],
+  "codigo": null
+}

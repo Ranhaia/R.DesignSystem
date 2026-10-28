@@ -1,0 +1,143 @@
+{
+  "$description": "Cantos arredondados e espessura de borda, em px: não crescem com o texto.",
+  "raio": {
+    "nenhum": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0,
+        "unit": "px"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--raio-nenhum)"
+          }
+        }
+      }
+    },
+    "pequeno": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--raio-pequeno)"
+          }
+        }
+      }
+    },
+    "medio": {
+      "$type": "dimension",
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--raio-medio)"
+          }
+        }
+      }
+    },
+    "grande": {
+      "$type": "dimension",
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--raio-grande)"
+          }
+        }
+      }
+    },
+    "extra": {
+      "$type": "dimension",
+      "$value": {
+        "value": 20,
+        "unit": "px"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--raio-extra)"
+          }
+        }
+      }
+    },
+    "pilula": {
+      "$type": "dimension",
+      "$value": {
+        "value": 999,
+        "unit": "px"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--raio-pilula)"
+          }
+        }
+      }
+    }
+  },
+  "borda": {
+    "fina": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "px"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "STROKE_FLOAT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--borda-fina)"
+          }
+        }
+      }
+    },
+    "grossa": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "STROKE_FLOAT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--borda-grossa)"
+          }
+        }
+      }
+    }
+  }
+}

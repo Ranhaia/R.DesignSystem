@@ -1,0 +1,65 @@
+{
+  "nome": "Dica flutuante",
+  "slug": "dica-flutuante",
+  "versao": "1.1.0",
+  "descricao": "A dica flutuante é um balão pequeno que explica um elemento quando a pessoa passa o mouse ou navega com o teclado. Ela é essencial para botões que têm só ícone.",
+  "resumo": "Dica flutuante · texto curto que aparece ao passar o mouse ou focar um elemento, explicando o que ele faz. A posição indica de que lado o balão fica em relação ao elemento.",
+  "diretrizes": "diretrizes/componentes/dica-flutuante.md",
+  "figma": {
+    "pagina": "Dica flutuante",
+    "componente": "Dica flutuante"
+  },
+  "propriedades": [
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Copiar link do capítulo"
+    },
+    {
+      "nome": "Posição",
+      "tipo": "variante",
+      "opcoes": [
+        "Cima",
+        "Baixo",
+        "Esquerda",
+        "Direita"
+      ],
+      "padrao": "Cima"
+    }
+  ],
+  "variantes": {
+    "Posição": [
+      "Cima",
+      "Baixo",
+      "Esquerda",
+      "Direita"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Aparece quando o elemento recebe foco e some com Esc, sem mover o foco.",
+    "leitor": "O texto da dica fica ligado ao elemento no código (aria-describedby) e é lido junto com ele.",
+    "foco": "O foco fica sempre no elemento, nunca na dica.",
+    "cuidados": "A pessoa consegue passar o mouse sobre a dica sem ela sumir (WCAG 1.4.13). Só texto curto: nada de links ou botões dentro."
+  },
+  "conteudo": [
+    "Até uma linha. Diga o que o elemento faz, com verbo: Copiar link do capítulo.",
+    "Não repita o texto que já está visível."
+  ],
+  "faca": [
+    "Use até uma linha de texto.",
+    "Mostre também quando o elemento recebe foco pelo teclado.",
+    "Use em todo botão que tem só ícone."
+  ],
+  "naoFaca": [
+    "Colocar informação essencial só na dica.",
+    "Links ou botões dentro da dica. Para isso use Popover.",
+    "Repetir o mesmo texto que já está visível."
+  ],
+  "tokens": [
+    "--cor-fundo-invertido",
+    "--cor-texto-invertido",
+    "--raio-medio"
+  ],
+  "codigo": null
+}

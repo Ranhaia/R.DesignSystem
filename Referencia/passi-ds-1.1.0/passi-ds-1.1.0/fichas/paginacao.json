@@ -1,0 +1,87 @@
+{
+  "nome": "Paginação",
+  "slug": "paginacao",
+  "versao": "1.1.0",
+  "descricao": "A paginação divide listas longas em páginas menores e permite ir para a anterior, a próxima ou uma página específica.",
+  "resumo": "Página · número dentro da Paginação.",
+  "diretrizes": "diretrizes/componentes/paginacao.md",
+  "figma": {
+    "pagina": "Paginação",
+    "componente": "Página"
+  },
+  "propriedades": [
+    {
+      "nome": "Número",
+      "tipo": "texto",
+      "padrao": "2"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Atual",
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Reticências"
+      ],
+      "padrao": "Atual"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Atual",
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Reticências"
+  ],
+  "outrasPartes": [
+    {
+      "nome": "Paginação",
+      "resumo": "Paginação · divide listas longas em páginas. Números para listas navegáveis, Simples quando a posição exata importa pouco, Compacta para espaços pequenos e celular.",
+      "propriedades": [
+        {
+          "nome": "Tipo",
+          "tipo": "variante",
+          "opcoes": [
+            "Números",
+            "Simples",
+            "Compacta"
+          ],
+          "padrao": "Números"
+        }
+      ]
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Tab passa por Anterior, pelos números e por Próximo.",
+    "leitor": "Fica dentro de uma navegação com o nome Paginação. Cada número tem nome completo, por exemplo Página 3, e a página atual é marcada como atual.",
+    "foco": "Anel de foco em cada botão. Depois de trocar de página, leve o foco para o começo da lista nova.",
+    "cuidados": "Anterior e Próximo ficam desabilitados de forma anunciada na primeira e na última página."
+  },
+  "conteudo": [
+    "Anterior e Próxima, com nome completo para leitor de tela: Página 3.",
+    "Mostre o total quando ajudar: Página 3 de 12."
+  ],
+  "faca": [
+    "Mostre a primeira, a última e as páginas vizinhas da atual.",
+    "Desabilite “Anterior” na primeira página e “Próxima” na última.",
+    "Mantenha a paginação no mesmo lugar em todas as páginas."
+  ],
+  "naoFaca": [
+    "Mostrar todos os números quando há muitas páginas.",
+    "Paginar listas curtas, com menos de 20 itens.",
+    "Áreas de clique menores que 36 px."
+  ],
+  "tokens": [
+    "--cor-fundo-invertido",
+    "--cor-texto-invertido",
+    "--cor-fundo-sutil",
+    "--cor-fundo-sutil-hover",
+    "--cor-texto-padrao",
+    "--cor-texto-secundario",
+    "--raio-medio"
+  ],
+  "codigo": null
+}

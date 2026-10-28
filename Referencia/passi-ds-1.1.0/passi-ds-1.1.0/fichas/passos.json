@@ -1,0 +1,81 @@
+{
+  "nome": "Passos",
+  "slug": "passos",
+  "versao": "1.1.0",
+  "descricao": "Os passos mostram em que etapa de um processo a pessoa está, quantas já foram e quantas faltam. Ajudam em cadastros, compras e configurações longas.",
+  "resumo": "Passo · uma etapa dentro de Passos.",
+  "diretrizes": "diretrizes/componentes/passos.md",
+  "figma": {
+    "pagina": "Passos",
+    "componente": "Passo"
+  },
+  "propriedades": [
+    {
+      "nome": "Título",
+      "tipo": "texto",
+      "padrao": "Dados pessoais"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Concluído",
+        "Atual",
+        "Próximo"
+      ],
+      "padrao": "Concluído"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Concluído",
+    "Atual",
+    "Próximo"
+  ],
+  "outrasPartes": [
+    {
+      "nome": "Passos",
+      "resumo": "Passos · mostra o andamento de um processo dividido em etapas, como um cadastro ou uma compra. Use de 3 a 5 etapas.",
+      "propriedades": [
+        {
+          "nome": "Orientação",
+          "tipo": "variante",
+          "opcoes": [
+            "Horizontal",
+            "Vertical"
+          ],
+          "padrao": "Horizontal"
+        }
+      ]
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Passos concluídos que deixam voltar são links ou botões e recebem Tab. Os próximos não recebem foco.",
+    "leitor": "Uma lista ordenada. O passo atual é marcado como atual, e cada passo anuncia seu estado em texto: concluído, atual ou próximo.",
+    "foco": "Ao avançar de etapa, leve o foco para o título da etapa nova.",
+    "cuidados": "Não peça de novo o que a pessoa já informou numa etapa anterior (WCAG 3.3.7)."
+  },
+  "conteudo": [
+    "Títulos curtos que dizem o que acontece na etapa: Dados pessoais.",
+    "Mostre o total desde o início: Etapa 2 de 4."
+  ],
+  "faca": [
+    "Use títulos curtos que digam o que acontece em cada etapa.",
+    "Deixe a pessoa voltar para etapas concluídas.",
+    "Mostre o total de etapas desde o início."
+  ],
+  "naoFaca": [
+    "Mais de 5 etapas. Agrupe ou simplifique o processo.",
+    "Usar passos para navegação livre. Para isso use Abas.",
+    "Pular etapas sem avisar."
+  ],
+  "tokens": [
+    "--cor-fundo-marca",
+    "--cor-borda-marca",
+    "--cor-texto-marca",
+    "--cor-borda-forte",
+    "--cor-texto-secundario",
+    "--cor-borda-padrao"
+  ],
+  "codigo": null
+}

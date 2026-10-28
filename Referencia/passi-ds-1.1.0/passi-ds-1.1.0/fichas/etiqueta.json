@@ -1,0 +1,99 @@
+{
+  "nome": "Etiqueta",
+  "slug": "etiqueta",
+  "versao": "1.1.0",
+  "descricao": "A etiqueta é clicável. Serve para filtrar listas, escolher categorias ou mostrar escolhas que a pessoa pode remover, como filtros aplicados em uma busca.",
+  "resumo": "Etiqueta · item clicável para filtrar, selecionar categorias ou mostrar escolhas que podem ser removidas. Diferente do Selo, que só informa.",
+  "diretrizes": "diretrizes/componentes/etiqueta.md",
+  "figma": {
+    "pagina": "Etiqueta",
+    "componente": "Etiqueta"
+  },
+  "propriedades": [
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Design system"
+    },
+    {
+      "nome": "Mostrar ícone",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Removível",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Tamanho",
+      "tipo": "variante",
+      "opcoes": [
+        "M",
+        "P"
+      ],
+      "padrao": "M"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Selecionada",
+        "Desabilitada"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Tamanho": [
+      "M",
+      "P"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Selecionada",
+    "Desabilitada"
+  ],
+  "acessibilidade": {
+    "teclado": "Etiquetas de filtro recebem Tab e alternam com Espaço ou Enter. O x de remover é um botão próprio.",
+    "leitor": "Etiqueta de filtro é um botão que anuncia se está selecionada. O botão de remover tem nome completo, por exemplo Remover filtro Design.",
+    "foco": "Anel de foco na etiqueta e, separado, no botão de remover.",
+    "cuidados": "O x precisa de área de toque de 24 px. Etiqueta que só informa, sem ação, deve ser um Selo."
+  },
+  "conteudo": [
+    "Uma ou duas palavras: Design system.",
+    "Use o mesmo nome do filtro em todas as telas."
+  ],
+  "faca": [
+    "Use textos curtos, de uma ou duas palavras.",
+    "Deixe claro quais filtros estão ativos.",
+    "Ofereça “Limpar filtros” quando houver muitos selecionados."
+  ],
+  "naoFaca": [
+    "Usar etiqueta para status. Para isso use Selo.",
+    "Esconder o resultado do filtro longe das etiquetas.",
+    "Misturar etiquetas removíveis e selecionáveis no mesmo grupo."
+  ],
+  "tokens": [
+    "--espaco-1",
+    "--espaco-2",
+    "--espaco-3",
+    "--cor-fundo-superficie",
+    "--cor-fundo-sutil",
+    "--cor-fundo-sutil-hover",
+    "--cor-fundo-marca-sutil",
+    "--cor-fundo-desabilitado",
+    "--cor-borda-forte",
+    "--cor-borda-marca",
+    "--cor-texto-padrao",
+    "--cor-texto-marca",
+    "--raio-pilula"
+  ],
+  "codigo": null
+}

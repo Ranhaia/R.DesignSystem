@@ -1,0 +1,93 @@
+{
+  "nome": "Carregando",
+  "slug": "carregando",
+  "versao": "1.1.0",
+  "descricao": "Quando algo demora, a pessoa precisa saber que o sistema está trabalhando. O indicador giratório serve para esperas curtas. O esqueleto mostra a forma do conteúdo antes de ele aparecer, o que faz a espera parecer menor.",
+  "resumo": "Carregando · indicador giratório para esperas curtas, sem duração conhecida. Gire o “Arco” no código (animação de rotação contínua de 0,8 s). Use “Sobre cor” dentro de botões e fundos coloridos.",
+  "diretrizes": "diretrizes/componentes/carregando.md",
+  "figma": {
+    "pagina": "Carregando",
+    "componente": "Carregando"
+  },
+  "propriedades": [
+    {
+      "nome": "Cor",
+      "tipo": "variante",
+      "opcoes": [
+        "Marca",
+        "Neutro",
+        "Sobre cor"
+      ],
+      "padrao": "Marca"
+    },
+    {
+      "nome": "Tamanho",
+      "tipo": "variante",
+      "opcoes": [
+        "P",
+        "M",
+        "G"
+      ],
+      "padrao": "P"
+    }
+  ],
+  "variantes": {
+    "Cor": [
+      "Marca",
+      "Neutro",
+      "Sobre cor"
+    ],
+    "Tamanho": [
+      "P",
+      "M",
+      "G"
+    ]
+  },
+  "estados": [],
+  "outrasPartes": [
+    {
+      "nome": "Esqueleto",
+      "resumo": "Esqueleto · formas cinzas que antecipam o layout enquanto o conteúdo carrega. Aplique uma animação suave de brilho no código.",
+      "propriedades": [
+        {
+          "nome": "Tipo",
+          "tipo": "variante",
+          "opcoes": [
+            "Texto",
+            "Item de lista",
+            "Card"
+          ],
+          "padrao": "Texto"
+        }
+      ]
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Não recebe foco.",
+    "leitor": "O indicador tem o nome Carregando e fica numa região que anuncia mudanças de forma discreta. O esqueleto fica escondido do leitor; anuncie só quando o conteúdo chegar.",
+    "foco": "Não mova o foco enquanto carrega. Quando o conteúdo chega, o foco continua onde estava.",
+    "cuidados": "Respeite quem pede menos movimento: o giro pode virar uma pulsação suave."
+  },
+  "conteudo": [
+    "Para esperas longas, diga o que está acontecendo: Gerando seu PDF…",
+    "Use reticências só enquanto algo acontece."
+  ],
+  "faca": [
+    "Mostre o indicador só depois de meio segundo de espera.",
+    "Prefira o esqueleto em listas e páginas de conteúdo.",
+    "Explique esperas longas com um texto, como “Gerando seu PDF…”."
+  ],
+  "naoFaca": [
+    "Vários indicadores girando na mesma tela.",
+    "Bloquear a tela inteira para carregar só uma parte.",
+    "Esqueletos que não se parecem com o conteúdo final."
+  ],
+  "tokens": [
+    "--cor-fundo-marca",
+    "--cor-texto-padrao",
+    "--cor-texto-sobre-marca",
+    "--cor-fundo-sutil-hover",
+    "--cor-fundo-superficie"
+  ],
+  "codigo": null
+}

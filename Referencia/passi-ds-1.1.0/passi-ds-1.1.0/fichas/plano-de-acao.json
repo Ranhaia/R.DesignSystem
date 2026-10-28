@@ -1,0 +1,58 @@
+{
+  "nome": "Plano de ação",
+  "slug": "plano-de-acao",
+  "versao": "1.1.0",
+  "descricao": "Quando a IA vai agir por você, como mover arquivos ou enviar algo, ela primeiro mostra o plano. A pessoa confirma, ajusta ou cancela. Durante a execução dá para parar, e no fim dá para desfazer. Quem decide é sempre a pessoa.",
+  "resumo": "Plano de ação · antes de um agente de IA mudar algo, ele mostra o plano em passos e espera a confirmação da pessoa. Aguardando confirmação: Cancelar, Ajustar plano ou Confirmar e executar. Executando: progresso passo a passo e botão Parar. Concluído: resultado e Desfazer.",
+  "diretrizes": "diretrizes/componentes/plano-de-acao.md",
+  "figma": {
+    "pagina": "Plano de ação",
+    "componente": "Plano de ação"
+  },
+  "propriedades": [
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Aguardando confirmação",
+        "Executando",
+        "Concluído"
+      ],
+      "padrao": "Aguardando confirmação"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Aguardando confirmação",
+    "Executando",
+    "Concluído"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab percorre os botões. Confirmar e executar nunca é ativado sozinho, nem por Enter no meio de outro campo.",
+    "leitor": "O plano é uma lista ordenada. Cada passo anuncia o estado em texto: feito, em andamento ou ainda não feito. O progresso é anunciado de forma discreta a cada passo concluído.",
+    "foco": "Ao aparecer, o foco vai para o título do plano. Ao concluir, vai para a mensagem de resultado.",
+    "cuidados": "O botão Parar fica ao alcance do teclado durante toda a execução. Passos que mudam algo dizem isso em texto."
+  },
+  "conteudo": [
+    "Cada passo começa com verbo e diz se só lê ou se muda algo.",
+    "O botão de confirmar diz o que vai acontecer: Confirmar e executar."
+  ],
+  "faca": [
+    "Diga em cada passo se ele só lê ou se muda alguma coisa.",
+    "Peça confirmação antes de qualquer mudança que afete outras pessoas ou dinheiro.",
+    "Ofereça parar durante a execução e desfazer no fim."
+  ],
+  "naoFaca": [
+    "Executar sem mostrar o plano antes.",
+    "Deixar o botão de confirmar pré-selecionado ou automático.",
+    "Esconder um passo que muda dados."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-borda-padrao",
+    "--raio-grande",
+    "--cor-borda-controle",
+    "--cor-fundo-sucesso"
+  ],
+  "codigo": null
+}

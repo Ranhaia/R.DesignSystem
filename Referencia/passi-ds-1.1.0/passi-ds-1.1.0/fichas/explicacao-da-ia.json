@@ -1,0 +1,69 @@
+{
+  "nome": "Explicação da IA",
+  "slug": "explicacao-da-ia",
+  "versao": "1.1.0",
+  "descricao": "A explicação abre quando a pessoa clica no rótulo de IA. Em poucas linhas, ela diz de onde veio o conteúdo, quais fontes a IA usou e o que ela pode errar. Explicar sob demanda gera confiança sem poluir a tela.",
+  "resumo": "Explicação da IA · painel que abre a partir do Rótulo de IA e responde “por que estou vendo isto”: de onde veio o conteúdo, quais fontes a IA usou e quais são os limites. Primeira camada de explicação, curta. Para detalhes, leve a uma página.",
+  "diretrizes": "diretrizes/componentes/explicacao-da-ia.md",
+  "figma": {
+    "pagina": "Explicação da IA",
+    "componente": "Explicação da IA"
+  },
+  "propriedades": [
+    {
+      "nome": "Título",
+      "tipo": "texto",
+      "padrao": "Por que estou vendo isto"
+    },
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Este resumo foi criado por IA a partir do capítulo 3 do livro. Ele pode deixar de fora detalhes importantes."
+    },
+    {
+      "nome": "Mostrar fontes",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Mostrar limitação",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Mostrar saiba mais",
+      "tipo": "liga-desliga",
+      "padrao": true
+    }
+  ],
+  "variantes": {},
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Abre com Enter ou Espaço no Rótulo de IA. Tab percorre os links. Esc fecha.",
+    "leitor": "Papel dialog não modal, com o título como nome. O rótulo anuncia que abre um painel e se ele está aberto.",
+    "foco": "Ao abrir, o foco vai para o título do painel. Ao fechar, volta para o Rótulo de IA.",
+    "cuidados": "Não esconda aqui informação obrigatória para a decisão: o essencial fica visível na tela."
+  },
+  "conteudo": [
+    "Uma ou duas frases sobre de onde veio o conteúdo.",
+    "Diga a limitação sem pedir desculpas: A IA pode errar. Confira o original."
+  ],
+  "faca": [
+    "Diga em uma ou duas frases de onde veio o conteúdo.",
+    "Mostre as fontes quando a IA consultou documentos.",
+    "Inclua a limitação sempre que a IA puder errar."
+  ],
+  "naoFaca": [
+    "Textos longos e técnicos sobre o modelo de IA.",
+    "Prometer precisão que a IA não tem.",
+    "Abrir a explicação sozinha, sem a pessoa pedir."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-borda-padrao",
+    "--raio-grande",
+    "--cor-fundo-sutil",
+    "--cor-texto-secundario"
+  ],
+  "codigo": null
+}

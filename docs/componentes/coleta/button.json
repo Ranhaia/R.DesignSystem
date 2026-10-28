@@ -1,0 +1,164 @@
+{
+  "slug": "button",
+  "partes": [
+    "Button",
+    "ButtonSkeleton"
+  ],
+  "variantes": [
+    "default",
+    "destructive",
+    "outline",
+    "secondary",
+    "ghost",
+    "link",
+    "ai-primary",
+    "ai-secondary"
+  ],
+  "tamanhos": [
+    {
+      "valor": "xs",
+      "px": 24,
+      "igualA": null
+    },
+    {
+      "valor": "sm",
+      "px": 32,
+      "igualA": null
+    },
+    {
+      "valor": "default",
+      "px": 40,
+      "igualA": null
+    },
+    {
+      "valor": "md",
+      "px": 40,
+      "igualA": "default"
+    },
+    {
+      "valor": "lg",
+      "px": 48,
+      "igualA": null
+    },
+    {
+      "valor": "xl",
+      "px": 56,
+      "igualA": null
+    },
+    {
+      "valor": "icon-xs",
+      "px": 24,
+      "igualA": null
+    },
+    {
+      "valor": "icon-sm",
+      "px": 32,
+      "igualA": null
+    },
+    {
+      "valor": "icon",
+      "px": 40,
+      "igualA": null
+    },
+    {
+      "valor": "icon-md",
+      "px": 40,
+      "igualA": "icon"
+    },
+    {
+      "valor": "icon-lg",
+      "px": 48,
+      "igualA": null
+    },
+    {
+      "valor": "icon-xl",
+      "px": 56,
+      "igualA": null
+    }
+  ],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "Button",
+      "tipo": "`default` · `destructive` · `outline` · `secondary` · `ghost` · `link` · `ai-primary` · `ai-secondary`",
+      "padrao": "default"
+    },
+    {
+      "nome": "size",
+      "parte": "Button",
+      "tipo": "`xs` · `sm` · `default` · `md` · `lg` · `xl` · `icon-xs` · `icon-sm` · `icon` · `icon-md` · `icon-lg` · `icon-xl`",
+      "padrao": "default"
+    },
+    {
+      "nome": "asChild",
+      "parte": "Button",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "fullWidth",
+      "parte": "Button",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "children",
+      "parte": "Button",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "icon",
+      "parte": "Button",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "label",
+      "parte": "Button",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "size",
+      "parte": "ButtonSkeleton",
+      "tipo": "`xs` · `sm` · `default` · `md` · `lg` · `xl` · `icon-xs` · `icon-sm` · `icon` · `icon-md` · `icon-lg` · `icon-xl`",
+      "padrao": "default"
+    },
+    {
+      "nome": "fullWidth",
+      "parte": "ButtonSkeleton",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "--ai-gradient-hover",
+    "--ai-gradient-rest",
+    "--scale-pressed",
+    "bg-accent",
+    "bg-ai-surface",
+    "bg-ai-surface-highlight",
+    "bg-destructive",
+    "bg-input",
+    "bg-primary",
+    "bg-secondary",
+    "border-ai-interactive",
+    "border-ai-interactive-hover",
+    "border-destructive",
+    "border-input",
+    "border-ring",
+    "duration-motion-fast",
+    "ease-spring",
+    "ring-destructive",
+    "ring-ring",
+    "rounded-md",
+    "shadow-sm",
+    "shadow-xs",
+    "text-accent-foreground",
+    "text-ai-text-high",
+    "text-primary",
+    "text-primary-foreground",
+    "text-secondary-foreground"
+  ]
+}

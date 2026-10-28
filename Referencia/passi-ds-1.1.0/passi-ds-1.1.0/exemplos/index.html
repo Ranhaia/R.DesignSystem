@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PASSI DS · demonstração dos tokens</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/passi.css">
+<style>
+  /* Tudo abaixo usa apenas variáveis do passi.css. */
+  body { margin: 0; background: var(--cor-fundo-pagina); color: var(--cor-texto-padrao); font: var(--texto-corpo-medio); }
+  main { max-width: var(--conteudo-maximo); margin: 0 auto; padding: var(--espaco-12) var(--espaco-6); display: grid; gap: var(--espaco-12); }
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--espaco-6); flex-wrap: wrap; }
+  .grupo { display: grid; gap: var(--espaco-4); }
+  .linha { display: flex; flex-wrap: wrap; gap: var(--espaco-3); align-items: center; }
+  .card { background: var(--cor-fundo-superficie); border: var(--borda-fina) solid var(--cor-borda-padrao); border-radius: var(--raio-grande); padding: var(--espaco-6); display: grid; gap: var(--espaco-3); }
+  .secundario { color: var(--cor-texto-secundario); }
+
+  .botao { font: var(--texto-rotulo-medio); height: 40px; padding: 0 var(--espaco-4); border-radius: var(--raio-medio); border: var(--borda-fina) solid transparent; cursor: pointer;
+           transition: background var(--duracao-rapida) var(--curva-padrao); }
+  .botao.primario { background: var(--cor-fundo-marca); color: var(--cor-texto-sobre-marca); }
+  .botao.primario:hover { background: var(--cor-fundo-marca-hover); }
+  .botao.secundario { background: var(--cor-fundo-invertido); color: var(--cor-texto-invertido); }
+  .botao.contorno { background: transparent; color: var(--cor-texto-padrao); border-color: var(--cor-borda-forte); }
+  .botao.fantasma { background: transparent; color: var(--cor-texto-padrao); }
+  .botao.fantasma:hover { background: var(--cor-fundo-fantasma-hover); }
+  .botao.perigo { background: var(--cor-fundo-erro); color: var(--cor-texto-sobre-marca); }
+
+  .campo { display: grid; gap: var(--espaco-2); max-width: 360px; }
+  .campo label { font: var(--texto-rotulo-medio); }
+  .campo input { font: var(--texto-corpo-medio); height: 40px; padding: 0 var(--espaco-3); border-radius: var(--raio-medio); border: var(--borda-fina) solid var(--cor-borda-forte);
+                 background: var(--cor-fundo-superficie); color: var(--cor-texto-padrao); }
+  .campo.erro input { border-color: var(--cor-borda-erro); }
+  .campo .ajuda { font: var(--texto-legenda); color: var(--cor-texto-secundario); }
+  .campo.erro .ajuda { color: var(--cor-texto-erro); }
+
+  .alerta { display: flex; gap: var(--espaco-3); padding: var(--espaco-4); border-radius: var(--raio-grande); background: var(--cor-fundo-marca-sutil); border: var(--borda-fina) solid var(--cor-borda-marca); }
+  .alerta.sucesso { background: var(--cor-fundo-sucesso-sutil); border-color: var(--cor-borda-sucesso); }
+  .alerta strong { font: var(--texto-rotulo-grande); display: block; }
+
+  .selo { font: var(--texto-rotulo-pequeno); padding: var(--espaco-0-5) var(--espaco-2); border-radius: var(--raio-pilula); background: var(--cor-fundo-sucesso-sutil); color: var(--cor-texto-sucesso); }
+  .flutuante { box-shadow: var(--sombra-media); }
+  .faixa { background: var(--gradiente-noite); color: var(--cor-texto-sobre-imagem); border-radius: var(--raio-extra); padding: var(--espaco-8); }
+  .amostras { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--espaco-3); }
+  .amostra { border-radius: var(--raio-medio); border: var(--borda-fina) solid var(--cor-borda-padrao); overflow: hidden; background: var(--cor-fundo-superficie); }
+  .amostra i { display: block; height: 48px; }
+  .amostra span { display: block; padding: var(--espaco-2); font: var(--texto-legenda); font-family: var(--fonte-codigo); color: var(--cor-texto-secundario); word-break: break-all; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="grupo">
+      <p class="texto-sobretitulo secundario" style="margin:0">PASSI DS · 1.1.0</p>
+      <h1 class="texto-display-medio" style="margin:0">Tokens em uso</h1>
+      <p class="texto-corpo-grande secundario" style="margin:0">Esta página usa somente as variáveis de <code>css/passi.css</code>.</p>
+    </div>
+    <div class="linha">
+      <button class="botao contorno" type="button" data-tema-alvo="claro">Claro</button>
+      <button class="botao contorno" type="button" data-tema-alvo="escuro">Escuro</button>
+      <button class="botao contorno" type="button" data-tema-alvo="alto-contraste-claro">Alto contraste claro</button>
+      <button class="botao contorno" type="button" data-tema-alvo="alto-contraste-escuro">Alto contraste escuro</button>
+      <button class="botao fantasma" type="button" data-tema-alvo="">Seguir o sistema</button>
+    </div>
+  </header>
+
+  <section class="grupo" aria-labelledby="t-botoes">
+    <h2 id="t-botoes" class="texto-titulo-3" style="margin:0">Botões</h2>
+    <div class="linha">
+      <button class="botao primario" type="button">Salvar alterações</button>
+      <button class="botao secundario" type="button">Baixar arquivo</button>
+      <button class="botao contorno" type="button">Ver capítulos</button>
+      <button class="botao fantasma" type="button">Cancelar</button>
+      <button class="botao perigo" type="button">Excluir capítulo</button>
+    </div>
+  </section>
+
+  <section class="grupo" aria-labelledby="t-campos">
+    <h2 id="t-campos" class="texto-titulo-3" style="margin:0">Campos e mensagens</h2>
+    <div class="linha" style="align-items:flex-start">
+      <div class="campo">
+        <label for="nome">Nome completo</label>
+        <input id="nome" placeholder="Como podemos te chamar" aria-describedby="nome-ajuda">
+        <span class="ajuda" id="nome-ajuda">Como aparece no seu documento.</span>
+      </div>
+      <div class="campo erro">
+        <label for="email">E-mail</label>
+        <input id="email" value="joao@" aria-invalid="true" aria-describedby="email-erro">
+        <span class="ajuda" id="email-erro">Falta o domínio. Exemplo: nome@empresa.com</span>
+      </div>
+    </div>
+    <div class="alerta" role="status"><div><strong>Nova versão disponível</strong><span class="secundario">Baixe a versão 1.1 para ter os componentes de gráficos.</span></div></div>
+    <div class="alerta sucesso" role="status"><div><strong>Arquivo publicado</strong><span class="secundario">Os componentes já aparecem na biblioteca do time.</span></div></div>
+  </section>
+
+  <section class="grupo" aria-labelledby="t-card">
+    <h2 id="t-card" class="texto-titulo-3" style="margin:0">Card, selo, sombra e gradiente</h2>
+    <div class="linha" style="align-items:stretch">
+      <article class="card" style="max-width:340px">
+        <span class="selo" style="justify-self:start">Publicado</span>
+        <h3 class="texto-titulo-4" style="margin:0">Governança sem burocracia</h3>
+        <p class="texto-corpo-pequeno secundario" style="margin:0">Quem decide, quem mantém e como evoluir o design system sem travar os times de produto.</p>
+      </article>
+      <article class="card flutuante" style="max-width:340px">
+        <h3 class="texto-titulo-4" style="margin:0">Menu flutuante</h3>
+        <p class="texto-corpo-pequeno secundario" style="margin:0">Sombra média: só em elementos que flutuam.</p>
+      </article>
+    </div>
+    <div class="faixa"><p class="texto-sobretitulo" style="margin:0 0 var(--espaco-2)">Gradiente Noite</p><p class="texto-titulo-2" style="margin:0">Você não precisa saber fazer. Precisa saber cobrar.</p></div>
+  </section>
+
+  <section class="grupo" aria-labelledby="t-tipo">
+    <h2 id="t-tipo" class="texto-titulo-3" style="margin:0">Estilos de texto</h2>
+    <div class="card" id="estilos"></div>
+  </section>
+
+  <section class="grupo" aria-labelledby="t-cores">
+    <h2 id="t-cores" class="texto-titulo-3" style="margin:0">Cores com função</h2>
+    <div class="amostras" id="cores"></div>
+  </section>
+</main>
+<script src="cores.js"></script>
+<script>
+  const estilos = ["display-grande","display-medio","titulo-1","titulo-2","titulo-3","titulo-4","corpo-grande","corpo-medio","corpo-pequeno","link-medio","link-pequeno","rotulo-grande","rotulo-medio","rotulo-pequeno","legenda","sobretitulo","codigo"];
+  document.getElementById("estilos").innerHTML = estilos.map(e => `<p class="texto-${e}" style="margin:0">texto-${e} · Precisa saber cobrar</p>`).join("");
+  document.getElementById("cores").innerHTML = window.PASSI_CORES.map(c => `<div class="amostra"><i style="background:var(${c})"></i><span>${c}</span></div>`).join("");
+  document.querySelectorAll("[data-tema-alvo]").forEach(b => b.addEventListener("click", () => {
+    const t = b.dataset.temaAlvo; if (t) document.documentElement.dataset.tema = t; else delete document.documentElement.dataset.tema;
+  }));
+</script>
+</body>
+</html>

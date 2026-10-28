@@ -1,0 +1,93 @@
+{
+  "nome": "Botão em bloco",
+  "slug": "botao-em-bloco",
+  "versao": "1.1.0",
+  "descricao": "O botão em bloco transforma uma escolha importante em cartões grandes e fáceis de tocar. Cada opção tem ícone, título e uma frase curta, e só uma fica selecionada por vez.",
+  "resumo": "Botão em bloco · opção grande e clicável, com ícone, título e descrição. Usado para escolhas importantes, como o tipo de conta ou o ponto de partida. Funciona como um rádio visual: só um selecionado por grupo.",
+  "diretrizes": "diretrizes/componentes/botao-em-bloco.md",
+  "figma": {
+    "pagina": "Botão em bloco",
+    "componente": "Botão em bloco"
+  },
+  "propriedades": [
+    {
+      "nome": "Título",
+      "tipo": "texto",
+      "padrao": "Ler o livro"
+    },
+    {
+      "nome": "Descrição",
+      "tipo": "texto",
+      "padrao": "Comece pelos capítulos, no seu ritmo."
+    },
+    {
+      "nome": "Mostrar descrição",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Mostrar marcação",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Ícone",
+      "tipo": "troca"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Selecionado",
+        "Foco",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Selecionado",
+    "Foco",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Funciona como um grupo de rádios: Tab entra no grupo, setas mudam a opção.",
+    "leitor": "Papel radiogroup com nome e cada bloco como radio. O nome é o título; a descrição é lida junto.",
+    "foco": "Borda azul de 2 px no bloco que recebe o teclado.",
+    "cuidados": "O bloco selecionado se diferencia também pela marcação e pela borda, não só pelo fundo azul claro."
+  },
+  "conteudo": [
+    "Título curto com a escolha; descrição de uma linha com o que acontece depois.",
+    "Opções paralelas, no mesmo formato."
+  ],
+  "faca": [
+    "Use de 2 a 4 opções lado a lado.",
+    "Escreva títulos curtos e descrições de uma linha.",
+    "Mostre qual opção está selecionada com mais de um sinal: borda, cor e marcação."
+  ],
+  "naoFaca": [
+    "Usar para ações simples. Para isso use Botão.",
+    "Opções com textos muito diferentes de tamanho.",
+    "Mais de uma opção selecionada quando a escolha é única."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-fundo-sutil",
+    "--cor-fundo-sutil-hover",
+    "--cor-fundo-marca-sutil",
+    "--cor-borda-padrao",
+    "--cor-borda-forte",
+    "--cor-borda-controle",
+    "--cor-borda-marca",
+    "--cor-texto-marca",
+    "--raio-grande"
+  ],
+  "codigo": null
+}

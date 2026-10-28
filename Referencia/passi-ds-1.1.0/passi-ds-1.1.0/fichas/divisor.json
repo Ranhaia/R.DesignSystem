@@ -1,0 +1,59 @@
+{
+  "nome": "Divisor",
+  "slug": "divisor",
+  "versao": "1.1.0",
+  "descricao": "O divisor é uma linha fina que separa grupos de conteúdo. Use com moderação: espaço em branco costuma separar melhor do que linhas.",
+  "resumo": "Divisor · linha fina que separa grupos de conteúdo. Estique até a largura (ou altura) desejada.",
+  "diretrizes": "diretrizes/componentes/divisor.md",
+  "figma": {
+    "pagina": "Divisor",
+    "componente": "Divisor"
+  },
+  "propriedades": [
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "ou"
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Horizontal",
+        "Com texto",
+        "Vertical"
+      ],
+      "padrao": "Horizontal"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Horizontal",
+      "Com texto",
+      "Vertical"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Não recebe foco.",
+    "leitor": "Linha decorativa fica escondida do leitor. Quando separa seções de verdade, use títulos, não só a linha. O divisor com texto lê o texto.",
+    "foco": "Nenhum.",
+    "cuidados": "A linha não precisa de contraste mínimo porque é decorativa. Nenhuma informação pode depender só dela."
+  },
+  "conteudo": [
+    "O divisor com texto usa uma ou duas palavras em minúsculas: ou."
+  ],
+  "faca": [
+    "Separe grupos diferentes de conteúdo.",
+    "Use o divisor com texto entre opções de login, como “ou continue com”."
+  ],
+  "naoFaca": [
+    "Colocar linha entre todos os itens de uma lista curta.",
+    "Usar divisores grossos ou coloridos."
+  ],
+  "tokens": [
+    "--cor-borda-padrao",
+    "--cor-texto-terciario"
+  ],
+  "codigo": null
+}

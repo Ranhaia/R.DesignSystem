@@ -1,0 +1,67 @@
+{
+  "nome": "Mensagem da conversa",
+  "slug": "mensagem-da-conversa",
+  "versao": "1.1.0",
+  "descricao": "Cada fala da conversa com a IA. A da pessoa fica num balão à direita. A da IA vem à esquerda, sempre identificada, com as fontes quando houver e com ações para copiar, gerar de novo e avaliar. Quando algo dá errado, a mensagem diz o que fazer.",
+  "resumo": "Mensagem da conversa · uma fala dentro da Conversa com IA. Pessoa: balão à direita. IA: à esquerda, com avatar de brilho, nome e Rótulo de IA, e ações de copiar, gerar de novo e avaliar. IA com fontes mostra de onde a resposta veio. IA com erro explica o problema e oferece tentar de novo ou falar com uma pessoa.",
+  "diretrizes": "diretrizes/componentes/mensagem-da-conversa.md",
+  "figma": {
+    "pagina": "Mensagem da conversa",
+    "componente": "Mensagem da conversa"
+  },
+  "propriedades": [
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Pessoa",
+        "IA gerando",
+        "IA completa",
+        "IA com fontes",
+        "IA com erro"
+      ],
+      "padrao": "Pessoa"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Pessoa",
+      "IA gerando",
+      "IA completa",
+      "IA com fontes",
+      "IA com erro"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "As ações de cada resposta (copiar, gerar de novo, avaliar) e os links das fontes recebem Tab.",
+    "leitor": "A conversa é uma lista de mensagens, e cada uma diz quem falou: Você ou Assistente do livro, resposta gerada por IA. A resposta nova é anunciada inteira quando termina, não palavra por palavra. Os botões de ícone têm nome em texto.",
+    "foco": "O foco fica no Campo de pedido. Não mova o foco para a resposta quando ela chegar.",
+    "cuidados": "Escreva sem fingir ser uma pessoa. O erro sempre oferece uma saída: tentar de novo ou falar com alguém. No código, o balão da pessoa tem no máximo 80% da largura e quebra a linha."
+  },
+  "conteudo": [
+    "A IA não usa primeira pessoa emotiva nem finge ser humana.",
+    "No erro, diga o que houve e ofereça saída: Tentar de novo ou Falar com uma pessoa."
+  ],
+  "faca": [
+    "Mostre as fontes sempre que a resposta vier de documentos.",
+    "Ofereça copiar, gerar de novo e avaliar em toda resposta.",
+    "No erro, diga o que aconteceu e o que fazer."
+  ],
+  "naoFaca": [
+    "Fingir que a IA é uma pessoa, com nome humano ou foto.",
+    "Esconder que a resposta foi gerada por IA.",
+    "Mensagens de erro técnicas, sem saída."
+  ],
+  "tokens": [
+    "--cor-fundo-sutil",
+    "--raio-grande",
+    "--cor-fundo-ia-sutil",
+    "--cor-borda-ia",
+    "--cor-texto-ia",
+    "--cor-texto-marca",
+    "--cor-fundo-erro-sutil",
+    "--cor-texto-erro"
+  ],
+  "codigo": null
+}

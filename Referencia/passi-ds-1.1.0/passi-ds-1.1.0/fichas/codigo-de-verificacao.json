@@ -1,0 +1,102 @@
+{
+  "nome": "Código de verificação",
+  "slug": "codigo-de-verificacao",
+  "versao": "1.1.0",
+  "descricao": "O código de verificação recebe números enviados por e-mail ou SMS, uma casa por dígito. O cursor avança sozinho e a pessoa pode colar o código inteiro.",
+  "resumo": "Dígito · uma casa do Código de verificação. Use o componente completo.",
+  "diretrizes": "diretrizes/componentes/codigo-de-verificacao.md",
+  "figma": {
+    "pagina": "Código de verificação",
+    "componente": "Dígito"
+  },
+  "propriedades": [
+    {
+      "nome": "Número",
+      "tipo": "texto",
+      "padrao": "4"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Vazio",
+        "Foco",
+        "Preenchido",
+        "Erro"
+      ],
+      "padrao": "Vazio"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Vazio",
+    "Foco",
+    "Preenchido",
+    "Erro"
+  ],
+  "outrasPartes": [
+    {
+      "nome": "Código de verificação",
+      "resumo": "Código de verificação · 4, 6 (padrão) ou 8 casas para códigos de confirmação enviados por e-mail ou SMS. O número de casas é igual ao do código enviado. Ao colar o código, preencha todas as casas de uma vez.",
+      "propriedades": [
+        {
+          "nome": "Rótulo",
+          "tipo": "texto",
+          "padrao": "Código enviado por e-mail"
+        },
+        {
+          "nome": "Dígitos",
+          "tipo": "variante",
+          "opcoes": [
+            "6",
+            "4",
+            "8"
+          ],
+          "padrao": "6"
+        },
+        {
+          "nome": "Estado",
+          "tipo": "variante",
+          "opcoes": [
+            "Vazio",
+            "Digitando",
+            "Completo",
+            "Erro"
+          ],
+          "padrao": "Vazio"
+        }
+      ]
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Ao digitar, o cursor avança sozinho. Backspace volta para a casa anterior. Colar o código inteiro preenche todas as casas.",
+    "leitor": "Para o leitor de tela, prefira um único campo com o rótulo Código de verificação, mesmo que a tela mostre uma casa por dígito. Anuncie quando o código expirar.",
+    "foco": "Borda azul na casa ativa.",
+    "cuidados": "Aceite colar e o preenchimento automático do celular (WCAG 3.3.8). Não apague o que foi digitado em caso de erro. Dê tempo suficiente e um jeito de pedir um código novo."
+  },
+  "conteudo": [
+    "Diga para onde o código foi enviado: Enviamos um código para ana@empresa.com.br.",
+    "No erro, diga o que fazer: Código errado. Confira os números ou peça outro."
+  ],
+  "faca": [
+    "Aceite colar o código inteiro de uma vez.",
+    "Mostre para onde o código foi enviado.",
+    "Ofereça reenviar o código depois de alguns segundos."
+  ],
+  "naoFaca": [
+    "Apagar tudo quando a pessoa erra um dígito.",
+    "Esconder os números digitados.",
+    "Pedir códigos com mais de 8 dígitos ou mudar a quantidade de casas no meio do fluxo."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-borda-controle",
+    "--cor-borda-marca",
+    "--cor-borda-foco",
+    "--cor-borda-erro",
+    "--cor-texto-padrao",
+    "--espaco-2",
+    "--raio-medio"
+  ],
+  "codigo": null
+}

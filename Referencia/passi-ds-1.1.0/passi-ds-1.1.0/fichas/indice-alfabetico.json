@@ -1,0 +1,76 @@
+{
+  "nome": "Índice alfabético",
+  "slug": "indice-alfabetico",
+  "versao": "1.1.0",
+  "descricao": "O índice alfabético leva direto a uma letra em listas longas, como glossários e contatos. No computador, é uma linha de letras acima da lista. No celular, é uma coluna na lateral, em que a pessoa toca ou arrasta sobre a letra.",
+  "resumo": "Índice alfabético · letras para pular direto a uma seção de listas longas em ordem alfabética, como glossários e contatos. Horizontal no computador, acima da lista, com a letra atual marcada. Vertical no celular, na lateral; ao arrastar, a letra aparece ampliada ao lado. Letras sem conteúdo ficam apagadas.",
+  "diretrizes": "diretrizes/componentes/indice-alfabetico.md",
+  "figma": {
+    "pagina": "Índice alfabético",
+    "componente": "Índice alfabético"
+  },
+  "propriedades": [
+    {
+      "nome": "Orientação",
+      "tipo": "variante",
+      "opcoes": [
+        "Vertical",
+        "Horizontal"
+      ],
+      "padrao": "Vertical"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Arrastando",
+        "Letra atual"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Orientação": [
+      "Vertical",
+      "Horizontal"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Arrastando",
+    "Letra atual"
+  ],
+  "acessibilidade": {
+    "teclado": "Cada letra com conteúdo é um link que leva à seção. No computador, Tab passa pelas letras e Enter abre a seção. Letras sem conteúdo não recebem foco.",
+    "leitor": "Fica numa navegação com o nome Índice alfabético. Letras sem conteúdo são anunciadas como indisponíveis ou ficam fora da leitura.",
+    "foco": "Ao escolher uma letra, o foco vai para o título daquela seção.",
+    "cuidados": "No celular, arrastar sobre as letras é atalho: tocar em cada letra precisa funcionar sozinho (WCAG 2.5.7). Cada letra tem área de toque de 24 px no celular e 32 px no computador."
+  },
+  "conteudo": [
+    "Letras maiúsculas, sem acento: A, B, C.",
+    "Para leitor de tela, diga a seção: Ir para a letra G."
+  ],
+  "faca": [
+    "Use em listas com mais de 50 itens em ordem alfabética.",
+    "Apague as letras que não têm conteúdo.",
+    "Mostre a letra ampliada enquanto a pessoa arrasta.",
+    "No computador, use a versão horizontal acima da lista."
+  ],
+  "naoFaca": [
+    "Usar em listas curtas ou fora de ordem alfabética.",
+    "Letras pequenas demais para tocar.",
+    "Esconder a busca: o índice complementa, não substitui.",
+    "Usar a versão vertical, com arrasto, no computador."
+  ],
+  "tokens": [
+    "--cor-texto-marca",
+    "--cor-texto-terciario",
+    "--cor-fundo-marca",
+    "--cor-texto-sobre-marca",
+    "--cor-fundo-sutil",
+    "--cor-fundo-marca-sutil",
+    "--raio-medio"
+  ],
+  "codigo": null
+}

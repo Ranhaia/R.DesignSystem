@@ -1,0 +1,65 @@
+{
+  "nome": "Proporção de imagem",
+  "slug": "proporcao-de-imagem",
+  "versao": "1.1.0",
+  "descricao": "A proporção define a relação entre largura e altura de uma imagem ou vídeo. Usar sempre as mesmas proporções deixa as grades alinhadas e evita imagens cortadas de jeitos diferentes em cada tela.",
+  "resumo": "Proporção de imagem · molduras com proporções fixas para imagens e vídeos, garantindo que tudo fique alinhado na grade. Troque o preenchimento pela imagem real.",
+  "diretrizes": "diretrizes/componentes/proporcao-de-imagem.md",
+  "figma": {
+    "pagina": "Proporção de imagem",
+    "componente": "Proporção de imagem"
+  },
+  "propriedades": [
+    {
+      "nome": "Proporção",
+      "tipo": "variante",
+      "opcoes": [
+        "1:1",
+        "4:3",
+        "3:2",
+        "16:9",
+        "21:9",
+        "3:4",
+        "9:16"
+      ],
+      "padrao": "1:1"
+    }
+  ],
+  "variantes": {
+    "Proporção": [
+      "1:1",
+      "4:3",
+      "3:2",
+      "16:9",
+      "21:9",
+      "3:4",
+      "9:16"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Não recebe foco.",
+    "leitor": "A imagem dentro da moldura precisa de texto alternativo que diga o que ela mostra, ou ficar escondida se for decorativa.",
+    "foco": "Nenhum.",
+    "cuidados": "Ao cortar a imagem para caber na proporção, não corte texto ou informação importante. Vídeos precisam de legenda."
+  },
+  "conteudo": [
+    "Todo texto importante fica fora da imagem, em texto de verdade.",
+    "O texto alternativo diz o que a imagem mostra, não como ela é."
+  ],
+  "faca": [
+    "Escolha uma ou duas proporções por tipo de conteúdo e mantenha.",
+    "Use 16:9 para vídeos e 3:4 para capas de livro.",
+    "Recorte a imagem para o assunto principal ficar no centro."
+  ],
+  "naoFaca": [
+    "Esticar ou achatar imagens para caber.",
+    "Misturar várias proporções na mesma grade.",
+    "Colocar texto importante dentro da imagem."
+  ],
+  "tokens": [
+    "--raio-grande",
+    "--cor-texto-marca"
+  ],
+  "codigo": null
+}

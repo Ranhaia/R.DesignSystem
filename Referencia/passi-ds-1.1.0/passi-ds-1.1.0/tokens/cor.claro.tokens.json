@@ -1,0 +1,906 @@
+{
+  "$description": "Cores com função do PASSI DS, modo Claro. Cada token aponta para um primitivo.",
+  "cor": {
+    "fundo": {
+      "pagina": {
+        "$type": "color",
+        "$value": "{neutro.25}",
+        "$description": "Fundo da página, atrás de tudo. Texto por cima: texto/padrao. Contraste: 18,9:1 ou mais no claro e no escuro, 19,7:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 102 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-pagina)"
+            }
+          }
+        }
+      },
+      "superficie": {
+        "$type": "color",
+        "$value": "{neutro.0}",
+        "$description": "Cards, painéis, campos e janelas sobre a página. A borda cor/borda/padrao separa a superfície da página; a sombra fica só para o que flutua. Texto por cima: texto/padrao. Contraste: 17,3:1 ou mais no claro e no escuro, 19,7:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 103 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-superficie)"
+            }
+          }
+        }
+      },
+      "sutil": {
+        "$type": "color",
+        "$value": "{neutro.50}",
+        "$description": "Áreas de apoio e hover de itens neutros, como itens de menu e o botão Contorno. Texto por cima: texto/padrao. Contraste: 14,4:1 ou mais no claro e no escuro, 17,7:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 98 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-sutil)"
+            }
+          }
+        }
+      },
+      "sutil-hover": {
+        "$type": "color",
+        "$value": "{neutro.100}",
+        "$description": "Hover sobre fundo/sutil e estado pressionado de itens neutros. Texto por cima: texto/padrao. Contraste: 10,5:1 ou mais no claro e no escuro, 15,1:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 92 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-sutil-hover)"
+            }
+          }
+        }
+      },
+      "invertido": {
+        "$type": "color",
+        "$value": "{neutro.950}",
+        "$description": "Bloco de contraste invertido: escuro no claro e claro no escuro, como o botão Secundário. Texto por cima: texto/invertido. Contraste: 18,9:1 ou mais no claro e no escuro, 19,7:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 102 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-invertido)"
+            }
+          }
+        }
+      },
+      "marca": {
+        "$type": "color",
+        "$value": "{azul.500}",
+        "$description": "Ação principal: botão Primário, checkbox e rádio marcados, interruptor ligado. Texto por cima: texto/sobre-marca. Contraste: 6,7:1 ou mais no claro e no escuro, 8,1:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 87 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-marca)"
+            }
+          }
+        }
+      },
+      "marca-hover": {
+        "$type": "color",
+        "$value": "{azul.600}",
+        "$description": "Hover da ação principal. Texto por cima: texto/sobre-marca. Contraste: 9,7:1 ou mais no claro e no escuro, 11,9:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 95 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-marca-hover)"
+            }
+          }
+        }
+      },
+      "marca-sutil": {
+        "$type": "color",
+        "$value": "{azul.50}",
+        "$description": "Destaque leve da marca: item selecionado, etiqueta ativa, checkbox desmarcado pressionado. Texto por cima: texto/marca. Contraste: 5,9:1 ou mais no claro e no escuro, 7,5:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 53 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-marca-sutil)"
+            }
+          }
+        }
+      },
+      "sucesso": {
+        "$type": "color",
+        "$value": "{verde.700}",
+        "$description": "Fundo forte de sucesso. Sempre com ícone ou texto. Texto por cima: texto/sobre-marca. Contraste: 5,4:1 ou mais no claro e no escuro, 11,0:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 81 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-sucesso)"
+            }
+          }
+        }
+      },
+      "sucesso-sutil": {
+        "$type": "color",
+        "$value": "{verde.50}",
+        "$description": "Fundo de alertas e selos de sucesso. Texto por cima: texto/sucesso. Contraste: 4,9:1 ou mais no claro e no escuro, 7,2:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 64 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-sucesso-sutil)"
+            }
+          }
+        }
+      },
+      "alerta": {
+        "$type": "color",
+        "$value": "{ambar.500}",
+        "$description": "Fundo forte de alerta, em áreas pequenas como selos e pontos de status. Sempre com ícone ou texto.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-alerta)"
+            }
+          }
+        }
+      },
+      "alerta-sutil": {
+        "$type": "color",
+        "$value": "{ambar.50}",
+        "$description": "Fundo de alertas e selos de atenção. Texto por cima: texto/alerta. Contraste: 5,7:1 ou mais no claro e no escuro, 8,1:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 74 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-alerta-sutil)"
+            }
+          }
+        }
+      },
+      "erro": {
+        "$type": "color",
+        "$value": "{vermelho.500}",
+        "$description": "Fundo forte de erro: botão Perigo e contadores de erro. Texto por cima: texto/sobre-marca. Contraste: 4,8:1 ou mais no claro e no escuro, 7,5:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 77 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-erro)"
+            }
+          }
+        }
+      },
+      "erro-hover": {
+        "$type": "color",
+        "$value": "{vermelho.700}",
+        "$description": "Hover de fundo/erro. Texto por cima: texto/sobre-marca. Contraste: 7,5:1 ou mais no claro e no escuro, 14,1:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 89 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-erro-hover)"
+            }
+          }
+        }
+      },
+      "erro-sutil": {
+        "$type": "color",
+        "$value": "{vermelho.50}",
+        "$description": "Fundo de alertas e mensagens de erro. Texto por cima: texto/erro. Contraste: 6,4:1 ou mais no claro e no escuro, 11,0:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 51 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-erro-sutil)"
+            }
+          }
+        }
+      },
+      "desabilitado": {
+        "$type": "color",
+        "$value": "{neutro.100}",
+        "$description": "Fundo de itens desabilitados. Isento de contraste pela WCAG; explique perto do item por que ele não está disponível.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-desabilitado)"
+            }
+          }
+        }
+      },
+      "sobreposicao": {
+        "$type": "color",
+        "$value": "{transparente.preto-60}",
+        "$description": "Camada escura e translúcida atrás de janelas modais.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-sobreposicao)"
+            }
+          }
+        }
+      },
+      "fantasma-hover": {
+        "$type": "color",
+        "$value": "{transparente.preto-8}",
+        "$description": "Hover translúcido de botões e itens sem fundo (botão Fantasma, segmento). Texto por cima: texto/padrao. Contraste: 14,1:1 ou mais no claro e no escuro, 13,4:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 91 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-fantasma-hover)"
+            }
+          }
+        }
+      },
+      "invertido-hover": {
+        "$type": "color",
+        "$value": "{neutro.800}",
+        "$description": "Hover de fundo/invertido. Texto por cima: texto/invertido. Contraste: 13,5:1 ou mais no claro e no escuro, 13,5:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 81 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-invertido-hover)"
+            }
+          }
+        }
+      },
+      "controle-desligado": {
+        "$type": "color",
+        "$value": "{neutro.400}",
+        "$description": "Trilho do interruptor desligado. Medido sobre fundo/superficie. Contraste: 3,2:1 ou mais no claro e no escuro, 6,0:1 ou mais no alto contraste (mínimo 3:1 e, no alto contraste, 4,5:1). APCA: Lc 24 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-controle-desligado)"
+            }
+          }
+        }
+      },
+      "selecao": {
+        "$type": "color",
+        "$value": "{azul.200}",
+        "$description": "Fundo do texto que a pessoa seleciona. Texto por cima: texto/padrao. Contraste: 11,9:1 ou mais no claro e no escuro, 11,9:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 74 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-selecao)"
+            }
+          }
+        }
+      },
+      "marca-texto": {
+        "$type": "color",
+        "$value": "{ambar.100}",
+        "$description": "Marca-texto dos resultados de busca. Texto por cima: texto/padrao. Contraste: 11,4:1 ou mais no claro e no escuro, 11,9:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 95 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-marca-texto)"
+            }
+          }
+        }
+      },
+      "ia-sutil": {
+        "$type": "color",
+        "$value": "{violeta.50}",
+        "$description": "Fundo do rótulo de IA e de áreas pequenas geradas por IA. Nunca em telas inteiras. Texto por cima: texto/ia. Contraste: 7,6:1 ou mais no claro e no escuro, 7,6:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 55 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-ia-sutil)"
+            }
+          }
+        }
+      },
+      "marca-pressionado": {
+        "$type": "color",
+        "$value": "{azul.700}",
+        "$description": "Ação principal pressionada. Texto por cima: texto/sobre-marca. Contraste: 12,0:1 ou mais no claro e no escuro, 15,5:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 100 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-marca-pressionado)"
+            }
+          }
+        }
+      },
+      "erro-pressionado": {
+        "$type": "color",
+        "$value": "{vermelho.900}",
+        "$description": "Estado pressionado de fundo/erro. Texto por cima: texto/sobre-marca. Contraste: 15,5:1 ou mais no claro e no escuro, 15,5:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 104 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-erro-pressionado)"
+            }
+          }
+        }
+      },
+      "fantasma-pressionado": {
+        "$type": "color",
+        "$value": "{transparente.preto-12}",
+        "$description": "Estado pressionado translúcido de botões e itens sem fundo. Texto por cima: texto/padrao. Contraste: 8,8:1 ou mais no claro e no escuro, 8,4:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 85 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-fantasma-pressionado)"
+            }
+          }
+        }
+      },
+      "invertido-pressionado": {
+        "$type": "color",
+        "$value": "{neutro.700}",
+        "$description": "Estado pressionado de fundo/invertido. Texto por cima: texto/invertido. Contraste: 9,9:1 ou mais no claro e no escuro, 9,9:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 65 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-fundo-invertido-pressionado)"
+            }
+          }
+        }
+      }
+    },
+    "texto": {
+      "padrao": {
+        "$type": "color",
+        "$value": "{neutro.950}",
+        "$description": "Texto principal. Medido sobre fundo/pagina. Contraste: 18,9:1 ou mais no claro e no escuro, 19,7:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 102 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-padrao)"
+            }
+          }
+        }
+      },
+      "secundario": {
+        "$type": "color",
+        "$value": "{neutro.700}",
+        "$description": "Texto de apoio: descrições, ajudas e legendas. Medido sobre fundo/pagina. Contraste: 10,5:1 ou mais no claro e no escuro, 15,1:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 81 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-secundario)"
+            }
+          }
+        }
+      },
+      "terciario": {
+        "$type": "color",
+        "$value": "{neutro.500}",
+        "$description": "Texto de menor destaque: datas, contadores e textos de exemplo dentro de campos. Medido sobre fundo/superficie. Contraste: 5,3:1 ou mais no claro e no escuro, 7,8:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 41 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-terciario)"
+            }
+          }
+        }
+      },
+      "invertido": {
+        "$type": "color",
+        "$value": "{neutro.25}",
+        "$description": "Texto sobre fundo/invertido e seus estados. Medido sobre fundo/invertido. Contraste: 18,9:1 ou mais no claro e no escuro, 19,7:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 102 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-invertido)"
+            }
+          }
+        }
+      },
+      "marca": {
+        "$type": "color",
+        "$value": "{azul.500}",
+        "$description": "Links e destaques da marca. Medido sobre fundo/superficie. Contraste: 6,7:1 ou mais no claro e no escuro, 8,1:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 53 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-marca)"
+            }
+          }
+        }
+      },
+      "sobre-marca": {
+        "$type": "color",
+        "$value": "{neutro.0}",
+        "$description": "Texto e ícone sobre fundo/marca, fundo/sucesso e fundo/erro, com seus estados. Não use sobre fotos: para isso existe texto/sobre-imagem. Medido sobre fundo/marca. Contraste: 6,7:1 ou mais no claro e no escuro, 8,1:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 87 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-sobre-marca)"
+            }
+          }
+        }
+      },
+      "sucesso": {
+        "$type": "color",
+        "$value": "{verde.700}",
+        "$description": "Texto de sucesso. Sempre com ícone. Medido sobre fundo/sucesso-sutil. Contraste: 4,9:1 ou mais no claro e no escuro, 7,2:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 64 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-sucesso)"
+            }
+          }
+        }
+      },
+      "alerta": {
+        "$type": "color",
+        "$value": "{ambar.800}",
+        "$description": "Texto de atenção. Sempre com ícone. Medido sobre fundo/alerta-sutil. Contraste: 5,7:1 ou mais no claro e no escuro, 8,1:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 74 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-alerta)"
+            }
+          }
+        }
+      },
+      "erro": {
+        "$type": "color",
+        "$value": "{vermelho.700}",
+        "$description": "Texto de erro: diz o que houve e como resolver. Sempre com ícone. Medido sobre fundo/erro-sutil. Contraste: 6,4:1 ou mais no claro e no escuro, 11,0:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 51 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-erro)"
+            }
+          }
+        }
+      },
+      "desabilitado": {
+        "$type": "color",
+        "$value": "{neutro.300}",
+        "$description": "Texto de itens desabilitados. Isento de contraste pela WCAG.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-desabilitado)"
+            }
+          }
+        }
+      },
+      "sobre-imagem": {
+        "$type": "color",
+        "$value": "{neutro.0}",
+        "$description": "Texto sobre fotos, vídeos e gradientes escuros. Branco em todos os modos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-sobre-imagem)"
+            }
+          }
+        }
+      },
+      "ia": {
+        "$type": "color",
+        "$value": "{violeta.700}",
+        "$description": "Texto e ícone do rótulo de IA. Só para identificar o que veio da IA. Medido sobre fundo/ia-sutil. Contraste: 7,6:1 ou mais no claro e no escuro, 7,6:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 55 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-ia)"
+            }
+          }
+        }
+      },
+      "marca-hover": {
+        "$type": "color",
+        "$value": "{azul.600}",
+        "$description": "Link no hover. Medido sobre fundo/superficie. Contraste: 9,7:1 ou mais no claro e no escuro, 11,9:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 73 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-marca-hover)"
+            }
+          }
+        }
+      },
+      "marca-pressionado": {
+        "$type": "color",
+        "$value": "{azul.700}",
+        "$description": "Link pressionado. Medido sobre fundo/superficie. Contraste: 12,0:1 ou mais no claro e no escuro, 15,5:1 ou mais no alto contraste (mínimo 4,5:1 e, no alto contraste, 7:1). APCA: Lc 89 ou mais no claro e no escuro. Alvo APCA: Lc 75 em texto corrido, Lc 60 em textos curtos.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-texto-marca-pressionado)"
+            }
+          }
+        }
+      }
+    },
+    "borda": {
+      "padrao": {
+        "$type": "color",
+        "$value": "{neutro.100}",
+        "$description": "Linhas decorativas: divisores e bordas de cards. Isenta de contraste.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-borda-padrao)"
+            }
+          }
+        }
+      },
+      "forte": {
+        "$type": "color",
+        "$value": "{neutro.300}",
+        "$description": "Bordas de botão Contorno e etiquetas, e hover de bordas. Decorativa: o texto identifica o item.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-borda-forte)"
+            }
+          }
+        }
+      },
+      "marca": {
+        "$type": "color",
+        "$value": "{azul.500}",
+        "$description": "Borda de itens selecionados e de controles no hover. Medido sobre fundo/superficie. Contraste: 4,5:1 ou mais no claro e no escuro, 8,1:1 ou mais no alto contraste (mínimo 3:1 e, no alto contraste, 4,5:1). APCA: Lc 33 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-borda-marca)"
+            }
+          }
+        }
+      },
+      "foco": {
+        "$type": "color",
+        "$value": "{azul.500}",
+        "$description": "Anel de foco pelo teclado: 2 px, afastado 2 px do componente. Medido sobre fundo/pagina. Contraste: 4,9:1 ou mais no claro e no escuro, 8,1:1 ou mais no alto contraste (mínimo 3:1 e, no alto contraste, 4,5:1). APCA: Lc 34 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-borda-foco)"
+            }
+          }
+        }
+      },
+      "sucesso": {
+        "$type": "color",
+        "$value": "{verde.500}",
+        "$description": "Borda de campos e alertas de sucesso. Sempre com ícone ou texto.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-borda-sucesso)"
+            }
+          }
+        }
+      },
+      "alerta": {
+        "$type": "color",
+        "$value": "{ambar.500}",
+        "$description": "Borda de alertas de atenção. Sempre com ícone e texto.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-borda-alerta)"
+            }
+          }
+        }
+      },
+      "erro": {
+        "$type": "color",
+        "$value": "{vermelho.500}",
+        "$description": "Borda de campos com erro. Sempre com mensagem de erro. Medido sobre fundo/superficie. Contraste: 4,8:1 ou mais no claro e no escuro, 7,5:1 ou mais no alto contraste (mínimo 3:1 e, no alto contraste, 4,5:1). APCA: Lc 53 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-borda-erro)"
+            }
+          }
+        }
+      },
+      "controle": {
+        "$type": "color",
+        "$value": "{neutro.400}",
+        "$description": "Borda de campos, checkbox e rádio. Medido sobre fundo/superficie. Contraste: 3,2:1 ou mais no claro e no escuro, 9,9:1 ou mais no alto contraste (mínimo 3:1 e, no alto contraste, 4,5:1). APCA: Lc 24 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-borda-controle)"
+            }
+          }
+        }
+      },
+      "ia": {
+        "$type": "color",
+        "$value": "{violeta.500}",
+        "$description": "Borda de campos e blocos preenchidos pela IA. Medido sobre fundo/superficie. Contraste: 5,2:1 ou mais no claro e no escuro, 8,5:1 ou mais no alto contraste (mínimo 3:1 e, no alto contraste, 4,5:1). APCA: Lc 55 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-borda-ia)"
+            }
+          }
+        }
+      }
+    },
+    "dados": {
+      "1": {
+        "$type": "color",
+        "$value": "{azul.500}",
+        "$description": "Série 1 dos gráficos. Sempre com rótulo ou legenda. Medido sobre fundo/superficie. Contraste: 4,5:1 ou mais no claro e no escuro, 8,1:1 ou mais no alto contraste. APCA: Lc 33 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-dados-1)"
+            }
+          }
+        }
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{azul.300}",
+        "$description": "Série 2 dos gráficos. Sempre com rótulo ou legenda. Medido sobre fundo/superficie. Contraste: 2,4:1 ou mais no claro e no escuro, 6,7:1 ou mais no alto contraste. APCA: Lc 47 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-dados-2)"
+            }
+          }
+        }
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{ambar.500}",
+        "$description": "Série 3 dos gráficos. Sempre com rótulo ou legenda. Medido sobre fundo/superficie. Contraste: 1,8:1 ou mais no claro e no escuro, 6,0:1 ou mais no alto contraste. APCA: Lc 33 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-dados-3)"
+            }
+          }
+        }
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{verde.500}",
+        "$description": "Série 4 dos gráficos. Sempre com rótulo ou legenda. Medido sobre fundo/superficie. Contraste: 3,2:1 ou mais no claro e no escuro, 5,4:1 ou mais no alto contraste. APCA: Lc 59 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-dados-4)"
+            }
+          }
+        }
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{neutro.400}",
+        "$description": "Série 5 dos gráficos. Sempre com rótulo ou legenda. Medido sobre fundo/superficie. Contraste: 3,2:1 ou mais no claro e no escuro, 7,8:1 ou mais no alto contraste. APCA: Lc 24 ou mais no claro e no escuro.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-dados-5)"
+            }
+          }
+        }
+      },
+      "grade": {
+        "$type": "color",
+        "$value": "{neutro.100}",
+        "$description": "Linhas de grade dos gráficos. Decorativa.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR"
+            ],
+            "codeSyntax": {
+              "WEB": "var(--cor-dados-grade)"
+            }
+          }
+        }
+      }
+    }
+  }
+}

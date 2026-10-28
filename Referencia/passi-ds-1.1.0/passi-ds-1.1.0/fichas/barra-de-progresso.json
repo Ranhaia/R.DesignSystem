@@ -1,0 +1,73 @@
+{
+  "nome": "Barra de progresso",
+  "slug": "barra-de-progresso",
+  "versao": "1.1.0",
+  "descricao": "A barra de progresso mostra quanto de uma tarefa já foi feito, como um envio de arquivo ou o avanço na leitura. Ela tranquiliza a pessoa: algo está acontecendo e já dá para ter ideia de quanto falta.",
+  "resumo": "Barra de progresso · mostra quanto falta para terminar uma tarefa com duração conhecida, como um envio. Linear para listas e formulários; Circular para espaços pequenos. Ajuste a largura do “Preenchimento” (ou o arco) para o valor real.",
+  "diretrizes": "diretrizes/componentes/barra-de-progresso.md",
+  "figma": {
+    "pagina": "Barra de progresso",
+    "componente": "Barra de progresso"
+  },
+  "propriedades": [
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Linear",
+        "Circular"
+      ],
+      "padrao": "Linear"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Em andamento",
+        "Concluída",
+        "Erro"
+      ],
+      "padrao": "Em andamento"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Linear",
+      "Circular"
+    ]
+  },
+  "estados": [
+    "Em andamento",
+    "Concluída",
+    "Erro"
+  ],
+  "acessibilidade": {
+    "teclado": "Não recebe foco.",
+    "leitor": "Papel progressbar com nome, por exemplo Envio do arquivo, e o valor em porcentagem. No tipo indeterminado, anuncie Carregando.",
+    "foco": "Nenhum.",
+    "cuidados": "Anuncie o fim, por exemplo Envio concluído, sem anunciar cada porcentagem. Mostre o número junto da barra quando ele importa."
+  },
+  "conteudo": [
+    "Diga o que está acontecendo e quanto falta: Enviando 2 de 5 arquivos.",
+    "No fim, confirme: Envio concluído."
+  ],
+  "faca": [
+    "Mostre a porcentagem ou o que falta, como “2,1 MB de 3,5 MB”.",
+    "Explique o erro e ofereça tentar de novo.",
+    "Use para tarefas que levam mais de 2 segundos."
+  ],
+  "naoFaca": [
+    "Usar quando não dá para saber quanto falta. Use Carregando.",
+    "Barras que voltam para trás.",
+    "Esconder a barra antes de confirmar o resultado."
+  ],
+  "tokens": [
+    "--cor-fundo-sutil-hover",
+    "--cor-fundo-marca",
+    "--cor-fundo-sucesso",
+    "--cor-fundo-erro",
+    "--cor-texto-padrao",
+    "--cor-texto-secundario"
+  ],
+  "codigo": null
+}

@@ -1,0 +1,82 @@
+{
+  "nome": "Popover",
+  "slug": "popover",
+  "versao": "1.1.0",
+  "descricao": "O popover é um painel pequeno que abre quando a pessoa clica em algo. Ele mostra mais informação ou ações rápidas, sem tirar a pessoa da tela em que está.",
+  "resumo": "Popover · painel pequeno que abre ao clicar em um elemento, com título, texto curto e até duas ações. Fecha ao clicar fora ou no “x”.",
+  "diretrizes": "diretrizes/componentes/popover.md",
+  "figma": {
+    "pagina": "Popover",
+    "componente": "Popover"
+  },
+  "propriedades": [
+    {
+      "nome": "Título",
+      "tipo": "texto",
+      "padrao": "Novidade: modo escuro"
+    },
+    {
+      "nome": "Descrição",
+      "tipo": "texto",
+      "padrao": "Agora todos os componentes funcionam no claro e no escuro. Troque o modo na coleção “Cor”."
+    },
+    {
+      "nome": "Mostrar ações",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Pode fechar",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Seta",
+      "tipo": "variante",
+      "opcoes": [
+        "Cima",
+        "Baixo",
+        "Nenhuma"
+      ],
+      "padrao": "Cima"
+    }
+  ],
+  "variantes": {
+    "Seta": [
+      "Cima",
+      "Baixo",
+      "Nenhuma"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Enter ou Espaço no gatilho abrem. Tab percorre o conteúdo. Esc fecha.",
+    "leitor": "O gatilho anuncia que abre um painel e se está aberto. O painel tem o título como nome.",
+    "foco": "Ao abrir, o foco vai para o primeiro elemento do painel. Ao fechar, volta para o gatilho.",
+    "cuidados": "Se o conteúdo for uma decisão importante que bloqueia a tela, use Janela modal."
+  },
+  "conteudo": [
+    "Título curto e uma ou duas frases.",
+    "Até duas ações, com verbo."
+  ],
+  "faca": [
+    "Mantenha o conteúdo curto: título, uma ou duas frases e até duas ações.",
+    "Feche ao clicar fora ou apertar Esc.",
+    "Use para apresentar novidades ou detalhes de um item."
+  ],
+  "naoFaca": [
+    "Formulários longos dentro do popover. Use Janela modal.",
+    "Abrir popover só com o hover. Para isso use Dica flutuante.",
+    "Vários popovers abertos ao mesmo tempo."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-borda-padrao",
+    "--cor-texto-padrao",
+    "--cor-texto-secundario",
+    "--espaco-3",
+    "--espaco-5",
+    "--raio-grande"
+  ],
+  "codigo": null
+}

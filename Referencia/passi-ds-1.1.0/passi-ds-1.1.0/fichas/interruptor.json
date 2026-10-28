@@ -1,0 +1,95 @@
+{
+  "nome": "Interruptor",
+  "slug": "interruptor",
+  "versao": "1.1.0",
+  "descricao": "O interruptor liga e desliga uma configuração. A mudança acontece na hora, como um interruptor de luz, sem precisar confirmar.",
+  "resumo": "Interruptor · liga ou desliga uma configuração com efeito imediato, sem precisar de botão “Salvar”. Trilho de 40×24 px.",
+  "diretrizes": "diretrizes/componentes/interruptor.md",
+  "figma": {
+    "pagina": "Interruptor",
+    "componente": "Interruptor"
+  },
+  "propriedades": [
+    {
+      "nome": "Rótulo",
+      "tipo": "texto",
+      "padrao": "Modo escuro"
+    },
+    {
+      "nome": "Descrição",
+      "tipo": "texto",
+      "padrao": "Muda as cores na hora."
+    },
+    {
+      "nome": "Mostrar descrição",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Ligado",
+      "tipo": "variante",
+      "opcoes": [
+        "Não",
+        "Sim"
+      ],
+      "padrao": "Não"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Foco",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Ligado": [
+      "Não",
+      "Sim"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Foco",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab chega ao interruptor. Espaço liga e desliga.",
+    "leitor": "Papel switch. O nome é o rótulo. Anuncia ligado ou desligado.",
+    "foco": "Anel de foco de 2 px em volta do trilho.",
+    "cuidados": "A mudança vale na hora. Se precisar de confirmação ou de um botão Salvar, use Checkbox. Ligado e desligado se diferenciam também pela posição do botão deslizante, não só pela cor."
+  },
+  "conteudo": [
+    "O rótulo é o nome da configuração: Modo escuro.",
+    "Não troque o rótulo conforme o estado; o interruptor já mostra ligado ou desligado."
+  ],
+  "faca": [
+    "Use para configurações que valem na hora.",
+    "Escreva o rótulo como o nome da configuração: “Modo escuro”.",
+    "Mantenha o rótulo igual nos dois estados."
+  ],
+  "naoFaca": [
+    "Usar em formulários que só valem depois de “Enviar”. Use Checkbox.",
+    "Rótulos que mudam conforme o estado, como “Ligado” e “Desligado”.",
+    "Esconder consequências importantes de desligar algo."
+  ],
+  "tokens": [
+    "--cor-fundo-marca",
+    "--cor-fundo-marca-hover",
+    "--cor-fundo-marca-pressionado",
+    "--cor-fundo-controle-desligado",
+    "--cor-fundo-desabilitado",
+    "--cor-texto-terciario",
+    "--cor-texto-secundario",
+    "--cor-texto-sobre-marca",
+    "--raio-pilula"
+  ],
+  "codigo": null
+}

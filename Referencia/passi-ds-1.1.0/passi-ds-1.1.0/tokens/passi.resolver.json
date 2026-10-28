@@ -1,0 +1,86 @@
+{
+  "name": "PASSI DS",
+  "version": "2025.10",
+  "description": "Monta o PASSI DS a partir dos arquivos de tokens. Escolha o modo de cor (claro, escuro ou alto contraste) e o movimento (padrão ou reduzido).",
+  "sets": {
+    "base": {
+      "sources": [
+        {
+          "$ref": "primitivos.tokens.json"
+        },
+        {
+          "$ref": "espacamento.tokens.json"
+        },
+        {
+          "$ref": "raio.tokens.json"
+        },
+        {
+          "$ref": "movimento.tokens.json"
+        },
+        {
+          "$ref": "tipografia.tokens.json"
+        },
+        {
+          "$ref": "efeitos.tokens.json"
+        },
+        {
+          "$ref": "gradientes.tokens.json"
+        },
+        {
+          "$ref": "layout.tokens.json"
+        }
+      ]
+    }
+  },
+  "modifiers": {
+    "modo": {
+      "description": "Modo de cor",
+      "contexts": {
+        "claro": [
+          {
+            "$ref": "cor.claro.tokens.json"
+          }
+        ],
+        "escuro": [
+          {
+            "$ref": "cor.escuro.tokens.json"
+          }
+        ],
+        "alto-contraste-claro": [
+          {
+            "$ref": "cor.alto-contraste-claro.tokens.json"
+          }
+        ],
+        "alto-contraste-escuro": [
+          {
+            "$ref": "cor.alto-contraste-escuro.tokens.json"
+          }
+        ]
+      },
+      "default": "claro"
+    },
+    "movimento": {
+      "description": "Movimento padrão ou reduzido",
+      "contexts": {
+        "padrao": [],
+        "reduzido": [
+          {
+            "$ref": "movimento.reduzido.tokens.json"
+          }
+        ]
+      },
+      "default": "padrao"
+    }
+  },
+  "resolutionOrder": [
+    {
+      "$ref": "#/sets/base"
+    },
+    {
+      "$ref": "#/modifiers/modo"
+    },
+    {
+      "$ref": "#/modifiers/movimento"
+    }
+  ]
+}

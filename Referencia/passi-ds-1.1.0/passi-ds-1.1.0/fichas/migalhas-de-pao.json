@@ -1,0 +1,75 @@
+{
+  "nome": "Migalhas de pão",
+  "slug": "migalhas-de-pao",
+  "versao": "1.1.0",
+  "descricao": "As migalhas de pão mostram onde a pessoa está dentro do site e o caminho até ali. Cada nível anterior é um link para voltar.",
+  "resumo": "Migalhas de pão · mostram o caminho até a página atual e permitem voltar a qualquer nível. Os links não têm sublinhado (ele aparece no hover). Em caminhos longos, os níveis do meio ficam no “…”, que abre uma lista. O último item é a página atual e não é clicável.",
+  "diretrizes": "diretrizes/componentes/migalhas-de-pao.md",
+  "figma": {
+    "pagina": "Migalhas de pão",
+    "componente": "Migalhas de pão"
+  },
+  "propriedades": [
+    {
+      "nome": "Página atual",
+      "tipo": "texto",
+      "padrao": "Capítulo 7"
+    },
+    {
+      "nome": "Mostrar ícone de início",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Níveis",
+      "tipo": "variante",
+      "opcoes": [
+        "2",
+        "3",
+        "4",
+        "Recolhido",
+        "Recolhido aberto"
+      ],
+      "padrao": "2"
+    }
+  ],
+  "variantes": {
+    "Níveis": [
+      "2",
+      "3",
+      "4",
+      "Recolhido",
+      "Recolhido aberto"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Tab passa por cada link do caminho e pelo “…”. Enter abre a lista dos níveis escondidos e Esc fecha. A página atual não é link.",
+    "leitor": "Fica dentro de uma navegação com o nome Você está aqui. O “…” é um botão com o nome Mostrar caminho completo. A página atual é marcada como atual no código (aria-current).",
+    "foco": "Borda de foco em cada link.",
+    "cuidados": "Os separadores são decorativos e ficam escondidos do leitor de tela."
+  },
+  "conteudo": [
+    "Use os mesmos nomes dos títulos das páginas.",
+    "A página atual aparece por extenso; os níveis anteriores podem ser abreviados."
+  ],
+  "faca": [
+    "Coloque no topo da página, acima do título.",
+    "Use os mesmos nomes dos títulos das páginas.",
+    "Recolha os níveis do meio em telas pequenas."
+  ],
+  "naoFaca": [
+    "Usar em sites com só um ou dois níveis.",
+    "Deixar a página atual clicável.",
+    "Substituir o menu principal pelas migalhas."
+  ],
+  "tokens": [
+    "--cor-texto-secundario",
+    "--cor-texto-padrao",
+    "--cor-texto-terciario",
+    "--cor-fundo-superficie",
+    "--cor-borda-padrao",
+    "--espaco-2"
+  ],
+  "codigo": null
+}

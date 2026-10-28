@@ -1,0 +1,55 @@
+{
+  "nome": "Campo com sugestões",
+  "slug": "campo-com-sugestoes",
+  "versao": "1.1.0",
+  "descricao": "O campo com sugestões junta um campo de texto com uma lista. A pessoa começa a digitar e o sistema mostra só as opções que combinam, destacando o trecho digitado. É ideal para listas longas, como cidades ou temas.",
+  "resumo": "Campo com sugestões · campo onde a pessoa digita e escolhe entre opções filtradas, com o trecho digitado em negrito. Aceita uma ou várias escolhas (como etiquetas) e oferece criar uma opção nova quando nada é encontrado.",
+  "diretrizes": "diretrizes/componentes/campo-com-sugestoes.md",
+  "figma": {
+    "pagina": "Campo com sugestões",
+    "componente": "Campo com sugestões"
+  },
+  "propriedades": [
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Vazio",
+        "Digitando",
+        "Várias escolhas",
+        "Sem resultados"
+      ],
+      "padrao": "Vazio"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Vazio",
+    "Digitando",
+    "Várias escolhas",
+    "Sem resultados"
+  ],
+  "acessibilidade": {
+    "teclado": "A pessoa digita; seta para baixo entra na lista; setas percorrem; Enter escolhe; Esc fecha e mantém o texto.",
+    "leitor": "Papel combobox com lista listbox. Anuncie quantas sugestões apareceram, por exemplo 5 resultados, e a sugestão ativa.",
+    "foco": "O foco fica no campo enquanto as setas destacam as sugestões. Ao escolher, o foco continua no campo.",
+    "cuidados": "O trecho destacado em negrito não é a única pista: a lista também anuncia a quantidade. Sem resultados, diga isso em texto."
+  },
+  "conteudo": [
+    "Sem resultados, diga isso e ofereça saída: Nenhuma cidade com esse nome. Confira a grafia.",
+    "Opção de criar novo diz o que será criado: Criar o tema Governança."
+  ],
+  "faca": [
+    "Comece a sugerir a partir da primeira ou segunda letra.",
+    "Destaque em negrito o trecho que combina com o que foi digitado.",
+    "Permita navegar pelas opções com as setas do teclado.",
+    "Ofereça criar uma opção nova quando fizer sentido."
+  ],
+  "naoFaca": [
+    "Usar para listas curtas, com menos de 7 opções. Prefira Seleção ou Rádio.",
+    "Apagar o que a pessoa digitou ao abrir a lista.",
+    "Aceitar textos que não estão na lista sem avisar."
+  ],
+  "tokens": [],
+  "codigo": null
+}

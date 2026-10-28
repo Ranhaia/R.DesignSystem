@@ -1,0 +1,100 @@
+{
+  "nome": "Menu",
+  "slug": "menu",
+  "versao": "1.1.0",
+  "descricao": "O menu reúne ações que não cabem na tela, como editar, duplicar ou excluir. Ele abre a partir de um botão e fecha quando a pessoa escolhe uma opção ou clica fora.",
+  "resumo": "Item de menu · uma ação dentro de um Menu. Use o tipo Perigo para ações destrutivas e coloque-as sempre no fim, separadas por um divisor.",
+  "diretrizes": "diretrizes/componentes/menu.md",
+  "figma": {
+    "pagina": "Menu",
+    "componente": "Item de menu"
+  },
+  "propriedades": [
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Editar"
+    },
+    {
+      "nome": "Atalho",
+      "tipo": "texto",
+      "padrao": "⌘E"
+    },
+    {
+      "nome": "Mostrar ícone",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Mostrar atalho",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Trocar ícone",
+      "tipo": "troca"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Selecionado",
+        "Perigo",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Selecionado",
+    "Perigo",
+    "Desabilitado"
+  ],
+  "outrasPartes": [
+    {
+      "nome": "Menu",
+      "resumo": "Menu · lista de ações que abre a partir de um botão (por exemplo o botão “mais opções”). Agrupe ações parecidas, use divisores entre grupos e deixe ações destrutivas no fim.",
+      "propriedades": []
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Enter, Espaço ou seta para baixo no botão abrem o menu. Setas percorrem os itens, Enter escolhe e Esc fecha.",
+    "leitor": "Botão que anuncia que abre um menu. Papéis menu e menuitem. O atalho de cada item é lido junto.",
+    "foco": "Ao abrir, o foco vai para o primeiro item. Ao fechar, volta para o botão.",
+    "cuidados": "Item de perigo, como Excluir, diz isso no texto, não só com a cor vermelha. Menus são para ações; para navegar entre páginas, use links."
+  },
+  "conteudo": [
+    "Cada item começa com verbo: Editar, Duplicar, Excluir.",
+    "Atalhos no formato do sistema: ⌘E no Mac, Ctrl+E no Windows."
+  ],
+  "faca": [
+    "Comece cada opção com um verbo.",
+    "Agrupe ações relacionadas e separe grupos com divisor.",
+    "Deixe ações destrutivas por último, em vermelho."
+  ],
+  "naoFaca": [
+    "Menus com mais de 10 opções sem grupos.",
+    "Esconder no menu a ação mais usada da tela.",
+    "Submenus dentro de submenus."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-fundo-sutil",
+    "--cor-fundo-sutil-hover",
+    "--cor-texto-padrao",
+    "--cor-texto-secundario",
+    "--cor-texto-terciario",
+    "--cor-texto-erro",
+    "--cor-borda-padrao",
+    "--raio-grande",
+    "--raio-pequeno"
+  ],
+  "codigo": null
+}

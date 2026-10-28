@@ -1,0 +1,88 @@
+{
+  "nome": "Seleção",
+  "slug": "selecao",
+  "versao": "1.1.0",
+  "descricao": "A seleção mostra uma lista de opções que abre sob o campo. Ela economiza espaço quando há muitas alternativas, como cargos, estados ou países.",
+  "resumo": "Seleção · escolha de uma opção em uma lista que abre sob o campo. Use quando houver mais de 5 opções; com menos, prefira Rádio ou Controle segmentado.",
+  "diretrizes": "diretrizes/componentes/selecao.md",
+  "figma": {
+    "pagina": "Seleção",
+    "componente": "Seleção"
+  },
+  "propriedades": [
+    {
+      "nome": "Rótulo",
+      "tipo": "texto",
+      "padrao": "Cargo"
+    },
+    {
+      "nome": "Valor",
+      "tipo": "texto",
+      "padrao": "Selecione uma opção"
+    },
+    {
+      "nome": "Ajuda",
+      "tipo": "texto",
+      "padrao": "Usamos para personalizar os exemplos."
+    },
+    {
+      "nome": "Mostrar rótulo",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Mostrar ajuda",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Aberto",
+        "Preenchido",
+        "Erro",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Aberto",
+    "Preenchido",
+    "Erro",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab chega ao campo. Enter, Espaço ou seta para baixo abrem a lista. Setas mudam a opção, Enter escolhe e Esc fecha sem mudar.",
+    "leitor": "Papel combobox com lista do tipo listbox, ou o elemento select nativo. O rótulo é o nome e a opção escolhida é lida como valor.",
+    "foco": "Borda azul de 2 px. Ao fechar a lista, o foco volta para o campo.",
+    "cuidados": "Prefira o select nativo do navegador quando não precisar de busca. Para listas longas com busca, use Campo com sugestões."
+  },
+  "conteudo": [
+    "Rótulo com o que está sendo escolhido: Cargo.",
+    "Opções curtas, em ordem lógica, começando com letra maiúscula.",
+    "Selecione uma opção enquanto nada foi escolhido."
+  ],
+  "faca": [
+    "Ordene as opções de forma lógica: alfabética, por frequência ou por tamanho.",
+    "Use quando houver mais de 5 opções.",
+    "Mostre o texto “Selecione uma opção” enquanto nada foi escolhido."
+  ],
+  "naoFaca": [
+    "Usar para 2 ou 3 opções. Prefira Rádio ou Controle segmentado.",
+    "Listas muito longas sem busca. Acima de 15 opções, adicione um campo de busca.",
+    "Ações dentro da lista. Para ações use Menu."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-borda-padrao",
+    "--raio-grande"
+  ],
+  "codigo": null
+}

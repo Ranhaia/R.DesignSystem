@@ -1,0 +1,282 @@
+{
+  "nome": "Campo de texto",
+  "slug": "campo-de-texto",
+  "versao": "1.1.0",
+  "descricao": "O campo de texto recebe informações curtas digitadas pela pessoa, como nome, e-mail ou senha. O rótulo fica sempre visível acima do campo, e a mensagem de ajuda vira mensagem de erro quando algo não está certo.",
+  "resumo": "Campo de texto · entrada de uma linha. Sempre com rótulo visível acima do campo. A mensagem de ajuda vira mensagem de erro quando a validação falha. Ícone à direita serve para ações do campo, como mostrar ou esconder a senha. Tamanhos: M 40 px (padrão) e G 48 px (celular e formulários de destaque).",
+  "diretrizes": "diretrizes/componentes/campo-de-texto.md",
+  "figma": {
+    "pagina": "Campo de texto",
+    "componente": "Campo de texto"
+  },
+  "propriedades": [
+    {
+      "nome": "Rótulo",
+      "tipo": "texto",
+      "padrao": "Nome completo"
+    },
+    {
+      "nome": "Valor",
+      "tipo": "texto",
+      "padrao": "Digite seu nome"
+    },
+    {
+      "nome": "Ajuda",
+      "tipo": "texto",
+      "padrao": "Como aparece no seu documento."
+    },
+    {
+      "nome": "Mostrar rótulo",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Mostrar ajuda",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Ícone à esquerda",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Trocar ícone esquerdo",
+      "tipo": "troca"
+    },
+    {
+      "nome": "Trocar ícone direito",
+      "tipo": "troca"
+    },
+    {
+      "nome": "Ícone à direita",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Tamanho",
+      "tipo": "variante",
+      "opcoes": [
+        "M",
+        "G"
+      ],
+      "padrao": "M"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Foco",
+        "Preenchido",
+        "Erro",
+        "Sucesso",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Tamanho": [
+      "M",
+      "G"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Foco",
+    "Preenchido",
+    "Erro",
+    "Sucesso",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab chega ao campo. A pessoa digita e Tab segue para o próximo campo. Colar sempre funciona, inclusive em senhas.",
+    "leitor": "O rótulo visível é o nome do campo. A ajuda é lida junto com o campo. No erro, o campo é anunciado como inválido e a mensagem de erro é lida.",
+    "foco": "Borda azul de 2 px. Ao enviar um formulário com erro, o foco vai para o primeiro campo com problema ou para um resumo de erros no topo.",
+    "cuidados": "Rótulo sempre visível; o texto de exemplo não substitui o rótulo. Erro com ícone e texto, nunca só a cor vermelha. Use o tipo certo de teclado no celular (e-mail, número, telefone) e o preenchimento automático do navegador."
+  },
+  "conteudo": [
+    "Rótulo curto, sem dois-pontos: E-mail.",
+    "Ajuda diz o que saber antes de digitar; o erro diz como resolver.",
+    "O texto de exemplo é um exemplo real e nunca substitui o rótulo."
+  ],
+  "faca": [
+    "Mantenha o rótulo sempre visível, acima do campo.",
+    "Escreva mensagens de erro que digam como resolver.",
+    "Marque o que é opcional, não o que é obrigatório.",
+    "Ajuste a largura ao tamanho esperado da resposta."
+  ],
+  "naoFaca": [
+    "Usar o placeholder no lugar do rótulo.",
+    "Mensagens genéricas como “Campo inválido”.",
+    "Mostrar erro antes da pessoa terminar de digitar.",
+    "Indicar erro só com a cor vermelha."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-fundo-desabilitado",
+    "--cor-borda-controle",
+    "--cor-borda-marca",
+    "--cor-borda-erro",
+    "--cor-borda-sucesso",
+    "--cor-texto-padrao",
+    "--cor-texto-terciario",
+    "--cor-texto-erro",
+    "--cor-texto-sucesso",
+    "--espaco-2",
+    "--espaco-3",
+    "--raio-medio"
+  ],
+  "codigo": {
+    "elemento": "passi-campo-de-texto",
+    "arquivo": "componentes/passi-componentes.js",
+    "conteudo": null,
+    "atributos": [
+      {
+        "nome": "rotulo",
+        "figma": "Rótulo",
+        "tipo": "texto",
+        "obrigatorio": true,
+        "descricao": "Sempre visível, acima do campo. Curto e sem dois-pontos."
+      },
+      {
+        "nome": "ajuda",
+        "figma": "Ajuda + Mostrar ajuda",
+        "tipo": "texto",
+        "descricao": "O que saber antes de digitar."
+      },
+      {
+        "nome": "erro",
+        "figma": "Estado = Erro",
+        "tipo": "texto",
+        "descricao": "Mensagem que diz como resolver. Ocupa o lugar da ajuda."
+      },
+      {
+        "nome": "sucesso",
+        "figma": "Estado = Sucesso",
+        "tipo": "texto"
+      },
+      {
+        "nome": "valor",
+        "figma": "Valor (Estado = Preenchido)",
+        "tipo": "texto"
+      },
+      {
+        "nome": "exemplo",
+        "figma": "Valor (texto de exemplo)",
+        "tipo": "texto",
+        "descricao": "Um exemplo real. Nunca substitui o rótulo."
+      },
+      {
+        "nome": "tamanho",
+        "figma": "Tamanho",
+        "tipo": "lista",
+        "opcoes": {
+          "m": "M",
+          "g": "G"
+        },
+        "padrao": "m"
+      },
+      {
+        "nome": "tipo",
+        "figma": "Ícone à direita + Trocar ícone direito (olho, no tipo senha)",
+        "tipo": "lista",
+        "opcoes": {
+          "texto": "Texto livre",
+          "email": "E-mail",
+          "senha": "Senha (com botão de mostrar)",
+          "telefone": "Telefone",
+          "numero": "Número (teclado numérico)",
+          "busca": "Busca",
+          "url": "Endereço da web"
+        },
+        "padrao": "texto",
+        "descricao": "Escolhe o teclado certo no celular."
+      },
+      {
+        "nome": "icone-esquerda",
+        "figma": "Ícone à esquerda + Trocar ícone esquerdo",
+        "tipo": "icone",
+        "descricao": "Indica o tipo de dado, como busca ou e-mail."
+      },
+      {
+        "nome": "nome",
+        "figma": null,
+        "tipo": "texto",
+        "descricao": "Nome do dado no formulário (name)."
+      },
+      {
+        "nome": "autocomplete",
+        "figma": null,
+        "tipo": "texto",
+        "descricao": "Preenchimento automático do navegador, como email ou current-password."
+      },
+      {
+        "nome": "obrigatorio",
+        "figma": null,
+        "tipo": "booleano"
+      },
+      {
+        "nome": "opcional",
+        "figma": null,
+        "tipo": "booleano",
+        "descricao": "Mostra (opcional) no rótulo. Marque o que é opcional, não o que é obrigatório."
+      },
+      {
+        "nome": "desabilitado",
+        "figma": "Estado = Desabilitado",
+        "tipo": "booleano"
+      }
+    ],
+    "eventos": {
+      "input e change": "Os eventos nativos do campo chegam ao componente. O valor está em .value."
+    },
+    "estados": "Hover e Foco vêm do navegador. Preenchido vem do valor digitado. Erro e Sucesso vêm dos atributos erro e sucesso. Desabilitado vem do atributo desabilitado.",
+    "regras": [
+      {
+        "id": "campo-rotulo-dois-pontos",
+        "nivel": "aviso",
+        "tipo": "termina-com",
+        "alvo": "rotulo",
+        "valores": [
+          ":"
+        ],
+        "mensagem": "Rótulo sem dois-pontos.",
+        "fonte": "campo-de-texto.md · Conteúdo"
+      },
+      {
+        "id": "campo-erro-generico",
+        "nivel": "erro",
+        "tipo": "texto-proibido",
+        "alvo": "erro",
+        "valores": [
+          "campo inválido",
+          "campo invalido",
+          "inválido",
+          "invalido",
+          "erro",
+          "campo obrigatório",
+          "campo obrigatorio",
+          "obrigatório",
+          "obrigatorio"
+        ],
+        "mensagem": "Mensagem de erro genérica. Diga como resolver, como \"Digite um e-mail com @, como nome@empresa.com.br\".",
+        "fonte": "campo-de-texto.md · NÃO faça"
+      },
+      {
+        "id": "campo-exemplo-igual-rotulo",
+        "nivel": "aviso",
+        "tipo": "igual-a-atributo",
+        "alvo": "exemplo",
+        "valores": [
+          "rotulo"
+        ],
+        "mensagem": "O texto de exemplo repete o rótulo. Use um exemplo real.",
+        "fonte": "campo-de-texto.md · Conteúdo"
+      }
+    ]
+  }
+}

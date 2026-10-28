@@ -1,0 +1,113 @@
+{
+  "nome": "Abas",
+  "slug": "abas",
+  "versao": "1.1.0",
+  "descricao": "As abas dividem um conteúdo em partes e mostram uma de cada vez, sem sair da página. A aba ativa fica destacada para a pessoa saber onde está.",
+  "resumo": "Aba · item dentro de Abas. Use o estilo Linha. O estilo Pílula está descontinuado e sai na versão 2.0: para filtrar ou alternar a visão de uma área, use Controle segmentado.",
+  "diretrizes": "diretrizes/componentes/abas.md",
+  "figma": {
+    "pagina": "Abas",
+    "componente": "Aba"
+  },
+  "propriedades": [
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Capítulos"
+    },
+    {
+      "nome": "Mostrar ícone",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Mostrar contador",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Estilo",
+      "tipo": "variante",
+      "opcoes": [
+        "Linha",
+        "Pílula"
+      ],
+      "padrao": "Linha"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Ativa",
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Desabilitada"
+      ],
+      "padrao": "Ativa"
+    }
+  ],
+  "variantes": {
+    "Estilo": [
+      "Linha",
+      "Pílula"
+    ]
+  },
+  "estados": [
+    "Ativa",
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Desabilitada"
+  ],
+  "outrasPartes": [
+    {
+      "nome": "Abas",
+      "resumo": "Abas · alterna entre visões de um mesmo conteúdo sem sair da página. Troque o estado de cada aba para mudar a seleção. Use o estilo Linha; o estilo Pílula está descontinuado (use Controle segmentado) e sai na versão 2.0.",
+      "propriedades": [
+        {
+          "nome": "Estilo",
+          "tipo": "variante",
+          "opcoes": [
+            "Linha",
+            "Pílula"
+          ],
+          "padrao": "Linha"
+        }
+      ]
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Tab entra na lista de abas e para na aba ativa. Setas trocam de aba. Tab de novo leva ao conteúdo.",
+    "leitor": "Papéis tablist, tab e tabpanel. Anuncia a aba, se está selecionada e a posição, por exemplo 2 de 4.",
+    "foco": "Anel de foco na aba. A aba ativa se diferencia também pela linha de 2 px, não só pela cor.",
+    "cuidados": "Abas trocam conteúdo na mesma página. Para levar a outra página, use links de navegação."
+  },
+  "conteudo": [
+    "Uma ou duas palavras por aba: Capítulos, Notas.",
+    "Substantivos, não verbos."
+  ],
+  "faca": [
+    "Use nomes curtos, de uma ou duas palavras.",
+    "Mantenha a ordem das abas fixa.",
+    "Mostre a primeira aba aberta por padrão."
+  ],
+  "naoFaca": [
+    "Mais de 6 abas lado a lado.",
+    "Usar abas para etapas em sequência. Para isso use Passos.",
+    "Abas que levam para outras páginas.",
+    "Usar o estilo Pílula em telas novas. Para filtros, use Controle segmentado."
+  ],
+  "tokens": [
+    "--cor-borda-padrao",
+    "--cor-borda-forte",
+    "--cor-borda-controle",
+    "--cor-texto-padrao",
+    "--cor-fundo-sutil",
+    "--cor-fundo-sutil-hover",
+    "--cor-fundo-invertido",
+    "--cor-texto-secundario",
+    "--raio-pilula"
+  ],
+  "codigo": null
+}

@@ -1,0 +1,78 @@
+{
+  "nome": "Seletor de cor",
+  "slug": "seletor-de-cor",
+  "versao": "1.1.0",
+  "descricao": "O seletor de cor deixa a pessoa escolher uma cor. Na maioria dos casos, amostras prontas bastam e evitam combinações ruins. O painel completo serve para quem precisa de qualquer cor.",
+  "resumo": "Amostra de cor · uma cor para escolher. Troque o preenchimento do círculo interno pela cor desejada.",
+  "diretrizes": "diretrizes/componentes/seletor-de-cor.md",
+  "figma": {
+    "pagina": "Seletor de cor",
+    "componente": "Amostra de cor"
+  },
+  "propriedades": [
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Selecionada"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Selecionada"
+  ],
+  "outrasPartes": [
+    {
+      "nome": "Seletor de cor",
+      "resumo": "Seletor de cor · Amostras (escolha rápida entre cores definidas), Campo (mostra a cor e o código) e Painel (escolha livre com saturação, matiz, código hexadecimal, opacidade e conta-gotas).",
+      "propriedades": [
+        {
+          "nome": "Tipo",
+          "tipo": "variante",
+          "opcoes": [
+            "Amostras",
+            "Campo",
+            "Painel"
+          ],
+          "padrao": "Amostras"
+        }
+      ]
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Tab entra nas amostras; setas passam de uma amostra para outra; Enter ou Espaço escolhem. No painel completo, o campo de código da cor é a alternativa ao arrasto.",
+    "leitor": "Cada amostra tem o nome da cor em texto, por exemplo Azul da marca, e anuncia se está selecionada.",
+    "foco": "Anel de foco na amostra.",
+    "cuidados": "A escolha nunca depende só de enxergar a cor: mostre o nome e o código. Avise quando a cor escolhida tiver pouco contraste com o texto."
+  },
+  "conteudo": [
+    "Dê nome às amostras: Azul da marca.",
+    "Mostre o código da cor para quem precisa copiar."
+  ],
+  "faca": [
+    "Ofereça amostras com as cores da marca antes da escolha livre.",
+    "Mostre o código da cor para quem precisa copiar.",
+    "Avise quando a cor escolhida tiver pouco contraste com o texto."
+  ],
+  "naoFaca": [
+    "Depender só da cor para identificar as amostras. Dê nome a cada uma na dica flutuante.",
+    "Painéis de cor em formulários comuns.",
+    "Esconder a cor atual depois da escolha."
+  ],
+  "tokens": [
+    "--cor-borda-marca",
+    "--cor-borda-forte",
+    "--cor-borda-controle",
+    "--cor-fundo-superficie",
+    "--raio-grande"
+  ],
+  "codigo": null
+}

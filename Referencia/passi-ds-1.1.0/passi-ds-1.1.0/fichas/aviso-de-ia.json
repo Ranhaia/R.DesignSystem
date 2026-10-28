@@ -1,0 +1,62 @@
+{
+  "nome": "Aviso de IA",
+  "slug": "aviso-de-ia",
+  "versao": "1.1.0",
+  "descricao": "Avisos curtos que dizem a verdade sobre a IA: quando a pessoa está falando com uma, o que ela não sabe, o que foi gerado por ela e como chegar a uma pessoa. Transparência simples, sem letras miúdas.",
+  "resumo": "Aviso de IA · mensagens curtas de transparência. Conversa com IA: avisa no início de uma conversa que a pessoa fala com uma IA (exigido pela lei europeia de IA desde agosto de 2026). Limitação: o que a IA não sabe ou não vê. Conteúdo gerado: linha discreta abaixo de textos ou imagens feitos com IA. Falar com uma pessoa: saída sempre disponível para atendimento humano.",
+  "diretrizes": "diretrizes/componentes/aviso-de-ia.md",
+  "figma": {
+    "pagina": "Aviso de IA",
+    "componente": "Aviso de IA"
+  },
+  "propriedades": [
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Conversa com IA",
+        "Limitação",
+        "Conteúdo gerado",
+        "Falar com uma pessoa"
+      ],
+      "padrao": "Conversa com IA"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Conversa com IA",
+      "Limitação",
+      "Conteúdo gerado",
+      "Falar com uma pessoa"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Só o botão de Falar com uma pessoa recebe Tab.",
+    "leitor": "O aviso de conversa é lido no começo da conversa, antes da primeira resposta. Os outros são lidos na ordem normal da página. O ícone é decorativo: a mensagem está no texto.",
+    "foco": "Os avisos não roubam o foco.",
+    "cuidados": "O aviso não pode sumir sozinho nem ficar escondido em letra miúda."
+  },
+  "conteudo": [
+    "Frases curtas e diretas, sem letras miúdas: Você está conversando com uma IA.",
+    "Diga o limite em termos concretos: Ela não vê os seus dados nem a internet."
+  ],
+  "faca": [
+    "Avise logo no começo que a pessoa está falando com uma IA.",
+    "Diga o que a IA não sabe ou não vê.",
+    "Ofereça sempre um caminho para falar com uma pessoa."
+  ],
+  "naoFaca": [
+    "Esconder o aviso em termos de uso.",
+    "Usar o aviso como desculpa para respostas ruins.",
+    "Dar nome e foto de gente à IA."
+  ],
+  "tokens": [
+    "--cor-fundo-ia-sutil",
+    "--cor-texto-ia",
+    "--cor-fundo-sutil",
+    "--cor-texto-secundario",
+    "--raio-grande"
+  ],
+  "codigo": null
+}

@@ -1,0 +1,106 @@
+{
+  "nome": "Item de lista",
+  "slug": "item-de-lista",
+  "versao": "1.1.0",
+  "descricao": "O item de lista organiza conteúdos parecidos um embaixo do outro: capítulos, arquivos, pessoas ou configurações. Cada linha pode ter ícone, título, descrição, uma informação extra e uma seta.",
+  "resumo": "Item de lista · linha clicável para listas de conteúdo, configurações e resultados de busca. Largura flexível; altura mínima de 56 px.",
+  "diretrizes": "diretrizes/componentes/item-de-lista.md",
+  "figma": {
+    "pagina": "Item de lista",
+    "componente": "Item de lista"
+  },
+  "propriedades": [
+    {
+      "nome": "Título",
+      "tipo": "texto",
+      "padrao": "Capítulo 1 · Por que agora"
+    },
+    {
+      "nome": "Descrição",
+      "tipo": "texto",
+      "padrao": "18 páginas · 12 min de leitura"
+    },
+    {
+      "nome": "Meta",
+      "tipo": "texto",
+      "padrao": "Novo"
+    },
+    {
+      "nome": "Mostrar descrição",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Mostrar início",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Mostrar meta",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Mostrar ícone final",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Trocar ícone de início",
+      "tipo": "troca"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Selecionado",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {},
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Selecionado",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Quando a linha leva a outro lugar, ela é um link e recebe Tab. Botões dentro da linha recebem Tab separados.",
+    "leitor": "Itens ficam numa lista (ul ou ol). O título é o nome do link; a descrição e a informação extra são lidas depois.",
+    "foco": "Anel de foco em volta da linha quando ela é clicável.",
+    "cuidados": "A seta no fim é decorativa. O item selecionado é marcado em texto ou no código, não só pelo fundo."
+  },
+  "conteudo": [
+    "Título com a informação mais importante; descrição com o detalhe.",
+    "Meta curta: datas, contagens ou status em uma ou duas palavras."
+  ],
+  "faca": [
+    "Mantenha a mesma estrutura em todos os itens da lista.",
+    "Use a seta quando o item abre outra tela.",
+    "Coloque a informação mais importante no título."
+  ],
+  "naoFaca": [
+    "Misturar itens com e sem ícone na mesma lista.",
+    "Descrições longas, com mais de uma linha.",
+    "Esconder ações importantes só no hover."
+  ],
+  "tokens": [
+    "--cor-fundo-sutil",
+    "--cor-fundo-sutil-hover",
+    "--cor-fundo-marca-sutil",
+    "--cor-fundo-superficie",
+    "--cor-texto-padrao",
+    "--cor-texto-secundario",
+    "--cor-texto-terciario",
+    "--cor-texto-marca",
+    "--espaco-3",
+    "--raio-medio"
+  ],
+  "codigo": null
+}

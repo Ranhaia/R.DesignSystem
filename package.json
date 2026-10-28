@@ -9,6 +9,10 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "tokens:gerar": "node scripts/gerar-tokens.ts",
+    "docs:gerar": "node scripts/gerar-component-docs.mjs",
+    "docs:registrar": "node scripts/registrar-componente.mjs",
+    "docs:check": "node scripts/gerar-component-docs.mjs --check && node scripts/registrar-componente.mjs --check",
+    "test:unit": "vitest run --project unit",
     "test:e2e:modo": "node --test --test-concurrency=1 tests/e2e/modo-tema.e2e.mjs",
     "test:a11y": "vitest run --project storybook",
     "test:a11y:todos": "node scripts/a11y-todos.mjs"

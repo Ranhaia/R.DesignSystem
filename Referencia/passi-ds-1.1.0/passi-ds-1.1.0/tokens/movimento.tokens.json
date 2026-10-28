@@ -1,0 +1,150 @@
+{
+  "$description": "Durações e curvas de animação (modo Padrão). Quem pede menos movimento recebe o modo Reduzido (movimento.reduzido.tokens.json).",
+  "duracao": {
+    "instantanea": {
+      "$type": "duration",
+      "$value": {
+        "value": 80,
+        "unit": "ms"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--duracao-instantanea)"
+          }
+        }
+      }
+    },
+    "rapida": {
+      "$type": "duration",
+      "$value": {
+        "value": 150,
+        "unit": "ms"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--duracao-rapida)"
+          }
+        }
+      }
+    },
+    "media": {
+      "$type": "duration",
+      "$value": {
+        "value": 250,
+        "unit": "ms"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--duracao-media)"
+          }
+        }
+      }
+    },
+    "lenta": {
+      "$type": "duration",
+      "$value": {
+        "value": 400,
+        "unit": "ms"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--duracao-lenta)"
+          }
+        }
+      }
+    },
+    "expressiva": {
+      "$type": "duration",
+      "$value": {
+        "value": 700,
+        "unit": "ms"
+      },
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--duracao-expressiva)"
+          }
+        }
+      }
+    }
+  },
+  "curva": {
+    "padrao": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.2,
+        0,
+        0,
+        1
+      ],
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--curva-padrao)"
+          }
+        }
+      }
+    },
+    "entrada": {
+      "$type": "cubicBezier",
+      "$value": [
+        0,
+        0,
+        0.2,
+        1
+      ],
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--curva-entrada)"
+          }
+        }
+      }
+    },
+    "saida": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--curva-saida)"
+          }
+        }
+      }
+    },
+    "enfatizada": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.3,
+        1.4,
+        0.5,
+        1
+      ],
+      "$extensions": {
+        "com.figma": {
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--curva-enfatizada)"
+          }
+        }
+      }
+    }
+  }
+}

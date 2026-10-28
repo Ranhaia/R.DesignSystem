@@ -1,0 +1,51 @@
+{
+  "nome": "Sobreposição",
+  "slug": "sobreposicao",
+  "versao": "1.1.0",
+  "descricao": "A sobreposição é uma camada escura e semitransparente que cobre a tela quando uma janela modal abre. Ela tira o foco do resto da página e mostra que a pessoa precisa responder antes de continuar.",
+  "resumo": "Sobreposição · camada escura que cobre a tela atrás de janelas modais e gavetas, para focar a atenção. Estique até o tamanho da tela. A versão Desfocada também borra o conteúdo de trás.",
+  "diretrizes": "diretrizes/componentes/sobreposicao.md",
+  "figma": {
+    "pagina": "Sobreposição",
+    "componente": "Sobreposição"
+  },
+  "propriedades": [
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Escura",
+        "Desfocada"
+      ],
+      "padrao": "Escura"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Escura",
+      "Desfocada"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Não recebe foco. Clicar nela pode fechar a janela, mas Esc e o botão Fechar também precisam funcionar.",
+    "leitor": "Fica escondida do leitor de tela. O que importa é a Janela modal sobre ela.",
+    "foco": "Nenhum.",
+    "cuidados": "Escurecer o fundo ajuda quem enxerga; para o leitor de tela, quem isola o conteúdo é a marcação de janela modal."
+  },
+  "conteudo": [
+    "Não tem texto. O que importa está na janela por cima."
+  ],
+  "faca": [
+    "Use sempre atrás de janelas modais e gavetas laterais.",
+    "Feche a janela ao clicar na sobreposição, quando a ação não for crítica."
+  ],
+  "naoFaca": [
+    "Usar a sobreposição sem nada por cima.",
+    "Deixar o fundo tão escuro que a pessoa perca o contexto."
+  ],
+  "tokens": [
+    "--cor-fundo-sobreposicao"
+  ],
+  "codigo": null
+}

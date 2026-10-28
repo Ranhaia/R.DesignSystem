@@ -1,0 +1,78 @@
+{
+  "nome": "Aviso rápido",
+  "slug": "aviso-rapido",
+  "versao": "1.1.0",
+  "descricao": "O aviso rápido confirma que algo aconteceu, como “Link copiado”. Ele aparece por alguns segundos, geralmente no canto da tela, e some sozinho sem interromper a pessoa.",
+  "resumo": "Aviso rápido · mensagem curta que aparece por alguns segundos, geralmente no canto inferior, para confirmar uma ação. Não use para erros que exigem decisão.",
+  "diretrizes": "diretrizes/componentes/aviso-rapido.md",
+  "figma": {
+    "pagina": "Aviso rápido",
+    "componente": "Aviso rápido"
+  },
+  "propriedades": [
+    {
+      "nome": "Mensagem",
+      "tipo": "texto",
+      "padrao": "Link copiado."
+    },
+    {
+      "nome": "Ação",
+      "tipo": "texto",
+      "padrao": "Desfazer"
+    },
+    {
+      "nome": "Mostrar ação",
+      "tipo": "liga-desliga",
+      "padrao": false
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Neutro",
+        "Sucesso",
+        "Atenção",
+        "Erro"
+      ],
+      "padrao": "Neutro"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Neutro",
+      "Sucesso",
+      "Atenção",
+      "Erro"
+    ]
+  },
+  "estados": [],
+  "acessibilidade": {
+    "teclado": "Se tiver ação, como Desfazer, ela precisa ser alcançável pelo teclado antes de o aviso sumir.",
+    "leitor": "Fica numa região que anuncia sozinha, de forma discreta (status).",
+    "foco": "Não recebe o foco ao aparecer. Não pode cobrir o item em foco (WCAG 2.4.11).",
+    "cuidados": "Pelo menos 5 segundos na tela, e o tempo pausa com o mouse ou o foco em cima. Nunca coloque informação importante só num aviso que some."
+  },
+  "conteudo": [
+    "Uma linha, no passado: Link copiado.",
+    "Ofereça Desfazer quando a ação puder ser revertida."
+  ],
+  "faca": [
+    "Use mensagens curtas, de uma linha.",
+    "Ofereça “Desfazer” para ações que podem ser revertidas.",
+    "Deixe o aviso na tela por 4 a 6 segundos."
+  ],
+  "naoFaca": [
+    "Mostrar vários avisos empilhados.",
+    "Usar para erros que pedem uma decisão. Use Alerta ou Janela modal.",
+    "Colocar links importantes que somem com o aviso."
+  ],
+  "tokens": [
+    "--cor-fundo-invertido",
+    "--cor-texto-invertido",
+    "--cor-fundo-sucesso",
+    "--cor-fundo-alerta",
+    "--cor-fundo-erro",
+    "--raio-grande"
+  ],
+  "codigo": null
+}

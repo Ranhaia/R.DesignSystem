@@ -1,0 +1,95 @@
+{
+  "nome": "Lista em árvore",
+  "slug": "lista-em-arvore",
+  "versao": "1.1.0",
+  "descricao": "A lista em árvore mostra conteúdos organizados em níveis, como pastas e arquivos ou partes e capítulos de um livro. Cada nível fica um pouco mais para dentro, e as pastas abrem e fecham.",
+  "resumo": "Nó da árvore · uma linha da Lista em árvore. Pastas abrem e fecham; itens não têm seta. Use o recuo (preenchimento à esquerda) para indicar o nível.",
+  "diretrizes": "diretrizes/componentes/lista-em-arvore.md",
+  "figma": {
+    "pagina": "Lista em árvore",
+    "componente": "Nó da árvore"
+  },
+  "propriedades": [
+    {
+      "nome": "Texto",
+      "tipo": "texto",
+      "padrao": "Parte 3 · Governar"
+    },
+    {
+      "nome": "Mostrar quantidade",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Tipo",
+      "tipo": "variante",
+      "opcoes": [
+        "Pasta fechada",
+        "Pasta aberta",
+        "Item"
+      ],
+      "padrao": "Pasta fechada"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Selecionado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Tipo": [
+      "Pasta fechada",
+      "Pasta aberta",
+      "Item"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Selecionado"
+  ],
+  "outrasPartes": [
+    {
+      "nome": "Lista em árvore",
+      "resumo": "Lista em árvore · mostra conteúdos organizados em níveis, como pastas e arquivos ou partes e capítulos. Exemplo pronto com 3 níveis.",
+      "propriedades": []
+    }
+  ],
+  "acessibilidade": {
+    "teclado": "Setas para cima e para baixo passam pelos itens; seta para a direita abre uma pasta e para a esquerda fecha; Enter abre o item.",
+    "leitor": "Papéis tree e treeitem. Anuncia o nível, se a pasta está aberta ou fechada e a quantidade de itens.",
+    "foco": "Só um item da árvore recebe Tab; dentro dela, as setas movem o foco.",
+    "cuidados": "O recuo não é a única pista de nível: o leitor anuncia o nível e o ícone de pasta muda entre aberta e fechada."
+  },
+  "conteudo": [
+    "Nomes curtos, que caibam em uma linha.",
+    "Mostre a quantidade dentro de pastas quando ajudar."
+  ],
+  "faca": [
+    "Limite a três níveis de profundidade.",
+    "Mostre quantos itens há dentro de cada pasta.",
+    "Mantenha aberto o caminho até o item selecionado.",
+    "Permita abrir e fechar com as setas do teclado."
+  ],
+  "naoFaca": [
+    "Árvores com muitos níveis, que viram labirinto.",
+    "Usar árvore para listas simples, sem níveis.",
+    "Nomes longos que quebram em várias linhas."
+  ],
+  "tokens": [
+    "--cor-fundo-marca-sutil",
+    "--cor-texto-marca",
+    "--cor-fundo-sutil",
+    "--cor-fundo-sutil-hover",
+    "--cor-texto-secundario",
+    "--raio-pequeno"
+  ],
+  "codigo": null
+}

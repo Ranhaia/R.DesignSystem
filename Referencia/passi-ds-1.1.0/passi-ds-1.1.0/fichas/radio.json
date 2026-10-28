@@ -1,0 +1,100 @@
+{
+  "nome": "Rádio",
+  "slug": "radio",
+  "versao": "1.1.0",
+  "descricao": "O rádio serve para escolher uma única opção dentro de um grupo. Ao marcar uma, a anterior é desmarcada automaticamente.",
+  "resumo": "Rádio · escolha de uma única opção dentro de um grupo. Sempre agrupe dois ou mais rádios e, quando possível, deixe uma opção marcada por padrão.",
+  "diretrizes": "diretrizes/componentes/radio.md",
+  "figma": {
+    "pagina": "Rádio",
+    "componente": "Rádio"
+  },
+  "propriedades": [
+    {
+      "nome": "Rótulo",
+      "tipo": "texto",
+      "padrao": "Livro digital"
+    },
+    {
+      "nome": "Descrição",
+      "tipo": "texto",
+      "padrao": "Receba na hora, no seu e-mail."
+    },
+    {
+      "nome": "Mostrar descrição",
+      "tipo": "liga-desliga",
+      "padrao": true
+    },
+    {
+      "nome": "Marcação",
+      "tipo": "variante",
+      "opcoes": [
+        "Desmarcado",
+        "Marcado"
+      ],
+      "padrao": "Desmarcado"
+    },
+    {
+      "nome": "Estado",
+      "tipo": "variante",
+      "opcoes": [
+        "Padrão",
+        "Hover",
+        "Pressionado",
+        "Foco",
+        "Erro",
+        "Desabilitado"
+      ],
+      "padrao": "Padrão"
+    }
+  ],
+  "variantes": {
+    "Marcação": [
+      "Desmarcado",
+      "Marcado"
+    ]
+  },
+  "estados": [
+    "Padrão",
+    "Hover",
+    "Pressionado",
+    "Foco",
+    "Erro",
+    "Desabilitado"
+  ],
+  "acessibilidade": {
+    "teclado": "Tab entra no grupo e para na opção marcada. Setas mudam a opção. Tab sai do grupo.",
+    "leitor": "Papel radio dentro de um radiogroup com nome. Anuncia a opção, se está marcada e a posição, por exemplo 2 de 3.",
+    "foco": "Anel de foco de 2 px em volta do círculo.",
+    "cuidados": "Sempre com uma pergunta que nomeia o grupo. Clicar no rótulo também marca."
+  },
+  "conteudo": [
+    "O título do grupo é uma pergunta: Como prefere receber o livro?",
+    "Opções curtas e paralelas, todas no mesmo formato."
+  ],
+  "faca": [
+    "Use quando só uma opção pode ser escolhida.",
+    "Deixe uma opção marcada por padrão, se fizer sentido.",
+    "Ordene as opções de forma lógica: da mais comum para a menos comum."
+  ],
+  "naoFaca": [
+    "Grupos com mais de 6 opções. Nesse caso use Seleção.",
+    "Um rádio sozinho. Para isso use Checkbox.",
+    "Opções que se sobrepõem, como “1 a 5” e “5 a 10”."
+  ],
+  "tokens": [
+    "--cor-fundo-superficie",
+    "--cor-fundo-marca",
+    "--cor-fundo-marca-hover",
+    "--cor-fundo-marca-pressionado",
+    "--cor-fundo-marca-sutil",
+    "--cor-fundo-erro",
+    "--cor-fundo-desabilitado",
+    "--cor-borda-controle",
+    "--cor-borda-marca",
+    "--cor-borda-erro",
+    "--cor-texto-sobre-marca",
+    "--raio-pilula"
+  ],
+  "codigo": null
+}
