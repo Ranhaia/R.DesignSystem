@@ -93,13 +93,27 @@ haver decisão, vale o código atual:
 - Contraste também em APCA e um preset de alto contraste (`prefers-contrast: more`).
 - 10 componentes ainda sem chave em `docs/sinonimos.json`.
 
-## Ideias para avaliar depois (do AIPIM, de Talis Galhardi)
+## Ideias para avaliar depois (do AIPIM, de Talis Galhardi, MIT)
 
-Lidas em `github.com/talis-galhardi/aipim` em 2026-10-28. Não entram no
-spike; cada uma vira História só se o Rafael quiser.
+Leitura completa em 2026-10-28: repositório `github.com/talis-galhardi/aipim`
+(cerca de 210 arquivos de texto, em 4 frentes no AGY) e Storybook publicado,
+com as afirmações principais conferidas nas fontes. Cada ideia vira História
+só se o Rafael quiser. Por valor para o uso do R.DS (a IA monta telas na marca do cliente):
 
-- Conferir números da prosa contra o código ("79 componentes").
-- Lint de escrita (travessão, clichê, exclamação) como script, não só skill.
-- Checagens além do axe: zoom e fonte raiz em 200%, reflow em 320 px,
-  espaçamento de texto (WCAG 1.4.12). A fonte em 200% testa a regra do rem.
-- Registro de divergências aceitas, para a auditoria não acusar de novo.
+1. **Construtor de tema do cliente.** O R.DS já gera o tema inteiro a partir de uma cor (`gerarTema`), mas só no build. Falta a tela: digitar a cor da marca, ver as checagens, receber sugestão de ajuste e gravar o preset. (AIPIM: `theme-builder/`)
+2. **Daltonismo no motor de cor.** Simular protanopia, deuteranopia e tritanopia (OKLab) com diferença mínima entre os pares que importam (erro × sucesso, ação × fundo, link × texto). O R.DS não tem nada disso. (`tools/build_tokens.py`)
+3. **Checagens além do axe:** zoom 200%, reflow a 320 px, fonte raiz em 200% (testa a regra do rem), espaçamento WCAG 1.4.12 e cores forçadas. (`tools/verify_web.py`, `docs/pt-br/verification.md`)
+4. **Seção "Decisão" no MD do componente:** o porquê de um comportamento proposital, para a IA não "consertar". (8 de 24 componentes, ex.: `brazilian-field.md`)
+5. **Roteiro de leitor de tela:** o que a voz deve falar em cada tecla, mais uma tabela de conferência por leitor (VoiceOver, NVDA, TalkBack), com status. (`combobox.md`, `datepicker.md`)
+6. **Tabelas de cor e de medidas geradas:** parte × estado × token, com o valor no claro e no escuro, e altura, padding, gap e ícone por tamanho. A coleta do R.DS já lê as classes, então dá para gerar. (`tools/build_specs.py`)
+7. **A página e o Storybook renderizam o próprio MD,** dividido em abas, em vez de recopiar os campos. É o caminho para [[H-pagina-secoes-memoria]]. (`.storybook/docs-tabs.js`)
+8. **Campo brasileiro:** CPF, CNPJ com letras (IN RFB 2.229/2024), CEP, data digitada e reais; máscara ao digitar, checagem ao sair do campo. O R.DS só tem nome e telefone (`src/lib/field-formatters.ts`). Serve às telas de seguro.
+9. **Lint de escrita no CI:** travessão, exclamação, reticências, gerúndio de arremate, lista de clichês em PT. (`tools/check_copy.py`)
+10. **"Faça / não faça" como story executável,** com o axe desligado só no exemplo errado. (`stories/_dodont.js`)
+11. **Números da prosa conferidos contra o código** ("79 componentes"). (`tools/check_facts.py`)
+12. **`llms.txt` gerado e travado no CI.** (`tools/build_ai.py`)
+13. **CI mais seguro:** actions fixadas por hash, `permissions: contents: read`, Dependabot agrupado. Vale para `.github/workflows/trava.yml`.
+14. **Uma entrada por componente na barra lateral do Storybook.** (`.storybook/manager.js`)
+15. Figma (fora do foco por ora): variáveis com os mesmos nomes do código, plugin que só aplica o tema e registro de "diferente de propósito" (`docs/figma-sync-log.md`).
+
+Não se aplicam ao R.DS: tradução com carimbo de hash (o R.DS é só pt-BR), tokens para Swift e Compose (o R.DS é só web), formulário de issue para pedir componente (o passo 1 da skill já cobre).
