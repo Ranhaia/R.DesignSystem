@@ -1,8 +1,17 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 function useComputedTokens(tokens: string[]) {
   const [values, setValues] = React.useState<Record<string, string>>({})
@@ -135,6 +144,21 @@ export default function CoresPage() {
 
   return (
     <div className="flex flex-col gap-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>Construtor de tema do cliente</CardTitle>
+          <CardDescription>
+            Gere um tema completo para protótipos a partir da cor da marca do cliente,
+            com prévia nos modos claro e escuro e verificação de acessibilidade.
+          </CardDescription>
+          <CardAction>
+            <Button asChild variant="outline">
+              <Link href="/fundamentos/cores/construtor">Abrir construtor de tema</Link>
+            </Button>
+          </CardAction>
+        </CardHeader>
+      </Card>
+
       <Card>
         <CardHeader>
           <CardTitle>Papéis semânticos</CardTitle>
