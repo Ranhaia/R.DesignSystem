@@ -9,7 +9,7 @@ ciclo:
 estimativa: 1
 perfil: front
 dono: antigravity
-tarefas: 1/4
+tarefas: 2/4
 criado: 2026-08-23
 fechado:
 motivo-descarte:
@@ -51,12 +51,13 @@ Nenhum.
 ## Tarefas
 
 - [x] Rodar `npx tsc --noEmit` e registrar o resultado
-- [ ] Corrigir os erros que aparecerem
+- [x] Corrigir os erros que aparecerem
 - [ ] Conferir `/components/button` visualmente nos 3 pontos suspeitos
 - [ ] Registrar o que quebrou, se quebrou
 
 ## Contribuições
 
 - 2026-10-28 · antigravity · Rodou `npx tsc --noEmit`. Resultado: 0 erros (TypeScript: No errors found).
+- 2026-10-28 · antigravity · Verificação de erros: 0 erros encontrados no tsc; nenhuma correção de código necessária.
 
 ## Histórico
