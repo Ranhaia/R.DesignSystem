@@ -8,8 +8,8 @@ sinal-desde: 2026-08-23
 ciclo:
 estimativa: 1
 perfil: front
-dono: antigravity
-tarefas: 3/4
+dono:
+tarefas: 4/4
 criado: 2026-08-23
 fechado:
 motivo-descarte:
@@ -53,12 +53,13 @@ Nenhum.
 - [x] Rodar `npx tsc --noEmit` e registrar o resultado
 - [x] Corrigir os erros que aparecerem
 - [x] Conferir `/components/button` visualmente nos 3 pontos suspeitos
-- [ ] Registrar o que quebrou, se quebrou
+- [x] Registrar o que quebrou, se quebrou
 
 ## Contribuições
 
 - 2026-10-28 · antigravity · Rodou `npx tsc --noEmit`. Resultado: 0 erros (TypeScript: No errors found).
 - 2026-10-28 · antigravity · Verificação de erros: 0 erros encontrados no tsc; nenhuma correção de código necessária.
 - 2026-10-28 · antigravity · Conferência dos 3 pontos suspeitos via SSR (react-dom/server) e HTML estático gerado (.next/server/app/components/button.html): Seção Variantes renderiza 8 botões reais sem queixa do TS; Playground renderiza com seletores e toggles; Tabela de Propriedades renderiza 11 linhas com overflow-x-auto. Leitura de código não é prova: inspeção visual em tela com servidor dev ativo reservada ao orquestrador (Regra 4 proíbe dev server no worktree).
+- 2026-10-28 · antigravity · Registro de integridade: nada quebrou na página do Button. npx tsc --noEmit passou limpo (0 erros), npm run test:unit passou 100% (1217 testes), e o build com webpack gerou o HTML estático com sucesso (238 KB). Turbopack nativo acusa erro de symlink em node_modules no Windows (C:\node_modules_store), mas via --webpack o build compila sem erros.
 
 ## Histórico
