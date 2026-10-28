@@ -2,13 +2,13 @@
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-documentacao-ds
-status: aguardando
+status: progresso
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-08-23
 ciclo:
 estimativa: 2
 perfil: front
-dono:
+dono: antigravity
 tarefas: 0/3
 criado: 2026-08-23
 fechado:
