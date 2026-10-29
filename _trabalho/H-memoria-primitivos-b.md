@@ -26,7 +26,7 @@ Fatia de [[H-memoria-replicar-lotes]] (Onda 2 da [[H-abas-padronizadas]]). Ordem
 
 Passar cada componente do lote pelo ciclo de memória, para a página `/components/<slug>` ficar completa como a do
 Button: abas Visão geral, Exemplos, Código, Tokens e Acessibilidade, com "Quando NÃO usar" e Tokens por contexto.
-Componentes do lote (primitivos, lote b): `text` e `title`. O `direction` saiu do lote (ver [[H-memoria-direction]]).
+Componentes do lote (primitivos, lote b): `text` e `title`. O `direction` saiu do lote e foi resolvido em [[H-memoria-direction]] (primitivo sem UI).
 
 Siga `.claude/skills/componente-rds/SKILL.md` (caminho "existente sem MD", passos 3 a 6), `docs/componentes/_baliza.md` e
 `_modelo.md`. Modelos prontos: `docs/componentes/button.md`, `tabs.md`, `dialog.md` e `separator.md`.

@@ -97,6 +97,7 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 - [box](box.md) — Container flexível e sem estilo próprio para agrupar e organizar elementos.
 - [button](button.md) — Dispara uma ação. Um primário por contexto.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
+- [direction](direction.md) — Entrega o sentido de leitura aos componentes; não renderiza nada.
 - [icon](icon.md) — Renderiza um glifo do Material Symbols com eixos variáveis.
 - [label](label.md) — Rótulo acessível associado a controles de formulário.
 - [separator](separator.md) — Linha fina entre grupos do mesmo container.
