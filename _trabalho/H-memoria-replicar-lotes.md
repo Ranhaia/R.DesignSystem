@@ -52,6 +52,7 @@ Lotes, por camada:
 
 ## Contribuições
 
+- 2026-10-29 · claude · Rafael mandou replicar tudo com o AGY (Loop Engineering; push e PR liberados: 1 do quadro e 1 por camada). A História foi fatiada em 14 lotes por camada, de 3 a 7 componentes cada: [[H-memoria-primitivos-a]], [[H-memoria-primitivos-b]], [[H-memoria-atoms-a]], [[H-memoria-atoms-b]], [[H-memoria-atoms-c]], [[H-memoria-atoms-d]], [[H-memoria-molecules-a]], [[H-memoria-molecules-b]], [[H-memoria-molecules-c]], [[H-memoria-molecules-d]], [[H-memoria-organisms-a]], [[H-memoria-organisms-b]], [[H-memoria-organisms-c]], [[H-memoria-organisms-d]]. Cada camada só começa depois da anterior integrada. A Decisão sobre [[H-replicar-doc-componentes]] segue aberta.
 - 2026-10-28 · claude · Lotes definidos por camada (decisão do Rafael). O bloqueio pelo spike caiu: ele entrou na main no PR #22. O `separator` foi registrado e declarado em [[H-memoria-baliza-skill]], como prova da skill.
 
 ## Histórico

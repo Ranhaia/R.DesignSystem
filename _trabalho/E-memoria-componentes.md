@@ -82,7 +82,7 @@ haver decisão, vale o código atual:
 
 - [[H-memoria-componentes-spike]] — fases 0 a 3, piloto com button, tabs e dialog
 - [[H-memoria-baliza-skill]] — leitura do PASSI, baliza, modelo equalizado, skill e CI
-- [[H-memoria-replicar-lotes]] — fase 4, os demais componentes por camada
+- [[H-memoria-replicar-lotes]] — fase 4, os demais componentes por camada; fatiada em 14 lotes (`H-memoria-primitivos-a` e `-b`, `H-memoria-atoms-a` a `-d`, `H-memoria-molecules-a` a `-d`, `H-memoria-organisms-a` a `-d`), uma camada por vez
 - [[H-conteudo-transversal]] — fase 5, `docs/conteudo/`
 - [[H-pagina-secoes-memoria]] — a página do site mostrar o que o MD já declara
 
