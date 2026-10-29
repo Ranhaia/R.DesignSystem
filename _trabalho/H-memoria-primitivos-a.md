@@ -9,7 +9,7 @@ ciclo:
 estimativa: 1
 perfil: front
 dono: antigravity
-tarefas: 1/6
+tarefas: 2/6
 bloqueada-por:
 criado: 2026-10-29
 fechado:
@@ -65,7 +65,7 @@ Nenhum além dos bloqueadores.
 ## Tarefas
 
 - [x] Registrar e declarar `box` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `icon` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `icon` (docs:registrar, intenção, vizinhos e referencias)
 - [ ] Registrar e declarar `label` (docs:registrar, intenção, vizinhos e referencias)
 - [ ] Registrar e declarar `skeleton` (docs:registrar, intenção, vizinhos e referencias)
 - [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
@@ -74,5 +74,6 @@ Nenhum além dos bloqueadores.
 ## Contribuições
 
 - 2026-10-29 · antigravity · Registrar e declarar box: docs:registrar executado, intenção declarada em docs/componentes/box.md com vizinhos [card, separator, item] e referências [spec:box]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar icon: docs:registrar executado, intenção declarada em docs/componentes/icon.md com vizinhos [icon-button, button, spinner] e referências [shadcn:icon]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
 
 ## Histórico

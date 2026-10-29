@@ -3170,44 +3170,48 @@ import { toast } from "sonner"
     ],
   },
   icon: {
-    description: "Renderiza um ícone do Google Material Symbols com suporte a variantes (fill, weight, grade, optical size) e cores do tema.",
-    whenToUse: "Para ilustrar ações, estados ou seções dentro de botões, menus, cards e mensagens. Use quando um conceito é mais claro visualmente do que com texto.",
+    description: "Renderiza um glifo do Material Symbols com controle de eixos variáveis e suporte a cor do tema. Usado para apoiar ações, estados e navegação.",
+    whenToUse: "Ilustrar ações e comandos dentro de botões, menus e barras de ferramentas. Reforçar o significado visual de alertas, badges e itens de listas informativas. Indicar estados do sistema como sucesso, erro ou aviso ao lado de texto explicativo.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <svg viewBox=\"0 0 24 24\"> com data-slot=\"icon\". Recebe aria-hidden=\"true\" automaticamente, exceto quando o chamador já passou aria-label/aria-labelledby/role (ex.: Spinner)." },
-      { part: "Glifo (<text>)", description: "Ligadura de texto (nome do ícone do Material Symbols) renderizada via <text>, com fontVariationSettings controlando os eixos FILL/wght/GRAD/opsz do glifo variável." },
+      { part: "Icon", description: "Elemento raiz SVG com data-slot=\"icon\" que gerencia acessibilidade e dimensões" },
+      { part: "Glifo", description: "Elemento de texto interno que renderiza a ligadura do Material Symbols" },
     ],
-    variants: [
-      { name: "Rounded", value: "rounded", description: "Family Material Symbols Rounded — default do preset ativo se a prop `rounded` não for informada." },
-      { name: "Sharp", value: "sharp", description: "Family Material Symbols Sharp, ativada com `rounded={false}`." },
-      { name: "Fill", value: "fill", description: "Eixo FILL do glifo variável — preenchido (true) ou apenas contorno (false/ausente, usa --icon-fill do preset)." },
-    ],
+    variants: [],
     states: [],
-    sizes: [
-      { name: "Auto (herdado)", value: "auto", description: "Sem a prop `size`, herda o tamanho do elemento ambiente (ex.: size-4 dentro de um Button), igual ao comportamento antigo do lucide-react." },
-      { name: "Customizado", value: "custom", description: "Com a prop `size` (em rem), define width/height inline e recalcula o optical size automaticamente via computeOpticalSize, a menos que `opticalSize` seja passado explicitamente." },
-    ],
-    doGuidelines: ["Escolha ícones com significado universal e reconhecível. Use aria-label quando o ícone for o único elemento interativo. Mantenha consistência — não misture famílias de ícones."],
-    dontGuidelines: ["Não use ícone como único feedback de estado crítico — sempre acompanhe de texto. Não use ícones decorativos sem contexto acessível. Não distorça a proporção original."],
+    sizes: [],
+    doGuidelines: ["Acompanhe o ícone de texto explicativo sempre que o significado não for universal.", "Use aria-hidden=\"true\" para ícones puramente decorativos ao lado de rótulos de texto.", "Defina tamanhos proporcionais à escala tipográfica do elemento pai ou contexto visual."],
+    dontGuidelines: ["Usar ícone isolado sem rótulo textual em um botão interativo → icon-button com aria-label.", "Usar cor ou ícone como único indicador de status crítico ou erro → combine com mensagem textual clara.", "Utilizar ícone estático para indicar espera ou carregamento em andamento → spinner."],
     code: `import { Icon } from "@/components/ui/icon"
 
-<Icon name="check_circle" />
-
-// Tamanho customizado (rem) + fill ativado
-<Icon name="favorite" size={1.5} fill />
-
-// Ícone como único elemento interativo — precisa de aria-label
-<Button size="icon" aria-label="Excluir">
-  <Icon name="delete" aria-label="Excluir" />
-</Button>`,
+<Icon name="check_circle" className="size-5 text-primary" />`,
     props: [
-      { name: "name", type: "MaterialSymbol", description: "Nome do ícone no catálogo do Google Material Symbols (tipagem via pacote material-symbols)." },
-      { name: "size", type: "number", description: "Tamanho em rem. Ausente = herda o auto-tamanho ambiente." },
-      { name: "rounded", type: "boolean", description: "true = Material Symbols Rounded, false = Sharp. Ausente = default do preset ativo (--icon-font-family)." },
-      { name: "fill", type: "boolean", description: "Ativa a variação FILL do glifo (preenchido). Ausente = usa --icon-fill do preset." },
-      { name: "weight", type: "number", description: "Eixo wght do glifo variável. Ausente = usa --icon-weight do preset." },
-      { name: "grade", type: "number", description: "Eixo GRAD do glifo variável. Ausente = usa --icon-grade do preset." },
-      { name: "opticalSize", type: "number", description: "Eixo opsz do glifo variável. Ausente = calculado automaticamente a partir de `size` (computeOpticalSize) ou usa --icon-optical-size do preset." },
-      { name: "...props", type: "React.ComponentProps<\"svg\">", description: "Todos os atributos nativos de <svg> (aria-label, role, className, style, etc.), exceto `name` e `fill` (sobrescritos pela API pública do componente)." },
+      { name: "name", type: "MaterialSymbol", default: "—", description: "Nome do símbolo no catálogo do Google Material Symbols" },
+      { name: "size", type: "number", default: "—", description: "Tamanho do ícone em rem. Quando omitido, herda a dimensão do elemento pai" },
+      { name: "fill", type: "boolean", default: "—", description: "Ativa o preenchimento do glifo quando verdadeiro, ou contorno quando falso" },
+      { name: "rounded", type: "boolean", default: "—", description: "Alterna entre as famílias Material Symbols Rounded e Sharp" },
+      { name: "weight", type: "number", default: "—", description: "Espessura do traço do símbolo (eixo wght da fonte variável)" },
+      { name: "grade", type: "number", default: "—", description: "Ajuste fino de ênfase visual do glifo (eixo GRAD)" },
+      { name: "opticalSize", type: "number", default: "—", description: "Tamanho óptico (eixo opsz), calculado automaticamente quando size é informado" },
+    ],
+    meta: {
+      nome: "Icon",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/icon.tsx",
+      story: "src/components/ui/icon.stories.tsx",
+      vizinhos: ["icon-button", "button", "spinner"],
+    },
+    whenToUseItems: ["Ilustrar ações e comandos dentro de botões, menus e barras de ferramentas.", "Reforçar o significado visual de alertas, badges e itens de listas informativas.", "Indicar estados do sistema como sucesso, erro ou aviso ao lado de texto explicativo."],
+    whenNotToUse: ["Ação interativa que contém apenas o ícone, sem texto → icon-button.", "Disparar uma ação com texto e ícone de suporte → button.", "Indicar espera ou carregamento contínuo sem direção definida → spinner."],
+    content: ["Não tem texto legível próprio; renderiza um símbolo visual.", "Deve sempre acompanhar texto de apoio ou receber rótulo acessível quando utilizado em elementos interativos.", "Mantenha o mesmo estilo e família de ícones em todo o fluxo da interface."],
+    accessibility: {
+      keyboard: "Não recebe foco diretamente. Quando inserido dentro de um controle interativo, o foco é tratado pelo componente pai.",
+      screenReader: "Recebe aria-hidden=\"true\" por padrão para ser ignorado como elemento decorativo. Se atributos como aria-label, aria-labelledby ou role forem fornecidos, eles são preservados no SVG.",
+      focus: "Não recebe nem retém foco.",
+      cautions: "Nunca transmita uma informação crítica apenas pela presença do ícone sem alternativa em texto visível ou audível (WCAG 1.1.1 e 1.4.1).",
+    },
+    tokens: [
+      { contexto: "Ícone", itens: ["--font-material-rounded", "--font-material-sharp", "--icon-fill", "--icon-font-family", "--icon-grade", "--icon-optical-size", "--icon-weight"] },
     ],
   },
   files: {
