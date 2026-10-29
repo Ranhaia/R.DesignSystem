@@ -48,13 +48,18 @@ Propriedades         → tabela real de props
 - `src/lib/component-docs.ts` — `interface ComponentDoc` e
   `componentDocs: Record<string, ComponentDoc>`, **só a chave `"button"`
   preenchida**. Slug sem entrada cai no comportamento antigo sem quebrar.
-- `src/components/doc/button-playground.tsx` — playground do Button,
-  ainda hardcoded.
+- `src/components/doc/button-playground.tsx` — playground do Button
+  (variante, tamanho, ícone à esquerda ou à direita, disabled, loading),
+  no topo da página.
 - `src/app/components/[slug]/page.tsx` — renderiza as seções novas
   condicionalmente (`{doc && ...}`), então os outros 59 componentes
   continuam como estavam. TOC lateral atualizado.
 
 Já entregue em julho e fora deste Épico: categorização atomic
 (`atomic-registry.ts`), os 15 patterns, e o playground genérico
-(`generic-playground.tsx`, cobre 12 componentes com variante/tamanho —
-Button mantém o dedicado por causa do controle "Loading").
+(`generic-playground.tsx`, cobre 22 componentes com variante/tamanho —
+Button mantém o dedicado por causa dos controles "Loading" e "Ícone").
+Atenção: o registro dos 22 mora em `generic-playground-registry.tsx`, sem
+`"use client"`. Dentro do arquivo cliente ele chegava à página de servidor
+como referência opaca (`registro[slug]` dava `undefined`) e o playground
+não aparecia em componente nenhum; `doc-playground-registro.test.ts` trava isso.

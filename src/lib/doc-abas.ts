@@ -7,7 +7,6 @@ export interface AbaItem {
 
 export interface AbasContexto {
   temExemplos?: boolean
-  temPlayground?: boolean
   temComposicao?: boolean
 }
 
@@ -44,7 +43,6 @@ export function abasDoComponente(
 
   const temExemplos =
     Boolean(ctx?.temExemplos) ||
-    Boolean(ctx?.temPlayground) ||
     Boolean(doc?.variants && doc.variants.length > 0) ||
     Boolean(doc?.sizes && doc.sizes.length > 0)
 
@@ -138,6 +136,15 @@ export function itensQuandoUsar(doc: ComponentDoc): string[] {
     return [doc.whenToUse]
   }
   return []
+}
+
+// O topo da página é o Playground quando o componente tem um; só sem ele cai no 1º exemplo estático.
+export function previewDoTopo(ctx: {
+  temPlayground: boolean
+  temExemplo: boolean
+}): "playground" | "exemplo" | undefined {
+  if (ctx.temPlayground) return "playground"
+  return ctx.temExemplo ? "exemplo" : undefined
 }
 
 // Os nomes são arquivos em kebab-case (button-default, dialog-demo) e a lista vem em ordem alfabética: sem isto o

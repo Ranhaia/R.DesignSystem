@@ -8,6 +8,7 @@ import {
   faixaMeta,
   itensQuandoUsar,
   linhasVariantesProps,
+  previewDoTopo,
   vizinhosNaCamada,
 } from "./doc-abas"
 
@@ -25,7 +26,7 @@ const vazio: ComponentDoc = {
   props: [],
 }
 const doc = (p: Partial<ComponentDoc> = {}): ComponentDoc => ({ ...vazio, ...p })
-const ctx0 = { temExemplos: false, temPlayground: false, temComposicao: false }
+const ctx0 = { temExemplos: false, temComposicao: false }
 const ids = (abas: { id: string }[]) => abas.map((a) => a.id)
 const opcao = (value: string, description = "") => ({ name: value, value, description })
 
@@ -39,9 +40,12 @@ describe("abasDoComponente", () => {
     expect(ids(abasDoComponente(d, ctx0))).toEqual(["visao-geral", "exemplos", "codigo"])
   })
 
-  it("Exemplos aparece com exemplo cadastrado ou Playground, mesmo sem variante", () => {
+  it("Exemplos aparece com exemplo cadastrado, mesmo sem variante", () => {
     expect(ids(abasDoComponente(doc(), { ...ctx0, temExemplos: true }))).toEqual(["visao-geral", "exemplos"])
-    expect(ids(abasDoComponente(doc(), { ...ctx0, temPlayground: true }))).toEqual(["visao-geral", "exemplos"])
+  })
+
+  it("Playground mora no topo da página: sozinho não cria a aba Exemplos", () => {
+    expect(ids(abasDoComponente(doc(), { ...ctx0, temPlayground: true } as typeof ctx0))).toEqual(["visao-geral"])
   })
 
   it("Código aparece com anatomia ou composição, mesmo sem exemplo mínimo", () => {
@@ -176,6 +180,18 @@ describe("linhasVariantesProps: uma tabela só", () => {
       ],
     })
     expect(linhasVariantesProps(d).map((l) => l.detalhe)).toEqual(["React.ReactNode", "boolean = false"])
+  })
+})
+
+describe("previewDoTopo: o que ocupa o topo da página", () => {
+  it("Playground vence o exemplo estático (o 'ou' da História não é 'sempre o exemplo')", () => {
+    expect(previewDoTopo({ temPlayground: true, temExemplo: true })).toBe("playground")
+    expect(previewDoTopo({ temPlayground: true, temExemplo: false })).toBe("playground")
+  })
+
+  it("sem Playground, o 1º exemplo; sem nenhum dos dois, nada", () => {
+    expect(previewDoTopo({ temPlayground: false, temExemplo: true })).toBe("exemplo")
+    expect(previewDoTopo({ temPlayground: false, temExemplo: false })).toBeUndefined()
   })
 })
 
