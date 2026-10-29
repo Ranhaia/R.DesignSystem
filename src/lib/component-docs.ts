@@ -417,71 +417,55 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   "icon-button": {
-    description: "Um botão cujo único conteúdo é um ícone, sem texto visível.",
-    whenToUse: "Use quando há limitação de espaço ou quando uma ação pode ser perfeitamente representada por um ícone só. Pode ser combinado com Tooltip para mostrar uma descrição breve da ação. Se não for possível resumir a ação num ícone, considere Button com label em vez de Icon Button.",
+    description: "Dispara uma ação representada exclusivamente por um ícone visual, sem rótulo textual visível. O nome acessível é obrigatório via tipagem estática para navegação acessível.",
+    whenToUse: "Ações frequentes em barras de ferramentas ou cabeçalhos densos com espaço reduzido. Ações universais baseadas em ícones amplamente reconhecidos, como fechar, buscar, favoritar ou editar. Ações secundárias em linhas de tabela ou cartões, sempre acompanhadas de dica flutuante.",
     anatomy: [
-      { part: "Elemento raiz", description: "O próprio Button interno com data-slot=\"icon-button\" (sobrescreve o data-slot=\"button\" do Button interno) e data-variant/data-size preservados." },
-      { part: "Ícone", description: "Nó via prop `icon`, sempre obrigatório — único conteúdo do botão." },
-      { part: "Nome acessível", description: "`aria-label`, obrigatório via tipo (não opcional) — impossível montar um <IconButton /> sem ele, o TypeScript barra antes do runtime." },
-      { part: "Skeleton (IconButton.Skeleton)", description: "Reaproveita Button.Skeleton, restrito às 4 escalas quadradas (icon/icon-xs/icon-sm/icon-lg)." },
+      { part: "IconButton", description: "Raiz: elemento <button> com data-slot=\"icon-button\" que encapsula Button e restringe as escalas quadradas." },
+      { part: "Ícone", description: "Elemento gráfico obrigatório informado via prop icon, único conteúdo visual renderizado." },
+      { part: "IconButtonSkeleton", description: "Placeholder de carregamento que reaproveita a geometria quadrada do botão." },
     ],
-    variants: [
-      { name: "Primary", value: "default", description: "Ação principal ícone-only. Usa --primary." },
-      { name: "Secondary", value: "secondary", description: "Ação secundária, menor ênfase." },
-      { name: "Outline", value: "outline", description: "Contorno com fundo neutro." },
-      { name: "Ghost", value: "ghost", description: "Sem fundo nem borda até o hover — uso mais comum em toolbars e ações inline." },
-      { name: "Destructive", value: "destructive", description: "Ações irreversíveis (excluir, remover)." },
-      { name: "Link", value: "link", description: "Aparência de link, sem fundo." },
-      { name: "AI Primary", value: "ai-primary", description: "Ação de IA com hierarquia principal. Gradiente de tokens reais da Nimbus Design System." },
-      { name: "AI Secondary", value: "ai-secondary", description: "Ação de IA complementar — mesmos tokens de IA da Nimbus." },
-    ],
+    variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Hover", description: "Muda fundo/opacidade conforme a variante; no variant default, a elevação (shadow) diminui e o botão desce 1px, mesmo feedback físico do Button." },
-      { name: "Active", description: "Durante o clique/pressionamento." },
-      { name: "Focus", description: "Navegação por teclado — anel de foco (focus-visible:ring), herdado do Button." },
-      { name: "Disabled", description: "prop \"disabled\" — opacidade reduzida, pointer-events desativado." },
+      { name: "Padrão", description: "Superfície da variante escolhida; variantes com elevação usam shadow-sm" },
+      { name: "Hover", description: "Fundo um tom abaixo; na variante default a elevação desce 1 px" },
+      { name: "Pressionado", description: "Escala reduzida via active:scale-(--scale-pressed)" },
+      { name: "Foco", description: "Anel de foco de 3 px em ring via focus-visible" },
+      { name: "Desabilitado", description: "Opacidade reduzida com opacity-50, sem sombra e sem clique" },
+      { name: "Carregando", description: "Composição com IconButton.Skeleton na mesma escala quadrada" },
     ],
-    sizes: [
-      { name: "icon (default)", value: "icon", description: "size-9 (36px) — tamanho padrão." },
-      { name: "icon-xs", value: "icon-xs", description: "size-6 (24px)." },
-      { name: "icon-sm", value: "icon-sm", description: "size-8 (32px)." },
-      { name: "icon-lg", value: "icon-lg", description: "size-10 (40px)." },
-    ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
-    code: `import { IconButton } from "@/components/ui/icon-button"
-import { Icon } from "@/components/ui/icon"
+    sizes: [],
+    doGuidelines: ["Passe um aria-label descritivo e objetivo informando a ação direta: Favoritar, Fechar janela.", "Combine o botão com tooltip para garantir compreensão rápida por usuários que usam mouse ou toque.", "Utilize símbolos e glifos universalmente consagrados para evitar confusão no uso diário."],
+    dontGuidelines: ["Ícone isolado para ação rara ou ambígua → button com texto.", "Botão de ícone sem nome acessível ou com descrição vazia → passe aria-label obrigatório.", "Ação destrutiva sem confirmação ou sem destaque de perigo → button destrutivo ou alert-dialog."],
+    code: `import { Icon } from "@/components/ui/icon"
+import { IconButton } from "@/components/ui/icon-button"
 
-// Icon Button padrão
 <IconButton icon={<Icon name="favorite" />} aria-label="Favoritar" />
-
-// Variante ghost (uso mais comum em toolbars/ações inline)
-<IconButton
-  variant="ghost"
-  size="icon-sm"
-  icon={<Icon name="more_horiz" />}
-  aria-label="Mais opções"
-/>
-
-// Ação destrutiva
-<IconButton
-  variant="destructive"
-  icon={<Icon name="delete" />}
-  aria-label="Excluir"
-/>
-
-// Placeholder de carregamento
+<IconButton variant="ghost" size="icon-sm" icon={<Icon name="close" />} aria-label="Fechar" />
 <IconButton.Skeleton size="icon" />`,
     props: [
-      { name: "icon", type: "React.ReactNode", description: "Ícone exibido — único conteúdo do botão, sempre obrigatório." },
-      { name: "aria-label", type: "string", description: "Nome acessível. Obrigatório via tipo — não opcional como no Button." },
-      { name: "variant", type: "\"default\" | \"destructive\" | \"outline\" | \"secondary\" | \"ghost\" | \"link\" | \"ai-primary\" | \"ai-secondary\"", default: "\"default\"", description: "Estilo visual, idêntico ao variant do Button — nenhuma variante nova." },
-      { name: "size", type: "\"icon\" | \"icon-xs\" | \"icon-sm\" | \"icon-lg\"", default: "\"icon\"", description: "Dimensão — restrito às 4 escalas quadradas do Button." },
-      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot, herdado do Button) em vez de <button>." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa interação e reduz opacidade." },
-      { name: "...props", type: "Omit<React.ComponentProps<typeof Button>, \"icon\" | \"label\" | \"children\" | \"size\" | \"aria-label\">", description: "Demais atributos nativos de <button> e props do Button (fullWidth, onClick, type, etc.)." },
+      { name: "icon", type: "React.ReactNode", default: "—", description: "Ícone exibido como único conteúdo do botão" },
+      { name: "size", type: "IconButtonSize", default: "icon", description: "Dimensão quadrada restrita às escalas de ícone do Button" },
+      { name: "aria-label", type: "string", default: "—", description: "Nome acessível obrigatório via tipo para leitores de tela" },
+      { name: "variant", type: "—", default: "default", description: "Variante visual herdada das variantes do Button" },
+      { name: "size (IconButtonSkeleton)", type: "IconButtonSize", default: "icon", description: "Dimensão quadrada do placeholder de carregamento" },
     ],
+    meta: {
+      nome: "Icon Button",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/icon-button.tsx",
+      story: "src/components/ui/icon-button.stories.tsx",
+      vizinhos: ["button", "toggle", "tooltip"],
+    },
+    whenToUseItems: ["Ações frequentes em barras de ferramentas ou cabeçalhos densos com espaço reduzido.", "Ações universais baseadas em ícones amplamente reconhecidos, como fechar, buscar, favoritar ou editar.", "Ações secundárias em linhas de tabela ou cartões, sempre acompanhadas de dica flutuante."],
+    whenNotToUse: ["Ação complexa que necessita de rótulo em texto para evitar ambiguidade → button.", "Ação de ligar ou desligar um estado independente em vez de disparar comando → toggle.", "Destino que redireciona o usuário para outra rota ou página externa → link."],
+    content: ["Não possui texto visível próprio; exige aria-label com verbo no imperativo ou infinitivo: Fechar, Excluir item.", "O texto do aria-label deve coincidir exatamente com a dica flutuante associada: Copiar link.", "Sem ponto final e sem exclamação no nome acessível."],
+    accessibility: {
+      keyboard: "Tab move o foco para o botão; Enter ou Espaço acionam a ação.",
+      screenReader: "Papel button. Como não há texto visível, o leitor anuncia o valor obrigatório passado em aria-label.",
+      focus: "Anel de 3 px visível no teclado (focus-visible). Após a execução, o foco permanece no próprio botão se a tela continuar a mesma.",
+      cautions: "Nunca renderize ícone interativo sem nome acessível claro (WCAG 4.1.2) e garanta alvo de toque mínimo de 24 px (WCAG 2.5.8), usando tooltip para usuários visuais.",
+    },
   },
   input: {
     description: "Campo de entrada para capturar textos ou valores de linha única. Dá suporte a rótulo embutido ou flutuante e ação interativa no final.",
@@ -1904,28 +1888,32 @@ function Exemplo() {
     ],
   },
   "segmented-control": {
-    description: "Um grupo de opções mutuamente excludentes em formato de pílula, com seleção sempre única.",
-    whenToUse: "Use para alternar entre um pequeno número de visões/modos mutuamente excludentes do mesmo conteúdo (ex.: \"Dia / Semana / Mês\"), quando o item ativo precisa de destaque visual mais evidente do que o ToggleGroup padrão oferece. Não confunda com componentes vizinhos: use ToggleGroup quando precisar de seleção múltipla ou visual de botões com borda; use Tabs quando as opções também controlam a troca de um painel de conteúdo — SegmentedControl não tem painel associado, é só o seletor.",
+    description: "Alterna entre opções mutuamente excludentes em formato de pílula contínua com seleção estritamente única. Oferece troca imediata de modo ou visualização na mesma tela sem acoplamento a painéis de conteúdo.",
+    whenToUse: "Alternar modos de visualização rápida do mesmo conjunto de dados (ex.: Lista e Grade). Seleção de granularidade temporal em relatórios e gráficos (ex.: Dia, Semana, Mês). Escolha entre 2 a 4 alternativas fixas e visíveis que aplicam o efeito imediatamente.",
     anatomy: [
-      { part: "SegmentedControl", description: "Root — ToggleGroupPrimitive.Root da Radix com type=\"single\" fixado internamente (não é uma prop exposta). Define size compartilhado via contexto e o fundo bg-muted + p-[3px] do \"trilho\" da pílula." },
-      { part: "SegmentedControlItem", description: "Cada opção — ToggleGroupPrimitive.Item. Herda size do grupo se não especificar o próprio. Fica com data-state=\"on\" (fundo bg-background + sombra) quando selecionado." },
+      { part: "SegmentedControl", description: "Container raiz baseado em ToggleGroupPrimitive com seleção única fixada e trilho em bg-muted" },
+      { part: "SegmentedControlItem", description: "Opção individual com indicador ativo de fundo bg-background e elevação shadow-sm" },
     ],
     variants: [],
     states: [
-      { name: "Off", description: "Item não selecionado — texto text-muted-foreground, sem fundo." },
-      { name: "On (selecionado)", description: "data-state=\"on\" — fundo bg-background, texto text-foreground, shadow-sm. Sempre exatamente um item selecionado por grupo." },
-      { name: "Hover", description: "Item não selecionado ganha hover:text-foreground." },
-      { name: "Focus", description: "focus-visible:ring com z-10, pra não ser cortado pelo item vizinho." },
-      { name: "Disabled", description: "opacidade reduzida e pointer-events desativados — por item ou pelo grupo inteiro." },
+      { name: "Padrão", description: "Item inativo com texto text-muted-foreground e fundo transparente no trilho" },
+      { name: "Hover", description: "Texto com realce hover:text-foreground" },
+      { name: "Pressionado", description: "Escala física reduzida via active:scale-(--scale-pressed) com transição suave" },
+      { name: "Foco", description: "Anel visível com focus-visible:ring-[3px] focus-visible:ring-ring e z-10" },
+      { name: "Selecionado", description: "Fundo bg-background, texto text-foreground e elevação shadow-sm com data-state=\"on\"" },
+      { name: "Desabilitado", description: "Opacidade reduzida com opacity-50 e cursor bloqueado por item ou no grupo" },
     ],
     sizes: [
-      { name: "sm", value: "sm", description: "Item com h-7, texto text-xs." },
-      { name: "default", value: "default", description: "Item com h-8." },
-      { name: "lg", value: "lg", description: "Item com h-9." },
+      { name: "sm", value: "sm", description: "28 px — Barras de ferramentas densas e cabeçalhos compactos" },
+      { name: "default", value: "default", description: "32 px — Padrão para alternar visões ou filtros em páginas e painéis" },
+      { name: "lg", value: "lg", description: "36 px — Destaque em telas móveis e áreas com maior área de toque" },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
-    code: `import { SegmentedControl, SegmentedControlItem } from "@/components/ui/segmented-control"
+    doGuidelines: ["Forneça aria-label descritivo no SegmentedControl indicando o propósito da escolha.", "Mantenha de 2 a 4 opções mutuamente excludentes com comprimentos visuais equilibrados.", "Aplique a alteração do estado na interface de forma imediata após a seleção."],
+    dontGuidelines: ["Usar para alternar painéis complexos de conteúdo com páginas independentes → tabs.", "Agrupar mais de 4 opções extensas que não cabem confortavelmente em linha → select.", "Permitir seleção múltipla ou desmarcar todas as opções → toggle-group."],
+    code: `import {
+  SegmentedControl,
+  SegmentedControlItem,
+} from "@/components/ui/segmented-control"
 
 <SegmentedControl aria-label="Período" defaultValue="semana">
   <SegmentedControlItem value="dia">Dia</SegmentedControlItem>
@@ -1933,12 +1921,36 @@ function Exemplo() {
   <SegmentedControlItem value="mes">Mês</SegmentedControlItem>
 </SegmentedControl>`,
     props: [
-      { name: "value / onValueChange", type: "string / (value: string) => void", description: "Valor selecionado (controlado). Sempre string — nunca array, porque type é fixado em \"single\"." },
-      { name: "defaultValue", type: "string", description: "Valor inicial (não controlado)." },
-      { name: "size", type: "\"sm\" | \"default\" | \"lg\"", default: "\"default\"", description: "Aplicado a todos os itens via contexto, salvo item que sobrescreva o próprio size." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa o grupo inteiro (repassado a cada item)." },
-      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção de navegação por teclado (herdado da Radix)." },
-      { name: "...props", type: "Omit<ToggleGroupPrimitive.ToggleGroupSingleProps, \"type\">", description: "Demais props nativas do ToggleGroup.Root da Radix, exceto \"type\" (fixado internamente)." },
+      { name: "size (SegmentedControl)", type: "sm · default · lg", default: "default", description: "Dimensão compartilhada com todos os itens do grupo via contexto" },
+      { name: "size (SegmentedControlItem)", type: "sm · default · lg", default: "default", description: "Altura do segmento quando sobrescreve o tamanho do container" },
+      { name: "value · defaultValue (SegmentedControl)", type: "string", default: "—", description: "Valor da opção selecionada de forma controlada ou não-controlada" },
+      { name: "onValueChange (SegmentedControl)", type: "(value: string) => void", default: "—", description: "Callback disparado imediatamente ao selecionar uma nova opção" },
+    ],
+    meta: {
+      nome: "SegmentedControl",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/segmented-control.tsx",
+      story: "src/components/ui/segmented-control.stories.tsx",
+      vizinhos: ["tabs", "toggle-group", "select", "radio-group"],
+    },
+    whenToUseItems: ["Alternar modos de visualização rápida do mesmo conjunto de dados (ex.: Lista e Grade).", "Seleção de granularidade temporal em relatórios e gráficos (ex.: Dia, Semana, Mês).", "Escolha entre 2 a 4 alternativas fixas e visíveis que aplicam o efeito imediatamente."],
+    whenNotToUse: ["Cada opção controla a troca de um painel de conteúdo longo e estruturado → tabs.", "Seleção múltipla simultânea ou botões com contorno individual → toggle-group.", "Mais de 4 opções em lista longa com limitação de espaço horizontal → select."],
+    content: ["Use rótulos curtos de uma ou duas palavras por segmento: Dia, Semana, Mês.", "Mantenha padrão gramatical e tamanho semelhante entre todas as opções do mesmo grupo: Lista, Grade.", "Sem ponto final em rótulos de segmento."],
+    accessibility: {
+      keyboard: "Comportamento nativo de radiogroup: Tab entra no grupo focando o segmento ativo; as setas direcionais navegam e alternam a seleção entre os itens.",
+      screenReader: "A raiz expõe papel radiogroup e exige aria-label descritivo. Cada item renderiza papel radio com aria-checked=\"true\" no item selecionado.",
+      focus: "O anel de 3 px em ring utiliza focus-visible:z-10 para que a borda de foco não seja cortada pelos segmentos adjacentes.",
+      cautions: "Limite o controle a no máximo 4 opções para não comprometer a legibilidade em telas compactas (WCAG 1.4.10) e sempre forneça aria-label no container para contexto.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-background", "bg-muted", "bg-secondary", "border-input", "border-ring", "text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1.5", "h-7", "h-8", "h-9", "p-0.75", "px-3", "size-4"] },
+      { contexto: "Raio", itens: ["radius-inset-0.75", "rounded-inner", "rounded-outer-lg"] },
+      { contexto: "Sombra", itens: ["shadow-sm"] },
+      { contexto: "Movimento", itens: ["--scale-pressed", "duration-motion-fast", "ease-spring"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   select: {
@@ -2849,64 +2861,106 @@ import { Input } from "@/components/ui/input"
     ],
   },
   "input-group": {
-    description: "Adicione complementos, botões e conteúdo auxiliar a campos de entrada.",
-    whenToUse: "Use quando um Input ou Textarea precisar de um ícone, prefixo, sufixo, botão ou texto de apoio acoplado.",
+    description: "Agrupa um campo de entrada com elementos auxiliares como ícones, botões, atalhos ou textos em uma única borda unificada. Resolve a integração visual de ações diretas no campo, como busca, limpar ou envio.",
+    whenToUse: "Campo de busca ou filtro com botão de limpar ou ícone de lupa integrado. Campo de valor monetário ou unidade com prefixo ou sufixo fixo (ex.: R$, kg). Campo de prompt ou mensagem expansível combinando área de texto e botão de ação.",
     anatomy: [
-      { part: "InputGroup", description: "Elemento raiz — borda única compartilhada entre input e addons." },
-      { part: "InputGroupAddon", description: "Ícone, texto ou botão fixado numa borda (align: inline-start/inline-end/block-start/block-end)." },
-      { part: "InputGroupButton", description: "Botão compacto dentro do grupo (ex: limpar, enviar)." },
-      { part: "InputGroupText", description: "Texto estático dentro do grupo." },
-      { part: "InputGroupInput / InputGroupTextarea", description: "O controle real — Input ou Textarea sem borda própria." },
+      { part: "InputGroup", description: "Container flexível que unifica a borda, sombra e estado de foco dos elementos filhos" },
+      { part: "InputGroupAddon", description: "Área de encaixe para complementos posicionados no início, fim ou acima e abaixo do controle" },
+      { part: "InputGroupButton", description: "Botão interno dimensionado e estilizado para encaixar sem quebrar a borda do grupo" },
+      { part: "InputGroupText", description: "Rótulo textual estático ou ícone decorativo posicionado como complemento" },
+      { part: "InputGroupInput", description: "Campo de entrada de linha única com bordas e anéis de foco zerados" },
+      { part: "InputGroupTextarea", description: "Campo multilinhas sem redimensionamento manual e com fundo transparente" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Focus", description: "Borda do grupo inteiro reage ao foco do controle interno." },
-      { name: "Aria-invalid", description: "Borda e ring em --destructive." },
+      { name: "Padrão", description: "Borda neutra border-input com elevação sutil shadow-xs" },
+      { name: "Foco", description: "O container ganha anel ring-[3px] ring-ring e border-ring ao focar o controle interno" },
+      { name: "Inválido", description: "Borda de perigo border-destructive e anel suave quando o controle tem aria-invalid=\"true\"" },
+      { name: "Desabilitado", description: "Controle interno desabilitado reduz opacidade e bloqueia eventos" },
     ],
-    sizes: [],
-    doGuidelines: ["Use para agrupar input com elementos adjacentes como botões ou ícones."],
-    dontGuidelines: ["Não use input-group para campos que não têm relação direta entre si."],
-    code: `import {
+    sizes: [
+      { name: "xs", value: "xs", description: "24 px — Ação textual compacta em campos de altura reduzida" },
+      { name: "sm", value: "sm", description: "32 px — Ação textual padrão acoplada ao campo" },
+      { name: "icon-xs", value: "icon-xs", description: "24 px — Botão de ícone compacto para campos densos" },
+      { name: "icon-sm", value: "icon-sm", description: "32 px — Botão de ícone padrão para ações como limpar ou alternar senha" },
+    ],
+    doGuidelines: ["Forneça aria-label acessível no controle de entrada ou conecte a um label externo.", "Utilize InputGroupAddon com alinhamento inline-end para ações contextuais como limpar busca ou copiar código.", "Mantenha complementos textuais curtos para preservar a visibilidade do texto digitado."],
+    dontGuidelines: ["Campo isolado sem elementos visuais ou botões anexos → input.", "Múltiplos botões densos ocupando toda a largura do grupo → button-group externo.", "Botão de ícone integrado sem nome acessível → passe aria-label no botão."],
+    code: `import { Icon } from "@/components/ui/icon"
+import {
   InputGroup,
   InputGroupAddon,
+  InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import { Icon } from "@/components/ui/icon"
 
 <InputGroup>
-  <InputGroupAddon>
-    <Icon name="search" />
+  <InputGroupInput placeholder="Buscar conteúdo..." aria-label="Buscar" />
+  <InputGroupAddon align="inline-end">
+    <InputGroupButton size="icon-xs" aria-label="Executar busca">
+      <Icon name="search" />
+    </InputGroupButton>
   </InputGroupAddon>
-  <InputGroupInput placeholder="Buscar..." />
 </InputGroup>`,
     props: [
-      { name: "align", type: "\"inline-start\" | \"inline-end\" | \"block-start\" | \"block-end\"", default: "\"inline-start\"", description: "(InputGroupAddon) posição do addon." },
-      { name: "size", type: "\"xs\" | \"sm\" | \"icon-xs\" | \"icon-sm\"", default: "\"xs\"", description: "(InputGroupButton) dimensão." },
+      { name: "align (InputGroupAddon)", type: "inline-start · inline-end · block-start · block-end", default: "inline-start", description: "Posição do complemento em relação ao controle de entrada" },
+      { name: "size (InputGroupButton)", type: "xs · sm · icon-xs · icon-sm", default: "xs", description: "Altura e proporção do botão integrado" },
+      { name: "type (InputGroupButton)", type: "—", default: "button", description: "Tipo de acionamento do botão nativo" },
+      { name: "variant (InputGroupButton)", type: "—", default: "ghost", description: "Estilo visual herdado do botão" },
+    ],
+    meta: {
+      nome: "Input Group",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/input-group.tsx",
+      story: "src/components/ui/input-group.stories.tsx",
+      vizinhos: ["input", "textarea", "field"],
+    },
+    whenToUseItems: ["Campo de busca ou filtro com botão de limpar ou ícone de lupa integrado.", "Campo de valor monetário ou unidade com prefixo ou sufixo fixo (ex.: R$, kg).", "Campo de prompt ou mensagem expansível combinando área de texto e botão de ação."],
+    whenNotToUse: ["Entrada textual isolada sem complementos visuais na mesma borda → input.", "Bloco de texto longo sem botões ou ícones internos acoplados → textarea.", "Formulário completo com rótulo, descrição e mensagem de erro externa → field."],
+    content: ["Em complementos com texto estático (InputGroupText), use abreviações ou símbolos curtos: R$, kg, @.", "Botões integrados de ícone devem obrigatoriamente possuir aria-label: Limpar busca, Ver senha.", "Mantenha textos de atalhos e prefixos concisos para não reduzir a área útil de digitação."],
+    accessibility: {
+      keyboard: "O container possui papel semântico group. A tecla Tab move o foco ordenadamente entre o controle de entrada e os botões interativos.",
+      screenReader: "Como InputGroupInput e InputGroupTextarea não renderizam rótulo visível próprio, forneça aria-label no controle ou envolva em field.",
+      focus: "O anel de foco visível é aplicado ao container raiz quando qualquer controle interno recebe foco (focus-visible).",
+      cautions: "Ao usar botões só de ícone no addon, passe aria-label explícito (WCAG 4.1.2) e garanta que addons puramente informativos tenham clique direcionado ao campo de texto.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["border-destructive", "border-input", "border-ring", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "h-6", "h-8", "h-9", "min-w-0", "p-0", "pb-2.5", "pb-3", "pl-2", "pl-3", "pr-2", "pr-3", "pt-2.5", "pt-3", "px-2", "px-2.5", "px-3", "py-1.5", "py-3", "size-3.5", "size-4", "size-6", "size-8"] },
+      { contexto: "Raio", itens: ["rounded-inner", "rounded-md", "rounded-outer-md"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
+      { contexto: "Foco", itens: ["ring-destructive", "ring-ring"] },
     ],
   },
   pagination: {
-    description: "Paginação com navegação entre páginas e links de próxima/anterior.",
-    whenToUse: "Use para dividir uma lista longa de resultados em páginas navegáveis.",
+    description: "Divide listas e conjuntos volumosos de dados em páginas sequenciais numeradas. Facilita o salto direto entre blocos de conteúdo e o controle de avanço e retrocesso.",
+    whenToUse: "Tabelas de dados e catálogos com dezenas ou centenas de registros distribuídos em blocos. Resultados de busca onde a posição relativa e o volume total auxiliam na navegação. Páginas de listagem longa onde carregar todos os itens de uma vez degradaria a performance.",
     anatomy: [
-      { part: "Pagination", description: "<nav aria-label=\"pagination\"> — elemento raiz." },
-      { part: "PaginationContent", description: "<ul> que envolve os itens." },
-      { part: "PaginationItem", description: "<li> — um item da paginação." },
-      { part: "PaginationLink", description: "Link de página — reaproveita buttonVariants do Button." },
-      { part: "PaginationPrevious / PaginationNext", description: "Links de navegação com ícone + label." },
-      { part: "PaginationEllipsis", description: "Indica páginas ocultas (\"...\")." },
+      { part: "Pagination", description: "Elemento nav raiz com papel de navegação e rótulo acessível" },
+      { part: "PaginationContent", description: "Lista ul flexível que agrupa os itens e controles de paginação" },
+      { part: "PaginationItem", description: "Item individual li da lista de navegação" },
+      { part: "PaginationLink", description: "Âncora a estilizada como botão que recebe o número da página e o estado ativo" },
+      { part: "PaginationPrevious", description: "Botão com ícone de seta para voltar à página anterior" },
+      { part: "PaginationNext", description: "Botão com ícone de seta para avançar à próxima página" },
+      { part: "PaginationEllipsis", description: "Indicador visual de intervalo contendo reticências para páginas ocultas" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Link normal — variant ghost." },
-      { name: "Active", description: "isActive=true — variant outline, aria-current=\"page\"." },
+      { name: "Padrão", description: "Link inativo com fundo transparente hover:bg-accent e texto padrão" },
+      { name: "Ativo", description: "Página atual ganha borda e fundo com aria-current=\"page\" e variante outline" },
+      { name: "Hover", description: "Fundo com superfície suave e contraste elevado" },
+      { name: "Foco", description: "Anel de foco visível em ring preservado no link pelo buttonVariants" },
+      { name: "Desabilitado", description: "Sem suporte nativo a disabled na âncora; remova o link ou omita o href" },
     ],
     sizes: [],
-    doGuidelines: ["Use para navegar entre páginas de uma lista ou tabela com muitos itens. Mostre o total de páginas."],
-    dontGuidelines: ["Não use pagination para menos de 10 itens — use scroll. Não use sem indicar a página atual."],
+    doGuidelines: ["Mantenha visíveis a primeira página, a última e as páginas adjacentes à página selecionada.", "Marque sempre o link da página atual com a propriedade isActive para fornecer aria-current=\"page\".", "Posicione a paginação de forma consistente abaixo da tabela ou lista de dados."],
+    dontGuidelines: ["Renderizar todos os números de páginas em listas muito extensas → use PaginationEllipsis para contrair o intervalo.", "Dividir em páginas coleções curtas com menos de 20 registros → mantenha tudo em uma lista única com list.", "Utilizar paginação numérica para alternar seções temáticas de um documento → use tabs."],
     code: `import {
   Pagination,
   PaginationContent,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -2915,15 +2969,48 @@ import { Icon } from "@/components/ui/icon"
 
 <Pagination>
   <PaginationContent>
-    <PaginationItem><PaginationPrevious href="#" /></PaginationItem>
-    <PaginationItem><PaginationLink href="#" isActive>1</PaginationLink></PaginationItem>
-    <PaginationItem><PaginationLink href="#">2</PaginationLink></PaginationItem>
-    <PaginationItem><PaginationNext href="#" /></PaginationItem>
+    <PaginationItem>
+      <PaginationPrevious href="#" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" isActive>
+        2
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="#" />
+    </PaginationItem>
   </PaginationContent>
 </Pagination>`,
     props: [
-      { name: "isActive", type: "boolean", default: "false", description: "(PaginationLink) marca a página atual." },
-      { name: "size", type: "Button[\"size\"]", default: "\"icon\"", description: "(PaginationLink) dimensão herdada do Button." },
+      { name: "isActive (PaginationLink)", type: "boolean", default: "—", description: "Indica se o link corresponde à página exibida atualmente" },
+      { name: "size (PaginationLink)", type: "—", default: "icon", description: "Escala de dimensão herdada das opções de botão" },
+    ],
+    meta: {
+      nome: "Pagination",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/pagination.tsx",
+      story: "src/components/ui/pagination.stories.tsx",
+      vizinhos: ["carousel", "tabs", "list"],
+    },
+    whenToUseItems: ["Tabelas de dados e catálogos com dezenas ou centenas de registros distribuídos em blocos.", "Resultados de busca onde a posição relativa e o volume total auxiliam na navegação.", "Páginas de listagem longa onde carregar todos os itens de uma vez degradaria a performance."],
+    whenNotToUse: ["Galeria ou apresentação sequencial com menos de 5 telas ou imagens → carousel.", "Abas para alternar visões ou seções paralelas do mesmo documento → tabs.", "Lista curta com menos de 20 itens onde tudo cabe na mesma tela → list."],
+    content: ["Os botões Anterior e Próxima devem conter texto explícito acompanhado do ícone direcional: Anterior, Próxima.", "O indicador de quebra de sequência deve expressar reticências acompanhado de texto auxiliar para leitores de tela: Mais páginas.", "Links numéricos exibem apenas algarismos inteiros sequenciais: 1, 2, 3."],
+    accessibility: {
+      keyboard: "O componente é estruturado como nav role=\"navigation\" contendo uma lista ul. A tecla Tab percorre os links sequencialmente.",
+      screenReader: "A raiz expõe aria-label=\"paginação\". O link ativo recebe aria-current=\"page\". Os botões Anterior e Próxima possuem aria-label descritivo.",
+      focus: "Cada link focado exibe o anel de foco visível. Após a troca de página, é recomendável reposicionar o foco programático no início da listagem.",
+      cautions: "No PaginationEllipsis, o atributo aria-hidden na tag span oculta todo o elemento para leitores de tela; garanta que a navegação por páginas extremas permaneça acessível (WCAG 1.3.1).",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["gap-1", "pl-2.5", "pr-2.5", "px-2.5", "size-9"] },
     ],
   },
   "toggle-group": {
@@ -2965,26 +3052,59 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   "scroll-area": {
-    description: "Amplia a funcionalidade nativa de rolagem para permitir um estilo customizado e consistente entre navegadores.",
-    whenToUse: "Use quando precisar de uma área de rolagem com barra estilizada, dentro de um espaço de altura ou largura fixa.",
+    description: "Fornece uma área de rolagem com barras customizadas e comportamento consistente entre diferentes navegadores e sistemas operacionais. Resolve a contenção de conteúdos extensos dentro de dimensões fixas sem depender de barras nativas discrepantes.",
+    whenToUse: "Painéis laterais, menus de navegação ou caixas de diálogo com listas longas de opções. Áreas com altura ou largura fixa onde o conteúdo excede o espaço disponível. Tabelas largas ou visualizações horizontais que necessitam de rolagem lateral suave e estilizada.",
     anatomy: [
-      { part: "ScrollArea", description: "Root — define a altura/largura visível (via className)." },
-      { part: "Viewport (interno)", description: "Área que realmente rola — renderizada automaticamente ao redor dos children." },
-      { part: "ScrollBar", description: "Barra de rolagem customizada (thumb arredondado), vertical ou horizontal." },
-      { part: "Corner (interno)", description: "Canto exibido quando as duas barras (v e h) aparecem juntas." },
+      { part: "ScrollArea", description: "Container raiz relativo que encapsula a área visível e o viewport rolável" },
+      { part: "Viewport", description: "Elemento interno focável com tabIndex=0 que acomoda os elementos filhos roláveis" },
+      { part: "ScrollBar", description: "Trilho da barra de rolagem customizada posicionado de forma vertical ou horizontal" },
+      { part: "Polegar", description: "Marcador deslizante arredondado que indica o deslocamento e a proporção" },
+      { part: "Canto", description: "Elemento decorativo posicionado na interseção quando ambas as barras estão ativas" },
     ],
     variants: [],
-    states: [],
+    states: [
+      { name: "Padrão", description: "Barra de rolagem discreta com trilho transparente e marcador em bg-border" },
+      { name: "Foco", description: "O viewport exibe anel de foco visível ring-[3px] ring-ring ao receber foco por teclado" },
+      { name: "Rolagem", description: "Marcador se desloca suavemente acompanhando o toque, roda do mouse ou arrasto" },
+    ],
     sizes: [],
-    doGuidelines: ["Use para áreas com conteúdo rolável customizado, mantendo consistência visual."],
-    dontGuidelines: ["Não use scroll-area para conteúdo que cabe inteiro na tela."],
+    doGuidelines: ["Defina sempre uma altura ou largura máxima finita no container via classes utilitárias.", "Forneça um aria-label significativo para descrever o bloco rolável em navegadores e leitores de tela.", "Utilize ScrollBar com orientação horizontal quando tabelas ou blocos largos excederem o viewport."],
+    dontGuidelines: ["Utilizar área de rolagem para conteúdo que não ultrapassa o limite da janela → box.", "Deixar a área rolável sem altura definida resultando em expansão infinita → passe classe de altura fixa como h-64.", "Permitir que o usuário precise redimensionar manualmente os painéis usando apenas rolagem → resizable."],
     code: `import { ScrollArea } from "@/components/ui/scroll-area"
 
-<ScrollArea className="h-48 w-64 rounded-md border p-4">
-  Conteúdo longo que rola dentro de uma altura fixa.
+<ScrollArea className="h-48 w-64 rounded-md border p-4" aria-label="Notificações">
+  <div className="space-y-4">
+    <p className="text-sm">Notificação 1: Arquivo sincronizado com sucesso.</p>
+    <p className="text-sm">Notificação 2: Novo comentário recebido.</p>
+    <p className="text-sm">Notificação 3: Atualização de segurança disponível.</p>
+    <p className="text-sm">Notificação 4: Backup diário concluído.</p>
+  </div>
 </ScrollArea>`,
     props: [
-      { name: "orientation", type: "\"vertical\" | \"horizontal\"", default: "\"vertical\"", description: "(ScrollBar) direção da barra customizada." },
+      { name: "orientation (ScrollBar)", type: "vertical · horizontal", default: "vertical", description: "Direção do trilho e da barra de rolagem customizada" },
+    ],
+    meta: {
+      nome: "Scroll Area",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/scroll-area.tsx",
+      story: "src/components/ui/scroll-area.stories.tsx",
+      vizinhos: ["box", "list", "resizable"],
+    },
+    whenToUseItems: ["Painéis laterais, menus de navegação ou caixas de diálogo com listas longas de opções.", "Áreas com altura ou largura fixa onde o conteúdo excede o espaço disponível.", "Tabelas largas ou visualizações horizontais que necessitam de rolagem lateral suave e estilizada."],
+    whenNotToUse: ["Rolagem principal da página inteira do navegador → use o fluxo nativo em box.", "Conteúdo pequeno que cabe integralmente na tela sem transbordar → box.", "Divisão de espaço interativa onde o usuário precisa redimensionar as seções vizinhas → resizable."],
+    content: ["Não possui texto próprio; o conteúdo rolável interno pode conter qualquer composição de componentes ou tipografia.", "Para melhorar a experiência com leitor de tela, passe aria-label descritivo no container: Lista de notificações, Histórico de compras.", "Garanta que itens internos mantenham espaçamento interno adequado para não colar no marcador de rolagem."],
+    accessibility: {
+      keyboard: "O viewport interno possui tabIndex=0. Ao receber foco, pode ser rolado diretamente pelas setas direcionais, Page Up, Page Down, Home e End.",
+      screenReader: "O viewport expõe papel de região rolável com nome acessível configurado via aria-label (padrão \"Conteúdo rolável\").",
+      focus: "O anel de foco ring-[3px] ring-ring é exibido em torno de todo o viewport no estado focus-visible.",
+      cautions: "Evite aninhar áreas de rolagem dentro de outras áreas de rolagem sem limites claros para não prender o foco e a rolagem do usuário (WCAG 2.1.2).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-border"] },
+      { contexto: "Espaço", itens: ["h-2.5", "p-px", "w-2.5"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   attachment: {
@@ -3776,41 +3896,67 @@ import { Input } from "@/components/ui/input"
     ],
   },
   message: {
-    description: "Exibe uma mensagem em uma conversa, com avatar, cabeçalho, rodapé e alinhamento opcionais.",
-    whenToUse: "Use para estruturar cada linha de uma conversa (chat, atendimento, assistente de IA), cuidando de avatar, alinhamento e metadados.",
+    description: "Estrutura cada turno de fala em interfaces conversacionais ou fluxos de chat. Organiza avatar, cabeçalho, corpo da mensagem e rodapé de ações conforme o emissor.",
+    whenToUse: "Histórico de mensagens em chats de atendimento ou conversas com assistentes virtuais. Exibição alternada de falas do usuário à direita (end) e respostas do sistema à esquerda (start). Blocos de diálogo que combinam texto, metadados de envio e ações como copiar ou avaliar.",
     anatomy: [
-      { part: "MessageGroup", description: "Agrupa várias mensagens em sequência (ex: histórico de chat)." },
-      { part: "Message", description: "Elemento raiz de uma mensagem — align \"start\" (recebida) ou \"end\" (enviada), inverte a direção do flex." },
-      { part: "MessageAvatar", description: "Avatar do autor — alinhado à base da mensagem." },
-      { part: "MessageContent", description: "Envolve o corpo da mensagem e o header/footer." },
-      { part: "MessageHeader / MessageFooter", description: "Metadado (nome, hora) acima ou abaixo do conteúdo." },
+      { part: "MessageGroup", description: "Container vertical que agrupa uma sequência contínua de mensagens com espaçamento padronizado" },
+      { part: "Message", description: "Raiz de um turno de mensagem com suporte a alinhamento à esquerda (start) ou à direita (end)" },
+      { part: "MessageAvatar", description: "Slot reservado para avatar do emissor, alinhado na base do conteúdo da mensagem" },
+      { part: "MessageContent", description: "Bloco vertical central que empilha cabeçalho, corpo do texto e rodapé" },
+      { part: "MessageHeader", description: "Linha superior de metadados contendo nome do autor e horário de envio" },
+      { part: "MessageFooter", description: "Linha inferior para ações contextuais como copiar, reagir ou avaliar" },
     ],
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["Use para exibir mensagens em um chat ou timeline de conversa."],
-    dontGuidelines: ["Não use message para notificações do sistema — use Sonner."],
-    code: `import {
+    doGuidelines: ["Utilize align=\"start\" para mensagens recebidas e align=\"end\" para falas do próprio usuário.", "Inclua MessageAvatar e MessageHeader para que a autoria fique evidente sem ambiguidade.", "Ofereça ações úteis em MessageFooter, como copiar resposta ou solicitar regeneração."],
+    dontGuidelines: ["Mensagem de status temporário ou alerta do sistema solto na conversa → marker.", "Notificação rápida com desaparecimento automático após ação → sonner.", "Fingir que respostas de inteligência artificial são emitidas por pessoas reais → identifique o assistente no MessageHeader."],
+    code: `import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import {
   Message,
   MessageAvatar,
   MessageContent,
   MessageHeader,
 } from "@/components/ui/message"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 
 <Message align="start">
   <MessageAvatar>
     <Avatar>
-      <AvatarFallback>MP</AvatarFallback>
+      <AvatarFallback>IA</AvatarFallback>
     </Avatar>
   </MessageAvatar>
   <MessageContent>
-    <MessageHeader>Marina · 10:32</MessageHeader>
-    <p className="rounded-xl bg-muted px-3 py-2 text-sm">Oi!</p>
+    <MessageHeader>Assistente · 10:32</MessageHeader>
+    <p className="rounded-xl bg-muted px-3 py-2 text-sm">
+      Os tokens foram aplicados com sucesso.
+    </p>
   </MessageContent>
 </Message>`,
     props: [
-      { name: "align", type: "\"start\" | \"end\"", default: "\"start\"", description: "Lado da mensagem — recebida ou enviada." },
+      { name: "align", type: "start · end", default: "start", description: "Alinhamento da mensagem e inversão da ordem visual para o usuário" },
+    ],
+    meta: {
+      nome: "Message",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/message.tsx",
+      story: "src/components/ui/message.stories.tsx",
+      vizinhos: ["marker", "bubble", "avatar"],
+    },
+    whenToUseItems: ["Histórico de mensagens em chats de atendimento ou conversas com assistentes virtuais.", "Exibição alternada de falas do usuário à direita (end) e respostas do sistema à esquerda (start).", "Blocos de diálogo que combinam texto, metadados de envio e ações como copiar ou avaliar."],
+    whenNotToUse: ["Marcador de status, evento de sistema ou divisor temporal na linha do tempo → marker.", "Notificação flutuante ou aviso temporário disparado pela aplicação → sonner.", "Alerta fixo de erro ou contexto dentro da página ou formulário → alert."],
+    content: ["Identifique claramente o autor no cabeçalho com nome ou função: Você, Assistente.", "Acompanhe o horário ou carimbo de data em formato reduzido: 10:32, Ontem.", "Mantenha tom neutro e objetivo nas respostas do sistema, evitando fingir sentimentos humanos.", "Botões de ação no rodapé devem ter rótulos ou nomes acessíveis explícitos: Copiar resposta, Tentar novamente."],
+    accessibility: {
+      keyboard: "O container da mensagem não recebe foco por ser estrutural. Ações interativas em botões ou links internos recebem Tab normalmente.",
+      screenReader: "Utilize lista semântica (ul e li) ao agrupar mensagens. Cada mensagem deve anunciar o autor e a mensagem completa após o término da geração.",
+      focus: "Ao enviar ou receber mensagens, mantenha o foco no campo de entrada principal da conversa, sem deslocar o cursor para a nova mensagem.",
+      cautions: "Respostas geradas por IA não devem ser anunciadas palavra por palavra pelo leitor de tela para evitar poluição sonora (WCAG 4.1.3).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-muted", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-2", "gap-2.5", "min-w-0", "min-w-8", "px-0", "px-3"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
     ],
   },
   bubble: {

@@ -1,0 +1,45 @@
+{
+  "slug": "icon-button",
+  "partes": [
+    "IconButton",
+    "IconButtonSkeleton"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "icon",
+      "parte": "IconButton",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "size",
+      "parte": "IconButton",
+      "tipo": "`IconButtonSize`",
+      "padrao": "icon"
+    },
+    {
+      "nome": "aria-label",
+      "parte": "IconButton",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "variant",
+      "parte": "IconButton",
+      "tipo": null,
+      "padrao": "default"
+    },
+    {
+      "nome": "size",
+      "parte": "IconButtonSkeleton",
+      "tipo": "`IconButtonSize`",
+      "padrao": "icon"
+    }
+  ],
+  "tokens": [],
+  "compoe": [
+    "button"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "pagination",
+  "partes": [
+    "Pagination",
+    "PaginationContent",
+    "PaginationItem",
+    "PaginationLink",
+    "PaginationPrevious",
+    "PaginationNext",
+    "PaginationEllipsis"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "isActive",
+      "parte": "PaginationLink",
+      "tipo": "`boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "size",
+      "parte": "PaginationLink",
+      "tipo": null,
+      "padrao": "icon"
+    }
+  ],
+  "tokens": [
+    "gap-1",
+    "pl-2.5",
+    "pr-2.5",
+    "px-2.5",
+    "size-9"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}
