@@ -86,11 +86,17 @@ Um só: lista com 36 px (`h-9`) na horizontal.
 
 ## Tokens usados
 
-`--scale-pressed` `bg-background` `bg-foreground` `bg-muted`
-`bg-secondary` `border-input` `border-ring` `duration-motion-base`
-`duration-motion-fast` `ease-spring` `outline-ring` `radius-inset-0.75`
-`ring-ring` `rounded-inner` `rounded-outer-lg` `shadow-sm`
-`text-foreground` `text-muted-foreground`
+- **Cor:** `bg-background` `bg-foreground` `bg-muted` `bg-secondary`
+  `border-input` `border-ring` `text-foreground` `text-muted-foreground`
+- **Tipografia:** `font-medium` `text-sm`
+- **Espaço:** `bottom-1.25` `gap-1` `gap-1.5` `gap-2` `h-0.5` `h-9`
+  `inset-x-0` `inset-y-0` `p-0.75` `px-2` `py-1` `right-1` `size-4`
+  `w-0.5`
+- **Raio:** `radius-inset-0.75` `rounded-inner` `rounded-outer-lg`
+- **Sombra:** `shadow-sm`
+- **Movimento:** `--scale-pressed` `duration-motion-base`
+  `duration-motion-fast` `ease-spring`
+- **Foco:** `outline-ring` `ring-ring`
 
 ## Faça
 

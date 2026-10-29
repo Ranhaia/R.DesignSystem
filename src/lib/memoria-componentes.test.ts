@@ -71,13 +71,14 @@ describe("coleta do código: button", () => {
     expect(size?.padrao).toBe("default")
   })
 
-  it("lista só tokens declarados no CSS do projeto, sem prefixo de estado nem opacidade", () => {
+  it("lista tokens do CSS e a escala do Tailwind, sem prefixo de estado nem opacidade", () => {
     for (const t of [
       "bg-primary", "text-primary-foreground", "ring-ring", "border-ring", "bg-destructive",
       "duration-motion-fast", "ease-spring", "--scale-pressed", "--ai-gradient-rest",
       "--ai-gradient-hover", "shadow-sm", "rounded-md", "bg-ai-surface",
+      "text-sm", "text-xs", "font-medium", "h-10", "px-4", "gap-2", "size-4",
     ]) expect(c.tokens).toContain(t)
-    for (const t of ["inline-flex", "h-10", "px-4", "w-full", "bg-primary/90", "hover:bg-accent"])
+    for (const t of ["inline-flex", "w-full", "bg-primary/90", "hover:bg-accent"])
       expect(c.tokens).not.toContain(t)
     expect([...c.tokens].sort()).toEqual(c.tokens)
   })
@@ -132,6 +133,11 @@ describe("coleta: casos de borda", () => {
     const tokens = new Set(["bg-accent", "bg-input", "bg-muted"])
     const src = `function X() { return <div className="hover:bg-accent dark:hover:bg-input/50 group-data-[orientation=vertical]/tabs:bg-muted" /> }`
     expect(coletarFonte("x", src, tokens).tokens).toEqual(["bg-accent", "bg-input", "bg-muted"])
+  })
+
+  it("escala do Tailwind entra; medida relativa, valor entre colchete e utilitário sem escala ficam de fora", () => {
+    const src = `function X() { return <div className="p-3 gap-1.5 text-sm font-medium size-4 -mt-1 max-w-lg w-full flex-1 h-[calc(100%-1px)] text-left items-center" /> }`
+    expect(coletarFonte("x", src, new Set()).tokens).toEqual(["font-medium", "gap-1.5", "max-w-lg", "mt-1", "p-3", "size-4", "text-sm"])
   })
 })
 
@@ -250,9 +256,24 @@ describe("mesclarMd", () => {
     expect(sozinho).toContain("## Composição\n\nNão usa outro componente do R.DS.\n")
   })
 
-  it("Tokens usados: lista inteira vem da coleta", () => {
-    expect(md).toContain("`bg-primary` `ring-ring`")
+  it("Tokens usados: uma linha por contexto, no formato da Acessibilidade, vinda da coleta", () => {
+    expect(md).toContain("## Tokens usados\n\n- **Cor:** `bg-primary`\n- **Foco:** `ring-ring`\n")
     expect(md).not.toContain("bg-velho")
+  })
+
+  it("Tokens usados: linha longa quebra com recuo de 2 espaços e continua sendo uma linha de lista", () => {
+    const muitos = { ...coletaBase, tokens: Array.from({ length: 12 }, (_, i) => `bg-cor-${i}`) }
+    const longo = mesclarMd(mdBase, muitos, muitos)
+    const linhas = longo.split("## Tokens usados\n\n")[1].split("\n## ")[0].trimEnd().split("\n")
+    expect(linhas[0]).toMatch(/^- \*\*Cor:\*\* `bg-cor-0`/)
+    expect(linhas.length).toBeGreaterThan(1)
+    for (const l of linhas.slice(1)) expect(l).toMatch(/^ {2}`/)
+    expect(mesclarMd(longo, muitos, muitos)).toBe(longo)
+  })
+
+  it("Tokens usados: sem token, 'Nenhum.'", () => {
+    const nenhum = { ...coletaBase, tokens: [] }
+    expect(mesclarMd(mdBase, nenhum, nenhum)).toContain("## Tokens usados\n\nNenhum.\n")
   })
 
   it("não toca nas seções de intenção", () => {

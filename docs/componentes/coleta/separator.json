@@ -20,7 +20,9 @@
     }
   ],
   "tokens": [
-    "bg-border"
+    "bg-border",
+    "h-px",
+    "w-px"
   ],
   "compoe": []
 }

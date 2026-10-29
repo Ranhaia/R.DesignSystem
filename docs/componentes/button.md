@@ -65,8 +65,8 @@ Usa: [`skeleton`](skeleton.md).
 | `secondary` | Ação forte que não é a principal |
 | `ghost` | Ação discreta, sem superfície até o hover |
 | `link` | Ação com cara de texto |
-| `ai-primary` | Ação que dispara IA. ⚠️ Em revisão: o PASSI desaconselha gradiente como marca de IA (atrito A3 em `H-referencia-passi-ds`) |
-| `ai-secondary` | Ação que dispara IA. ⚠️ Em revisão: o PASSI desaconselha gradiente como marca de IA (atrito A3 em `H-referencia-passi-ds`) |
+| `ai-primary` | Ação principal que dispara IA |
+| `ai-secondary` | Ação secundária que dispara IA |
 
 ## Tamanhos
 
@@ -111,14 +111,21 @@ Usa: [`skeleton`](skeleton.md).
 
 ## Tokens usados
 
-`--ai-gradient-hover` `--ai-gradient-rest` `--scale-pressed` `bg-accent`
-`bg-ai-surface` `bg-ai-surface-highlight` `bg-destructive` `bg-input`
-`bg-primary` `bg-secondary` `border-ai-interactive`
-`border-ai-interactive-hover` `border-destructive` `border-input`
-`border-ring` `duration-motion-fast` `ease-spring` `ring-destructive`
-`ring-ring` `rounded-md` `shadow-sm` `shadow-xs`
-`text-accent-foreground` `text-ai-text-high` `text-primary`
-`text-primary-foreground` `text-secondary-foreground`
+- **Cor:** `--ai-gradient-hover` `--ai-gradient-rest` `bg-accent`
+  `bg-ai-surface` `bg-ai-surface-highlight` `bg-destructive` `bg-input`
+  `bg-primary` `bg-secondary` `border-ai-interactive`
+  `border-ai-interactive-hover` `border-destructive` `border-input`
+  `border-ring` `text-accent-foreground` `text-ai-text-high`
+  `text-primary` `text-primary-foreground` `text-secondary-foreground`
+- **Tipografia:** `font-medium` `text-base` `text-sm` `text-xs`
+- **Espaço:** `gap-1` `gap-1.5` `gap-2` `h-10` `h-12` `h-14` `h-6` `h-8`
+  `px-1.5` `px-2` `px-2.5` `px-3` `px-4` `px-5` `px-6` `px-8` `py-2`
+  `size-10` `size-12` `size-14` `size-3` `size-4` `size-6` `size-8`
+  `w-16` `w-20` `w-24` `w-28` `w-32`
+- **Raio:** `rounded-md`
+- **Sombra:** `shadow-sm` `shadow-xs`
+- **Movimento:** `--scale-pressed` `duration-motion-fast` `ease-spring`
+- **Foco:** `ring-destructive` `ring-ring`
 
 ## Faça
 

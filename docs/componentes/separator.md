@@ -67,7 +67,8 @@ Só leitura: não recebe foco.
 
 ## Tokens usados
 
-`bg-border`
+- **Cor:** `bg-border`
+- **Espaço:** `h-px` `w-px`
 
 ## Faça
 

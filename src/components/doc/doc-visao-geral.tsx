@@ -1,4 +1,5 @@
 import * as React from "react"
+import { DocLinhas } from "@/components/doc/doc-linhas"
 import { Icon } from "@/components/ui/icon"
 import type { ComponentDoc } from "@/lib/component-docs"
 import {
@@ -124,21 +125,9 @@ export function DocVisaoGeral({ doc }: DocVisaoGeralProps) {
       {blocos.includes("estados") && doc.states && doc.states.length > 0 && (
         <section id="estados" className="scroll-mt-20 space-y-3">
           <h2 className="font-heading text-lg font-semibold">Estados</h2>
-          <div className="divide-y rounded-lg border bg-card">
-            {doc.states.map((s) => (
-              <div
-                key={s.name}
-                className="flex flex-col gap-1 p-3 sm:flex-row sm:items-baseline sm:gap-4"
-              >
-                <span className="w-32 shrink-0 text-sm font-medium">
-                  {s.name}
-                </span>
-                <span className="flex-1 text-sm text-muted-foreground">
-                  {s.description}
-                </span>
-              </div>
-            ))}
-          </div>
+          <DocLinhas
+            linhas={doc.states.map((s) => ({ rotulo: s.name, texto: s.description }))}
+          />
         </section>
       )}
 

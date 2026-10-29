@@ -17,8 +17,15 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { TabsContent } from "@/components/ui/tabs"
-import { abasDoComponente, exemploPrincipal, previewDoTopo } from "@/lib/doc-abas"
+import {
+  abasDoComponente,
+  exemploPrincipal,
+  linhasAcessibilidade,
+  linhasTokens,
+  previewDoTopo,
+} from "@/lib/doc-abas"
 import { DocHeader } from "@/components/doc/doc-header"
+import { DocLinhas } from "@/components/doc/doc-linhas"
 import { DocLivePreview } from "@/components/doc/doc-live-preview"
 import { DocMetaStrip } from "@/components/doc/doc-meta-strip"
 import { DocTabs } from "@/components/doc/doc-tabs"
@@ -180,21 +187,12 @@ export default async function ComponentPage({
             {doc && doc.anatomy && doc.anatomy.length > 0 && (
               <section className="space-y-3">
                 <h2 className="font-heading text-lg font-semibold">Anatomia</h2>
-                <div className="divide-y rounded-lg border bg-card">
-                  {doc.anatomy.map((item) => (
-                    <div
-                      key={item.part}
-                      className="flex flex-col gap-1 p-4 sm:flex-row sm:items-baseline sm:gap-4"
-                    >
-                      <span className="w-40 shrink-0 text-sm font-medium">
-                        {item.part}
-                      </span>
-                      <span className="flex-1 text-sm text-muted-foreground">
-                        {item.description}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                <DocLinhas
+                  linhas={doc.anatomy.map((item) => ({
+                    rotulo: item.part,
+                    texto: item.description,
+                  }))}
+                />
               </section>
             )}
 
@@ -220,74 +218,24 @@ export default async function ComponentPage({
           </TabsContent>
         )}
 
-        {abas.some((a) => a.id === "tokens") && doc?.tokens && (
+        {abas.some((a) => a.id === "tokens") && doc && (
           <TabsContent value="tokens" className="space-y-8 outline-none">
             <section className="space-y-3">
               <h2 className="font-heading text-lg font-semibold">
                 Tokens usados
               </h2>
-              <div className="flex flex-wrap gap-2 rounded-lg border bg-card p-4">
-                {doc.tokens.map((token) => (
-                  <code
-                    key={token}
-                    className="rounded bg-muted px-2 py-1 font-mono text-xs text-foreground"
-                  >
-                    {token}
-                  </code>
-                ))}
-              </div>
+              <DocLinhas linhas={linhasTokens(doc)} />
             </section>
           </TabsContent>
         )}
 
-        {abas.some((a) => a.id === "acessibilidade") && doc?.accessibility && (
+        {abas.some((a) => a.id === "acessibilidade") && doc && (
           <TabsContent value="acessibilidade" className="space-y-8 outline-none">
             <section className="space-y-3">
               <h2 className="font-heading text-lg font-semibold">
                 Acessibilidade
               </h2>
-              <div className="divide-y rounded-lg border bg-card">
-                {doc.accessibility.keyboard && (
-                  <div className="flex flex-col gap-1 p-4 sm:flex-row sm:items-baseline sm:gap-4">
-                    <span className="w-40 shrink-0 text-sm font-medium">
-                      Teclado
-                    </span>
-                    <span className="flex-1 text-sm text-muted-foreground">
-                      {doc.accessibility.keyboard}
-                    </span>
-                  </div>
-                )}
-                {doc.accessibility.screenReader && (
-                  <div className="flex flex-col gap-1 p-4 sm:flex-row sm:items-baseline sm:gap-4">
-                    <span className="w-40 shrink-0 text-sm font-medium">
-                      Leitor de tela
-                    </span>
-                    <span className="flex-1 text-sm text-muted-foreground">
-                      {doc.accessibility.screenReader}
-                    </span>
-                  </div>
-                )}
-                {doc.accessibility.focus && (
-                  <div className="flex flex-col gap-1 p-4 sm:flex-row sm:items-baseline sm:gap-4">
-                    <span className="w-40 shrink-0 text-sm font-medium">
-                      Foco
-                    </span>
-                    <span className="flex-1 text-sm text-muted-foreground">
-                      {doc.accessibility.focus}
-                    </span>
-                  </div>
-                )}
-                {doc.accessibility.cautions && (
-                  <div className="flex flex-col gap-1 p-4 sm:flex-row sm:items-baseline sm:gap-4">
-                    <span className="w-40 shrink-0 text-sm font-medium">
-                      Cuidados
-                    </span>
-                    <span className="flex-1 text-sm text-muted-foreground">
-                      {doc.accessibility.cautions}
-                    </span>
-                  </div>
-                )}
-              </div>
+              <DocLinhas linhas={linhasAcessibilidade(doc)} />
             </section>
           </TabsContent>
         )}

@@ -11,6 +11,7 @@ perfil: front
 dono:
 tarefas: 1/3
 bloqueada-por:
+  - "[[H-abas-padronizadas]]"
 criado: 2026-10-28
 fechado:
 motivo-descarte:

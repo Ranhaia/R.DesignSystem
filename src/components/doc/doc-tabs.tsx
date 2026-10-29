@@ -40,11 +40,12 @@ export function DocTabs({ abas, children }: DocTabsProps) {
       onValueChange={handleValueChange}
       className="w-full space-y-6"
     >
-      {/* Em celular as 5 abas passam da largura: a lista rola por dentro em vez de alargar a página. */}
-      <div className="overflow-x-auto">
+      {/* Em celular as 5 abas passam da largura: a lista rola por dentro em vez de alargar a página.
+          Só na horizontal: overflow-y-hidden tira a barra vertical (overflow-x sozinho a liga) e p-1 deixa o anel de foco (3 px) caber. */}
+      <div className="overflow-x-auto overflow-y-hidden p-1">
         <TabsList
           variant="line"
-          className="w-max min-w-full justify-start border-b rounded-none bg-transparent p-0"
+          className="w-max min-w-full justify-start rounded-none border-b bg-transparent p-0"
         >
           {abas.map((aba) => (
             <TabsTrigger key={aba.id} value={aba.id}>

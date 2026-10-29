@@ -70,12 +70,19 @@ function parseAccessibility(text) {
   return undefined
 }
 
+// Uma linha de lista por contexto ("- **Cor:** `a` `b`"), com continuação recuada. Vazio ou "Nenhum." não vira aba.
 function parseTokens(text) {
   if (!text) return undefined
-  const matches = Array.from(text.matchAll(/`([^`]+)`/g))
-    .map((m) => m[1].trim())
-    .filter(Boolean)
-  return matches.length > 0 ? matches : undefined
+  const grupos = []
+  for (const raw of text.split("\n")) {
+    const line = raw.trim()
+    const m = line.match(/^[-*]\s+\*\*([^*:]+):\*\*\s*(.*)$/)
+    if (m) grupos.push({ contexto: m[1].trim(), itens: [] })
+    const atual = grupos[grupos.length - 1]
+    if (atual) atual.itens.push(...Array.from((m ? m[2] : line).matchAll(/`([^`]+)`/g), (t) => t[1].trim()).filter(Boolean))
+  }
+  const comItens = grupos.filter((g) => g.itens.length > 0)
+  return comItens.length > 0 ? comItens : undefined
 }
 
 export function parseComponentMd(content) {
