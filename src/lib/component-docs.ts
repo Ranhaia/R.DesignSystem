@@ -675,7 +675,7 @@ import { Label } from "@/components/ui/label"
     content: ["Não tem texto próprio nem exibe caracteres legíveis.", "O tamanho e a proporção devem mimetizar a extensão média do texto ou imagem que substituirá.", "Em parágrafos simulados, a última linha deve ter largura menor para sugerir uma quebra de linha natural."],
     accessibility: {
       keyboard: "Não recebe foco. Fica fora da ordem de tabulação.",
-      screenReader: "Deve ser omitido de anúncios individuais (aria-hidden=\"true\"); a área mãe deve utilizar aria-busy=\"true\" ou uma região viva discreta.",
+      screenReader: "Não define papel nem aria-hidden: quem usa passa aria-hidden=\"true\" em cada placeholder e marca a área mãe com aria-busy=\"true\" (ou uma região viva discreta).",
       focus: "Não move nem retém o foco. O foco do usuário é mantido onde estava até que o conteúdo real termine de ser montado.",
       cautions: "A animação de pulso deve respeitar a preferência de movimento reduzido (prefers-reduced-motion), e a substituição do skeleton não pode causar saltos de layout (WCAG 2.3.3).",
     },

@@ -65,7 +65,7 @@ Nenhum pré-definido. Deve refletir a altura e largura exatas do elemento que es
 ## Acessibilidade
 
 - **Teclado:** Não recebe foco. Fica fora da ordem de tabulação.
-- **Leitor de tela:** Deve ser omitido de anúncios individuais (aria-hidden="true"); a área mãe deve utilizar aria-busy="true" ou uma região viva discreta.
+- **Leitor de tela:** Não define papel nem `aria-hidden`: quem usa passa `aria-hidden="true"` em cada placeholder e marca a área mãe com `aria-busy="true"` (ou uma região viva discreta).
 - **Foco:** Não move nem retém o foco. O foco do usuário é mantido onde estava até que o conteúdo real termine de ser montado.
 - **Cuidados:** A animação de pulso deve respeitar a preferência de movimento reduzido (prefers-reduced-motion), e a substituição do skeleton não pode causar saltos de layout (WCAG 2.3.3).
 
