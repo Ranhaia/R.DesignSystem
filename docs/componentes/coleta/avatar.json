@@ -1,0 +1,43 @@
+{
+  "slug": "avatar",
+  "partes": [
+    "Avatar",
+    "AvatarImage",
+    "AvatarFallback",
+    "AvatarBadge",
+    "AvatarGroup",
+    "AvatarGroupCount"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "size",
+      "parte": "Avatar",
+      "tipo": "`default` · `sm` · `lg`",
+      "padrao": "default"
+    }
+  ],
+  "tokens": [
+    "bg-muted",
+    "bg-primary",
+    "bottom-0",
+    "right-0",
+    "ring-background",
+    "rounded-full",
+    "size-10",
+    "size-2",
+    "size-2.5",
+    "size-3",
+    "size-4",
+    "size-5",
+    "size-6",
+    "size-8",
+    "space-x-2",
+    "text-muted-foreground",
+    "text-primary-foreground",
+    "text-sm",
+    "text-xs"
+  ],
+  "compoe": []
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "textarea",
+  "partes": [
+    "Textarea"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "label",
+      "parte": "Textarea",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "animatedLabel",
+      "parte": "Textarea",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "border-destructive",
+    "border-input",
+    "border-ring",
+    "duration-motion-fast",
+    "gap-1.5",
+    "left-0",
+    "left-3",
+    "min-h-16",
+    "mt-5",
+    "px-3",
+    "py-2",
+    "ring-destructive",
+    "ring-ring",
+    "rounded-md",
+    "shadow-xs",
+    "text-base",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm",
+    "top-0",
+    "top-3"
+  ],
+  "compoe": [
+    "label"
+  ]
+}

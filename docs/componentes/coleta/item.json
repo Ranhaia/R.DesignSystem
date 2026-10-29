@@ -1,0 +1,90 @@
+{
+  "slug": "item",
+  "partes": [
+    "ItemGroup",
+    "ItemSeparator",
+    "Item",
+    "ItemMedia",
+    "ItemContent",
+    "ItemTitle",
+    "ItemDescription",
+    "ItemActions",
+    "ItemHeader",
+    "ItemFooter"
+  ],
+  "variantes": [
+    "default",
+    "outline",
+    "muted",
+    "icon",
+    "image"
+  ],
+  "tamanhos": [
+    {
+      "valor": "default",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "sm",
+      "px": null,
+      "igualA": null
+    }
+  ],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "Item",
+      "tipo": "`default` · `outline` · `muted`",
+      "padrao": "default"
+    },
+    {
+      "nome": "size",
+      "parte": "Item",
+      "tipo": "`default` · `sm`",
+      "padrao": "default"
+    },
+    {
+      "nome": "asChild",
+      "parte": "Item",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "variant",
+      "parte": "ItemMedia",
+      "tipo": "`default` · `icon` · `image`",
+      "padrao": "default"
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-muted",
+    "border-border",
+    "border-ring",
+    "font-medium",
+    "font-normal",
+    "gap-1",
+    "gap-2",
+    "gap-2.5",
+    "gap-4",
+    "leading-normal",
+    "leading-snug",
+    "my-0",
+    "p-4",
+    "px-4",
+    "py-3",
+    "ring-ring",
+    "rounded-md",
+    "rounded-sm",
+    "size-10",
+    "size-4",
+    "size-8",
+    "text-muted-foreground",
+    "text-primary",
+    "text-sm"
+  ],
+  "compoe": [
+    "separator"
+  ]
+}

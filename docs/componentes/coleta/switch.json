@@ -1,0 +1,37 @@
+{
+  "slug": "switch",
+  "partes": [
+    "Switch"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "size",
+      "parte": "Switch",
+      "tipo": "`sm` · `default`",
+      "padrao": "default"
+    }
+  ],
+  "tokens": [
+    "--scale-pressed",
+    "bg-background",
+    "bg-foreground",
+    "bg-input",
+    "bg-primary",
+    "bg-primary-foreground",
+    "border-ring",
+    "duration-motion-base",
+    "duration-motion-fast",
+    "ease-spring",
+    "h-3.5",
+    "ring-ring",
+    "rounded-full",
+    "shadow-xs",
+    "size-3",
+    "size-4",
+    "w-6",
+    "w-8"
+  ],
+  "compoe": []
+}

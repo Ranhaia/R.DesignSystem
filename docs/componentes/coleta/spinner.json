@@ -1,0 +1,15 @@
+{
+  "slug": "spinner",
+  "partes": [
+    "Spinner"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "size-4"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

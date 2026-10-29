@@ -1,0 +1,50 @@
+{
+  "slug": "link",
+  "partes": [
+    "Link",
+    "LinkSkeleton"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "size",
+      "parte": "Link",
+      "tipo": "`LinkSize`",
+      "padrao": "default"
+    },
+    {
+      "nome": "asChild",
+      "parte": "Link",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "external",
+      "parte": "Link",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "size",
+      "parte": "LinkSkeleton",
+      "tipo": "`LinkSize`",
+      "padrao": "default"
+    }
+  ],
+  "tokens": [
+    "h-10",
+    "h-6",
+    "h-8",
+    "h-9",
+    "rounded-md",
+    "w-14",
+    "w-16",
+    "w-20",
+    "w-24"
+  ],
+  "compoe": [
+    "icon",
+    "skeleton"
+  ]
+}

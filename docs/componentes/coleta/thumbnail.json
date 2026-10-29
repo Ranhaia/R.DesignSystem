@@ -1,0 +1,55 @@
+{
+  "slug": "thumbnail",
+  "partes": [
+    "Thumbnail",
+    "ThumbnailSkeleton"
+  ],
+  "variantes": [],
+  "tamanhos": [
+    {
+      "valor": "sm",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "default",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "lg",
+      "px": null,
+      "igualA": null
+    }
+  ],
+  "props": [
+    {
+      "nome": "aspectRatio",
+      "parte": "Thumbnail",
+      "tipo": null,
+      "padrao": "1/1"
+    },
+    {
+      "nome": "size",
+      "parte": "ThumbnailSkeleton",
+      "tipo": "`sm` · `default` · `lg`",
+      "padrao": "default"
+    },
+    {
+      "nome": "aspectRatio",
+      "parte": "ThumbnailSkeleton",
+      "tipo": "`ThumbnailAspectRatio`",
+      "padrao": "1/1"
+    }
+  ],
+  "tokens": [
+    "bg-muted",
+    "rounded-md",
+    "w-16",
+    "w-24",
+    "w-40"
+  ],
+  "compoe": [
+    "skeleton"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "slug": "radio-group",
+  "partes": [
+    "RadioGroup",
+    "RadioGroupItem"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "--form-control-size",
+    "border-destructive",
+    "border-input",
+    "border-ring",
+    "gap-3",
+    "left-1",
+    "ring-destructive",
+    "ring-ring",
+    "rounded-full",
+    "shadow-xs",
+    "text-primary",
+    "top-1"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

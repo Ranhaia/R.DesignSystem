@@ -1,0 +1,55 @@
+{
+  "slug": "badge",
+  "partes": [
+    "Badge"
+  ],
+  "variantes": [
+    "default",
+    "secondary",
+    "destructive",
+    "outline",
+    "ghost",
+    "link"
+  ],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "Badge",
+      "tipo": "`default` · `secondary` · `destructive` · `outline` · `ghost` · `link`",
+      "padrao": "default"
+    },
+    {
+      "nome": "asChild",
+      "parte": "Badge",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-destructive",
+    "bg-primary",
+    "bg-secondary",
+    "border-border",
+    "border-destructive",
+    "border-ring",
+    "font-medium",
+    "gap-1",
+    "leading-none",
+    "min-h-6",
+    "px-2",
+    "py-0.5",
+    "ring-destructive",
+    "ring-ring",
+    "rounded-full",
+    "size-3",
+    "text-accent-foreground",
+    "text-foreground",
+    "text-primary",
+    "text-primary-foreground",
+    "text-secondary-foreground",
+    "text-xs"
+  ],
+  "compoe": []
+}

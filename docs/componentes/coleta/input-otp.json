@@ -1,0 +1,52 @@
+{
+  "slug": "input-otp",
+  "partes": [
+    "InputOTP",
+    "InputOTPGroup",
+    "InputOTPSlot",
+    "InputOTPSeparator"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "containerClassName",
+      "parte": "InputOTP",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "aria-label",
+      "parte": "InputOTP",
+      "tipo": null,
+      "padrao": "Código de verificação"
+    },
+    {
+      "nome": "index",
+      "parte": "InputOTPSlot",
+      "tipo": "`number`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-foreground",
+    "border-destructive",
+    "border-input",
+    "border-ring",
+    "gap-2",
+    "h-4",
+    "h-9",
+    "inset-0",
+    "ring-destructive",
+    "ring-ring",
+    "rounded-l-md",
+    "rounded-r-md",
+    "shadow-xs",
+    "text-sm",
+    "w-9",
+    "w-px"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

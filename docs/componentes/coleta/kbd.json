@@ -1,0 +1,26 @@
+{
+  "slug": "kbd",
+  "partes": [
+    "Kbd",
+    "KbdGroup"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "bg-background",
+    "bg-muted",
+    "font-medium",
+    "font-sans",
+    "gap-1",
+    "h-5",
+    "min-w-5",
+    "px-1",
+    "rounded-sm",
+    "size-3",
+    "text-background",
+    "text-muted-foreground",
+    "text-xs"
+  ],
+  "compoe": []
+}

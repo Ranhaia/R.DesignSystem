@@ -479,19 +479,15 @@ describe.each(slugsComMd)("%s declara todas as partes", (slug) => {
 // Componentes que ainda não passaram pelo ciclo (H-memoria-replicar-lotes).
 // Catraca: a lista só diminui. Ganhou MD → sai daqui.
 const PENDENTES_MD = [
-  "accordion", "alert-dialog", "alert", "aspect-ratio", "attachment",
-  "avatar", "badge", "breadcrumb", "bubble", "button-group",
-  "calendar", "card", "carousel", "chart", "checkbox", "chip", "collapsible",
-  "combobox", "command", "context-menu", "drawer",
-  "dropdown-menu", "empty", "field", "file-uploader", "files", "form",
-  "hover-card", "icon-button", "input-group", "input-otp", "input",
-  "item", "kbd", "link", "list", "marker", "menubar", "message",
-  "multi-select", "native-select", "navigation-menu", "pagination",
-  "popover", "progress", "radio-group", "resizable", "scroll-area",
-  "segmented-control", "select", "sheet", "sidebar",
-  "slider", "sonner", "speed-dial", "spinner", "split-button", "stepper",
-  "switch", "table", "tag", "textarea", "thumbnail", "time-picker",
-  "toggle-group", "toggle", "tooltip", "tree-select",
+  "accordion", "alert-dialog", "alert", "attachment", "breadcrumb", "bubble",
+  "button-group", "calendar", "card", "carousel", "chart", "chip",
+  "collapsible", "combobox", "command", "context-menu", "drawer",
+  "dropdown-menu", "empty", "field", "files", "form", "hover-card",
+  "icon-button", "input-group", "menubar", "message", "multi-select",
+  "navigation-menu", "pagination", "resizable", "scroll-area",
+  "segmented-control", "sheet", "sidebar", "sonner", "speed-dial",
+  "split-button", "stepper", "table", "time-picker", "toggle-group",
+  "tree-select",
 ]
 // Exceções conhecidas em 2026-10-28.
 const SEM_EXEMPLO = ["icon"]

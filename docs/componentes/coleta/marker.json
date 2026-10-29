@@ -1,0 +1,44 @@
+{
+  "slug": "marker",
+  "partes": [
+    "Marker",
+    "MarkerIcon",
+    "MarkerContent"
+  ],
+  "variantes": [
+    "default",
+    "separator",
+    "border"
+  ],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "Marker",
+      "tipo": "`default` · `separator` · `border`",
+      "padrao": "default"
+    },
+    {
+      "nome": "asChild",
+      "parte": "Marker",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-border",
+    "border-border",
+    "gap-2",
+    "h-px",
+    "min-h-4",
+    "min-w-0",
+    "ml-1",
+    "mr-1",
+    "pb-2",
+    "size-4",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm"
+  ],
+  "compoe": []
+}

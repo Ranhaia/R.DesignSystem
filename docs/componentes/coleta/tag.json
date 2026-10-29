@@ -1,0 +1,81 @@
+{
+  "slug": "tag",
+  "partes": [
+    "Tag",
+    "TagSkeleton"
+  ],
+  "variantes": [
+    "default",
+    "primary",
+    "success",
+    "warning",
+    "danger",
+    "ai-generated"
+  ],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "Tag",
+      "tipo": "`default` · `primary` · `success` · `warning` · `danger` · `ai-generated`",
+      "padrao": "default"
+    },
+    {
+      "nome": "highlight",
+      "parte": "Tag",
+      "tipo": "`true` · `false`",
+      "padrao": "false"
+    },
+    {
+      "nome": "asChild",
+      "parte": "Tag",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-ai-interactive",
+    "bg-ai-surface",
+    "bg-danger-100",
+    "bg-danger-900",
+    "bg-muted",
+    "bg-muted-foreground",
+    "bg-primary",
+    "bg-success-100",
+    "bg-success-900",
+    "bg-warning-100",
+    "bg-warning-900",
+    "border-ai-interactive",
+    "border-border",
+    "border-danger-300",
+    "border-primary",
+    "border-success-300",
+    "border-warning-300",
+    "font-medium",
+    "gap-1",
+    "h-6",
+    "leading-none",
+    "min-h-6",
+    "px-1.5",
+    "rounded-sm",
+    "size-3",
+    "text-ai-surface",
+    "text-ai-text-high",
+    "text-danger-100",
+    "text-danger-900",
+    "text-muted",
+    "text-muted-foreground",
+    "text-primary",
+    "text-primary-foreground",
+    "text-success-100",
+    "text-success-900",
+    "text-warning-100",
+    "text-warning-900",
+    "text-xs",
+    "w-20"
+  ],
+  "compoe": [
+    "skeleton"
+  ]
+}
