@@ -62,6 +62,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 
 **Agir ou ir para outro lugar**
 - Dispara uma ação → `button`. Leva a outra página → `link`.
+- Navegação persistente em barra lateral → `sidebar`. Menu horizontal no topo → `navigation-menu`.
 - Ação só com ícone → `icon-button` (com `aria-label` e `tooltip`).
 - Ação principal + variações → `split-button`. Várias ações flutuantes → `speed-dial`.
 - Ações relacionadas lado a lado → `button-group`.
@@ -94,8 +95,8 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 
 ## Componentes documentados
 
-Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
-`src/lib/component-docs.ts` até a migração (`H-replicar-doc-componentes`).
+Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/` está aqui; a trava
+(`src/lib/memoria-componentes.test.ts`) reprova componente sem MD ou sem a linha.
 
 - [accordion](accordion.md) — Organiza o conteúdo em seções empilhadas que expandem e recolhem.
 - [alert](alert.md) — Exibe uma mensagem contextual fixa na página para informar ou alertar.
@@ -127,6 +128,7 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 - [field](field.md) — Estrutura controles de formulário combinando rótulo, descrição e mensagens de erro.
 - [file-uploader](file-uploader.md) — Área interativa para envio de arquivos por clique ou arrastar e soltar.
 - [files](files.md) — Árvore hierárquica de pastas e arquivos com expansão e recolhimento animados.
+- [form](form.md) — Estrutura e valida formulários completos integrando campos, rótulos e mensagens de erro.
 - [hover-card](hover-card.md) — Exibe uma prévia flutuante de informações enriquecidas no hover ou foco.
 - [icon](icon.md) — Renderiza um glifo do Material Symbols com eixos variáveis.
 - [icon-button](icon-button.md) — Botão representado exclusivamente por um ícone visual.
@@ -139,28 +141,37 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 - [link](link.md) — Permite navegar entre páginas, seções internas ou sites externos.
 - [list](list.md) — Organiza informações textuais ou blocos de conteúdo verticalmente em lista.
 - [marker](marker.md) — Exibe status em linha, notas de sistema ou divisores rotulados em conversas.
+- [menubar](menubar.md) — Barra horizontal de menus persistente no topo para comandos e atalhos de aplicação.
 - [message](message.md) — Estrutura cada turno de fala em interfaces conversacionais ou chat.
+- [multi-select](multi-select.md) — Campo de seleção múltipla com autocompletar e remoção por chips.
 - [native-select](native-select.md) — Menu suspenso nativo do navegador para seleção simples em dispositivos móveis.
+- [navigation-menu](navigation-menu.md) — Menu estruturado para navegação principal com suporte a painéis suspensos ricos.
 - [pagination](pagination.md) — Divide listas longas em páginas sequenciais numeradas.
 - [popover](popover.md) — Painel flutuante no clique para conteúdo rico ou configurações rápidas.
 - [progress](progress.md) — Barra que indica o andamento de tarefas com duração determinada.
 - [radio-group](radio-group.md) — Opções exclusivas para escolher exatamente uma alternativa visível.
+- [resizable](resizable.md) — Grupos de painéis com divisores arrastáveis e proporcionais para layouts flexíveis.
 - [scroll-area](scroll-area.md) — Área de rolagem customizada e consistente entre navegadores.
 - [segmented-control](segmented-control.md) — Alternador em pílula contínua para seleção única entre 2 a 4 opções.
 - [select](select.md) — Menu suspenso customizado para selecionar uma opção em listas estruturadas.
 - [separator](separator.md) — Linha fina entre grupos do mesmo container.
+- [sheet](sheet.md) — Painel lateral sobreposto que desliza a partir da borda da tela.
+- [sidebar](sidebar.md) — Barra de navegação lateral expansível e retrátil com grupos e submenus.
 - [skeleton](skeleton.md) — Placeholder com pulso que antecipa a forma do conteúdo.
 - [slider](slider.md) — Controle deslizante para ajustar valores contínuos ou faixas em um trilho.
 - [sonner](sonner.md) — Confirma uma ação ou exibe um aviso rápido sem interromper a pessoa.
 - [speed-dial](speed-dial.md) — Botão de ação flutuante que se expande em sequência de ações secundárias.
 - [spinner](spinner.md) — Indicador giratório para esperas de tempo indeterminado.
+- [split-button](split-button.md) — Ação principal combinada com menu suspenso de ações secundárias.
 - [switch](switch.md) — Controle deslizante binário que alterna entre ativado e desativado com efeito imediato.
 - [table](table.md) — Organiza informações em linhas e colunas para visualização e consulta estruturada.
 - [tabs](tabs.md) — Alterna visões do mesmo conteúdo sem sair da página.
+- [stepper](stepper.md) — Indicador de progresso sequencial para processos divididos em etapas.
 - [tag](tag.md) — Rótulo estático para categorização, metadados e status.
 - [text](text.md) — Formata blocos de texto e parágrafos com escala tipográfica e semântica.
 - [textarea](textarea.md) — Campo de entrada multilinha que expande verticalmente conforme o conteúdo.
 - [thumbnail](thumbnail.md) — Miniatura visual com proporção fixa e fallback integrado.
+- [time-picker](time-picker.md) — Seletor de horário com hora, minuto e formato de 24h ou 12h.
 - [title](title.md) — Aplica hierarquia visual e semântica a cabeçalhos e títulos de seções.
 - [toggle](toggle.md) — Botão de dois estados que alterna entre ativado e desativado.
 - [toggle-group](toggle-group.md) — Agrupa botões de alternância de dois estados para seleção única ou múltipla.

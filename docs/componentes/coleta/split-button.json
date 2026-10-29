@@ -1,0 +1,47 @@
+{
+  "slug": "split-button",
+  "partes": [
+    "SplitButton"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "SplitButton",
+      "tipo": null,
+      "padrao": "default"
+    },
+    {
+      "nome": "size",
+      "parte": "SplitButton",
+      "tipo": null,
+      "padrao": "default"
+    },
+    {
+      "nome": "disabled",
+      "parte": "SplitButton",
+      "tipo": null,
+      "padrao": "false"
+    },
+    {
+      "nome": "triggerLabel",
+      "parte": "SplitButton",
+      "tipo": null,
+      "padrao": "Mais ações"
+    },
+    {
+      "nome": "align",
+      "parte": "SplitButton",
+      "tipo": null,
+      "padrao": "end"
+    }
+  ],
+  "tokens": [],
+  "compoe": [
+    "button",
+    "button-group",
+    "dropdown-menu",
+    "icon"
+  ]
+}

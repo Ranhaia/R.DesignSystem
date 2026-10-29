@@ -476,12 +476,6 @@ describe.each(slugsComMd)("%s declara todas as partes", (slug) => {
   })
 })
 
-// Componentes que ainda não passaram pelo ciclo (H-memoria-replicar-lotes).
-// Catraca: a lista só diminui. Ganhou MD → sai daqui.
-const PENDENTES_MD = [
-  "form", "menubar", "multi-select", "navigation-menu", "resizable", "sheet",
-  "sidebar", "split-button", "stepper", "time-picker",
-]
 // Exceções conhecidas em 2026-10-28.
 const SEM_EXEMPLO = ["icon"]
 // Primitivo sem UI (Rafael, 2026-10-29): é base que os outros consomem e não renderiza nada, então não tem story e o MD
@@ -497,12 +491,8 @@ describe("artefatos fixos de cada componente", () => {
     expect(componentsList.some((c) => c.slug === slug), "components-registry.ts").toBe(true)
     if (!SEM_EXEMPLO.includes(slug)) expect(examplesMapping[slug], "examples-mapping.ts").toBeDefined()
 
-    const temMd = slugsComMd.includes(slug)
-    expect(temMd || PENDENTES_MD.includes(slug), "MD em docs/componentes/ (ou na lista PENDENTES_MD)").toBe(true)
-    if (temMd) {
-      expect(PENDENTES_MD, "tem MD: tirar de PENDENTES_MD").not.toContain(slug)
-      expect(readme, "listado no README.md da porta de entrada").toContain(`](${slug}.md)`)
-    }
+    expect(slugsComMd, "MD em docs/componentes/ (npm run docs:registrar -- <slug>)").toContain(slug)
+    expect(readme, "listado no README.md da porta de entrada").toContain(`](${slug}.md)`)
   })
 
   it("SEM_STORY só tem componente que de fato não tem story", () => {
@@ -510,9 +500,5 @@ describe("artefatos fixos de cada componente", () => {
       expect(slugsUi).toContain(slug)
       expect(existsSync(join(UI, `${slug}.stories.tsx`)), `${slug} ganhou story: tire da lista`).toBe(false)
     }
-  })
-
-  it("PENDENTES_MD só tem componente que existe", () => {
-    for (const slug of PENDENTES_MD) expect(slugsUi).toContain(slug)
   })
 })

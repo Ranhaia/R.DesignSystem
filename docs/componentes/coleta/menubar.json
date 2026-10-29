@@ -1,0 +1,108 @@
+{
+  "slug": "menubar",
+  "partes": [
+    "Menubar",
+    "MenubarMenu",
+    "MenubarGroup",
+    "MenubarPortal",
+    "MenubarRadioGroup",
+    "MenubarTrigger",
+    "MenubarContent",
+    "MenubarItem",
+    "MenubarCheckboxItem",
+    "MenubarRadioItem",
+    "MenubarLabel",
+    "MenubarSeparator",
+    "MenubarShortcut",
+    "MenubarSub",
+    "MenubarSubTrigger",
+    "MenubarSubContent"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "align",
+      "parte": "MenubarContent",
+      "tipo": null,
+      "padrao": "start"
+    },
+    {
+      "nome": "alignOffset",
+      "parte": "MenubarContent",
+      "tipo": null,
+      "padrao": "-4"
+    },
+    {
+      "nome": "sideOffset",
+      "parte": "MenubarContent",
+      "tipo": null,
+      "padrao": "8"
+    },
+    {
+      "nome": "inset",
+      "parte": "MenubarItem",
+      "tipo": "`boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "variant",
+      "parte": "MenubarItem",
+      "tipo": "`default` · `destructive`",
+      "padrao": "default"
+    },
+    {
+      "nome": "inset",
+      "parte": "MenubarLabel",
+      "tipo": "`boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "inset",
+      "parte": "MenubarSubTrigger",
+      "tipo": "`boolean`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-background",
+    "bg-border",
+    "bg-destructive",
+    "bg-popover",
+    "font-medium",
+    "gap-1",
+    "gap-2",
+    "h-9",
+    "h-px",
+    "left-2",
+    "min-w-32",
+    "min-w-48",
+    "mx-1",
+    "my-1",
+    "outline-ring",
+    "p-1",
+    "pl-8",
+    "pr-2",
+    "px-2",
+    "py-1",
+    "py-1.5",
+    "rounded-md",
+    "rounded-sm",
+    "shadow-lg",
+    "shadow-md",
+    "shadow-xs",
+    "size-3.5",
+    "size-4",
+    "text-accent-foreground",
+    "text-destructive",
+    "text-muted-foreground",
+    "text-popover-foreground",
+    "text-sm",
+    "text-xs",
+    "tracking-widest"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

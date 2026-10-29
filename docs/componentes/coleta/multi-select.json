@@ -1,0 +1,39 @@
+{
+  "slug": "multi-select",
+  "partes": [
+    "MultiSelect",
+    "MultiSelectSkeleton"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "placeholder",
+      "parte": "MultiSelect",
+      "tipo": null,
+      "padrao": "Selecione..."
+    },
+    {
+      "nome": "emptyText",
+      "parte": "MultiSelect",
+      "tipo": null,
+      "padrao": "Nenhum resultado encontrado."
+    },
+    {
+      "nome": "disabled",
+      "parte": "MultiSelect",
+      "tipo": null,
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "h-9",
+    "min-w-56",
+    "rounded-md",
+    "w-56"
+  ],
+  "compoe": [
+    "skeleton",
+    "combobox"
+  ]
+}

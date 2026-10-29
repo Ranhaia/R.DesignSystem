@@ -1,0 +1,51 @@
+{
+  "slug": "time-picker",
+  "partes": [
+    "TimePicker"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "format",
+      "parte": "TimePicker",
+      "tipo": null,
+      "padrao": "24h"
+    },
+    {
+      "nome": "minuteStep",
+      "parte": "TimePicker",
+      "tipo": null,
+      "padrao": "5"
+    },
+    {
+      "nome": "placeholder",
+      "parte": "TimePicker",
+      "tipo": null,
+      "padrao": "Selecione um horário"
+    },
+    {
+      "nome": "disabled",
+      "parte": "TimePicker",
+      "tipo": null,
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "font-normal",
+    "gap-1",
+    "gap-2",
+    "p-3",
+    "text-muted-foreground",
+    "text-xs",
+    "w-17",
+    "w-18",
+    "w-40"
+  ],
+  "compoe": [
+    "button",
+    "icon",
+    "popover",
+    "select"
+  ]
+}
