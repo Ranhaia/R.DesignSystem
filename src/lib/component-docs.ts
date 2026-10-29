@@ -201,39 +201,42 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   box: {
-    description: "Utilitário de layout para agrupar e espaçar elementos ou componentes — um container flexível, sem estilo próprio.",
-    whenToUse: "Use para construir containers, agrupar elementos e posicionar/espaçar conteúdo (padding, margin, borda, cor de fundo) via classes Tailwind aplicadas em `className` — Box não expõe props de estilo nomeadas, o estilo é 100% via `className`.",
+    description: "Container flexível e sem estilo próprio para agrupar e organizar elementos no layout. O visual, espaçamento e alinhamento vêm das classes utilitárias do Tailwind.",
+    whenToUse: "Agrupar e espaçar elementos lado a lado ou em coluna num layout simples. Criar containers genéricos com fundo, borda ou espaçamento customizados via classes do Tailwind. Renderizar tags HTML semânticas como section ou article com polimorfismo via asChild.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <div> (ou o filho, via asChild) com data-slot=\"box\". Nenhuma classe de estilo própria — 100% do visual vem de `className`." },
+      { part: "Box", description: "Elemento raiz (div ou o elemento filho via asChild) com data-slot=\"box\"" },
     ],
     variants: [],
-    states: [
-      { name: "Default", description: "Único estado — Box não tem interatividade nem estado próprio; qualquer estado visual (hover, disabled, etc.) é responsabilidade do conteúdo/className passado pelo chamador." },
-    ],
+    states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use utilitários do Tailwind para controlar padding, gap e alinhamento do container.", "Use asChild quando precisar que o container seja uma tag semântica como section ou header.", "Combine com tokens de cor e borda para manter a consistência do sistema."],
+    dontGuidelines: ["Usar Box quando um container semântico com padrão visual próprio já existe → card.", "Criar divisões estruturais usando estilos arbitrários em vez de tokens do sistema → use classes utilitárias baseadas em tokens.", "Deixar de fornecer rotulagem acessível ao transformar Box em um marco de navegação → forneça aria-label ou aria-labelledby."],
     code: `import { Box } from "@/components/ui/box"
 
-// Box como container simples — padding/borda/cor via className
-<Box className="rounded-md border bg-muted p-4 text-sm text-foreground">
-  Conteúdo do container.
-</Box>
-
-// Box como layout flex
-<Box className="flex items-center justify-between gap-2 rounded-md border p-4">
-  <span>Rótulo</span>
-  <span className="text-muted-foreground">Valor</span>
-</Box>
-
-// Box polimórfico via asChild — renderiza como <section>
-<Box asChild className="rounded-md border border-dashed p-4">
-  <section aria-label="Exemplo">Conteúdo</section>
+<Box className="flex items-center justify-between gap-4 rounded-md border p-4">
+  <span>Status do sistema</span>
+  <span className="text-sm text-muted-foreground">Operacional</span>
 </Box>`,
     props: [
-      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <div> — mecanismo de polimorfismo já convencionado no catálogo (Chip/Badge/Button), equivalente funcional à prop `as` do Nimbus." },
-      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Demais atributos nativos do elemento raiz, incluindo `className` — mecanismo real de estilização do Box (padding, margin, display, flex, cor via token, etc.), já que o componente não expõe props de estilo nomeadas." },
+      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as propriedades no elemento filho via Radix Slot em vez de criar uma div" },
     ],
+    meta: {
+      nome: "Box",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/box.tsx",
+      story: "src/components/ui/box.stories.tsx",
+      vizinhos: ["card", "separator", "item"],
+    },
+    whenToUseItems: ["Agrupar e espaçar elementos lado a lado ou em coluna num layout simples.", "Criar containers genéricos com fundo, borda ou espaçamento customizados via classes do Tailwind.", "Renderizar tags HTML semânticas como section ou article com polimorfismo via asChild."],
+    whenNotToUse: ["Agrupar informações com superfície, borda e cabeçalho padronizados → card.", "Dividir seções apenas com uma linha fina visual → separator.", "Organizar itens estruturados dentro de uma lista interativa → item."],
+    content: ["Não tem texto próprio.", "O texto e a hierarquia tipográfica são definidos pelos elementos filhos ou pelo componente text."],
+    accessibility: {
+      keyboard: "Não recebe foco diretamente.",
+      screenReader: "É um container neutro sem papel semântico padrão (div). Quando usado como marco estrutural, combine asChild com uma tag semântica ou adicione role e aria-label.",
+      focus: "Não retém nem altera o fluxo de foco. O foco passa normalmente para os elementos filhos focáveis.",
+      cautions: "Não substitua marcos semânticos da página (main, nav, aside) por simples div sem a devida identificação estrutural (WCAG 1.3.1).",
+    },
   },
   checkbox: {
     description: "Um controle que permite ao usuário alternar entre marcado e desmarcado.",

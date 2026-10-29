@@ -2,14 +2,14 @@
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: progresso
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
-dono:
-tarefas: 0/6
+dono: antigravity
+tarefas: 1/6
 bloqueada-por:
 criado: 2026-10-29
 fechado:
@@ -64,7 +64,7 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `box` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `box` (docs:registrar, intenção, vizinhos e referencias)
 - [ ] Registrar e declarar `icon` (docs:registrar, intenção, vizinhos e referencias)
 - [ ] Registrar e declarar `label` (docs:registrar, intenção, vizinhos e referencias)
 - [ ] Registrar e declarar `skeleton` (docs:registrar, intenção, vizinhos e referencias)
@@ -72,5 +72,7 @@ Nenhum além dos bloqueadores.
 - [ ] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- 2026-10-29 · antigravity · Registrar e declarar box: docs:registrar executado, intenção declarada em docs/componentes/box.md com vizinhos [card, separator, item] e referências [spec:box]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
 
 ## Histórico
