@@ -2,7 +2,7 @@
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-documentacao-ds
-status: progresso
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-28
 ciclo:
@@ -11,7 +11,7 @@ perfil: front
 dono:
 tarefas: 4/4
 criado: 2026-08-23
-fechado:
+fechado: 2026-10-28
 motivo-descarte:
 origem:
 ---
@@ -72,5 +72,6 @@ Pode rodar em paralelo.
 - 2026-10-28 · claude (orquestrador) · Reconferi `tsc` (0 erros), `npm run test:unit` (1219 testes) e `npm run docs:check` no worktree. No navegador (`next dev --webpack`, porta 3102): a sidebar mostra Foundations (9 entradas), Components (Atoms, Molecules, Organisms, Templates) e Patterns; `/fundamentos` tem a aba "Visão geral" e 9 cards. Por `curl`, 20 rotas respondem 200 e `/foundations` redireciona (307) para `/fundamentos`; `/components` lista 78 dos 79 componentes (a diferença é `direction`, utilitário que a main também não listava). Não rodei teste de navegador (Storybook), porque nada aqui mexe em componente com story. Decisão tomada pelo AGY sem consulta: Primitivos foi para dentro de Atoms (ver pré-requisito `Decisão`). Também sem consulta: a página `/components` tem visual novo (cards de métricas e catálogo por camada) e 4 páginas de Foundations (`grid`, `motion`, `icones`, `acessibilidade`) nasceram com selo "Em construção", para não deixar link 404 até a `H-paginas-foundations`.
 - 2026-10-28 · antigravity · Primitivos isolado como grupo próprio na sidebar (`src/components/sidebar-07/nav-components.tsx`, ordem: Primitivos · Atoms · Molecules · Organisms · Templates) e no índice `/components` (`src/components/components-index.tsx`, 5 camadas), consumindo `categoryLabels` e `categoryHref` de `atomic-registry.ts`. Validação com `npx tsc --noEmit` (0 erros), `npm run test:unit` (1219/1219 testes passando) e `npm run docs:check` (sincronia ok).
 - 2026-10-28 · claude (orquestrador) · Reconferi o ajuste da Decisão A: `tsc` (0 erros), `npm run test:unit` (1219 testes) e `npm run docs:check` passam. No navegador (`next dev --webpack`, porta 3102): sidebar com Components ▸ Primitivos (7: box, icon, label, separator, skeleton, text, title), Atoms (26, nenhum primitivo), Molecules, Organisms e Templates; `/components` com 5 camadas (7, 26, 24, 21, 9) e seção própria de Primitivos; breadcrumb de `/components/box` = Primitivos → Box e de `/components/button` = Atoms → Button; as rotas dos grupos respondem 200. Defeito que achei e corrigi: a fileira de 5 cards de camadas usava `lg:grid-cols-5` e, a 1024 px, ficava em colunas de 131 px, com conteúdo cortado e rolagem horizontal na página; passou para `lg:grid-cols-3 xl:grid-cols-5` (1024 px: 3 colunas de 230 px; 1280 px: 5 de 183 px; sem corte nem rolagem nas duas larguras). Não rodei teste de navegador do Storybook, porque nenhuma story depende destes arquivos.
+- 2026-10-28 · claude · Entregue. PR #26 mesclado pelo Rafael em 2026-10-28. As 4 tarefas têm prova de execução nas Contribuições acima: `tsc`, `npm run test:unit`, `npm run docs:check`, rotas por `curl` e a conferência no navegador. A Decisão A (Primitivos como grupo próprio) foi resolvida pelo Rafael. Destravou `H-paginas-foundations`, que dependia desta.
 
 ## Histórico
