@@ -29,6 +29,7 @@
   "empty": ["vazio", "tela-vazia", "estado-vazio", "empty-state"],
   "field": ["campo-de-formulario", "form-field", "grupo-de-campo"],
   "file-uploader": ["envio-de-arquivo", "upload", "file-upload", "dropzone"],
+  "files": ["arvore-de-arquivos", "árvore-de-arquivos", "navegador-de-arquivos", "file-tree", "explorer", "pastas"],
   "hover-card": ["cartao-flutuante", "preview-no-hover"],
   "icon": ["icone", "ícone", "simbolo", "símbolo"],
   "icon-button": ["botao-de-icone", "botão-de-ícone"],

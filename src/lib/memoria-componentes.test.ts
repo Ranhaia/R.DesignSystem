@@ -479,10 +479,8 @@ describe.each(slugsComMd)("%s declara todas as partes", (slug) => {
 // Componentes que ainda não passaram pelo ciclo (H-memoria-replicar-lotes).
 // Catraca: a lista só diminui. Ganhou MD → sai daqui.
 const PENDENTES_MD = [
-  "alert-dialog", "calendar", "carousel", "chart", "combobox", "command",
-  "context-menu", "drawer", "dropdown-menu", "files", "form", "menubar",
-  "multi-select", "navigation-menu", "resizable", "sheet", "sidebar",
-  "split-button", "stepper", "time-picker",
+  "form", "menubar", "multi-select", "navigation-menu", "resizable", "sheet",
+  "sidebar", "split-button", "stepper", "time-picker",
 ]
 // Exceções conhecidas em 2026-10-28.
 const SEM_EXEMPLO = ["icon"]

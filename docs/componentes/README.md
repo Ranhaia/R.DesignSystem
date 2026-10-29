@@ -99,6 +99,7 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 
 - [accordion](accordion.md) — Organiza o conteúdo em seções empilhadas que expandem e recolhem.
 - [alert](alert.md) — Exibe uma mensagem contextual fixa na página para informar ou alertar.
+- [alert-dialog](alert-dialog.md) — Interrompe o fluxo da tela com um aviso crítico e exige resposta explícita.
 - [aspect-ratio](aspect-ratio.md) — Mantém a proporção exata entre largura e altura de imagens, vídeos e embeds.
 - [attachment](attachment.md) — Exibe anexo de arquivo com mídia, metadados e ações rápidas.
 - [avatar](avatar.md) — Representa visualmente uma pessoa, conta ou organização com fallback.
@@ -108,15 +109,24 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 - [bubble](bubble.md) — Exibe mensagens em formato de balão com alinhamento direcional.
 - [button](button.md) — Dispara uma ação. Um primário por contexto.
 - [button-group](button-group.md) — Agrupa visualmente botões e controles relacionados com bordas unificadas.
+- [calendar](calendar.md) — Exibe uma grade mensal interativa para seleção de data ou período em pt-BR.
 - [card](card.md) — Agrupa informações e ações sobre o mesmo assunto em uma superfície delimitada.
+- [carousel](carousel.md) — Exibe sequência de painéis navegáveis com suporte a toque e teclado.
+- [chart](chart.md) — Renderiza gráficos visuais baseados em Recharts com variáveis e tooltips.
 - [checkbox](checkbox.md) — Permite marcar ou desmarcar opções independentes em formulários.
 - [chip](chip.md) — Sinaliza critérios ou atributos ativos aplicados a uma busca ou filtragem de lista.
 - [collapsible](collapsible.md) — Alterna a visibilidade de uma seção de conteúdo secundário sob demanda.
+- [combobox](combobox.md) — Combina campo de texto com lista de sugestões filtradas e seleção por chips.
+- [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.
+- [context-menu](context-menu.md) — Menu contextual flutuante acionado pelo clique com o botão direito do mouse.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
 - [direction](direction.md) — Entrega o sentido de leitura aos componentes; não renderiza nada.
+- [drawer](drawer.md) — Painel deslizante que emerge das bordas da tela sobre camada escurecida.
+- [dropdown-menu](dropdown-menu.md) — Menu suspenso ancorado a um botão que exibe lista de ações ou opções.
 - [empty](empty.md) — Comunica um estado vazio em listas, tabelas ou telas sem dados.
 - [field](field.md) — Estrutura controles de formulário combinando rótulo, descrição e mensagens de erro.
 - [file-uploader](file-uploader.md) — Área interativa para envio de arquivos por clique ou arrastar e soltar.
+- [files](files.md) — Árvore hierárquica de pastas e arquivos com expansão e recolhimento animados.
 - [hover-card](hover-card.md) — Exibe uma prévia flutuante de informações enriquecidas no hover ou foco.
 - [icon](icon.md) — Renderiza um glifo do Material Symbols com eixos variáveis.
 - [icon-button](icon-button.md) — Botão representado exclusivamente por um ícone visual.
@@ -136,8 +146,8 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 - [progress](progress.md) — Barra que indica o andamento de tarefas com duração determinada.
 - [radio-group](radio-group.md) — Opções exclusivas para escolher exatamente uma alternativa visível.
 - [scroll-area](scroll-area.md) — Área de rolagem customizada e consistente entre navegadores.
-- [select](select.md) — Menu suspenso customizado para selecionar uma opção em listas estruturadas.
 - [segmented-control](segmented-control.md) — Alternador em pílula contínua para seleção única entre 2 a 4 opções.
+- [select](select.md) — Menu suspenso customizado para selecionar uma opção em listas estruturadas.
 - [separator](separator.md) — Linha fina entre grupos do mesmo container.
 - [skeleton](skeleton.md) — Placeholder com pulso que antecipa a forma do conteúdo.
 - [slider](slider.md) — Controle deslizante para ajustar valores contínuos ou faixas em um trilho.
