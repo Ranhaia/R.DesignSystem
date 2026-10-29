@@ -347,62 +347,73 @@ import { Label } from "@/components/ui/label"
     ],
   },
   chip: {
-    description: "Sinaliza um critério ou atributo relacionado a uma busca ou filtro de uma lista de informações.",
-    whenToUse: "Use para representar um filtro ou critério ativo aplicado a uma lista (ex: um filtro de busca que o usuário pode remover). Não confunda com componentes vizinhos: use Tag para categorizar informação de forma estática (não removível); use Badge para reportar contagem de itens pendentes/status. Chip é especificamente para critério de filtro/busca ativo, tipicamente removível.",
+    description: "Sinaliza um critério ou atributo ativo aplicado a uma busca ou filtragem de lista. Permite ao usuário visualizar e remover regras ativas.",
+    whenToUse: "Exibir filtros de busca ativos que podem ser desfeitos individualmente pelo usuário (\"Categoria: Roupas, Preço até R$ 100\"). Indicar atributos aplicados a uma listagem dinâmica com opção de remoção imediata. Sinalizar critérios sugeridos automaticamente por inteligência artificial via variante ai-generated.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <span> (ou o filho, via asChild) com data-slot=\"chip\" e data-variant. Não é ele mesmo um <button> — a interatividade fica isolada no botão de remover." },
-      { part: "Ícone (opcional)", description: "Nó antes do label, via prop `icon`. Deve ter relação direta com o critério representado. Tamanho herdado via [&>svg]:size-3, mesmo mecanismo do Badge." },
-      { part: "Label", description: "Texto do chip — via `children`. Sem verbo (é rótulo, não ação)." },
-      { part: "Botão de remover (opcional)", description: "Só existe quando removable=true. Renderizado como <Button variant=\"ghost\" size=\"icon-xs\"> contendo <Icon name=\"close\" />, com aria-label próprio (prop removeLabel)." },
-      { part: "Skeleton (Chip.Skeleton)", description: "Placeholder de carregamento com o mesmo formato do chip real, pra evitar layout shift." },
+      { part: "Chip", description: "Elemento raiz em span que encapsula o rótulo, ícone e botão de remoção" },
+      { part: "ChipSkeleton", description: "Placeholder animado que preserva o espaço visual durante o carregamento" },
     ],
     variants: [
-      { name: "Default", value: "default", description: "Aparência neutra padrão — fundo --muted, texto --foreground." },
-      { name: "AI Generated", value: "ai-generated", description: "Sinaliza que o valor do chip foi gerado por IA. Usa os tokens --ai-surface/--ai-interactive/--ai-text-high já wireados neste projeto pra família \"ai-*\" do Button." },
+      { name: "Default", value: "default", description: "Critérios e filtros ativos comuns aplicados manualmente pelo usuário" },
+      { name: "Ai-generated", value: "ai-generated", description: "Critérios ou atributos sugeridos automaticamente por inteligência artificial" },
     ],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Hover", description: "Só o botão de remover reage a hover (herda o hover do Button variant=\"ghost\") — o corpo do chip não é interativo por padrão." },
-      { name: "Focus", description: "Aplica-se somente ao botão de remover, quando presente — anel de foco herdado do Button. O corpo do chip não recebe foco." },
-      { name: "Disabled", description: "prop disabled — desativa o botão de remover e reduz a opacidade do chip inteiro." },
-      { name: "Removível (remoção)", description: "Quando removable=true: botão de \"x\" alcançável via Tab, ativável via Enter ou Space (comportamento nativo de <button>)." },
+      { name: "Padrão", description: "Fundo neutro bg-muted e texto text-foreground (ou superfície de IA em ai-generated)" },
+      { name: "Hover", description: "Aplicado ao botão de remover quando presente, herdando o hover da variante ghost" },
+      { name: "Foco", description: "Anel de foco exibido exclusivamente no botão de remoção ao navegar via Tab" },
+      { name: "Desabilitado", description: "Opacidade reduzida a 50% e interações desativadas (opacity-50 pointer-events-none)" },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Utilize removeLabel descritivo quando houver múltiplos filtros na tela (\"Remover filtro Roupas\").", "Agrupe chips em containers flexíveis com espaçamento consistente (gap-1.5 ou gap-2).", "Use variant=\"ai-generated\" para diferenciar atributos sugeridos automaticamente de escolhas manuais."],
+    dontGuidelines: ["Usar chip interativo para indicar status estático sem remoção → badge", "Utilizar verbos de ação no texto principal do chip → use substantivos e reserve ações para button", "Esquecer de definir onRemove quando removable for verdadeiro → passe a função de callback ou deixe removable={false}"],
     code: `import { Chip } from "@/components/ui/chip"
 import { Icon } from "@/components/ui/icon"
 
-// Chip simples, não removível (ex.: rótulo de critério fixo)
-<Chip>Categoria: Roupas</Chip>
-
-// Chip removível (ex.: filtro ativo de busca)
-<Chip removable onRemove={() => removerFiltro("categoria")}>
-  Categoria: Roupas
-</Chip>
-
-// Chip com ícone + removível
-<Chip icon={<Icon name="sell" />} removable onRemove={handleRemove}>
-  Promoção
-</Chip>
-
-// Chip indicando valor gerado por IA
-<Chip variant="ai-generated" removable onRemove={handleRemove}>
-  Sugestão gerada por IA
-</Chip>
-
-// Placeholder de carregamento
-<Chip.Skeleton />`,
+<div className="flex flex-wrap gap-2">
+  <Chip>Categoria: Roupas</Chip>
+  <Chip
+    icon={<Icon name="sell" />}
+    removable
+    removeLabel="Remover filtro Promoção"
+    onRemove={() => {}}
+  >
+    Promoção
+  </Chip>
+  <Chip variant="ai-generated" removable onRemove={() => {}}>
+    Sugestão automática
+  </Chip>
+</div>`,
     props: [
-      { name: "children", type: "React.ReactNode", description: "Texto do chip (obrigatório)." },
-      { name: "icon", type: "React.ReactNode", description: "Ícone opcional antes do label. Deve estar relacionado ao critério representado." },
-      { name: "removable", type: "boolean", default: "false", description: "Mostra o botão de remover (o \"x\")." },
-      { name: "onRemove", type: "() => void", description: "Callback disparado ao clicar/ativar o botão de remover." },
-      { name: "variant", type: "\"default\" | \"ai-generated\"", default: "\"default\"", description: "Estilo visual do chip." },
-      { name: "removeLabel", type: "string", default: "\"Remover\"", description: "Texto usado como aria-label do botão de remover." },
-      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <span>." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa o botão de remover e reduz a opacidade do chip." },
-      { name: "...props", type: "React.ComponentProps<\"span\">", description: "Demais atributos nativos do elemento raiz." },
+      { name: "variant", type: "default · ai-generated", default: "default", description: "Estilo visual do chip, indicando padrão neutro ou sugestão gerada por IA" },
+      { name: "asChild", type: "boolean", default: "false", description: "Renderiza no elemento filho via Radix Slot em vez de span" },
+      { name: "icon", type: "React.ReactNode", default: "—", description: "Ícone ilustrativo exibido antes do rótulo" },
+      { name: "removable", type: "boolean", default: "false", description: "Exibe o botão de fechar e remoção à direita" },
+      { name: "onRemove", type: "() => void", default: "—", description: "Função disparada ao acionar o botão de remoção" },
+      { name: "removeLabel", type: "string", default: "Remover", description: "Texto de acessibilidade (aria-label) do botão de remover" },
+      { name: "disabled", type: "boolean", default: "false", description: "Desativa interações e reduz a opacidade do componente" },
+    ],
+    meta: {
+      nome: "Chip",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/chip.tsx",
+      story: "src/components/ui/chip.stories.tsx",
+      vizinhos: ["badge", "tag"],
+    },
+    whenToUseItems: ["Exibir filtros de busca ativos que podem ser desfeitos individualmente pelo usuário (\"Categoria: Roupas, Preço até R$ 100\").", "Indicar atributos aplicados a uma listagem dinâmica com opção de remoção imediata.", "Sinalizar critérios sugeridos automaticamente por inteligência artificial via variante ai-generated."],
+    whenNotToUse: ["Exibir rótulo de status só de leitura sem ação de remoção → badge", "Categorização de conteúdo fixa e estática sem interatividade de filtro → tag", "Disparar uma ação comum do sistema em vez de representar um critério → button"],
+    content: ["Texto curto e conciso de até três palavras sem verbo: \"Categoria: Roupas\".", "Mantenha o mesmo termo utilizado no seletor ou filtro de origem.", "Em chips removíveis, forneça removeLabel claro para leitor de tela: \"Remover filtro Categoria\"."],
+    accessibility: {
+      keyboard: "O corpo do chip não recebe foco por padrão. Quando removable estiver ativo, o botão de fechar recebe Tab e aciona onRemove com Enter ou Espaço.",
+      screenReader: "Renderizado em tag semântica de texto. O botão de remoção anuncia o texto acessível configurado em removeLabel (padrão \"Remover\").",
+      focus: "O anel de foco aparece exclusivamente ao redor do botão de remoção ao navegar pelo teclado.",
+      cautions: "O botão interno de remoção cumpre a área mínima acessível de 24 px; garanta que removeLabel descreva qual filtro está sendo removido quando houver múltiplos chips na tela (WCAG 2.5.8 e 4.1.2).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-ai-surface", "bg-muted", "border-ai-interactive", "text-ai-text-high", "text-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "leading-none", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1", "h-6", "min-h-6", "pr-0.5", "px-1.5", "size-3", "w-20"] },
+      { contexto: "Raio", itens: ["rounded-sm"] },
     ],
   },
   "icon-button": {
@@ -1000,7 +1011,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
     props: [
       { name: "className", type: "string", default: "—", description: "Classes utilitárias para ajustar tamanho (ex.: size-5) ou cor (ex.: text-primary)" },
       { name: "aria-label", type: "string", default: "\"Loading\"", description: "Nome acessível anunciado a tecnologias assistivas" },
-      { name: "...props", type: "Omit<ComponentProps<\"svg\">, \"name\" \\", default: "\"fill\">", description: "—" },
+      { name: "...props", type: "Omit<ComponentProps<\"svg\">, \"name\" \\ | \"fill\">", default: "—", description: "Demais propriedades SVG nativas repassadas ao elemento" },
     ],
     meta: {
       nome: "Spinner",
@@ -2331,53 +2342,87 @@ import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker"
     ],
   },
   alert: {
-    description: "Exibe um destaque para chamar a atenção do usuário.",
-    whenToUse: "Use para comunicar uma informação importante, confirmação ou erro relacionado ao contexto atual da tela.",
+    description: "Exibe uma mensagem contextual fixa na página para informar, orientar ou alertar a pessoa. Permanece visível junto ao conteúdo relevante até ser resolvida ou dispensada.",
+    whenToUse: "Avisos persistentes que exigem atenção antes de prosseguir no formulário ou fluxo. Mensagens de erro de validação geral ou falhas de comunicação com o servidor na página. Informações contextuais permanentes sobre limites da conta ou status do sistema.",
     anatomy: [
-      { part: "Alert", description: "Elemento raiz — <div role=\"alert\"> em grid (ícone opcional na 1ª coluna)." },
-      { part: "AlertTitle", description: "Linha de título, uma linha só (line-clamp-1)." },
-      { part: "AlertDescription", description: "Corpo do texto, pode ter múltiplos parágrafos." },
+      { part: "Alert", description: "Contêiner raiz com data-slot=\"alert\" e role=\"alert\", layout em grade para acomodar ícone e texto." },
+      { part: "AlertTitle", description: "Título do alerta com data-slot=\"alert-title\", tipografia em destaque (font-medium)." },
+      { part: "AlertDescription", description: "Descrição detalhada com data-slot=\"alert-description\", texto secundário com entrelinha relaxada." },
+      { part: "Ícone (opcional)", description: "SVG inserido diretamente como primeiro filho de Alert, alinhado à primeira linha do texto." },
     ],
     variants: [
-      { name: "Default", value: "default", description: "bg-card, texto neutro." },
-      { name: "Destructive", value: "destructive", description: "Texto em --destructive — erros e avisos críticos." },
+      { name: "Default", value: "default", description: "Mensagens informativas, avisos gerais ou confirmações contextuais" },
+      { name: "Destructive", value: "destructive", description: "Erros, falhas de sistema ou avisos de bloqueio que impedem a conclusão da tarefa" },
     ],
-    states: [],
+    states: [
+      { name: "Padrão", description: "Borda sutil e fundo no tom da variante escolhida (default ou destructive)" },
+      { name: "Com ícone", description: "Alinha o ícone automaticamente ao topo com espaçamento lateral dedicado" },
+      { name: "Só leitura", description: "Não é um elemento interativo e não recebe foco de teclado por padrão" },
+    ],
     sizes: [],
-    doGuidelines: ["Use para comunicar informações importantes sobre o estado do sistema. Use a aparência adequada (success, warning, danger, info)."],
-    dontGuidelines: ["Não use alert para notificações temporárias — use Sonner/Toast. Não use alert para mensagens de confirmação de ação."],
+    doGuidelines: ["Combine ícone e texto descritivo para que o significado não dependa apenas da cor.", "Posicione o alerta próximo ao conteúdo ou campo que gerou a mensagem.", "Indique uma ação clara para a pessoa resolver a pendência apontada."],
+    dontGuidelines: ["Acumular múltiplos alertas empilhados na mesma página → condense em um único resumo ou use sonner.", "Usar variante destructive para avisos que não bloqueiam nem causam perda → use variante default.", "Exibir códigos de erro opacos sem explicação em linguagem comum → traduza a mensagem com a orientação do que fazer."],
     code: `import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Icon } from "@/components/ui/icon"
 
-<Alert variant="destructive">
-  <Icon name="error" />
-  <AlertTitle>Erro ao salvar</AlertTitle>
+<Alert>
+  <Icon name="info" />
+  <AlertTitle>Atualização disponível</AlertTitle>
   <AlertDescription>
-    Verifique os campos e tente novamente.
+    Uma nova versão do sistema está pronta para instalação.
   </AlertDescription>
 </Alert>`,
     props: [
-      { name: "variant", type: "\"default\" | \"destructive\"", default: "\"default\"", description: "Estilo visual do alerta." },
-      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Atributos nativos de <div>." },
+      { name: "variant", type: "default · destructive", default: "default", description: "Define o tom visual e a gravidade da mensagem" },
+      { name: "...props", type: "ComponentProps<\"div\">", default: "—", description: "Atributos padrão de contêiner HTML" },
+    ],
+    meta: {
+      nome: "Alert",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/alert.tsx",
+      story: "src/components/ui/alert.stories.tsx",
+      vizinhos: ["sonner", "alert-dialog", "dialog"],
+    },
+    whenToUseItems: ["Avisos persistentes que exigem atenção antes de prosseguir no formulário ou fluxo.", "Mensagens de erro de validação geral ou falhas de comunicação com o servidor na página.", "Informações contextuais permanentes sobre limites da conta ou status do sistema."],
+    whenNotToUse: ["Notificação rápida que confirma uma ação e pode sumir sozinha → sonner.", "Erro crítico ou confirmação que bloqueia o fluxo e exige decisão imediata → alert-dialog.", "Diálogo com formulário extenso ou conteúdo interativo em janela sobreposta → dialog."],
+    content: ["O título deve resumir o ocorrido em poucas palavras: \"Falha na sincronização\".", "A descrição deve orientar o próximo passo concreto: \"Verifique sua conexão e tente novamente.\".", "Evite termos excessivamente técnicos ou códigos de erro brutos na mensagem para a pessoa usuária."],
+    accessibility: {
+      keyboard: "Não recebe foco diretamente. Links ou botões de ação colocados dentro do alerta recebem foco via Tab normalmente.",
+      screenReader: "Possui role=\"alert\", sendo anunciado imediatamente pelas tecnologias assistivas quando inserido dinamicamente no DOM.",
+      focus: "Não desloca o foco da pessoa ao ser exibido, exceto se configurado como resumo de erros ao submeter formulário.",
+      cautions: "A cor não deve ser o único meio de transmitir gravidade; utilize sempre um ícone correspondente e título descritivo (critério WCAG 1.4.1).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-card", "text-card-foreground", "text-destructive", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "leading-relaxed", "text-sm", "tracking-tight"] },
+      { contexto: "Espaço", itens: ["gap-1", "gap-x-3", "gap-y-0.5", "min-h-4", "px-4", "py-3", "size-4"] },
+      { contexto: "Raio", itens: ["rounded-lg"] },
     ],
   },
   breadcrumb: {
-    description: "Exibe o caminho até o recurso atual usando uma hierarquia de links.",
-    whenToUse: "Use para mostrar a localização da página atual dentro da estrutura de navegação do produto.",
+    description: "Mostra a localização da página atual na hierarquia do site e o caminho percorrido. Permite navegar diretamente para qualquer nível ancestral da estrutura.",
+    whenToUse: "Estruturas de navegação com três ou mais níveis de profundidade (ex.: Início > Configurações > Notificações). Catálogos de produtos ou documentações técnicas organizadas em categorias e subcategorias. Aplicações de gestão onde o contexto pai orienta a visualização da tela atual.",
     anatomy: [
-      { part: "Breadcrumb", description: "Elemento raiz — <nav aria-label=\"breadcrumb\">." },
-      { part: "BreadcrumbList", description: "<ol> que envolve os itens." },
-      { part: "BreadcrumbItem", description: "<li> — um nível da trilha." },
-      { part: "BreadcrumbLink", description: "Item navegável (<a> ou filho via asChild)." },
-      { part: "BreadcrumbPage", description: "Item atual, não navegável — aria-current=\"page\"." },
-      { part: "BreadcrumbSeparator", description: "Ícone entre itens (ChevronRight por padrão), aria-hidden." },
-      { part: "BreadcrumbEllipsis", description: "Colapsa níveis intermediários numa trilha longa." },
+      { part: "Breadcrumb", description: "Elemento raiz <nav> com aria-label=\"breadcrumb\" e data-slot=\"breadcrumb\"." },
+      { part: "BreadcrumbList", description: "Lista ordenada <ol> com data-slot=\"breadcrumb-list\" e quebra flexível de itens." },
+      { part: "BreadcrumbItem", description: "Item individual <li> com data-slot=\"breadcrumb-item\" que agrupa link e separador." },
+      { part: "BreadcrumbLink", description: "Link navegável para nível anterior com data-slot=\"breadcrumb-link\", suportando asChild." },
+      { part: "BreadcrumbPage", description: "Rótulo da página atual com data-slot=\"breadcrumb-page\", marcado com aria-current=\"page\"." },
+      { part: "BreadcrumbSeparator", description: "Separador visual decorativo com data-slot=\"breadcrumb-separator\" (chevron_right por padrão)." },
+      { part: "BreadcrumbEllipsis", description: "Indicador de níveis intermediários recolhidos com data-slot=\"breadcrumb-ellipsis\"." },
     ],
     variants: [],
-    states: [],
+    states: [
+      { name: "Link normal", description: "Texto secundário text-muted-foreground sem sublinhado" },
+      { name: "Link hover", description: "Transição suave para a cor do texto principal (hover:text-foreground)" },
+      { name: "Link foco", description: "Anel de foco visível no link ativo ou elemento focado" },
+      { name: "Página atual", description: "Texto principal text-foreground com aria-current=\"page\", sem interação" },
+      { name: "Separador", description: "Elemento decorativo com aria-hidden=\"true\" e opacidade atenuada" },
+    ],
     sizes: [],
-    doGuidelines: ["Use para mostrar a hierarquia de navegação e permitir voltar a páginas anteriores."],
-    dontGuidelines: ["Não use breadcrumb em fluxos de uma única página. Não use como substituto para navegação principal."],
+    doGuidelines: ["Posicione a trilha no topo da tela, logo acima do título principal da página.", "Mantenha a correspondência exata entre o rótulo do breadcrumb e o título da tela de destino.", "Use asChild em BreadcrumbLink para integrar com o roteamento da aplicação (next/link)."],
+    dontGuidelines: ["Tornar o item da página atual um link clicável → utilize sempre BreadcrumbPage.", "Usar breadcrumb como único meio de navegação do sistema → combine com sidebar ou navigation-menu.", "Exibir separadores para leitores de tela → mantenha aria-hidden=\"true\" no BreadcrumbSeparator."],
     code: `import {
   Breadcrumb,
   BreadcrumbItem,
@@ -2394,70 +2439,156 @@ import { Icon } from "@/components/ui/icon"
     </BreadcrumbItem>
     <BreadcrumbSeparator />
     <BreadcrumbItem>
-      <BreadcrumbPage>Componentes</BreadcrumbPage>
+      <BreadcrumbLink href="/documentos">Documentos</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Relatório Anual</BreadcrumbPage>
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>`,
     props: [
-      { name: "asChild", type: "boolean", default: "false", description: "(BreadcrumbLink) renderiza no elemento filho." },
+      { name: "asChild (BreadcrumbLink)", type: "boolean", default: "false", description: "Delega a renderização para o componente filho (como Next.js Link)" },
+      { name: "children (BreadcrumbSeparator)", type: "React.ReactNode", default: "<Icon name=\"chevron_right\" />", description: "Separador personalizado entre os itens" },
+    ],
+    meta: {
+      nome: "Breadcrumb",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/breadcrumb.tsx",
+      story: "src/components/ui/breadcrumb.stories.tsx",
+      vizinhos: ["sidebar", "navigation-menu", "pagination"],
+    },
+    whenToUseItems: ["Estruturas de navegação com três ou mais níveis de profundidade (ex.: Início > Configurações > Notificações).", "Catálogos de produtos ou documentações técnicas organizadas em categorias e subcategorias.", "Aplicações de gestão onde o contexto pai orienta a visualização da tela atual."],
+    whenNotToUse: ["Sites rasos ou navegações planas de apenas um ou dois níveis → navigation-menu.", "Navegação lateral primária que exibe toda a árvore da aplicação → sidebar.", "Paginação sequencial de listas ou tabelas → pagination."],
+    content: ["Utilize os mesmos títulos das páginas de destino para manter consistência com a navegação.", "O último item corresponde sempre à página atual e deve estar por extenso sem ser link.", "Em títulos muito longos nos níveis intermediários, abrevie o texto mantendo a clareza."],
+    accessibility: {
+      keyboard: "Tab navega sequencialmente apenas pelos links anteriores (BreadcrumbLink) e botões de expansão (BreadcrumbEllipsis). A página atual não recebe foco por não ser link.",
+      screenReader: "O contêiner <nav> possui aria-label=\"breadcrumb\" e a página atual é identificada via aria-current=\"page\" e aria-disabled=\"true\".",
+      focus: "O anel de foco visível destaca o item focado durante a navegação por teclado.",
+      cautions: "Os separadores possuem aria-hidden=\"true\" para não poluir a leitura de tela. Atenção: o elemento BreadcrumbEllipsis traz More fixo em inglês no sr-only, devendo ser sobrescrito para português quando necessário.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-normal", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1.5", "gap-2.5", "size-3.5", "size-9"] },
     ],
   },
   "button-group": {
-    description: "Um contêiner que agrupa botões relacionados com um estilo visual consistente.",
-    whenToUse: "Use para agrupar botões que executam ações relacionadas, mantendo bordas coladas e alinhamento consistente.",
+    description: "Agrupa visualmente botões e controles relacionados com cantos e bordas combinados. Mantém alinhamento consistente entre ações complementares, como confirmação e cancelamento ou botões com seletor.",
+    whenToUse: "Conjuntos de ações complementares no rodapé de janelas e formulários (ex.: Cancelar e Salvar). Combinações de botão com menu suspenso ou campo de texto integrado na mesma linha. Barras de ação compactas onde botões adjacentes compartilham bordas para economizar espaço.",
     anatomy: [
-      { part: "ButtonGroup", description: "Elemento raiz — role=\"group\", junta os botões visualmente (bordas coladas)." },
-      { part: "ButtonGroupText", description: "Rótulo não clicável dentro do grupo (ex: prefixo)." },
-      { part: "ButtonGroupSeparator", description: "Divisor entre sub-grupos de botões." },
+      { part: "ButtonGroup", description: "Contêiner raiz com data-slot=\"button-group\" e role=\"group\", ajusta cantos e bordas dos filhos para fusão visual." },
+      { part: "ButtonGroupText", description: "Rótulo estático não clicável com data-slot=\"button-group-text\" para prefixos ou complementos visuais." },
+      { part: "ButtonGroupSeparator", description: "Separador visual fino com data-slot=\"button-group-separator\" baseado no componente Separator." },
     ],
     variants: [],
-    states: [],
+    states: [
+      { name: "Padrão", description: "Filhos intermediários perdem arredondamentos internos e bordas redundantes" },
+      { name: "Horizontal", description: "Borda esquerda dos filhos subsequentes é removida para encaixe contínuo" },
+      { name: "Vertical", description: "Borda superior dos filhos subsequentes é removida para empilhamento contínuo" },
+      { name: "Foco", description: "O botão focado eleva seu nível de sobreposição (z-10) para exibir o anel de foco completo" },
+    ],
     sizes: [],
-    doGuidelines: ["Use para agrupar botões com ação relacionada, como filtros ou visualizações."],
-    dontGuidelines: ["Não use button-group para ações primárias e secundárias conflitantes."],
+    doGuidelines: ["Posicione a ação principal à direita no layout horizontal para seguir o fluxo de leitura padrão.", "Use ButtonGroupSeparator quando desejar reforçar a divisão entre botões de mesma superfície.", "Limite o grupo a até três botões em ações de formulário ou use menu suspenso para opções extras."],
+    dontGuidelines: ["Dois botões primários com variante default no mesmo grupo → mantenha apenas um primário e use outline no secundário.", "Mais de dez ações em barra sem menu colapsado → utilize dropdown-menu para agrupar opções excedentes.", "Inverter a ordem visual dos botões em relação à árvore do DOM → mantenha a ordem do HTML idêntica à ordem visual."],
     code: `import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
 
 <ButtonGroup>
-  <Button variant="outline">Arquivar</Button>
-  <Button variant="outline">Denunciar</Button>
+  <Button variant="outline">Cancelar</Button>
+  <Button>Salvar alterações</Button>
 </ButtonGroup>`,
     props: [
-      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção do agrupamento." },
+      { name: "orientation", type: "horizontal · vertical", default: "horizontal", description: "Direção do agrupamento dos botões (linha ou coluna)" },
+      { name: "asChild (ButtonGroupText)", type: "boolean", default: "false", description: "Delega a renderização para o elemento filho" },
+      { name: "orientation (ButtonGroupSeparator)", type: "horizontal · vertical", default: "vertical", description: "Orientação do separador interno entre os controles" },
+    ],
+    meta: {
+      nome: "Button Group",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/button-group.tsx",
+      story: "src/components/ui/button-group.stories.tsx",
+      vizinhos: ["button", "toggle-group", "split-button"],
+    },
+    whenToUseItems: ["Conjuntos de ações complementares no rodapé de janelas e formulários (ex.: Cancelar e Salvar).", "Combinações de botão com menu suspenso ou campo de texto integrado na mesma linha.", "Barras de ação compactas onde botões adjacentes compartilham bordas para economizar espaço."],
+    whenNotToUse: ["Botão isolado com ação única sem dependência de outros controles → button.", "Seleção de opções mutuamente exclusivas com estado ativo ou pressionado → toggle-group.", "Botão principal com variação imediata em menu dividido integrado → split-button."],
+    content: ["Cada botão deve ter um texto que descreva claramente sua respectiva ação (ex.: \"Salvar alterações\", \"Cancelar\").", "Mantenha no máximo três ações agrupadas para não sobrecarregar a decisão visual.", "Em pares de formulário, posicione a ação secundária antes e a principal em destaque."],
+    accessibility: {
+      keyboard: "Tab navega sequencialmente entre os botões na ordem visual. O anel de foco visível ganha relative z-10 para não ser cortado pelos botões vizinhos.",
+      screenReader: "O contêiner possui role=\"group\". Se o grupo representar uma barra temática de ações, passe aria-label descritivo no contêiner.",
+      focus: "A ordem de navegação acompanha estritamente a sequência visual dos botões, da esquerda para a direita no horizontal ou de cima para baixo no vertical.",
+      cautions: "Evite posicionar dois botões com variante default lado a lado no mesmo grupo; diferencie a ação primária da secundária.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-input", "bg-muted"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2", "px-4", "size-4"] },
+      { contexto: "Raio", itens: ["rounded-md", "rounded-r-md"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
     ],
   },
   collapsible: {
-    description: "Um componente interativo que expande ou recolhe um painel.",
-    whenToUse: "Use para esconder ou mostrar um bloco de conteúdo opcional sob demanda, sem a formalidade de um Accordion.",
+    description: "Alterna a visibilidade de uma seção de conteúdo secundário sob demanda. Mantém a página limpa ao esconder blocos opcionais sem a estrutura de um acordeão.",
+    whenToUse: "Esconder detalhes complementares ou avançados que a maioria dos usuários não precisa ver de início (\"Ver mais detalhes técnicos\"). Painéis recolhíveis isolados em barras laterais ou cartões de resumo (\"Lista de participantes\"). Alternar visualização de código, registros brutos ou logs extensos sob demanda.",
     anatomy: [
-      { part: "Collapsible", description: "Root — controla o estado aberto/fechado." },
-      { part: "CollapsibleTrigger", description: "Elemento que alterna abrir/fechar." },
-      { part: "CollapsibleContent", description: "Conteúdo escondido quando fechado." },
+      { part: "Collapsible", description: "Elemento raiz que gerencia o estado aberto ou fechado (Radix Collapsible)" },
+      { part: "CollapsibleTrigger", description: "Gatilho clicável que expande ou recolhe o painel associado" },
+      { part: "CollapsibleContent", description: "Container com animação de altura que exibe o conteúdo quando aberto" },
     ],
     variants: [],
     states: [
-      { name: "Closed", description: "data-state=closed — conteúdo escondido." },
-      { name: "Open", description: "data-state=open — conteúdo visível." },
+      { name: "Fechado", description: "data-state=closed no gatilho e conteúdo, com animação animate-collapsible-up ocultando o bloco" },
+      { name: "Aberto", description: "data-state=open com animação animate-collapsible-down exibindo o conteúdo" },
+      { name: "Foco", description: "O gatilho recebe o anel de foco padrão do elemento que o compõe (ex.: Button)" },
+      { name: "Desabilitado", description: "Gatilho inativo quando disabled for verdadeiro" },
     ],
     sizes: [],
-    doGuidelines: ["Use para ocultar conteúdo complementar que não é necessário à primeira vista."],
-    dontGuidelines: ["Não use collapsible para conteúdo crítico que o usuário precisa ver sempre."],
+    doGuidelines: ["Use asChild em CollapsibleTrigger para compor com Button acessível.", "Indique visualmente a alternância de estado com ícone direcional que gire conforme abertura.", "Mantenha o conteúdo recolhível compacto para evitar deslocamentos visuais bruscos ao expandir."],
+    dontGuidelines: ["Ocultar mensagens de erro críticas ou avisos obrigatórios dentro do painel → mostre sempre visível com alert", "Criar lista com várias seções expansíveis coordenadas manualmente → accordion", "Abrir o conteúdo automaticamente sem interação prévia do usuário → deixe fechado por padrão ou use container fixo em card"],
     code: `import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import { Button } from "@/components/ui/button"
 
 <Collapsible>
-  <CollapsibleTrigger>Ver mais</CollapsibleTrigger>
-  <CollapsibleContent>
-    Conteúdo escondido por padrão.
+  <CollapsibleTrigger asChild>
+    <Button variant="outline" size="sm">
+      Mostrar histórico de alterações
+    </Button>
+  </CollapsibleTrigger>
+  <CollapsibleContent className="mt-2 text-sm text-muted-foreground">
+    Última atualização realizada por Maria em 24 de outubro.
   </CollapsibleContent>
 </Collapsible>`,
     props: [
-      { name: "open / defaultOpen", type: "boolean", description: "Estado controlado ou inicial." },
-      { name: "onOpenChange", type: "(open: boolean) => void", description: "Callback de mudança." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa o trigger." },
+      { name: "open · defaultOpen (Collapsible)", type: "boolean", default: "—", description: "Controla se o painel está aberto em modo controlado ou estado inicial" },
+      { name: "onOpenChange (Collapsible)", type: "(open: boolean) => void", default: "—", description: "Callback acionado ao alternar entre aberto e fechado" },
+      { name: "disabled (Collapsible)", type: "boolean", default: "false", description: "Desativa o gatilho impedindo abrir ou fechar o conteúdo" },
+      { name: "asChild (CollapsibleTrigger)", type: "boolean", default: "false", description: "Renderiza no elemento filho via Radix Slot (ex.: com Button)" },
+    ],
+    meta: {
+      nome: "Collapsible",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/collapsible.tsx",
+      story: "src/components/ui/collapsible.stories.tsx",
+      vizinhos: ["accordion", "sheet"],
+    },
+    whenToUseItems: ["Esconder detalhes complementares ou avançados que a maioria dos usuários não precisa ver de início (\"Ver mais detalhes técnicos\").", "Painéis recolhíveis isolados em barras laterais ou cartões de resumo (\"Lista de participantes\").", "Alternar visualização de código, registros brutos ou logs extensos sob demanda."],
+    whenNotToUse: ["Múltiplas seções empilhadas que expandem e fecham em lista estruturada → accordion", "Conteúdo extenso que exige fluxo ou formulário dedicado fora do fluxo da página → sheet", "Janela modal focada que bloqueia a interação com o restante da tela → dialog"],
+    content: ["O gatilho deve usar rótulo claro que indique a ação de expandir: \"Mostrar detalhes\".", "Alterne o rótulo quando apropriado (\"Mostrar detalhes\" / \"Ocultar detalhes\") ou adicione ícone direcional indicativo.", "Não use exclamação nem pontuação final no texto do gatilho."],
+    accessibility: {
+      keyboard: "O gatilho recebe Tab e alterna a expansão ao pressionar Enter ou Espaço.",
+      screenReader: "O gatilho expõe aria-expanded=\"true|false\" e vincula-se ao conteúdo via aria-controls.",
+      focus: "O foco permanece no gatilho ao abrir ou fechar; pressionar Tab após abrir move o foco para o primeiro controle interno do painel.",
+      cautions: "Não esconda informações essenciais à conclusão da tarefa principal dentro de uma área recolhida; o usuário não deve ser obrigado a abrir o painel para prosseguir (WCAG 1.3.1 e 4.1.2).",
+    },
+    tokens: [
+      { contexto: "Movimento", itens: ["animate-collapsible-down", "animate-collapsible-up"] },
     ],
   },
   combobox: {
@@ -2507,20 +2638,24 @@ import { ButtonGroup } from "@/components/ui/button-group"
     ],
   },
   empty: {
-    description: "Use o componente Empty para exibir um estado vazio.",
-    whenToUse: "Use quando uma lista, busca ou seção não tiver conteúdo para mostrar, orientando o próximo passo do usuário.",
+    description: "Comunica um estado vazio em listas, tabelas ou telas sem dados. Orienta a pessoa sobre o que deveria estar ali e oferece o próximo passo.",
+    whenToUse: "Primeiro uso de uma funcionalidade antes de qualquer item ser criado (\"Nenhum projeto ainda. Crie o primeiro.\"). Busca ou filtro que não retornou nenhum resultado compatível com os critérios pesquisados. Seções limpas após conclusão de tarefas pendentes (caixa de entrada ou lista de pendências zerada).",
     anatomy: [
-      { part: "Empty", description: "Elemento raiz — borda tracejada, conteúdo centralizado." },
-      { part: "EmptyHeader", description: "Envolve ícone, título e descrição." },
-      { part: "EmptyMedia", description: "Ícone — variantes \"default\" (sem fundo) e \"icon\" (fundo circular/quadrado)." },
-      { part: "EmptyTitle / EmptyDescription", description: "Texto principal e secundário do estado vazio." },
-      { part: "EmptyContent", description: "Ação disponível (ex: botão) abaixo do texto." },
+      { part: "Empty", description: "Container raiz centralizado com borda tracejada e cantos arredondados" },
+      { part: "EmptyHeader", description: "Cabeçalho que agrupa mídia visual, título e texto de apoio" },
+      { part: "EmptyMedia", description: "Container de ícone ou ilustração nas variantes default ou icon" },
+      { part: "EmptyTitle", description: "Título principal do estado vazio; use asChild para cabeçalho semântico" },
+      { part: "EmptyDescription", description: "Descrição explicativa sobre o motivo da ausência de dados" },
+      { part: "EmptyContent", description: "Área inferior reservada para botões de ação ou links de recuperação" },
     ],
-    variants: [],
+    variants: [
+      { name: "Default", value: "default", description: "Ícone ou mídia sem fundo destacado, mantendo aparência sutil" },
+      { name: "Icon", value: "icon", description: "Ícone dentro de container delimitado com fundo neutro atenuado" },
+    ],
     states: [],
     sizes: [],
-    doGuidelines: ["Use para indicar que uma lista ou área não tem conteúdo. Ofereça ação para criar o primeiro item."],
-    dontGuidelines: ["Não deixe a área vazia sem orientação do que fazer a seguir."],
+    doGuidelines: ["Ofereça sempre uma ação clara ou rota de saída em EmptyContent para evitar que o usuário fique sem alternativa.", "Use asChild em EmptyTitle para definir o nível semântico do cabeçalho.", "Adapte o texto entre busca sem retorno e primeiro uso (onboarding)."],
+    dontGuidelines: ["Deixar a área em branco sem orientação ou mensagem explicativa → declare empty com título e botão de ação", "Usar estado vazio para indicar erro de conexão ou falha crítica → apresente um alert", "Exibir estado vazio enquanto os dados ainda estão carregando → mantenha um skeleton"],
     code: `import {
   Empty,
   EmptyContent,
@@ -2529,83 +2664,141 @@ import { ButtonGroup } from "@/components/ui/button-group"
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
-import { Icon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 
 <Empty>
   <EmptyHeader>
     <EmptyMedia variant="icon">
-      <Icon name="inbox" />
+      <Icon name="search_off" />
     </EmptyMedia>
-    <EmptyTitle>Nenhum resultado</EmptyTitle>
+    <EmptyTitle asChild>
+      <h2>Nenhum resultado encontrado</h2>
+    </EmptyTitle>
     <EmptyDescription>
-      Ajuste os filtros e tente de novo.
+      Revise os termos digitados ou remova os filtros aplicados.
     </EmptyDescription>
   </EmptyHeader>
   <EmptyContent>
-    <Button variant="outline">Limpar filtros</Button>
+    <Button variant="outline" size="sm">
+      Limpar filtros
+    </Button>
   </EmptyContent>
 </Empty>`,
     props: [
-      { name: "variant", type: "\"default\" | \"icon\"", default: "\"default\"", description: "(EmptyMedia) estilo do ícone." },
+      { name: "variant (EmptyMedia)", type: "default · icon", default: "default", description: "Define se o ícone é exibido sem fundo (default) ou em container delimitado (icon)" },
+      { name: "asChild (EmptyTitle)", type: "boolean", default: "false", description: "Renderiza no elemento filho via Radix Slot, permitindo usar tag semântica (h2, h3)" },
+    ],
+    meta: {
+      nome: "Empty",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/empty.tsx",
+      story: "src/components/ui/empty.stories.tsx",
+      vizinhos: ["skeleton", "spinner", "alert"],
+    },
+    whenToUseItems: ["Primeiro uso de uma funcionalidade antes de qualquer item ser criado (\"Nenhum projeto ainda. Crie o primeiro.\").", "Busca ou filtro que não retornou nenhum resultado compatível com os critérios pesquisados.", "Seções limpas após conclusão de tarefas pendentes (caixa de entrada ou lista de pendências zerada)."],
+    whenNotToUse: ["O conteúdo ainda está sendo carregado da rede → skeleton", "Ocorreu um erro no sistema ou falha na requisição → alert", "Espera sem formato conhecido durante processamento → spinner"],
+    content: ["Título positivo e objetivo explicando a situação: \"Nenhum documento encontrado\".", "Descrição orientando o que fazer em seguida: \"Tente ajustar os filtros de busca ou crie um novo arquivo.\".", "O botão de ação deve conter verbo direto: \"Limpar filtros\" ou \"Criar documento\"."],
+    accessibility: {
+      keyboard: "O container não recebe foco. A navegação por Tab atinge diretamente os botões ou links contidos em EmptyContent.",
+      screenReader: "Use asChild em EmptyTitle para atribuir heading semântico (h2, h3) correspondente à seção da página.",
+      focus: "Nenhum no container raiz. O foco segue a ordem natural do DOM até as ações de recuperação.",
+      cautions: "Nunca mostre apenas um ícone sem título e descrição em texto visível; leitor de tela precisa entender o motivo do estado vazio (WCAG 1.3.1 e 4.1.2).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-muted", "text-foreground", "text-muted-foreground", "text-primary"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-lg", "text-sm", "tracking-tight"] },
+      { contexto: "Espaço", itens: ["gap-2", "gap-4", "gap-6", "max-w-sm", "mb-2", "min-w-0", "p-12", "p-6", "size-10", "size-6"] },
+      { contexto: "Raio", itens: ["rounded-lg"] },
     ],
   },
   field: {
-    description: "Combine labels, controles e textos de ajuda para compor campos de formulário acessíveis e agrupamentos de campos.",
-    whenToUse: "Use para estruturar qualquer campo de formulário, garantindo que label, texto de ajuda e mensagem de erro fiquem conectados corretamente para acessibilidade.",
+    description: "Estrutura controles de formulário combinando rótulo, descrição, erros e agrupamentos acessíveis. Garante a conexão semântica correta entre as partes do campo.",
+    whenToUse: "Estruturar qualquer entrada de formulário (input, select, textarea, switch) associando rótulo, ajuda e erro. Criar grupos lógicos de campos relacionados com FieldSet, FieldLegend e FieldGroup. Montar cartões de seleção interativos (choice cards) para conjuntos de checkbox ou radio-group.",
     anatomy: [
-      { part: "FieldSet / FieldLegend", description: "Agrupam vários Fields relacionados, com título (legend)." },
-      { part: "FieldGroup", description: "Espaçamento vertical entre Fields." },
-      { part: "Field", description: "Elemento raiz de um campo — role=\"group\", orientação vertical/horizontal/responsive." },
-      { part: "FieldLabel", description: "Label do campo (usa o Atom Label internamente)." },
-      { part: "FieldContent", description: "Envolve o controle e a descrição." },
-      { part: "FieldDescription", description: "Texto de ajuda abaixo do controle." },
-      { part: "FieldSeparator", description: "Divisor entre Fields, com texto central opcional (ex: \"ou\")." },
-      { part: "FieldError", description: "Mensagem de erro — role=\"alert\", aceita lista de erros (react-hook-form)." },
+      { part: "FieldSet", description: "Elemento semântico <fieldset> que agrupa campos correlatos" },
+      { part: "FieldLegend", description: "Legenda acessível <legend> do agrupamento com variantes legend ou label" },
+      { part: "FieldGroup", description: "Container com container query para espaçamento vertical entre campos" },
+      { part: "Field", description: "Container raiz de um campo com role=\"group\" e controle de orientação" },
+      { part: "FieldContent", description: "Envoltório flexível para o controle de entrada e sua descrição" },
+      { part: "FieldLabel", description: "Rótulo do campo construído sobre o atom Label, com suporte a estado desabilitado" },
+      { part: "FieldTitle", description: "Título estrutural em destaque para layouts horizontais ou cartões de escolha" },
+      { part: "FieldDescription", description: "Texto de apoio e ajuda com cor suave exibido abaixo do controle" },
+      { part: "FieldSeparator", description: "Divisor horizontal com suporte a texto centralizado (ex.: \"ou\")" },
+      { part: "FieldError", description: "Mensagem de erro acessível com role=\"alert\" e cor de destruição" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Invalid", description: "data-invalid=true — texto em --destructive." },
-      { name: "Disabled", description: "group-data-[disabled=true] — opacidade reduzida no label." },
+      { name: "Padrão", description: "Disposição neutra com rótulo em text-foreground e descrição em text-muted-foreground" },
+      { name: "Inválido", description: "data-invalid=true no Field aplica cor text-destructive aos textos e exibe FieldError" },
+      { name: "Desabilitado", description: "group-data-[disabled=true]/field reduz a opacidade do rótulo e controles para 50%" },
+      { name: "Selecionado", description: "Em cartões de escolha, ganha borda destacada e preenchimento sutil em bg-primary/5" },
     ],
     sizes: [],
-    doGuidelines: ["Use para agrupar label + input + mensagens de ajuda/erro em formulários."],
-    dontGuidelines: ["Não use field para elementos que não são campos de formulário."],
+    doGuidelines: ["Associe o htmlFor do FieldLabel ao id do controle para garantir foco e nome acessível.", "Conecte aria-describedby do controle aos identificadores de FieldDescription e FieldError.", "Utilize orientation=\"responsive\" em formulários que precisam alternar entre empilhado e horizontal conforme largura."],
+    dontGuidelines: ["Usar placeholder como substituto do FieldLabel → mantenha o FieldLabel sempre visível", "Exibir mensagem de erro genérica sem instrução de correção → escreva instruções claras em FieldError", "Utilizar apenas a cor vermelha para indicar campo inválido → adicione mensagem em FieldError e ícone no controle"],
     code: `import {
   Field,
-  FieldContent,
   FieldDescription,
+  FieldError,
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 
 <Field>
-  <FieldLabel htmlFor="nome">Nome</FieldLabel>
-  <Input id="nome" />
-  <FieldDescription>Como aparece no seu perfil.</FieldDescription>
+  <FieldLabel htmlFor="email">E-mail</FieldLabel>
+  <Input id="email" type="email" placeholder="nome@empresa.com.br" />
+  <FieldDescription>Utilize seu endereço institucional.</FieldDescription>
+  <FieldError>Insira um e-mail válido.</FieldError>
 </Field>`,
     props: [
-      { name: "orientation", type: "\"vertical\" | \"horizontal\" | \"responsive\"", default: "\"vertical\"", description: "Direção do layout do campo." },
-      { name: "errors", type: "Array<{ message?: string }>", description: "(FieldError) lista de erros — mescla mensagens duplicadas." },
+      { name: "variant (FieldLegend)", type: "legend · label", default: "legend", description: "Estilo tipográfico da legenda: texto de seção (legend) ou tamanho de rótulo (label)" },
+      { name: "orientation", type: "vertical · horizontal · responsive", default: "vertical", description: "Direção do layout: vertical, horizontal alinhado ou responsivo por container query" },
+      { name: "children (FieldSeparator)", type: "React.ReactNode", default: "—", description: "Conteúdo textual opcional exibido no centro do divisor (ex.: \"ou\")" },
+      { name: "errors (FieldError)", type: "Array<{ message?: string } | undefined>", default: "—", description: "Lista de erros do formulário (compatível com react-hook-form); agrupa mensagens duplicadas" },
+    ],
+    meta: {
+      nome: "Field",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/field.tsx",
+      story: "src/components/ui/field.stories.tsx",
+      vizinhos: ["form", "input", "label"],
+    },
+    whenToUseItems: ["Estruturar qualquer entrada de formulário (input, select, textarea, switch) associando rótulo, ajuda e erro.", "Criar grupos lógicos de campos relacionados com FieldSet, FieldLegend e FieldGroup.", "Montar cartões de seleção interativos (choice cards) para conjuntos de checkbox ou radio-group."],
+    whenNotToUse: ["Rótulo de texto simples e isolado sem controle associado → label", "Apenas o elemento de digitação de texto puro sem estrutura de apoio → input", "Gerenciamento completo de submissão, estado e validação de schema → form"],
+    content: ["Rótulo substantivo claro, direto e sem dois-pontos: \"Nome completo\".", "Texto de ajuda orientando formato ou restrição antes do preenchimento: \"Digite seu e-mail corporativo.\".", "Mensagem de erro indicando o que ocorreu e como corrigir: \"Informe um e-mail válido.\"."],
+    accessibility: {
+      keyboard: "O container não retém foco; a tecla Tab navega linearmente entre os controles interativos internos.",
+      screenReader: "Field declara role=\"group\"; FieldError expõe role=\"alert\" para anúncio imediato de erros; associe id e htmlFor entre FieldLabel e o controle.",
+      focus: "Segue o fluxo natural para o controle interno (Input, Select, Checkbox); em formulários com erro, posicione o foco no primeiro campo inválido.",
+      cautions: "Conecte sempre FieldDescription e FieldError ao controle via aria-describedby, e marque aria-invalid=\"true\" no controle quando houver erro (WCAG 1.3.1, 3.3.1 e 3.3.2).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-background", "bg-primary", "border-primary", "text-destructive", "text-muted-foreground", "text-primary"] },
+      { contexto: "Tipografia", itens: ["font-medium", "font-normal", "leading-normal", "leading-snug", "text-base", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "gap-3", "gap-4", "gap-6", "gap-7", "h-5", "inset-0", "mb-2", "mb-3", "ml-4", "mt-0", "mt-1", "mt-1.5", "mt-px", "my-2", "p-4", "px-2", "top-1"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
     ],
   },
   "hover-card": {
-    description: "Para usuários com visão, permite pré-visualizar conteúdo disponível atrás de um link.",
-    whenToUse: "Use para mostrar uma pré-visualização de informação (perfil, card) ao passar o mouse sobre um link ou elemento, sem navegar até ele.",
+    description: "Exibe uma prévia flutuante de informações enriquecidas ao passar o mouse ou focar um link. Permite consultar contexto adicional sem navegar até outra página.",
+    whenToUse: "Exibir prévias visuais ricas de perfis de usuário ao passar o mouse sobre @menções ou avatares (\"Biografia, seguidores, status\"). Mostrar resumo de repositórios, artigos ou links externos antes da navegação efetiva. Pré-visualizar detalhes de produtos ou metadados rápidos em tabelas e painéis densos.",
     anatomy: [
-      { part: "HoverCard", description: "Root — controla abertura no hover/foco." },
-      { part: "HoverCardTrigger", description: "Elemento que dispara o card ao passar o mouse." },
-      { part: "HoverCardContent", description: "Painel flutuante (portal), w-64 por padrão." },
+      { part: "HoverCard", description: "Elemento raiz que gerencia temporizadores de abertura e fechamento (Radix HoverCard)" },
+      { part: "HoverCardTrigger", description: "Elemento gatilho (link ou botão) que dispara o painel no hover ou foco" },
+      { part: "HoverCardContent", description: "Painel flutuante renderizado em portal com largura fixa de 256 px (w-64)" },
     ],
     variants: [],
     states: [
-      { name: "Closed", description: "Estado padrão." },
-      { name: "Open", description: "Hover ou foco no trigger — anima fade + zoom." },
+      { name: "Fechado", description: "Painel oculto com transição de saída fade e zoom (zoom-out-95)" },
+      { name: "Aberto", description: "data-state=open com animação de entrada fade e zoom (zoom-in-95) após o atraso de hover" },
+      { name: "Foco", description: "O gatilho exibe o anel de foco usual; o painel flutuante abre automaticamente no foco do gatilho" },
     ],
     sizes: [],
-    doGuidelines: ["Use para mostrar preview ou informação adicional ao passar o mouse sobre um elemento."],
-    dontGuidelines: ["Não use hover-card para ações interativas — use Popover. Não use em mobile sem alternativa de toque."],
+    doGuidelines: ["Use asChild em HoverCardTrigger envolvendo um link semântico (a ou Link).", "Mantenha o conteúdo estritamente informativo, evitando formulários ou ações complexas dentro do painel.", "Garanta que a mesma informação esteja acessível na página de destino do link para usuários em telas de toque."],
+    dontGuidelines: ["Inserir formulários ou múltiplos botões interativos dentro do painel flutuante → utilize popover", "Utilizar HoverCard apenas para exibir rótulo de acessibilidade em ícone → use tooltip", "Depender exclusivamente do hover para exibir informações vitais ao fluxo da página → exiba em card"],
     code: `import {
   HoverCard,
   HoverCardContent,
@@ -2613,12 +2806,46 @@ import { Input } from "@/components/ui/input"
 } from "@/components/ui/hover-card"
 
 <HoverCard>
-  <HoverCardTrigger>@rafael</HoverCardTrigger>
-  <HoverCardContent>Product Designer Sênior.</HoverCardContent>
+  <HoverCardTrigger asChild>
+    <a href="/perfil" className="text-sm font-medium underline">
+      @rafaelnhaia
+    </a>
+  </HoverCardTrigger>
+  <HoverCardContent className="space-y-1">
+    <h4 className="text-sm font-semibold">Rafael Nhaia</h4>
+    <p className="text-xs text-muted-foreground">
+      Product Designer focado em Design Systems acessíveis.
+    </p>
+  </HoverCardContent>
 </HoverCard>`,
     props: [
-      { name: "align", type: "\"start\" | \"center\" | \"end\"", default: "\"center\"", description: "(HoverCardContent) alinhamento." },
-      { name: "sideOffset", type: "number", default: "4", description: "(HoverCardContent) distância do trigger." },
+      { name: "align (HoverCardContent)", type: "start · center · end", default: "center", description: "Alinhamento horizontal do painel em relação ao elemento gatilho" },
+      { name: "sideOffset (HoverCardContent)", type: "number", default: "4", description: "Distância em pixels entre o painel flutuante e o gatilho" },
+      { name: "openDelay · closeDelay (HoverCard)", type: "number", default: "700 / 300", description: "Tempo de espera em milissegundos antes de abrir ou fechar o painel (Radix)" },
+      { name: "asChild (HoverCardTrigger)", type: "boolean", default: "false", description: "Renderiza no elemento filho via Radix Slot (ex.: com link ou botão)" },
+    ],
+    meta: {
+      nome: "Hover Card",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/hover-card.tsx",
+      story: "src/components/ui/hover-card.stories.tsx",
+      vizinhos: ["card", "popover", "tooltip"],
+    },
+    whenToUseItems: ["Exibir prévias visuais ricas de perfis de usuário ao passar o mouse sobre @menções ou avatares (\"Biografia, seguidores, status\").", "Mostrar resumo de repositórios, artigos ou links externos antes da navegação efetiva.", "Pré-visualizar detalhes de produtos ou metadados rápidos em tabelas e painéis densos."],
+    whenNotToUse: ["Apenas texto curto de ajuda ou descrição de botão/ícone sem formatação rica → tooltip", "Conteúdo interativo com formulários, botões ou ações que exigem clique para abrir → popover", "Janela que interrompe o fluxo para tomada de decisão ou preenchimento de dados → dialog"],
+    content: ["Título ou nome principal em destaque tipográfico: \"Rafael Nhaia\".", "Resumo de apoio com até três linhas de texto: \"Product Designer e Engenheiro de Design.\".", "Metadados secundários com ícones discretos: \"Entrou em outubro de 2024\"."],
+    accessibility: {
+      keyboard: "O foco abre o painel ao navegar com Tab até o gatilho. O foco permanece no gatilho e não entra no painel flutuante. Pressionar Escape fecha o painel.",
+      screenReader: "Como o painel abre no hover e foco sem prender o cursor, evite colocar informações cruciais exclusivas nele; leitores de tela navegam pelo link gatilho.",
+      focus: "O foco permanece no gatilho durante toda a exibição; fechar via Escape devolve o estado em repouso.",
+      cautions: "O conteúdo flutuante permanece visível enquanto o ponteiro estiver sobre ele e fecha com Escape (WCAG 1.4.13); em dispositivos com toque, forneça navegação direta ou use popover com clique.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-popover", "text-popover-foreground"] },
+      { contexto: "Espaço", itens: ["p-4", "w-64"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
+      { contexto: "Sombra", itens: ["shadow-md"] },
     ],
   },
   "input-group": {
@@ -2761,34 +2988,39 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   attachment: {
-    description: "Exibe um anexo de arquivo ou imagem com mídia, metadados, estado de upload e ações.",
-    whenToUse: "Use para listar arquivos anexados em um formulário, composer de chat ou upload, mostrando nome, tamanho e status.",
+    description: "Exibe um anexo de arquivo ou mídia com metadados, miniatura, estado de processamento e ações rápidas. Representa arquivos já selecionados ou enviados em formulários e conversas.",
+    whenToUse: "Exibição de arquivos vinculados a uma mensagem de chat ou comentário. Lista de documentos anexados em um formulário de solicitação ou sinistro. Pré-visualização de imagem ou PDF com opção de download e exclusão.",
     anatomy: [
-      { part: "Attachment", description: "Elemento raiz — data-state, data-size, data-orientation." },
-      { part: "AttachmentGroup", description: "Agrupa vários attachments (ex: lista de arquivos anexados)." },
-      { part: "AttachmentMedia", description: "Ícone ou thumbnail representando o tipo de arquivo." },
-      { part: "AttachmentContent", description: "Envolve título e descrição." },
-      { part: "AttachmentTitle / AttachmentDescription", description: "Nome do arquivo e metadado (tamanho, erro, etc.)." },
-      { part: "AttachmentActions / AttachmentAction", description: "Botões de ação (ex: remover)." },
+      { part: "Attachment", description: "Raiz com data-slot=\"attachment\", agrupa mídia, conteúdo textual e ações em layout flexível." },
+      { part: "AttachmentMedia", description: "Contêiner quadrado com data-slot=\"attachment-media\" para exibir ícone do tipo de arquivo ou imagem de pré-visualização." },
+      { part: "AttachmentContent", description: "Área de texto com data-slot=\"attachment-content\" contendo título e descrição do arquivo." },
+      { part: "AttachmentTitle", description: "Nome do arquivo com data-slot=\"attachment-title\", exibido em negrito médio com truncamento." },
+      { part: "AttachmentDescription", description: "Metadados do anexo com data-slot=\"attachment-description\", como tamanho ou mensagem de erro." },
+      { part: "AttachmentActions", description: "Contêiner de botões de ação rápida com data-slot=\"attachment-actions\"." },
+      { part: "AttachmentAction", description: "Botão de ação pontual com data-slot=\"attachment-action\", padrão variant=\"ghost\" e tamanho icon-xs." },
+      { part: "AttachmentTrigger", description: "Gatilho clicável com data-slot=\"attachment-trigger\", cobrindo o cartão para ações primárias." },
+      { part: "AttachmentGroup", description: "Contêiner horizontal com data-slot=\"attachment-group\" para rolar múltiplos anexos com rolagem suave." },
     ],
-    variants: [],
+    variants: [
+      { name: "Icon", value: "icon", description: "Documentos em geral como relatórios ou planilhas identificados por ícone" },
+      { name: "Image", value: "image", description: "Fotos, ilustrações ou mídias visuais com miniatura recortada" },
+    ],
     states: [
-      { name: "idle", description: "Borda tracejada — aguardando arquivo." },
-      { name: "uploading / processing", description: "Em andamento." },
-      { name: "error", description: "Borda em --destructive." },
-      { name: "done", description: "Estado padrão — arquivo pronto." },
+      { name: "Padrão (done)", description: "Borda sólida com fundo de cartão e miniatura totalmente opaca" },
+      { name: "idle", description: "Borda tracejada (border-dashed), indicando arquivo pronto para upload" },
+      { name: "uploading / processing", description: "Efeito shimmer animado no título e opacidade reduzida na miniatura" },
+      { name: "error", description: "Borda vermelha com border-destructive/30 e texto de erro em text-destructive" },
+      { name: "Foco", description: "Anel sutil com focus-within:ring-1 focus-within:ring-ring quando o gatilho recebe foco" },
     ],
     sizes: [
-      { name: "xs", value: "xs", description: "Mais compacto, rounded-lg." },
-      { name: "sm", value: "sm", description: "Intermediário." },
-      { name: "default", value: "default", description: "Tamanho padrão." },
+      { name: "default", value: "default", description: "— — Padrão para formulários e telas principais de detalhes" },
+      { name: "sm", value: "sm", description: "— — Caixas de comentários e áreas laterais compactas" },
+      { name: "xs", value: "xs", description: "— — Linhas densas em tabelas e campos compactos de mensagens" },
     ],
-    doGuidelines: ["Use para exibir arquivos anexados com opção de download ou preview."],
-    dontGuidelines: ["Não use attachment para upload de novos arquivos — use File Uploader."],
+    doGuidelines: ["Mostre a extensão do arquivo e o tamanho formatado para orientar a pessoa usuária.", "Forneça ações claras como pré-visualizar ou remover quando permitido.", "Agrupe múltiplos anexos utilizando AttachmentGroup para manter rolagem horizontal organizada."],
+    dontGuidelines: ["Omitir aria-label nos botões de ação rápida com apenas ícone → passe aria-label explícito em AttachmentAction.", "Usar anexo vertical em espaços horizontais estreitos sem altura suficiente → use orientação horizontal.", "Deixar nomes longos quebrarem o layout → mantenha o truncamento padrão do AttachmentTitle."],
     code: `import {
   Attachment,
-  AttachmentAction,
-  AttachmentActions,
   AttachmentContent,
   AttachmentDescription,
   AttachmentMedia,
@@ -2801,40 +3033,64 @@ import { Icon } from "@/components/ui/icon"
     <Icon name="description" />
   </AttachmentMedia>
   <AttachmentContent>
-    <AttachmentTitle>contrato.pdf</AttachmentTitle>
-    <AttachmentDescription>2.4 MB</AttachmentDescription>
+    <AttachmentTitle>documento.pdf</AttachmentTitle>
+    <AttachmentDescription>1,2 MB</AttachmentDescription>
   </AttachmentContent>
-  <AttachmentActions>
-    <AttachmentAction aria-label="Remover">
-      <Icon name="close" />
-    </AttachmentAction>
-  </AttachmentActions>
 </Attachment>`,
     props: [
-      { name: "state", type: "\"idle\" | \"uploading\" | \"processing\" | \"error\" | \"done\"", default: "\"done\"", description: "Estado do upload/anexo." },
-      { name: "size", type: "\"default\" | \"sm\" | \"xs\"", default: "\"default\"", description: "Dimensão do componente." },
-      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção do layout." },
+      { name: "size", type: "default · sm · xs", default: "default", description: "Escala do cartão, ajustando preenchimento, tipografia e tamanho da mídia" },
+      { name: "orientation", type: "horizontal · vertical", default: "horizontal", description: "Direção do layout dos elementos internos" },
+      { name: "state", type: "idle · uploading · processing · error · done", default: "done", description: "Estado de carregamento ou conclusão do arquivo" },
+      { name: "variant (AttachmentMedia)", type: "icon · image", default: "icon", description: "Formato da mídia exibida entre ícone de tipo ou miniatura de imagem" },
+      { name: "size (AttachmentAction)", type: "icon-xs · icon-sm · icon", default: "icon-xs", description: "Tamanho do botão de ação herdado de Button" },
+      { name: "asChild (AttachmentTrigger)", type: "boolean", default: "false", description: "Delega a renderização para o elemento filho" },
+    ],
+    meta: {
+      nome: "Attachment",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/attachment.tsx",
+      story: "src/components/ui/attachment.stories.tsx",
+      vizinhos: ["file-uploader", "thumbnail", "card"],
+    },
+    whenToUseItems: ["Exibição de arquivos vinculados a uma mensagem de chat ou comentário.", "Lista de documentos anexados em um formulário de solicitação ou sinistro.", "Pré-visualização de imagem ou PDF com opção de download e exclusão."],
+    whenNotToUse: ["Área interativa para selecionar ou soltar arquivos do dispositivo → file-uploader.", "Apenas miniatura visual ou avatar de mídia sem metadados de arquivo → thumbnail.", "Cartão com conteúdo estruturado amplo e múltiplos blocos de texto → card."],
+    content: ["O título deve exibir o nome original do arquivo com extensão: \"relatorio-anual.pdf\".", "A descrição deve informar o tamanho em formato legível (\"2,4 MB\") ou o status (\"Enviando...\").", "Em caso de falha, use uma descrição clara do problema: \"Arquivo excede 10 MB\"."],
+    accessibility: {
+      keyboard: "Ao usar AttachmentTrigger, o cartão inteiro é focável via Tab e ativado com Enter ou Espaço. As ações em AttachmentActions recebem foco individual na sequência.",
+      screenReader: "Informar o nome e tamanho do anexo via rótulo acessível no AttachmentTrigger ou descrição ligada via aria-describedby.",
+      focus: "O anel de foco focus-within envolve o cartão quando um elemento interno recebe foco.",
+      cautions: "Botões em AttachmentAction que usam apenas ícones devem obrigatoriamente incluir aria-label descritivo (ex.: \"Remover anexo\").",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-card", "bg-destructive", "bg-muted", "border-destructive", "text-card-foreground", "text-destructive", "text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "leading-tight", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "gap-2.5", "gap-3", "inset-0", "min-w-0", "min-w-40", "mt-0.5", "p-1", "p-1.5", "p-2", "px-1", "px-1.5", "px-2", "px-2.5", "py-1", "py-1.5", "py-2", "right-3", "size-3.5", "size-4", "size-6", "top-3", "w-10", "w-24", "w-30", "w-7", "w-8"] },
+      { contexto: "Raio", itens: ["rounded-lg", "rounded-md", "rounded-xl"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   accordion: {
-    description: "Um conjunto de cabeçalhos interativos empilhados verticalmente, cada um revelando uma seção de conteúdo.",
-    whenToUse: "Use para organizar conteúdo extenso em seções que podem ser expandidas uma a uma, como perguntas frequentes.",
+    description: "Organiza o conteúdo em seções empilhadas que expandem e recolhem. Permite explorar tópicos sob demanda sem sobrecarregar a rolagem da página.",
+    whenToUse: "Perguntas frequentes (FAQ) onde a pessoa busca apenas respostas pontuais. Listas de seções secundárias ou detalhes adicionais em painéis informativos. Divisão de termos extensos de contrato ou apólice em tópicos temáticos.",
     anatomy: [
-      { part: "Accordion", description: "Root — type=\"single\" (um item aberto por vez) ou \"multiple\"." },
-      { part: "AccordionItem", description: "Cada seção — requer value único, borda inferior separando itens." },
-      { part: "AccordionTrigger", description: "Cabeçalho clicável — inclui o chevron que gira 180° ao abrir." },
-      { part: "AccordionContent", description: "Conteúdo animado (altura) — escondido quando fechado." },
+      { part: "Accordion", description: "Raiz com data-slot=\"accordion\", controla o estado dos itens únicos ou múltiplos via Radix UI." },
+      { part: "AccordionItem", description: "Contêiner de uma seção com data-slot=\"accordion-item\", delimitado por borda inferior." },
+      { part: "AccordionTrigger", description: "Cabeçalho e botão clicável com data-slot=\"accordion-trigger\", inclui ícone de seta animado." },
+      { part: "AccordionContent", description: "Painel expansível com data-slot=\"accordion-content\", animado na abertura e fechamento." },
+      { part: "Ícone (interno)", description: "Ícone de seta (keyboard_arrow_down) que gira 180 graus quando o item está aberto." },
     ],
     variants: [],
     states: [
-      { name: "Closed", description: "data-state=closed." },
-      { name: "Open", description: "data-state=open — chevron rotacionado." },
-      { name: "Focus", description: "focus-visible:ring no trigger." },
-      { name: "Disabled", description: "opacidade reduzida, sem interação." },
+      { name: "Padrão", description: "Linha com texto text-sm font-medium e seta apontando para baixo" },
+      { name: "Hover", description: "Sublinhado no rótulo (hover:underline)" },
+      { name: "Foco", description: "Anel de 3 px em ring-ring com outline-none no cabeçalho" },
+      { name: "Aberto", description: "Seta rotacionada em 180 graus e conteúdo visível com animação" },
+      { name: "Desabilitado", description: "opacity-50 e sem resposta a eventos de ponteiro (disabled:pointer-events-none)" },
     ],
     sizes: [],
-    doGuidelines: ["Use para organizar conteúdo em seções expansíveis, economizando espaço vertical."],
-    dontGuidelines: ["Não use accordion para conteúdo que o usuário precisa comparar entre seções."],
+    doGuidelines: ["Redija títulos objetivos que permitam localizar o assunto sem expandir o item.", "Use collapsible quando type=\"single\" para permitir que a pessoa feche a seção aberta.", "Agrupe seções por afinidade temática em uma sequência lógica."],
+    dontGuidelines: ["Título genérico como \"Mais informações\" → especifique o tema exato da seção como \"Formas de pagamento\".", "Acordeão aninhado dentro de outro acordeão → reorganize o conteúdo com tabs ou páginas dedicadas.", "Lista com mais de dez seções sem filtro ou busca → divida por categorias ou use tabs."],
     code: `import {
   Accordion,
   AccordionContent,
@@ -2842,16 +3098,46 @@ import { Icon } from "@/components/ui/icon"
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Pergunta 1</AccordionTrigger>
-    <AccordionContent>Resposta 1.</AccordionContent>
+<Accordion type="single" collapsible defaultValue="duvida-1">
+  <AccordionItem value="duvida-1">
+    <AccordionTrigger>Como alterar a forma de pagamento?</AccordionTrigger>
+    <AccordionContent>
+      Acesse as configurações da conta e selecione Cobrança para cadastrar um novo cartão.
+    </AccordionContent>
   </AccordionItem>
 </Accordion>`,
     props: [
-      { name: "type", type: "\"single\" | \"multiple\"", description: "Um item aberto por vez ou vários — obrigatório." },
-      { name: "collapsible", type: "boolean", default: "false", description: "Com type=\"single\", permite fechar o item aberto." },
-      { name: "value / defaultValue", type: "string | string[]", description: "Item(s) aberto(s) — controlado ou inicial." },
+      { name: "type (Accordion)", type: "\"single\" \\ | \"multiple\"", default: "—", description: "Define se permite abrir apenas um item por vez ou múltiplos itens" },
+      { name: "collapsible (Accordion)", type: "boolean", default: "false", description: "Em type=\"single\", permite fechar o item aberto ao clicar nele de novo" },
+      { name: "value (Accordion)", type: "string \\ | string[]", default: "—", description: "Valor controlado do item ou itens abertos" },
+      { name: "defaultValue (Accordion)", type: "string \\ | string[]", default: "—", description: "Valor inicial do item ou itens abertos" },
+      { name: "value (AccordionItem)", type: "string", default: "—", description: "Identificador obrigatório e exclusivo da seção" },
+      { name: "disabled (AccordionItem)", type: "boolean", default: "false", description: "Desabilita a interação com o item" },
+    ],
+    meta: {
+      nome: "Accordion",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/accordion.tsx",
+      story: "src/components/ui/accordion.stories.tsx",
+      vizinhos: ["collapsible", "tabs", "sheet"],
+    },
+    whenToUseItems: ["Perguntas frequentes (FAQ) onde a pessoa busca apenas respostas pontuais.", "Listas de seções secundárias ou detalhes adicionais em painéis informativos.", "Divisão de termos extensos de contrato ou apólice em tópicos temáticos."],
+    whenNotToUse: ["Seção única que expande ou recolhe sem lista empilhada → collapsible.", "Alternar entre visões exclusivas ocupando o mesmo espaço sem empilhar → tabs.", "Painel complexo com formulário longo ou fluxo de múltiplos passos → sheet."],
+    content: ["Título da seção deve ser autoexplicativo e direto, sem depender da leitura prévia da resposta: \"Como solicitar reembolso?\".", "A resposta deve começar pela informação principal antes de detalhar passos ou regras complementares.", "Evite termos vagos no cabeçalho como \"Saiba mais\" ou \"Detalhes\"; descreva o assunto concreto."],
+    accessibility: {
+      keyboard: "Tab move o foco entre os cabeçalhos (AccordionTrigger). Enter ou Espaço expandem e recolhem o conteúdo correspondente.",
+      screenReader: "Cada cabeçalho possui papel de botão e expõe aria-expanded=\"true\" ou \"false\" e aria-controls apontando para o conteúdo.",
+      focus: "O anel de foco visível envolve o AccordionTrigger. Ao expandir ou recolher a seção, o foco permanece no próprio cabeçalho.",
+      cautions: "Não esconda informações críticas ou obrigatórias (como prazos legais ou preços finais) dentro de itens recolhidos por padrão.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["border-ring", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-4", "pb-4", "pt-0", "py-4"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
+      { contexto: "Movimento", itens: ["animate-accordion-down", "animate-accordion-up", "duration-motion-base", "ease-spring"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   "alert-dialog": {
@@ -2938,38 +3224,76 @@ import { Button } from "@/components/ui/button"
     ],
   },
   card: {
-    description: "Exibe um cartão com cabeçalho, conteúdo e rodapé.",
-    whenToUse: "Use para agrupar informações relacionadas em um bloco visualmente delimitado, com título, corpo e ações opcionais.",
+    description: "Agrupa informações e ações sobre o mesmo assunto em uma superfície delimitada. Funciona como unidade visual para organizar painéis, resumos e blocos de conteúdo.",
+    whenToUse: "Agrupar informações relacionadas a uma entidade única: perfil de usuário, resumo de pedido ou produto. Exibir métricas e indicadores em painéis de controle e dashboards com título e valor em evidência. Estruturar formulários ou seções configuráveis com cabeçalho, corpo e rodapé de ações.",
     anatomy: [
-      { part: "Card", description: "Elemento raiz — borda, fundo bg-card, sombra leve." },
-      { part: "CardHeader", description: "Grid que envolve título, descrição e ação (CardAction)." },
-      { part: "CardTitle / CardDescription", description: "Título e subtítulo do card." },
-      { part: "CardAction (opcional)", description: "Elemento no canto superior direito do header (ex: botão de menu)." },
-      { part: "CardContent", description: "Corpo principal do card." },
-      { part: "CardFooter", description: "Rodapé — ações ou metadados." },
+      { part: "Card", description: "Elemento raiz com borda, cantos arredondados, fundo de cartão e sombra leve" },
+      { part: "CardHeader", description: "Cabeçalho em grid que organiza título, descrição e ações de topo" },
+      { part: "CardTitle", description: "Título do cartão com tipografia em destaque; use asChild para nível semântico real" },
+      { part: "CardDescription", description: "Texto de apoio em cor atenuada abaixo do título" },
+      { part: "CardAction", description: "Ação opcional posicionada no canto superior direito do cabeçalho" },
+      { part: "CardContent", description: "Corpo principal para acomodar o conteúdo livre do cartão" },
+      { part: "CardFooter", description: "Rodapé flexível para ações finais ou metadados complementares" },
     ],
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["Use para agrupar informações relacionadas em um container visual distinto."],
-    dontGuidelines: ["Não use card para ações únicas como botões — use Button."],
+    doGuidelines: ["Use asChild em CardTitle para escolher a tag de cabeçalho (h2, h3) coerente com a estrutura da página.", "Mantenha uma ação principal clara por cartão, posicionada no rodapé ou no topo.", "Preserve alturas alinhadas entre cartões vizinhos dispostos na mesma linha de uma grade."],
+    dontGuidelines: ["Envolver o cartão inteiro em uma tag de link → torne clicável apenas o título via asChild ou adicione um button", "Cartões aninhados dentro de outros cartões sem hierarquia → use seções simples com separator", "Inserir textos longos e exaustivos no corpo do cartão → mostre um resumo curto e leve os detalhes para sheet"],
     code: `import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
 <Card>
   <CardHeader>
-    <CardTitle>Título</CardTitle>
-    <CardDescription>Descrição curta.</CardDescription>
+    <CardTitle asChild>
+      <h2>Assinatura Pro</h2>
+    </CardTitle>
+    <CardDescription>Plano anual com renovação automática.</CardDescription>
+    <CardAction>
+      <Button variant="ghost" size="sm">Editar</Button>
+    </CardAction>
   </CardHeader>
-  <CardContent>Conteúdo do card.</CardContent>
+  <CardContent>
+    <p className="text-sm">Acesso a todos os componentes e suporte prioritário.</p>
+  </CardContent>
+  <CardFooter>
+    <Button variant="outline" size="sm">Gerenciar plano</Button>
+  </CardFooter>
 </Card>`,
     props: [
-      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Atributos nativos de <div> em todas as peças." },
+      { name: "asChild (CardTitle)", type: "boolean", default: "false", description: "Renderiza o elemento filho via Radix Slot, permitindo usar tags semânticas como h2 ou h3" },
+    ],
+    meta: {
+      nome: "Card",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/card.tsx",
+      story: "src/components/ui/card.stories.tsx",
+      vizinhos: ["box", "item", "list"],
+    },
+    whenToUseItems: ["Agrupar informações relacionadas a uma entidade única: perfil de usuário, resumo de pedido ou produto.", "Exibir métricas e indicadores em painéis de controle e dashboards com título e valor em evidência.", "Estruturar formulários ou seções configuráveis com cabeçalho, corpo e rodapé de ações."],
+    whenNotToUse: ["Lista de itens repetidos sem container destacado → item", "Bloco estrutural genérico sem borda ou elevação de cartão → box", "Ação única direta sem corpo de conteúdo → button"],
+    content: ["Título curto e objetivo com até duas linhas, sem ponto final: \"Resumo financeiro\".", "Descrição com uma ou duas frases explicando o contexto: \"Valores consolidados até o último dia útil.\".", "Ação no rodapé ou no topo com verbo no infinitivo indicando o destino: \"Ver detalhes\"."],
+    accessibility: {
+      keyboard: "Não recebe foco diretamente. O foco navega naturalmente por Tab entre os controles internos.",
+      screenReader: "Use asChild em CardTitle para indicar o nível de heading (h2 ou h3) adequado à página.",
+      focus: "Nenhum no elemento raiz. Botões e links internos recebem seu anel de foco individual.",
+      cautions: "Não transforme o cartão inteiro em um único link longo com múltiplos blocos de texto; torne apenas o título ou uma ação específica clicável para manter o nome acessível compreensível (WCAG 1.3.1 e 2.4.6).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-card", "text-card-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-heading", "font-semibold", "leading-none", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2", "gap-6", "pb-6", "pt-6", "px-6", "py-6"] },
+      { contexto: "Raio", itens: ["rounded-xl"] },
+      { contexto: "Sombra", itens: ["shadow-sm"] },
     ],
   },
   carousel: {
@@ -3490,40 +3814,73 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
     ],
   },
   bubble: {
-    description: "Exibe conteúdo de conversa em um balão de mensagem. Suporta variantes visuais, alinhamento, agrupamento, reações e conteúdo recolhível.",
-    whenToUse: "Use como a superfície visível de uma mensagem de chat — o balão de texto — dentro do componente Message.",
+    description: "Exibe o texto ou mídia de uma mensagem em formato de balão de conversa. Oferece variantes de destaque, alinhamento direcional para remetente ou destinatário e suporte a reações.",
+    whenToUse: "Interfaces de chat e mensagens bidirecionais entre pessoa e atendente ou assistente virtual. Histórico de comentários em formato de linha do tempo conversacional. Respostas curtas e transcrições de comandos de voz em assistentes interativos.",
     anatomy: [
-      { part: "BubbleGroup", description: "Agrupa várias bolhas em sequência." },
-      { part: "Bubble", description: "Elemento raiz — variant de cor + align \"start\"/\"end\"." },
-      { part: "BubbleContent", description: "O balão em si — texto ou ação (button/a), com foco visível." },
-      { part: "BubbleReactions (opcional)", description: "Reações flutuantes (ex: emojis) ancoradas num canto da bolha." },
+      { part: "BubbleGroup", description: "Contêiner vertical com data-slot=\"bubble-group\" que empilha mensagens com espaçamento padronizado." },
+      { part: "Bubble", description: "Elemento delimitador da fala com data-slot=\"bubble\", controlando variante visual, alinhamento e largura máxima de 80%." },
+      { part: "BubbleContent", description: "Superfície do balão com data-slot=\"bubble-content\", cantos arredondados, quebra de linha automática e suporte a asChild." },
+      { part: "BubbleReactions", description: "Contêiner flutuante com data-slot=\"bubble-reactions\" para exibir emojis ou contador de reações fixados na borda." },
     ],
     variants: [
-      { name: "Default", value: "default", description: "bg-primary — mensagem enviada." },
-      { name: "Secondary", value: "secondary", description: "bg-secondary." },
-      { name: "Muted", value: "muted", description: "bg-muted — mensagem recebida, neutra." },
-      { name: "Tinted", value: "tinted", description: "Tom suave derivado de --primary." },
-      { name: "Outline", value: "outline", description: "Contorno, fundo neutro." },
-      { name: "Ghost", value: "ghost", description: "Sem fundo nem borda." },
-      { name: "Destructive", value: "destructive", description: "Tom de erro/alerta." },
+      { name: "Default", value: "default", description: "Mensagens enviadas pela própria pessoa usuária com fundo primário em destaque" },
+      { name: "Secondary", value: "secondary", description: "Mensagens de interlocutores com superfície secundária sólida" },
+      { name: "Muted", value: "muted", description: "Mensagens recebidas do interlocutor ou assistente com tom sutil e neutro" },
+      { name: "Tinted", value: "tinted", description: "Respostas com leve tonalidade cromática derivada da cor da marca" },
+      { name: "Outline", value: "outline", description: "Mensagens neutras com borda sutil sobre fundo limpo" },
+      { name: "Ghost", value: "ghost", description: "Conteúdos transparentes sem superfície de fundo destacados no fluxo" },
+      { name: "Destructive", value: "destructive", description: "Notificações de falha de envio ou avisos críticos dentro do chat" },
     ],
-    states: [],
+    states: [
+      { name: "Padrão", description: "Superfície opaca com cantos rounded-xl e texto com entrelinha relaxada" },
+      { name: "Alinhado ao fim (end)", description: "Balão alinhado à direita com self-end, indicando envio pela pessoa" },
+      { name: "Alinhado ao início (start)", description: "Balão alinhado à esquerda, indicando mensagem recebida" },
+      { name: "Interativo (botão/link)", description: "Efeito hover com alteração de luminosidade e anel de foco visível ao receber foco" },
+      { name: "Com reações", description: "Contêiner em pílula (rounded-full) suspenso na borda com anel protetor (ring-3 ring-card)" },
+    ],
     sizes: [],
-    doGuidelines: ["Use para representar mensagens individuais em interfaces de chat."],
-    dontGuidelines: ["Não use bubble para conteúdo que não é parte de uma conversa."],
+    doGuidelines: ["Alinhe mensagens enviadas pela pessoa à direita (align=\"end\") e mensagens recebidas à esquerda (align=\"start\").", "Agrupe balões consecutivos do mesmo interlocutor usando BubbleGroup.", "Respeite a largura máxima de 80% para preservar o formato visual característico de conversa."],
+    dontGuidelines: ["Ocupar 100% da largura do contêiner em balões de fala comuns → mantenha o limite padrão de largura ou use variant=\"ghost\".", "Mover o foco do teclado para cada nova mensagem recebida → mantenha o foco no campo de entrada de texto.", "Omitir contraste adequado em mensagens coloridas → use as variantes calibradas do Design System."],
     code: `import { Bubble, BubbleContent, BubbleGroup } from "@/components/ui/bubble"
 
 <BubbleGroup>
   <Bubble align="start" variant="muted">
-    <BubbleContent>Oi! Como foi o teste?</BubbleContent>
+    <BubbleContent>Olá! Como posso ajudar você hoje?</BubbleContent>
   </Bubble>
   <Bubble align="end" variant="default">
-    <BubbleContent>Foi bem, já te mando o print.</BubbleContent>
+    <BubbleContent>Gostaria de verificar o status da minha solicitação.</BubbleContent>
   </Bubble>
 </BubbleGroup>`,
     props: [
-      { name: "variant", type: "\"default\" | \"secondary\" | \"muted\" | \"tinted\" | \"outline\" | \"ghost\" | \"destructive\"", default: "\"default\"", description: "Cor/estilo da bolha." },
-      { name: "align", type: "\"start\" | \"end\"", default: "\"start\"", description: "Lado da bolha — recebida ou enviada." },
+      { name: "variant", type: "default · secondary · muted · tinted · outline · ghost · destructive", default: "default", description: "Estilo visual e hierarquia de cores da superfície do balão" },
+      { name: "align", type: "start · end", default: "start", description: "Alinhamento do balão à esquerda (start) ou à direita (end)" },
+      { name: "asChild (BubbleContent)", type: "boolean", default: "false", description: "Delega a renderização para o elemento filho (ex.: botão interativo)" },
+      { name: "align (BubbleReactions)", type: "start · end", default: "end", description: "Alinhamento horizontal das reações em relação ao balão" },
+      { name: "side (BubbleReactions)", type: "top · bottom", default: "bottom", description: "Posição vertical das reações na borda superior ou inferior" },
+    ],
+    meta: {
+      nome: "Bubble",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/bubble.tsx",
+      story: "src/components/ui/bubble.stories.tsx",
+      vizinhos: ["message", "card", "alert"],
+    },
+    whenToUseItems: ["Interfaces de chat e mensagens bidirecionais entre pessoa e atendente ou assistente virtual.", "Histórico de comentários em formato de linha do tempo conversacional.", "Respostas curtas e transcrições de comandos de voz em assistentes interativos."],
+    whenNotToUse: ["Estrutura completa de conversa com avatar, metadados e barra de ações integradas → message.", "Cartão genérico para agrupamento de dados fora do fluxo de conversa → card.", "Mensagem fixa na página para avisos de sistema ou validação de tela → alert."],
+    content: ["Mantenha mensagens concisas e parágrafos curtos para facilitar a leitura rápida na conversa.", "O balão quebra palavras automaticamente quando necessário (wrap-break-word).", "Em mensagens de erro, inclua instruções objetivas sobre como tentar novamente."],
+    accessibility: {
+      keyboard: "Se o conteúdo do balão for clicável (via botão ou asChild), Tab alcança o elemento e Enter ou Espaço o ativam. As reações interativas também são alcançadas por Tab.",
+      screenReader: "Leitores anunciam o texto da mensagem. Em interfaces de chat com atualização em tempo real, novos balões devem ser expostos via região com aria-live=\"polite\" sem interromper a fala atual.",
+      focus: "O foco da pessoa usuária não deve ser movido para o balão quando uma nova mensagem é recebida; ele deve permanecer no campo de digitação.",
+      cautions: "Garanta contraste adequado entre o texto e a cor de fundo do balão, em especial na variante default e nas cores escuras de tema.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["--foreground", "--muted", "--primary", "--secondary", "bg-background", "bg-destructive", "bg-input", "bg-muted", "bg-primary", "bg-secondary", "border-border", "border-ring", "text-destructive", "text-foreground", "text-primary-foreground", "text-secondary-foreground"] },
+      { contexto: "Tipografia", itens: ["leading-relaxed", "text-sm"] },
+      { contexto: "Espaço", itens: ["bottom-0", "gap-1", "gap-2", "left-3", "min-w-0", "p-0", "px-1.5", "px-3", "py-0.5", "py-2", "right-3", "top-0"] },
+      { contexto: "Raio", itens: ["rounded-full", "rounded-xl"] },
+      { contexto: "Foco", itens: ["ring-card", "ring-ring"] },
     ],
   },
   "navigation-menu": {

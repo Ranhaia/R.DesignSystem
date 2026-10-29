@@ -1,0 +1,79 @@
+{
+  "slug": "chip",
+  "partes": [
+    "Chip",
+    "ChipSkeleton"
+  ],
+  "variantes": [
+    "default",
+    "ai-generated"
+  ],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "Chip",
+      "tipo": "`default` · `ai-generated`",
+      "padrao": "default"
+    },
+    {
+      "nome": "asChild",
+      "parte": "Chip",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "icon",
+      "parte": "Chip",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "removable",
+      "parte": "Chip",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "onRemove",
+      "parte": "Chip",
+      "tipo": "`() => void`",
+      "padrao": null
+    },
+    {
+      "nome": "removeLabel",
+      "parte": "Chip",
+      "tipo": "`string`",
+      "padrao": "Remover"
+    },
+    {
+      "nome": "disabled",
+      "parte": "Chip",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-ai-surface",
+    "bg-muted",
+    "border-ai-interactive",
+    "font-medium",
+    "gap-1",
+    "h-6",
+    "leading-none",
+    "min-h-6",
+    "pr-0.5",
+    "px-1.5",
+    "rounded-sm",
+    "size-3",
+    "text-ai-text-high",
+    "text-foreground",
+    "text-xs",
+    "w-20"
+  ],
+  "compoe": [
+    "button",
+    "icon",
+    "skeleton"
+  ]
+}

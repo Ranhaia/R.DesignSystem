@@ -1,0 +1,52 @@
+{
+  "slug": "empty",
+  "partes": [
+    "Empty",
+    "EmptyHeader",
+    "EmptyMedia",
+    "EmptyTitle",
+    "EmptyDescription",
+    "EmptyContent"
+  ],
+  "variantes": [
+    "default",
+    "icon"
+  ],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "EmptyMedia",
+      "tipo": "`default` · `icon`",
+      "padrao": "default"
+    },
+    {
+      "nome": "asChild",
+      "parte": "EmptyTitle",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-muted",
+    "font-medium",
+    "gap-2",
+    "gap-4",
+    "gap-6",
+    "max-w-sm",
+    "mb-2",
+    "min-w-0",
+    "p-12",
+    "p-6",
+    "rounded-lg",
+    "size-10",
+    "size-6",
+    "text-foreground",
+    "text-lg",
+    "text-muted-foreground",
+    "text-primary",
+    "text-sm",
+    "tracking-tight"
+  ],
+  "compoe": []
+}

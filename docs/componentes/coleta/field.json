@@ -1,0 +1,82 @@
+{
+  "slug": "field",
+  "partes": [
+    "FieldSet",
+    "FieldLegend",
+    "FieldGroup",
+    "Field",
+    "FieldContent",
+    "FieldLabel",
+    "FieldTitle",
+    "FieldDescription",
+    "FieldSeparator",
+    "FieldError"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "FieldLegend",
+      "tipo": "`legend` · `label`",
+      "padrao": "legend"
+    },
+    {
+      "nome": "orientation",
+      "parte": "Field",
+      "tipo": "`vertical` · `horizontal` · `responsive`",
+      "padrao": "vertical"
+    },
+    {
+      "nome": "children",
+      "parte": "FieldSeparator",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "errors",
+      "parte": "FieldError",
+      "tipo": "`Array<{ message?: string } | undefined>`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-background",
+    "bg-primary",
+    "border-primary",
+    "font-medium",
+    "font-normal",
+    "gap-1",
+    "gap-1.5",
+    "gap-2",
+    "gap-3",
+    "gap-4",
+    "gap-6",
+    "gap-7",
+    "h-5",
+    "inset-0",
+    "leading-normal",
+    "leading-snug",
+    "mb-2",
+    "mb-3",
+    "ml-4",
+    "mt-0",
+    "mt-1",
+    "mt-1.5",
+    "mt-px",
+    "my-2",
+    "p-4",
+    "px-2",
+    "rounded-md",
+    "text-base",
+    "text-destructive",
+    "text-muted-foreground",
+    "text-primary",
+    "text-sm",
+    "top-1"
+  ],
+  "compoe": [
+    "label",
+    "separator"
+  ]
+}

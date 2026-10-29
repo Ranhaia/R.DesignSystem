@@ -1,0 +1,123 @@
+{
+  "slug": "attachment",
+  "partes": [
+    "Attachment",
+    "AttachmentMedia",
+    "AttachmentContent",
+    "AttachmentTitle",
+    "AttachmentDescription",
+    "AttachmentActions",
+    "AttachmentAction",
+    "AttachmentTrigger",
+    "AttachmentGroup"
+  ],
+  "variantes": [
+    "icon",
+    "image"
+  ],
+  "tamanhos": [
+    {
+      "valor": "default",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "sm",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "xs",
+      "px": null,
+      "igualA": null
+    }
+  ],
+  "props": [
+    {
+      "nome": "size",
+      "parte": "Attachment",
+      "tipo": "`default` · `sm` · `xs`",
+      "padrao": "default"
+    },
+    {
+      "nome": "orientation",
+      "parte": "Attachment",
+      "tipo": "`horizontal` · `vertical`",
+      "padrao": "horizontal"
+    },
+    {
+      "nome": "state",
+      "parte": "Attachment",
+      "tipo": "`idle` · `uploading` · `processing` · `error` · `done`",
+      "padrao": "done"
+    },
+    {
+      "nome": "variant",
+      "parte": "AttachmentMedia",
+      "tipo": "`icon` · `image`",
+      "padrao": "icon"
+    },
+    {
+      "nome": "size",
+      "parte": "AttachmentAction",
+      "tipo": null,
+      "padrao": "icon-xs"
+    },
+    {
+      "nome": "asChild",
+      "parte": "AttachmentTrigger",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-card",
+    "bg-destructive",
+    "bg-muted",
+    "border-destructive",
+    "font-medium",
+    "gap-1",
+    "gap-1.5",
+    "gap-2",
+    "gap-2.5",
+    "gap-3",
+    "inset-0",
+    "leading-tight",
+    "min-w-0",
+    "min-w-40",
+    "mt-0.5",
+    "p-1",
+    "p-1.5",
+    "p-2",
+    "px-1",
+    "px-1.5",
+    "px-2",
+    "px-2.5",
+    "py-1",
+    "py-1.5",
+    "py-2",
+    "right-3",
+    "ring-ring",
+    "rounded-lg",
+    "rounded-md",
+    "rounded-xl",
+    "size-3.5",
+    "size-4",
+    "size-6",
+    "text-card-foreground",
+    "text-destructive",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm",
+    "text-xs",
+    "top-3",
+    "w-10",
+    "w-24",
+    "w-30",
+    "w-7",
+    "w-8"
+  ],
+  "compoe": [
+    "button"
+  ]
+}

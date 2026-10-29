@@ -1,0 +1,31 @@
+{
+  "slug": "accordion",
+  "partes": [
+    "Accordion",
+    "AccordionItem",
+    "AccordionTrigger",
+    "AccordionContent"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "animate-accordion-down",
+    "animate-accordion-up",
+    "border-ring",
+    "duration-motion-base",
+    "ease-spring",
+    "font-medium",
+    "gap-4",
+    "pb-4",
+    "pt-0",
+    "py-4",
+    "ring-ring",
+    "rounded-md",
+    "text-muted-foreground",
+    "text-sm"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

@@ -1,9 +1,30 @@
+// Células de uma linha de tabela do MD. Um `|` dentro de crases (tipo em união, `A | B`) ou escapado não separa célula.
+export function celulasTabela(linha) {
+  const partes = []
+  let atual = ""
+  let emCodigo = false
+  for (let i = 0; i < linha.length; i++) {
+    const ch = linha[i]
+    if (ch === "`") {
+      emCodigo = !emCodigo
+      atual += ch
+    } else if (ch === "|" && !emCodigo && (i === 0 || linha[i - 1] !== "\\")) {
+      partes.push(atual.trim())
+      atual = ""
+    } else {
+      atual += ch
+    }
+  }
+  partes.push(atual.trim())
+  return partes.slice(1, -1)
+}
+
 export function parseMarkdownTable(tableText) {
   const lines = tableText.trim().split(/\r?\n/).map((l) => l.trim()).filter((l) => l.startsWith("|"))
   if (lines.length < 2) return []
   const rows = []
   for (let i = 2; i < lines.length; i++) {
-    const rawCells = lines[i].split("|").slice(1, -1)
+    const rawCells = celulasTabela(lines[i])
     const cells = rawCells.map((c) => c.trim())
     if (cells.some((c) => c.length > 0)) {
       rows.push(cells)

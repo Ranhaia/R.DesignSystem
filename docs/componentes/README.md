@@ -94,15 +94,27 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 `src/lib/component-docs.ts` até a migração (`H-replicar-doc-componentes`).
 
+- [accordion](accordion.md) — Organiza o conteúdo em seções empilhadas que expandem e recolhem.
+- [alert](alert.md) — Exibe uma mensagem contextual fixa na página para informar ou alertar.
 - [aspect-ratio](aspect-ratio.md) — Mantém a proporção exata entre largura e altura de imagens, vídeos e embeds.
+- [attachment](attachment.md) — Exibe anexo de arquivo com mídia, metadados e ações rápidas.
 - [avatar](avatar.md) — Representa visualmente uma pessoa, conta ou organização com fallback.
 - [badge](badge.md) — Rótulo compacto para destacar status, contagem ou metadado.
 - [box](box.md) — Container flexível e sem estilo próprio para agrupar e organizar elementos.
+- [breadcrumb](breadcrumb.md) — Mostra a localização da página atual na hierarquia do site.
+- [bubble](bubble.md) — Exibe mensagens em formato de balão com alinhamento direcional.
 - [button](button.md) — Dispara uma ação. Um primário por contexto.
+- [button-group](button-group.md) — Agrupa visualmente botões e controles relacionados com bordas unificadas.
+- [card](card.md) — Agrupa informações e ações sobre o mesmo assunto em uma superfície delimitada.
 - [checkbox](checkbox.md) — Permite marcar ou desmarcar opções independentes em formulários.
+- [chip](chip.md) — Sinaliza critérios ou atributos ativos aplicados a uma busca ou filtragem de lista.
+- [collapsible](collapsible.md) — Alterna a visibilidade de uma seção de conteúdo secundário sob demanda.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
 - [direction](direction.md) — Entrega o sentido de leitura aos componentes; não renderiza nada.
+- [empty](empty.md) — Comunica um estado vazio em listas, tabelas ou telas sem dados.
+- [field](field.md) — Estrutura controles de formulário combinando rótulo, descrição e mensagens de erro.
 - [file-uploader](file-uploader.md) — Área interativa para envio de arquivos por clique ou arrastar e soltar.
+- [hover-card](hover-card.md) — Exibe uma prévia flutuante de informações enriquecidas no hover ou foco.
 - [icon](icon.md) — Renderiza um glifo do Material Symbols com eixos variáveis.
 - [input](input.md) — Campo de entrada para capturar textos ou valores de linha única.
 - [input-otp](input-otp.md) — Campo especializado para captura de códigos de verificação pontuais (OTP/2FA).
