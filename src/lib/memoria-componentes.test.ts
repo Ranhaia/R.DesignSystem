@@ -480,11 +480,10 @@ describe.each(slugsComMd)("%s declara todas as partes", (slug) => {
 // Catraca: a lista só diminui. Ganhou MD → sai daqui.
 const PENDENTES_MD = [
   "alert-dialog", "calendar", "carousel", "chart", "combobox", "command",
-  "context-menu", "drawer", "dropdown-menu", "files", "form", "icon-button",
-  "input-group", "menubar", "message", "multi-select", "navigation-menu",
-  "pagination", "resizable", "scroll-area", "segmented-control", "sheet",
-  "sidebar", "sonner", "speed-dial", "split-button", "stepper", "table",
-  "time-picker", "toggle-group", "tree-select",
+  "context-menu", "drawer", "dropdown-menu", "files", "form", "menubar",
+  "multi-select", "navigation-menu", "resizable", "sheet", "sidebar",
+  "sonner", "speed-dial", "split-button", "stepper", "table", "time-picker",
+  "toggle-group", "tree-select",
 ]
 // Exceções conhecidas em 2026-10-28.
 const SEM_EXEMPLO = ["icon"]

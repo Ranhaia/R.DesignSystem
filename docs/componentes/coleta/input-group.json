@@ -1,0 +1,104 @@
+{
+  "slug": "input-group",
+  "partes": [
+    "InputGroup",
+    "InputGroupAddon",
+    "InputGroupButton",
+    "InputGroupText",
+    "InputGroupInput",
+    "InputGroupTextarea"
+  ],
+  "variantes": [],
+  "tamanhos": [
+    {
+      "valor": "xs",
+      "px": 24,
+      "igualA": null
+    },
+    {
+      "valor": "sm",
+      "px": 32,
+      "igualA": null
+    },
+    {
+      "valor": "icon-xs",
+      "px": 24,
+      "igualA": null
+    },
+    {
+      "valor": "icon-sm",
+      "px": 32,
+      "igualA": null
+    }
+  ],
+  "props": [
+    {
+      "nome": "align",
+      "parte": "InputGroupAddon",
+      "tipo": "`inline-start` · `inline-end` · `block-start` · `block-end`",
+      "padrao": "inline-start"
+    },
+    {
+      "nome": "size",
+      "parte": "InputGroupButton",
+      "tipo": "`xs` · `sm` · `icon-xs` · `icon-sm`",
+      "padrao": "xs"
+    },
+    {
+      "nome": "type",
+      "parte": "InputGroupButton",
+      "tipo": null,
+      "padrao": "button"
+    },
+    {
+      "nome": "variant",
+      "parte": "InputGroupButton",
+      "tipo": null,
+      "padrao": "ghost"
+    }
+  ],
+  "tokens": [
+    "border-destructive",
+    "border-input",
+    "border-ring",
+    "font-medium",
+    "gap-1",
+    "gap-1.5",
+    "gap-2",
+    "h-6",
+    "h-8",
+    "h-9",
+    "min-w-0",
+    "p-0",
+    "pb-2.5",
+    "pb-3",
+    "pl-2",
+    "pl-3",
+    "pr-2",
+    "pr-3",
+    "pt-2.5",
+    "pt-3",
+    "px-2",
+    "px-2.5",
+    "px-3",
+    "py-1.5",
+    "py-3",
+    "ring-destructive",
+    "ring-ring",
+    "rounded-inner",
+    "rounded-md",
+    "rounded-outer-md",
+    "shadow-xs",
+    "size-3.5",
+    "size-4",
+    "size-6",
+    "size-8",
+    "text-muted-foreground",
+    "text-sm"
+  ],
+  "compoe": [
+    "button",
+    "input",
+    "textarea"
+  ]
+}

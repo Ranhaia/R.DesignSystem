@@ -116,7 +116,9 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 - [file-uploader](file-uploader.md) — Área interativa para envio de arquivos por clique ou arrastar e soltar.
 - [hover-card](hover-card.md) — Exibe uma prévia flutuante de informações enriquecidas no hover ou foco.
 - [icon](icon.md) — Renderiza um glifo do Material Symbols com eixos variáveis.
+- [icon-button](icon-button.md) — Botão representado exclusivamente por um ícone visual.
 - [input](input.md) — Campo de entrada para capturar textos ou valores de linha única.
+- [input-group](input-group.md) — Agrupa campos de entrada com botões, ícones ou textos na mesma borda.
 - [input-otp](input-otp.md) — Campo especializado para captura de códigos de verificação pontuais (OTP/2FA).
 - [item](item.md) — Linha estruturada para exibir informações com mídia, texto e ações.
 - [kbd](kbd.md) — Indica teclas ou combinações de atalhos de teclado em formato visual compacto.
@@ -124,11 +126,15 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 - [link](link.md) — Permite navegar entre páginas, seções internas ou sites externos.
 - [list](list.md) — Organiza informações textuais ou blocos de conteúdo verticalmente em lista.
 - [marker](marker.md) — Exibe status em linha, notas de sistema ou divisores rotulados em conversas.
+- [message](message.md) — Estrutura cada turno de fala em interfaces conversacionais ou chat.
 - [native-select](native-select.md) — Menu suspenso nativo do navegador para seleção simples em dispositivos móveis.
+- [pagination](pagination.md) — Divide listas longas em páginas sequenciais numeradas.
 - [popover](popover.md) — Painel flutuante no clique para conteúdo rico ou configurações rápidas.
 - [progress](progress.md) — Barra que indica o andamento de tarefas com duração determinada.
 - [radio-group](radio-group.md) — Opções exclusivas para escolher exatamente uma alternativa visível.
+- [scroll-area](scroll-area.md) — Área de rolagem customizada e consistente entre navegadores.
 - [select](select.md) — Menu suspenso customizado para selecionar uma opção em listas estruturadas.
+- [segmented-control](segmented-control.md) — Alternador em pílula contínua para seleção única entre 2 a 4 opções.
 - [separator](separator.md) — Linha fina entre grupos do mesmo container.
 - [skeleton](skeleton.md) — Placeholder com pulso que antecipa a forma do conteúdo.
 - [slider](slider.md) — Controle deslizante para ajustar valores contínuos ou faixas em um trilho.

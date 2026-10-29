@@ -1,0 +1,67 @@
+{
+  "slug": "segmented-control",
+  "partes": [
+    "SegmentedControl",
+    "SegmentedControlItem"
+  ],
+  "variantes": [],
+  "tamanhos": [
+    {
+      "valor": "sm",
+      "px": 28,
+      "igualA": null
+    },
+    {
+      "valor": "default",
+      "px": 32,
+      "igualA": null
+    },
+    {
+      "valor": "lg",
+      "px": 36,
+      "igualA": null
+    }
+  ],
+  "props": [
+    {
+      "nome": "size",
+      "parte": "SegmentedControl",
+      "tipo": "`sm` · `default` · `lg`",
+      "padrao": "default"
+    },
+    {
+      "nome": "size",
+      "parte": "SegmentedControlItem",
+      "tipo": "`sm` · `default` · `lg`",
+      "padrao": "default"
+    }
+  ],
+  "tokens": [
+    "--scale-pressed",
+    "bg-background",
+    "bg-muted",
+    "bg-secondary",
+    "border-input",
+    "border-ring",
+    "duration-motion-fast",
+    "ease-spring",
+    "font-medium",
+    "gap-1.5",
+    "h-7",
+    "h-8",
+    "h-9",
+    "p-0.75",
+    "px-3",
+    "radius-inset-0.75",
+    "ring-ring",
+    "rounded-inner",
+    "rounded-outer-lg",
+    "shadow-sm",
+    "size-4",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm",
+    "text-xs"
+  ],
+  "compoe": []
+}

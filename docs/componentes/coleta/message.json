@@ -1,0 +1,36 @@
+{
+  "slug": "message",
+  "partes": [
+    "MessageGroup",
+    "Message",
+    "MessageAvatar",
+    "MessageContent",
+    "MessageHeader",
+    "MessageFooter"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "align",
+      "parte": "Message",
+      "tipo": "`start` · `end`",
+      "padrao": "start"
+    }
+  ],
+  "tokens": [
+    "bg-muted",
+    "font-medium",
+    "gap-2",
+    "gap-2.5",
+    "min-w-0",
+    "min-w-8",
+    "px-0",
+    "px-3",
+    "rounded-full",
+    "text-muted-foreground",
+    "text-sm",
+    "text-xs"
+  ],
+  "compoe": []
+}

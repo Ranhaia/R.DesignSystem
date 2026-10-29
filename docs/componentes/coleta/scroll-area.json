@@ -1,0 +1,26 @@
+{
+  "slug": "scroll-area",
+  "partes": [
+    "ScrollArea",
+    "ScrollBar"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "orientation",
+      "parte": "ScrollBar",
+      "tipo": null,
+      "padrao": "vertical"
+    }
+  ],
+  "tokens": [
+    "bg-border",
+    "h-2.5",
+    "p-px",
+    "ring-ring",
+    "rounded-full",
+    "w-2.5"
+  ],
+  "compoe": []
+}
