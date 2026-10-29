@@ -47,6 +47,9 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   text: "primitive",
   title: "primitive",
   box: "primitive",
+  // Base que os outros consomem; não renderiza nada, só entrega o contexto de
+  // direção de texto (Rafael, 2026-10-29: primitivo pode não ter UI).
+  direction: "primitive",
 
   // Atoms
   avatar: "atom",
@@ -90,10 +93,8 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   // Sonner substituiu o Toast antigo do shadcn/ui — é uma composição de
   // ícone + texto + ação (igual em complexidade ao Alert, que também é
   // molecule), só que renderizada via portal/toast() em vez de inline.
-  // Continua sendo um átomo visual de verdade (aparece na tela pro
-  // usuário), diferente do Direction (que não renderiza nada, só
-  // contexto de direção de texto) — por isso Direction fica como
-  // utilitário e Sonner não.
+  // Aparece na tela pro usuário, diferente do Direction (que não renderiza
+  // nada e é primitivo).
   sonner: "molecule",
   breadcrumb: "molecule",
   "button-group": "molecule",
@@ -132,12 +133,6 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   stepper: "organism",
   "time-picker": "organism",
 }
-
-// Utilitários/infraestrutura — não entram no catálogo visual (Atoms/
-// Molecules/Organisms), mas continuam com página própria em /components.
-// Sonner saiu de aqui em 2026-07-21 (ver atomicRegistry acima): ele
-// renderiza UI real pro usuário, não é só infraestrutura como Direction.
-export const utilitySlugs = ["direction"]
 
 export function getAtomicCategory(slug: string): AtomicCategory | null {
   return atomicRegistry[slug] ?? null

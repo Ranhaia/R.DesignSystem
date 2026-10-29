@@ -2,17 +2,17 @@
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/5
+tarefas: 4/4
 bloqueada-por:
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -26,7 +26,7 @@ Fatia de [[H-memoria-replicar-lotes]] (Onda 2 da [[H-abas-padronizadas]]). Ordem
 
 Passar cada componente do lote pelo ciclo de memória, para a página `/components/<slug>` ficar completa como a do
 Button: abas Visão geral, Exemplos, Código, Tokens e Acessibilidade, com "Quando NÃO usar" e Tokens por contexto.
-Componentes do lote (primitivos, lote b): `text`, `title`, `direction`.
+Componentes do lote (primitivos, lote b): `text` e `title`. O `direction` saiu do lote e foi resolvido em [[H-memoria-direction]] (primitivo sem UI).
 
 Siga `.claude/skills/componente-rds/SKILL.md` (caminho "existente sem MD", passos 3 a 6), `docs/componentes/_baliza.md` e
 `_modelo.md`. Modelos prontos: `docs/componentes/button.md`, `tabs.md`, `dialog.md` e `separator.md`.
@@ -60,16 +60,20 @@ Prova de pronto: `npx tsc --noEmit`, `npm run test:unit` e `npm run docs:check`,
 
 ## Pré-requisitos
 
-Nenhum além dos bloqueadores.
+Nenhum além dos bloqueadores. A Decisão que o AGY levantou sobre o `direction` (utilitário, sem story e sem tokens) foi para [[H-memoria-direction]], e o lote fechou só com `text` e `title`.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `text` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `title` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `direction` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `text` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `title` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- 2026-10-29 · antigravity · text registrado e declarado em docs/componentes/text.md com props, tamanhos, estados, conteúdo, acessibilidade (4 chaves) e exemplo mínimo. Adicionado a docs/sinonimos.json, docs/componentes/README.md e removido de PENDENTES_MD. Comandos: npm run docs:registrar, npx tsc --noEmit, npm run docs:check, npm run test:unit (todos verdes).
+- 2026-10-29 · antigravity · title registrado e declarado em docs/componentes/title.md com props (as, size), tamanhos h1-h6, estados, conteúdo, acessibilidade e exemplo mínimo desacoplando semântica de hierarquia visual. Adicionado a docs/sinonimos.json, docs/componentes/README.md e removido de PENDENTES_MD. Comandos: npm run docs:registrar, npx tsc --noEmit, npm run docs:check, npm run test:unit (todos verdes).
+- 2026-10-29 · antigravity · Parado em direction: identificado conflito entre o lote (que lista direction como primitivo) e o ADR criterio-camadas.md / atomic-registry.ts (onde a lista de primitivos é fechada e direction é utilitySlug sem story, sem camada e sem tokens CSS, reprovando travas memoria-componentes.test.ts e component-docs.campos.test.ts). Aberta Decisão em Pré-requisitos com opções A/B/C; sinal alterado para 🟡 Aguardando definição e dono esvaziado.
+- 2026-10-29 · claude · Fatiada: o lote fechou com `text` e `title` (escopo ajustado ao que entregou) e o `direction` virou [[H-memoria-direction]], com a Decisão que o AGY levantou (opções A/B/C). Conferido na integração (`feat/memoria-primitivos`): `npx tsc --noEmit` sem erro, `npm run test:unit` 1653 testes, `npm run docs:check` verde.
 
 ## Histórico

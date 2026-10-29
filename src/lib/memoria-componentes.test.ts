@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest"
 
 import { coletarComponente, coletarFonte } from "../../scripts/coletar-componente.mjs"
 import { alinharAoModelo, diffColeta, mdNovo, mesclarMd, verificar } from "../../scripts/registrar-componente.mjs"
-import { atomicRegistry, utilitySlugs } from "./atomic-registry"
+import { atomicRegistry } from "./atomic-registry"
 import { componentDocs } from "./component-docs"
 import { componentsList } from "./components-registry"
 import { examplesMapping } from "./examples-mapping"
@@ -431,7 +431,8 @@ describe.each(slugsComMd)("%s declara todas as partes", (slug) => {
     expect(fm.slug).toBe(slug)
     expect(fm.camada).toBe(atomicRegistry[slug])
     expect(existsSync(join(ROOT, fm.codigo)), fm.codigo).toBe(true)
-    expect(existsSync(join(ROOT, fm.story)), fm.story).toBe(true)
+    if (SEM_STORY.includes(slug)) expect(fm.story, "primitivo sem UI: story vazia").toBe("")
+    else expect(existsSync(join(ROOT, fm.story)), fm.story).toBe(true)
     expect(lista(fm.vizinhos).length, "ao menos um vizinho").toBeGreaterThan(0)
     for (const v of lista(fm.vizinhos)) expect(slugsUi, `vizinho ${v}`).toContain(v)
     expect(lista(fm.referencias).length, "ao menos uma referência").toBeGreaterThan(0)
@@ -479,31 +480,31 @@ describe.each(slugsComMd)("%s declara todas as partes", (slug) => {
 // Catraca: a lista só diminui. Ganhou MD → sai daqui.
 const PENDENTES_MD = [
   "accordion", "alert-dialog", "alert", "aspect-ratio", "attachment",
-  "avatar", "badge", "box", "breadcrumb", "bubble", "button-group",
+  "avatar", "badge", "breadcrumb", "bubble", "button-group",
   "calendar", "card", "carousel", "chart", "checkbox", "chip", "collapsible",
-  "combobox", "command", "context-menu", "direction", "drawer",
+  "combobox", "command", "context-menu", "drawer",
   "dropdown-menu", "empty", "field", "file-uploader", "files", "form",
-  "hover-card", "icon-button", "icon", "input-group", "input-otp", "input",
-  "item", "kbd", "label", "link", "list", "marker", "menubar", "message",
+  "hover-card", "icon-button", "input-group", "input-otp", "input",
+  "item", "kbd", "link", "list", "marker", "menubar", "message",
   "multi-select", "native-select", "navigation-menu", "pagination",
   "popover", "progress", "radio-group", "resizable", "scroll-area",
-  "segmented-control", "select", "sheet", "sidebar", "skeleton",
+  "segmented-control", "select", "sheet", "sidebar",
   "slider", "sonner", "speed-dial", "spinner", "split-button", "stepper",
-  "switch", "table", "tag", "text", "textarea", "thumbnail", "time-picker",
-  "title", "toggle-group", "toggle", "tooltip", "tree-select",
+  "switch", "table", "tag", "textarea", "thumbnail", "time-picker",
+  "toggle-group", "toggle", "tooltip", "tree-select",
 ]
 // Exceções conhecidas em 2026-10-28.
 const SEM_EXEMPLO = ["icon"]
+// Primitivo sem UI (Rafael, 2026-10-29): é base que os outros consomem e não renderiza nada, então não tem story e o MD
+// deixa `story:` vazio.
+const SEM_STORY = ["direction"]
 
 describe("artefatos fixos de cada componente", () => {
   const readme = readFileSync(join(DOCS, "README.md"), "utf8")
 
   it.each(slugsUi)("%s", (slug) => {
-    const utilitario = utilitySlugs.includes(slug)
-    if (!utilitario) {
-      expect(existsSync(join(UI, `${slug}.stories.tsx`)), "story").toBe(true)
-      expect(atomicRegistry[slug], "atomic-registry.ts").toBeDefined()
-    }
+    if (!SEM_STORY.includes(slug)) expect(existsSync(join(UI, `${slug}.stories.tsx`)), "story").toBe(true)
+    expect(atomicRegistry[slug], "atomic-registry.ts").toBeDefined()
     expect(componentsList.some((c) => c.slug === slug), "components-registry.ts").toBe(true)
     if (!SEM_EXEMPLO.includes(slug)) expect(examplesMapping[slug], "examples-mapping.ts").toBeDefined()
 
@@ -512,6 +513,13 @@ describe("artefatos fixos de cada componente", () => {
     if (temMd) {
       expect(PENDENTES_MD, "tem MD: tirar de PENDENTES_MD").not.toContain(slug)
       expect(readme, "listado no README.md da porta de entrada").toContain(`](${slug}.md)`)
+    }
+  })
+
+  it("SEM_STORY só tem componente que de fato não tem story", () => {
+    for (const slug of SEM_STORY) {
+      expect(slugsUi).toContain(slug)
+      expect(existsSync(join(UI, `${slug}.stories.tsx`)), `${slug} ganhou story: tire da lista`).toBe(false)
     }
   })
 
