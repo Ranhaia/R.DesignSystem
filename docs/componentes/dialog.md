@@ -77,13 +77,19 @@ Um só. No celular ocupa a largura menos 32 px de margem.
 - **Teclado:** Tab e Shift+Tab ficam presos na janela. Esc fecha.
 - **Leitor de tela:** papel `dialog` modal; `DialogTitle` vira o nome e `DialogDescription` a descrição. O resto da página fica inacessível enquanto aberto. **Título é obrigatório** — sem ele, a Radix avisa no console.
 - **Foco:** ao abrir, vai para o primeiro elemento focável. Ao fechar, volta para o gatilho.
-- **Cuidados:** ⚠️ o "X" anuncia "Close" e o botão do `DialogFooter` diz "Close" — em inglês. Até corrigir, passe `showCloseButton={false}` no footer e use um `DialogClose` com texto em português.
+- **Cuidados:** o "X" anuncia "Close" e o botão do `DialogFooter` diz "Close", em inglês. Em tela em português, passe `showCloseButton={false}` no footer e use um `DialogClose` com texto em português.
 
 ## Tokens usados
 
-`bg-accent` `bg-popover` `duration-motion-base` `ring-offset-background`
-`ring-ring` `rounded-lg` `shadow-lg` `text-muted-foreground`
-`text-popover-foreground`
+- **Cor:** `bg-accent` `bg-popover` `text-muted-foreground`
+  `text-popover-foreground`
+- **Tipografia:** `font-semibold` `leading-none` `text-lg` `text-sm`
+- **Espaço:** `gap-2` `gap-4` `inset-0` `max-w-lg` `p-6` `right-4`
+  `size-4` `top-4`
+- **Raio:** `rounded-lg`
+- **Sombra:** `shadow-lg`
+- **Movimento:** `duration-motion-base`
+- **Foco:** `ring-offset-background` `ring-ring`
 
 ## Faça
 

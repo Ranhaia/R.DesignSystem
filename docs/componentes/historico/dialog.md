@@ -11,3 +11,8 @@ Só acrescenta. Escrito por `npm run docs:registrar`; não edite entradas antiga
 
 - Composição: + `button` · + `icon`
 - Por quê: A coleta passou a ler a composição (componentes do R.DS importados)
+
+## 2026-10-29 · feat/abas-padronizadas
+
+- Tokens: + `font-semibold` · + `gap-2` · + `gap-4` · + `inset-0` · + `leading-none` · + `max-w-lg` · + `p-6` · + `right-4` · + `size-4` · + `text-lg` · + `text-sm` · + `top-4`
+- Por quê: Coletor passou a listar a escala do Tailwind (Tipografia e Espaço) e a aba Tokens ganhou uma linha por contexto

@@ -7,6 +7,8 @@ import {
   exemploPrincipal,
   faixaMeta,
   itensQuandoUsar,
+  linhasAcessibilidade,
+  linhasTokens,
   linhasVariantesProps,
   previewDoTopo,
   vizinhosNaCamada,
@@ -56,7 +58,7 @@ describe("abasDoComponente", () => {
 
   it("Tokens e Acessibilidade só aparecem com dado", () => {
     expect(ids(abasDoComponente(doc({ tokens: [] }), ctx0))).toEqual(["visao-geral"])
-    expect(ids(abasDoComponente(doc({ tokens: ["bg-primary"] }), ctx0))).toEqual(["visao-geral", "tokens"])
+    expect(ids(abasDoComponente(doc({ tokens: [{ contexto: "Cor", itens: ["bg-primary"] }] }), ctx0))).toEqual(["visao-geral", "tokens"])
     const a11y = { keyboard: "k", screenReader: "s", focus: "f", cautions: "c" }
     expect(ids(abasDoComponente(doc({ accessibility: a11y }), ctx0))).toEqual(["visao-geral", "acessibilidade"])
   })
@@ -65,7 +67,7 @@ describe("abasDoComponente", () => {
     const completo = doc({
       code: "x",
       variants: [opcao("a")],
-      tokens: ["t"],
+      tokens: [{ contexto: "Cor", itens: ["t"] }],
       accessibility: { keyboard: "k", screenReader: "s", focus: "f", cautions: "c" },
     })
     expect(abasDoComponente(completo, ctx0)).toEqual([
@@ -79,7 +81,7 @@ describe("abasDoComponente", () => {
 })
 
 describe("abaAtiva", () => {
-  const abas = abasDoComponente(doc({ code: "x", tokens: ["t"] }), ctx0)
+  const abas = abasDoComponente(doc({ code: "x", tokens: [{ contexto: "Cor", itens: ["t"] }] }), ctx0)
 
   it("aceita o id com ou sem #", () => {
     expect(abaAtiva("codigo", abas)).toBe("codigo")
@@ -247,5 +249,48 @@ describe("faixaMeta", () => {
   it("pula o que está vazio", () => {
     const d = doc({ meta: { nome: "X", camada: "atom", status: "", codigo: "", story: "", vizinhos: [] } })
     expect(faixaMeta(d)).toEqual([{ rotulo: "Camada", valores: ["atom"] }])
+  })
+
+  it("piloto é parâmetro interno de revisão: não aparece; descontinuado aparece", () => {
+    const meta = { nome: "X", camada: "atom", codigo: "", story: "", vizinhos: [] }
+    expect(faixaMeta(doc({ meta: { ...meta, status: "piloto" } }))).toEqual([{ rotulo: "Camada", valores: ["atom"] }])
+    expect(faixaMeta(doc({ meta: { ...meta, status: "descontinuado" } }))[0]).toEqual({ rotulo: "Status", valores: ["descontinuado"] })
+  })
+})
+
+describe("linhasAcessibilidade: mesma linha que Tokens e Anatomia", () => {
+  it("sem dado, nenhuma linha", () => {
+    expect(linhasAcessibilidade(doc())).toEqual([])
+  })
+
+  it("uma linha por chave, na ordem Teclado, Leitor de tela, Foco, Cuidados, pulando a vazia", () => {
+    const a = { keyboard: "k", screenReader: "s", focus: "f", cautions: "c" }
+    expect(linhasAcessibilidade(doc({ accessibility: a }))).toEqual([
+      { rotulo: "Teclado", texto: "k" },
+      { rotulo: "Leitor de tela", texto: "s" },
+      { rotulo: "Foco", texto: "f" },
+      { rotulo: "Cuidados", texto: "c" },
+    ])
+    expect(linhasAcessibilidade(doc({ accessibility: { ...a, focus: "  " } })).map((l) => l.rotulo)).toEqual([
+      "Teclado", "Leitor de tela", "Cuidados",
+    ])
+  })
+})
+
+describe("linhasTokens: uma linha por contexto", () => {
+  it("sem dado, nenhuma linha", () => {
+    expect(linhasTokens(doc())).toEqual([])
+    expect(linhasTokens(doc({ tokens: [] }))).toEqual([])
+  })
+
+  it("rótulo é o contexto e os códigos são os tokens dele", () => {
+    const tokens = [
+      { contexto: "Cor", itens: ["bg-primary", "text-primary"] },
+      { contexto: "Movimento", itens: ["ease-spring"] },
+    ]
+    expect(linhasTokens(doc({ tokens }))).toEqual([
+      { rotulo: "Cor", codigos: ["bg-primary", "text-primary"] },
+      { rotulo: "Movimento", codigos: ["ease-spring"] },
+    ])
   })
 })

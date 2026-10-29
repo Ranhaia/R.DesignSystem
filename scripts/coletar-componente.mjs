@@ -1,10 +1,11 @@
 import fs from "node:fs"
 import path from "node:path"
 import ts from "typescript"
+import { ehEscalaTailwind } from "./contexto-token.mjs"
 
 // Coleta da memória de componentes (E-memoria-componentes, modelo do Rayner
 // Lemos): lê do .tsx só o que é estrutura — partes, grupos do cva, props
-// próprias e tokens — para ninguém transcrever à mão. Intenção não sai daqui.
+// próprias e tokens (os do CSS e a escala do Tailwind) — para ninguém transcrever à mão. Intenção não sai daqui.
 
 const PONTE_TEMA = {
   color: ["bg", "text", "border", "border-t", "border-b", "border-l", "border-r", "border-x", "border-y", "ring", "ring-offset", "outline", "fill", "stroke", "from", "via", "to", "decoration", "divide", "placeholder", "caret", "accent", "shadow"],
@@ -54,7 +55,7 @@ function tokensDaClasse(classe, conhecidos) {
   let base = classe.slice(ultimoForaDeColchete(classe, ":") + 1).replace(/^!/, "").replace(/^-/, "")
   const barra = ultimoForaDeColchete(base, "/")
   if (barra > 0) base = base.slice(0, barra)
-  if (conhecidos.has(base)) achados.push(base)
+  if (conhecidos.has(base) || ehEscalaTailwind(base)) achados.push(base)
   else
     for (const u of conhecidos)
       if (u.endsWith("*") && base.startsWith(u.slice(0, -1)) && base.length > u.length - 1) achados.push(base)

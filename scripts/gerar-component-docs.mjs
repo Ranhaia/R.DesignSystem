@@ -138,10 +138,13 @@ export function formatDocEntry(key, doc, indent = "  ") {
     lines.push(`${i2}},`)
   }
 
-  // tokens
+  // tokens (um grupo por contexto)
   if (doc.tokens && doc.tokens.length > 0) {
-    const items = doc.tokens.map((t) => escapeString(t)).join(", ")
-    lines.push(`${i2}tokens: [${items}],`)
+    lines.push(`${i2}tokens: [`)
+    for (const g of doc.tokens) {
+      lines.push(`${i3}{ contexto: ${escapeString(g.contexto)}, itens: [${g.itens.map((t) => escapeString(t)).join(", ")}] },`)
+    }
+    lines.push(`${i2}],`)
   }
 
   lines.push(`${indent}},`)
@@ -216,7 +219,7 @@ export interface ComponentDoc {
     focus: string
     cautions: string
   }
-  tokens?: string[]
+  tokens?: { contexto: string; itens: string[] }[]
 }
 
 export const componentDocs: Record<string, ComponentDoc> = {

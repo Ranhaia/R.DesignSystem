@@ -3,6 +3,7 @@ import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { coletarComponente } from "./coletar-componente.mjs"
+import { agruparTokens } from "./contexto-token.mjs"
 
 // Registro da memória de componentes (E-memoria-componentes): escritor único
 // das seções geradas do MD (Anatomia, Props, Variantes, Tamanhos, Tokens
@@ -99,14 +100,20 @@ function tabelaMista(corpo, { itens, anteriores, chaveDe, colunas }) {
   return montar(t, saida)
 }
 
-function quebrar(tokens, largura = 72) {
-  const linhas = [""]
-  for (const t of tokens.map(cod)) {
-    const atual = linhas[linhas.length - 1]
-    if (atual && atual.length + 1 + t.length > largura) linhas.push(t)
-    else linhas[linhas.length - 1] = atual ? `${atual} ${t}` : t
-  }
-  return linhas.join("\n")
+// Uma linha por contexto, no formato da Acessibilidade ("- **Cor:** `a` `b`"). Linha longa quebra com recuo de 2
+// espaços, para continuar sendo um item só da lista.
+function linhasDeTokens(tokens, largura = 72) {
+  return agruparTokens(tokens)
+    .map(({ contexto, itens }) => {
+      const linhas = [`- **${contexto}:**`]
+      for (const t of itens.map(cod)) {
+        const atual = linhas[linhas.length - 1]
+        if (atual.length + 1 + t.length > largura) linhas.push(`  ${t}`)
+        else linhas[linhas.length - 1] = `${atual} ${t}`
+      }
+      return linhas.join("\n")
+    })
+    .join("\n")
 }
 
 export function mesclarMd(md, coleta, anterior) {
@@ -153,7 +160,7 @@ export function mesclarMd(md, coleta, anterior) {
   out = trocarSecao(out, "Composição", () =>
     coleta.compoe?.length ? `Usa: ${coleta.compoe.map((s) => `[${cod(s)}](${s}.md)`).join(" · ")}.` : "Não usa outro componente do R.DS."
   )
-  out = trocarSecao(out, "Tokens usados", () => (coleta.tokens.length ? quebrar(coleta.tokens) : "Nenhum."))
+  out = trocarSecao(out, "Tokens usados", () => (coleta.tokens.length ? linhasDeTokens(coleta.tokens) : "Nenhum."))
   return out
 }
 

@@ -17,6 +17,13 @@ export interface LinhaVarianteProp {
   descricao: string
 }
 
+// Uma linha das abas Código, Tokens e Acessibilidade: rótulo à esquerda, texto ou códigos à direita.
+export interface LinhaDoc {
+  rotulo: string
+  texto?: string
+  codigos?: string[]
+}
+
 export interface VizinhosCamada {
   anterior?: string
   proximo?: string
@@ -223,12 +230,32 @@ export function vizinhosNaCamada(
   return res
 }
 
+const chavesAcessibilidade = [
+  ["Teclado", "keyboard"],
+  ["Leitor de tela", "screenReader"],
+  ["Foco", "focus"],
+  ["Cuidados", "cautions"],
+] as const
+
+export function linhasAcessibilidade(doc: ComponentDoc): LinhaDoc[] {
+  const a = doc.accessibility
+  if (!a) return []
+  return chavesAcessibilidade
+    .filter(([, chave]) => a[chave]?.trim())
+    .map(([rotulo, chave]) => ({ rotulo, texto: a[chave] }))
+}
+
+export function linhasTokens(doc: ComponentDoc): LinhaDoc[] {
+  return (doc.tokens ?? []).map((g) => ({ rotulo: g.contexto, codigos: g.itens }))
+}
+
 export function faixaMeta(doc: ComponentDoc): ItemFaixaMeta[] {
   if (!doc.meta) return []
 
   const itens: ItemFaixaMeta[] = []
 
-  if (doc.meta.status && doc.meta.status.trim().length > 0) {
+  // `piloto` é o estado de revisão interna do R.DS: não aparece para quem usa.
+  if (doc.meta.status && doc.meta.status.trim().length > 0 && doc.meta.status !== "piloto") {
     itens.push({ rotulo: "Status", valores: [doc.meta.status] })
   }
   if (doc.meta.camada && doc.meta.camada.trim().length > 0) {

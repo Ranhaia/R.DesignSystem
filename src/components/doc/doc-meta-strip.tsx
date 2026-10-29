@@ -7,7 +7,6 @@ import { categoryLabels, type AtomicCategory } from "@/lib/atomic-registry"
 
 const statusLabels: Record<string, string> = {
   estavel: "Estável",
-  piloto: "Piloto",
   descontinuado: "Descontinuado",
 }
 

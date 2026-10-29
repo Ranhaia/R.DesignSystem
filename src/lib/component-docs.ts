@@ -46,7 +46,7 @@ export interface ComponentDoc {
     focus: string
     cautions: string
   }
-  tokens?: string[]
+  tokens?: { contexto: string; itens: string[] }[]
 }
 
 export const componentDocs: Record<string, ComponentDoc> = {
@@ -66,8 +66,8 @@ export const componentDocs: Record<string, ComponentDoc> = {
       { name: "Secondary", value: "secondary", description: "Ação forte que não é a principal" },
       { name: "Ghost", value: "ghost", description: "Ação discreta, sem superfície até o hover" },
       { name: "Link", value: "link", description: "Ação com cara de texto" },
-      { name: "Ai-primary", value: "ai-primary", description: "Ação que dispara IA. ⚠️ Em revisão: o PASSI desaconselha gradiente como marca de IA (atrito A3 em H-referencia-passi-ds)" },
-      { name: "Ai-secondary", value: "ai-secondary", description: "Ação que dispara IA. ⚠️ Em revisão: o PASSI desaconselha gradiente como marca de IA (atrito A3 em H-referencia-passi-ds)" },
+      { name: "Ai-primary", value: "ai-primary", description: "Ação principal que dispara IA" },
+      { name: "Ai-secondary", value: "ai-secondary", description: "Ação secundária que dispara IA" },
     ],
     states: [
       { name: "Padrão", description: "Variantes com superfície têm shadow-sm" },
@@ -130,7 +130,15 @@ import { Icon } from "@/components/ui/icon"
       focus: "depois da ação, o foco fica no botão — salvo se abrir janela ou trocar de tela.",
       cautions: "durante carregamento use aria-disabled (não disabled): disabled joga o foco para o <body>. Mantenha o texto ou anuncie \"Salvando\".",
     },
-    tokens: ["--ai-gradient-hover", "--ai-gradient-rest", "--scale-pressed", "bg-accent", "bg-ai-surface", "bg-ai-surface-highlight", "bg-destructive", "bg-input", "bg-primary", "bg-secondary", "border-ai-interactive", "border-ai-interactive-hover", "border-destructive", "border-input", "border-ring", "duration-motion-fast", "ease-spring", "ring-destructive", "ring-ring", "rounded-md", "shadow-sm", "shadow-xs", "text-accent-foreground", "text-ai-text-high", "text-primary", "text-primary-foreground", "text-secondary-foreground"],
+    tokens: [
+      { contexto: "Cor", itens: ["--ai-gradient-hover", "--ai-gradient-rest", "bg-accent", "bg-ai-surface", "bg-ai-surface-highlight", "bg-destructive", "bg-input", "bg-primary", "bg-secondary", "border-ai-interactive", "border-ai-interactive-hover", "border-destructive", "border-input", "border-ring", "text-accent-foreground", "text-ai-text-high", "text-primary", "text-primary-foreground", "text-secondary-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-base", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "h-10", "h-12", "h-14", "h-6", "h-8", "px-1.5", "px-2", "px-2.5", "px-3", "px-4", "px-5", "px-6", "px-8", "py-2", "size-10", "size-12", "size-14", "size-3", "size-4", "size-6", "size-8", "w-16", "w-20", "w-24", "w-28", "w-32"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
+      { contexto: "Sombra", itens: ["shadow-sm", "shadow-xs"] },
+      { contexto: "Movimento", itens: ["--scale-pressed", "duration-motion-fast", "ease-spring"] },
+      { contexto: "Foco", itens: ["ring-destructive", "ring-ring"] },
+    ],
   },
   avatar: {
     description: "Um elemento de imagem com um fallback para representar o usuário.",
@@ -597,7 +605,10 @@ import { Label } from "@/components/ui/label"
       focus: "Nenhum.",
       cautions: "A linha decorativa não precisa de contraste mínimo, mas nenhuma informação pode depender só dela. Seção de verdade se marca com título, não com a linha.",
     },
-    tokens: ["bg-border"],
+    tokens: [
+      { contexto: "Cor", itens: ["bg-border"] },
+      { contexto: "Espaço", itens: ["h-px", "w-px"] },
+    ],
   },
   skeleton: {
     description: "Use para mostrar um espaço reservado (placeholder) enquanto o conteúdo está carregando.",
@@ -2505,9 +2516,17 @@ import { Button } from "@/components/ui/button"
       keyboard: "Tab e Shift+Tab ficam presos na janela. Esc fecha.",
       screenReader: "papel dialog modal; DialogTitle vira o nome e DialogDescription a descrição. O resto da página fica inacessível enquanto aberto. Título é obrigatório — sem ele, a Radix avisa no console.",
       focus: "ao abrir, vai para o primeiro elemento focável. Ao fechar, volta para o gatilho.",
-      cautions: "⚠️ o \"X\" anuncia \"Close\" e o botão do DialogFooter diz \"Close\" — em inglês. Até corrigir, passe showCloseButton={false} no footer e use um DialogClose com texto em português.",
+      cautions: "o \"X\" anuncia \"Close\" e o botão do DialogFooter diz \"Close\", em inglês. Em tela em português, passe showCloseButton={false} no footer e use um DialogClose com texto em português.",
     },
-    tokens: ["bg-accent", "bg-popover", "duration-motion-base", "ring-offset-background", "ring-ring", "rounded-lg", "shadow-lg", "text-muted-foreground", "text-popover-foreground"],
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-popover", "text-muted-foreground", "text-popover-foreground"] },
+      { contexto: "Tipografia", itens: ["font-semibold", "leading-none", "text-lg", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2", "gap-4", "inset-0", "max-w-lg", "p-6", "right-4", "size-4", "top-4"] },
+      { contexto: "Raio", itens: ["rounded-lg"] },
+      { contexto: "Sombra", itens: ["shadow-lg"] },
+      { contexto: "Movimento", itens: ["duration-motion-base"] },
+      { contexto: "Foco", itens: ["ring-offset-background", "ring-ring"] },
+    ],
   },
   "dropdown-menu": {
     description: "Exibe um menu para o usuário — como um conjunto de ações ou funções — acionado por um botão.",
@@ -3101,7 +3120,15 @@ import { Button } from "@/components/ui/button"
       focus: "anel na aba. Na line, a ativa se diferencia também pela linha, não só pela cor.",
       cautions: "abas trocam conteúdo na mesma página. Para levar a outra página, use navegação.",
     },
-    tokens: ["--scale-pressed", "bg-background", "bg-foreground", "bg-muted", "bg-secondary", "border-input", "border-ring", "duration-motion-base", "duration-motion-fast", "ease-spring", "outline-ring", "radius-inset-0.75", "ring-ring", "rounded-inner", "rounded-outer-lg", "shadow-sm", "text-foreground", "text-muted-foreground"],
+    tokens: [
+      { contexto: "Cor", itens: ["bg-background", "bg-foreground", "bg-muted", "bg-secondary", "border-input", "border-ring", "text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm"] },
+      { contexto: "Espaço", itens: ["bottom-1.25", "gap-1", "gap-1.5", "gap-2", "h-0.5", "h-9", "inset-x-0", "inset-y-0", "p-0.75", "px-2", "py-1", "right-1", "size-4", "w-0.5"] },
+      { contexto: "Raio", itens: ["radius-inset-0.75", "rounded-inner", "rounded-outer-lg"] },
+      { contexto: "Sombra", itens: ["shadow-sm"] },
+      { contexto: "Movimento", itens: ["--scale-pressed", "duration-motion-base", "duration-motion-fast", "ease-spring"] },
+      { contexto: "Foco", itens: ["outline-ring", "ring-ring"] },
+    ],
   },
   sonner: {
     description: "Um componente de notificação toast opinativo para React.",

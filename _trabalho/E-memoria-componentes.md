@@ -54,6 +54,7 @@ haver decisão, vale o código atual:
       A) Manter `ai-primary` com gradiente → a ação de IA continua chamando atenção, contra o PASSI e o `ia-no-produto.md`.
       B) Trocar por cor plana com rótulo e ícone de IA → mais sóbrio, mas muda o visual de quem já usa a variante.
       Sem recomendação: é escolha de marca. · pedido por: claude · 2026-10-28
+      (O aviso "em revisão" saiu da página do Button em 2026-10-29, por [[H-abas-padronizadas]]: revisão é parâmetro interno e fica só aqui.)
 - [ ] **Decisão** — Sombra em superfície parada (`card`, elevação do `button`).
       A) Manter `shadow-sm` → o visual atual não muda.
       B) Superfície só com cor e borda, sombra só no que flutua (PASSI) → visual mais plano, revisar os 5 presets.

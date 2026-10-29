@@ -50,8 +50,10 @@ Frase de abertura.
 
 ## Tokens usados
 
-\`bg-primary\` \`--scale-pressed\`
-\`ring-ring\`
+- **Cor:** \`bg-primary\`
+- **Movimento:** \`--scale-pressed\`
+  \`duration-motion-fast\`
+- **Foco:** \`ring-ring\`
 
 ## Faça
 
@@ -92,7 +94,18 @@ describe("parseComponentMd: campos da página condensada", () => {
       focus: "fica no botão.",
       cautions: "use aria-disabled.",
     })
-    expect(doc.tokens).toEqual(["bg-primary", "--scale-pressed", "ring-ring"])
+    expect(doc.tokens).toEqual([
+      { contexto: "Cor", itens: ["bg-primary"] },
+      { contexto: "Movimento", itens: ["--scale-pressed", "duration-motion-fast"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ])
+  })
+
+  it("Tokens usados: 'Nenhum.' ou seção vazia não vira aba", () => {
+    for (const corpo of ["Nenhum.", ""]) {
+      const md = COMPLETO.replace(/## Tokens usados[\s\S]*?(?=## Faça)/, `## Tokens usados\n\n${corpo}\n\n`)
+      expect(parse(md).tokens, JSON.stringify(corpo)).toBeUndefined()
+    }
   })
 
   it("mantém o que já existia: whenToUse continua string e os 10 campos antigos seguem lá", () => {
@@ -122,10 +135,16 @@ describe("parseComponentMd: campos da página condensada", () => {
     expect(doc.content).toHaveLength(3)
     expect(doc.accessibility.keyboard).toMatch(/^Tab chega/)
     expect(doc.accessibility.cautions).toMatch(/aria-disabled/)
-    expect(doc.tokens).toContain("bg-primary")
-    expect(doc.tokens).toContain("--scale-pressed")
-    expect(doc.tokens.length).toBeGreaterThan(20)
-    expect(doc.tokens.some((t: string) => t.includes("`"))).toBe(false)
+    const itens: string[] = doc.tokens.flatMap((g: { itens: string[] }) => g.itens)
+    expect(doc.tokens.map((g: { contexto: string }) => g.contexto)).toEqual(
+      expect.arrayContaining(["Cor", "Tipografia", "Espaço", "Raio", "Sombra", "Movimento", "Foco"])
+    )
+    expect(doc.tokens.find((g: { contexto: string }) => g.contexto === "Movimento").itens).toEqual(
+      expect.arrayContaining(["--scale-pressed", "duration-motion-fast", "ease-spring"])
+    )
+    expect(itens).toContain("bg-primary")
+    expect(itens.length).toBeGreaterThan(20)
+    expect(itens.some((t) => t.includes("`"))).toBe(false)
   })
 })
 

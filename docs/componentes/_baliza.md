@@ -49,10 +49,14 @@ Os números de itens de Quando usar, Quando NÃO usar, Faça e NÃO faça seguem
 | Estados | A | Peça clicável: os 5 estados (padrão, hover, pressionado, foco, desabilitado), mais "carregando" se houver, descritos pelas classes do código. Peça que não recebe foco: "Só leitura: não recebe foco." |
 | Conteúdo | A | De 2 a 4 regras de texto **desta peça**, com exemplo literal: classe gramatical (verbo no botão, substantivo na aba), limite (até 3 palavras), pontuação (sem ponto final em rótulo, nunca exclamação). As regras gerais vão morar em `docs/conteudo/`; não repita. Peça sem texto: "Não tem texto próprio", mais onde o texto mora |
 | Acessibilidade | A | As 4 chaves, cada uma verificável. **Teclado:** teclas e o que fazem; sem foco, "Não recebe foco". **Leitor de tela:** papel ARIA, de onde vem o nome acessível, o que é anunciado. **Foco:** para onde vai ao abrir, fechar e agir. **Cuidados:** a armadilha conhecida, com o critério WCAG quando houver |
-| Tokens usados | G | Não se edita |
+| Tokens usados | G | Uma linha por contexto (Cor, Tipografia, Espaço, Raio, Sombra, Movimento, Foco, Ícone), no formato da Acessibilidade: `- **Cor:** …`. Quem classifica é `scripts/contexto-token.mjs`; token sem contexto reprova o registro. Não se edita |
 | Faça | A | 3 itens no imperativo: o melhor uso |
 | NÃO faça | A | 3 itens, cada um no formato "erro → alternativa" (outro slug, outra variante ou o jeito certo). Não repita um item de "Quando NÃO usar" |
 | Exemplo mínimo | A | TSX com `import … from "@/components/ui/<slug>"`, só o necessário, com o texto em pt-BR seguindo a seção Conteúdo |
+
+**O texto do MD é o que a página mostra, então não leva aviso interno.** "Em revisão", o nome da referência (PASSI) e o
+código de uma História moram em `_trabalho/`. A trava é `src/lib/doc-texto-interno.test.ts`. O `status: piloto` também
+não aparece na página.
 
 ### Critérios WCAG que o PASSI usa em Cuidados
 
