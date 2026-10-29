@@ -638,21 +638,50 @@ import { Label } from "@/components/ui/label"
     ],
   },
   skeleton: {
-    description: "Use para mostrar um espaço reservado (placeholder) enquanto o conteúdo está carregando.",
-    whenToUse: "Use enquanto os dados reais ainda não chegaram, para indicar onde o conteúdo vai aparecer.",
+    description: "Placeholder com animação de pulso que antecipa o formato do conteúdo durante o carregamento. Reduz a percepção de espera simulando a estrutura visual da tela.",
+    whenToUse: "Indicar carregamento assíncrono de dados quando a estrutura final do layout já é conhecida (cards, listas, textos). Preservar o espaço ocupado por imagens, títulos e blocos para evitar saltos de layout (CLS). Compor telas de carregamento estruturadas combinando formas retangulares, circulares e linhas de texto.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <div> com animate-pulse — o tamanho/forma vem 100% da className (h-4 w-32, rounded-full, etc.)." },
+      { part: "Skeleton", description: "Elemento raiz com data-slot=\"skeleton\", animação de pulso suave e fundo bg-accent" },
     ],
     variants: [],
-    states: [],
+    states: [
+      { name: "Carregando", description: "Pulso contínuo com animate-pulse sobre fundo bg-accent com cantos rounded-md" },
+    ],
     sizes: [],
-    doGuidelines: ["Use para indicar carregamento de conteúdo com formato similar ao componente final."],
-    dontGuidelines: ["Não use skeleton para operações instantâneas. Não mantenha skeleton por mais de alguns segundos sem feedback."],
+    doGuidelines: ["Reproduza a geometria e a proporção do componente real que será exibido.", "Use rounded-full para avatares e rounded-md com alturas consistentes para blocos de texto.", "Agrupe múltiplos skeletons na mesma disposição do layout final com classes de grid ou flex."],
+    dontGuidelines: ["Usar skeleton quando o tempo de resposta é quase instantâneo → renderize o conteúdo diretamente sem piscar.", "Usar skeleton quando a estrutura final do conteúdo for totalmente imprevisível → spinner.", "Manter o skeleton ativo indefinidamente quando a requisição falhar → exiba mensagem de erro com alert."],
     code: `import { Skeleton } from "@/components/ui/skeleton"
 
-<Skeleton className="h-4 w-32" />`,
+<div className="flex items-center gap-4">
+  <Skeleton className="size-12 rounded-full" />
+  <div className="space-y-2">
+    <Skeleton className="h-4 w-48" />
+    <Skeleton className="h-4 w-32" />
+  </div>
+</div>`,
     props: [
-      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Atributos nativos de <div> — a forma é controlada via className." },
+      { name: "className", type: "string", default: "—", description: "Classes do Tailwind para definir altura, largura e raio compatíveis com o conteúdo final" },
+    ],
+    meta: {
+      nome: "Skeleton",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/skeleton.tsx",
+      story: "src/components/ui/skeleton.stories.tsx",
+      vizinhos: ["spinner", "progress", "card"],
+    },
+    whenToUseItems: ["Indicar carregamento assíncrono de dados quando a estrutura final do layout já é conhecida (cards, listas, textos).", "Preservar o espaço ocupado por imagens, títulos e blocos para evitar saltos de layout (CLS).", "Compor telas de carregamento estruturadas combinando formas retangulares, circulares e linhas de texto."],
+    whenNotToUse: ["Espera sem formato previsível ou quando a duração é indeterminada e rápida → spinner.", "Processo com porcentagem, etapas ou progresso numérico mensurável → progress.", "Estado de tela sem nenhum dado para exibir após o carregamento → empty."],
+    content: ["Não tem texto próprio nem exibe caracteres legíveis.", "O tamanho e a proporção devem mimetizar a extensão média do texto ou imagem que substituirá.", "Em parágrafos simulados, a última linha deve ter largura menor para sugerir uma quebra de linha natural."],
+    accessibility: {
+      keyboard: "Não recebe foco. Fica fora da ordem de tabulação.",
+      screenReader: "Deve ser omitido de anúncios individuais (aria-hidden=\"true\"); a área mãe deve utilizar aria-busy=\"true\" ou uma região viva discreta.",
+      focus: "Não move nem retém o foco. O foco do usuário é mantido onde estava até que o conteúdo real termine de ser montado.",
+      cautions: "A animação de pulso deve respeitar a preferência de movimento reduzido (prefers-reduced-motion), e a substituição do skeleton não pode causar saltos de layout (WCAG 2.3.3).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
     ],
   },
   slider: {
