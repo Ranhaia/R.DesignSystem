@@ -2,6 +2,7 @@
 
 Data: 2026-10-19
 Status: aprovada (Rafael)
+Emenda de 2026-10-29 (Rafael): `direction` é primitivo, e primitivo pode não ter UI (ver "Decisões explícitas acima do piso").
 
 ## Contexto
 
@@ -18,7 +19,7 @@ A camada mínima sai do que o componente importa do DS:
 
 | Camada | Regra |
 |---|---|
-| Primitivo | Fundação usada por todos. Não importa nada do DS. Lista fechada: `icon`, `label`, `skeleton`, `separator`, `text`, `title`, `box` |
+| Primitivo | Fundação usada por todos. Não importa nada do DS. Lista fechada: `icon`, `label`, `skeleton`, `separator`, `text`, `title`, `box`, `direction` |
 | Átomo | Importa no máximo primitivos |
 | Molécula | Combina átomos (e primitivos) |
 | Organismo | Combina moléculas ou organismos |
@@ -32,6 +33,13 @@ A camada mínima sai do que o componente importa do DS:
 
 ## Decisões explícitas acima do piso
 
+- `direction` é **primitivo** (Rafael, 2026-10-29): primitivo é a base que
+  os outros elementos consomem, e por isso pode não ter UI. O `direction`
+  só entrega o contexto de direção de texto e não renderiza nada. Antes ele
+  ficava fora das camadas, como "utilitário" (`utilitySlugs`, removido).
+  Consequência nas travas: primitivo sem UI não precisa de story (o MD deixa
+  `story:` vazio; lista `SEM_STORY` em `memoria-componentes.test.ts`) e pode
+  não usar token (`Tokens usados: Nenhum.`).
 - `accordion` é **molécula** (Rafael): conjunto de peças com um propósito,
   embora só importe primitivo.
 - `card`, `table`, `tabs`, `message` e `bubble` são **moléculas** (Rafael,
@@ -63,6 +71,7 @@ A camada mínima sai do que o componente importa do DS:
 | Componente | Antes | Depois | Por quê |
 |---|---|---|---|
 | icon, label, skeleton, separator, text, title, box | atom | primitive | camada nova |
+| direction (2026-10-29) | utilitário, sem camada | primitive | base sem UI, decisão do Rafael |
 | chip, icon-button | atom | molecule | compõem `Button` |
 | tree-select | atom | molecule | compõe `Checkbox` e `Popover` |
 | accordion | organism | molecule | decisão explícita |

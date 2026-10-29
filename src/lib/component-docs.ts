@@ -201,39 +201,42 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   box: {
-    description: "Utilitário de layout para agrupar e espaçar elementos ou componentes — um container flexível, sem estilo próprio.",
-    whenToUse: "Use para construir containers, agrupar elementos e posicionar/espaçar conteúdo (padding, margin, borda, cor de fundo) via classes Tailwind aplicadas em `className` — Box não expõe props de estilo nomeadas, o estilo é 100% via `className`.",
+    description: "Container flexível e sem estilo próprio para agrupar e organizar elementos no layout. O visual, espaçamento e alinhamento vêm das classes utilitárias do Tailwind.",
+    whenToUse: "Agrupar e espaçar elementos lado a lado ou em coluna num layout simples. Criar containers genéricos com fundo, borda ou espaçamento customizados via classes do Tailwind. Renderizar tags HTML semânticas como section ou article com polimorfismo via asChild.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <div> (ou o filho, via asChild) com data-slot=\"box\". Nenhuma classe de estilo própria — 100% do visual vem de `className`." },
+      { part: "Box", description: "Elemento raiz (div ou o elemento filho via asChild) com data-slot=\"box\"" },
     ],
     variants: [],
-    states: [
-      { name: "Default", description: "Único estado — Box não tem interatividade nem estado próprio; qualquer estado visual (hover, disabled, etc.) é responsabilidade do conteúdo/className passado pelo chamador." },
-    ],
+    states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use utilitários do Tailwind para controlar padding, gap e alinhamento do container.", "Use asChild quando precisar que o container seja uma tag semântica como section ou header.", "Combine com tokens de cor e borda para manter a consistência do sistema."],
+    dontGuidelines: ["Usar Box quando um container semântico com padrão visual próprio já existe → card.", "Criar divisões estruturais usando estilos arbitrários em vez de tokens do sistema → use classes utilitárias baseadas em tokens.", "Deixar de fornecer rotulagem acessível ao transformar Box em um marco de navegação → forneça aria-label ou aria-labelledby."],
     code: `import { Box } from "@/components/ui/box"
 
-// Box como container simples — padding/borda/cor via className
-<Box className="rounded-md border bg-muted p-4 text-sm text-foreground">
-  Conteúdo do container.
-</Box>
-
-// Box como layout flex
-<Box className="flex items-center justify-between gap-2 rounded-md border p-4">
-  <span>Rótulo</span>
-  <span className="text-muted-foreground">Valor</span>
-</Box>
-
-// Box polimórfico via asChild — renderiza como <section>
-<Box asChild className="rounded-md border border-dashed p-4">
-  <section aria-label="Exemplo">Conteúdo</section>
+<Box className="flex items-center justify-between gap-4 rounded-md border p-4">
+  <span>Status do sistema</span>
+  <span className="text-sm text-muted-foreground">Operacional</span>
 </Box>`,
     props: [
-      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <div> — mecanismo de polimorfismo já convencionado no catálogo (Chip/Badge/Button), equivalente funcional à prop `as` do Nimbus." },
-      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Demais atributos nativos do elemento raiz, incluindo `className` — mecanismo real de estilização do Box (padding, margin, display, flex, cor via token, etc.), já que o componente não expõe props de estilo nomeadas." },
+      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as propriedades no elemento filho via Radix Slot em vez de criar uma div" },
     ],
+    meta: {
+      nome: "Box",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/box.tsx",
+      story: "src/components/ui/box.stories.tsx",
+      vizinhos: ["card", "separator", "item"],
+    },
+    whenToUseItems: ["Agrupar e espaçar elementos lado a lado ou em coluna num layout simples.", "Criar containers genéricos com fundo, borda ou espaçamento customizados via classes do Tailwind.", "Renderizar tags HTML semânticas como section ou article com polimorfismo via asChild."],
+    whenNotToUse: ["Agrupar informações com superfície, borda e cabeçalho padronizados → card.", "Dividir seções apenas com uma linha fina visual → separator.", "Organizar itens estruturados dentro de uma lista interativa → item."],
+    content: ["Não tem texto próprio.", "O texto e a hierarquia tipográfica são definidos pelos elementos filhos ou pelo componente text."],
+    accessibility: {
+      keyboard: "Não recebe foco diretamente.",
+      screenReader: "É um container neutro sem papel semântico padrão (div). Quando usado como marco estrutural, combine asChild com uma tag semântica ou adicione role e aria-label.",
+      focus: "Não retém nem altera o fluxo de foco. O foco passa normalmente para os elementos filhos focáveis.",
+      cautions: "Não substitua marcos semânticos da página (main, nav, aside) por simples div sem a devida identificação estrutural (WCAG 1.3.1).",
+    },
   },
   checkbox: {
     description: "Um controle que permite ao usuário alternar entre marcado e desmarcado.",
@@ -480,25 +483,49 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   label: {
-    description: "Renderiza um rótulo acessível associado a controles de formulário.",
-    whenToUse: "Use para nomear um campo ou controle, associando-o via htmlFor para leitores de tela.",
+    description: "Rótulo acessível associado a controles de formulário. Identifica a finalidade do campo e amplia a área de clique para focar ou alternar o controle.",
+    whenToUse: "Nomear campos de formulário como inputs, textareas, checkboxes e switches. Fornecer um rótulo clicável que transfere o foco diretamente para o controle associado. Apresentar o título identificador de opções em grupos de escolha.",
     anatomy: [
-      { part: "Elemento raiz", description: "LabelPrimitive.Root, renderiza <label> com data-slot=\"label\"." },
+      { part: "Label", description: "Elemento raiz com data-slot=\"label\", tipografia text-sm font-medium e tratamento de estado desabilitado" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Disabled", description: "Herdado via group-data-[disabled=true] ou peer-disabled quando associado a um controle desativado." },
+      { name: "Padrão", description: "Texto em font-medium text-sm, selecionável sem foco próprio" },
+      { name: "Desabilitado", description: "Opacidade reduzida e cursor não permitido quando o controle associado está inativo" },
     ],
     sizes: [],
-    doGuidelines: ["Associe ao campo com htmlFor. Mantenha o texto curto e descritivo."],
-    dontGuidelines: ["Não use label para texto de ajuda ou instruções — use helpText. Não duplique label em Checkbox/Radio."],
-    code: `import { Label } from "@/components/ui/label"
+    doGuidelines: ["Vincule sempre a propriedade htmlFor ao id do controle correspondente.", "Mantenha o rótulo sempre visível acima ou ao lado do campo que identifica.", "Use texto conciso que descreva com clareza o dado solicitado."],
+    dontGuidelines: ["Usar texto de placeholder como substituto do rótulo visível → mantenha o Label acima do campo.", "Usar Label para parágrafos explicativos longos ou textos soltos → text.", "Agrupar campo, mensagem de ajuda e erro manualmente com Label solto → field."],
+    code: `import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
-<Label htmlFor="email">E-mail</Label>`,
+<div className="grid gap-2">
+  <Label htmlFor="email">E-mail</Label>
+  <Input id="email" type="email" placeholder="nome@exemplo.com" />
+</div>`,
     props: [
-      { name: "htmlFor", type: "string", description: "Associa o label ao id do controle." },
-      { name: "...props", type: "React.ComponentProps<typeof LabelPrimitive.Root>", description: "Demais props do Radix Label." },
+      { name: "htmlFor", type: "string", default: "—", description: "Identificador do elemento de formulário associado a este rótulo" },
+    ],
+    meta: {
+      nome: "Label",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/label.tsx",
+      story: "src/components/ui/label.stories.tsx",
+      vizinhos: ["field", "text", "tooltip"],
+    },
+    whenToUseItems: ["Nomear campos de formulário como inputs, textareas, checkboxes e switches.", "Fornecer um rótulo clicável que transfere o foco diretamente para o controle associado.", "Apresentar o título identificador de opções em grupos de escolha."],
+    whenNotToUse: ["Compor campo com rótulo, descrição de ajuda e mensagem de erro estruturados → field.", "Exibir texto informativo que não está associado a nenhum controle de formulário → text.", "Explicar um conceito complexo ou termo técnico em uma dica suspensa → tooltip."],
+    content: ["Rótulo curto e direto, sem ponto final e sem dois-pontos: \"Nome completo\", \"E-mail\".", "Indique termos opcionais com a palavra \"(opcional)\" por extenso quando a maioria dos campos for obrigatória.", "Nunca use o texto de exemplo (placeholder) em substituição ao rótulo visível."],
+    accessibility: {
+      keyboard: "Não recebe foco pelo Tab. Clicar no rótulo transfere o foco automaticamente para o controle referenciado por htmlFor.",
+      screenReader: "Anunciado como nome acessível do controle ao qual está associado via htmlFor ou quando envolve o elemento de entrada.",
+      focus: "Não retém foco próprio. Ao receber clique, encaminha o foco para o controle interativo associado.",
+      cautions: "Sempre associe o rótulo ao campo correspondente através de htmlFor casando com o id do elemento, garantindo conformidade com a WCAG 1.3.1 e 3.3.2.",
+    },
+    tokens: [
+      { contexto: "Tipografia", itens: ["font-medium", "leading-none", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2"] },
     ],
   },
   progress: {
@@ -611,21 +638,50 @@ import { Label } from "@/components/ui/label"
     ],
   },
   skeleton: {
-    description: "Use para mostrar um espaço reservado (placeholder) enquanto o conteúdo está carregando.",
-    whenToUse: "Use enquanto os dados reais ainda não chegaram, para indicar onde o conteúdo vai aparecer.",
+    description: "Placeholder com animação de pulso que antecipa o formato do conteúdo durante o carregamento. Reduz a percepção de espera simulando a estrutura visual da tela.",
+    whenToUse: "Indicar carregamento assíncrono de dados quando a estrutura final do layout já é conhecida (cards, listas, textos). Preservar o espaço ocupado por imagens, títulos e blocos para evitar saltos de layout (CLS). Compor telas de carregamento estruturadas combinando formas retangulares, circulares e linhas de texto.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <div> com animate-pulse — o tamanho/forma vem 100% da className (h-4 w-32, rounded-full, etc.)." },
+      { part: "Skeleton", description: "Elemento raiz com data-slot=\"skeleton\", animação de pulso suave e fundo bg-accent" },
     ],
     variants: [],
-    states: [],
+    states: [
+      { name: "Carregando", description: "Pulso contínuo com animate-pulse sobre fundo bg-accent com cantos rounded-md" },
+    ],
     sizes: [],
-    doGuidelines: ["Use para indicar carregamento de conteúdo com formato similar ao componente final."],
-    dontGuidelines: ["Não use skeleton para operações instantâneas. Não mantenha skeleton por mais de alguns segundos sem feedback."],
+    doGuidelines: ["Reproduza a geometria e a proporção do componente real que será exibido.", "Use rounded-full para avatares e rounded-md com alturas consistentes para blocos de texto.", "Agrupe múltiplos skeletons na mesma disposição do layout final com classes de grid ou flex."],
+    dontGuidelines: ["Usar skeleton quando o tempo de resposta é quase instantâneo → renderize o conteúdo diretamente sem piscar.", "Usar skeleton quando a estrutura final do conteúdo for totalmente imprevisível → spinner.", "Manter o skeleton ativo indefinidamente quando a requisição falhar → exiba mensagem de erro com alert."],
     code: `import { Skeleton } from "@/components/ui/skeleton"
 
-<Skeleton className="h-4 w-32" />`,
+<div className="flex items-center gap-4">
+  <Skeleton className="size-12 rounded-full" />
+  <div className="space-y-2">
+    <Skeleton className="h-4 w-48" />
+    <Skeleton className="h-4 w-32" />
+  </div>
+</div>`,
     props: [
-      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Atributos nativos de <div> — a forma é controlada via className." },
+      { name: "className", type: "string", default: "—", description: "Classes do Tailwind para definir altura, largura e raio compatíveis com o conteúdo final" },
+    ],
+    meta: {
+      nome: "Skeleton",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/skeleton.tsx",
+      story: "src/components/ui/skeleton.stories.tsx",
+      vizinhos: ["spinner", "progress", "card"],
+    },
+    whenToUseItems: ["Indicar carregamento assíncrono de dados quando a estrutura final do layout já é conhecida (cards, listas, textos).", "Preservar o espaço ocupado por imagens, títulos e blocos para evitar saltos de layout (CLS).", "Compor telas de carregamento estruturadas combinando formas retangulares, circulares e linhas de texto."],
+    whenNotToUse: ["Espera sem formato previsível ou quando a duração é indeterminada e rápida → spinner.", "Processo com porcentagem, etapas ou progresso numérico mensurável → progress.", "Estado de tela sem nenhum dado para exibir após o carregamento → empty."],
+    content: ["Não tem texto próprio nem exibe caracteres legíveis.", "O tamanho e a proporção devem mimetizar a extensão média do texto ou imagem que substituirá.", "Em parágrafos simulados, a última linha deve ter largura menor para sugerir uma quebra de linha natural."],
+    accessibility: {
+      keyboard: "Não recebe foco. Fica fora da ordem de tabulação.",
+      screenReader: "Não define papel nem aria-hidden: quem usa passa aria-hidden=\"true\" em cada placeholder e marca a área mãe com aria-busy=\"true\" (ou uma região viva discreta).",
+      focus: "Não move nem retém o foco. O foco do usuário é mantido onde estava até que o conteúdo real termine de ser montado.",
+      cautions: "A animação de pulso deve respeitar a preferência de movimento reduzido (prefers-reduced-motion), e a substituição do skeleton não pode causar saltos de layout (WCAG 2.3.3).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
     ],
   },
   slider: {
@@ -888,47 +944,51 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   text: {
-    description: "O componente de texto, usado para escrever e formatar blocos de conteúdo dentro de páginas ou componentes.",
-    whenToUse: "Use para escrever texto de corpo com hierarquia básica (tamanho, peso, cor) e para formatar trechos específicos de conteúdo. Controle o elemento HTML renderizado via prop `as` para manter a semântica correta (parágrafo vs. texto inline vs. contêiner de bloco).",
+    description: "Formata blocos de texto e parágrafos com escala tipográfica e peso definidos. Garante a semântica correta com a tag HTML adequada.",
+    whenToUse: "Parágrafos de texto corrido ou blocos de descrição em páginas, cards e diálogos. Trechos de texto dentro de outros blocos que precisam de formatação visual diferenciada. Legendas, notas de rodapé ou metadados auxiliares usando tamanho reduzido.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <p>, <span> ou <div> (controlado pela prop `as`, default \"p\") com data-slot=\"text\", data-size e data-weight. Sem subcomponentes — wrapper tipográfico único, mesma lógica do Label." },
+      { part: "Text", description: "Elemento textual raiz que aplica as variantes de tamanho, peso e cor atenuada" },
     ],
-    variants: [
-      { name: "Regular", value: "regular", description: "Peso padrão da fonte — font-normal." },
-      { name: "Medium", value: "medium", description: "Peso médio — font-medium." },
-      { name: "Bold", value: "bold", description: "Peso forte — font-bold." },
-    ],
-    states: [
-      { name: "Default", description: "Cor --foreground (muted=false)." },
-      { name: "Muted", description: "Cor --muted-foreground (muted=true), para texto secundário/auxiliar — mesmo par de tokens que CardDescription/ItemDescription já usam." },
-    ],
+    variants: [],
+    states: [],
     sizes: [
-      { name: "Caption", value: "caption", description: "Texto auxiliar/legenda, menor que o corpo (text-xs)." },
-      { name: "Base", value: "base", description: "Corpo de texto padrão (text-sm) — mesmo tamanho já usado em CardDescription/ItemDescription/Alert neste catálogo." },
-      { name: "Highlight", value: "highlight", description: "Texto de destaque, um passo acima do corpo padrão (text-base)." },
+      { name: "caption", value: "caption", description: "— — Texto auxiliar, legendas e notas de apoio" },
+      { name: "base", value: "base", description: "— — Corpo de texto padrão para leitura" },
+      { name: "highlight", value: "highlight", description: "— — Destaque visual ou parágrafos introdutórios" },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Defina o elemento HTML adequado via prop as para preservar a semântica.", "Mantenha o tamanho base como padrão para parágrafos e corpo de texto.", "Aplique muted apenas em textos que possuem papel secundário ou auxiliar."],
+    dontGuidelines: ["Text como parágrafo longo em negrito constante → weight regular com ênfase pontual", "Text com tamanho caption para corpo principal de leitura → size base", "Estilização de cor arbitrária fora do sistema de tokens → prop muted ou token semântico"],
     code: `import { Text } from "@/components/ui/text"
 
-// Corpo de texto padrão
-<Text>Texto de corpo padrão.</Text>
-
-// Título de destaque, em negrito
-<Text size="highlight" weight="bold">Título de destaque</Text>
-
-// Texto auxiliar/legenda, cor secundária
-<Text size="caption" muted>Texto auxiliar (caption).</Text>
-
-// Trecho inline, dentro de outro bloco de texto
-<Text as="span" weight="medium">Texto inline.</Text>`,
+<Text>
+  Texto de corpo padrão para leitura e formatação de blocos de conteúdo.
+</Text>`,
     props: [
-      { name: "as", type: "\"p\" | \"span\" | \"div\"", default: "\"p\"", description: "Elemento HTML renderizado. O Nimbus real só documenta \"p\"|\"span\" — \"div\" foi incluído por pedido explícito do escopo desta tarefa." },
-      { name: "size", type: "\"caption\" | \"base\" | \"highlight\"", default: "\"base\"", description: "Tamanho do texto (nomes iguais ao fontSize do Nimbus)." },
-      { name: "weight", type: "\"regular\" | \"medium\" | \"bold\"", default: "\"regular\"", description: "Peso da fonte (mesmos nomes do fontWeight do Nimbus)." },
-      { name: "muted", type: "boolean", default: "false", description: "Quando true, usa text-muted-foreground em vez de text-foreground. Substitui a prop `color` (22 variações) do Nimbus — este catálogo ainda não tem tokens de cor de texto por família semântica." },
-      { name: "children", type: "React.ReactNode", description: "Conteúdo de texto (obrigatório)." },
-      { name: "...props", type: "React.ComponentProps<\"p\">", description: "Demais atributos nativos do elemento raiz (compatível com p/span/div)." },
+      { name: "size", type: "caption · base · highlight", default: "base", description: "Tamanho do texto na escala tipográfica" },
+      { name: "weight", type: "regular · medium · bold", default: "regular", description: "Peso da fonte aplicado" },
+      { name: "muted", type: "true · false", default: "false", description: "Aplica cor atenuada para texto secundário" },
+      { name: "as", type: "TextElement", default: "p", description: "Tag HTML real renderizada" },
+    ],
+    meta: {
+      nome: "Text",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/text.tsx",
+      story: "src/components/ui/text.stories.tsx",
+      vizinhos: ["title", "label", "link"],
+    },
+    whenToUseItems: ["Parágrafos de texto corrido ou blocos de descrição em páginas, cards e diálogos.", "Trechos de texto dentro de outros blocos que precisam de formatação visual diferenciada.", "Legendas, notas de rodapé ou metadados auxiliares usando tamanho reduzido."],
+    whenNotToUse: ["Títulos e subtítulos estruturais de páginas ou seções → title", "Rótulo descritivo conectado a um controle de formulário → label", "Elemento textual interativo que dispara ação ou navegação → link"],
+    content: ["Inicie frases completas em maiúscula e finalize com pontuação: \"As configurações foram atualizadas.\"", "Mantenha legendas e textos auxiliares concisos: \"Formatos aceitos: PDF e PNG.\"", "Use a variante muted para informações secundárias ou complementares."],
+    accessibility: {
+      keyboard: "Não recebe foco.",
+      screenReader: "Anunciado como texto estático conforme a semântica da tag informada na prop as.",
+      focus: "Não retém nem recebe foco.",
+      cautions: "Use as=\"p\" para blocos e as=\"span\" para trechos em linha; nunca use para substituir títulos estruturais (critério WCAG 1.3.1).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-bold", "font-medium", "font-normal", "text-base", "text-sm", "text-xs"] },
     ],
   },
   textarea: {
@@ -1058,41 +1118,51 @@ function Exemplo() {
     ],
   },
   title: {
-    description: "Aplica hierarquia visual e semântica ao conteúdo de uma página.",
-    whenToUse: "Use para títulos e subtítulos de telas, páginas, blocos de texto, seções ou outros componentes. A hierarquia semântica (elemento HTML real, h1-h6) é controlada pela prop `as`; a hierarquia visual (tamanho/peso) é controlada pela prop `size` — as duas são independentes por design, não só por implementação.",
+    description: "Aplica hierarquia visual e semântica a cabeçalhos e títulos de páginas ou seções. Permite desacoplar a tag HTML semântica da escala visual aplicada.",
+    whenToUse: "Títulos de páginas ou telas principais usando h1 semântico. Cabeçalhos de seções, blocos de conteúdo e grupos em páginas ou painéis. Títulos de caixas de diálogo, cards ou painéis laterais que precisam de destaque visual específico.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um dos elementos <h1>-<h6>, escolhido via prop `as` (default \"h2\"), com data-slot=\"title\", data-as e data-size." },
+      { part: "Title", description: "Elemento raiz h1 a h6 que renderiza o título com a escala visual escolhida" },
     ],
     variants: [],
     states: [],
     sizes: [
-      { name: "H1", value: "h1", description: "text-4xl font-bold tracking-tight." },
-      { name: "H2", value: "h2", description: "text-3xl font-bold tracking-tight." },
-      { name: "H3", value: "h3", description: "text-2xl font-semibold tracking-tight." },
-      { name: "H4", value: "h4", description: "text-xl font-semibold tracking-tight." },
-      { name: "H5", value: "h5", description: "text-lg font-semibold." },
-      { name: "H6", value: "h6", description: "text-base font-semibold." },
+      { name: "h1", value: "h1", description: "— — Título principal da página ou tela" },
+      { name: "h2", value: "h2", description: "— — Seções principais dentro de uma página" },
+      { name: "h3", value: "h3", description: "— — Subseções e blocos de conteúdo agrupados" },
+      { name: "h4", value: "h4", description: "— — Cabeçalhos de cards e painéis médios" },
+      { name: "h5", value: "h5", description: "— — Títulos de pequenos grupos ou listas" },
+      { name: "h6", value: "h6", description: "— — Menor nível de cabeçalho para agrupamentos pontuais" },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use a prop as para estruturar a árvore semântica do documento em ordem lógica.", "Mantenha apenas um título h1 por página para clareza em leitores de tela e SEO.", "Ajuste a prop size quando um cabeçalho secundário demandar peso visual diferente do padrão."],
+    dontGuidelines: ["Pular níveis na hierarquia semântica (como h1 direto para h4) → ordenação sequencial de as", "Usar Title para parágrafos corridos em busca de destaque visual → text com weight bold", "Criar títulos em caixa alta integral por meio de digitação manual → estilo visual controlado"],
     code: `import { Title } from "@/components/ui/title"
 
-// Título de página (semântico = visual, ambos h1)
-<Title as="h1">Painel do corretor</Title>
-
-// Título de seção dentro da página (default as="h2")
-<Title>Apólices ativas</Title>
-
-// Hierarquia semântica e visual divergindo de propósito: h3 correto na
-// árvore do documento, mas com destaque visual de H1
-<Title as="h3" size="h1">
-  Destaque desta seção
-</Title>`,
+<Title as="h1">Painel principal</Title>
+<Title as="h2" size="h3">Visão geral</Title>`,
     props: [
-      { name: "as", type: "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"", default: "\"h2\"", description: "Elemento HTML real renderizado — controla a hierarquia semântica do documento." },
-      { name: "size", type: "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"", description: "Escala visual aplicada (ver Tamanhos). Independente de `as` — quando omitida, acompanha o valor de `as`." },
-      { name: "children", type: "React.ReactNode", description: "Texto do título (obrigatório)." },
-      { name: "...props", type: "React.ComponentProps<\"h1\">", description: "Demais atributos nativos do elemento raiz (id, onClick, aria-*, etc.)." },
+      { name: "size", type: "h1 · h2 · h3 · h4 · h5 · h6", default: "h2", description: "Escala visual aplicada ao título" },
+      { name: "as", type: "TitleElement", default: "h2", description: "Tag HTML semântica renderizada no documento" },
+    ],
+    meta: {
+      nome: "Title",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/title.tsx",
+      story: "src/components/ui/title.stories.tsx",
+      vizinhos: ["text", "label", "separator"],
+    },
+    whenToUseItems: ["Títulos de páginas ou telas principais usando h1 semântico.", "Cabeçalhos de seções, blocos de conteúdo e grupos em páginas ou painéis.", "Títulos de caixas de diálogo, cards ou painéis laterais que precisam de destaque visual específico."],
+    whenNotToUse: ["Corpo de texto, parágrafos explicativos ou descrições longas → text", "Rótulo descritivo conectado a um controle de formulário → label", "Linha divisória visual sem texto de cabeçalho → separator"],
+    content: ["Títulos devem ser curtos, objetivos e começar com letra maiúscula: \"Dados cadastrais\"", "Não utilize ponto final em títulos ou subtítulos.", "Mantenha consistência gramatical entre títulos do mesmo nível hierárquico na tela."],
+    accessibility: {
+      keyboard: "Não recebe foco.",
+      screenReader: "Anunciado com o nível de cabeçalho semântico definido pela prop as.",
+      focus: "Não retém nem recebe foco.",
+      cautions: "Mantenha a ordem hierárquica semântica sem pular níveis no documento (h1 antes de h2, h2 antes de h3), mesmo se divergir a escala visual com a prop size (critério WCAG 1.3.1 e 2.4.6).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-foreground"] },
+      { contexto: "Tipografia", itens: ["font-bold", "font-heading", "font-semibold", "text-2xl", "text-3xl", "text-4xl", "text-base", "text-lg", "text-xl", "tracking-tight"] },
     ],
   },
   toggle: {
@@ -3167,44 +3237,48 @@ import { toast } from "sonner"
     ],
   },
   icon: {
-    description: "Renderiza um ícone do Google Material Symbols com suporte a variantes (fill, weight, grade, optical size) e cores do tema.",
-    whenToUse: "Para ilustrar ações, estados ou seções dentro de botões, menus, cards e mensagens. Use quando um conceito é mais claro visualmente do que com texto.",
+    description: "Renderiza um glifo do Material Symbols com controle de eixos variáveis e suporte a cor do tema. Usado para apoiar ações, estados e navegação.",
+    whenToUse: "Ilustrar ações e comandos dentro de botões, menus e barras de ferramentas. Reforçar o significado visual de alertas, badges e itens de listas informativas. Indicar estados do sistema como sucesso, erro ou aviso ao lado de texto explicativo.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <svg viewBox=\"0 0 24 24\"> com data-slot=\"icon\". Recebe aria-hidden=\"true\" automaticamente, exceto quando o chamador já passou aria-label/aria-labelledby/role (ex.: Spinner)." },
-      { part: "Glifo (<text>)", description: "Ligadura de texto (nome do ícone do Material Symbols) renderizada via <text>, com fontVariationSettings controlando os eixos FILL/wght/GRAD/opsz do glifo variável." },
+      { part: "Icon", description: "Elemento raiz SVG com data-slot=\"icon\" que gerencia acessibilidade e dimensões" },
+      { part: "Glifo", description: "Elemento de texto interno que renderiza a ligadura do Material Symbols" },
     ],
-    variants: [
-      { name: "Rounded", value: "rounded", description: "Family Material Symbols Rounded — default do preset ativo se a prop `rounded` não for informada." },
-      { name: "Sharp", value: "sharp", description: "Family Material Symbols Sharp, ativada com `rounded={false}`." },
-      { name: "Fill", value: "fill", description: "Eixo FILL do glifo variável — preenchido (true) ou apenas contorno (false/ausente, usa --icon-fill do preset)." },
-    ],
+    variants: [],
     states: [],
-    sizes: [
-      { name: "Auto (herdado)", value: "auto", description: "Sem a prop `size`, herda o tamanho do elemento ambiente (ex.: size-4 dentro de um Button), igual ao comportamento antigo do lucide-react." },
-      { name: "Customizado", value: "custom", description: "Com a prop `size` (em rem), define width/height inline e recalcula o optical size automaticamente via computeOpticalSize, a menos que `opticalSize` seja passado explicitamente." },
-    ],
-    doGuidelines: ["Escolha ícones com significado universal e reconhecível. Use aria-label quando o ícone for o único elemento interativo. Mantenha consistência — não misture famílias de ícones."],
-    dontGuidelines: ["Não use ícone como único feedback de estado crítico — sempre acompanhe de texto. Não use ícones decorativos sem contexto acessível. Não distorça a proporção original."],
+    sizes: [],
+    doGuidelines: ["Acompanhe o ícone de texto explicativo sempre que o significado não for universal.", "Use aria-hidden=\"true\" para ícones puramente decorativos ao lado de rótulos de texto.", "Defina tamanhos proporcionais à escala tipográfica do elemento pai ou contexto visual."],
+    dontGuidelines: ["Usar ícone isolado sem rótulo textual em um botão interativo → icon-button com aria-label.", "Usar cor ou ícone como único indicador de status crítico ou erro → combine com mensagem textual clara.", "Utilizar ícone estático para indicar espera ou carregamento em andamento → spinner."],
     code: `import { Icon } from "@/components/ui/icon"
 
-<Icon name="check_circle" />
-
-// Tamanho customizado (rem) + fill ativado
-<Icon name="favorite" size={1.5} fill />
-
-// Ícone como único elemento interativo — precisa de aria-label
-<Button size="icon" aria-label="Excluir">
-  <Icon name="delete" aria-label="Excluir" />
-</Button>`,
+<Icon name="check_circle" className="size-5 text-primary" />`,
     props: [
-      { name: "name", type: "MaterialSymbol", description: "Nome do ícone no catálogo do Google Material Symbols (tipagem via pacote material-symbols)." },
-      { name: "size", type: "number", description: "Tamanho em rem. Ausente = herda o auto-tamanho ambiente." },
-      { name: "rounded", type: "boolean", description: "true = Material Symbols Rounded, false = Sharp. Ausente = default do preset ativo (--icon-font-family)." },
-      { name: "fill", type: "boolean", description: "Ativa a variação FILL do glifo (preenchido). Ausente = usa --icon-fill do preset." },
-      { name: "weight", type: "number", description: "Eixo wght do glifo variável. Ausente = usa --icon-weight do preset." },
-      { name: "grade", type: "number", description: "Eixo GRAD do glifo variável. Ausente = usa --icon-grade do preset." },
-      { name: "opticalSize", type: "number", description: "Eixo opsz do glifo variável. Ausente = calculado automaticamente a partir de `size` (computeOpticalSize) ou usa --icon-optical-size do preset." },
-      { name: "...props", type: "React.ComponentProps<\"svg\">", description: "Todos os atributos nativos de <svg> (aria-label, role, className, style, etc.), exceto `name` e `fill` (sobrescritos pela API pública do componente)." },
+      { name: "name", type: "MaterialSymbol", default: "—", description: "Nome do símbolo no catálogo do Google Material Symbols" },
+      { name: "size", type: "number", default: "—", description: "Tamanho do ícone em rem. Quando omitido, herda a dimensão do elemento pai" },
+      { name: "fill", type: "boolean", default: "—", description: "Ativa o preenchimento do glifo quando verdadeiro, ou contorno quando falso" },
+      { name: "rounded", type: "boolean", default: "—", description: "Alterna entre as famílias Material Symbols Rounded e Sharp" },
+      { name: "weight", type: "number", default: "—", description: "Espessura do traço do símbolo (eixo wght da fonte variável)" },
+      { name: "grade", type: "number", default: "—", description: "Ajuste fino de ênfase visual do glifo (eixo GRAD)" },
+      { name: "opticalSize", type: "number", default: "—", description: "Tamanho óptico (eixo opsz), calculado automaticamente quando size é informado" },
+    ],
+    meta: {
+      nome: "Icon",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/icon.tsx",
+      story: "src/components/ui/icon.stories.tsx",
+      vizinhos: ["icon-button", "button", "spinner"],
+    },
+    whenToUseItems: ["Ilustrar ações e comandos dentro de botões, menus e barras de ferramentas.", "Reforçar o significado visual de alertas, badges e itens de listas informativas.", "Indicar estados do sistema como sucesso, erro ou aviso ao lado de texto explicativo."],
+    whenNotToUse: ["Ação interativa que contém apenas o ícone, sem texto → icon-button.", "Disparar uma ação com texto e ícone de suporte → button.", "Indicar espera ou carregamento contínuo sem direção definida → spinner."],
+    content: ["Não tem texto legível próprio; renderiza um símbolo visual.", "Deve sempre acompanhar texto de apoio ou receber rótulo acessível quando utilizado em elementos interativos.", "Mantenha o mesmo estilo e família de ícones em todo o fluxo da interface."],
+    accessibility: {
+      keyboard: "Não recebe foco diretamente. Quando inserido dentro de um controle interativo, o foco é tratado pelo componente pai.",
+      screenReader: "Recebe aria-hidden=\"true\" por padrão para ser ignorado como elemento decorativo. Se atributos como aria-label, aria-labelledby ou role forem fornecidos, eles são preservados no SVG.",
+      focus: "Não recebe nem retém foco.",
+      cautions: "Nunca transmita uma informação crítica apenas pela presença do ícone sem alternativa em texto visível ou audível (WCAG 1.1.1 e 1.4.1).",
+    },
+    tokens: [
+      { contexto: "Ícone", itens: ["--font-material-rounded", "--font-material-sharp", "--icon-fill", "--icon-font-family", "--icon-grade", "--icon-optical-size", "--icon-weight"] },
     ],
   },
   files: {
@@ -3283,5 +3357,45 @@ import { Icon } from "@/components/ui/icon"
       { name: "triggerLabel", type: "string", default: "\"Ações rápidas\"", description: "Nome acessível do botão principal." },
       { name: "open / defaultOpen / onOpenChange", type: "boolean / boolean / (open: boolean) => void", description: "Estado controlado ou não controlado." },
     ],
+  },
+  direction: {
+    description: "Diz aos componentes qual é o sentido de leitura (da esquerda para a direita ou o contrário). É base que os outros consomem: não renderiza nada.",
+    whenToUse: "A tela ou um trecho dela é lido da direita para a esquerda (hebraico, árabe). Um componente do R.DS precisa seguir o sentido de leitura, como as setas do teclado em abas e controles deslizantes. Um código seu precisa saber o sentido atual, com useDirection.",
+    anatomy: [
+      { part: "DirectionProvider", description: "Entrega o sentido de leitura (direction, ou dir) para tudo que está dentro dele. Não cria elemento no HTML" },
+      { part: "useDirection", description: "Hook que devolve o sentido atual para quem está dentro do provider" },
+    ],
+    variants: [],
+    states: [],
+    sizes: [],
+    doGuidelines: ["Ponha o provider uma vez, no topo do trecho que muda de sentido.", "Passe o mesmo valor ao DirectionProvider e ao atributo dir do container.", "Leia o sentido com useDirection em vez de comparar o idioma na mão."],
+    dontGuidelines: ["Usar o provider para mudar o visual de um elemento → classes rtl: do Tailwind.", "Aninhar vários providers com valores diferentes sem necessidade → um só, no ponto onde o sentido muda.", "Esperar que o provider espelhe o layout sozinho → espelhe ícones e espaços com rtl: ou com dir no container."],
+    code: `import { DirectionProvider } from "@/components/ui/direction"
+
+<DirectionProvider direction="rtl">
+  <div dir="rtl">…</div>
+</DirectionProvider>`,
+    props: [
+      { name: "direction", type: "React.ComponentProps<typeof Direction.DirectionProvider>[\"dir\"]", default: "—", description: "Sentido de leitura: ltr ou rtl" },
+      { name: "dir", type: "ltr · rtl", default: "—", description: "Mesmo efeito de direction; se vierem os dois, vale direction" },
+      { name: "children", type: "React.ReactNode", default: "—", description: "O que recebe o sentido" },
+    ],
+    meta: {
+      nome: "Direction",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/direction.tsx",
+      story: "",
+      vizinhos: ["tabs", "slider"],
+    },
+    whenToUseItems: ["A tela ou um trecho dela é lido da direita para a esquerda (hebraico, árabe).", "Um componente do R.DS precisa seguir o sentido de leitura, como as setas do teclado em abas e controles deslizantes.", "Um código seu precisa saber o sentido atual, com useDirection."],
+    whenNotToUse: ["A tela toda é da esquerda para a direita, que é o padrão → não use nada.", "Inverter só um elemento solto → atributo dir no próprio elemento.", "Espelhar ícones ou margens com CSS → classes rtl: do Tailwind."],
+    content: ["Não tem texto próprio.", "O texto dentro dele segue o idioma da tela: se o provider é rtl, escreva o conteúdo no idioma que se lê assim."],
+    accessibility: {
+      keyboard: "Não recebe foco. Os componentes do R.DS feitos sobre o Radix, como tabs e slider, leem o contexto para que as setas sigam o sentido de leitura.",
+      screenReader: "Não anuncia nada. O provider não aplica o atributo dir no HTML: ponha dir no container (e lang na tela) para o leitor de tela usar a voz certa.",
+      focus: "Não recebe nem move o foco.",
+      cautions: "O provider e o atributo dir não se sincronizam sozinhos: passe o mesmo valor aos dois, senão o texto e as setas do teclado vão para lados diferentes (WCAG 1.3.2).",
+    },
   },
 }

@@ -1,0 +1,18 @@
+{
+  "slug": "box",
+  "partes": [
+    "Box"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "asChild",
+      "parte": "Box",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [],
+  "compoe": []
+}

@@ -1,0 +1,16 @@
+{
+  "slug": "label",
+  "partes": [
+    "Label"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "font-medium",
+    "gap-2",
+    "leading-none",
+    "text-sm"
+  ],
+  "compoe": []
+}
