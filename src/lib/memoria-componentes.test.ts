@@ -482,8 +482,7 @@ const PENDENTES_MD = [
   "alert-dialog", "calendar", "carousel", "chart", "combobox", "command",
   "context-menu", "drawer", "dropdown-menu", "files", "form", "menubar",
   "multi-select", "navigation-menu", "resizable", "sheet", "sidebar",
-  "sonner", "speed-dial", "split-button", "stepper", "table", "time-picker",
-  "toggle-group", "tree-select",
+  "split-button", "stepper", "time-picker",
 ]
 // Exceções conhecidas em 2026-10-28.
 const SEM_EXEMPLO = ["icon"]

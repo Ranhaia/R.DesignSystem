@@ -1,0 +1,18 @@
+{
+  "slug": "sonner",
+  "partes": [
+    "Toaster"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "--border",
+    "--popover",
+    "--popover-foreground",
+    "--radius"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

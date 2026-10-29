@@ -1,0 +1,29 @@
+{
+  "slug": "table",
+  "partes": [
+    "Table",
+    "TableHeader",
+    "TableBody",
+    "TableFooter",
+    "TableRow",
+    "TableHead",
+    "TableCell",
+    "TableCaption"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "bg-muted",
+    "font-medium",
+    "h-10",
+    "mt-4",
+    "p-2",
+    "pr-0",
+    "px-2",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm"
+  ],
+  "compoe": []
+}

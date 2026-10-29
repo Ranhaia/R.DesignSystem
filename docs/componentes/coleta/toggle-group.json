@@ -1,0 +1,26 @@
+{
+  "slug": "toggle-group",
+  "partes": [
+    "ToggleGroup",
+    "ToggleGroupItem"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "spacing",
+      "parte": "ToggleGroup",
+      "tipo": "`number`",
+      "padrao": "0"
+    }
+  ],
+  "tokens": [
+    "min-w-0",
+    "px-3",
+    "rounded-l-md",
+    "rounded-md",
+    "rounded-r-md",
+    "shadow-xs"
+  ],
+  "compoe": []
+}
