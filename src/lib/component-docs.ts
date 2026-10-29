@@ -984,8 +984,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
       { name: "Em rotação", description: "Animação contínua de rotação (animate-spin) em torno do eixo central" },
     ],
     sizes: [],
-    doGuidelines: ["Passe um aria-label em português descrevendo a operação em andamento.", "Use dentro de botões ou cartões para sinalizar processamento localizado.", "Prefira cores com contraste suficiente com o fundo sobre o qual o indicador gira."],
-    dontGuidelines: ["Manter o rótulo padrão em inglês → passe aria-label descritivo em português.", "Usar para tarefas com percentual conhecido de conclusão → progress.", "Usar em páginas inteiras cujo esqueleto estrutural é conhecido → skeleton."],
+    doGuidelines: ["Passe um aria-label descrevendo a operação em andamento quando \"Carregando\" for vago demais.", "Use dentro de botões ou cartões para sinalizar processamento localizado.", "Prefira cores com contraste suficiente com o fundo sobre o qual o indicador gira."],
+    dontGuidelines: ["Deixar o rótulo padrão numa tela com vários spinners ao mesmo tempo → passe aria-label que diferencie cada um (\"Carregando comentários\").", "Usar para tarefas com percentual conhecido de conclusão → progress.", "Usar em páginas inteiras cujo esqueleto estrutural é conhecido → skeleton."],
     code: `import { Spinner } from "@/components/ui/spinner"
 
 <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -994,7 +994,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 </div>`,
     props: [
       { name: "className", type: "string", default: "—", description: "Classes utilitárias para ajustar tamanho (ex.: size-5) ou cor (ex.: text-primary)" },
-      { name: "aria-label", type: "string", default: "\"Loading\"", description: "Nome acessível anunciado a tecnologias assistivas" },
+      { name: "aria-label", type: "string", default: "\"Carregando\"", description: "Nome acessível anunciado a tecnologias assistivas" },
       { name: "...props", type: "Omit<ComponentProps<\"svg\">, \"name\" \\ | \"fill\">", default: "—", description: "Demais propriedades SVG nativas repassadas ao elemento" },
     ],
     meta: {
@@ -1012,7 +1012,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
       keyboard: "Não recebe foco.",
       screenReader: "Possui papel role=\"status\" e anuncia a propriedade aria-label quando inserido no DOM.",
       focus: "Não retém nem altera o foco do teclado; mantenha o foco no elemento acionador ou na área ativa.",
-      cautions: "O componente vem com aria-label=\"Loading\" em inglês no código. Forneça sempre aria-label em português (\"Carregando...\") contextualizando a ação em andamento.",
+      cautions: "O padrão é aria-label=\"Carregando\", genérico. Quando houver contexto, passe um aria-label que diga o que está em andamento (\"Salvando perfil\"). Se um texto visível ao lado já anuncia o estado, esconda o spinner com aria-hidden=\"true\" para não falar duas vezes.",
     },
     tokens: [
       { contexto: "Espaço", itens: ["size-4"] },
@@ -2469,7 +2469,7 @@ import { Icon } from "@/components/ui/icon"
     description: "Mostra a localização da página atual na hierarquia do site e o caminho percorrido. Permite navegar diretamente para qualquer nível ancestral da estrutura.",
     whenToUse: "Estruturas de navegação com três ou mais níveis de profundidade (ex.: Início > Configurações > Notificações). Catálogos de produtos ou documentações técnicas organizadas em categorias e subcategorias. Aplicações de gestão onde o contexto pai orienta a visualização da tela atual.",
     anatomy: [
-      { part: "Breadcrumb", description: "Elemento raiz <nav> com aria-label=\"breadcrumb\" e data-slot=\"breadcrumb\"." },
+      { part: "Breadcrumb", description: "Elemento raiz <nav> com aria-label=\"Trilha de navegação\" e data-slot=\"breadcrumb\"." },
       { part: "BreadcrumbList", description: "Lista ordenada <ol> com data-slot=\"breadcrumb-list\" e quebra flexível de itens." },
       { part: "BreadcrumbItem", description: "Item individual <li> com data-slot=\"breadcrumb-item\" que agrupa link e separador." },
       { part: "BreadcrumbLink", description: "Link navegável para nível anterior com data-slot=\"breadcrumb-link\", suportando asChild." },
@@ -2529,9 +2529,9 @@ import { Icon } from "@/components/ui/icon"
     content: ["Utilize os mesmos títulos das páginas de destino para manter consistência com a navegação.", "O último item corresponde sempre à página atual e deve estar por extenso sem ser link.", "Em títulos muito longos nos níveis intermediários, abrevie o texto mantendo a clareza."],
     accessibility: {
       keyboard: "Tab navega sequencialmente apenas pelos links anteriores (BreadcrumbLink) e botões de expansão (BreadcrumbEllipsis). A página atual não recebe foco por não ser link.",
-      screenReader: "O contêiner <nav> possui aria-label=\"breadcrumb\" e a página atual é identificada via aria-current=\"page\" e aria-disabled=\"true\".",
+      screenReader: "O contêiner <nav> possui aria-label=\"Trilha de navegação\" (passe aria-label para outro nome) e a página atual é identificada via aria-current=\"page\" e aria-disabled=\"true\".",
       focus: "O anel de foco visível destaca o item focado durante a navegação por teclado.",
-      cautions: "Os separadores possuem aria-hidden=\"true\" para não poluir a leitura de tela. Atenção: o elemento BreadcrumbEllipsis traz More fixo em inglês no sr-only, devendo ser sobrescrito para português quando necessário.",
+      cautions: "Os separadores possuem aria-hidden=\"true\" para não poluir a leitura de tela. O BreadcrumbEllipsis traz o texto sr-only \"Mais níveis\", mas o próprio elemento é aria-hidden=\"true\": o leitor de tela não o lê. Quando as reticências abrem um menu, dê o nome ao gatilho (aria-label=\"Abrir menu\", como nos exemplos).",
     },
     tokens: [
       { contexto: "Cor", itens: ["text-foreground", "text-muted-foreground"] },
@@ -3669,6 +3669,8 @@ import { Button } from "@/components/ui/button"
       { name: "size (CarouselPrevious)", type: "ButtonProps[\"size\"]", default: "icon", description: "Tamanho do botão anterior" },
       { name: "variant (CarouselNext)", type: "ButtonProps[\"variant\"]", default: "outline", description: "Estilo visual do botão próximo herdado de Button" },
       { name: "size (CarouselNext)", type: "ButtonProps[\"size\"]", default: "icon", description: "Tamanho do botão próximo" },
+      { name: "label (CarouselPrevious)", type: "string", default: "Slide anterior", description: "Texto que o leitor de tela anuncia no botão (não aparece na tela)" },
+      { name: "label (CarouselNext)", type: "string", default: "Próximo slide", description: "Texto que o leitor de tela anuncia no botão (não aparece na tela)" },
     ],
     meta: {
       nome: "Carousel",
@@ -3683,9 +3685,9 @@ import { Button } from "@/components/ui/button"
     content: ["Títulos nos cartões internos curtos e claros.", "Mantenha de 3 a 5 itens para evitar cansaço na rolagem.", "Indique visualmente a posição relativa dos slides quando relevante (\"1 de 4\")."],
     accessibility: {
       keyboard: "Foco no container permite avançar e voltar usando ArrowLeft e ArrowRight. Tab alcança os botões de controle anterior e próximo.",
-      screenReader: "Container com role=\"region\" e aria-roledescription=\"carousel\". Cada slide possui role=\"group\" e aria-roledescription=\"slide\".",
+      screenReader: "Container com role=\"region\" e aria-roledescription=\"carrossel\". Cada slide possui role=\"group\" e aria-roledescription=\"slide\".",
       focus: "O foco permanece nos botões de navegação ao clicar ou navega pelos links e elementos interativos dentro do slide ativo.",
-      cautions: "Os botões nativos trazem texto acessível em inglês (\"Previous slide\" e \"Next slide\"). Passe botões personalizados ou sobrescreva o texto para leitores de tela em telas em português (WCAG 3.1.2).",
+      cautions: "Os botões anunciam \"Slide anterior\" e \"Próximo slide\". Para um texto mais específico (\"Foto anterior\"), passe label em CarouselPrevious e CarouselNext.",
     },
     tokens: [
       { contexto: "Espaço", itens: ["bottom-12", "left-1", "left-12", "min-w-0", "ml-4", "mt-4", "pl-4", "pt-4", "right-12", "size-8", "top-1", "top-12"] },
@@ -3799,7 +3801,7 @@ export function ExemploGrafico() {
     ],
     sizes: [],
     doGuidelines: ["Forneça atalho global de teclado para abrir o CommandDialog de qualquer ponto da tela.", "Agrupe comandos afins com CommandGroup e nomeie cada grupo com um cabeçalho objetivo.", "Inclua sempre uma mensagem útil em CommandEmpty orientando o que fazer quando nada for encontrado."],
-    dontGuidelines: ["Substituir a navegação principal da aplicação por uma paleta de comandos → sidebar.", "Usar textos padrão em inglês de CommandDialog em interfaces em português → passe title e description localizados.", "Lista longa sem divisão por grupos ou atalhos visíveis → divida comandos com CommandGroup e indique CommandShortcut."],
+    dontGuidelines: ["Substituir a navegação principal da aplicação por uma paleta de comandos → sidebar.", "Deixar o título padrão numa paleta com propósito específico → passe title e description que digam o que ela faz.", "Lista longa sem divisão por grupos ou atalhos visíveis → divida comandos com CommandGroup e indique CommandShortcut."],
     code: `import {
   Command,
   CommandEmpty,
@@ -3821,8 +3823,8 @@ export function ExemploGrafico() {
 </Command>`,
     props: [
       { name: "value · onValueChange (Command)", type: "string", default: "—", description: "Valor controlado do item selecionado na lista" },
-      { name: "title (CommandDialog)", type: "string", default: "Command Palette", description: "Título acessível da janela modal para leitor de tela (sr-only)" },
-      { name: "description (CommandDialog)", type: "string", default: "Search for a command to run...", description: "Descrição acessível da janela modal para leitor de tela (sr-only)" },
+      { name: "title (CommandDialog)", type: "string", default: "Paleta de comandos", description: "Título acessível da janela modal para leitor de tela (sr-only)" },
+      { name: "description (CommandDialog)", type: "string", default: "Busque um comando para executar.", description: "Descrição acessível da janela modal para leitor de tela (sr-only)" },
       { name: "className (CommandDialog)", type: "string", default: "—", description: "Classes adicionais aplicadas ao contêiner DialogContent" },
       { name: "showCloseButton (CommandDialog)", type: "boolean", default: "true", description: "Exibe o botão de fechar no canto superior da janela modal" },
       { name: "shouldFilter (CommandDialog)", type: "boolean", default: "—", description: "Desativa a filtragem interna do cmdk para usar busca e ordenação customizadas" },
@@ -3842,7 +3844,7 @@ export function ExemploGrafico() {
       keyboard: "Setas Cima e Baixo navegam entre os itens da lista. Enter executa a ação do item selecionado. Esc fecha o CommandDialog e devolve o foco ao elemento acionador. Digitação no CommandInput filtra os itens em tempo real.",
       screenReader: "Papel combobox no input gerenciando a lista de resultados com aria-expanded e aria-controls. CommandDialog possui DialogTitle e DialogDescription ocultos visualmente (sr-only) para identificação acessível.",
       focus: "Ao abrir o CommandDialog, o foco vai automaticamente para o campo de busca (CommandInput). Ao fechar, o foco retorna ao botão ou elemento que abriu a paleta.",
-      cautions: "Os textos padrão de título e descrição de CommandDialog estão em inglês no código. Em aplicações em português, passe title e description explicitamente em português do Brasil.",
+      cautions: "CommandDialog se chama \"Paleta de comandos\" e se descreve como \"Busque um comando para executar.\" para o leitor de tela. Passe title e description quando a paleta tiver um propósito mais específico (\"Ir para uma página\").",
     },
     tokens: [
       { contexto: "Cor", itens: ["bg-accent", "bg-border", "bg-popover", "border-ring", "text-accent-foreground", "text-foreground", "text-muted-foreground", "text-popover-foreground"] },
@@ -3982,6 +3984,8 @@ import { Button } from "@/components/ui/button"
       { name: "showCloseButton (DialogContent)", type: "boolean", default: "true", description: "Mostra o \"X\" no canto" },
       { name: "showCloseButton (DialogFooter)", type: "boolean", default: "false", description: "Acrescenta um botão outline de fechar" },
       { name: "onEscapeKeyDown · onPointerDownOutside (Content)", type: "evento", default: "—", description: "Impedir fechar por Esc ou clique fora" },
+      { name: "closeLabel (DialogContent)", type: "string", default: "Fechar", description: "Texto que o leitor de tela anuncia no \"X\"" },
+      { name: "closeLabel (DialogFooter)", type: "string", default: "Fechar", description: "Texto do botão de fechar do rodapé (com showCloseButton)" },
     ],
     meta: {
       nome: "Dialog",
@@ -3998,7 +4002,7 @@ import { Button } from "@/components/ui/button"
       keyboard: "Tab e Shift+Tab ficam presos na janela. Esc fecha.",
       screenReader: "papel dialog modal; DialogTitle vira o nome e DialogDescription a descrição. O resto da página fica inacessível enquanto aberto. Título é obrigatório — sem ele, a Radix avisa no console.",
       focus: "ao abrir, vai para o primeiro elemento focável. Ao fechar, volta para o gatilho.",
-      cautions: "o \"X\" anuncia \"Close\" e o botão do DialogFooter diz \"Close\", em inglês. Em tela em português, passe showCloseButton={false} no footer e use um DialogClose com texto em português.",
+      cautions: "o \"X\" anuncia \"Fechar\" e o botão do DialogFooter (showCloseButton) também diz \"Fechar\". Para outro texto, passe closeLabel (ex.: closeLabel=\"Dispensar\"); se o rodapé precisa de uma ação com verbo próprio (\"Cancelar\"), use um DialogClose com esse texto em vez de showCloseButton.",
     },
     tokens: [
       { contexto: "Cor", itens: ["bg-accent", "bg-popover", "text-muted-foreground", "text-popover-foreground"] },
@@ -4742,7 +4746,7 @@ import {
       { name: "Aberto", description: "Sobreposição escura bg-black/50 e painel com shadow-lg que desliza da borda com transição suave" },
     ],
     sizes: [],
-    doGuidelines: ["Forneça um título claro em SheetTitle para identificar o propósito do painel.", "Posicione as ações principais e de cancelamento no SheetFooter.", "Utilize showCloseButton={false} e crie um botão de fechar customizado quando precisar do rótulo em português."],
+    doGuidelines: ["Forneça um título claro em SheetTitle para identificar o propósito do painel.", "Posicione as ações principais e de cancelamento no SheetFooter.", "Utilize closeLabel para ajustar o texto anunciado no botão de fechar, ou showCloseButton={false} com um SheetClose quando precisar de um botão próprio."],
     dontGuidelines: ["Informações rápidas ou confirmações pontuais → dialog.", "Notificações de status sem formulário → sonner.", "Deixar o painel sem SheetTitle acessível → sheet."],
     code: `import {
   Sheet,
@@ -4780,6 +4784,7 @@ import { Button } from "@/components/ui/button"
       { name: "open · defaultOpen · onOpenChange (Sheet)", type: "boolean · (open: boolean) => void", default: "—", description: "Controle de abertura e fechamento herdado da Radix" },
       { name: "side (SheetContent)", type: "top · right · bottom · left", default: "right", description: "Borda da tela de onde o painel desliza" },
       { name: "showCloseButton (SheetContent)", type: "boolean", default: "true", description: "Exibe o botão com ícone de fechar no canto superior" },
+      { name: "closeLabel (SheetContent)", type: "string", default: "Fechar", description: "Texto que o leitor de tela anuncia no botão de fechar" },
     ],
     meta: {
       nome: "Sheet",
@@ -4796,7 +4801,7 @@ import { Button } from "@/components/ui/button"
       keyboard: "Tab e Shift+Tab navegam entre os elementos interativos presos no painel. Esc fecha o painel.",
       screenReader: "Papel dialog modal. SheetTitle fornece o nome acessível obrigatório e SheetDescription descreve o conteúdo via aria-describedby.",
       focus: "Ao abrir, o foco vai para o primeiro elemento focável dentro do painel. Ao fechar, o foco retorna ao SheetTrigger acionador.",
-      cautions: "O botão interno de fechar tem rótulo fixo \"Close\" em inglês no leitor de tela. Em interfaces em português, passe showCloseButton={false} e adicione um SheetClose com texto acessível traduzido.",
+      cautions: "O botão interno de fechar anuncia \"Fechar\" no leitor de tela. Para outro texto, passe closeLabel em SheetContent; para uma ação com verbo próprio (\"Cancelar\"), use showCloseButton={false} e um SheetClose com esse texto.",
     },
     tokens: [
       { contexto: "Cor", itens: ["bg-popover", "bg-secondary", "text-foreground", "text-muted-foreground", "text-popover-foreground"] },
@@ -4848,18 +4853,15 @@ import { Button } from "@/components/ui/button"
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Icon } from "@/components/ui/icon"
 
 <SidebarProvider>
   <Sidebar>
-    <SidebarHeader className="p-3 font-semibold">Sistema</SidebarHeader>
     <SidebarContent>
       <SidebarGroup>
         <SidebarGroupLabel>Menu</SidebarGroupLabel>
@@ -4867,7 +4869,6 @@ import { Icon } from "@/components/ui/icon"
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton tooltip="Início" isActive>
-                <Icon name="home" />
                 <span>Início</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -4876,7 +4877,7 @@ import { Icon } from "@/components/ui/icon"
       </SidebarGroup>
     </SidebarContent>
   </Sidebar>
-  <SidebarTrigger aria-label="Alternar barra lateral" />
+  <SidebarTrigger />
 </SidebarProvider>`,
     props: [
       { name: "defaultOpen (SidebarProvider)", type: "boolean", default: "true", description: "Estado inicial aberto da barra" },
@@ -4899,6 +4900,9 @@ import { Icon } from "@/components/ui/icon"
       { name: "asChild (SidebarMenuSubButton)", type: "boolean", default: "false", description: "Renderiza elemento filho" },
       { name: "size (SidebarMenuSubButton)", type: "sm · md", default: "md", description: "Tamanho do sub-botão" },
       { name: "isActive (SidebarMenuSubButton)", type: "boolean", default: "false", description: "Marca subitem ativo" },
+      { name: "mobileTitle", type: "string", default: "Barra lateral", description: "Nome da folha no celular (leitor de tela)" },
+      { name: "mobileDescription", type: "string", default: "Exibe a barra lateral no celular.", description: "Descrição da folha (leitor de tela)" },
+      { name: "label (SidebarTrigger)", type: "string", default: "Alternar barra lateral", description: "Texto do gatilho (leitor de tela)" },
     ],
     meta: {
       nome: "Sidebar",
@@ -4910,12 +4914,12 @@ import { Icon } from "@/components/ui/icon"
     },
     whenToUseItems: ["Navegação persistente em sistemas web, dashboards e painéis administrativos.", "Estruturação de muitas seções divididas por módulos, categorias ou projetos.", "Telas que precisam maximizar a área útil alternando entre expandido e recolhido em ícones."],
     whenNotToUse: ["Navegação horizontal no cabeçalho com poucas seções → navigation-menu.", "Painel temporário para tarefas contextuais ou filtros rápidos → sheet.", "Trilha sequencial de localização em páginas profundas → breadcrumb."],
-    content: ["Rótulos curtos em maiúsculas: \"Painel\", \"Relatórios\" ou \"Configurações\".", "Títulos de grupos em caixa alta ou subtítulo curto: \"Geral\", \"Projetos\".", "O atalho global de teclado exibe Ctrl+B ou Cmd+B.", "Sem ponto final em rótulos e itens de navegação."],
+    content: ["Rótulos curtos em maiúsculas: \"Painel\", \"Relatórios\" ou \"Configurações\".", "Títulos de grupos em caixa alta ou subtítulo curto: \"Geral\", \"Projetos\".", "Sem ponto final em rótulos e itens de navegação."],
     accessibility: {
       keyboard: "Tab e Shift+Tab navegam entre os itens. Ctrl+B (ou Cmd+B) alterna o estado aberto/recolhido. Esc fecha a folha no celular.",
       screenReader: "Itens usam papéis semânticos de botão ou link. Quando recolhida em ícones, os botões exibem tooltip acessível.",
       focus: "Anel de foco visível em cada item navegável. Na versão móvel, o foco fica contido no painel deslizante.",
-      cautions: "SidebarTrigger tem rótulo padrão \"Toggle Sidebar\" em inglês. Sempre passe aria-label=\"Alternar barra lateral\" em português.",
+      cautions: "SidebarTrigger e SidebarRail anunciam \"Alternar barra lateral\"; a folha do celular, \"Barra lateral\". Troque com label, mobileTitle e mobileDescription.",
     },
     tokens: [
       { contexto: "Cor", itens: ["--sidebar-accent", "--sidebar-border", "bg-background", "bg-sidebar", "bg-sidebar-accent", "bg-sidebar-border", "border-sidebar-border", "text-sidebar-accent-foreground", "text-sidebar-foreground"] },

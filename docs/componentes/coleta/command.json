@@ -18,13 +18,13 @@
       "nome": "title",
       "parte": "CommandDialog",
       "tipo": "`string`",
-      "padrao": "Command Palette"
+      "padrao": "Paleta de comandos"
     },
     {
       "nome": "description",
       "parte": "CommandDialog",
       "tipo": "`string`",
-      "padrao": "Search for a command to run..."
+      "padrao": "Busque um comando para executar."
     },
     {
       "nome": "className",

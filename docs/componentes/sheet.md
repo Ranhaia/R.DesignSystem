@@ -52,6 +52,7 @@ Usa: [`icon`](icon.md).
 | `open` · `defaultOpen` · `onOpenChange` (Sheet) | `boolean` · `(open: boolean) => void` | — | Controle de abertura e fechamento herdado da Radix |
 | `side` (SheetContent) | `top` · `right` · `bottom` · `left` | `right` | Borda da tela de onde o painel desliza |
 | `showCloseButton` (SheetContent) | `boolean` | `true` | Exibe o botão com ícone de fechar no canto superior |
+| `closeLabel` (SheetContent) | `string` | `Fechar` | Texto que o leitor de tela anuncia no botão de fechar |
 
 ## Variantes
 
@@ -80,7 +81,7 @@ Largura padrão de três quartos até `sm:max-w-sm` nas laterais e altura autom�
 - **Teclado:** Tab e Shift+Tab navegam entre os elementos interativos presos no painel. Esc fecha o painel.
 - **Leitor de tela:** Papel `dialog` modal. `SheetTitle` fornece o nome acessível obrigatório e `SheetDescription` descreve o conteúdo via `aria-describedby`.
 - **Foco:** Ao abrir, o foco vai para o primeiro elemento focável dentro do painel. Ao fechar, o foco retorna ao `SheetTrigger` acionador.
-- **Cuidados:** O botão interno de fechar tem rótulo fixo "Close" em inglês no leitor de tela. Em interfaces em português, passe `showCloseButton={false}` e adicione um `SheetClose` com texto acessível traduzido.
+- **Cuidados:** O botão interno de fechar anuncia "Fechar" no leitor de tela. Para outro texto, passe `closeLabel` em `SheetContent`; para uma ação com verbo próprio ("Cancelar"), use `showCloseButton={false}` e um `SheetClose` com esse texto.
 
 ## Tokens usados
 
@@ -97,7 +98,7 @@ Largura padrão de três quartos até `sm:max-w-sm` nas laterais e altura autom�
 
 - Forneça um título claro em `SheetTitle` para identificar o propósito do painel.
 - Posicione as ações principais e de cancelamento no `SheetFooter`.
-- Utilize `showCloseButton={false}` e crie um botão de fechar customizado quando precisar do rótulo em português.
+- Utilize `closeLabel` para ajustar o texto anunciado no botão de fechar, ou `showCloseButton={false}` com um `SheetClose` quando precisar de um botão próprio.
 
 ## NÃO faça
 

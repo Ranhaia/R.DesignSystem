@@ -5,7 +5,13 @@ import { Icon } from "@/components/ui/icon"
 import { cn } from "@/lib/utils"
 
 function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
-  return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />
+  return (
+    <nav
+      aria-label="Trilha de navegação"
+      data-slot="breadcrumb"
+      {...props}
+    />
+  )
 }
 
 function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
@@ -93,7 +99,7 @@ function BreadcrumbEllipsis({
       {...props}
     >
       <Icon name="more_horiz" size={1} />
-      <span className="sr-only">More</span>
+      <span className="sr-only">Mais níveis</span>
     </span>
   )
 }
