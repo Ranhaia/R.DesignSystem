@@ -3,7 +3,10 @@
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import { Label } from "@/components/ui/label"
+import { SegmentedControl, SegmentedControlItem } from "@/components/ui/segmented-control"
+import { partesDoBotao, type PosicaoIcone } from "@/lib/botao-playground"
 import {
   Select,
   SelectContent,
@@ -42,20 +45,28 @@ type Size = (typeof sizes)[number]
 export function ButtonPlayground() {
   const [variant, setVariant] = React.useState<Variant>("default")
   const [size, setSize] = React.useState<Size>("default")
+  const [icone, setIcone] = React.useState(false)
+  const [posicao, setPosicao] = React.useState<PosicaoIcone>("esquerda")
   const [disabled, setDisabled] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
 
+  // Tamanhos icon-* são só ícone: o switch fica ligado e travado, e a posição não se aplica.
+  const soIcone = size.startsWith("icon")
+  const conteudo = {
+    icone: loading ? <Spinner key="icone" /> : <Icon key="icone" name="favorite" />,
+    rotulo: "Button",
+  }
+
   return (
-    <div className="grid gap-6 rounded-lg border bg-card p-6 sm:grid-cols-[1fr_--spacing(56)]">
+    <div className="grid gap-6 sm:grid-cols-[1fr_--spacing(56)]">
       <div className="flex min-h-32 items-center justify-center rounded-md border border-dashed p-6">
         <Button
           variant={variant}
           size={size}
           disabled={disabled || loading}
-          aria-label={size.startsWith("icon") ? "Ação" : undefined}
+          aria-label={soIcone ? "Ação" : undefined}
         >
-          {loading && <Spinner />}
-          {!size.startsWith("icon") && "Button"}
+          {partesDoBotao({ size, icone, posicao, loading }).map((p) => conteudo[p])}
         </Button>
       </div>
 
@@ -94,6 +105,31 @@ export function ButtonPlayground() {
             </SelectContent>
           </Select>
         </div>
+
+        <div className="flex items-center justify-between">
+          <Label htmlFor="pg-button-icone">Ícone</Label>
+          <Switch
+            id="pg-button-icone"
+            checked={soIcone || icone}
+            disabled={soIcone}
+            onCheckedChange={setIcone}
+          />
+        </div>
+
+        {icone && !soIcone && (
+          <div className="space-y-1.5">
+            <Label id="pg-button-posicao">Posição do ícone</Label>
+            <SegmentedControl
+              aria-labelledby="pg-button-posicao"
+              value={posicao}
+              // Radix manda "" ao clicar no item já ativo; sem isto a posição ficaria sem valor.
+              onValueChange={(value) => value && setPosicao(value as PosicaoIcone)}
+            >
+              <SegmentedControlItem value="esquerda">Esquerda</SegmentedControlItem>
+              <SegmentedControlItem value="direita">Direita</SegmentedControlItem>
+            </SegmentedControl>
+          </div>
+        )}
 
         <div className="flex items-center justify-between">
           <Label htmlFor="pg-button-disabled">Disabled</Label>

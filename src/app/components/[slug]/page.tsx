@@ -7,7 +7,8 @@ import { examplesMapping } from "@/lib/examples-mapping"
 import { exampleTitle } from "@/lib/example-title"
 import { exampleRegistry } from "@/components/examples/registry"
 import { ButtonPlayground } from "@/components/doc/button-playground"
-import { GenericPlayground, genericPlaygroundRegistry } from "@/components/doc/generic-playground"
+import { GenericPlayground } from "@/components/doc/generic-playground"
+import { genericPlaygroundRegistry } from "@/components/doc/generic-playground-registry"
 import { renderSizePreview, renderVariantPreview } from "@/components/doc/variant-preview"
 import {
   Accordion,
@@ -16,7 +17,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { TabsContent } from "@/components/ui/tabs"
-import { abasDoComponente, exemploPrincipal } from "@/lib/doc-abas"
+import { abasDoComponente, exemploPrincipal, previewDoTopo } from "@/lib/doc-abas"
 import { DocHeader } from "@/components/doc/doc-header"
 import { DocLivePreview } from "@/components/doc/doc-live-preview"
 import { DocMetaStrip } from "@/components/doc/doc-meta-strip"
@@ -50,21 +51,28 @@ export default async function ComponentPage({
   const Playground = playgroundRegistry[slug]
   const hasGenericPlayground = !Playground && Boolean(genericPlaygroundRegistry[slug])
   const showPlayground = Boolean(Playground) || hasGenericPlayground
-
   const firstExampleName = exemploPrincipal(exampleNames)
   const FirstExampleComponent = firstExampleName ? exampleRegistry[firstExampleName] : null
 
   const abas = abasDoComponente(doc, {
     temExemplos: exampleNames.length > 0,
-    temPlayground: showPlayground,
     temComposicao: composition.length > 0,
+  })
+  const topo = previewDoTopo({
+    temPlayground: showPlayground,
+    temExemplo: Boolean(FirstExampleComponent),
   })
 
   return (
     <div className="min-w-0 flex-1 space-y-8">
       <DocHeader slug={slug} name={entry.name} description={doc?.description} />
 
-      {FirstExampleComponent && (
+      {topo === "playground" && (
+        <DocLivePreview code={doc?.code} centralizar={false}>
+          {Playground ? <Playground /> : <GenericPlayground slug={slug} />}
+        </DocLivePreview>
+      )}
+      {topo === "exemplo" && FirstExampleComponent && (
         <DocLivePreview code={doc?.code}>
           <FirstExampleComponent />
         </DocLivePreview>
@@ -117,16 +125,6 @@ export default async function ComponentPage({
                     </div>
                   ))}
                 </div>
-              </section>
-            )}
-
-            {doc && showPlayground && (
-              <section className="space-y-3">
-                <h2 className="font-heading text-lg font-semibold">Playground</h2>
-                <p className="text-sm text-muted-foreground">
-                  Ajuste as props abaixo e veja o resultado ao vivo.
-                </p>
-                {Playground ? <Playground /> : <GenericPlayground slug={slug} />}
               </section>
             )}
 

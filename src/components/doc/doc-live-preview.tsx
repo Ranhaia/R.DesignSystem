@@ -11,15 +11,21 @@ import { Icon } from "@/components/ui/icon"
 
 interface DocLivePreviewProps {
   code?: string
+  // false: o filho cuida da própria área de preview (Playground, com os controles ao lado).
+  centralizar?: boolean
   children: React.ReactNode
 }
 
-export function DocLivePreview({ code, children }: DocLivePreviewProps) {
+export function DocLivePreview({ code, centralizar = true, children }: DocLivePreviewProps) {
   return (
     <div className="rounded-lg border bg-card">
-      <div className="flex min-h-32 items-center justify-center p-6">
-        <div className="w-full flex items-center justify-center">{children}</div>
-      </div>
+      {centralizar ? (
+        <div className="flex min-h-32 items-center justify-center p-6">
+          <div className="w-full flex items-center justify-center">{children}</div>
+        </div>
+      ) : (
+        <div className="p-6">{children}</div>
+      )}
       {code && (
         <Collapsible className="border-t">
           <div className="flex justify-end p-2">
