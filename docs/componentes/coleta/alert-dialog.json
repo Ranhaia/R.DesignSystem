@@ -1,0 +1,78 @@
+{
+  "slug": "alert-dialog",
+  "partes": [
+    "AlertDialog",
+    "AlertDialogTrigger",
+    "AlertDialogPortal",
+    "AlertDialogOverlay",
+    "AlertDialogContent",
+    "AlertDialogHeader",
+    "AlertDialogFooter",
+    "AlertDialogTitle",
+    "AlertDialogDescription",
+    "AlertDialogMedia",
+    "AlertDialogAction",
+    "AlertDialogCancel"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "size",
+      "parte": "AlertDialogContent",
+      "tipo": "`default` · `sm`",
+      "padrao": "default"
+    },
+    {
+      "nome": "variant",
+      "parte": "AlertDialogAction",
+      "tipo": null,
+      "padrao": "default"
+    },
+    {
+      "nome": "size",
+      "parte": "AlertDialogAction",
+      "tipo": null,
+      "padrao": "default"
+    },
+    {
+      "nome": "variant",
+      "parte": "AlertDialogCancel",
+      "tipo": null,
+      "padrao": "outline"
+    },
+    {
+      "nome": "size",
+      "parte": "AlertDialogCancel",
+      "tipo": null,
+      "padrao": "default"
+    }
+  ],
+  "tokens": [
+    "bg-muted",
+    "bg-popover",
+    "duration-motion-base",
+    "font-semibold",
+    "gap-1.5",
+    "gap-2",
+    "gap-4",
+    "gap-x-6",
+    "inset-0",
+    "max-w-lg",
+    "max-w-xs",
+    "mb-2",
+    "p-6",
+    "rounded-lg",
+    "rounded-md",
+    "shadow-lg",
+    "size-16",
+    "size-8",
+    "text-lg",
+    "text-muted-foreground",
+    "text-popover-foreground",
+    "text-sm"
+  ],
+  "compoe": [
+    "button"
+  ]
+}

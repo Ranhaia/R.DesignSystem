@@ -1,0 +1,62 @@
+{
+  "slug": "files",
+  "partes": [
+    "Files",
+    "Folder",
+    "FolderTrigger",
+    "FolderContent",
+    "File"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "label",
+      "parte": "Files",
+      "tipo": null,
+      "padrao": "Navegador de arquivos"
+    },
+    {
+      "nome": "defaultOpen",
+      "parte": "Folder",
+      "tipo": null,
+      "padrao": "false"
+    },
+    {
+      "nome": "active",
+      "parte": "File",
+      "tipo": null,
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "border-border",
+    "duration-motion-base",
+    "duration-motion-fast",
+    "ease-spring",
+    "font-medium",
+    "font-sans",
+    "gap-0.5",
+    "gap-1.5",
+    "gap-2",
+    "pl-1.5",
+    "pl-4",
+    "pr-1",
+    "px-2",
+    "py-0.5",
+    "py-1",
+    "py-1.5",
+    "ring-ring",
+    "rounded-md",
+    "size-4",
+    "text-accent-foreground",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm"
+  ],
+  "compoe": [
+    "icon",
+    "collapsible"
+  ]
+}

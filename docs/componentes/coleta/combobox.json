@@ -1,0 +1,128 @@
+{
+  "slug": "combobox",
+  "partes": [
+    "ComboboxValue",
+    "ComboboxTrigger",
+    "ComboboxClear",
+    "ComboboxInput",
+    "ComboboxContent",
+    "ComboboxList",
+    "ComboboxItem",
+    "ComboboxGroup",
+    "ComboboxLabel",
+    "ComboboxCollection",
+    "ComboboxEmpty",
+    "ComboboxSeparator",
+    "ComboboxChips",
+    "ComboboxChip",
+    "ComboboxChipsInput"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "showTrigger",
+      "parte": "ComboboxInput",
+      "tipo": "`boolean`",
+      "padrao": "true"
+    },
+    {
+      "nome": "showClear",
+      "parte": "ComboboxInput",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "disabled",
+      "parte": "ComboboxInput",
+      "tipo": null,
+      "padrao": "false"
+    },
+    {
+      "nome": "side",
+      "parte": "ComboboxContent",
+      "tipo": null,
+      "padrao": "bottom"
+    },
+    {
+      "nome": "sideOffset",
+      "parte": "ComboboxContent",
+      "tipo": null,
+      "padrao": "6"
+    },
+    {
+      "nome": "align",
+      "parte": "ComboboxContent",
+      "tipo": null,
+      "padrao": "start"
+    },
+    {
+      "nome": "alignOffset",
+      "parte": "ComboboxContent",
+      "tipo": null,
+      "padrao": "0"
+    },
+    {
+      "nome": "showRemove",
+      "parte": "ComboboxChip",
+      "tipo": "`boolean`",
+      "padrao": "true"
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-border",
+    "bg-input",
+    "bg-muted",
+    "bg-popover",
+    "border-destructive",
+    "border-input",
+    "border-ring",
+    "font-medium",
+    "gap-1",
+    "gap-1.5",
+    "gap-2",
+    "h-8",
+    "h-px",
+    "m-1",
+    "max-h-96",
+    "mb-0",
+    "min-h-9",
+    "min-w-16",
+    "ml-1",
+    "mx-1",
+    "my-1",
+    "p-0",
+    "p-1",
+    "pl-2",
+    "pr-0",
+    "pr-8",
+    "px-1.5",
+    "px-2",
+    "px-2.5",
+    "px-3",
+    "py-1.5",
+    "py-2",
+    "right-2",
+    "ring-destructive",
+    "ring-foreground",
+    "ring-ring",
+    "rounded-md",
+    "rounded-sm",
+    "shadow-md",
+    "shadow-xs",
+    "size-4",
+    "size-5",
+    "text-accent-foreground",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-popover-foreground",
+    "text-sm",
+    "text-xs"
+  ],
+  "compoe": [
+    "button",
+    "icon",
+    "input-group"
+  ]
+}

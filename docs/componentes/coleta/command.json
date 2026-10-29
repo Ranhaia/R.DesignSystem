@@ -1,0 +1,87 @@
+{
+  "slug": "command",
+  "partes": [
+    "Command",
+    "CommandDialog",
+    "CommandInput",
+    "CommandList",
+    "CommandEmpty",
+    "CommandGroup",
+    "CommandSeparator",
+    "CommandItem",
+    "CommandShortcut"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "title",
+      "parte": "CommandDialog",
+      "tipo": "`string`",
+      "padrao": "Command Palette"
+    },
+    {
+      "nome": "description",
+      "parte": "CommandDialog",
+      "tipo": "`string`",
+      "padrao": "Search for a command to run..."
+    },
+    {
+      "nome": "className",
+      "parte": "CommandDialog",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "showCloseButton",
+      "parte": "CommandDialog",
+      "tipo": "`boolean`",
+      "padrao": "true"
+    },
+    {
+      "nome": "shouldFilter",
+      "parte": "CommandDialog",
+      "tipo": "`boolean`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-border",
+    "bg-popover",
+    "border-ring",
+    "font-medium",
+    "gap-2",
+    "h-10",
+    "h-12",
+    "h-5",
+    "h-9",
+    "h-px",
+    "max-h-75",
+    "mx-1",
+    "p-0",
+    "p-1",
+    "pt-0",
+    "px-2",
+    "px-3",
+    "py-1.5",
+    "py-3",
+    "py-6",
+    "ring-ring",
+    "rounded-md",
+    "rounded-sm",
+    "size-4",
+    "text-accent-foreground",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-popover-foreground",
+    "text-sm",
+    "text-xs",
+    "tracking-widest",
+    "w-5"
+  ],
+  "compoe": [
+    "dialog",
+    "icon"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "slug": "carousel",
+  "partes": [
+    "Carousel",
+    "CarouselContent",
+    "CarouselItem",
+    "CarouselPrevious",
+    "CarouselNext"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "opts",
+      "parte": "Carousel",
+      "tipo": "`CarouselOptions`",
+      "padrao": null
+    },
+    {
+      "nome": "plugins",
+      "parte": "Carousel",
+      "tipo": "`CarouselPlugin`",
+      "padrao": null
+    },
+    {
+      "nome": "orientation",
+      "parte": "Carousel",
+      "tipo": "`horizontal` · `vertical`",
+      "padrao": "horizontal"
+    },
+    {
+      "nome": "setApi",
+      "parte": "Carousel",
+      "tipo": "`(api: CarouselApi) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "variant",
+      "parte": "CarouselPrevious",
+      "tipo": null,
+      "padrao": "outline"
+    },
+    {
+      "nome": "size",
+      "parte": "CarouselPrevious",
+      "tipo": null,
+      "padrao": "icon"
+    },
+    {
+      "nome": "variant",
+      "parte": "CarouselNext",
+      "tipo": null,
+      "padrao": "outline"
+    },
+    {
+      "nome": "size",
+      "parte": "CarouselNext",
+      "tipo": null,
+      "padrao": "icon"
+    }
+  ],
+  "tokens": [
+    "bottom-12",
+    "left-1",
+    "left-12",
+    "min-w-0",
+    "ml-4",
+    "mt-4",
+    "pl-4",
+    "pt-4",
+    "right-12",
+    "rounded-full",
+    "size-8",
+    "top-1",
+    "top-12"
+  ],
+  "compoe": [
+    "button",
+    "icon"
+  ]
+}

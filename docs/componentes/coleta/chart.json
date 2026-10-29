@@ -1,0 +1,126 @@
+{
+  "slug": "chart",
+  "partes": [
+    "ChartContainer",
+    "ChartStyle",
+    "ChartTooltipContent",
+    "ChartLegendContent"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "config",
+      "parte": "ChartContainer",
+      "tipo": "`ChartConfig`",
+      "padrao": null
+    },
+    {
+      "nome": "children",
+      "parte": "ChartContainer",
+      "tipo": "`React.ComponentProps< typeof RechartsPrimitive.ResponsiveContainer >[\"children\"]`",
+      "padrao": null
+    },
+    {
+      "nome": "initialDimension",
+      "parte": "ChartContainer",
+      "tipo": "`{ width: number height: number }`",
+      "padrao": "INITIAL_DIMENSION"
+    },
+    {
+      "nome": "id",
+      "parte": "ChartStyle",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "config",
+      "parte": "ChartStyle",
+      "tipo": "`ChartConfig`",
+      "padrao": null
+    },
+    {
+      "nome": "hideLabel",
+      "parte": "ChartTooltipContent",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "hideIndicator",
+      "parte": "ChartTooltipContent",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "indicator",
+      "parte": "ChartTooltipContent",
+      "tipo": "`line` · `dot` · `dashed`",
+      "padrao": "dot"
+    },
+    {
+      "nome": "nameKey",
+      "parte": "ChartTooltipContent",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "labelKey",
+      "parte": "ChartTooltipContent",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "hideIcon",
+      "parte": "ChartLegendContent",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "nameKey",
+      "parte": "ChartLegendContent",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "verticalAlign",
+      "parte": "ChartLegendContent",
+      "tipo": null,
+      "padrao": "bottom"
+    }
+  ],
+  "tokens": [
+    "--color-border",
+    "bg-popover",
+    "border-border",
+    "fill-muted",
+    "fill-muted-foreground",
+    "font-medium",
+    "gap-1.5",
+    "gap-2",
+    "gap-4",
+    "h-2",
+    "h-2.5",
+    "h-3",
+    "leading-none",
+    "min-w-32",
+    "my-0.5",
+    "outline-ring",
+    "pb-3",
+    "pt-3",
+    "px-2.5",
+    "py-1.5",
+    "rounded-lg",
+    "shadow-xl",
+    "stroke-border",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-popover-foreground",
+    "text-xs",
+    "w-0",
+    "w-1",
+    "w-2",
+    "w-2.5",
+    "w-3"
+  ],
+  "compoe": []
+}

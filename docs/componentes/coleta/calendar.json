@@ -1,0 +1,73 @@
+{
+  "slug": "calendar",
+  "partes": [
+    "Calendar",
+    "CalendarDayButton"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "buttonVariant",
+      "parte": "Calendar",
+      "tipo": "`React.ComponentProps<typeof Button>[\"variant\"]`",
+      "padrao": "ghost"
+    },
+    {
+      "nome": "showOutsideDays",
+      "parte": "Calendar",
+      "tipo": null,
+      "padrao": "true"
+    },
+    {
+      "nome": "captionLayout",
+      "parte": "Calendar",
+      "tipo": null,
+      "padrao": "label"
+    },
+    {
+      "nome": "locale",
+      "parte": "Calendar",
+      "tipo": null,
+      "padrao": "ptBR"
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-background",
+    "bg-popover",
+    "bg-primary",
+    "border-input",
+    "border-ring",
+    "font-medium",
+    "font-normal",
+    "gap-1",
+    "gap-1.5",
+    "gap-4",
+    "h-8",
+    "inset-0",
+    "inset-x-0",
+    "leading-none",
+    "mt-2",
+    "p-0",
+    "p-3",
+    "pl-2",
+    "pr-1",
+    "ring-ring",
+    "rounded-l-md",
+    "rounded-md",
+    "rounded-r-md",
+    "shadow-xs",
+    "size-3.5",
+    "text-accent-foreground",
+    "text-muted-foreground",
+    "text-primary-foreground",
+    "text-sm",
+    "text-xs",
+    "top-0"
+  ],
+  "compoe": [
+    "button",
+    "icon"
+  ]
+}

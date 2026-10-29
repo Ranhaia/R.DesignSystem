@@ -1,0 +1,89 @@
+{
+  "slug": "dropdown-menu",
+  "partes": [
+    "DropdownMenu",
+    "DropdownMenuPortal",
+    "DropdownMenuTrigger",
+    "DropdownMenuContent",
+    "DropdownMenuGroup",
+    "DropdownMenuItem",
+    "DropdownMenuCheckboxItem",
+    "DropdownMenuRadioGroup",
+    "DropdownMenuRadioItem",
+    "DropdownMenuLabel",
+    "DropdownMenuSeparator",
+    "DropdownMenuShortcut",
+    "DropdownMenuSub",
+    "DropdownMenuSubTrigger",
+    "DropdownMenuSubContent"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "sideOffset",
+      "parte": "DropdownMenuContent",
+      "tipo": null,
+      "padrao": "4"
+    },
+    {
+      "nome": "inset",
+      "parte": "DropdownMenuItem",
+      "tipo": "`boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "variant",
+      "parte": "DropdownMenuItem",
+      "tipo": "`default` · `destructive`",
+      "padrao": "default"
+    },
+    {
+      "nome": "inset",
+      "parte": "DropdownMenuLabel",
+      "tipo": "`boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "inset",
+      "parte": "DropdownMenuSubTrigger",
+      "tipo": "`boolean`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-border",
+    "bg-destructive",
+    "bg-popover",
+    "font-medium",
+    "gap-2",
+    "h-px",
+    "left-2",
+    "min-w-32",
+    "mx-1",
+    "my-1",
+    "outline-ring",
+    "p-1",
+    "pl-8",
+    "pr-2",
+    "px-2",
+    "py-1.5",
+    "rounded-md",
+    "rounded-sm",
+    "shadow-lg",
+    "shadow-md",
+    "size-3.5",
+    "size-4",
+    "text-accent-foreground",
+    "text-destructive",
+    "text-muted-foreground",
+    "text-popover-foreground",
+    "text-sm",
+    "text-xs",
+    "tracking-widest"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}
