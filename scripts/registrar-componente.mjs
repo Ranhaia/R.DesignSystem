@@ -4,6 +4,7 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { coletarComponente } from "./coletar-componente.mjs"
 import { agruparTokens } from "./contexto-token.mjs"
+import { celulasTabela as celulas } from "./parse-component-md.mjs"
 
 // Registro da memória de componentes (E-memoria-componentes): escritor único
 // das seções geradas do MD (Anatomia, Props, Variantes, Tamanhos, Tokens
@@ -17,10 +18,6 @@ import { agruparTokens } from "./contexto-token.mjs"
 const PREENCHER = "[a preencher]"
 const pascal = (slug) => slug.replace(/(^|-)(\w)/g, (_, __, c) => c.toUpperCase())
 const cod = (v) => `\`${v}\``
-
-function celulas(linha) {
-  return linha.split("|").slice(1, -1).map((c) => c.trim())
-}
 
 // Chave de uma linha: "`a` · `b` (Parte)" → { nomes: ["a", "b"], parte: "Parte" }.
 function chave(celula) {

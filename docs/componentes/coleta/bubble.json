@@ -1,0 +1,88 @@
+{
+  "slug": "bubble",
+  "partes": [
+    "BubbleGroup",
+    "Bubble",
+    "BubbleContent",
+    "BubbleReactions"
+  ],
+  "variantes": [
+    "default",
+    "secondary",
+    "muted",
+    "tinted",
+    "outline",
+    "ghost",
+    "destructive"
+  ],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "Bubble",
+      "tipo": "`default` · `secondary` · `muted` · `tinted` · `outline` · `ghost` · `destructive`",
+      "padrao": "default"
+    },
+    {
+      "nome": "align",
+      "parte": "Bubble",
+      "tipo": "`start` · `end`",
+      "padrao": "start"
+    },
+    {
+      "nome": "asChild",
+      "parte": "BubbleContent",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "align",
+      "parte": "BubbleReactions",
+      "tipo": "`start` · `end`",
+      "padrao": "end"
+    },
+    {
+      "nome": "side",
+      "parte": "BubbleReactions",
+      "tipo": "`top` · `bottom`",
+      "padrao": "bottom"
+    }
+  ],
+  "tokens": [
+    "--foreground",
+    "--muted",
+    "--primary",
+    "--secondary",
+    "bg-background",
+    "bg-destructive",
+    "bg-input",
+    "bg-muted",
+    "bg-primary",
+    "bg-secondary",
+    "border-border",
+    "border-ring",
+    "bottom-0",
+    "gap-1",
+    "gap-2",
+    "leading-relaxed",
+    "left-3",
+    "min-w-0",
+    "p-0",
+    "px-1.5",
+    "px-3",
+    "py-0.5",
+    "py-2",
+    "right-3",
+    "ring-card",
+    "ring-ring",
+    "rounded-full",
+    "rounded-xl",
+    "text-destructive",
+    "text-foreground",
+    "text-primary-foreground",
+    "text-secondary-foreground",
+    "text-sm",
+    "top-0"
+  ],
+  "compoe": []
+}

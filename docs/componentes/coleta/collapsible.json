@@ -1,0 +1,16 @@
+{
+  "slug": "collapsible",
+  "partes": [
+    "Collapsible",
+    "CollapsibleTrigger",
+    "CollapsibleContent"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "animate-collapsible-down",
+    "animate-collapsible-up"
+  ],
+  "compoe": []
+}

@@ -1,0 +1,40 @@
+{
+  "slug": "alert",
+  "partes": [
+    "Alert",
+    "AlertTitle",
+    "AlertDescription"
+  ],
+  "variantes": [
+    "default",
+    "destructive"
+  ],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "Alert",
+      "tipo": "`default` · `destructive`",
+      "padrao": "default"
+    }
+  ],
+  "tokens": [
+    "bg-card",
+    "font-medium",
+    "gap-1",
+    "gap-x-3",
+    "gap-y-0.5",
+    "leading-relaxed",
+    "min-h-4",
+    "px-4",
+    "py-3",
+    "rounded-lg",
+    "size-4",
+    "text-card-foreground",
+    "text-destructive",
+    "text-muted-foreground",
+    "text-sm",
+    "tracking-tight"
+  ],
+  "compoe": []
+}

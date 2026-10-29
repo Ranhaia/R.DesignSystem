@@ -1,0 +1,45 @@
+{
+  "slug": "button-group",
+  "partes": [
+    "ButtonGroup",
+    "ButtonGroupText",
+    "ButtonGroupSeparator"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "orientation",
+      "parte": "ButtonGroup",
+      "tipo": "`horizontal` · `vertical`",
+      "padrao": "horizontal"
+    },
+    {
+      "nome": "asChild",
+      "parte": "ButtonGroupText",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "orientation",
+      "parte": "ButtonGroupSeparator",
+      "tipo": null,
+      "padrao": "vertical"
+    }
+  ],
+  "tokens": [
+    "bg-input",
+    "bg-muted",
+    "font-medium",
+    "gap-2",
+    "px-4",
+    "rounded-md",
+    "rounded-r-md",
+    "shadow-xs",
+    "size-4",
+    "text-sm"
+  ],
+  "compoe": [
+    "separator"
+  ]
+}

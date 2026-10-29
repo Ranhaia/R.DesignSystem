@@ -9,6 +9,7 @@
   "badge": ["selo", "status", "rotulo-de-status"],
   "box": ["container", "caixa", "bloco"],
   "breadcrumb": ["breadcrumbs", "migalhas", "migalhas-de-pao", "trilha"],
+  "bubble": ["balao", "balão", "balao-de-mensagem", "balão-de-mensagem", "bolha-de-chat"],
   "button": ["botao", "botão", "btn", "cta", "botao-primario"],
   "button-group": ["grupo-de-botoes", "grupo-de-botões"],
   "calendar": ["calendario", "calendário", "date-picker", "datepicker", "seletor-de-data", "data"],

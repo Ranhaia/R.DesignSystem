@@ -1,0 +1,33 @@
+{
+  "slug": "hover-card",
+  "partes": [
+    "HoverCard",
+    "HoverCardTrigger",
+    "HoverCardContent"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "align",
+      "parte": "HoverCardContent",
+      "tipo": null,
+      "padrao": "center"
+    },
+    {
+      "nome": "sideOffset",
+      "parte": "HoverCardContent",
+      "tipo": null,
+      "padrao": "4"
+    }
+  ],
+  "tokens": [
+    "bg-popover",
+    "p-4",
+    "rounded-md",
+    "shadow-md",
+    "text-popover-foreground",
+    "w-64"
+  ],
+  "compoe": []
+}

@@ -1,0 +1,35 @@
+{
+  "slug": "breadcrumb",
+  "partes": [
+    "Breadcrumb",
+    "BreadcrumbList",
+    "BreadcrumbItem",
+    "BreadcrumbLink",
+    "BreadcrumbPage",
+    "BreadcrumbSeparator",
+    "BreadcrumbEllipsis"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "asChild",
+      "parte": "BreadcrumbLink",
+      "tipo": "`boolean`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "font-normal",
+    "gap-1.5",
+    "gap-2.5",
+    "size-3.5",
+    "size-9",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}
