@@ -489,8 +489,8 @@ const PENDENTES_MD = [
   "popover", "progress", "radio-group", "resizable", "scroll-area",
   "segmented-control", "select", "sheet", "sidebar", "skeleton",
   "slider", "sonner", "speed-dial", "spinner", "split-button", "stepper",
-  "switch", "table", "tag", "text", "textarea", "thumbnail", "time-picker",
-  "title", "toggle-group", "toggle", "tooltip", "tree-select",
+  "switch", "table", "tag", "textarea", "thumbnail", "time-picker",
+  "toggle-group", "toggle", "tooltip", "tree-select",
 ]
 // Exceções conhecidas em 2026-10-28.
 const SEM_EXEMPLO = ["icon"]
