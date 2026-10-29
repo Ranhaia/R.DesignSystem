@@ -94,10 +94,17 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 `src/lib/component-docs.ts` até a migração (`H-replicar-doc-componentes`).
 
+- [box](box.md) — Container flexível e sem estilo próprio para agrupar e organizar elementos.
 - [button](button.md) — Dispara uma ação. Um primário por contexto.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
+- [direction](direction.md) — Entrega o sentido de leitura aos componentes; não renderiza nada.
+- [icon](icon.md) — Renderiza um glifo do Material Symbols com eixos variáveis.
+- [label](label.md) — Rótulo acessível associado a controles de formulário.
 - [separator](separator.md) — Linha fina entre grupos do mesmo container.
+- [skeleton](skeleton.md) — Placeholder com pulso que antecipa a forma do conteúdo.
 - [tabs](tabs.md) — Alterna visões do mesmo conteúdo sem sair da página.
+- [text](text.md) — Formata blocos de texto e parágrafos com escala tipográfica e semântica.
+- [title](title.md) — Aplica hierarquia visual e semântica a cabeçalhos e títulos de seções.
 
 ## Crédito
 

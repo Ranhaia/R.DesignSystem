@@ -1,0 +1,18 @@
+{
+  "slug": "direction",
+  "partes": [
+    "DirectionProvider"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "direction",
+      "parte": "DirectionProvider",
+      "tipo": "`React.ComponentProps<typeof Direction.DirectionProvider>[\"dir\"]`",
+      "padrao": null
+    }
+  ],
+  "tokens": [],
+  "compoe": []
+}

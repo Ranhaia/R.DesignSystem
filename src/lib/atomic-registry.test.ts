@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from "node:fs"
 import { join } from "node:path"
 import { describe, expect, it } from "vitest"
 
-import { atomicRegistry, utilitySlugs, type AtomicCategory } from "./atomic-registry"
+import { atomicRegistry, type AtomicCategory } from "./atomic-registry"
 
 // Trava do critério de camadas (ver o comentário no topo de
 // atomic-registry.ts): um componente só compõe componentes de camada
@@ -40,7 +40,15 @@ const componentes = readdirSync(UI_DIR)
 
 describe("todo componente de ui/ tem camada", () => {
   it.each(componentes)("%s", (slug) => {
-    expect(slug in atomicRegistry || utilitySlugs.includes(slug)).toBe(true)
+    expect(slug in atomicRegistry).toBe(true)
+  })
+})
+
+// Rafael, 2026-10-29: primitivo é a base que os outros consomem, e por isso pode não ter UI. O `direction` só entrega o
+// contexto de direção de texto, e é primitivo (não há mais "utilitário" fora das camadas).
+describe("primitivo é base e pode não ter UI", () => {
+  it("direction é primitivo", () => {
+    expect(atomicRegistry.direction).toBe("primitive")
   })
 })
 
