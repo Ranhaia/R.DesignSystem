@@ -66,7 +66,7 @@ export const MobilePelaDireita: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const trigger = canvas.getByRole("button", { name: /toggle sidebar/i })
+    const trigger = canvas.getByRole("button", { name: /alternar barra lateral/i })
     await userEvent.click(trigger)
 
     const drawer = await waitFor(

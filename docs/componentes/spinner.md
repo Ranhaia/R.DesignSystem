@@ -39,7 +39,7 @@ Usa: [`icon`](icon.md).
 | Prop | Tipo | Padrão | O que faz |
 |---|---|---|---|
 | `className` | `string` | — | Classes utilitárias para ajustar tamanho (ex.: `size-5`) ou cor (ex.: `text-primary`) |
-| `aria-label` | `string` | `"Loading"` | Nome acessível anunciado a tecnologias assistivas |
+| `aria-label` | `string` | `"Carregando"` | Nome acessível anunciado a tecnologias assistivas |
 | `...props` | `Omit<ComponentProps<"svg">, "name" \ | "fill">` | — | Demais propriedades SVG nativas repassadas ao elemento |
 
 ## Variantes
@@ -66,7 +66,7 @@ Um só: 16 px (`size-4`). Outros tamanhos devem ser aplicados via classes utilit
 - **Teclado:** Não recebe foco.
 - **Leitor de tela:** Possui papel `role="status"` e anuncia a propriedade `aria-label` quando inserido no DOM.
 - **Foco:** Não retém nem altera o foco do teclado; mantenha o foco no elemento acionador ou na área ativa.
-- **Cuidados:** O componente vem com `aria-label="Loading"` em inglês no código. Forneça sempre `aria-label` em português ("Carregando...") contextualizando a ação em andamento.
+- **Cuidados:** O padrão é `aria-label="Carregando"`, genérico. Quando houver contexto, passe um `aria-label` que diga o que está em andamento ("Salvando perfil"). Se um texto visível ao lado já anuncia o estado, esconda o spinner com `aria-hidden="true"` para não falar duas vezes.
 
 ## Tokens usados
 
@@ -74,13 +74,13 @@ Um só: 16 px (`size-4`). Outros tamanhos devem ser aplicados via classes utilit
 
 ## Faça
 
-- Passe um `aria-label` em português descrevendo a operação em andamento.
+- Passe um `aria-label` descrevendo a operação em andamento quando "Carregando" for vago demais.
 - Use dentro de botões ou cartões para sinalizar processamento localizado.
 - Prefira cores com contraste suficiente com o fundo sobre o qual o indicador gira.
 
 ## NÃO faça
 
-- Manter o rótulo padrão em inglês → passe `aria-label` descritivo em português.
+- Deixar o rótulo padrão numa tela com vários spinners ao mesmo tempo → passe `aria-label` que diferencie cada um ("Carregando comentários").
 - Usar para tarefas com percentual conhecido de conclusão → `progress`.
 - Usar em páginas inteiras cujo esqueleto estrutural é conhecido → `skeleton`.
 
