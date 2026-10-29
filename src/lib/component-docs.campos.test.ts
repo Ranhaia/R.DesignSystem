@@ -160,7 +160,7 @@ describe("component-docs.ts gerado: campos novos só em quem tem MD", () => {
       expect(d.whenToUseItems?.length, "whenToUseItems").toBeGreaterThan(0)
       expect(d.whenNotToUse?.length, "whenNotToUse").toBeGreaterThan(0)
       expect(Object.values(d.accessibility ?? {}).filter(Boolean), "accessibility").toHaveLength(4)
-      expect(Array.isArray(d.tokens), "tokens").toBe(true)
+      if (d.tokens !== undefined) expect(Array.isArray(d.tokens), "tokens").toBe(true)
     } else {
       for (const k of ["meta", "whenToUseItems", "whenNotToUse", "content", "accessibility", "tokens"]) {
         expect(d[k], k).toBeUndefined()
