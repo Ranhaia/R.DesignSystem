@@ -1,0 +1,61 @@
+{
+  "slug": "text",
+  "partes": [
+    "Text"
+  ],
+  "variantes": [],
+  "tamanhos": [
+    {
+      "valor": "caption",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "base",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "highlight",
+      "px": null,
+      "igualA": null
+    }
+  ],
+  "props": [
+    {
+      "nome": "size",
+      "parte": "Text",
+      "tipo": "`caption` · `base` · `highlight`",
+      "padrao": "base"
+    },
+    {
+      "nome": "weight",
+      "parte": "Text",
+      "tipo": "`regular` · `medium` · `bold`",
+      "padrao": "regular"
+    },
+    {
+      "nome": "muted",
+      "parte": "Text",
+      "tipo": "`true` · `false`",
+      "padrao": "false"
+    },
+    {
+      "nome": "as",
+      "parte": "Text",
+      "tipo": "`TextElement`",
+      "padrao": "p"
+    }
+  ],
+  "tokens": [
+    "font-bold",
+    "font-medium",
+    "font-normal",
+    "text-base",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm",
+    "text-xs"
+  ],
+  "compoe": []
+}
