@@ -483,25 +483,49 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   label: {
-    description: "Renderiza um rótulo acessível associado a controles de formulário.",
-    whenToUse: "Use para nomear um campo ou controle, associando-o via htmlFor para leitores de tela.",
+    description: "Rótulo acessível associado a controles de formulário. Identifica a finalidade do campo e amplia a área de clique para focar ou alternar o controle.",
+    whenToUse: "Nomear campos de formulário como inputs, textareas, checkboxes e switches. Fornecer um rótulo clicável que transfere o foco diretamente para o controle associado. Apresentar o título identificador de opções em grupos de escolha.",
     anatomy: [
-      { part: "Elemento raiz", description: "LabelPrimitive.Root, renderiza <label> com data-slot=\"label\"." },
+      { part: "Label", description: "Elemento raiz com data-slot=\"label\", tipografia text-sm font-medium e tratamento de estado desabilitado" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Disabled", description: "Herdado via group-data-[disabled=true] ou peer-disabled quando associado a um controle desativado." },
+      { name: "Padrão", description: "Texto em font-medium text-sm, selecionável sem foco próprio" },
+      { name: "Desabilitado", description: "Opacidade reduzida e cursor não permitido quando o controle associado está inativo" },
     ],
     sizes: [],
-    doGuidelines: ["Associe ao campo com htmlFor. Mantenha o texto curto e descritivo."],
-    dontGuidelines: ["Não use label para texto de ajuda ou instruções — use helpText. Não duplique label em Checkbox/Radio."],
-    code: `import { Label } from "@/components/ui/label"
+    doGuidelines: ["Vincule sempre a propriedade htmlFor ao id do controle correspondente.", "Mantenha o rótulo sempre visível acima ou ao lado do campo que identifica.", "Use texto conciso que descreva com clareza o dado solicitado."],
+    dontGuidelines: ["Usar texto de placeholder como substituto do rótulo visível → mantenha o Label acima do campo.", "Usar Label para parágrafos explicativos longos ou textos soltos → text.", "Agrupar campo, mensagem de ajuda e erro manualmente com Label solto → field."],
+    code: `import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
-<Label htmlFor="email">E-mail</Label>`,
+<div className="grid gap-2">
+  <Label htmlFor="email">E-mail</Label>
+  <Input id="email" type="email" placeholder="nome@exemplo.com" />
+</div>`,
     props: [
-      { name: "htmlFor", type: "string", description: "Associa o label ao id do controle." },
-      { name: "...props", type: "React.ComponentProps<typeof LabelPrimitive.Root>", description: "Demais props do Radix Label." },
+      { name: "htmlFor", type: "string", default: "—", description: "Identificador do elemento de formulário associado a este rótulo" },
+    ],
+    meta: {
+      nome: "Label",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/label.tsx",
+      story: "src/components/ui/label.stories.tsx",
+      vizinhos: ["field", "text", "tooltip"],
+    },
+    whenToUseItems: ["Nomear campos de formulário como inputs, textareas, checkboxes e switches.", "Fornecer um rótulo clicável que transfere o foco diretamente para o controle associado.", "Apresentar o título identificador de opções em grupos de escolha."],
+    whenNotToUse: ["Compor campo com rótulo, descrição de ajuda e mensagem de erro estruturados → field.", "Exibir texto informativo que não está associado a nenhum controle de formulário → text.", "Explicar um conceito complexo ou termo técnico em uma dica suspensa → tooltip."],
+    content: ["Rótulo curto e direto, sem ponto final e sem dois-pontos: \"Nome completo\", \"E-mail\".", "Indique termos opcionais com a palavra \"(opcional)\" por extenso quando a maioria dos campos for obrigatória.", "Nunca use o texto de exemplo (placeholder) em substituição ao rótulo visível."],
+    accessibility: {
+      keyboard: "Não recebe foco pelo Tab. Clicar no rótulo transfere o foco automaticamente para o controle referenciado por htmlFor.",
+      screenReader: "Anunciado como nome acessível do controle ao qual está associado via htmlFor ou quando envolve o elemento de entrada.",
+      focus: "Não retém foco próprio. Ao receber clique, encaminha o foco para o controle interativo associado.",
+      cautions: "Sempre associe o rótulo ao campo correspondente através de htmlFor casando com o id do elemento, garantindo conformidade com a WCAG 1.3.1 e 3.3.2.",
+    },
+    tokens: [
+      { contexto: "Tipografia", itens: ["font-medium", "leading-none", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2"] },
     ],
   },
   progress: {
