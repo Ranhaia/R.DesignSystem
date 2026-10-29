@@ -32,12 +32,16 @@ final fala do componente do R.DS.
 
 **G** = gerada por `npm run docs:registrar`. **A** = escrita pelo auditor.
 
+Os números de itens de Quando usar, Quando NÃO usar, Faça e NÃO faça seguem o molde curto da página de componente
+(`H-doc-pagina-condensada`), mais estrito que o do PASSI. A trava é `LIMITES_ITENS` em
+`src/lib/memoria-componentes.test.ts`.
+
 | Seção | Quem | Critério de aceite |
 |---|---|---|
 | Frontmatter | G + A | Gerados: `slug`, `nome`, `camada`, `codigo`, `story`, `sinonimos` (de `docs/sinonimos.json`). Do auditor: `vizinhos` (ao menos 1, os que a IA confunde com este) e `referencias` (ao menos 1: `passi:<arquivo>`, `shadcn:<slug>`, `spec:<slug>`). `status: piloto` até a revisão do Rafael, depois `estavel` |
 | Título e frase | A | 1 ou 2 frases: o que é e o que resolve. Sem "componente que permite". Ex.: "Dispara uma ação. O texto diz exatamente o que vai acontecer." |
-| Quando usar | A | De 2 a 4 situações concretas, com um caso real ("Detalhes, Histórico, Arquivos") |
-| Quando NÃO usar | A | Cada item: situação → `slug` que existe. Tire das arestas abaixo |
+| Quando usar | A | De 2 a 3 situações concretas, com um caso real ("Detalhes, Histórico, Arquivos") |
+| Quando NÃO usar | A | De 2 a 3 itens, cada um: situação → `slug` que existe. Tire das arestas abaixo. Passou de 3: funda os que apontam para a mesma direção e deixe o resto em `vizinhos`, onde a IA ainda o acha |
 | Anatomia | G + A | O código lista as partes. O auditor descreve cada uma e acrescenta as partes visuais que não são funções (ícone, texto) |
 | Composição | G | Não se edita |
 | Props | G + A | O código preenche as props próprias. O auditor acrescenta as herdadas que importam (do Radix: `value`, `open`…), com a parte entre parênteses: `` `value` (Tabs) `` |
@@ -46,8 +50,8 @@ final fala do componente do R.DS.
 | Conteúdo | A | De 2 a 4 regras de texto **desta peça**, com exemplo literal: classe gramatical (verbo no botão, substantivo na aba), limite (até 3 palavras), pontuação (sem ponto final em rótulo, nunca exclamação). As regras gerais vão morar em `docs/conteudo/`; não repita. Peça sem texto: "Não tem texto próprio", mais onde o texto mora |
 | Acessibilidade | A | As 4 chaves, cada uma verificável. **Teclado:** teclas e o que fazem; sem foco, "Não recebe foco". **Leitor de tela:** papel ARIA, de onde vem o nome acessível, o que é anunciado. **Foco:** para onde vai ao abrir, fechar e agir. **Cuidados:** a armadilha conhecida, com o critério WCAG quando houver |
 | Tokens usados | G | Não se edita |
-| Faça | A | De 3 a 5 itens no imperativo: o melhor uso |
-| NÃO faça | A | De 3 a 5 itens, cada um no formato "erro → alternativa" (outro slug, outra variante ou o jeito certo). Os limites de quantidade do PASSI valem como baliza |
+| Faça | A | 3 itens no imperativo: o melhor uso |
+| NÃO faça | A | 3 itens, cada um no formato "erro → alternativa" (outro slug, outra variante ou o jeito certo). Não repita um item de "Quando NÃO usar" |
 | Exemplo mínimo | A | TSX com `import … from "@/components/ui/<slug>"`, só o necessário, com o texto em pt-BR seguindo a seção Conteúdo |
 
 ### Critérios WCAG que o PASSI usa em Cuidados

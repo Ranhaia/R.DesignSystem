@@ -24,9 +24,7 @@ preencher, escolher. O resto da página fica inerte e escurecido.
 
 - Confirmar ação destrutiva ("Excluir capítulo?") → `alert-dialog`.
 - Confirmação que não pede resposta ("Link copiado") → `sonner`.
-- Conteúdo longo ou formulário extenso → uma página, ou `sheet`.
-- No celular, ações sobre um item → `drawer`.
-- Ação simples que cabe num painel pequeno → `popover`.
+- Conteúdo longo ou formulário extenso → uma página, ou `sheet`; no celular, ações sobre um item → `drawer`.
 
 ## Anatomia
 

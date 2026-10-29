@@ -25,7 +25,6 @@ página. A aba ativa fica destacada para a pessoa saber onde está.
 - Etapas em sequência → `stepper`.
 - Filtrar ou alternar a visão de uma área, sem painel próprio → `segmented-control`.
 - Ir para outra página → `navigation-menu` ou `link`.
-- Conteúdo que precisa ser visto ao mesmo tempo → deixe aberto, ou `accordion`.
 
 ## Anatomia
 
