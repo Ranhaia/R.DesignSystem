@@ -29,6 +29,24 @@ export interface ComponentDoc {
   dontGuidelines: string[]
   code: string
   props: ComponentDocProp[]
+  meta?: {
+    nome: string
+    camada: string
+    status: string
+    codigo: string
+    story: string
+    vizinhos: string[]
+  }
+  whenToUseItems?: string[]
+  whenNotToUse?: string[]
+  content?: string[]
+  accessibility?: {
+    keyboard: string
+    screenReader: string
+    focus: string
+    cautions: string
+  }
+  tokens?: string[]
 }
 
 export const componentDocs: Record<string, ComponentDoc> = {
@@ -95,6 +113,24 @@ import { Icon } from "@/components/ui/icon"
       { name: "size (ButtonSkeleton)", type: "xs · sm · default · md · lg · xl · icon-xs · icon-sm · icon · icon-md · icon-lg · icon-xl", default: "default", description: "Mesma altura do botão que ele substitui" },
       { name: "fullWidth (ButtonSkeleton)", type: "boolean", default: "false", description: "Ocupa 100% da largura, como o botão" },
     ],
+    meta: {
+      nome: "Button",
+      camada: "atom",
+      status: "estavel",
+      codigo: "src/components/ui/button.tsx",
+      story: "src/components/ui/button.stories.tsx",
+      vizinhos: ["link", "icon-button", "split-button", "button-group"],
+    },
+    whenToUseItems: ["Confirmar, enviar, criar, excluir: ações que mudam algo.", "Abrir uma janela ou painel desta mesma tela."],
+    whenNotToUse: ["Leva para outra página ou site → link (ou <Button asChild><Link/></Button> só se o visual de botão for exigido).", "Só ícone, sem texto → icon-button.", "Ação principal com variações (salvar / salvar como) → split-button."],
+    content: ["Verbo + objeto, até 3 palavras: Salvar alterações, Criar conta.", "Use o mesmo verbo do título da janela ou da página.", "Sem ponto final e sem exclamação."],
+    accessibility: {
+      keyboard: "Tab chega ao botão; Enter ou Espaço executam.",
+      screenReader: "papel button; o nome é o texto. Só ícone → aria-label obrigatório.",
+      focus: "depois da ação, o foco fica no botão — salvo se abrir janela ou trocar de tela.",
+      cautions: "durante carregamento use aria-disabled (não disabled): disabled joga o foco para o <body>. Mantenha o texto ou anuncie \"Salvando\".",
+    },
+    tokens: ["--ai-gradient-hover", "--ai-gradient-rest", "--scale-pressed", "bg-accent", "bg-ai-surface", "bg-ai-surface-highlight", "bg-destructive", "bg-input", "bg-primary", "bg-secondary", "border-ai-interactive", "border-ai-interactive-hover", "border-destructive", "border-input", "border-ring", "duration-motion-fast", "ease-spring", "ring-destructive", "ring-ring", "rounded-md", "shadow-sm", "shadow-xs", "text-accent-foreground", "text-ai-text-high", "text-primary", "text-primary-foreground", "text-secondary-foreground"],
   },
   avatar: {
     description: "Um elemento de imagem com um fallback para representar o usuário.",
@@ -544,6 +580,24 @@ import { Label } from "@/components/ui/label"
       { name: "orientation", type: "horizontal · vertical", default: "horizontal", description: "Direção da linha" },
       { name: "decorative", type: "boolean", default: "true", description: "true esconde do leitor de tela (role=\"none\"). false anuncia como separador (role=\"separator\")" },
     ],
+    meta: {
+      nome: "Separator",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/separator.tsx",
+      story: "src/components/ui/separator.stories.tsx",
+      vizinhos: ["field", "button-group", "dropdown-menu"],
+    },
+    whenToUseItems: ["Separar grupos dentro do mesmo container: blocos de um card, grupos de um painel.", "Separar itens lado a lado numa barra de texto: Blog | Documentação | Código-fonte."],
+    whenNotToUse: ["Separar os itens de uma lista curta → espaço no container (gap-*, space-y-*).", "Separador dentro de menu, grupo de botões ou formulário → o da própria peça: DropdownMenuSeparator (dropdown-menu), ButtonGroupSeparator (button-group), FieldSeparator (field).", "Linha com texto (\"ou continue com\") → FieldSeparator do field, que aceita texto.", "Marcar o começo de uma seção da página → um título (title) acima dela."],
+    content: ["Não tem texto próprio. Para linha com texto, use FieldSeparator com uma ou duas palavras em minúsculas: \"ou\"."],
+    accessibility: {
+      keyboard: "Não recebe foco.",
+      screenReader: "Com decorative (padrão), fica fora da árvore de acessibilidade. Com decorative={false}, é anunciado como separador.",
+      focus: "Nenhum.",
+      cautions: "A linha decorativa não precisa de contraste mínimo, mas nenhuma informação pode depender só dela. Seção de verdade se marca com título, não com a linha.",
+    },
+    tokens: ["bg-border"],
   },
   skeleton: {
     description: "Use para mostrar um espaço reservado (placeholder) enquanto o conteúdo está carregando.",
@@ -2436,6 +2490,24 @@ import { Button } from "@/components/ui/button"
       { name: "showCloseButton (DialogFooter)", type: "boolean", default: "false", description: "Acrescenta um botão outline de fechar" },
       { name: "onEscapeKeyDown · onPointerDownOutside (Content)", type: "evento", default: "—", description: "Impedir fechar por Esc ou clique fora" },
     ],
+    meta: {
+      nome: "Dialog",
+      camada: "organism",
+      status: "estavel",
+      codigo: "src/components/ui/dialog.tsx",
+      story: "src/components/ui/dialog.stories.tsx",
+      vizinhos: ["alert-dialog", "sheet", "drawer", "popover", "sonner"],
+    },
+    whenToUseItems: ["Tarefa curta que precisa de atenção total antes de voltar ao fluxo.", "Formulário de poucos campos ligado ao que está na tela."],
+    whenNotToUse: ["Confirmar ação destrutiva (\"Excluir capítulo?\") → alert-dialog.", "Confirmação que não pede resposta (\"Link copiado\") → sonner.", "Conteúdo longo ou formulário extenso → uma página, ou sheet.", "No celular, ações sobre um item → drawer.", "Ação simples que cabe num painel pequeno → popover."],
+    content: ["Título como ação ou pergunta: \"Editar perfil\".", "A descrição diz o que acontece ao confirmar.", "O botão principal repete o verbo do título: \"Salvar perfil\", não \"OK\"."],
+    accessibility: {
+      keyboard: "Tab e Shift+Tab ficam presos na janela. Esc fecha.",
+      screenReader: "papel dialog modal; DialogTitle vira o nome e DialogDescription a descrição. O resto da página fica inacessível enquanto aberto. Título é obrigatório — sem ele, a Radix avisa no console.",
+      focus: "ao abrir, vai para o primeiro elemento focável. Ao fechar, volta para o gatilho.",
+      cautions: "⚠️ o \"X\" anuncia \"Close\" e o botão do DialogFooter diz \"Close\" — em inglês. Até corrigir, passe showCloseButton={false} no footer e use um DialogClose com texto em português.",
+    },
+    tokens: ["bg-accent", "bg-popover", "duration-motion-base", "ring-offset-background", "ring-ring", "rounded-lg", "shadow-lg", "text-muted-foreground", "text-popover-foreground"],
   },
   "dropdown-menu": {
     description: "Exibe um menu para o usuário — como um conjunto de ações ou funções — acionado por um botão.",
@@ -3012,6 +3084,24 @@ import { Button } from "@/components/ui/button"
       { name: "value (Trigger, Content)", type: "string", default: "—", description: "Liga a aba ao painel. Obrigatório" },
       { name: "disabled (Trigger)", type: "boolean", default: "false", description: "Desabilita uma aba" },
     ],
+    meta: {
+      nome: "Tabs",
+      camada: "molecule",
+      status: "estavel",
+      codigo: "src/components/ui/tabs.tsx",
+      story: "src/components/ui/tabs.stories.tsx",
+      vizinhos: ["segmented-control", "stepper", "navigation-menu", "accordion"],
+    },
+    whenToUseItems: ["Visões relacionadas do mesmo contexto: Detalhes, Histórico, Arquivos.", "Conteúdo que a pessoa consulta uma parte por vez."],
+    whenNotToUse: ["Etapas em sequência → stepper.", "Filtrar ou alternar a visão de uma área, sem painel próprio → segmented-control.", "Ir para outra página → navigation-menu ou link.", "Conteúdo que precisa ser visto ao mesmo tempo → deixe aberto, ou accordion."],
+    content: ["Uma ou duas palavras por aba: Detalhes, Histórico.", "Substantivos, não verbos."],
+    accessibility: {
+      keyboard: "Tab entra na lista e para na aba ativa. Setas trocam de aba (↑↓ na vertical). Tab de novo leva ao painel.",
+      screenReader: "papéis tablist, tab e tabpanel (Radix). Anuncia a aba, se está selecionada e a posição (\"2 de 4\").",
+      focus: "anel na aba. Na line, a ativa se diferencia também pela linha, não só pela cor.",
+      cautions: "abas trocam conteúdo na mesma página. Para levar a outra página, use navegação.",
+    },
+    tokens: ["--scale-pressed", "bg-background", "bg-foreground", "bg-muted", "bg-secondary", "border-input", "border-ring", "duration-motion-base", "duration-motion-fast", "ease-spring", "outline-ring", "radius-inset-0.75", "ring-ring", "rounded-inner", "rounded-outer-lg", "shadow-sm", "text-foreground", "text-muted-foreground"],
   },
   sonner: {
     description: "Um componente de notificação toast opinativo para React.",
