@@ -1,0 +1,66 @@
+{
+  "slug": "stepper",
+  "partes": [
+    "Stepper",
+    "StepperItem",
+    "StepperTrigger",
+    "StepperIndicator",
+    "StepperTitle"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "value",
+      "parte": "Stepper",
+      "tipo": "`number`",
+      "padrao": null
+    },
+    {
+      "nome": "onValueChange",
+      "parte": "Stepper",
+      "tipo": "`(step: number) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "orientation",
+      "parte": "Stepper",
+      "tipo": "`horizontal` · `vertical`",
+      "padrao": "horizontal"
+    },
+    {
+      "nome": "children",
+      "parte": "Stepper",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-background",
+    "bg-border",
+    "bg-primary",
+    "border-border",
+    "border-primary",
+    "border-ring",
+    "font-medium",
+    "gap-1.5",
+    "gap-2",
+    "gap-3",
+    "h-6",
+    "h-px",
+    "ml-4",
+    "mt-4",
+    "ring-ring",
+    "rounded-full",
+    "rounded-md",
+    "size-8",
+    "text-muted-foreground",
+    "text-primary",
+    "text-primary-foreground",
+    "text-sm",
+    "w-px"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

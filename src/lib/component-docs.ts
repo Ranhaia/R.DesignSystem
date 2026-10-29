@@ -1019,27 +1019,25 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
     ],
   },
   stepper: {
-    description: "Indicador de progresso que guia o usuário através de um processo dividido em múltiplas etapas, mostrando quais já foram concluídas, qual está em andamento e quais ainda faltam.",
-    whenToUse: "Use em formulários e assistentes (wizards) com múltiplas etapas, fluxos de onboarding, ou processos complexos divididos em etapas (ex.: checkout, configuração de conta).",
+    description: "Indicador de progresso sequencial que guia o usuário através de um processo dividido em etapas. Mostra quais passos já foram concluídos, qual está em andamento e quais ainda faltam.",
+    whenToUse: "Fluxos lineares divididos em passos sequenciais (ex.: checkout, cadastro em etapas, wizards de configuração). Formulários extensos com dependência lógica entre as fases de preenchimento. Processos de onboarding com progresso claro de 3 a 5 etapas.",
     anatomy: [
-      { part: "Stepper (root)", description: "<ol data-slot=\"stepper\"> — controla `value` (índice 0-based da etapa atual) e `orientation`. Injeta o estado (completed/current/upcoming) de cada StepperItem filho via Context, pela posição do filho na lista de children — numeração automática, o chamador nunca passa um índice à mão. Também gera o conector entre etapas automaticamente (não é subcomponente exportado)." },
-      { part: "StepperItem", description: "<li data-slot=\"stepper-item\" data-state> — uma etapa. Não recebe índice explícito; lê o próprio estado do Context injetado pelo Stepper pai." },
-      { part: "StepperTrigger", description: "Elemento clicável (<button>) ou não (<div>) — decide sozinho com base em onValueChange estar presente no Stepper pai. Agrupa StepperIndicator + StepperTitle. Carrega aria-current=\"step\" na etapa atual." },
-      { part: "StepperIndicator", description: "Círculo numerado — contorno neutro se upcoming, contorno --primary se current, preenchido --primary com ícone de check se completed." },
-      { part: "StepperTitle", description: "Label textual da etapa." },
-      { part: "Conector (interno)", description: "<li aria-hidden=\"true\" data-slot=\"stepper-separator\"> gerado pelo Stepper entre cada par de StepperItem — linha horizontal ou vertical, colorida em --primary quando a etapa anterior está completed." },
+      { part: "Stepper", description: "Raiz em lista ordenada que controla o índice da etapa e gera os conectores" },
+      { part: "StepperItem", description: "Item de lista que representa uma etapa individual e provê o contexto" },
+      { part: "StepperTrigger", description: "Gatilho interativo ou visual que agrupa indicador e título" },
+      { part: "StepperIndicator", description: "Círculo que exibe o número da etapa ou ícone de check quando concluída" },
+      { part: "StepperTitle", description: "Rótulo textual com o nome da etapa" },
     ],
     variants: [],
     states: [
-      { name: "Upcoming", description: "Etapa ainda não alcançada — indicador com contorno neutro (--border), número visível, título em --muted-foreground." },
-      { name: "Current", description: "Etapa ativa — indicador com contorno --primary, aria-current=\"step\" no trigger." },
-      { name: "Completed", description: "Etapa já concluída — indicador preenchido --primary com ícone de check (aria-hidden), conector adjacente também em --primary." },
-      { name: "Clicável (opcional)", description: "Só quando Stepper recebe onValueChange — o trigger vira <button> real: focável via Tab, ativável via Enter/Space (comportamento nativo), com focus-visible:ring herdado do padrão do catálogo (mesmas classes de AccordionTrigger)." },
-      { name: "Somente-leitura", description: "Sem onValueChange — trigger vira <div> não-interativo (não focável, sem cursor de ponteiro). Uso típico: mostrar progresso sem permitir navegação livre entre etapas." },
+      { name: "Concluído", description: "Círculo preenchido bg-primary text-primary-foreground com ícone de check e conector colorido" },
+      { name: "Atual", description: "Círculo com borda border-primary text-primary e atributo aria-current=\"step\"" },
+      { name: "Próximo", description: "Círculo neutro border-border text-muted-foreground com número da etapa" },
+      { name: "Foco", description: "Anel focus-visible:ring-ring visível no gatilho interativo" },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use de 3 a 5 etapas com títulos claros e objetivos.", "Permita que o usuário volte para etapas já concluídas para revisar informações.", "Use a orientação vertical em telas compactas ou quando os títulos forem longos."],
+    dontGuidelines: ["Mais de 5 etapas consecutivas no fluxo → use tabs para agrupar seções.", "Usar stepper para navegação livre e não ordenada → use tabs.", "Pular etapas sem validação ou aviso explícito → stepper."],
     code: `import {
   Stepper,
   StepperIndicator,
@@ -1048,97 +1046,122 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
   StepperTrigger,
 } from "@/components/ui/stepper"
 
-const steps = ["Dados pessoais", "Endereço", "Confirmação"]
-
-function Exemplo() {
-  const [currentStep, setCurrentStep] = React.useState(0)
-
-  return (
-    <Stepper value={currentStep} onValueChange={setCurrentStep}>
-      {steps.map((label) => (
-        <StepperItem key={label}>
-          <StepperTrigger>
-            <StepperIndicator />
-            <StepperTitle>{label}</StepperTitle>
-          </StepperTrigger>
-        </StepperItem>
-      ))}
-    </Stepper>
-  )
-}
-
-// Orientação vertical
-<Stepper value={1} orientation="vertical">...</Stepper>
-
-// Somente-leitura (sem onValueChange — trigger não é clicável)
-<Stepper value={0}>...</Stepper>`,
+<Stepper value={1} orientation="horizontal">
+  <StepperItem>
+    <StepperTrigger>
+      <StepperIndicator />
+      <StepperTitle>Dados pessoais</StepperTitle>
+    </StepperTrigger>
+  </StepperItem>
+  <StepperItem>
+    <StepperTrigger>
+      <StepperIndicator />
+      <StepperTitle>Endereço</StepperTitle>
+    </StepperTrigger>
+  </StepperItem>
+  <StepperItem>
+    <StepperTrigger>
+      <StepperIndicator />
+      <StepperTitle>Confirmação</StepperTitle>
+    </StepperTrigger>
+  </StepperItem>
+</Stepper>`,
     props: [
-      { name: "value", type: "number", description: "(Stepper) Índice (0-based) da etapa atual. Sempre controlado — sem modo não-controlado/defaultValue." },
-      { name: "onValueChange", type: "(step: number) => void", description: "(Stepper) Callback disparado ao clicar numa etapa. Presença desta prop decide se StepperTrigger renderiza <button> (clicável) ou <div> (somente-leitura)." },
-      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "(Stepper) Direção do layout." },
-      { name: "children", type: "React.ReactNode", description: "(StepperIndicator) Conteúdo do círculo quando a etapa não está completed. Default: número da etapa (step + 1). Ignorado quando completed (sempre mostra o ícone de check)." },
-      { name: "...props", type: "React.ComponentProps<\"ol\"> | React.ComponentProps<\"li\"> | React.ComponentProps<\"button\"> | React.ComponentProps<\"span\">", description: "Demais atributos nativos do elemento raiz de cada subcomponente." },
+      { name: "value", type: "number", default: "—", description: "Índice 0-based da etapa atual em andamento" },
+      { name: "onValueChange", type: "(step: number) => void", default: "—", description: "Callback de clique que torna os gatilhos botões interativos" },
+      { name: "orientation", type: "horizontal · vertical", default: "horizontal", description: "Direção do layout dos passos" },
+      { name: "children", type: "React.ReactNode", default: "—", description: "Lista de elementos StepperItem que compõem o fluxo" },
+    ],
+    meta: {
+      nome: "Stepper",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/stepper.tsx",
+      story: "src/components/ui/stepper.stories.tsx",
+      vizinhos: ["tabs", "progress", "pagination"],
+    },
+    whenToUseItems: ["Fluxos lineares divididos em passos sequenciais (ex.: checkout, cadastro em etapas, wizards de configuração).", "Formulários extensos com dependência lógica entre as fases de preenchimento.", "Processos de onboarding com progresso claro de 3 a 5 etapas."],
+    whenNotToUse: ["Navegação livre entre seções sem ordem obrigatória → tabs.", "Barra contínua de carregamento ou progresso percentual sem etapas discretas → progress.", "Paginação numérica de tabelas ou listagens de dados → pagination."],
+    content: ["Títulos curtos no imperativo ou substantivo indicando a fase: \"Dados pessoais\", \"Endereço\", \"Confirmação\".", "Mantenha entre 3 e 5 etapas para evitar fadiga cognitiva.", "Opcionalmente exiba a contagem explícita na tela: \"Etapa 2 de 4\".", "Sem ponto final nos títulos das etapas."],
+    accessibility: {
+      keyboard: "Quando onValueChange é fornecido, cada StepperTrigger vira um <button> navegável por Tab e acionável por Enter ou Espaço. Sem callback, renderiza como <div> sem foco.",
+      screenReader: "Estruturado em <ol> com itens <li>. A etapa ativa recebe aria-current=\"step\". O ícone de check da etapa concluída possui aria-hidden=\"true\".",
+      focus: "Anel de foco com 3 px em focus-visible. Ao avançar de etapa programaticamente, recomenda-se deslocar o foco para o título da nova etapa.",
+      cautions: "Não peça novamente informações já preenchidas em etapas anteriores (WCAG 3.3.7). Garanta que etapas concluídas permitam retorno se o usuário precisar corrigir dados.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-background", "bg-border", "bg-primary", "border-border", "border-primary", "border-ring", "text-muted-foreground", "text-primary", "text-primary-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1.5", "gap-2", "gap-3", "h-6", "h-px", "ml-4", "mt-4", "size-8", "w-px"] },
+      { contexto: "Raio", itens: ["rounded-full", "rounded-md"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   "split-button": {
-    description: "Combina um botão de ação primária com um menu suspenso de ações secundárias relacionadas, permitindo que o usuário acesse rapidamente a opção mais usada, com a opção de escolher outras ações relacionadas através de um menu.",
-    whenToUse: "Use quando existe uma ação principal clara e mais frequente, mas também existem uma ou mais ações secundárias relacionadas que fazem sentido no mesmo lugar (ex: \"Salvar\" como principal, com \"Salvar como rascunho\"/\"Salvar e sair\" como secundárias). Não é substituto de um DropdownMenu genérico: o botão principal precisa executar uma ação por si só, sem abrir o menu. Se todas as opções tiverem peso igual (nenhuma é \"a ação mais comum\"), prefira um DropdownMenu simples ou um ButtonGroup com botões separados.",
+    description: "Combina uma ação principal direta com um menu suspenso de ações secundárias relacionadas. Permite executar o comando mais frequente com um clique e acessar variações pelo gatilho lateral.",
+    whenToUse: "Ação primária frequente que possui alternativas correlatas (ex.: \"Salvar\" como principal e \"Salvar como rascunho\" no menu). Envio ou publicação de dados com opções adicionais de agendamento ou exportação. Otimização de espaço na interface unificando comandos relacionados em uma peça única.",
     anatomy: [
-      { part: "Elemento raiz", description: "ButtonGroup (já existente no catálogo) com data-slot=\"split-button\" sobrescrevendo o data-slot=\"button-group\" padrão — visual \"colado\" herdado de graça do ButtonGroup." },
-      { part: "Botão de ação principal", description: "Button com label/icon/onClick repassados diretamente. Sempre a primeira peça do grupo." },
-      { part: "Trigger do menu (ícone-only)", description: "Button size=\"icon\"/\"icon-sm\"/\"icon-lg\" dentro de DropdownMenuTrigger asChild, contendo <Icon name=\"keyboard_arrow_down\" />. Precisa de aria-label próprio (prop triggerLabel) por ser ícone-only." },
-      { part: "Menu suspenso", description: "DropdownMenu + DropdownMenuContent (já existentes) — abre a partir do trigger, alinhamento controlável via prop align (default \"end\")." },
-      { part: "Itens do menu", description: "Composição via children — DropdownMenuItem/DropdownMenuSeparator/DropdownMenuLabel etc., os mesmos subcomponentes já exportados por dropdown-menu.tsx." },
+      { part: "SplitButton", description: "Raiz que agrupa o botão de ação principal e o gatilho com menu suspenso" },
+      { part: "Botão principal (interno)", description: "Botão que executa a ação prioritária imediata via clique" },
+      { part: "Gatilho do menu (interno)", description: "Botão compacto só com ícone que abre o menu suspenso" },
+      { part: "Menu suspenso (interno)", description: "Painel flutuante que renderiza as ações secundárias" },
     ],
-    variants: [
-      { name: "Default", value: "default", description: "Ação principal com maior ênfase visual (bg-primary)." },
-      { name: "Secondary", value: "secondary", description: "Ênfase intermediária." },
-      { name: "Outline", value: "outline", description: "Borda, sem preenchimento sólido." },
-      { name: "Ghost", value: "ghost", description: "Sem superfície própria — sem borda, o efeito \"colado\" do ButtonGroup fica menos perceptível (mesma limitação inerente ao Button)." },
-      { name: "Destructive", value: "destructive", description: "Ação principal destrutiva." },
-      { name: "Link", value: "link", description: "Texto puro — mesma nota de \"ghost\" acima sobre o efeito \"colado\"." },
-    ],
+    variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Hover", description: "Herdado do Button — cada botão (principal e trigger) reage independentemente." },
-      { name: "Focus", description: "Herdado do Button (focus-visible:ring) — o [&>*]:focus-visible:z-10 do ButtonGroup garante que o anel de foco não fica cortado pelo botão vizinho colado." },
-      { name: "Disabled", description: "prop disabled na raiz — desativa o botão principal e o trigger do menu juntos." },
-      { name: "Menu aberto/fechado", description: "Controlado internamente pelo DropdownMenu/Radix — sem prop de controle externo." },
+      { name: "Padrão", description: "Botão principal e gatilho unidos com cantos externos arredondados" },
+      { name: "Hover", description: "Destaque individual sobre o botão principal ou sobre o gatilho" },
+      { name: "Pressionado", description: "Feedback tátil no botão acionado" },
+      { name: "Foco", description: "Anel de foco visível na peça que está com foco no teclado" },
+      { name: "Desabilitado", description: "Ambos os botões com opacidade reduzida e cliques bloqueados" },
     ],
-    sizes: [
-      { name: "Small", value: "sm", description: "Botão principal size sm; trigger deriva icon-sm." },
-      { name: "Default", value: "default", description: "Botão principal size default; trigger deriva icon." },
-      { name: "Large", value: "lg", description: "Botão principal size lg; trigger deriva icon-lg." },
-    ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    sizes: [],
+    doGuidelines: ["Use para ações que possuem uma escolha padrão predominante acompanhada de alternativas.", "Forneça um triggerLabel contextual que explique quais opções adicionais o menu oferece.", "Mantenha a mesma variante visual entre a ação primária e as opções secundárias."],
+    dontGuidelines: ["Opções com pesos iguais sem uma preferencial → button-group.", "Lista longa de opções sem ação padrão direta → dropdown-menu.", "Omitir o triggerLabel deixando o gatilho com rótulo genérico → passe triggerLabel contextualizado em split-button."],
     code: `import { SplitButton } from "@/components/ui/split-button"
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { Icon } from "@/components/ui/icon"
 
-<SplitButton label="Salvar" onClick={handleSave}>
-  <DropdownMenuItem onClick={handleSaveAsDraft}>
+<SplitButton
+  label="Salvar"
+  onClick={() => {}}
+  triggerLabel="Mais opções de salvamento"
+>
+  <DropdownMenuItem onClick={() => {}}>
     <Icon name="draft" />
-    Salvar como rascunho
+    <span>Salvar como rascunho</span>
   </DropdownMenuItem>
-  <DropdownMenuItem onClick={handleSaveAndExit}>
+  <DropdownMenuItem onClick={() => {}}>
     <Icon name="logout" />
-    Salvar e sair
+    <span>Salvar e sair</span>
   </DropdownMenuItem>
 </SplitButton>`,
     props: [
-      { name: "label", type: "React.ReactNode", description: "Texto da ação principal — nome acessível do botão principal (obrigatório)." },
-      { name: "icon", type: "React.ReactNode", description: "Ícone opcional antes do label, na ação principal." },
-      { name: "onClick", type: "() => void", description: "Handler da ação principal." },
-      { name: "variant", type: "\"default\" | \"secondary\" | \"outline\" | \"ghost\" | \"destructive\" | \"link\"", default: "\"default\"", description: "Estilo visual — aplicado ao botão principal e ao trigger do menu." },
-      { name: "size", type: "\"default\" | \"sm\" | \"lg\"", default: "\"default\"", description: "Tamanho do botão principal; o trigger deriva o size ícone-only correspondente." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa toda a composição (botão principal + trigger do menu)." },
-      { name: "triggerLabel", type: "string", default: "\"Mais ações\"", description: "aria-label do botão-trigger do menu (ícone-only)." },
-      { name: "align", type: "\"start\" | \"center\" | \"end\"", default: "\"end\"", description: "Alinhamento do menu suspenso em relação ao trigger." },
-      { name: "children", type: "React.ReactNode", description: "Itens do menu, compostos via DropdownMenuItem/DropdownMenuSeparator/etc (obrigatório)." },
-      { name: "className", type: "string", description: "Aplicado ao ButtonGroup raiz." },
-      { name: "...props", type: "Omit<React.ComponentProps<typeof ButtonGroup>, \"children\" | \"orientation\">", description: "Demais atributos nativos repassados ao ButtonGroup raiz." },
+      { name: "label", type: "React.ReactNode", default: "—", description: "Rótulo de texto da ação principal" },
+      { name: "icon", type: "React.ReactNode", default: "—", description: "Ícone opcional no botão principal" },
+      { name: "onClick", type: "() => void", default: "—", description: "Callback de clique da ação principal" },
+      { name: "variant", type: "default · secondary · outline · ghost · destructive · link", default: "default", description: "Estilo visual aplicado a ambas as peças" },
+      { name: "size", type: "default · sm · lg", default: "default", description: "Tamanho do botão principal" },
+      { name: "disabled", type: "boolean", default: "false", description: "Desativa o botão principal e o gatilho" },
+      { name: "triggerLabel", type: "string", default: "Mais ações", description: "Nome acessível do gatilho do menu" },
+      { name: "align", type: "start · center · end", default: "end", description: "Alinhamento do menu suspenso" },
     ],
+    meta: {
+      nome: "Split Button",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/split-button.tsx",
+      story: "src/components/ui/split-button.stories.tsx",
+      vizinhos: ["button", "button-group", "dropdown-menu"],
+    },
+    whenToUseItems: ["Ação primária frequente que possui alternativas correlatas (ex.: \"Salvar\" como principal e \"Salvar como rascunho\" no menu).", "Envio ou publicação de dados com opções adicionais de agendamento ou exportação.", "Otimização de espaço na interface unificando comandos relacionados em uma peça única."],
+    whenNotToUse: ["Ações independentes sem relação hierárquica clara de prioridade → button-group.", "Ação simples e isolada sem variações → button.", "Apenas uma lista de comandos sem nenhuma ação direta primária → dropdown-menu."],
+    content: ["Rótulo do botão principal inicia com verbo no infinitivo ou imperativo: \"Salvar\", \"Publicar\" ou \"Enviar\".", "Itens do menu secundário detalham as variações: \"Salvar como rascunho\", \"Salvar e fechar\".", "Prop triggerLabel deve ser descritiva para tecnologias assistivas: \"Mais opções de salvamento\".", "Sem ponto final em rótulos e itens de menu."],
+    accessibility: {
+      keyboard: "O botão principal e o gatilho recebem foco sequencial via Tab. Enter ou Espaço acionam o botão principal ou abrem o menu no gatilho. As setas Cima/Baixo navegam pelos itens do menu e Esc o fecha.",
+      screenReader: "Dois botões distintos dentro de um grupo. O botão principal anuncia o texto de label; o gatilho anuncia triggerLabel com estado expandido/recolhido gerenciado pelo Radix.",
+      focus: "O foco do teclado pousa independentemente na ação principal ou no gatilho. Ao fechar o menu com Esc, o foco retorna ao gatilho.",
+      cautions: "O gatilho do menu é só ícone e exige nome acessível claro. Forneça sempre triggerLabel contextualizado (ex.: \"Mais opções de envio\") para evitar rótulos genéricos.",
+    },
   },
   switch: {
     description: "Controle deslizante binário para ativar ou desativar uma preferência. A alteração tem efeito imediato e dispensa botão de confirmação.",
@@ -1416,53 +1439,63 @@ import { Switch } from "@/components/ui/switch"
     ],
   },
   "time-picker": {
-    description: "Permite que o usuário selecione um horário (hora e minuto), com suporte a formato 24h ou 12h com AM/PM.",
-    whenToUse: "Use quando o usuário precisar informar um horário específico (ex: horário de um agendamento, de uma notificação, de um evento). Para datas, use Calendar/DatePicker — TimePicker cobre só a parte de hora:minuto.",
+    description: "Campo com painel suspenso para seleção de horário (hora e minuto). Suporta formato de 24 horas ou 12 horas com AM/PM e intervalos customizáveis de minutos.",
+    whenToUse: "Definição de horários de agendamentos, reuniões, eventos ou alarmes. Campos de formulário que exigem precisão de hora e minuto sem ambiguidade. Configuração de janelas de atendimento ou horários de funcionamento.",
     anatomy: [
-      { part: "Trigger", description: "Um <Button variant=\"outline\"> com <Icon name=\"calendar_today\" /> e o horário formatado (ou o placeholder em text-muted-foreground quando vazio), dentro de um PopoverTrigger asChild." },
-      { part: "PopoverContent", description: "Linha com 2 ou 3 Selects (Hora, Minuto e, quando format=\"12h\", Período), cada um com um rótulo de texto pequeno acima." },
-      { part: "Select Hora", description: "Lista \"00\"–\"23\" (format 24h) ou \"1\"–\"12\" (format 12h), sempre exibida com 2 dígitos." },
-      { part: "Select Minuto", description: "Lista de 0 a <60 em incrementos de minuteStep (default 5)." },
-      { part: "Select Período", description: "Só existe quando format=\"12h\" — AM ou PM." },
+      { part: "TimePicker", description: "Composição que agrupa botão disparador com ícone e painel suspenso com seletores" },
+      { part: "Botão disparador (interno)", description: "Botão que exibe o ícone e o horário selecionado" },
+      { part: "Painel flutuante (interno)", description: "Container que alinha os seletores de hora, minuto e período" },
+      { part: "Seletor de Hora (interno)", description: "Menu de seleção de horas de 00 a 23 ou 1 a 12" },
+      { part: "Seletor de Minuto (interno)", description: "Menu de seleção de minutos em intervalos do minuteStep" },
+      { part: "Seletor de Período (interno)", description: "Menu condicional AM/PM exibido no formato 12h" },
     ],
     variants: [],
     states: [
-      { name: "Vazio", description: "value ausente/inválido — trigger mostra placeholder, Selects mostram \"--\"." },
-      { name: "Preenchido", description: "value válido — trigger mostra o horário formatado conforme format." },
-      { name: "Aberto", description: "Popover aberto — não fecha sozinho ao escolher hora/minuto (escolha composta em 2-3 passos), só fecha por Escape/clique fora/novo clique no trigger." },
-      { name: "Disabled", description: "prop disabled — desativa o trigger (não abre o Popover) e os Selects internos." },
-      { name: "Foco", description: "Retorna ao trigger ao fechar o Popover — comportamento nativo do Radix Popover." },
+      { name: "Vazio", description: "Disparador exibe o texto de placeholder com cor text-muted-foreground" },
+      { name: "Preenchido", description: "Disparador exibe o horário formatado (ex.: \"14:30\" ou \"02:30 PM\")" },
+      { name: "Aberto", description: "Painel flutuante aberto exibindo os seletores de hora e minuto" },
+      { name: "Desabilitado", description: "Disparador com opacidade reduzida e interação bloqueada" },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
-    code: `import * as React from "react"
-import { TimePicker } from "@/components/ui/time-picker"
+    doGuidelines: ["Use format=\"24h\" como padrão para o contexto brasileiro.", "Defina minuteStep adequado à tolerância do agendamento (ex.: 15 ou 30 minutos).", "Mantenha value sempre no formato canônico 24h no estado do formulário."],
+    dontGuidelines: ["Usar para seleção de datas completas → calendar.", "Valores livres que aceitam segundos ou texto arbitrário → input.", "Omitir o rótulo descritivo externo associado ao campo → use field."],
+    code: `import { TimePicker } from "@/components/ui/time-picker"
 
-function Exemplo() {
-  const [time, setTime] = React.useState<string | undefined>("14:30")
-
-  return <TimePicker value={time} onValueChange={setTime} />
-}
-
-// Formato 12h com AM/PM
-<TimePicker value={time} onValueChange={setTime} format="12h" />
-
-// Minutos de 15 em 15
-<TimePicker value={time} onValueChange={setTime} minuteStep={15} />
-
-// Desabilitado
-<TimePicker value="09:00" disabled />`,
+<TimePicker
+  value="14:30"
+  onValueChange={() => {}}
+  placeholder="Selecione um horário"
+/>`,
     props: [
-      { name: "value", type: "string", description: "Horário controlado, sempre em \"HH:mm\" 24h (ex.: \"14:30\"), independente do format de exibição." },
-      { name: "onValueChange", type: "(value: string) => void", description: "Callback disparado ao escolher hora/minuto/período, com o value já recomposto em \"HH:mm\" 24h." },
-      { name: "format", type: "\"24h\" | \"12h\"", default: "\"24h\"", description: "Formato de exibição/seleção — o value armazenado continua sempre 24h em qualquer um dos dois." },
-      { name: "minuteStep", type: "number", default: "5", description: "Intervalo entre minutos selecionáveis (1–60)." },
-      { name: "placeholder", type: "string", default: "\"Selecione um horário\"", description: "Texto do trigger quando value está vazio." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa o trigger e os Selects internos." },
-      { name: "className", type: "string", description: "Classes aplicadas ao Button de trigger." },
-      { name: "contentClassName", type: "string", description: "Classes aplicadas ao PopoverContent." },
-      { name: "...props", type: "React.ComponentProps<\"button\">", description: "Demais atributos nativos repassados ao Button de trigger (exceto value/onChange/children)." },
+      { name: "value", type: "string", default: "—", description: "Horário controlado no formato \"HH:mm\" em 24h" },
+      { name: "onValueChange", type: "(value: string) => void", default: "—", description: "Callback chamado ao alterar hora ou minuto" },
+      { name: "format", type: "24h · 12h", default: "24h", description: "Formato visual de exibição e seleção" },
+      { name: "minuteStep", type: "number", default: "5", description: "Intervalo em minutos entre as opções" },
+      { name: "placeholder", type: "string", default: "Selecione um horário", description: "Texto exibido no gatilho quando vazio" },
+      { name: "disabled", type: "boolean", default: "false", description: "Desativa o disparador e os seletores internos" },
+      { name: "contentClassName", type: "string", default: "—", description: "Classes adicionais do painel flutuante" },
+    ],
+    meta: {
+      nome: "TimePicker",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/time-picker.tsx",
+      story: "src/components/ui/time-picker.stories.tsx",
+      vizinhos: ["calendar", "popover", "select"],
+    },
+    whenToUseItems: ["Definição de horários de agendamentos, reuniões, eventos ou alarmes.", "Campos de formulário que exigem precisão de hora e minuto sem ambiguidade.", "Configuração de janelas de atendimento ou horários de funcionamento."],
+    whenNotToUse: ["Seleção de dia, mês ou ano em datas completas → calendar.", "Escolha de uma opção textual simples pré-definida → select.", "Painel flutuante genérico para qualquer outro tipo de conteúdo → popover."],
+    content: ["Texto de placeholder claro: \"Selecione um horário\" ou \"Horário de início\".", "O valor armazenado em value deve estar sempre em formato 24h (\"HH:mm\").", "No formato 12h, os períodos são grafados em caixa alta: \"AM\" e \"PM\".", "Sem ponto final em rótulos ou valores selecionados."],
+    accessibility: {
+      keyboard: "O botão disparador abre o painel com Enter ou Espaço. Dentro do painel, cada Select navega por Tab e as setas Cima/Baixo percorrem os números. Esc fecha o menu ou o popover.",
+      screenReader: "O disparador anuncia o horário ou placeholder. Cada campo de seleção possui aria-label próprio (\"Hora\", \"Minuto\", \"Período\").",
+      focus: "Ao fechar o painel por Esc ou clique fora, o foco retorna automaticamente para o botão disparador.",
+      cautions: "O painel não fecha sozinho a cada seleção de hora ou minuto para permitir a configuração completa. Forneça rótulo de campo via field para associar o disparador.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-normal", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1", "gap-2", "p-3", "w-17", "w-18", "w-40"] },
     ],
   },
   title: {
@@ -1772,66 +1805,74 @@ export function ExemploTreeSelect() {
     ],
   },
   "multi-select": {
-    description: "Campo de seleção múltipla: permite escolher mais de uma opção de uma lista, exibindo cada escolha como um chip removível dentro do próprio campo.",
-    whenToUse: "Use quando o usuário precisar escolher mais de uma opção de uma lista de opções pré-definidas, com as seleções visíveis e removíveis individualmente sem reabrir a lista completa. Não confunda com componentes vizinhos: use Select quando só uma opção pode ser escolhida por vez; use Combobox em modo single para buscar-e-escolher um único valor com autocompletar.",
+    description: "Campo de seleção múltipla com autocompletar que exibe cada escolha como um chip removível no próprio container.",
+    whenToUse: "Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips. Filtros avançados com busca textual onde cada critério selecionado precisa ser removido de forma independente. Formulários com listas longas de opções que demandam filtragem rápida por digitação.",
     anatomy: [
-      { part: "MultiSelect", description: "Elemento único — API monolítica (como o @nimbus-ds/multi-select real), sem subcomponentes de composição livre. Internamente compõe Combobox (multiple) + ComboboxChips + ComboboxChip + ComboboxChipsInput + ComboboxContent + ComboboxList + ComboboxItem + ComboboxEmpty de combobox.tsx." },
-      { part: "Campo de chips + busca", description: "ComboboxChips — <div> com borda e anel de foco, contém um chip por valor selecionado e o campo de texto de busca. Ancorado via useComboboxAnchor para o painel abrir relativo a este container." },
-      { part: "Chip de seleção", description: "ComboboxChip, um por valor selecionado, com botão de remover próprio — clique ou Backspace (campo vazio) remove a última seleção." },
-      { part: "Campo de busca", description: "ComboboxChipsInput — filtra as opções por texto (compara contra o label, via itemToStringLabel). Mostra placeholder só quando não há seleção." },
-      { part: "Painel de opções", description: "ComboboxContent > ComboboxList > ComboboxItem — lista flutuante das opções que batem com o filtro, com indicador de check quando selecionada." },
-      { part: "Estado vazio", description: "ComboboxEmpty — mensagem exibida quando a busca não encontra nenhuma opção (prop emptyText)." },
-      { part: "MultiSelect.Skeleton", description: "Placeholder de carregamento, mesmo mecanismo de Chip.Skeleton/Button.Skeleton." },
+      { part: "MultiSelect", description: "Campo completo de seleção múltipla com suporte a busca e chips" },
+      { part: "MultiSelectSkeleton", description: "Placeholder animado de carregamento enquanto as opções são carregadas" },
     ],
     variants: [],
     states: [
-      { name: "Vazio (sem seleção)", description: "Mostra o placeholder." },
-      { name: "Com seleções", description: "Cada valor selecionado aparece como chip; placeholder some." },
-      { name: "Aberto", description: "Painel de opções visível, ancorado no campo de chips." },
-      { name: "Item em destaque", description: "Navegação por teclado dentro do painel (herdado do Combobox)." },
-      { name: "Busca sem resultado", description: "ComboboxEmpty visível com o texto de emptyText." },
-      { name: "Disabled", description: "Campo, chips e busca desativados (prop disabled)." },
-      { name: "Removendo um chip", description: "Clique no botão \"x\" do chip ou Backspace com o campo de busca vazio remove a última seleção — comportamento nativo do ComboboxChips." },
+      { name: "Padrão", description: "Campo com borda neutra exibindo o placeholder ou os chips selecionados" },
+      { name: "Foco", description: "Anel de foco visível ao redor do container enquanto o cursor de busca estiver ativo" },
+      { name: "Aberto", description: "Painel suspenso visível ancorado ao container com lista de itens filtrados" },
+      { name: "Desabilitado", description: "Container opaco com disabled desativando cliques, busca e remoção de chips" },
+      { name: "Vazio", description: "Mensagem de emptyText exibida no painel quando nenhum item corresponde à busca" },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Passe sempre aria-label quando utilizar o MultiSelect sem um Label visível associado.", "Mantenha o estado value controlado sincronizado com as opções em onValueChange.", "Forneça textos informativos em emptyText para guiar a pessoa quando a busca não retornar itens."],
+    dontGuidelines: ["Usar multi-select para escolher apenas um valor exclusivo → combobox.", "Usar multi-select para poucas opções binárias que cabem na tela → checkbox.", "Utilizar placeholder como único substituto de rótulo acessível → passe aria-label ou use label."],
     code: `import * as React from "react"
 import { MultiSelect } from "@/components/ui/multi-select"
 
-const ramos = [
-  { value: "auto", label: "Auto" },
-  { value: "residencial", label: "Residencial" },
-  { value: "vida", label: "Vida" },
-]
-
 function Exemplo() {
-  const [value, setValue] = React.useState<string[]>(["auto", "vida"])
+  const [valores, setValores] = React.useState<string[]>(["auto", "vida"])
+
+  const opcoes = [
+    { value: "auto", label: "Automóvel" },
+    { value: "residencial", label: "Residencial" },
+    { value: "vida", label: "Vida" },
+  ]
 
   return (
     <MultiSelect
-      options={ramos}
-      value={value}
-      onValueChange={setValue}
-      placeholder="Selecione os ramos..."
-      aria-label="Ramos de seguro"
+      options={opcoes}
+      value={valores}
+      onValueChange={setValores}
+      placeholder="Selecione as modalidades..."
+      aria-label="Modalidades de seguro"
     />
   )
-}
-
-// Placeholder de carregamento
-<MultiSelect.Skeleton />`,
+}`,
     props: [
-      { name: "options", type: "{ label: string; value: string }[]", description: "Lista de opções disponíveis (obrigatório)." },
-      { name: "value", type: "string[]", description: "Valores selecionados atualmente — sempre controlado (obrigatório)." },
-      { name: "onValueChange", type: "(value: string[]) => void", description: "Disparado quando a seleção muda (clique num item, remoção de chip ou Backspace)." },
-      { name: "placeholder", type: "string", default: "\"Selecione...\"", description: "Texto do campo de busca quando não há seleção." },
-      { name: "emptyText", type: "string", default: "\"Nenhum resultado encontrado.\"", description: "Texto exibido quando a busca não encontra nenhuma opção." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa campo, chips e busca." },
-      { name: "className", type: "string", description: "Aplicada ao container de chips (ComboboxChips)." },
-      { name: "id", type: "string", description: "Repassado à raiz do Combobox (uso em formulários)." },
-      { name: "name", type: "string", description: "Repassado à raiz do Combobox (uso em formulários)." },
-      { name: "aria-label", type: "string", description: "Nome acessível do campo de busca. Sem ele, cai no placeholder como fallback — prefira passar explicitamente." },
+      { name: "options", type: "MultiSelectOption[]", default: "—", description: "Lista de opções disponíveis com valor e rótulo" },
+      { name: "value", type: "string[]", default: "—", description: "Valores atualmente selecionados em array controlado" },
+      { name: "onValueChange", type: "function", default: "—", description: "Disparado ao adicionar ou remover seleções" },
+      { name: "placeholder", type: "string", default: "Selecione...", description: "Texto de apoio exibido quando não há chips selecionados" },
+      { name: "emptyText", type: "string", default: "Nenhum resultado encontrado.", description: "Mensagem apresentada quando a busca não encontra correspondências" },
+      { name: "disabled", type: "boolean", default: "false", description: "Desativa interação com o campo de busca e os chips" },
+      { name: "aria-label", type: "string", default: "—", description: "Nome acessível para leitores de tela quando não houver rótulo visível" },
+    ],
+    meta: {
+      nome: "MultiSelect",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/multi-select.tsx",
+      story: "src/components/ui/multi-select.stories.tsx",
+      vizinhos: ["combobox", "select", "checkbox"],
+    },
+    whenToUseItems: ["Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips.", "Filtros avançados com busca textual onde cada critério selecionado precisa ser removido de forma independente.", "Formulários com listas longas de opções que demandam filtragem rápida por digitação."],
+    whenNotToUse: ["Selecionar apenas uma opção em lista longa com autocompletar → combobox.", "Seleção única entre 5 ou mais opções sem necessidade de busca → select.", "Poucas opções independentes que cabem visíveis diretamente na tela → checkbox."],
+    content: ["Rótulos das opções devem ser concisos, substantivos e sem ponto final.", "O placeholder orienta a ação esperada quando nenhum valor foi escolhido (ex.: \"Selecione as modalidades...\").", "Defina mensagens de emptyText claras e instrutivas para orientar nova digitação."],
+    accessibility: {
+      keyboard: "Digitação filtra opções; setas cima e baixo percorrem a lista; Enter seleciona ou desmarca o item em destaque; Backspace com campo vazio remove o último chip selecionado.",
+      screenReader: "Baseado no Combobox do Base UI com suporte a seleção múltipla; chips anunciam seus rótulos com botão de remoção; passe aria-label caso não haja rótulo visível.",
+      focus: "O foco permanece no campo de texto de busca; abrir e fechar a lista não perde o controle do cursor de digitação.",
+      cautions: "Passe sempre aria-label ou associe um <label> via id para garantir que tecnologias assistivas anunciem o propósito do campo de seleção.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["h-9", "min-w-56", "w-56"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
     ],
   },
   "native-select": {
@@ -4199,26 +4240,28 @@ import { Button } from "@/components/ui/button"
     ],
   },
   form: {
-    description: "Construa formulários com React e shadcn/ui.",
-    whenToUse: "Use para compor formulários completos, conectando os campos (Field) a uma biblioteca de validação como o React Hook Form.",
+    description: "Estrutura e gerencia formulários com validação integrada ao React Hook Form. Conecta campos, rótulos, mensagens de erro e atributos acessíveis automaticamente.",
+    whenToUse: "Formulários com validação de esquema (como Zod) e múltiplos campos interativos. Telas de cadastro, configuração ou edição de dados que precisam de feedback de erro por campo. Composição de controles complexos que necessitam de sincronização de estado e acessibilidade automática.",
     anatomy: [
-      { part: "Form", description: "= FormProvider do react-hook-form — dá contexto do formulário pra tudo dentro." },
-      { part: "FormField", description: "Controller — associa um campo do form pelo name, expõe {field} pro render prop." },
-      { part: "FormItem", description: "Contexto de id — gera ids únicos ligando label/control/description/message." },
-      { part: "FormLabel", description: "Usa o Atom Label — fica vermelho automaticamente se o campo tiver erro." },
-      { part: "FormControl", description: "Slot que injeta aria-describedby e aria-invalid no controle real (Input, Select...)." },
-      { part: "FormDescription", description: "Texto de ajuda, sempre visível." },
-      { part: "FormMessage", description: "Mostra a mensagem de erro da validação — não renderiza nada se não houver erro." },
+      { part: "Form", description: "Provedor de contexto raiz do React Hook Form" },
+      { part: "FormField", description: "Controlador de campo que conecta o controle ao estado do formulário" },
+      { part: "FormItem", description: "Container que gera identificadores únicos e agrupa os elementos do campo" },
+      { part: "FormLabel", description: "Rótulo acessível que indica visualmente o estado de erro" },
+      { part: "FormControl", description: "Elemento que injeta atributos ARIA e associa IDs ao controle" },
+      { part: "FormDescription", description: "Texto de apoio e instrução auxiliar para o preenchimento" },
+      { part: "FormMessage", description: "Exibe a mensagem de validação quando o campo apresenta erro" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Campo sem erro." },
-      { name: "Error", description: "Validação falhou — label e mensagem em --destructive, aria-invalid no controle." },
+      { name: "Padrão", description: "Campo limpo ou preenchido sem erros, rótulo neutro e descrição com text-muted-foreground" },
+      { name: "Inválido", description: "data-error=true no FormLabel com text-destructive, aria-invalid=true no controle e FormMessage visível em text-destructive" },
+      { name: "Foco", description: "O anel de foco visível é delegado ao controle interno agrupado no FormControl" },
     ],
     sizes: [],
-    doGuidelines: ["Use para agrupar campos de formulário com validação e submissão."],
-    dontGuidelines: ["Não use form para elementos que não enviam dados."],
-    code: `import {
+    doGuidelines: ["Associe cada controle a um FormField com nome único correspondente ao esquema de validação.", "Forneça instruções em FormDescription para campos com requisitos específicos de formatação.", "Coloque FormMessage logo abaixo de FormControl para manter proximidade entre o erro e o campo."],
+    dontGuidelines: ["Usar placeholder como substituto de FormLabel → utilize sempre FormLabel visível para manter a acessibilidade.", "Agrupar campo único sem validação no formulário completo → field.", "Omitir FormMessage em campos obrigatórios → inclua FormMessage para exibir o motivo do erro."],
+    code: `import { useForm } from "react-hook-form"
+import {
   Form,
   FormControl,
   FormDescription,
@@ -4229,56 +4272,99 @@ import { Button } from "@/components/ui/button"
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
-<Form {...form}>
-  <FormField
-    control={form.control}
-    name="nome"
-    render={({ field }) => (
-      <FormItem>
-        <FormLabel>Nome</FormLabel>
-        <FormControl>
-          <Input {...field} />
-        </FormControl>
-        <FormDescription>Como aparece no seu perfil.</FormDescription>
-        <FormMessage />
-      </FormItem>
-    )}
-  />
-</Form>`,
+function Exemplo() {
+  const form = useForm({
+    defaultValues: {
+      nome: "",
+    },
+  })
+
+  return (
+    <Form {...form}>
+      <FormField
+        control={form.control}
+        name="nome"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Nome</FormLabel>
+            <FormControl>
+              <Input placeholder="Seu nome completo" {...field} />
+            </FormControl>
+            <FormDescription>Nome visível no perfil da conta.</FormDescription>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    </Form>
+  )
+}`,
     props: [
-      { name: "name", type: "string", description: "(FormField) caminho do campo no schema — obrigatório." },
-      { name: "control", type: "Control", description: "(FormField) vem de useForm() do react-hook-form." },
-      { name: "errors", type: "Array<{ message?: string }>", description: "(FormMessage) opcional — normalmente vem do fieldState automaticamente." },
+      { name: "name (FormField)", type: "string", default: "—", description: "Nome do campo no formulário e caminho no esquema de validação" },
+      { name: "control (FormField)", type: "Control", default: "—", description: "Instância de controle retornada por useForm" },
+      { name: "render (FormField)", type: "function", default: "—", description: "Função de renderização que recebe o objeto field" },
+    ],
+    meta: {
+      nome: "Form",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/form.tsx",
+      story: "src/components/ui/form.stories.tsx",
+      vizinhos: ["field", "input-group", "card"],
+    },
+    whenToUseItems: ["Formulários com validação de esquema (como Zod) e múltiplos campos interativos.", "Telas de cadastro, configuração ou edição de dados que precisam de feedback de erro por campo.", "Composição de controles complexos que necessitam de sincronização de estado e acessibilidade automática."],
+    whenNotToUse: ["Agrupar apenas um campo isolado sem validação complexa ou contexto global → field.", "Formulário simples de busca com apenas um campo de texto e botão → input-group.", "Janelas de confirmação rápida que não coletam múltiplos dados → alert-dialog."],
+    content: ["Rótulos devem ser concisos e claros, utilizando substantivos ou pequenas frases sem ponto final.", "Textos de ajuda em FormDescription orientam sobre formatos específicos ou regras de preenchimento.", "Mensagens de erro em FormMessage devem explicar como corrigir a falha de validação de forma direta."],
+    accessibility: {
+      keyboard: "Não recebe foco direto na estrutura do formulário; a navegação por Tab segue a ordem sequencial dos campos internos via FormControl.",
+      screenReader: "FormControl vincula o controle a FormDescription e FormMessage via aria-describedby e marca aria-invalid=\"true\" quando houver erro; FormLabel associa-se ao campo via htmlFor.",
+      focus: "O foco permanece no controle sob edição; ao submeter com erro, a biblioteca gerencia o redirecionamento para o primeiro campo inválido.",
+      cautions: "Evite ocultar FormDescription ou FormMessage apenas visualmente; mantenha os IDs estáveis garantidos por FormItem para assegurar compatibilidade com tecnologias assistivas.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-destructive", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2"] },
     ],
   },
   menubar: {
-    description: "Um menu visualmente persistente, comum em aplicações desktop, que dá acesso rápido a um conjunto consistente de comandos.",
-    whenToUse: "Use em interfaces densas, estilo aplicativo desktop, quando quiser uma barra de menus sempre visível, como Arquivo, Editar e Exibir.",
+    description: "Barra horizontal persistente de menus inspirada em aplicações desktop. Oferece acesso consistente e agrupado a comandos globais por categorias e atalhos.",
+    whenToUse: "Barras de menus horizontais no topo de aplicativos densos com múltiplos comandos categorizados (ex.: Arquivo, Editar, Exibir). Interfaces ricas em ferramentas desktop que agrupam atalhos de teclado e submenus aninhados. Editores ou ambientes de trabalho complexos que exigem acesso consistente e persistente a comandos globais.",
     anatomy: [
-      { part: "Menubar", description: "Root — barra horizontal, borda e fundo próprios (estilo desktop app)." },
-      { part: "MenubarMenu", description: "Cada menu da barra (ex: Arquivo, Editar)." },
-      { part: "MenubarTrigger", description: "Rótulo clicável de cada menu." },
-      { part: "MenubarContent", description: "Painel flutuante (portal) com os itens do menu." },
-      { part: "MenubarItem", description: "Item de ação — variantes \"default\" e \"destructive\"." },
-      { part: "MenubarCheckboxItem / RadioGroup / RadioItem", description: "Itens marcáveis." },
-      { part: "MenubarLabel / Separator / Shortcut", description: "Rótulo, divisor e atalho de teclado." },
-      { part: "MenubarSub / SubTrigger / SubContent", description: "Submenu aninhado." },
+      { part: "Menubar", description: "Barra horizontal raiz que envolve e ancora todos os menus" },
+      { part: "MenubarMenu", description: "Cada menu de topo individual agrupado na barra" },
+      { part: "MenubarGroup", description: "Container estrutural interno para agrupar itens logicamente" },
+      { part: "MenubarPortal", description: "Portal que renderiza os painéis flutuantes fora da hierarquia DOM principal" },
+      { part: "MenubarRadioGroup", description: "Agrupamento para opções de seleção única e exclusiva" },
+      { part: "MenubarTrigger", description: "Botão gatilho no topo que expande o painel de opções" },
+      { part: "MenubarContent", description: "Painel suspenso flutuante com a lista de ações do menu" },
+      { part: "MenubarItem", description: "Item de comando interativo para disparar uma ação" },
+      { part: "MenubarCheckboxItem", description: "Item de alternância com indicador visual de marcação de seleção" },
+      { part: "MenubarRadioItem", description: "Opção exclusiva de rádio com indicador circular de item ativo" },
+      { part: "MenubarLabel", description: "Título textual estático para rotular um conjunto de comandos" },
+      { part: "MenubarSeparator", description: "Divisor horizontal fino entre grupos de ações" },
+      { part: "MenubarShortcut", description: "Texto auxiliar alinhado à direita para exibir atalhos de teclado" },
+      { part: "MenubarSub", description: "Raiz de um submenu aninhado de segundo nível" },
+      { part: "MenubarSubTrigger", description: "Gatilho que expande o submenu suspenso lateralmente" },
+      { part: "MenubarSubContent", description: "Painel flutuante que contém os comandos do submenu" },
     ],
     variants: [],
     states: [
-      { name: "Closed", description: "Estado padrão de cada menu." },
-      { name: "Open", description: "data-state=open no trigger — bg-accent." },
-      { name: "Item em foco", description: "focus:bg-accent." },
-      { name: "Disabled", description: "opacidade reduzida, sem interação." },
+      { name: "Padrão", description: "Barra com fundo bg-background e borda suave; gatilhos e itens em estado de repouso" },
+      { name: "Foco", description: "Anel outline-ring de 2 px no gatilho ou item ativo via teclado" },
+      { name: "Aberto", description: "data-state=open aplica bg-accent text-accent-foreground no gatilho e exibe o painel animado" },
+      { name: "Destrutivo", description: "data-variant=destructive aplica texto e ícone em text-destructive com fundo de destaque no hover" },
+      { name: "Desabilitado", description: "data-disabled reduz a opacidade para 50% e desativa cliques e foco" },
     ],
     sizes: [],
-    doGuidelines: ["Use para menus de aplicação no topo, com múltiplas categorias e submenus."],
-    dontGuidelines: ["Não use menubar para ações simples — use Dropdown Menu."],
+    doGuidelines: ["Organize comandos em categorias lógicas e previsíveis para a pessoa usuária.", "Utilize MenubarSeparator para agrupar ações relacionadas e evitar listas contínuas excessivas.", "Indique atalhos de teclado reais e ativos através do componente MenubarShortcut."],
+    dontGuidelines: ["Usar menubar para navegação estrutural entre páginas web → navigation-menu.", "Disparar menu único sem categorias agrupadas → dropdown-menu.", "Incluir formulários complexos dentro dos painéis suspensos → dialog."],
     code: `import {
   Menubar,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar"
 
@@ -4286,14 +4372,61 @@ import { Input } from "@/components/ui/input"
   <MenubarMenu>
     <MenubarTrigger>Arquivo</MenubarTrigger>
     <MenubarContent>
-      <MenubarItem>Novo</MenubarItem>
-      <MenubarItem>Abrir</MenubarItem>
+      <MenubarItem>
+        Novo documento <MenubarShortcut>⌘N</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Abrir... <MenubarShortcut>⌘O</MenubarShortcut>
+      </MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem variant="destructive">Fechar</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+  <MenubarMenu>
+    <MenubarTrigger>Editar</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>
+        Desfazer <MenubarShortcut>⌘Z</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>
+        Refazer <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+      </MenubarItem>
     </MenubarContent>
   </MenubarMenu>
 </Menubar>`,
     props: [
-      { name: "inset", type: "boolean", default: "false", description: "(Item/Label/SubTrigger) recuo extra à esquerda." },
-      { name: "variant", type: "\"default\" | \"destructive\"", default: "\"default\"", description: "(MenubarItem) estilo do item." },
+      { name: "align (MenubarContent)", type: "—", default: "start", description: "Alinhamento horizontal do painel em relação ao gatilho" },
+      { name: "alignOffset (MenubarContent)", type: "—", default: "-4", description: "Deslocamento em pixels no eixo de alinhamento" },
+      { name: "sideOffset (MenubarContent)", type: "—", default: "8", description: "Distância em pixels entre o painel e o gatilho" },
+      { name: "inset (MenubarItem)", type: "boolean", default: "—", description: "Aplica recuo à esquerda para alinhar com itens marcáveis" },
+      { name: "variant (MenubarItem)", type: "default · destructive", default: "default", description: "Estilo visual da ação, destacando comandos destrutivos" },
+      { name: "inset (MenubarLabel)", type: "boolean", default: "—", description: "Aplica recuo à esquerda no rótulo para alinhamento uniforme" },
+      { name: "inset (MenubarSubTrigger)", type: "boolean", default: "—", description: "Aplica recuo à esquerda no gatilho do submenu" },
+    ],
+    meta: {
+      nome: "Menubar",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/menubar.tsx",
+      story: "src/components/ui/menubar.stories.tsx",
+      vizinhos: ["dropdown-menu", "navigation-menu", "toggle-group"],
+    },
+    whenToUseItems: ["Barras de menus horizontais no topo de aplicativos densos com múltiplos comandos categorizados (ex.: Arquivo, Editar, Exibir).", "Interfaces ricas em ferramentas desktop que agrupam atalhos de teclado e submenus aninhados.", "Editores ou ambientes de trabalho complexos que exigem acesso consistente e persistente a comandos globais."],
+    whenNotToUse: ["Menu único de ações disparado por um botão isolado → dropdown-menu.", "Navegação primária entre páginas e seções do site → navigation-menu.", "Barra de ferramentas para alternância e formatação rápida → toggle-group."],
+    content: ["Gatilhos de topo devem usar substantivos curtos no singular (ex.: \"Arquivo\", \"Editar\", \"Exibir\", \"Ajuda\").", "Itens de ação devem iniciar por verbos no infinitivo (ex.: \"Salvar\", \"Imprimir\", \"Desfazer\").", "Evite pontos finais em rótulos, itens e atalhos de teclado."],
+    accessibility: {
+      keyboard: "Setas direcionais esquerda e direita navegam entre os menus de topo; setas cima e baixo percorrem os itens do painel; Enter ou Espaço aciona; Esc fecha o menu aberto.",
+      screenReader: "Papel menubar na raiz, menuitem nos itens, menuitemcheckbox e menuitemradio nos itens marcáveis; aria-haspopup=\"menu\" e aria-expanded indicam menus suspensos.",
+      focus: "O foco é gerenciado pelo Radix; ao abrir um menu, o foco move-se para o primeiro item disponível; ao fechar com Esc, retorna ao gatilho correspondente.",
+      cautions: "Atalhos exibidos via MenubarShortcut são apenas indicativos visuais; assegure que os manipuladores globais de teclado estejam registrados na aplicação.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-background", "bg-border", "bg-destructive", "bg-popover", "text-accent-foreground", "text-destructive", "text-muted-foreground", "text-popover-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs", "tracking-widest"] },
+      { contexto: "Espaço", itens: ["gap-1", "gap-2", "h-9", "h-px", "left-2", "min-w-32", "min-w-48", "mx-1", "my-1", "p-1", "pl-8", "pr-2", "px-2", "py-1", "py-1.5", "size-3.5", "size-4"] },
+      { contexto: "Raio", itens: ["rounded-md", "rounded-sm"] },
+      { contexto: "Sombra", itens: ["shadow-lg", "shadow-md", "shadow-xs"] },
+      { contexto: "Foco", itens: ["outline-ring"] },
     ],
   },
   message: {
@@ -4431,34 +4564,39 @@ import {
     ],
   },
   "navigation-menu": {
-    description: "Uma coleção de links para navegar em um site.",
-    whenToUse: "Use para a navegação principal do produto, com suporte a submenus e painéis de conteúdo maiores que um dropdown simples.",
+    description: "Menu estruturado para navegação principal em websites e portais. Oferece suporte a links diretos, painéis suspensos ricos e transição animada entre seções.",
+    whenToUse: "Cabeçalhos de sites e portais com navegação hierárquica e múltiplos níveis de conteúdo. Menus que combinam links simples e painéis suspensos ricos (mega menus com colunas, imagens e descrições). Navegação desktop primária que exige transições fluidas e posicionamento ancorado sob a barra de cabeçalho.",
     anatomy: [
-      { part: "NavigationMenu", description: "Root — pode compartilhar um viewport único entre os itens (viewport=true, padrão) ou cada um ter o seu." },
-      { part: "NavigationMenuList", description: "Lista horizontal dos itens de topo." },
-      { part: "NavigationMenuItem", description: "Cada item — pode ter um NavigationMenuTrigger + Content (submenu) ou só um Link." },
-      { part: "NavigationMenuTrigger", description: "Abre o painel do item — chevron gira ao abrir." },
-      { part: "NavigationMenuContent", description: "Painel do submenu." },
-      { part: "NavigationMenuLink", description: "Link navegável dentro do painel." },
-      { part: "NavigationMenuIndicator", description: "Seta apontando pro item ativo, abaixo da lista." },
-      { part: "NavigationMenuViewport", description: "Área compartilhada onde os painéis são renderizados/animados." },
+      { part: "NavigationMenu", description: "Container raiz que agrupa os itens de navegação e pode gerenciar o viewport compartilhado" },
+      { part: "NavigationMenuList", description: "Lista horizontal não ordenada que contém os itens de navegação de primeiro nível" },
+      { part: "NavigationMenuItem", description: "Cada item individual de navegação na lista" },
+      { part: "NavigationMenuTrigger", description: "Botão gatilho que expande o painel de conteúdo e rotaciona o ícone de seta" },
+      { part: "NavigationMenuContent", description: "Painel flutuante com suporte a animação de entrada e transição direcional" },
+      { part: "NavigationMenuViewport", description: "Janela compartilhada onde os painéis de conteúdo são renderizados com transição de tamanho" },
+      { part: "NavigationMenuLink", description: "Link navegável para páginas ou seções, com suporte a estado ativo" },
+      { part: "NavigationMenuIndicator", description: "Indicador triangular que aponta para o item atualmente ativo na barra" },
     ],
     variants: [],
     states: [
-      { name: "Closed", description: "Estado padrão de cada item." },
-      { name: "Open", description: "data-state=open — chevron rotacionado, painel visível." },
-      { name: "Ativo", description: "data-active=true no Link — página atual." },
+      { name: "Padrão", description: "Gatilhos em bg-background neutro com texto em text-sm font-medium" },
+      { name: "Hover", description: "hover:bg-accent hover:text-accent-foreground nos gatilhos e links navegáveis" },
+      { name: "Foco", description: "Anel ring-ring de 3 px visível via teclado (focus-visible:ring-[3px])" },
+      { name: "Aberto", description: "data-state=open no gatilho gira o chevron em 180° e exibe o painel correspondente" },
+      { name: "Ativo", description: "data-active=true no NavigationMenuLink aplica destaque com bg-accent/50 text-accent-foreground" },
+      { name: "Desabilitado", description: "disabled reduz opacidade para 50% e remove eventos de ponteiro" },
     ],
     sizes: [],
-    doGuidelines: ["Use para navegação principal do site ou aplicação, com suporte a submenus."],
-    dontGuidelines: ["Não use navigation-menu para ações — use Dropdown Menu."],
-    code: `import {
+    doGuidelines: ["Utilize asChild ao integrar NavigationMenuLink com bibliotecas de roteamento como o Next.js Link.", "Agrupe links relacionados em colunas com títulos claros dentro de NavigationMenuContent.", "Destaque a página atual através da propriedade active no NavigationMenuLink correspondente."],
+    dontGuidelines: ["Usar navigation-menu para disparar ações de edição ou mutações de dados → button.", "Implementar menus de contexto rápidos de comandos locais → dropdown-menu.", "Substituir trilhas de localização hierárquica por navegação de menu → breadcrumb."],
+    code: `import Link from "next/link"
+import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
 <NavigationMenu>
@@ -4466,68 +4604,152 @@ import {
     <NavigationMenuItem>
       <NavigationMenuTrigger>Produtos</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <NavigationMenuLink href="/produtos/a">Produto A</NavigationMenuLink>
+        <div className="grid w-[400px] gap-3 p-4">
+          <NavigationMenuLink asChild>
+            <Link href="/produtos/design-system" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+              <div className="text-sm font-medium leading-none">Design System</div>
+              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">Componentes e tokens para interfaces consistentes.</p>
+            </Link>
+          </NavigationMenuLink>
+        </div>
       </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+        <Link href="/documentacao">Documentação</Link>
+      </NavigationMenuLink>
     </NavigationMenuItem>
   </NavigationMenuList>
 </NavigationMenu>`,
     props: [
-      { name: "viewport", type: "boolean", default: "true", description: "Usa um viewport compartilhado entre os itens." },
+      { name: "viewport", type: "boolean", default: "true", description: "Habilita o viewport compartilhado para renderizar os painéis suspensos" },
+      { name: "asChild (NavigationMenuLink)", type: "boolean", default: "false", description: "Permite compor com links do Next.js delegando as propriedades" },
+      { name: "active (NavigationMenuLink)", type: "boolean", default: "false", description: "Marca visualmente o link como página ou seção atualmente ativa" },
+    ],
+    meta: {
+      nome: "Navigation Menu",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/navigation-menu.tsx",
+      story: "src/components/ui/navigation-menu.stories.tsx",
+      vizinhos: ["menubar", "dropdown-menu", "sidebar"],
+    },
+    whenToUseItems: ["Cabeçalhos de sites e portais com navegação hierárquica e múltiplos níveis de conteúdo.", "Menus que combinam links simples e painéis suspensos ricos (mega menus com colunas, imagens e descrições).", "Navegação desktop primária que exige transições fluidas e posicionamento ancorado sob a barra de cabeçalho."],
+    whenNotToUse: ["Barra de menus persistente de comandos para aplicações desktop densas → menubar.", "Menu suspenso de ações ou comandos disparado por um botão de ação → dropdown-menu.", "Navegação lateral expansível para aplicações com dashboards complexos → sidebar."],
+    content: ["Rótulos de gatilho e links devem usar substantivos ou termos curtos e objetivos (ex.: \"Produtos\", \"Recursos\", \"Preços\", \"Documentação\").", "Em painéis ricos, organize os links com títulos claros e descrições curtas de apoio em uma ou duas linhas.", "Mantenha a nomenclatura consistente com a arquitetura de informação do site."],
+    accessibility: {
+      keyboard: "Tab e Shift+Tab navegam entre os itens principais; setas direcionais percorrem itens dentro de um menu aberto; Enter ou Espaço abre ou aciona o link; Esc fecha o painel.",
+      screenReader: "Raiz identificada com papel navigation; gatilhos utilizam aria-expanded e aria-haspopup=\"menu\"; links mantêm semântica navegável nativa.",
+      focus: "O foco é gerenciado pelo Radix Navigation Menu; ao fechar o submenu via Esc, o foco retorna ao gatilho correspondente sem perder a posição na página.",
+      cautions: "Ao compor NavigationMenuLink com o Link do Next.js, utilize sempre a propriedade asChild para preservar a marcação acessível e os handlers de teclado.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-background", "bg-border", "bg-popover", "text-accent-foreground", "text-muted-foreground", "text-popover-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1", "h-1.5", "h-2", "h-9", "left-0", "ml-1", "mt-1.5", "p-2", "pr-2.5", "px-4", "py-2", "size-4", "top-0", "top-0.25", "w-2"] },
+      { contexto: "Raio", itens: ["rounded-md", "rounded-sm", "rounded-tl-sm"] },
+      { contexto: "Sombra", itens: ["shadow-md"] },
+      { contexto: "Movimento", itens: ["duration-motion-base"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   resizable: {
-    description: "Grupos de painéis redimensionáveis e acessíveis, com suporte a teclado.",
-    whenToUse: "Use quando o usuário precisar ajustar manualmente o tamanho de painéis lado a lado, como em um editor de código ou um layout com sidebar.",
+    description: "Divisão de layout em painéis redimensionáveis e acessíveis com suporte a mouse, toque e teclado. Permite ajustar a proporção entre seções contíguas em layouts complexos.",
+    whenToUse: "Ambientes de trabalho com painéis ajustáveis (ex.: editor de código ao lado de visualizador de prévia). Layouts de aplicação com barra lateral colapsável ou redimensionável em relação à área principal. Interfaces de análise de dados com divisão flexível entre tabelas e gráficos comparativos.",
     anatomy: [
-      { part: "ResizablePanelGroup", description: "Root — define a direção (horizontal/vertical) do grupo." },
-      { part: "ResizablePanel", description: "Cada painel — aceita defaultSize/minSize/maxSize (percentuais)." },
-      { part: "ResizableHandle", description: "Divisor arrastável entre painéis — withHandle mostra uma alça visual (grip)." },
+      { part: "ResizablePanelGroup", description: "Container raiz que define a direção de divisão (horizontal ou vertical) dos painéis" },
+      { part: "ResizablePanel", description: "Painel de conteúdo individual com suporte a proporções e limites percentuais" },
+      { part: "ResizableHandle", description: "Divisor arrastável e interativo que separa dois painéis adjacentes" },
     ],
     variants: [],
-    states: [],
+    states: [
+      { name: "Padrão", description: "Divisor fino em bg-border com largura ou altura de 1 px (w-px ou h-px)" },
+      { name: "Hover", description: "Área interativa invisível de arraste expande 4 px ao redor do divisor" },
+      { name: "Foco", description: "Anel ring-ring de 2 px visível na alça com focus-visible:ring-2" },
+      { name: "Arrastando", description: "Cursor de redimensionamento ativo ajustando proporções em tempo real" },
+      { name: "Com alça", description: "withHandle=true renderiza uma pastilha central de 16x12 px com ícone de indicador de arraste" },
+    ],
     sizes: [],
-    doGuidelines: ["Use para painéis redimensionáveis que o usuário pode ajustar."],
-    dontGuidelines: ["Não use resizable em layouts fixos ou com largura determinada."],
+    doGuidelines: ["Defina minSize nos painéis para evitar que conteúdos essenciais sejam espremidos a zero.", "Use withHandle em divisores horizontais para deixar a área de clique evidente para a pessoa usuária.", "Garanta que o container pai possua dimensões definidas de altura e largura."],
+    dontGuidelines: ["Usar resizable para criar divisões visuais puramente estáticas sem ajuste → separator.", "Utilizar resizable em telas móveis pequenas onde painéis lado a lado quebram a leitura → tabs.", "Esconder botões ou ações críticas atrás de painéis colapsáveis sem alternativa de acesso → sheet."],
     code: `import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
 
-<ResizablePanelGroup direction="horizontal" className="h-48 rounded-md border">
-  <ResizablePanel defaultSize={50}>Painel A</ResizablePanel>
+<ResizablePanelGroup direction="horizontal" className="min-h-[200px] max-w-md rounded-lg border">
+  <ResizablePanel defaultSize={40} minSize={20}>
+    <div className="flex h-full items-center justify-center p-6">
+      <span className="font-semibold text-sm">Painel 1</span>
+    </div>
+  </ResizablePanel>
   <ResizableHandle withHandle />
-  <ResizablePanel defaultSize={50}>Painel B</ResizablePanel>
+  <ResizablePanel defaultSize={60} minSize={30}>
+    <div className="flex h-full items-center justify-center p-6">
+      <span className="font-semibold text-sm">Painel 2</span>
+    </div>
+  </ResizablePanel>
 </ResizablePanelGroup>`,
     props: [
-      { name: "direction", type: "\"horizontal\" | \"vertical\"", description: "(ResizablePanelGroup) direção da divisão — obrigatório." },
-      { name: "defaultSize / minSize / maxSize", type: "number", description: "(ResizablePanel) tamanho em percentual do grupo." },
-      { name: "withHandle", type: "boolean", default: "false", description: "(ResizableHandle) mostra a alça visual de arraste." },
+      { name: "direction (ResizablePanelGroup)", type: "horizontal · vertical", default: "—", description: "Define a orientação de divisão entre os painéis" },
+      { name: "defaultSize (ResizablePanel)", type: "number", default: "—", description: "Tamanho percentual inicial ocupado pelo painel no grupo" },
+      { name: "minSize (ResizablePanel)", type: "number", default: "—", description: "Tamanho percentual mínimo permitido ao redimensionar" },
+      { name: "maxSize (ResizablePanel)", type: "number", default: "—", description: "Tamanho percentual máximo permitido ao redimensionar" },
+      { name: "withHandle (ResizableHandle)", type: "boolean", default: "false", description: "Exibe uma alça visual com ícone de arraste no centro do divisor" },
+    ],
+    meta: {
+      nome: "Resizable",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/resizable.tsx",
+      story: "src/components/ui/resizable.stories.tsx",
+      vizinhos: ["sheet", "separator", "sidebar"],
+    },
+    whenToUseItems: ["Ambientes de trabalho com painéis ajustáveis (ex.: editor de código ao lado de visualizador de prévia).", "Layouts de aplicação com barra lateral colapsável ou redimensionável em relação à área principal.", "Interfaces de análise de dados com divisão flexível entre tabelas e gráficos comparativos."],
+    whenNotToUse: ["Painel lateral sobreposto ou deslizante temporário que abre sobre a tela → sheet.", "Divisão estática entre seções que não necessita de ajuste de tamanho → separator.", "Barra de navegação fixa com largura pré-definida sem necessidade de arraste → sidebar."],
+    content: ["Não possui texto próprio. Os textos moram nos painéis e containers agrupados.", "Use aria-label ou aria-valuetext na alça quando for relevante anunciar a finalidade do divisor.", "Mantenha indicadores de conteúdo legíveis mesmo quando o painel for reduzido ao tamanho mínimo."],
+    accessibility: {
+      keyboard: "O divisor (ResizableHandle) recebe foco; setas esquerda/cima diminuem o painel anterior; setas direita/baixo aumentam; Home e End movem para os limites mínimo e máximo.",
+      screenReader: "Papel separator com atributos aria-orientation e aria-valuenow atualizados dinamicamente refletindo a proporção percentual atual.",
+      focus: "O foco visual aplica anel ring-ring com focus-visible:ring-2; o foco permanece na alça durante o ajuste por setas.",
+      cautions: "Arrastar nunca pode ser o único modo de redimensionamento (WCAG 2.5.7); garanta que a navegação e ajuste via teclado continuem acessíveis e funcionais.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-border"] },
+      { contexto: "Espaço", itens: ["h-1", "h-4", "h-px", "inset-y-0", "left-0", "left-1", "w-1", "w-3", "w-px"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   sheet: {
-    description: "Estende o componente Dialog para exibir conteúdo que complementa o conteúdo principal da tela.",
-    whenToUse: "Use para painéis laterais (ou de qualquer borda) que complementam a tela atual, como filtros avançados ou detalhes de um item.",
+    description: "Painel sobreposto que desliza a partir de uma das bordas da tela. Permite exibir formulários longos, detalhes de itens ou configurações sem perder o contexto da página.",
+    whenToUse: "Formulário extenso ou edição com muitos campos que poluiriam um modal centralizado. Painel complementar com detalhes aprofundados, histórico ou filtros avançados de uma listagem. Menus e navegação contextual que demandam área vertical ampla na tela.",
     anatomy: [
-      { part: "Sheet", description: "Root (Radix Dialog por baixo) — controla abertura." },
-      { part: "SheetTrigger", description: "Elemento que abre o painel." },
-      { part: "SheetContent", description: "Painel que desliza de um lado (side) — inclui botão de fechar." },
-      { part: "SheetHeader / Title / Description", description: "Título e descrição." },
-      { part: "SheetFooter", description: "Ações no rodapé." },
-      { part: "SheetClose", description: "Fecha o painel ao ser acionado." },
+      { part: "Sheet", description: "Raiz baseada no Dialog da Radix. Controla o estado de abertura" },
+      { part: "SheetTrigger", description: "Elemento gatilho que abre o painel ao ser acionado" },
+      { part: "SheetClose", description: "Elemento que fecha o painel ao receber clique" },
+      { part: "SheetPortal", description: "Portal que renderiza o painel no final do documento DOM" },
+      { part: "SheetOverlay", description: "Fundo semitransparente escuro que cobre o restante da tela" },
+      { part: "SheetContent", description: "Container principal que desliza da borda configurada" },
+      { part: "SheetHeader", description: "Cabeçalho interno para agrupar título e descrição" },
+      { part: "SheetFooter", description: "Rodapé alinhado na base para organizar os botões de ação" },
+      { part: "SheetTitle", description: "Título obrigatório que define o nome acessível da janela" },
+      { part: "SheetDescription", description: "Descrição complementar vinculada por acessibilidade" },
     ],
     variants: [],
     states: [
-      { name: "Closed", description: "Estado padrão." },
-      { name: "Open", description: "Desliza a partir do lado configurado." },
+      { name: "Fechado", description: "Painel oculto e desmontado do DOM" },
+      { name: "Aberto", description: "Sobreposição escura bg-black/50 e painel com shadow-lg que desliza da borda com transição suave" },
     ],
     sizes: [],
-    doGuidelines: ["Use para painéis laterais que deslizam sobre o conteúdo principal."],
-    dontGuidelines: ["Não use sheet para conteúdo que precisa de interação com a página atrás."],
+    doGuidelines: ["Forneça um título claro em SheetTitle para identificar o propósito do painel.", "Posicione as ações principais e de cancelamento no SheetFooter.", "Utilize showCloseButton={false} e crie um botão de fechar customizado quando precisar do rótulo em português."],
+    dontGuidelines: ["Informações rápidas ou confirmações pontuais → dialog.", "Notificações de status sem formulário → sonner.", "Deixar o painel sem SheetTitle acessível → sheet."],
     code: `import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -4536,74 +4758,173 @@ import { Button } from "@/components/ui/button"
 
 <Sheet>
   <SheetTrigger asChild>
-    <Button variant="outline">Abrir</Button>
+    <Button variant="outline">Filtros avançados</Button>
   </SheetTrigger>
   <SheetContent side="right">
     <SheetHeader>
-      <SheetTitle>Editar</SheetTitle>
-      <SheetDescription>Faça alterações e salve.</SheetDescription>
+      <SheetTitle>Filtros avançados</SheetTitle>
+      <SheetDescription>Refine a listagem de registros por data e status.</SheetDescription>
     </SheetHeader>
+    <div className="flex-1 p-4">
+      {/* campos de filtro */}
+    </div>
+    <SheetFooter>
+      <SheetClose asChild>
+        <Button variant="outline">Cancelar</Button>
+      </SheetClose>
+      <Button>Aplicar filtros</Button>
+    </SheetFooter>
   </SheetContent>
 </Sheet>`,
     props: [
-      { name: "side", type: "\"top\" | \"right\" | \"bottom\" | \"left\"", default: "\"right\"", description: "(SheetContent) lado de onde o painel desliza." },
-      { name: "showCloseButton", type: "boolean", default: "true", description: "(SheetContent) mostra o X no canto superior direito." },
+      { name: "open · defaultOpen · onOpenChange (Sheet)", type: "boolean · (open: boolean) => void", default: "—", description: "Controle de abertura e fechamento herdado da Radix" },
+      { name: "side (SheetContent)", type: "top · right · bottom · left", default: "right", description: "Borda da tela de onde o painel desliza" },
+      { name: "showCloseButton (SheetContent)", type: "boolean", default: "true", description: "Exibe o botão com ícone de fechar no canto superior" },
+    ],
+    meta: {
+      nome: "Sheet",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/sheet.tsx",
+      story: "src/components/ui/sheet.stories.tsx",
+      vizinhos: ["dialog", "drawer", "popover"],
+    },
+    whenToUseItems: ["Formulário extenso ou edição com muitos campos que poluiriam um modal centralizado.", "Painel complementar com detalhes aprofundados, histórico ou filtros avançados de uma listagem.", "Menus e navegação contextual que demandam área vertical ampla na tela."],
+    whenNotToUse: ["Tarefa curta e focada com poucos campos → dialog.", "Confirmação simples ou aviso rápido sem formulário → sonner.", "Ações rápidas acionadas pelo polegar no celular → drawer."],
+    content: ["Título conciso no imperativo ou substantivo indicando a tarefa: \"Filtrar resultados\" ou \"Editar perfil\".", "A descrição orienta o propósito das opções contidas no painel.", "O botão de confirmação no rodapé repete o verbo principal: \"Aplicar filtros\", não \"OK\".", "Sem ponto final em títulos e rótulos de botões."],
+    accessibility: {
+      keyboard: "Tab e Shift+Tab navegam entre os elementos interativos presos no painel. Esc fecha o painel.",
+      screenReader: "Papel dialog modal. SheetTitle fornece o nome acessível obrigatório e SheetDescription descreve o conteúdo via aria-describedby.",
+      focus: "Ao abrir, o foco vai para o primeiro elemento focável dentro do painel. Ao fechar, o foco retorna ao SheetTrigger acionador.",
+      cautions: "O botão interno de fechar tem rótulo fixo \"Close\" em inglês no leitor de tela. Em interfaces em português, passe showCloseButton={false} e adicione um SheetClose com texto acessível traduzido.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-popover", "bg-secondary", "text-foreground", "text-muted-foreground", "text-popover-foreground"] },
+      { contexto: "Tipografia", itens: ["font-semibold", "text-sm"] },
+      { contexto: "Espaço", itens: ["bottom-0", "gap-1.5", "gap-2", "gap-4", "inset-0", "inset-x-0", "inset-y-0", "left-0", "max-w-sm", "p-4", "right-0", "right-4", "top-0", "top-4", "w-3"] },
+      { contexto: "Sombra", itens: ["shadow-lg"] },
+      { contexto: "Foco", itens: ["ring-offset-background", "ring-ring"] },
     ],
   },
   sidebar: {
-    description: "Um componente de barra lateral (sidebar) componível, tematizável e customizável.",
-    whenToUse: "Use como a navegação lateral principal do produto, com suporte a estado colapsado, ícones e submenus.",
+    description: "Barra de navegação lateral para organizar a hierarquia e as seções de um produto. Suporta agrupamento, submenus, estado recolhido em ícones e adaptação mobile em folha deslizante.",
+    whenToUse: "Navegação persistente em sistemas web, dashboards e painéis administrativos. Estruturação de muitas seções divididas por módulos, categorias ou projetos. Telas que precisam maximizar a área útil alternando entre expandido e recolhido em ícones.",
     anatomy: [
-      { part: "SidebarProvider", description: "Contexto raiz — estado aberto/colapsado, persistido em cookie, TooltipProvider embutido." },
-      { part: "Sidebar", description: "Elemento raiz — collapsible \"offcanvas\" (mobile), \"icon\" (encolhe pra ícones) ou \"none\"." },
-      { part: "SidebarHeader / SidebarFooter", description: "Áreas fixas no topo/base (ex: logo, usuário)." },
-      { part: "SidebarContent", description: "Área rolável com os grupos de navegação." },
-      { part: "SidebarGroup / SidebarGroupLabel", description: "Agrupa itens relacionados, com rótulo — some no modo ícone." },
-      { part: "SidebarMenu / SidebarMenuItem / SidebarMenuButton", description: "Lista de navegação — o botão mostra tooltip automático quando a sidebar está recolhida." },
-      { part: "SidebarMenuAction / SidebarMenuBadge", description: "Ação extra (ex: menu de opções) e contador/badge num item." },
-      { part: "SidebarMenuSub / SidebarMenuSubItem / SidebarMenuSubButton", description: "Sub-nível de navegação, recuado." },
-      { part: "SidebarRail", description: "Alça fina na borda pra arrastar/alternar a sidebar." },
-      { part: "SidebarTrigger", description: "Botão (geralmente no header do app) que abre/fecha a sidebar." },
-      { part: "SidebarInset", description: "Área de conteúdo principal ao lado da sidebar." },
+      { part: "SidebarProvider", description: "Provedor raiz com contexto, atalho e persistência em cookie" },
+      { part: "Sidebar · SidebarInset", description: "Estrutura da barra e container do conteúdo principal" },
+      { part: "SidebarTrigger · SidebarRail", description: "Botão e trilho interativo para alternar a barra" },
+      { part: "SidebarHeader · SidebarFooter", description: "Áreas fixas no topo (marca) e base (perfil)" },
+      { part: "SidebarContent · SidebarSeparator", description: "Área de rolagem interna e linha divisória" },
+      { part: "SidebarGroup · SidebarGroupContent", description: "Agrupamento semântico e container dos itens" },
+      { part: "SidebarGroupLabel · SidebarGroupAction", description: "Rótulo do grupo e botão de ação rápida" },
+      { part: "SidebarMenu · SidebarMenuItem", description: "Lista de navegação e item individual" },
+      { part: "SidebarMenuButton · SidebarMenuAction", description: "Botão interativo de menu e ação contextual" },
+      { part: "SidebarMenuBadge · SidebarMenuSkeleton", description: "Indicador de contagem e placeholder de carga" },
+      { part: "SidebarMenuSub · SidebarMenuSubItem · SidebarMenuSubButton", description: "Subnível de menu, item e botão indentado" },
+      { part: "SidebarInput", description: "Campo de busca estilizado para a barra lateral" },
     ],
-    variants: [],
+    variants: [
+      { name: "Default", value: "default", description: "Botão padrão de navegação com destaque no hover" },
+      { name: "Outline", value: "outline", description: "Botão com borda e fundo, para seletores de conta" },
+    ],
     states: [
-      { name: "Expanded", description: "Largura total, labels visíveis." },
-      { name: "Collapsed (ícone)", description: "collapsible=\"icon\" — só ícones, labels em tooltip." },
-      { name: "Mobile", description: "Renderiza como Sheet (painel deslizante) abaixo do breakpoint md." },
+      { name: "Padrão", description: "Texto text-sidebar-foreground sobre fundo bg-sidebar" },
+      { name: "Hover", description: "Fundo hover:bg-sidebar-accent e texto em destaque" },
+      { name: "Pressionado", description: "Fundo active:bg-sidebar-accent com feedback" },
+      { name: "Foco", description: "Anel focus-visible:ring-2 focus-visible:ring-sidebar-ring" },
+      { name: "Ativo", description: "Rota ativa com data-[active=true]:bg-sidebar-accent" },
+      { name: "Desabilitado", description: "Opacidade com disabled:opacity-50 e sem clique" },
     ],
-    sizes: [],
-    doGuidelines: ["Use para navegação persistente em aplicações com muitas seções."],
-    dontGuidelines: ["Não use sidebar para ações temporárias — use Sheet ou Drawer."],
+    sizes: [
+      { name: "default", value: "default", description: "32 px — Altura padrão para itens principais" },
+      { name: "sm", value: "sm", description: "28 px — Para listas secundárias densas" },
+      { name: "lg", value: "lg", description: "48 px — Para cabeçalhos com avatar de equipe" },
+    ],
+    doGuidelines: ["Use SidebarProvider na raiz para gerenciar estado e cookie.", "Passe a prop tooltip em SidebarMenuButton para a barra recolhida.", "Agrupe itens tematicamente com SidebarGroup e use rótulos descritivos."],
+    dontGuidelines: ["Barra lateral para tarefas temporárias ou modais → sheet.", "Ocultar rótulos sem fornecer ícone claro no modo recolhido → sidebar.", "Omitir gatilho visível de alternância em telas intermediárias → sidebar."],
     code: `import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
+  SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { Icon } from "@/components/ui/icon"
 
 <SidebarProvider>
-  <Sidebar collapsible="icon">
+  <Sidebar>
+    <SidebarHeader className="p-3 font-semibold">Sistema</SidebarHeader>
     <SidebarContent>
       <SidebarGroup>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Início">Início</SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+        <SidebarGroupLabel>Menu</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton tooltip="Início" isActive>
+                <Icon name="home" />
+                <span>Início</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroupContent>
       </SidebarGroup>
     </SidebarContent>
   </Sidebar>
+  <SidebarTrigger aria-label="Alternar barra lateral" />
 </SidebarProvider>`,
     props: [
-      { name: "collapsible", type: "\"offcanvas\" | \"icon\" | \"none\"", default: "\"offcanvas\"", description: "(Sidebar) comportamento ao recolher." },
-      { name: "side", type: "\"left\" | \"right\"", default: "\"left\"", description: "(Sidebar) lado da tela." },
-      { name: "mobileSide", type: "\"left\" | \"right\"", default: "mesmo valor de \"side\"", description: "(Sidebar) lado da tela na gaveta mobile." },
-      { name: "variant", type: "\"sidebar\" | \"floating\" | \"inset\"", default: "\"sidebar\"", description: "(Sidebar) estilo visual do contêiner." },
-      { name: "tooltip", type: "string", description: "(SidebarMenuButton) texto mostrado quando a sidebar está recolhida." },
+      { name: "defaultOpen (SidebarProvider)", type: "boolean", default: "true", description: "Estado inicial aberto da barra" },
+      { name: "open (SidebarProvider)", type: "boolean", default: "—", description: "Estado aberto em modo controlado" },
+      { name: "onOpenChange (SidebarProvider)", type: "(open: boolean) => void", default: "—", description: "Callback de mudança de abertura" },
+      { name: "side", type: "left · right", default: "left", description: "Lado no desktop" },
+      { name: "mobileSide", type: "left · right", default: "—", description: "Lado da folha no celular" },
+      { name: "variant", type: "sidebar · floating · inset", default: "sidebar", description: "Estilo visual da barra" },
+      { name: "collapsible", type: "offcanvas · icon · none", default: "offcanvas", description: "Modo de colapso" },
+      { name: "asChild (SidebarGroupLabel)", type: "boolean", default: "false", description: "Renderiza elemento filho" },
+      { name: "asChild (SidebarGroupAction)", type: "boolean", default: "false", description: "Renderiza elemento filho" },
+      { name: "asChild (SidebarMenuButton)", type: "boolean", default: "false", description: "Renderiza como Link" },
+      { name: "isActive (SidebarMenuButton)", type: "boolean", default: "false", description: "Marca rota atual ativa" },
+      { name: "tooltip (SidebarMenuButton)", type: "string · React.ComponentProps<typeof TooltipContent>", default: "—", description: "Dica na barra recolhida" },
+      { name: "variant (SidebarMenuButton)", type: "default · outline", default: "default", description: "Variante do botão" },
+      { name: "size (SidebarMenuButton)", type: "default · sm · lg", default: "default", description: "Altura do botão" },
+      { name: "asChild (SidebarMenuAction)", type: "boolean", default: "false", description: "Renderiza elemento filho" },
+      { name: "showOnHover (SidebarMenuAction)", type: "boolean", default: "false", description: "Mostra apenas no hover" },
+      { name: "showIcon (SidebarMenuSkeleton)", type: "boolean", default: "false", description: "Mostra ícone no placeholder" },
+      { name: "asChild (SidebarMenuSubButton)", type: "boolean", default: "false", description: "Renderiza elemento filho" },
+      { name: "size (SidebarMenuSubButton)", type: "sm · md", default: "md", description: "Tamanho do sub-botão" },
+      { name: "isActive (SidebarMenuSubButton)", type: "boolean", default: "false", description: "Marca subitem ativo" },
+    ],
+    meta: {
+      nome: "Sidebar",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/sidebar.tsx",
+      story: "src/components/ui/sidebar.stories.tsx",
+      vizinhos: ["navigation-menu", "sheet", "breadcrumb"],
+    },
+    whenToUseItems: ["Navegação persistente em sistemas web, dashboards e painéis administrativos.", "Estruturação de muitas seções divididas por módulos, categorias ou projetos.", "Telas que precisam maximizar a área útil alternando entre expandido e recolhido em ícones."],
+    whenNotToUse: ["Navegação horizontal no cabeçalho com poucas seções → navigation-menu.", "Painel temporário para tarefas contextuais ou filtros rápidos → sheet.", "Trilha sequencial de localização em páginas profundas → breadcrumb."],
+    content: ["Rótulos curtos em maiúsculas: \"Painel\", \"Relatórios\" ou \"Configurações\".", "Títulos de grupos em caixa alta ou subtítulo curto: \"Geral\", \"Projetos\".", "O atalho global de teclado exibe Ctrl+B ou Cmd+B.", "Sem ponto final em rótulos e itens de navegação."],
+    accessibility: {
+      keyboard: "Tab e Shift+Tab navegam entre os itens. Ctrl+B (ou Cmd+B) alterna o estado aberto/recolhido. Esc fecha a folha no celular.",
+      screenReader: "Itens usam papéis semânticos de botão ou link. Quando recolhida em ícones, os botões exibem tooltip acessível.",
+      focus: "Anel de foco visível em cada item navegável. Na versão móvel, o foco fica contido no painel deslizante.",
+      cautions: "SidebarTrigger tem rótulo padrão \"Toggle Sidebar\" em inglês. Sempre passe aria-label=\"Alternar barra lateral\" em português.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["--sidebar-accent", "--sidebar-border", "bg-background", "bg-sidebar", "bg-sidebar-accent", "bg-sidebar-border", "border-sidebar-border", "text-sidebar-accent-foreground", "text-sidebar-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1", "gap-2", "h-12", "h-4", "h-5", "h-7", "h-8", "inset-2", "inset-y-0", "left-0", "left-1", "left-2", "m-2", "min-h-0", "min-w-0", "min-w-5", "ml-0", "ml-2", "mt-8", "mx-2", "mx-3.5", "p-0", "p-2", "pr-8", "px-1", "px-2", "px-2.5", "py-0.5", "right-0", "right-1", "right-2", "right-3", "right-4", "size-4", "size-7", "top-1", "top-1.5", "top-2.5", "top-3.5", "w-0", "w-0.5", "w-4", "w-5"] },
+      { contexto: "Raio", itens: ["rounded-lg", "rounded-md", "rounded-xl"] },
+      { contexto: "Sombra", itens: ["shadow-sm"] },
+      { contexto: "Movimento", itens: ["duration-motion-base"] },
+      { contexto: "Foco", itens: ["ring-sidebar-ring"] },
     ],
   },
   table: {

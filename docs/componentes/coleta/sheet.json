@@ -1,0 +1,61 @@
+{
+  "slug": "sheet",
+  "partes": [
+    "Sheet",
+    "SheetTrigger",
+    "SheetClose",
+    "SheetPortal",
+    "SheetOverlay",
+    "SheetContent",
+    "SheetHeader",
+    "SheetFooter",
+    "SheetTitle",
+    "SheetDescription"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "side",
+      "parte": "SheetContent",
+      "tipo": "`top` · `right` · `bottom` · `left`",
+      "padrao": "right"
+    },
+    {
+      "nome": "showCloseButton",
+      "parte": "SheetContent",
+      "tipo": "`boolean`",
+      "padrao": "true"
+    }
+  ],
+  "tokens": [
+    "bg-popover",
+    "bg-secondary",
+    "bottom-0",
+    "font-semibold",
+    "gap-1.5",
+    "gap-2",
+    "gap-4",
+    "inset-0",
+    "inset-x-0",
+    "inset-y-0",
+    "left-0",
+    "max-w-sm",
+    "p-4",
+    "right-0",
+    "right-4",
+    "ring-offset-background",
+    "ring-ring",
+    "shadow-lg",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-popover-foreground",
+    "text-sm",
+    "top-0",
+    "top-4",
+    "w-3"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

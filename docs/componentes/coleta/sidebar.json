@@ -1,0 +1,243 @@
+{
+  "slug": "sidebar",
+  "partes": [
+    "SidebarProvider",
+    "Sidebar",
+    "SidebarTrigger",
+    "SidebarRail",
+    "SidebarInset",
+    "SidebarInput",
+    "SidebarHeader",
+    "SidebarFooter",
+    "SidebarSeparator",
+    "SidebarContent",
+    "SidebarGroup",
+    "SidebarGroupLabel",
+    "SidebarGroupAction",
+    "SidebarGroupContent",
+    "SidebarMenu",
+    "SidebarMenuItem",
+    "SidebarMenuButton",
+    "SidebarMenuAction",
+    "SidebarMenuBadge",
+    "SidebarMenuSkeleton",
+    "SidebarMenuSub",
+    "SidebarMenuSubItem",
+    "SidebarMenuSubButton"
+  ],
+  "variantes": [
+    "default",
+    "outline"
+  ],
+  "tamanhos": [
+    {
+      "valor": "default",
+      "px": 32,
+      "igualA": null
+    },
+    {
+      "valor": "sm",
+      "px": 28,
+      "igualA": null
+    },
+    {
+      "valor": "lg",
+      "px": 48,
+      "igualA": null
+    }
+  ],
+  "props": [
+    {
+      "nome": "defaultOpen",
+      "parte": "SidebarProvider",
+      "tipo": "`boolean`",
+      "padrao": "true"
+    },
+    {
+      "nome": "open",
+      "parte": "SidebarProvider",
+      "tipo": "`boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "onOpenChange",
+      "parte": "SidebarProvider",
+      "tipo": "`(open: boolean) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "side",
+      "parte": "Sidebar",
+      "tipo": "`left` · `right`",
+      "padrao": "left"
+    },
+    {
+      "nome": "mobileSide",
+      "parte": "Sidebar",
+      "tipo": "`left` · `right`",
+      "padrao": null
+    },
+    {
+      "nome": "variant",
+      "parte": "Sidebar",
+      "tipo": "`sidebar` · `floating` · `inset`",
+      "padrao": "sidebar"
+    },
+    {
+      "nome": "collapsible",
+      "parte": "Sidebar",
+      "tipo": "`offcanvas` · `icon` · `none`",
+      "padrao": "offcanvas"
+    },
+    {
+      "nome": "asChild",
+      "parte": "SidebarGroupLabel",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "asChild",
+      "parte": "SidebarGroupAction",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "asChild",
+      "parte": "SidebarMenuButton",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "isActive",
+      "parte": "SidebarMenuButton",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "tooltip",
+      "parte": "SidebarMenuButton",
+      "tipo": "`string` · `React.ComponentProps<typeof TooltipContent>`",
+      "padrao": null
+    },
+    {
+      "nome": "variant",
+      "parte": "SidebarMenuButton",
+      "tipo": "`default` · `outline`",
+      "padrao": "default"
+    },
+    {
+      "nome": "size",
+      "parte": "SidebarMenuButton",
+      "tipo": "`default` · `sm` · `lg`",
+      "padrao": "default"
+    },
+    {
+      "nome": "asChild",
+      "parte": "SidebarMenuAction",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "showOnHover",
+      "parte": "SidebarMenuAction",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "showIcon",
+      "parte": "SidebarMenuSkeleton",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "asChild",
+      "parte": "SidebarMenuSubButton",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "size",
+      "parte": "SidebarMenuSubButton",
+      "tipo": "`sm` · `md`",
+      "padrao": "md"
+    },
+    {
+      "nome": "isActive",
+      "parte": "SidebarMenuSubButton",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "--sidebar-accent",
+    "--sidebar-border",
+    "bg-background",
+    "bg-sidebar",
+    "bg-sidebar-accent",
+    "bg-sidebar-border",
+    "border-sidebar-border",
+    "duration-motion-base",
+    "font-medium",
+    "gap-1",
+    "gap-2",
+    "h-12",
+    "h-4",
+    "h-5",
+    "h-7",
+    "h-8",
+    "inset-2",
+    "inset-y-0",
+    "left-0",
+    "left-1",
+    "left-2",
+    "m-2",
+    "min-h-0",
+    "min-w-0",
+    "min-w-5",
+    "ml-0",
+    "ml-2",
+    "mt-8",
+    "mx-2",
+    "mx-3.5",
+    "p-0",
+    "p-2",
+    "pr-8",
+    "px-1",
+    "px-2",
+    "px-2.5",
+    "py-0.5",
+    "right-0",
+    "right-1",
+    "right-2",
+    "right-3",
+    "right-4",
+    "ring-sidebar-ring",
+    "rounded-lg",
+    "rounded-md",
+    "rounded-xl",
+    "shadow-sm",
+    "size-4",
+    "size-7",
+    "text-sidebar-accent-foreground",
+    "text-sidebar-foreground",
+    "text-sm",
+    "text-xs",
+    "top-1",
+    "top-1.5",
+    "top-2.5",
+    "top-3.5",
+    "w-0",
+    "w-0.5",
+    "w-4",
+    "w-5"
+  ],
+  "compoe": [
+    "button",
+    "icon",
+    "input",
+    "separator",
+    "sheet",
+    "skeleton",
+    "tooltip"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "slug": "form",
+  "partes": [
+    "FormField",
+    "FormItem",
+    "FormLabel",
+    "FormControl",
+    "FormDescription",
+    "FormMessage"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "gap-2",
+    "text-destructive",
+    "text-muted-foreground",
+    "text-sm"
+  ],
+  "compoe": [
+    "label"
+  ]
+}

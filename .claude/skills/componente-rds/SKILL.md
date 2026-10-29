@@ -19,7 +19,6 @@ repetem aqui:
 |---|---|
 | Componente novo | 1 → 6 |
 | Componente existente mudou de estrutura (`cva`, props, partes, classes) | 3 → 6, com `--motivo` |
-| Componente existente ainda sem MD (replicação por lote) | 3 → 6 |
 
 ## 1. Provar que a peça ainda não existe (só componente novo)
 
@@ -62,8 +61,7 @@ No frontmatter, preencha `vizinhos` (ao menos um slug existente, os que costumam
 
 ## 5. Encaixar na porta de entrada
 
-1. `docs/componentes/README.md`: acrescente a linha em "Componentes documentados". Se a peça muda uma escolha entre vizinhos, ajuste a árvore de decisão.
-2. Tire o slug de `PENDENTES_MD` em `src/lib/memoria-componentes.test.ts`.
+1. `docs/componentes/README.md`: acrescente a linha em "Componentes documentados". Se a peça muda uma escolha entre vizinhos, ajuste a árvore de decisão. A trava reprova componente sem MD ou sem essa linha.
 
 ## 6. Provar
 

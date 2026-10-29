@@ -1,0 +1,34 @@
+{
+  "slug": "resizable",
+  "partes": [
+    "ResizablePanelGroup",
+    "ResizablePanel",
+    "ResizableHandle"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "withHandle",
+      "parte": "ResizableHandle",
+      "tipo": "`boolean`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-border",
+    "h-1",
+    "h-4",
+    "h-px",
+    "inset-y-0",
+    "left-0",
+    "left-1",
+    "ring-ring",
+    "w-1",
+    "w-3",
+    "w-px"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}
