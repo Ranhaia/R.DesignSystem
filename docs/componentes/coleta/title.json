@@ -1,0 +1,67 @@
+{
+  "slug": "title",
+  "partes": [
+    "Title"
+  ],
+  "variantes": [],
+  "tamanhos": [
+    {
+      "valor": "h1",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "h2",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "h3",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "h4",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "h5",
+      "px": null,
+      "igualA": null
+    },
+    {
+      "valor": "h6",
+      "px": null,
+      "igualA": null
+    }
+  ],
+  "props": [
+    {
+      "nome": "size",
+      "parte": "Title",
+      "tipo": "`h1` · `h2` · `h3` · `h4` · `h5` · `h6`",
+      "padrao": "h2"
+    },
+    {
+      "nome": "as",
+      "parte": "Title",
+      "tipo": "`TitleElement`",
+      "padrao": "h2"
+    }
+  ],
+  "tokens": [
+    "font-bold",
+    "font-heading",
+    "font-semibold",
+    "text-2xl",
+    "text-3xl",
+    "text-4xl",
+    "text-base",
+    "text-foreground",
+    "text-lg",
+    "text-xl",
+    "tracking-tight"
+  ],
+  "compoe": []
+}

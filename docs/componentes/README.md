@@ -102,6 +102,8 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 - [separator](separator.md) — Linha fina entre grupos do mesmo container.
 - [skeleton](skeleton.md) — Placeholder com pulso que antecipa a forma do conteúdo.
 - [tabs](tabs.md) — Alterna visões do mesmo conteúdo sem sair da página.
+- [text](text.md) — Formata blocos de texto e parágrafos com escala tipográfica e semântica.
+- [title](title.md) — Aplica hierarquia visual e semântica a cabeçalhos e títulos de seções.
 
 ## Crédito
 

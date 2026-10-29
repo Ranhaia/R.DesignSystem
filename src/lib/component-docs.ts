@@ -944,47 +944,51 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   text: {
-    description: "O componente de texto, usado para escrever e formatar blocos de conteúdo dentro de páginas ou componentes.",
-    whenToUse: "Use para escrever texto de corpo com hierarquia básica (tamanho, peso, cor) e para formatar trechos específicos de conteúdo. Controle o elemento HTML renderizado via prop `as` para manter a semântica correta (parágrafo vs. texto inline vs. contêiner de bloco).",
+    description: "Formata blocos de texto e parágrafos com escala tipográfica e peso definidos. Garante a semântica correta com a tag HTML adequada.",
+    whenToUse: "Parágrafos de texto corrido ou blocos de descrição em páginas, cards e diálogos. Trechos de texto dentro de outros blocos que precisam de formatação visual diferenciada. Legendas, notas de rodapé ou metadados auxiliares usando tamanho reduzido.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <p>, <span> ou <div> (controlado pela prop `as`, default \"p\") com data-slot=\"text\", data-size e data-weight. Sem subcomponentes — wrapper tipográfico único, mesma lógica do Label." },
+      { part: "Text", description: "Elemento textual raiz que aplica as variantes de tamanho, peso e cor atenuada" },
     ],
-    variants: [
-      { name: "Regular", value: "regular", description: "Peso padrão da fonte — font-normal." },
-      { name: "Medium", value: "medium", description: "Peso médio — font-medium." },
-      { name: "Bold", value: "bold", description: "Peso forte — font-bold." },
-    ],
-    states: [
-      { name: "Default", description: "Cor --foreground (muted=false)." },
-      { name: "Muted", description: "Cor --muted-foreground (muted=true), para texto secundário/auxiliar — mesmo par de tokens que CardDescription/ItemDescription já usam." },
-    ],
+    variants: [],
+    states: [],
     sizes: [
-      { name: "Caption", value: "caption", description: "Texto auxiliar/legenda, menor que o corpo (text-xs)." },
-      { name: "Base", value: "base", description: "Corpo de texto padrão (text-sm) — mesmo tamanho já usado em CardDescription/ItemDescription/Alert neste catálogo." },
-      { name: "Highlight", value: "highlight", description: "Texto de destaque, um passo acima do corpo padrão (text-base)." },
+      { name: "caption", value: "caption", description: "— — Texto auxiliar, legendas e notas de apoio" },
+      { name: "base", value: "base", description: "— — Corpo de texto padrão para leitura" },
+      { name: "highlight", value: "highlight", description: "— — Destaque visual ou parágrafos introdutórios" },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Defina o elemento HTML adequado via prop as para preservar a semântica.", "Mantenha o tamanho base como padrão para parágrafos e corpo de texto.", "Aplique muted apenas em textos que possuem papel secundário ou auxiliar."],
+    dontGuidelines: ["Text como parágrafo longo em negrito constante → weight regular com ênfase pontual", "Text com tamanho caption para corpo principal de leitura → size base", "Estilização de cor arbitrária fora do sistema de tokens → prop muted ou token semântico"],
     code: `import { Text } from "@/components/ui/text"
 
-// Corpo de texto padrão
-<Text>Texto de corpo padrão.</Text>
-
-// Título de destaque, em negrito
-<Text size="highlight" weight="bold">Título de destaque</Text>
-
-// Texto auxiliar/legenda, cor secundária
-<Text size="caption" muted>Texto auxiliar (caption).</Text>
-
-// Trecho inline, dentro de outro bloco de texto
-<Text as="span" weight="medium">Texto inline.</Text>`,
+<Text>
+  Texto de corpo padrão para leitura e formatação de blocos de conteúdo.
+</Text>`,
     props: [
-      { name: "as", type: "\"p\" | \"span\" | \"div\"", default: "\"p\"", description: "Elemento HTML renderizado. O Nimbus real só documenta \"p\"|\"span\" — \"div\" foi incluído por pedido explícito do escopo desta tarefa." },
-      { name: "size", type: "\"caption\" | \"base\" | \"highlight\"", default: "\"base\"", description: "Tamanho do texto (nomes iguais ao fontSize do Nimbus)." },
-      { name: "weight", type: "\"regular\" | \"medium\" | \"bold\"", default: "\"regular\"", description: "Peso da fonte (mesmos nomes do fontWeight do Nimbus)." },
-      { name: "muted", type: "boolean", default: "false", description: "Quando true, usa text-muted-foreground em vez de text-foreground. Substitui a prop `color` (22 variações) do Nimbus — este catálogo ainda não tem tokens de cor de texto por família semântica." },
-      { name: "children", type: "React.ReactNode", description: "Conteúdo de texto (obrigatório)." },
-      { name: "...props", type: "React.ComponentProps<\"p\">", description: "Demais atributos nativos do elemento raiz (compatível com p/span/div)." },
+      { name: "size", type: "caption · base · highlight", default: "base", description: "Tamanho do texto na escala tipográfica" },
+      { name: "weight", type: "regular · medium · bold", default: "regular", description: "Peso da fonte aplicado" },
+      { name: "muted", type: "true · false", default: "false", description: "Aplica cor atenuada para texto secundário" },
+      { name: "as", type: "TextElement", default: "p", description: "Tag HTML real renderizada" },
+    ],
+    meta: {
+      nome: "Text",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/text.tsx",
+      story: "src/components/ui/text.stories.tsx",
+      vizinhos: ["title", "label", "link"],
+    },
+    whenToUseItems: ["Parágrafos de texto corrido ou blocos de descrição em páginas, cards e diálogos.", "Trechos de texto dentro de outros blocos que precisam de formatação visual diferenciada.", "Legendas, notas de rodapé ou metadados auxiliares usando tamanho reduzido."],
+    whenNotToUse: ["Títulos e subtítulos estruturais de páginas ou seções → title", "Rótulo descritivo conectado a um controle de formulário → label", "Elemento textual interativo que dispara ação ou navegação → link"],
+    content: ["Inicie frases completas em maiúscula e finalize com pontuação: \"As configurações foram atualizadas.\"", "Mantenha legendas e textos auxiliares concisos: \"Formatos aceitos: PDF e PNG.\"", "Use a variante muted para informações secundárias ou complementares."],
+    accessibility: {
+      keyboard: "Não recebe foco.",
+      screenReader: "Anunciado como texto estático conforme a semântica da tag informada na prop as.",
+      focus: "Não retém nem recebe foco.",
+      cautions: "Use as=\"p\" para blocos e as=\"span\" para trechos em linha; nunca use para substituir títulos estruturais (critério WCAG 1.3.1).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-bold", "font-medium", "font-normal", "text-base", "text-sm", "text-xs"] },
     ],
   },
   textarea: {
@@ -1114,41 +1118,51 @@ function Exemplo() {
     ],
   },
   title: {
-    description: "Aplica hierarquia visual e semântica ao conteúdo de uma página.",
-    whenToUse: "Use para títulos e subtítulos de telas, páginas, blocos de texto, seções ou outros componentes. A hierarquia semântica (elemento HTML real, h1-h6) é controlada pela prop `as`; a hierarquia visual (tamanho/peso) é controlada pela prop `size` — as duas são independentes por design, não só por implementação.",
+    description: "Aplica hierarquia visual e semântica a cabeçalhos e títulos de páginas ou seções. Permite desacoplar a tag HTML semântica da escala visual aplicada.",
+    whenToUse: "Títulos de páginas ou telas principais usando h1 semântico. Cabeçalhos de seções, blocos de conteúdo e grupos em páginas ou painéis. Títulos de caixas de diálogo, cards ou painéis laterais que precisam de destaque visual específico.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um dos elementos <h1>-<h6>, escolhido via prop `as` (default \"h2\"), com data-slot=\"title\", data-as e data-size." },
+      { part: "Title", description: "Elemento raiz h1 a h6 que renderiza o título com a escala visual escolhida" },
     ],
     variants: [],
     states: [],
     sizes: [
-      { name: "H1", value: "h1", description: "text-4xl font-bold tracking-tight." },
-      { name: "H2", value: "h2", description: "text-3xl font-bold tracking-tight." },
-      { name: "H3", value: "h3", description: "text-2xl font-semibold tracking-tight." },
-      { name: "H4", value: "h4", description: "text-xl font-semibold tracking-tight." },
-      { name: "H5", value: "h5", description: "text-lg font-semibold." },
-      { name: "H6", value: "h6", description: "text-base font-semibold." },
+      { name: "h1", value: "h1", description: "— — Título principal da página ou tela" },
+      { name: "h2", value: "h2", description: "— — Seções principais dentro de uma página" },
+      { name: "h3", value: "h3", description: "— — Subseções e blocos de conteúdo agrupados" },
+      { name: "h4", value: "h4", description: "— — Cabeçalhos de cards e painéis médios" },
+      { name: "h5", value: "h5", description: "— — Títulos de pequenos grupos ou listas" },
+      { name: "h6", value: "h6", description: "— — Menor nível de cabeçalho para agrupamentos pontuais" },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use a prop as para estruturar a árvore semântica do documento em ordem lógica.", "Mantenha apenas um título h1 por página para clareza em leitores de tela e SEO.", "Ajuste a prop size quando um cabeçalho secundário demandar peso visual diferente do padrão."],
+    dontGuidelines: ["Pular níveis na hierarquia semântica (como h1 direto para h4) → ordenação sequencial de as", "Usar Title para parágrafos corridos em busca de destaque visual → text com weight bold", "Criar títulos em caixa alta integral por meio de digitação manual → estilo visual controlado"],
     code: `import { Title } from "@/components/ui/title"
 
-// Título de página (semântico = visual, ambos h1)
-<Title as="h1">Painel do corretor</Title>
-
-// Título de seção dentro da página (default as="h2")
-<Title>Apólices ativas</Title>
-
-// Hierarquia semântica e visual divergindo de propósito: h3 correto na
-// árvore do documento, mas com destaque visual de H1
-<Title as="h3" size="h1">
-  Destaque desta seção
-</Title>`,
+<Title as="h1">Painel principal</Title>
+<Title as="h2" size="h3">Visão geral</Title>`,
     props: [
-      { name: "as", type: "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"", default: "\"h2\"", description: "Elemento HTML real renderizado — controla a hierarquia semântica do documento." },
-      { name: "size", type: "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"", description: "Escala visual aplicada (ver Tamanhos). Independente de `as` — quando omitida, acompanha o valor de `as`." },
-      { name: "children", type: "React.ReactNode", description: "Texto do título (obrigatório)." },
-      { name: "...props", type: "React.ComponentProps<\"h1\">", description: "Demais atributos nativos do elemento raiz (id, onClick, aria-*, etc.)." },
+      { name: "size", type: "h1 · h2 · h3 · h4 · h5 · h6", default: "h2", description: "Escala visual aplicada ao título" },
+      { name: "as", type: "TitleElement", default: "h2", description: "Tag HTML semântica renderizada no documento" },
+    ],
+    meta: {
+      nome: "Title",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/title.tsx",
+      story: "src/components/ui/title.stories.tsx",
+      vizinhos: ["text", "label", "separator"],
+    },
+    whenToUseItems: ["Títulos de páginas ou telas principais usando h1 semântico.", "Cabeçalhos de seções, blocos de conteúdo e grupos em páginas ou painéis.", "Títulos de caixas de diálogo, cards ou painéis laterais que precisam de destaque visual específico."],
+    whenNotToUse: ["Corpo de texto, parágrafos explicativos ou descrições longas → text", "Rótulo descritivo conectado a um controle de formulário → label", "Linha divisória visual sem texto de cabeçalho → separator"],
+    content: ["Títulos devem ser curtos, objetivos e começar com letra maiúscula: \"Dados cadastrais\"", "Não utilize ponto final em títulos ou subtítulos.", "Mantenha consistência gramatical entre títulos do mesmo nível hierárquico na tela."],
+    accessibility: {
+      keyboard: "Não recebe foco.",
+      screenReader: "Anunciado com o nível de cabeçalho semântico definido pela prop as.",
+      focus: "Não retém nem recebe foco.",
+      cautions: "Mantenha a ordem hierárquica semântica sem pular níveis no documento (h1 antes de h2, h2 antes de h3), mesmo se divergir a escala visual com a prop size (critério WCAG 1.3.1 e 2.4.6).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-foreground"] },
+      { contexto: "Tipografia", itens: ["font-bold", "font-heading", "font-semibold", "text-2xl", "text-3xl", "text-4xl", "text-base", "text-lg", "text-xl", "tracking-tight"] },
     ],
   },
   toggle: {

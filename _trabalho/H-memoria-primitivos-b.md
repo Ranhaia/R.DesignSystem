@@ -2,14 +2,14 @@
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
-sinal: 🟢 Pronto para desenvolver
+status: progresso
+sinal: 🟡 Aguardando definição
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/5
+tarefas: 2/5
 bloqueada-por:
 criado: 2026-10-29
 fechado:
@@ -60,16 +60,25 @@ Prova de pronto: `npx tsc --noEmit`, `npm run test:unit` e `npm run docs:check`,
 
 ## Pré-requisitos
 
-Nenhum além dos bloqueadores.
+- [ ] **Decisão** — como tratar o componente `direction` no ciclo de memória de componentes?
+      Contexto: `H-memoria-primitivos-b` incluiu `direction` como primitivo do lote b. Porém, o ADR ratificado `criterio-camadas.md` definiu lista fechada de 7 primitivos (`icon`, `label`, `skeleton`, `separator`, `text`, `title`, `box`), mantendo `direction` como `utilitySlugs = ["direction"]` (infraestrutura sem UI visual). Além disso, `direction` não possui `direction.stories.tsx` nem tokens CSS (`Tokens usados: Nenhum.`), o que reprova a trava de campos (`component-docs.campos.test.ts:163`) e a trava de memória (`memoria-componentes.test.ts:432/434`).
+      A) Manter Direction como utilitário de infraestrutura (`utilitySlugs`) e adaptar a esteira/travas (`memoria-componentes.test.ts` e `component-docs.campos.test.ts`) para suportar componentes utilitários (camada opcional/utility, story opcional e tokens opcionais).
+      B) Promover Direction a primitivo formal do Design System, adicionando `direction: "primitive"` ao `atomicRegistry` (atualizando `criterio-camadas.md`), criando `src/components/ui/direction.stories.tsx` e ajustando a asserção de tokens no teste para componentes com 0 tokens.
+      C) Retirar Direction do escopo deste lote de primitivos (concluindo `H-memoria-primitivos-b` com `text` e `title`, que já estão verdes e validados) e tratar Direction em lote específico de utilitários de infraestrutura.
+      Recomendo C se o objetivo for manter a lista fechada de primitivos e destravar a Onda 2 imediatamente, ou A se o objetivo for documentar Direction sem redefinir o Atomic Design. · pedido por: antigravity · 2026-10-29
 
 ## Tarefas
 
-- [ ] Registrar e declarar `text` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `title` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `text` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `title` (docs:registrar, intenção, vizinhos e referencias)
 - [ ] Registrar e declarar `direction` (docs:registrar, intenção, vizinhos e referencias)
 - [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
 - [ ] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- 2026-10-29 · antigravity · text registrado e declarado em docs/componentes/text.md com props, tamanhos, estados, conteúdo, acessibilidade (4 chaves) e exemplo mínimo. Adicionado a docs/sinonimos.json, docs/componentes/README.md e removido de PENDENTES_MD. Comandos: npm run docs:registrar, npx tsc --noEmit, npm run docs:check, npm run test:unit (todos verdes).
+- 2026-10-29 · antigravity · title registrado e declarado em docs/componentes/title.md com props (as, size), tamanhos h1-h6, estados, conteúdo, acessibilidade e exemplo mínimo desacoplando semântica de hierarquia visual. Adicionado a docs/sinonimos.json, docs/componentes/README.md e removido de PENDENTES_MD. Comandos: npm run docs:registrar, npx tsc --noEmit, npm run docs:check, npm run test:unit (todos verdes).
+- 2026-10-29 · antigravity · Parado em direction: identificado conflito entre o lote (que lista direction como primitivo) e o ADR criterio-camadas.md / atomic-registry.ts (onde a lista de primitivos é fechada e direction é utilitySlug sem story, sem camada e sem tokens CSS, reprovando travas memoria-componentes.test.ts e component-docs.campos.test.ts). Aberta Decisão em Pré-requisitos com opções A/B/C; sinal alterado para 🟡 Aguardando definição e dono esvaziado.
 
 ## Histórico
