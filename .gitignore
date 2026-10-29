@@ -52,6 +52,8 @@ storybook-static
 
 # git worktrees isolados (superpowers:using-git-worktrees)
 /.worktrees/
+# estado dos jobs do AGY (um por worktree)
+/.agy-staff/
 
 # saída do graphify — regenerável de graça em ~40s com
 # `graphify extract . --code-only && graphify cluster-only . --no-label`.

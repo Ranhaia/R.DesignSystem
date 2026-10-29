@@ -149,6 +149,14 @@ não está disponível aqui:
   escolha.
 - Detecte o MCP antes de usar, não confie no estado.
 
+## Execução em paralelo (worktree + AGY)
+
+Várias Histórias ao mesmo tempo: um worktree por História, o AGY executa, o
+orquestrador (Opus) despacha, confere o diff e integra. Fluxo, regras e
+limites em `docs/active/decisoes/paralelo-agy-worktree.md`; comandos em
+`node scripts/paralelo.mjs`. O worktree nasce do `origin/main`, nunca do
+`main` local, e teste de navegador só roda pelo orquestrador, um por vez.
+
 ## Só token, num lugar só
 
 - **Medida, espaço, tempo e texto vêm de token.** Em componente: escala do
