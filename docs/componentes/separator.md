@@ -22,8 +22,7 @@ Linha fina que separa grupos de conteúdo dentro do mesmo container. Use com mod
 ## Quando NÃO usar
 
 - Separar os itens de uma lista curta → espaço no container (`gap-*`, `space-y-*`).
-- Separador dentro de menu, grupo de botões ou formulário → o da própria peça: `DropdownMenuSeparator` (`dropdown-menu`), `ButtonGroupSeparator` (`button-group`), `FieldSeparator` (`field`).
-- Linha com texto ("ou continue com") → `FieldSeparator` do `field`, que aceita texto.
+- Separador dentro de menu, grupo de botões ou formulário, inclusive linha com texto ("ou continue com") → o da própria peça: `DropdownMenuSeparator` (`dropdown-menu`), `ButtonGroupSeparator` (`button-group`), `FieldSeparator` (`field`, que aceita texto).
 - Marcar o começo de uma seção da página → um título (`title`) acima dela.
 
 ## Anatomia

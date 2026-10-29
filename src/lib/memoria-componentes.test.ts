@@ -389,6 +389,14 @@ const sinonimos: Record<string, string[]> = JSON.parse(readFileSync(join(ROOT, "
 // PASSI sugere ~4 KB de intenção; as tabelas geradas somam o resto.
 const LIMITE_BYTES = 8 * 1024
 
+// Molde curto da página de componente (H-doc-pagina-condensada, Fase 4). Mesmos números de _baliza.md, "Seção por seção".
+const LIMITES_ITENS: Record<string, [number, number]> = {
+  "Quando usar": [2, 3],
+  "Quando NÃO usar": [2, 3],
+  "Faça": [3, 3],
+  "NÃO faça": [3, 3],
+}
+
 describe.each(slugsComMd)("%s declara todas as partes", (slug) => {
   const md = readFileSync(join(DOCS, `${slug}.md`), "utf8").replace(/\r\n/g, "\n")
   const fm = camposDe(md)
@@ -421,6 +429,14 @@ describe.each(slugsComMd)("%s declara todas as partes", (slug) => {
       const itens = secao(md, titulo).split("\n").filter((l) => l.startsWith("- "))
       expect(itens.length, titulo).toBeGreaterThan(0)
       for (const item of itens) expect(item, titulo).toContain("→")
+    }
+  })
+
+  it("itens por seção dentro do molde curto", () => {
+    for (const [titulo, [min, max]] of Object.entries(LIMITES_ITENS)) {
+      const n = secao(md, titulo).split("\n").filter((l) => l.startsWith("- ")).length
+      expect(n, `${titulo}: ${n} itens, o molde pede de ${min} a ${max}`).toBeGreaterThanOrEqual(min)
+      expect(n, `${titulo}: ${n} itens, o molde pede de ${min} a ${max}`).toBeLessThanOrEqual(max)
     }
   })
 

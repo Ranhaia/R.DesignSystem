@@ -9,7 +9,7 @@ ciclo:
 estimativa: 4
 perfil: front
 dono:
-tarefas: 3/5
+tarefas: 4/5
 bloqueada-por:
 criado: 2026-10-28
 fechado:
@@ -77,12 +77,18 @@ Pausar `H-memoria-replicar-lotes` até a Fase 4, para os MDs dos lotes já nasce
       Recomendo A; o WCAG já aparece em Acessibilidade ▸ Cuidados. · pedido por: claude · 2026-10-28
       Decidido: **A** · Rafael · 2026-10-28
 
+- [x] **Decisão** — Limite de itens por seção nos MDs (Fase 4).
+      A) Manter o do PASSI (2 a 4 em Quando usar, 3 a 5 em Faça e NÃO faça) → textos mais ricos, página mais longa.
+      B) Molde curto: 2 a 3 em Quando usar e Quando NÃO usar, 3 em Faça e 3 em NÃO faça → página mais curta, como o Aipim; os MDs que passam do limite perdem ou fundem itens.
+      Recomendo B porque o pedido é condensar. · pedido por: claude · 2026-10-28
+      Decidido: **B** · Rafael · 2026-10-29
+
 ## Tarefas
 
 - [x] Fase 1 — Dado: estender `ComponentDoc`, parser e gerador (teste: `src/lib/component-docs.campos.test.ts`)
 - [x] Fase 2 — Página do Button com as 5 abas
 - [x] Fase 3 — Mesmo molde em dialog, tabs e separator, e componentes sem MD degradando bem
-- [ ] Fase 4 — Molde e régua com limite por seção (`docs/componentes/_modelo.md`, `_baliza.md`)
+- [x] Fase 4 — Molde e régua com limite por seção (`docs/componentes/_modelo.md`, `_baliza.md`)
 - [ ] Fase 5 — PR, preview na Vercel e revisão do Rafael
 
 ## Contribuições
@@ -91,5 +97,6 @@ Pausar `H-memoria-replicar-lotes` até a Fase 4, para os MDs dos lotes já nasce
 - 2026-10-28 · claude (orquestrador) · Fase 2 conferida e Fase 3 verificada. Reroda minha: `doc-abas.test.ts` (25 pass, 22 do Checker e 3 que acrescentei), `npm run test:unit` (23 arquivos, 1333 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok) e `npx next build --webpack` (exit 0, 133 páginas estáticas). No navegador (`next dev --webpack`, porta 3103): o Button tem cabeçalho, preview, faixa de metadados, 5 abas e "Nesta página"; o hash `#exemplos`, `#codigo`, `#tokens` e `#acessibilidade` abre a aba certa, também com a página já aberta; Relacionados linka os 4 componentes (todos existem). Achei e corrigi 4 defeitos que o AGY não podia ver: (1) a 375 px a lista de abas vazava e alargava a página (455 px); agora rola por dentro; (2) props sem padrão apareciam como `boolean = —`, porque o MD usa "—" para "sem padrão"; (3) a coluna "Tipo e padrão" mostrava "—" em todas as variantes; fica vazia; (4) o preview do topo mostrava o exemplo `button-as-child` por ser o primeiro em ordem alfabética; novo `exemploPrincipal` prefere `-default`, depois `-demo`. Erro meu no caminho: escrevi a regra do item 4 em PascalCase a partir do mapa de código, e o dado real é kebab-case; o teste passou com dado inventado e o navegador mostrou o erro. Corrigi regra e teste para o formato real. Fase 3: dialog, tabs e separator renderizam as 5 abas (separator sem o bloco Estados, por não ter estados), `accordion` (sem MD novo) fica com 3 abas e nenhum `[a preencher]`, e o build gera as 79 páginas. Visual por imagem só do Button; os outros, por DOM e HTML.
 - 2026-10-28 · claude (orquestrador) · Fase 1 conferida. O teste do contrato (Checker, escrito antes) foi vermelho com 7 falhas e não foi alterado pelo AGY. Reroda minha: o teste do contrato (83 pass), `npm run test:unit` (22 arquivos, 1302 pass), `npx tsc --noEmit` (0 erros) e `npm run docs:check` (ok). O diff de `src/lib/component-docs.ts` só acrescenta (0 remoções) e só as 4 entradas com MD ganharam campos novos (button, separator, dialog, tabs); as demais não mudaram. Li o parser: funções genéricas, sem valor escrito para passar o teste. O job do AGY acabou com `status ERROR` (chamada de função malformada no final), mas o commit estava completo e a árvore limpa. Não rodei teste de navegador nem servidor dev: a Fase 1 não tem tela.
 - 2026-10-28 · antigravity · Fase 1 (dado da página condensada): adicionados campos opcionais em `ComponentDoc`, extração de listas, metadados, acessibilidade e tokens em `scripts/parse-component-md.mjs`, formatação em `scripts/gerar-component-docs.mjs` e sincronização de `src/lib/component-docs.ts`. Validações: `npx vitest run --project unit src/lib/component-docs.campos.test.ts` (83 pass), `npm run test:unit` (22 arquivos, 1302 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok).
+- 2026-10-29 · claude · Fase 4, limites B (decisão do Rafael). Teste primeiro: `LIMITES_ITENS` em `src/lib/memoria-componentes.test.ts` (Quando usar 2 a 3, Quando NÃO usar 2 a 3, Faça 3, NÃO faça 3), vermelho em 4 MDs: button (4 em NÃO faça), dialog (5), separator (4) e tabs (4) em Quando NÃO usar. Poda: button, o item `<Button onClick={navegar}>` → `link`, que repetia o 1º de Quando NÃO usar; dialog, `drawer` fundido ao item do `sheet` e `popover` cortado; separator, "linha com texto" fundida ao item do `FieldSeparator`; tabs, `accordion` cortado (não está nas arestas da `_baliza`). `popover` e `accordion` seguem em `vizinhos`, então o roteamento da IA continua. `component-docs.ts` regenerado com `npm run docs:gerar` e `_baliza.md` com os números novos. Conferido: `npm run test:unit` (23 arquivos, 1337 pass), `npx tsc --noEmit` (0 erros), `npm run docs:check` (ok). Conteúdo (2 a 4) e os limites de quantidade por componente do PASSI não mudaram. Só texto de MD mudou, então não abri a página no navegador.
 
 ## Histórico

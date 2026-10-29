@@ -92,7 +92,7 @@ export const componentDocs: Record<string, ComponentDoc> = {
       { name: "icon-xl", value: "icon-xl", description: "56 px — Só ícone — exige aria-label" },
     ],
     doGuidelines: ["Comece o texto com verbo: Salvar, Enviar, Criar conta.", "Deixe a ação principal à direita em janelas e formulários.", "Explique perto do botão por que ele está desabilitado."],
-    dontGuidelines: ["Texto vago (\"OK\", \"Clique aqui\", \"Sim\") → diga a ação: \"Excluir capítulo\".", "Dois default lado a lado → um vira outline ou secondary.", "destructive em ação que se desfaz → default ou outline.", "<Button onClick={navegar}> para trocar de página → link."],
+    dontGuidelines: ["Texto vago (\"OK\", \"Clique aqui\", \"Sim\") → diga a ação: \"Excluir capítulo\".", "Dois default lado a lado → um vira outline ou secondary.", "destructive em ação que se desfaz → default ou outline."],
     code: `import { Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
 
@@ -589,7 +589,7 @@ import { Label } from "@/components/ui/label"
       vizinhos: ["field", "button-group", "dropdown-menu"],
     },
     whenToUseItems: ["Separar grupos dentro do mesmo container: blocos de um card, grupos de um painel.", "Separar itens lado a lado numa barra de texto: Blog | Documentação | Código-fonte."],
-    whenNotToUse: ["Separar os itens de uma lista curta → espaço no container (gap-*, space-y-*).", "Separador dentro de menu, grupo de botões ou formulário → o da própria peça: DropdownMenuSeparator (dropdown-menu), ButtonGroupSeparator (button-group), FieldSeparator (field).", "Linha com texto (\"ou continue com\") → FieldSeparator do field, que aceita texto.", "Marcar o começo de uma seção da página → um título (title) acima dela."],
+    whenNotToUse: ["Separar os itens de uma lista curta → espaço no container (gap-*, space-y-*).", "Separador dentro de menu, grupo de botões ou formulário, inclusive linha com texto (\"ou continue com\") → o da própria peça: DropdownMenuSeparator (dropdown-menu), ButtonGroupSeparator (button-group), FieldSeparator (field, que aceita texto).", "Marcar o começo de uma seção da página → um título (title) acima dela."],
     content: ["Não tem texto próprio. Para linha com texto, use FieldSeparator com uma ou duas palavras em minúsculas: \"ou\"."],
     accessibility: {
       keyboard: "Não recebe foco.",
@@ -2499,7 +2499,7 @@ import { Button } from "@/components/ui/button"
       vizinhos: ["alert-dialog", "sheet", "drawer", "popover", "sonner"],
     },
     whenToUseItems: ["Tarefa curta que precisa de atenção total antes de voltar ao fluxo.", "Formulário de poucos campos ligado ao que está na tela."],
-    whenNotToUse: ["Confirmar ação destrutiva (\"Excluir capítulo?\") → alert-dialog.", "Confirmação que não pede resposta (\"Link copiado\") → sonner.", "Conteúdo longo ou formulário extenso → uma página, ou sheet.", "No celular, ações sobre um item → drawer.", "Ação simples que cabe num painel pequeno → popover."],
+    whenNotToUse: ["Confirmar ação destrutiva (\"Excluir capítulo?\") → alert-dialog.", "Confirmação que não pede resposta (\"Link copiado\") → sonner.", "Conteúdo longo ou formulário extenso → uma página, ou sheet; no celular, ações sobre um item → drawer."],
     content: ["Título como ação ou pergunta: \"Editar perfil\".", "A descrição diz o que acontece ao confirmar.", "O botão principal repete o verbo do título: \"Salvar perfil\", não \"OK\"."],
     accessibility: {
       keyboard: "Tab e Shift+Tab ficam presos na janela. Esc fecha.",
@@ -3093,7 +3093,7 @@ import { Button } from "@/components/ui/button"
       vizinhos: ["segmented-control", "stepper", "navigation-menu", "accordion"],
     },
     whenToUseItems: ["Visões relacionadas do mesmo contexto: Detalhes, Histórico, Arquivos.", "Conteúdo que a pessoa consulta uma parte por vez."],
-    whenNotToUse: ["Etapas em sequência → stepper.", "Filtrar ou alternar a visão de uma área, sem painel próprio → segmented-control.", "Ir para outra página → navigation-menu ou link.", "Conteúdo que precisa ser visto ao mesmo tempo → deixe aberto, ou accordion."],
+    whenNotToUse: ["Etapas em sequência → stepper.", "Filtrar ou alternar a visão de uma área, sem painel próprio → segmented-control.", "Ir para outra página → navigation-menu ou link."],
     content: ["Uma ou duas palavras por aba: Detalhes, Histórico.", "Substantivos, não verbos."],
     accessibility: {
       keyboard: "Tab entra na lista e para na aba ativa. Setas trocam de aba (↑↓ na vertical). Tab de novo leva ao painel.",

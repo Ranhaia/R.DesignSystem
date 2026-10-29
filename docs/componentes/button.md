@@ -131,7 +131,6 @@ Usa: [`skeleton`](skeleton.md).
 - Texto vago ("OK", "Clique aqui", "Sim") → diga a ação: "Excluir capítulo".
 - Dois `default` lado a lado → um vira `outline` ou `secondary`.
 - `destructive` em ação que se desfaz → `default` ou `outline`.
-- `<Button onClick={navegar}>` para trocar de página → `link`.
 
 ## Exemplo mínimo
 
