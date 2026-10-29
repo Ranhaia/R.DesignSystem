@@ -1,0 +1,24 @@
+{
+  "slug": "checkbox",
+  "partes": [
+    "Checkbox"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "--form-control-size",
+    "bg-primary",
+    "border-destructive",
+    "border-input",
+    "border-primary",
+    "border-ring",
+    "ring-destructive",
+    "ring-ring",
+    "shadow-xs",
+    "text-primary-foreground"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

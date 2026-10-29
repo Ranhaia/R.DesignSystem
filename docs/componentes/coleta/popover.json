@@ -1,0 +1,41 @@
+{
+  "slug": "popover",
+  "partes": [
+    "Popover",
+    "PopoverTrigger",
+    "PopoverContent",
+    "PopoverAnchor",
+    "PopoverHeader",
+    "PopoverTitle",
+    "PopoverDescription"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "align",
+      "parte": "PopoverContent",
+      "tipo": null,
+      "padrao": "center"
+    },
+    {
+      "nome": "sideOffset",
+      "parte": "PopoverContent",
+      "tipo": null,
+      "padrao": "4"
+    }
+  ],
+  "tokens": [
+    "bg-popover",
+    "font-medium",
+    "gap-1",
+    "p-4",
+    "rounded-md",
+    "shadow-md",
+    "text-muted-foreground",
+    "text-popover-foreground",
+    "text-sm",
+    "w-72"
+  ],
+  "compoe": []
+}

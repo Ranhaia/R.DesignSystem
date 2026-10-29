@@ -1,0 +1,72 @@
+{
+  "slug": "input",
+  "partes": [
+    "Input"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "endIcon",
+      "parte": "Input",
+      "tipo": "`MaterialSymbol`",
+      "padrao": null
+    },
+    {
+      "nome": "endAction",
+      "parte": "Input",
+      "tipo": "`never`",
+      "padrao": null
+    },
+    {
+      "nome": "label",
+      "parte": "Input",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "animatedLabel",
+      "parte": "Input",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-primary",
+    "border-destructive",
+    "border-input",
+    "border-ring",
+    "duration-motion-fast",
+    "font-medium",
+    "gap-1.5",
+    "h-7",
+    "h-9",
+    "left-0",
+    "left-3",
+    "min-w-0",
+    "mt-5",
+    "pr-9",
+    "px-3",
+    "py-1",
+    "right-0",
+    "ring-destructive",
+    "ring-ring",
+    "rounded-md",
+    "rounded-r-md",
+    "shadow-xs",
+    "size-9",
+    "text-accent-foreground",
+    "text-base",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-primary-foreground",
+    "text-sm",
+    "top-0",
+    "top-1"
+  ],
+  "compoe": [
+    "label",
+    "icon"
+  ]
+}

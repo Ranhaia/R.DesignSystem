@@ -1,0 +1,35 @@
+{
+  "slug": "slider",
+  "partes": [
+    "Slider"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "min",
+      "parte": "Slider",
+      "tipo": null,
+      "padrao": "0"
+    },
+    {
+      "nome": "max",
+      "parte": "Slider",
+      "tipo": null,
+      "padrao": "100"
+    }
+  ],
+  "tokens": [
+    "bg-muted",
+    "bg-primary",
+    "border-primary",
+    "h-1.5",
+    "min-h-44",
+    "ring-ring",
+    "rounded-full",
+    "shadow-sm",
+    "size-4",
+    "w-1.5"
+  ],
+  "compoe": []
+}

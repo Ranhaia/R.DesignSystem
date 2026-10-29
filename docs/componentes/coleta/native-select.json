@@ -1,0 +1,63 @@
+{
+  "slug": "native-select",
+  "partes": [
+    "NativeSelect",
+    "NativeSelectOption",
+    "NativeSelectOptGroup"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "size",
+      "parte": "NativeSelect",
+      "tipo": "`sm` · `default`",
+      "padrao": "default"
+    },
+    {
+      "nome": "label",
+      "parte": "NativeSelect",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "animatedLabel",
+      "parte": "NativeSelect",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-input",
+    "bg-primary",
+    "border-destructive",
+    "border-input",
+    "border-ring",
+    "duration-motion-fast",
+    "gap-1.5",
+    "h-8",
+    "h-9",
+    "left-0",
+    "left-3",
+    "min-w-0",
+    "mt-5",
+    "pr-9",
+    "px-3",
+    "py-1",
+    "py-2",
+    "right-3.5",
+    "ring-ring",
+    "rounded-md",
+    "shadow-xs",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-primary-foreground",
+    "text-sm",
+    "top-0",
+    "top-1"
+  ],
+  "compoe": [
+    "icon",
+    "label"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "slug": "select",
+  "partes": [
+    "Select",
+    "SelectGroup",
+    "SelectValue",
+    "SelectTrigger",
+    "SelectContent",
+    "SelectLabel",
+    "SelectItem",
+    "SelectSeparator",
+    "SelectScrollUpButton",
+    "SelectScrollDownButton"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "size",
+      "parte": "SelectTrigger",
+      "tipo": "`sm` · `default`",
+      "padrao": "default"
+    },
+    {
+      "nome": "label",
+      "parte": "SelectTrigger",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "animatedLabel",
+      "parte": "SelectTrigger",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "position",
+      "parte": "SelectContent",
+      "tipo": null,
+      "padrao": "item-aligned"
+    },
+    {
+      "nome": "align",
+      "parte": "SelectContent",
+      "tipo": null,
+      "padrao": "center"
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-border",
+    "bg-input",
+    "bg-popover",
+    "border-destructive",
+    "border-input",
+    "border-ring",
+    "duration-motion-fast",
+    "gap-1.5",
+    "gap-2",
+    "h-8",
+    "h-9",
+    "h-px",
+    "left-0",
+    "left-3",
+    "min-w-32",
+    "mt-5",
+    "mx-1",
+    "my-1",
+    "outline-ring",
+    "p-1",
+    "pl-2",
+    "pr-8",
+    "px-2",
+    "px-3",
+    "py-1",
+    "py-1.5",
+    "py-2",
+    "right-2",
+    "ring-destructive",
+    "ring-ring",
+    "rounded-md",
+    "rounded-sm",
+    "shadow-md",
+    "shadow-xs",
+    "size-3.5",
+    "size-4",
+    "text-accent-foreground",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-popover-foreground",
+    "text-sm",
+    "text-xs",
+    "top-0",
+    "top-1"
+  ],
+  "compoe": [
+    "icon",
+    "label"
+  ]
+}

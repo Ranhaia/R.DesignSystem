@@ -1,0 +1,34 @@
+{
+  "slug": "list",
+  "partes": [
+    "List",
+    "ListItem"
+  ],
+  "variantes": [
+    "none",
+    "marker"
+  ],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "variant",
+      "parte": "List",
+      "tipo": "`none` · `marker`",
+      "padrao": "none"
+    },
+    {
+      "nome": "as",
+      "parte": "List",
+      "tipo": "`ListElement`",
+      "padrao": "ul"
+    }
+  ],
+  "tokens": [
+    "gap-1",
+    "leading-normal",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm"
+  ],
+  "compoe": []
+}

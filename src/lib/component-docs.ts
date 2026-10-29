@@ -141,63 +141,114 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   avatar: {
-    description: "Um elemento de imagem com um fallback para representar o usuário.",
-    whenToUse: "Use para representar visualmente uma pessoa ou conta, com uma alternativa (iniciais/ícone) para quando a imagem não carregar.",
+    description: "Representa visualmente uma pessoa, conta ou organização. Exibe a foto do usuário com fallback automático para iniciais ou ícone quando a imagem não carregar.",
+    whenToUse: "Identificar a conta do usuário logado na barra de navegação ou cabeçalho. Representar autores de mensagens, comentários ou atividades em fluxos colaborativos. Exibir participantes de equipes ou projetos agrupados com contagem excedente.",
     anatomy: [
-      { part: "Root", description: "AvatarPrimitive.Root — data-slot=\"avatar\", data-size." },
-      { part: "Image", description: "Foto do usuário. Some automaticamente se falhar ao carregar." },
-      { part: "Fallback", description: "Iniciais ou ícone exibido enquanto a imagem carrega ou se falhar." },
-      { part: "Badge (opcional)", description: "Indicador pequeno no canto (ex: status online) — AvatarBadge." },
-      { part: "Group (opcional)", description: "AvatarGroup empilha vários avatares com sobreposição; AvatarGroupCount mostra o excedente (+N)." },
+      { part: "Avatar", description: "Container circular raiz com data-slot=\"avatar\" e data-size" },
+      { part: "AvatarImage", description: "Elemento de imagem que oculta automaticamente se falhar ao carregar" },
+      { part: "AvatarFallback", description: "Alternativa com fundo muted exibida durante o carregamento ou após falha" },
+      { part: "AvatarBadge", description: "Indicador pontual posicionado no canto inferior direito para status ou selo" },
+      { part: "AvatarGroup", description: "Container flexível que agrupa avatares com sobreposição negativa" },
+      { part: "AvatarGroupCount", description: "Círculo indicador com contador numérico para membros excedentes" },
     ],
     variants: [],
     states: [
-      { name: "Fallback", description: "Exibido enquanto a imagem carrega ou se a URL falhar." },
-      { name: "Imagem carregada", description: "AvatarImage substitui o Fallback quando o load termina." },
+      { name: "Fallback", description: "Fundo muted com texto de iniciais ou ícone centralizado enquanto a imagem carrega ou se houver erro" },
+      { name: "Imagem carregada", description: "Imagem cobre o círculo proporcionalmente e sobrepõe o fallback" },
     ],
-    sizes: [
-      { name: "sm", value: "sm", description: "size-6." },
-      { name: "default", value: "default", description: "size-8." },
-      { name: "lg", value: "lg", description: "size-10." },
-    ],
-    doGuidelines: ["Use para representar visualmente o usuário em perfis, listas e comentários. Ofereça fallback com iniciais quando não houver imagem."],
-    dontGuidelines: ["Não use avatar como elemento decorativo sem função de identificação."],
-    code: `import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+    sizes: [],
+    doGuidelines: ["Use iniciais com duas letras maiúsculas quando a foto não estiver disponível.", "Mantenha o mesmo tamanho de avatar em todos os itens de uma lista ou tabela.", "Exiba o nome completo do usuário próximo ao avatar ou em uma dica flutuante."],
+    dontGuidelines: ["Usar imagens de baixa resolução ou rostos cortados → imagem nítida com enquadramento centralizado.", "Agrupar mais de 5 rostos visíveis no mesmo grupo → limite a 4 avatares e use AvatarGroupCount para o excedente.", "Usar cores aleatórias de fundo sem garantir contraste suficiente → use o fallback padrão em bg-muted."],
+    code: `import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 
 <Avatar>
-  <AvatarImage src="/avatar.png" alt="Rafael" />
+  <AvatarImage src="/foto-perfil.jpg" alt="Rafael Anhaia" />
   <AvatarFallback>RA</AvatarFallback>
 </Avatar>`,
     props: [
-      { name: "size", type: "\"default\" | \"sm\" | \"lg\"", default: "\"default\"", description: "Dimensão do avatar." },
-      { name: "...props", type: "React.ComponentProps<typeof AvatarPrimitive.Root>", description: "Props nativas do Radix Avatar." },
+      { name: "size (Avatar)", type: "default · sm · lg", default: "default", description: "Dimensão do círculo do avatar" },
+    ],
+    meta: {
+      nome: "Avatar",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/avatar.tsx",
+      story: "src/components/ui/avatar.stories.tsx",
+      vizinhos: ["badge", "thumbnail", "icon"],
+    },
+    whenToUseItems: ["Identificar a conta do usuário logado na barra de navegação ou cabeçalho.", "Representar autores de mensagens, comentários ou atividades em fluxos colaborativos.", "Exibir participantes de equipes ou projetos agrupados com contagem excedente."],
+    whenNotToUse: ["Selo numérico ou indicador textual de status sem pessoa ou foto → badge.", "Miniatura retangular de arquivo, mídia ou anexo → thumbnail.", "Símbolo gráfico genérico sem relação com perfil ou identidade de conta → icon."],
+    content: ["Iniciais com até duas letras em maiúsculas (primeira letra do nome e do sobrenome).", "O texto alternativo no atributo alt da imagem deve ser o nome da pessoa ou organização.", "No grupo de avatares com contagem (+3), o número indica exatamente a quantidade restante de participantes."],
+    accessibility: {
+      keyboard: "Não recebe foco diretamente. Quando usado como gatilho de menu ou perfil, envolva em botão ou link interativo.",
+      screenReader: "Imagens de avatar devem conter o nome do usuário no atributo alt. Quando acompanhado pelo nome por extenso visível, marque como decorativo passando alt vazio.",
+      focus: "Não retém foco por si só. Quando envolvido por link ou botão, exibe o anel de foco do elemento pai.",
+      cautions: "Ao usar AvatarBadge para indicar status (como online/offline), garanta que a informação não dependa unicamente da cor, fornecendo texto acessível associado ou aria-label (WCAG 1.4.1).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-muted", "bg-primary", "text-muted-foreground", "text-primary-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["bottom-0", "right-0", "size-10", "size-2", "size-2.5", "size-3", "size-4", "size-5", "size-6", "size-8", "space-x-2"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+      { contexto: "Foco", itens: ["ring-background"] },
     ],
   },
   badge: {
-    description: "Exibe um selo (badge) ou um componente com aparência de selo.",
-    whenToUse: "Use para destacar um status, contagem ou rótulo curto associado a um item.",
+    description: "Rótulo compacto para destacar status, contagem ou metadado associado a um item. Componente puramente informativo, projetado para leitura e não para interação direta.",
+    whenToUse: "Indicar o status de um registro ou processo (ex.: Ativo, Concluído, Em análise). Exibir contagens numéricas compactas ou notificações não lidas em tabelas e listas. Destacar uma categoria ou atributo estático junto a um cabeçalho ou card.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <span> (ou o filho, via asChild) com data-slot=\"badge\" e data-variant." },
+      { part: "Badge", description: "Container span com data-slot=\"badge\" e data-variant em formato de pílula" },
     ],
     variants: [
-      { name: "Default", value: "default", description: "Usa --primary." },
-      { name: "Secondary", value: "secondary", description: "Menor ênfase." },
-      { name: "Destructive", value: "destructive", description: "Estados de erro/risco." },
-      { name: "Outline", value: "outline", description: "Contorno, fundo neutro." },
-      { name: "Ghost", value: "ghost", description: "Sem fundo até o hover (só faz sentido com asChild em link/botão)." },
-      { name: "Link", value: "link", description: "Aparência de link de texto." },
+      { name: "Default", value: "default", description: "Destaque principal ou estado prioritário da interface" },
+      { name: "Secondary", value: "secondary", description: "Informação secundária de menor ênfase visual" },
+      { name: "Destructive", value: "destructive", description: "Estado de erro, cancelamento, bloqueio ou alerta crítico" },
+      { name: "Outline", value: "outline", description: "Informação neutra com borda sutil e fundo transparente" },
+      { name: "Ghost", value: "ghost", description: "Estilo sem preenchimento para uso composicional via asChild" },
+      { name: "Link", value: "link", description: "Aparência de hiperlink para associação sutil de navegação" },
     ],
     states: [],
     sizes: [],
-    doGuidelines: ["Use para comunicar quantidade de itens pendentes ou estado de um elemento. Mantenha o contador breve (ex: +99)."],
-    dontGuidelines: ["Não use badge para categorizar ou rotular — use Tag. Não use para mensagens acionáveis — use Toast."],
+    doGuidelines: ["Mantenha o texto do selo curto, usando uma ou duas palavras que definam o estado claramente.", "Garanta que a mesma cor represente sempre o mesmo status em toda a aplicação.", "Use ícones pequenos de 12 px (size-3) antes do texto apenas como reforço de significado."],
+    dontGuidelines: ["Usar Badge como filtro clicável ou botão de ação direta → chip.", "Usar Badge para tags removíveis com botão de fechar → tag.", "Depender exclusivamente da cor para comunicar sucesso ou erro → use texto explícito ou ícone acessível."],
     code: `import { Badge } from "@/components/ui/badge"
 
-<Badge variant="secondary">Badge</Badge>`,
+<div className="flex items-center gap-2">
+  <Badge>Novo</Badge>
+  <Badge variant="secondary">Rascunho</Badge>
+  <Badge variant="destructive">Cancelado</Badge>
+</div>`,
     props: [
-      { name: "variant", type: "\"default\" | \"secondary\" | \"destructive\" | \"outline\" | \"ghost\" | \"link\"", default: "\"default\"", description: "Estilo visual do badge." },
-      { name: "asChild", type: "boolean", default: "false", description: "Renderiza no elemento filho (ex: <a>) em vez de <span>." },
-      { name: "...props", type: "React.ComponentProps<\"span\">", description: "Atributos nativos de <span>." },
+      { name: "variant", type: "default · secondary · destructive · outline · ghost · link", default: "default", description: "Estilo visual e nível de destaque do selo" },
+      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as propriedades no elemento filho via Radix Slot" },
+    ],
+    meta: {
+      nome: "Badge",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/badge.tsx",
+      story: "src/components/ui/badge.stories.tsx",
+      vizinhos: ["chip", "tag", "button"],
+    },
+    whenToUseItems: ["Indicar o status de um registro ou processo (ex.: Ativo, Concluído, Em análise).", "Exibir contagens numéricas compactas ou notificações não lidas em tabelas e listas.", "Destacar uma categoria ou atributo estático junto a um cabeçalho ou card."],
+    whenNotToUse: ["Filtro clicável que alterna a visão de uma listagem → chip.", "Etiqueta removível com botão de fechar para filtros aplicados → tag.", "Elemento interativo que dispara uma ação ao receber clique → button."],
+    content: ["Uma ou duas palavras no máximo, preferencialmente substantivos ou adjetivos que indiquem estado.", "Use texto em maiúsculas e minúsculas naturais (ex.: Publicado, Rascunho), nunca tudo em caixa alta.", "Para contadores numéricos, use números puros ou formato abreviado (ex.: +99)."],
+    accessibility: {
+      keyboard: "Não recebe foco por padrão. Quando usado como link interativo com asChild, entra na ordem de tabulação e responde a Enter ou Espaço.",
+      screenReader: "Lido como texto em linha comum. Em contadores puramente numéricos, forneça contexto adicional com aria-label (ex.: 5 notificações pendentes).",
+      focus: "Não retém foco na visualização padrão.",
+      cautions: "Nunca transmita um estado apenas pela cor da variante; o texto precisa explicitar o significado (WCAG 1.4.1).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-destructive", "bg-primary", "bg-secondary", "border-border", "border-destructive", "border-ring", "text-accent-foreground", "text-foreground", "text-primary", "text-primary-foreground", "text-secondary-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "leading-none", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1", "min-h-6", "px-2", "py-0.5", "size-3"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+      { contexto: "Foco", itens: ["ring-destructive", "ring-ring"] },
     ],
   },
   box: {
@@ -239,36 +290,60 @@ import { Icon } from "@/components/ui/icon"
     },
   },
   checkbox: {
-    description: "Um controle que permite ao usuário alternar entre marcado e desmarcado.",
-    whenToUse: "Use quando o usuário precisar marcar ou desmarcar uma opção, sozinha ou em um grupo de seleção múltipla.",
+    description: "Permite marcar ou desmarcar opções independentes em formulários e listagens. Suporta estados marcado, desmarcado e indeterminado.",
+    whenToUse: "Permitir a escolha de múltiplas opções independentes dentro de uma lista. Confirmar aceite de termos, políticas ou condições individuais de um formulário. Controlar seleção total em listas com opção \"selecionar todos\" em estado indeterminado.",
     anatomy: [
-      { part: "Root", description: "CheckboxPrimitive.Root — data-slot=\"checkbox\", data-state." },
-      { part: "Indicator", description: "Ícone de check, visível só quando marcado (data-state=checked)." },
-      { part: "Tamanho", description: "Controlado por --form-control-size (globals.css), não por classe fixa. O mesmo token também escala RadioGroupItem — trocar essa variável por preset ajusta os dois componentes juntos." },
+      { part: "Checkbox", description: "Caixa de seleção raiz com data-slot=\"checkbox\", data-state e indicador de ícone" },
+      { part: "Ícone (interno)", description: "Glifo check ou remove renderizado dentro de CheckboxPrimitive.Indicator" },
     ],
     variants: [],
     states: [
-      { name: "Unchecked", description: "Estado de repouso." },
-      { name: "Checked", description: "data-state=checked — fundo e borda em --primary." },
-      { name: "Indeterminate", description: "checked=\"indeterminate\" — usado em seleção parcial de grupo." },
-      { name: "Focus", description: "Navegação por teclado — focus-visible:ring." },
-      { name: "Disabled", description: "opacidade reduzida, sem interação." },
+      { name: "Desmarcado", description: "Borda border-input com fundo transparente e sombra shadow-xs" },
+      { name: "Marcado", description: "Fundo e borda bg-primary com ícone de check em text-primary-foreground" },
+      { name: "Indeterminado", description: "Fundo e borda bg-primary com ícone de traço horizontal em text-primary-foreground" },
+      { name: "Foco", description: "Anel de foco externo de 3 px em ring-ring com border-ring" },
+      { name: "Desabilitado", description: "Opacidade reduzida em 50% com cursor-not-allowed e sem resposta a eventos" },
+      { name: "Inválido", description: "Borda em border-destructive e anel sutil em ring-destructive/20" },
     ],
     sizes: [],
-    doGuidelines: ["Use quando uma ou várias opções podem ser selecionadas simultaneamente. Redija o label em positivo."],
-    dontGuidelines: ["Não use checkbox para opções mutuamente excludentes — use Radio. Não use para ações com efeito imediato — use Toggle."],
+    doGuidelines: ["Associe sempre a caixa de seleção a um rótulo textual legível com componente label ou id correspondente.", "Torne a linha inteira clicável (caixa + rótulo) para facilitar a interação e aumentar a área de toque.", "Use o estado indeterminado no item pai quando apenas parte dos itens filhos estiver selecionada."],
+    dontGuidelines: ["Usar Checkbox para escolhas mutuamente exclusivas onde apenas uma opção é permitida → radio-group.", "Acionar salvamentos ou alterações imediatas na aplicação sem confirmação → switch.", "Escrever rótulos negativos que invertem o sentido da marcação → afirmativa positiva clara."],
     code: `import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 
 <div className="flex items-center gap-2">
-  <Checkbox id="terms" />
-  <Label htmlFor="terms">Aceito os termos</Label>
+  <Checkbox id="termos" />
+  <Label htmlFor="termos">Aceito os termos de uso e condições</Label>
 </div>`,
     props: [
-      { name: "checked", type: "boolean | \"indeterminate\"", description: "Estado controlado." },
-      { name: "onCheckedChange", type: "(checked: boolean | \"indeterminate\") => void", description: "Callback de mudança." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa interação." },
-      { name: "...props", type: "React.ComponentProps<typeof CheckboxPrimitive.Root>", description: "Demais props do Radix Checkbox." },
+      { name: "checked (Checkbox)", type: "boolean · indeterminate", default: "false", description: "Estado atual de marcação do checkbox" },
+      { name: "defaultChecked (Checkbox)", type: "boolean · indeterminate", default: "false", description: "Estado inicial de marcação quando não controlado" },
+      { name: "onCheckedChange (Checkbox)", type: "(checked: boolean) => void", default: "—", description: "Callback disparado ao alterar o estado de marcação" },
+      { name: "disabled (Checkbox)", type: "boolean", default: "false", description: "Desabilita interações de clique e teclado" },
+      { name: "required (Checkbox)", type: "boolean", default: "false", description: "Indica que o preenchimento é obrigatório no formulário" },
+    ],
+    meta: {
+      nome: "Checkbox",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/checkbox.tsx",
+      story: "src/components/ui/checkbox.stories.tsx",
+      vizinhos: ["switch", "radio-group", "field"],
+    },
+    whenToUseItems: ["Permitir a escolha de múltiplas opções independentes dentro de uma lista.", "Confirmar aceite de termos, políticas ou condições individuais de um formulário.", "Controlar seleção total em listas com opção \"selecionar todos\" em estado indeterminado."],
+    whenNotToUse: ["Escolha exclusiva de uma única opção entre várias alternativas → radio-group.", "Alternância instantânea de configuração que entra em vigor sem botão de salvar → switch.", "Mais de 6 opções exclusivas num espaço compacto → select."],
+    content: ["O rótulo associado deve ser uma afirmação clara e positiva (ex.: Quero receber atualizações).", "Evite negações duplas ou frases confusas no rótulo (ex.: Não desejo cancelar minha inscrição).", "Associe sempre um componente label ou field com htmlFor correspondente ao id do Checkbox."],
+    accessibility: {
+      keyboard: "Navega com Tab para alcançar o elemento. Tecla Espaço alterna entre marcado e desmarcado.",
+      screenReader: "Anuncia papel role=\"checkbox\", nome acessível via label associado e estado atual (marcado, desmarcado ou misto/indeterminado).",
+      focus: "Exibe anel visível de 3 px (ring-ring) com foco pelo teclado. Ao clicar no rótulo de texto, o foco é transferido para a caixa de marcação.",
+      cautions: "A área de clique deve cobrir tanto a caixa quanto o texto do rótulo para atender à meta de alvo de toque de 24 px (WCAG 2.5.8). Em grupos de opções relacionadas, agrupe com fieldset ou componente field.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-primary", "border-destructive", "border-input", "border-primary", "border-ring", "text-primary-foreground"] },
+      { contexto: "Espaço", itens: ["--form-control-size"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
+      { contexto: "Foco", itens: ["ring-destructive", "ring-ring"] },
     ],
   },
   chip: {
@@ -398,53 +473,96 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   input: {
-    description: "Um componente de campo de texto para formulários e entrada de dados do usuário, com estilo e recursos de acessibilidade já incorporados.",
-    whenToUse: "Use para capturar texto, números ou outros dados digitados pelo usuário em um formulário.",
+    description: "Campo de entrada para capturar textos ou valores de linha única. Dá suporte a rótulo embutido ou flutuante e ação interativa no final.",
+    whenToUse: "Capturar informações curtas de uma linha em formulários: nome, e-mail, senha, telefone. Entradas de busca ou filtros simples em cabeçalhos e barras de ferramentas. Campos com ação acoplada ao final: alternar exibição de senha ou limpar texto.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <input> nativo com data-slot=\"input\". Ícone/addon acoplado é composição via InputGroup (Molecule), não parte do Atom." },
+      { part: "Input", description: "Elemento nativo <input> de linha única com data-slot=\"input\" e suporte a wrapper relativo com rótulo" },
+      { part: "endIcon (opcional)", description: "Ícone ilustrativo de 24 px à direita com aria-hidden" },
+      { part: "endAction (opcional)", description: "Botão interativo de 36×36 px à direita com aria-label para ações rápidas no campo" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Focus", description: "focus-visible:border-ring + ring." },
-      { name: "Disabled", description: "opacidade reduzida, cursor not-allowed." },
-      { name: "Aria-invalid", description: "Borda e ring em --destructive quando aria-invalid=true." },
+      { name: "Padrão", description: "Borda border-input com fundo transparente e sombra shadow-xs" },
+      { name: "Foco", description: "Anel de 3 px em ring-ring e borda border-ring via focus-visible" },
+      { name: "Inválido", description: "Borda border-destructive e anel suave em tom destrutivo com aria-invalid" },
+      { name: "Desabilitado", description: "Opacidade reduzida em 50%, cursor não permitido e eventos bloqueados" },
     ],
     sizes: [],
-    doGuidelines: ["Acompanhe sempre com Label visível. Use placeholder como exemplo, não como instrução."],
-    dontGuidelines: ["Não use input para textos longos — use Textarea. Não substitua Label por placeholder."],
+    doGuidelines: ["Associe sempre um rótulo visível ao campo usando a prop label ou o componente Label.", "Forneça o type nativo adequado (email, tel, number) para acionar o teclado correto no celular.", "Indique erro associando aria-invalid ao campo e exibindo uma mensagem textual explicativa."],
+    dontGuidelines: ["Usar o placeholder como substituto do rótulo → label", "Esconder mensagens de validação e ajuda → field", "Campo de digitação única para código de autenticação ou PIN → input-otp"],
     code: `import { Input } from "@/components/ui/input"
 
-<Input type="email" placeholder="voce@email.com" />`,
+<Input label="E-mail" type="email" placeholder="nome@exemplo.com" />
+<Input
+  label="Senha"
+  type="password"
+  endAction={{
+    icon: "visibility",
+    onClick: () => {},
+    "aria-label": "Mostrar senha",
+  }}
+/>`,
     props: [
-      { name: "type", type: "string", default: "\"text\"", description: "Tipo nativo do input (email, password, number...)." },
-      { name: "label", type: "React.ReactNode", description: "Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
-      { name: "animatedLabel", type: "boolean", default: "false", description: "Com label presente, ativa o padrão de label flutuante (motion) em vez da label fixa acima do campo." },
-      { name: "...props", type: "React.ComponentProps<\"input\">", description: "Todos os atributos nativos de <input>." },
+      { name: "label", type: "React.ReactNode", default: "—", description: "Rótulo exibido acima do campo ou com animação flutuante" },
+      { name: "animatedLabel", type: "boolean", default: "false", description: "Anima o rótulo para fora do campo no foco ou preenchimento" },
+      { name: "endIcon", type: "MaterialSymbol", default: "—", description: "Ícone ilustrativo à direita com aria-hidden" },
+      { name: "endAction", type: "never", default: "—", description: "Ação interativa no canto direito com ícone, clique e aria-label" },
+      { name: "type", type: "string", default: "\"text\"", description: "Tipo nativo do input (email, password, number, file)" },
+      { name: "disabled", type: "boolean", default: "false", description: "Desabilita o campo e bloqueia interação" },
+      { name: "aria-invalid", type: "boolean", default: "—", description: "Borda e anel de foco em tom destrutivo quando inválido" },
+    ],
+    meta: {
+      nome: "Input",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/input.tsx",
+      story: "src/components/ui/input.stories.tsx",
+      vizinhos: ["textarea", "field", "input-otp", "combobox"],
+    },
+    whenToUseItems: ["Capturar informações curtas de uma linha em formulários: nome, e-mail, senha, telefone.", "Entradas de busca ou filtros simples em cabeçalhos e barras de ferramentas.", "Campos com ação acoplada ao final: alternar exibição de senha ou limpar texto."],
+    whenNotToUse: ["Texto longo com mais de uma linha ou parágrafos → textarea", "Código de verificação com dígitos isolados ou token SMS → input-otp", "Campo que precisa de mensagem de ajuda, erro e descrição estruturadas → field"],
+    content: ["Rótulo curto e claro indicando o dado esperado: E-mail, Senha de acesso.", "Placeholder como exemplo real de preenchimento (\"nome@empresa.com\"), nunca como instrução única.", "Sem dois-pontos ao final do rótulo e sem ponto final em placeholders curtos."],
+    accessibility: {
+      keyboard: "Tab move o foco para o campo; a digitação edita o texto; atalhos nativos de navegação e colagem funcionam livremente.",
+      screenReader: "Papel textbox (ou correspondente ao type); o nome acessível vem do rótulo associado via htmlFor ou de aria-label.",
+      focus: "O anel visível de 3 px destaca o campo ativo; com endAction, o botão recebe foco por Tab logo após o input.",
+      cautions: "Nunca substitua o rótulo pelo placeholder; ao usar endAction, forneça sempre um aria-label descritivo na ação.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-primary", "border-destructive", "border-input", "border-ring", "text-accent-foreground", "text-foreground", "text-muted-foreground", "text-primary-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-base", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1.5", "h-7", "h-9", "left-0", "left-3", "min-w-0", "mt-5", "pr-9", "px-3", "py-1", "right-0", "size-9", "top-0", "top-1"] },
+      { contexto: "Raio", itens: ["rounded-md", "rounded-r-md"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
+      { contexto: "Movimento", itens: ["duration-motion-fast"] },
+      { contexto: "Foco", itens: ["ring-destructive", "ring-ring"] },
     ],
   },
   "input-otp": {
-    description: "Componente acessível de senha de uso único (OTP), com suporte a copiar e colar.",
-    whenToUse: "Use para capturar códigos de verificação enviados por SMS ou e-mail, com um campo por dígito.",
+    description: "Campo especializado para captura de códigos de verificação pontuais (OTP/2FA). Distribui os caracteres em casas individuais com avanço automático e suporte a colar o código completo.",
+    whenToUse: "Capturar códigos de autenticação em duas etapas (2FA) e confirmações de segurança. Receber senhas descartáveis (OTP) enviadas por e-mail ou SMS com 4, 6 ou 8 dígitos. Permitir entrada rápida onde o usuário digita dígito a dígito ou cola o código de uma vez.",
     anatomy: [
-      { part: "InputOTP", description: "Root — envolve o input real (invisível) que captura o valor completo." },
-      { part: "InputOTPGroup", description: "Agrupa visualmente um bloco de slots." },
-      { part: "InputOTPSlot", description: "Uma casa/dígito — requer prop index." },
-      { part: "InputOTPSeparator", description: "Traço decorativo entre grupos de slots (ex: 000 - 000)." },
+      { part: "InputOTP", description: "Container raiz que envolve o input invisível capturando o valor completo" },
+      { part: "InputOTPGroup", description: "Agrupador flexível que alinha e estiliza visualmente um conjunto de slots" },
+      { part: "InputOTPSlot", description: "Célula individual para um único caractere com cursor piscante falso" },
+      { part: "InputOTPSeparator", description: "Divisor visual intermediário com ícone de traço entre blocos de dígitos" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Slot vazio, sem foco." },
-      { name: "Ativo", description: "data-active=true — cursor falso animado, ring visível." },
-      { name: "Disabled", description: "has-disabled:opacity-50 no container." },
+      { name: "Vazio", description: "Borda border-input com fundo padrão sem indicador ativo" },
+      { name: "Ativo", description: "Anel de foco externo de 3 px em ring-ring com cursor falso piscante" },
+      { name: "Preenchido", description: "Exibe o caractere digitado centralizado na célula" },
+      { name: "Desabilitado", description: "Container com opacidade reduzida em 50% e cursor-not-allowed" },
+      { name: "Inválido", description: "Borda em border-destructive e anel sutil em ring-destructive/20" },
     ],
     sizes: [],
-    doGuidelines: ["Use para códigos de verificação ou autenticação em duas etapas. Avance o foco automaticamente."],
-    dontGuidelines: ["Não use para senhas ou dados que o usuário precisa revisar antes de enviar."],
+    doGuidelines: ["Permita que o usuário cole o código completo recebido por e-mail ou SMS de uma só vez.", "Separe blocos de dígitos com InputOTPSeparator para facilitar a leitura visual de códigos de 6 ou mais dígitos.", "Adicione autocomplete=\"one-time-code\" para habilitar a sugestão automática de código no teclado do celular."],
+    dontGuidelines: ["Usar InputOTP para códigos longos com mais de 8 dígitos → use o componente input padrão.", "Limpar todos os campos quando o usuário erra um único caractere → mantenha o valor e sinalize o erro.", "Desabilitar a função de colar do sistema operacional → permita colar livremente (WCAG 3.3.8)."],
     code: `import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
+  InputOTPSeparator,
 } from "@/components/ui/input-otp"
 
 <InputOTP maxLength={6}>
@@ -453,33 +571,93 @@ import { Icon } from "@/components/ui/icon"
     <InputOTPSlot index={1} />
     <InputOTPSlot index={2} />
   </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
 </InputOTP>`,
     props: [
-      { name: "maxLength", type: "number", description: "Quantidade de dígitos/slots." },
-      { name: "value / onChange", type: "string / (value: string) => void", description: "Valor controlado do código completo." },
-      { name: "index", type: "number", description: "(InputOTPSlot) posição do slot — obrigatório." },
+      { name: "containerClassName", type: "string", default: "—", description: "Classe CSS aplicada ao container externo" },
+      { name: "aria-label", type: "string", default: "Código de verificação", description: "Rótulo acessível anunciado para o controle" },
+      { name: "index (InputOTPSlot)", type: "number", default: "—", description: "Posição sequencial da célula, de 0 a maxLength - 1" },
+      { name: "maxLength (InputOTP)", type: "number", default: "—", description: "Quantidade total de caracteres aceitos pelo controle" },
+      { name: "value · defaultValue (InputOTP)", type: "string", default: "—", description: "Valor controlado ou inicial do código completo" },
+      { name: "onChange (InputOTP)", type: "(value: string) => void", default: "—", description: "Callback chamado a cada alteração no código" },
+      { name: "disabled (InputOTP)", type: "boolean", default: "false", description: "Desabilita o campo e bloqueia digitação" },
+    ],
+    meta: {
+      nome: "Input Otp",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/input-otp.tsx",
+      story: "src/components/ui/input-otp.stories.tsx",
+      vizinhos: ["input", "field", "kbd"],
+    },
+    whenToUseItems: ["Capturar códigos de autenticação em duas etapas (2FA) e confirmações de segurança.", "Receber senhas descartáveis (OTP) enviadas por e-mail ou SMS com 4, 6 ou 8 dígitos.", "Permitir entrada rápida onde o usuário digita dígito a dígito ou cola o código de uma vez."],
+    whenNotToUse: ["Senhas regulares, e-mails ou textos livres de linha única → input.", "Código longo com mais de 8 caracteres alfanuméricos contínuos → input.", "Seleção de data, hora ou chave numérica com formatação complexa → field."],
+    content: ["Informe com clareza para onde o código foi enviado (ex.: Enviamos um código para seu e-mail).", "Em caso de código inválido ou expirado, informe o erro sem apagar imediatamente os dígitos inseridos.", "Ofereça opção visível para solicitar um novo código após um intervalo de tempo razoável."],
+    accessibility: {
+      keyboard: "Ao digitar um dígito, o foco avança automaticamente para a próxima casa. Backspace apaga o caractere e retorna para a casa anterior. Permite colar o código completo de uma vez (Ctrl+V / Cmd+V).",
+      screenReader: "Renderiza um input único com aria-label=\"Código de verificação\" para evitar leituras fragmentadas casa a casa. Suporta preenchimento automático de SMS no celular com autocomplete=\"one-time-code\".",
+      focus: "Destaca a célula ativa com borda e anel de 3 px (ring-ring). O foco do navegador permanece no input raiz enquanto a interface projeta o indicador na célula correspondente.",
+      cautions: "Garanta compatibilidade com cópia e cola e preenchimento automático de senhas (WCAG 3.3.8). Não bloqueie a colagem do código nem apague tudo após o primeiro erro de digitação.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-foreground", "border-destructive", "border-input", "border-ring"] },
+      { contexto: "Tipografia", itens: ["text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2", "h-4", "h-9", "inset-0", "w-9", "w-px"] },
+      { contexto: "Raio", itens: ["rounded-l-md", "rounded-r-md"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
+      { contexto: "Foco", itens: ["ring-destructive", "ring-ring"] },
     ],
   },
   kbd: {
-    description: "Usado para exibir uma entrada de teclado do usuário em formato textual.",
-    whenToUse: "Use para indicar teclas ou atalhos de teclado dentro de textos, tooltips ou menus.",
+    description: "Indica teclas ou combinações de atalhos de teclado em formato visual compacto. Usado em menus, tooltips, campos de busca e documentação técnica.",
+    whenToUse: "Mostrar atalhos de teclado para ações rápidas em menus suspensos e paletas de comando. Indicar teclas de atalho dentro de dicas flutuantes (tooltip) acopladas a botões. Exibir teclas em tutoriais, mensagens de ajuda e documentação de navegação.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <kbd> com data-slot=\"kbd\"." },
-      { part: "KbdGroup", description: "Agrupa duas ou mais teclas de um atalho (ex: Ctrl + K)." },
+      { part: "Kbd", description: "Elemento nativo <kbd> inline estilizado como tecla física compacta" },
+      { part: "KbdGroup", description: "Container <kbd> flexível para agrupar duas ou mais teclas de um atalho composto" },
     ],
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["Use para mostrar atalhos de teclado em menus, tooltips e documentação."],
-    dontGuidelines: ["Não use kbd para comandos que não têm atalho real implementado."],
+    doGuidelines: ["Mostre a combinação de teclas adaptada à plataforma do usuário (⌘ no Mac e Ctrl no Windows).", "Utilize KbdGroup para agrupar teclas que devem ser pressionadas em conjunto.", "Reserve o uso de Kbd para atalhos reais implementados e funcionais na interface."],
+    dontGuidelines: ["Usar Kbd como botão clicável que dispara ação ao clique → button", "Usar Kbd para exibir contagens, categorias ou status do sistema → badge", "Depender exclusivamente do atalho de teclado sem oferecer controle visual na interface → tooltip"],
     code: `import { Kbd, KbdGroup } from "@/components/ui/kbd"
+
+<Kbd>Esc</Kbd>
 
 <KbdGroup>
   <Kbd>Ctrl</Kbd>
   <Kbd>K</Kbd>
 </KbdGroup>`,
     props: [
-      { name: "...props", type: "React.ComponentProps<\"kbd\">", description: "Atributos nativos de <kbd>." },
+      { name: "children", type: "React.ReactNode", default: "—", description: "Letra, símbolo ou nome da tecla a exibir" },
+    ],
+    meta: {
+      nome: "Kbd",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/kbd.tsx",
+      story: "src/components/ui/kbd.stories.tsx",
+      vizinhos: ["button", "tooltip", "badge"],
+    },
+    whenToUseItems: ["Mostrar atalhos de teclado para ações rápidas em menus suspensos e paletas de comando.", "Indicar teclas de atalho dentro de dicas flutuantes (tooltip) acopladas a botões.", "Exibir teclas em tutoriais, mensagens de ajuda e documentação de navegação."],
+    whenNotToUse: ["Elemento interativo ou botão clicável que dispara a ação ao clique → button", "Etiqueta de status, categoria ou contagem sem relação com teclado → badge", "Rótulo de campo de formulário ou título de seção → label"],
+    content: ["Letras maiúsculas para teclas alfanuméricas simples: K, P, Enter.", "Nomes de teclas modificadoras de acordo com o sistema operacional: ⌘ e Option no Mac, Ctrl e Alt no Windows.", "Para combinações compostas com KbdGroup, inclua apenas as teclas sem sinais de mais soltos."],
+    accessibility: {
+      keyboard: "Não recebe foco: é um elemento visual informativo de atalho.",
+      screenReader: "Leitores anunciam o texto da tecla; para combinações com símbolos como ⌘, forneça texto descritivo no elemento pai.",
+      focus: "Nenhum: o foco do usuário permanece no componente interativo ao qual o atalho se refere.",
+      cautions: "Atalhos de teclado compostos por tecla única alfanumérica exigem mecanismo para desativação ou remapeamento conforme WCAG 2.1.4.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-background", "bg-muted", "text-background", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "font-sans", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1", "h-5", "min-w-5", "px-1", "size-3"] },
+      { contexto: "Raio", itens: ["rounded-sm"] },
     ],
   },
   label: {
@@ -529,66 +707,121 @@ import { Label } from "@/components/ui/label"
     ],
   },
   progress: {
-    description: "Exibe um indicador que mostra o progresso de conclusão de uma tarefa, geralmente representado como uma barra de progresso.",
-    whenToUse: "Use para comunicar o andamento de um processo com duração determinada, como upload, carregamento ou etapas.",
+    description: "Barra indicadora que exibe visualmente o avanço de uma tarefa com duração determinada. Comunica a porcentagem concluída em uploads, downloads ou etapas de processamento.",
+    whenToUse: "Tarefas com duração mensurável que levam mais de 2 segundos, como envio de arquivos ou importação de dados. Indicador de preenchimento ou progresso quantificável em questionários e perfis.",
     anatomy: [
-      { part: "Root", description: "ProgressPrimitive.Root — trilho de fundo (bg-primary/20)." },
-      { part: "Indicator", description: "Barra preenchida — translateX calculado a partir de value." },
+      { part: "Progress", description: "Raiz (Radix Progress) que atua como trilho com fundo atenuado bg-primary/20 e cantos arredondados rounded-full" },
+      { part: "Indicador", description: "Barra interna preenchida com bg-primary cujo deslocamento horizontal representa a porcentagem concluída" },
     ],
     variants: [],
     states: [
-      { name: "0%", description: "Indicator totalmente deslocado (invisível)." },
-      { name: "Em progresso", description: "0 < value < 100." },
-      { name: "Completo", description: "value = 100." },
+      { name: "Em andamento", description: "Indicador preenchido proporcionalmente com transição suave via transition-all" },
+      { name: "0%", description: "Indicador totalmente recuado para a esquerda" },
+      { name: "Concluído (100%)", description: "Indicador cobre todo o comprimento do trilho" },
     ],
     sizes: [],
-    doGuidelines: ["Use para operações com duração previsível (upload, salvamento). Mostre a porcentagem quando disponível."],
-    dontGuidelines: ["Não use para operações instantâneas (<1s). Não use se não puder estimar o progresso — use Spinner."],
+    doGuidelines: ["Associe um rótulo visível ou aria-label informando qual processo está em andamento.", "Mostre a porcentagem numérica ou os dados transferidos junto da barra quando relevante.", "Confirme visualmente e por texto quando a tarefa atingir 100%."],
+    dontGuidelines: ["Usar para esperas em que o tempo ou tamanho não é conhecido → utilize spinner.", "Fazer a barra retroceder durante o carregamento normal → mantenha o progresso crescente ou use spinner.", "Ocultar a barra abruptamente sem confirmar o resultado → mostre estado de sucesso antes de fechar."],
     code: `import { Progress } from "@/components/ui/progress"
 
-<Progress value={66} />`,
+<div className="space-y-2">
+  <div className="flex justify-between text-sm">
+    <span>Enviando arquivo</span>
+    <span>60%</span>
+  </div>
+  <Progress value={60} aria-label="Progresso do envio do arquivo" />
+</div>`,
     props: [
-      { name: "value", type: "number", description: "Progresso de 0 a 100." },
-      { name: "...props", type: "React.ComponentProps<typeof ProgressPrimitive.Root>", description: "Demais props do Radix Progress." },
+      { name: "value (Progress)", type: "number", default: "0", description: "Porcentagem concluída da tarefa, variando de 0 a 100" },
+      { name: "max (Progress)", type: "number", default: "100", description: "Valor máximo de referência do progresso" },
+      { name: "getValueLabel (Progress)", type: "(value: number, max: number) => string", default: "—", description: "Função que formata o texto acessível do valor" },
+    ],
+    meta: {
+      nome: "Progress",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/progress.tsx",
+      story: "src/components/ui/progress.stories.tsx",
+      vizinhos: ["spinner", "skeleton", "stepper"],
+    },
+    whenToUseItems: ["Tarefas com duração mensurável que levam mais de 2 segundos, como envio de arquivos ou importação de dados.", "Indicador de preenchimento ou progresso quantificável em questionários e perfis."],
+    whenNotToUse: ["Espera sem duração estimada ou com tempo indeterminado → spinner.", "Conteúdo em carregamento cujo layout e formato final já são conhecidos → skeleton.", "Sequência de etapas com interação e navegação do usuário → stepper."],
+    content: ["Apresente um rótulo textual acima ou ao lado descrevendo a ação: \"Enviando arquivo...\".", "Exiba a contagem numérica ou porcentagem quando a precisão for útil: \"45% concluído\" ou \"3 de 5 arquivos\".", "No término, confirme o sucesso com texto explícito: \"Envio concluído\"."],
+    accessibility: {
+      keyboard: "Não recebe foco. Componente puramente informativo.",
+      screenReader: "Papel progressbar com aria-valuenow refletindo o valor atual, aria-valuemin=\"0\" e aria-valuemax=\"100\". Passe aria-label ou aria-labelledby identificando a tarefa.",
+      focus: "Nenhum. O foco deve permanecer na ação que disparou a tarefa ou no container principal.",
+      cautions: "Não anuncie cada porcentagem intermediária para evitar poluir o leitor de tela; anuncie apenas marcos relevantes ou a conclusão da tarefa. Sempre forneça um nome acessível via aria-label ou texto associado.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-primary"] },
+      { contexto: "Espaço", itens: ["h-2"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
     ],
   },
   "radio-group": {
-    description: "Um conjunto de botões marcáveis — conhecidos como radio buttons — no qual no máximo um pode estar marcado por vez.",
-    whenToUse: "Use quando o usuário precisar escolher exatamente uma opção entre um conjunto pequeno e visível de alternativas.",
+    description: "Conjunto de botões de opção exclusivos em que a pessoa seleciona exatamente uma alternativa. Ao marcar uma opção nova, a escolha anterior é desmarcada automaticamente.",
+    whenToUse: "Escolha única entre 2 e 6 opções que devem permanecer visíveis ao mesmo tempo para facilitar a comparação rápida. Opções mutuamente exclusivas em formulários ou configurações, como tipo de entrega ou forma de pagamento.",
     anatomy: [
-      { part: "RadioGroup", description: "Root — grid que agrupa os itens, controla qual valor está selecionado." },
-      { part: "RadioGroupItem", description: "Cada opção — requer prop value." },
-      { part: "Indicator", description: "Ícone circle preenchido (Icon com prop fill, cor text-primary), visível só no item selecionado." },
-      { part: "Tamanho", description: "Controlado por --form-control-size (globals.css), não por classe fixa. O mesmo token também escala Checkbox — trocar essa variável por preset ajusta os dois componentes juntos." },
+      { part: "RadioGroup", description: "Raiz (Radix RadioGroup) que define o contexto do grupo com espaçamento vertical gap-3" },
+      { part: "RadioGroupItem", description: "Botão circular individual com borda border-input e dimensão controlada por --form-control-size" },
+      { part: "Indicador", description: "Círculo preenchido interno (Icon) centralizado com metade do diâmetro do botão externo" },
+      { part: "Rótulo (opcional)", description: "Texto de apoio associado ao item via Label externo com htmlFor" },
     ],
     variants: [],
     states: [
-      { name: "Unchecked", description: "Estado de repouso do item." },
-      { name: "Checked", description: "Indicator visível, borda em --primary." },
-      { name: "Focus", description: "focus-visible:ring no item focado." },
-      { name: "Disabled", description: "opacidade reduzida, sem interação." },
+      { name: "Desmarcado", description: "Borda circular border-input com fundo transparente e sombra shadow-xs" },
+      { name: "Marcado", description: "Círculo interno centralizado text-primary preenchido" },
+      { name: "Foco", description: "Anel de 3 px em ring-ring com borda border-ring no botão focado" },
+      { name: "Inválido", description: "Borda destacada em border-destructive e anel sutil em ring-destructive/20" },
+      { name: "Desabilitado", description: "Opacidade reduzida em 50% com cursor not-allowed e clique bloqueado" },
     ],
     sizes: [],
-    doGuidelines: ["Use para selecionar uma única opção entre várias mutuamente excludentes."],
-    dontGuidelines: ["Não use radio para selecionar múltiplas opções — use Checkbox. Não use para ativar/desativar — use Toggle."],
-    code: `import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
+    doGuidelines: ["Mantenha entre 2 e 6 opções para preservar a legibilidade da tela.", "Deixe uma opção padrão selecionada sempre que houver uma recomendação clara.", "Associe o rótulo clicável via Label para aumentar a área de toque."],
+    dontGuidelines: ["Mais de 6 opções em coluna ocupando muito espaço vertical → use select.", "Uma única opção isolada de sim ou não → substitua por checkbox ou switch.", "Permitir múltipla seleção no mesmo conjunto → use um grupo de checkbox."],
+    code: `import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
-<RadioGroup defaultValue="mensal">
+<RadioGroup defaultValue="padrao">
   <div className="flex items-center gap-2">
-    <RadioGroupItem value="mensal" id="mensal" />
-    <Label htmlFor="mensal">Mensal</Label>
+    <RadioGroupItem value="padrao" id="r1" />
+    <Label htmlFor="r1">Padrão</Label>
   </div>
   <div className="flex items-center gap-2">
-    <RadioGroupItem value="anual" id="anual" />
-    <Label htmlFor="anual">Anual</Label>
+    <RadioGroupItem value="expresso" id="r2" />
+    <Label htmlFor="r2">Expresso</Label>
   </div>
 </RadioGroup>`,
     props: [
-      { name: "value / defaultValue", type: "string", description: "Valor selecionado (controlado ou inicial)." },
-      { name: "onValueChange", type: "(value: string) => void", description: "Callback de mudança de seleção." },
-      { name: "value", type: "string", description: "(RadioGroupItem) valor da opção — obrigatório." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa o grupo ou o item." },
+      { name: "value · defaultValue (RadioGroup)", type: "string", default: "—", description: "Valor da opção selecionada no grupo, controlado ou inicial" },
+      { name: "onValueChange (RadioGroup)", type: "(value: string) => void", default: "—", description: "Callback disparado quando a seleção muda" },
+      { name: "disabled (RadioGroup, RadioGroupItem)", type: "boolean", default: "false", description: "Desativa a interação no grupo inteiro ou no item individual" },
+      { name: "value (RadioGroupItem)", type: "string", default: "—", description: "Identificador único da opção no item" },
+      { name: "required (RadioGroup)", type: "boolean", default: "false", description: "Exige a seleção de uma opção no envio do formulário" },
+    ],
+    meta: {
+      nome: "Radio Group",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/radio-group.tsx",
+      story: "src/components/ui/radio-group.stories.tsx",
+      vizinhos: ["checkbox", "select", "segmented-control"],
+    },
+    whenToUseItems: ["Escolha única entre 2 e 6 opções que devem permanecer visíveis ao mesmo tempo para facilitar a comparação rápida.", "Opções mutuamente exclusivas em formulários ou configurações, como tipo de entrega ou forma de pagamento."],
+    whenNotToUse: ["Mais de 6 opções disponíveis em lista longa → select.", "Escolha independente de marcar ou desmarcar um único item isolado → checkbox.", "Alternar entre visões ou filtros compactos sem cara de formulário → segmented-control."],
+    content: ["Apresente um título claro para o grupo com a pergunta ou critério: \"Forma de pagamento\".", "Mantenha opções curtas e com estrutura gramatical paralela: \"Boleto bancário\", \"Cartão de crédito\".", "Evite opções com significados redundantes ou que se sobreponham."],
+    accessibility: {
+      keyboard: "Tab entra no grupo focando na opção marcada ou na primeira disponível. As setas Direita/Abaixo e Esquerda/Acima alternam entre as opções e já as selecionam. Tab sai do grupo para o próximo controle.",
+      screenReader: "Papel radiogroup para o container e radio para cada item. Anuncia o nome do grupo, o texto do rótulo, o estado marcado/desmarcado e a posição (ex.: 1 de 3).",
+      focus: "Anel visível de 3 px em ring-ring ao navegar por teclado. O foco se desloca junto com a seleção ao usar as setas direcionais.",
+      cautions: "Sempre associe um Label com htmlFor correspondente ao id de cada RadioGroupItem para permitir a marcação ao clicar no texto. Não utilize rádio isolado para ações binárias; utilize checkbox.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["border-destructive", "border-input", "border-ring", "text-primary"] },
+      { contexto: "Espaço", itens: ["--form-control-size", "gap-3", "left-1", "top-1"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
+      { contexto: "Foco", itens: ["ring-destructive", "ring-ring"] },
     ],
   },
   separator: {
@@ -685,50 +918,109 @@ import { Label } from "@/components/ui/label"
     ],
   },
   slider: {
-    description: "Um controle de entrada em que o usuário seleciona um valor dentro de um intervalo definido.",
-    whenToUse: "Use quando o usuário precisar ajustar um valor numérico dentro de um intervalo, de forma visual e contínua.",
+    description: "Controle deslizante que permite selecionar um valor ou intervalo contínuo arrastando um ou mais marcadores sobre um trilho. Ideal para ajustes visuais e valores aproximados.",
+    whenToUse: "Ajuste de parâmetros contínuos ou intuitivos, como volume, brilho, zoom ou opacidade. Seleção de faixas de valores com pegador duplo (mínimo e máximo), como filtros de preço.",
     anatomy: [
-      { part: "Root", description: "SliderPrimitive.Root — calcula _values a partir de value/defaultValue." },
-      { part: "Track", description: "Trilho de fundo (bg-muted)." },
-      { part: "Range", description: "Trecho preenchido entre min e o(s) valor(es) (bg-primary)." },
-      { part: "Thumb", description: "Um por valor — suporta múltiplos thumbs (range de dois valores)." },
+      { part: "Slider", description: "Raiz (Radix Slider) que envolve o trilho e os pegadores com suporte a orientação horizontal ou vertical" },
+      { part: "Trilho", description: "Barra de fundo arredondada com bg-muted que define o caminho da seleção" },
+      { part: "Faixa", description: "Trecho preenchido no trilho em bg-primary entre o valor mínimo e o pegador atual" },
+      { part: "Pegador", description: "Botão circular (Thumb) com borda border-primary, fundo branco e anel de foco ring-ring" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Hover/Drag", description: "hover:ring-4 no thumb durante interação." },
-      { name: "Focus", description: "focus-visible:ring-4 — navegação por teclado (setas)." },
-      { name: "Disabled", description: "data-[disabled]:opacity-50." },
+      { name: "Padrão", description: "Trilho em bg-muted com pegador branco e borda border-primary" },
+      { name: "Hover no pegador", description: "Anel sutil de 4 px em ring-ring em volta do pegador" },
+      { name: "Foco no pegador", description: "Anel visível de 4 px em ring-ring acionado por teclado" },
+      { name: "Desabilitado", description: "Opacidade reduzida em 50% e eventos de ponteiro bloqueados" },
     ],
     sizes: [],
-    doGuidelines: ["Use para selecionar um valor ou intervalo dentro de um range contínuo. Mostre o valor atual."],
-    dontGuidelines: ["Não use slider para valores discretos com poucas opções — use Select ou Radio."],
+    doGuidelines: ["Exiba sempre o valor numérico atual em texto para confirmação do usuário.", "Ofereça um campo de entrada de texto complementar quando o valor exato for relevante.", "Configure o incremento da prop step de acordo com a granularidade real da informação."],
+    dontGuidelines: ["Usar para dados que exigem precisão absoluta como documentos ou parcelas → use input.", "Escolha simples entre até 5 opções pré-definidas → use radio-group ou select.", "Ocultar o valor numérico selecionado pelo controle → mostre o texto associado junto ao slider."],
     code: `import { Slider } from "@/components/ui/slider"
 
-<Slider defaultValue={[50]} max={100} step={1} />`,
+<div className="space-y-2">
+  <div className="flex justify-between text-sm">
+    <span>Volume</span>
+    <span>50%</span>
+  </div>
+  <Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />
+</div>`,
     props: [
-      { name: "value / defaultValue", type: "number[]", description: "Um valor = thumb único; dois valores = range." },
-      { name: "min / max / step", type: "number", default: "0 / 100 / —", description: "Limites e granularidade." },
-      { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "\"horizontal\"", description: "Direção do slider." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa interação." },
+      { name: "min", type: "number", default: "0", description: "Limite inferior da faixa de seleção" },
+      { name: "max", type: "number", default: "100", description: "Limite superior da faixa de seleção" },
+      { name: "step (Slider)", type: "number", default: "1", description: "Intervalo numérico de incremento entre os passos" },
+      { name: "value · defaultValue (Slider)", type: "number[]", default: "[min, max]", description: "Array com o valor atual (um valor para pegador único, dois para intervalo)" },
+      { name: "orientation (Slider)", type: "horizontal · vertical", default: "horizontal", description: "Direção do trilho do slider" },
+      { name: "disabled (Slider)", type: "boolean", default: "false", description: "Desativa a interação e reduz a opacidade para 50%" },
+    ],
+    meta: {
+      nome: "Slider",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/slider.tsx",
+      story: "src/components/ui/slider.stories.tsx",
+      vizinhos: ["input", "select", "progress"],
+    },
+    whenToUseItems: ["Ajuste de parâmetros contínuos ou intuitivos, como volume, brilho, zoom ou opacidade.", "Seleção de faixas de valores com pegador duplo (mínimo e máximo), como filtros de preço."],
+    whenNotToUse: ["Valores numéricos precisos ou dados estruturados (ex.: CPF, idade ou parcelas) → input.", "Escolha discreta entre poucas opções fixas pré-definidas → select.", "Exibição de progresso apenas para leitura, sem interação direta → progress."],
+    content: ["Apresente um rótulo visível indicando a métrica controlada: \"Volume\", \"Faixa de preço\".", "Exiba o valor atual formatado em texto ao lado do controle: \"R$ 150,00\", \"75%\".", "Indique os valores mínimo e máximo nos extremos do trilho quando o contexto exigir clareza."],
+    accessibility: {
+      keyboard: "Tab chega a cada pegador. Setas Direita/Acima aumentam um passo; Setas Esquerda/Abaixo diminuem um passo. Page Up e Page Down realizam saltos maiores. Home vai ao valor mínimo e End ao valor máximo.",
+      screenReader: "Papel slider com aria-valuenow refletindo o valor atual, aria-valuemin e aria-valuemax. Cada pegador recebe aria-label descritivo automático (\"Valor mínimo\", \"Valor máximo\" ou rótulo informado).",
+      focus: "Anel visível de 4 px em ring-ring em volta do pegador focado. Em sliders de intervalo, cada pegador recebe foco individual sequencial via Tab.",
+      cautions: "Arrastar nunca pode ser o único modo de interação (WCAG 2.5.7); sempre garanta suporte a teclado e ofereça um campo input numérico ao lado quando a precisão exata for necessária.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-muted", "bg-primary", "border-primary"] },
+      { contexto: "Espaço", itens: ["h-1.5", "min-h-44", "size-4", "w-1.5"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+      { contexto: "Sombra", itens: ["shadow-sm"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   spinner: {
-    description: "Um indicador que pode ser usado para mostrar um estado de carregamento.",
-    whenToUse: "Use para sinalizar que uma ação está em andamento e o resultado ainda não está disponível.",
+    description: "Indicador giratório para esperas de tempo indeterminado. Mostra que o sistema está ocupado processando uma ação.",
+    whenToUse: "Esperas curtas sem tempo estimado de término, como envio de formulário ou consulta rápida. Dentro de botões, itens de lista ou campos de entrada para indicar processamento local.",
     anatomy: [
-      { part: "Elemento raiz", description: "Ícone Loader2 girando (animate-spin), role=\"status\" e aria-label=\"Loading\" pra leitor de tela." },
+      { part: "Spinner", description: "Ícone progress_activity em rotação contínua (animate-spin) com role=\"status\"" },
     ],
     variants: [],
-    states: [],
+    states: [
+      { name: "Em rotação", description: "Animação contínua de rotação (animate-spin) em torno do eixo central" },
+    ],
     sizes: [],
-    doGuidelines: ["Use para operações curtas ou quando o progresso não pode ser medido."],
-    dontGuidelines: ["Não use spinner para operações previsíveis — use Progress. Não use sem texto de contexto."],
+    doGuidelines: ["Passe um aria-label em português descrevendo a operação em andamento.", "Use dentro de botões ou cartões para sinalizar processamento localizado.", "Prefira cores com contraste suficiente com o fundo sobre o qual o indicador gira."],
+    dontGuidelines: ["Manter o rótulo padrão em inglês → passe aria-label descritivo em português.", "Usar para tarefas com percentual conhecido de conclusão → progress.", "Usar em páginas inteiras cujo esqueleto estrutural é conhecido → skeleton."],
     code: `import { Spinner } from "@/components/ui/spinner"
 
-<Spinner className="size-5" />`,
+<div className="flex items-center gap-2 text-sm text-muted-foreground">
+  <Spinner aria-label="Carregando dados..." />
+  <span>Carregando...</span>
+</div>`,
     props: [
-      { name: "...props", type: "React.ComponentProps<\"svg\">", description: "Tamanho e cor via className (size-4, text-primary, etc.)." },
+      { name: "className", type: "string", default: "—", description: "Classes utilitárias para ajustar tamanho (ex.: size-5) ou cor (ex.: text-primary)" },
+      { name: "aria-label", type: "string", default: "\"Loading\"", description: "Nome acessível anunciado a tecnologias assistivas" },
+      { name: "...props", type: "Omit<ComponentProps<\"svg\">, \"name\" \\", default: "\"fill\">", description: "—" },
+    ],
+    meta: {
+      nome: "Spinner",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/spinner.tsx",
+      story: "src/components/ui/spinner.stories.tsx",
+      vizinhos: ["skeleton", "progress"],
+    },
+    whenToUseItems: ["Esperas curtas sem tempo estimado de término, como envio de formulário ou consulta rápida.", "Dentro de botões, itens de lista ou campos de entrada para indicar processamento local."],
+    whenNotToUse: ["O layout do conteúdo final já é conhecido → skeleton.", "O progresso ou percentual de conclusão pode ser medido numericamente → progress."],
+    content: ["Não tem texto próprio embutido.", "Quando acompanhado de rótulo textual, use verbo no gerúndio com reticências: \"Carregando...\", \"Salvando...\"."],
+    accessibility: {
+      keyboard: "Não recebe foco.",
+      screenReader: "Possui papel role=\"status\" e anuncia a propriedade aria-label quando inserido no DOM.",
+      focus: "Não retém nem altera o foco do teclado; mantenha o foco no elemento acionador ou na área ativa.",
+      cautions: "O componente vem com aria-label=\"Loading\" em inglês no código. Forneça sempre aria-label em português (\"Carregando...\") contextualizando a ação em andamento.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["size-4"] },
     ],
   },
   stepper: {
@@ -854,93 +1146,114 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   switch: {
-    description: "Um controle que permite ao usuário alternar entre ativado e desativado.",
-    whenToUse: "Use para ativar ou desativar uma configuração imediatamente, sem precisar de um botão de confirmação separado.",
+    description: "Controle deslizante binário para ativar ou desativar uma preferência. A alteração tem efeito imediato e dispensa botão de confirmação.",
+    whenToUse: "Ativar ou desativar recursos em telas de configurações e preferências com aplicação imediata. Alternar um estado binário independente que não faça parte de um formulário com envio em lote.",
     anatomy: [
-      { part: "Root", description: "SwitchPrimitive.Root — trilho (data-state=checked altera a cor de fundo)." },
-      { part: "Thumb", description: "Bolinha que deslinza — translateX conforme o estado." },
+      { part: "Switch", description: "Trilho (SwitchPrimitive.Root) que encapsula o botão deslizante (SwitchPrimitive.Thumb)" },
     ],
     variants: [],
     states: [
-      { name: "Unchecked", description: "Trilho em --input." },
-      { name: "Checked", description: "Trilho em --primary, thumb deslocado." },
-      { name: "Focus", description: "focus-visible:ring." },
-      { name: "Disabled", description: "opacidade reduzida." },
+      { name: "Desativado", description: "Trilho com fundo bg-input e botão deslizante alinhado à esquerda" },
+      { name: "Ativado", description: "Trilho com fundo bg-primary e botão deslocado à direita (translate-x)" },
+      { name: "Pressionado", description: "Escala reduzida via --scale-pressed e botão contraído" },
+      { name: "Foco", description: "Anel de foco visível com 3 px em ring-ring" },
+      { name: "Desabilitado", description: "Opacidade reduzida em 50% (disabled:opacity-50) e cursor não permitido" },
     ],
-    sizes: [
-      { name: "sm", value: "sm", description: "h-3.5 w-6." },
-      { name: "default", value: "default", description: "h-[1.15rem] w-8." },
-    ],
-    doGuidelines: ["Use para ativar/desativar uma configuração com efeito imediato, sem confirmação."],
-    dontGuidelines: ["Não use switch para ações que exigem salvamento — use Button. Não use para selecionar itens — use Checkbox."],
-    code: `import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
+    sizes: [],
+    doGuidelines: ["Use para preferências cujo efeito ocorra imediatamente após o acionamento.", "Mantenha o rótulo invariável, independentemente de o estado estar ligado ou desligado.", "Associe o controle a um rótulo textual usando <Label htmlFor=\"...\">."],
+    dontGuidelines: ["Usar em formulários que exigem confirmação posterior com botão salvar → checkbox.", "Alterar o texto do rótulo conforme o estado ligado ou desligado → mantenha o rótulo fixo.", "Deixar o controle sem rótulo visível ou sem aria-label → passe nome acessível."],
+    code: `import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
 
 <div className="flex items-center gap-2">
   <Switch id="notificacoes" defaultChecked />
-  <Label htmlFor="notificacoes">Notificações</Label>
+  <Label htmlFor="notificacoes">Notificações por e-mail</Label>
 </div>`,
     props: [
-      { name: "checked / defaultChecked", type: "boolean", description: "Estado controlado ou inicial." },
-      { name: "onCheckedChange", type: "(checked: boolean) => void", description: "Callback de mudança." },
-      { name: "size", type: "\"sm\" | \"default\"", default: "\"default\"", description: "Dimensão do switch." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa interação." },
+      { name: "checked · defaultChecked", type: "boolean", default: "—", description: "Estado ativado ou desativado, controlado ou inicial" },
+      { name: "onCheckedChange", type: "(checked: boolean) => void", default: "—", description: "Função disparada ao alternar o estado" },
+      { name: "disabled", type: "boolean", default: "false", description: "Desabilita a interação e reduz a opacidade" },
+      { name: "size", type: "sm · default", default: "default", description: "Dimensão do trilho e do botão deslizante" },
+    ],
+    meta: {
+      nome: "Switch",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/switch.tsx",
+      story: "src/components/ui/switch.stories.tsx",
+      vizinhos: ["checkbox", "toggle"],
+    },
+    whenToUseItems: ["Ativar ou desativar recursos em telas de configurações e preferências com aplicação imediata.", "Alternar um estado binário independente que não faça parte de um formulário com envio em lote."],
+    whenNotToUse: ["A escolha depende de um botão de salvar ou enviar formulário → checkbox.", "A escolha é entre duas opções com rótulos textuais próprios → toggle."],
+    content: ["Use rótulo claro e constante que descreva a funcionalidade: \"Notificações por e-mail\", \"Modo escuro\".", "Não mude o texto do rótulo entre \"Ativado\" e \"Desativado\"; a posição do controle já indica o estado."],
+    accessibility: {
+      keyboard: "Tab chega ao controle. Espaço ou Enter alterna entre ativado e desativado.",
+      screenReader: "Papel role=\"switch\" (Radix). Anuncia o estado aria-checked (\"ligado\" ou \"desligado\") e o nome acessível fornecido.",
+      focus: "Anel de 3 px visível em volta do trilho (focus-visible:ring-ring).",
+      cautions: "Associe sempre a um <Label> com htmlFor ou passe aria-label quando não houver texto visível.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-background", "bg-foreground", "bg-input", "bg-primary", "bg-primary-foreground", "border-ring"] },
+      { contexto: "Espaço", itens: ["h-3.5", "size-3", "size-4", "w-6", "w-8"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
+      { contexto: "Movimento", itens: ["--scale-pressed", "duration-motion-base", "duration-motion-fast", "ease-spring"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   tag: {
-    description: "Categoriza informação, organiza ou indica o status de elementos usando palavras-chave, ícones ou cores.",
-    whenToUse: "Use para categorizar informação de forma estática — rótulo fixo, não removível (ex.: categoria de um item, status de um registro). Não confunda com componentes vizinhos: use Chip para representar um critério de filtro/busca ativo, tipicamente removível; use Badge para reportar contagem de itens pendentes/status pontual. Tag é especificamente para categorização estática, sem botão de remover, sem interatividade própria.",
+    description: "Rótulo estático para categorização, metadados e indicação de status. Organiza informações sem disparar ações nem remover filtros.",
+    whenToUse: "Categorizar itens de catálogo ou artigos com palavras-chave estáticas. Indicar status textual ou características secundárias que não possuem interação.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <span> (ou o filho, via asChild) com data-slot=\"tag\" e data-variant. Não é interativo por padrão — sem foco, sem onClick próprio." },
-      { part: "Conteúdo (ícone opcional + label)", description: "Via children — não existe prop icon dedicada. Ícone, quando usado, é composto livremente junto do texto (ex.: <Tag><Icon name=\"sell\" />Promoção</Tag>). Tamanho de ícone herdado via [&>svg]:size-3." },
-      { part: "Skeleton (Tag.Skeleton)", description: "Placeholder de carregamento com o mesmo formato do tag real, pra evitar layout shift." },
+      { part: "Tag", description: "Elemento <span> (ou elemento filho com asChild) com estilo de etiqueta estática" },
+      { part: "Tag.Skeleton", description: "Placeholder retangular (TagSkeleton) com 24 px de altura (h-6) para estados de carregamento" },
     ],
     variants: [
-      { name: "Default", value: "default", description: "Fundo --muted, borda --border, texto --muted-foreground — aparência neutra padrão. Sem escala de 10 passos própria (só existe pra info/success/warning/danger), por isso reaproveita os tokens semânticos neutros já existentes em vez de uma escala nova." },
-      { name: "Primary", value: "primary", description: "Fundo --accent, borda --primary/20 (opacidade baixa, sutil), texto --primary — cor de marca do preset ativo. --primary não tem variação clara/escura própria (é um valor único por preset), por isso o fundo usa --accent (o tom \"claro\" de destaque que cada preset já define) em vez de uma escala nova." },
-      { name: "Success", value: "success", description: "Fundo --color-success-100, borda --color-success-300, texto --color-success-900 — três passos da mesma escala de 10, sinaliza status positivo (ex.: aprovado)." },
-      { name: "Warning", value: "warning", description: "Fundo --color-warning-100, borda --color-warning-300, texto --color-warning-900 — sinaliza status de atenção (ex.: pendente)." },
-      { name: "Danger", value: "danger", description: "Fundo --color-danger-100, borda --color-danger-300, texto --color-danger-900 — sinaliza status negativo (ex.: recusado)." },
-      { name: "AI Generated", value: "ai-generated", description: "Fundo --ai-surface, borda --ai-interactive, texto --ai-text-high — sinaliza que o valor do tag foi gerado por IA. Mesmos tokens que o Chip variant ai-generated já usa. Foi a referência original desse padrão (fundo claro + borda + texto), replicado agora pras demais variantes." },
+      { name: "Default", value: "default", description: "Rótulo neutro para categorias gerais sem conotação de alerta" },
+      { name: "Primary", value: "primary", description: "Destaque com a cor principal de marca do tema ativo" },
+      { name: "Success", value: "success", description: "Estados concluídos, aprovados ou confirmações positivas" },
+      { name: "Warning", value: "warning", description: "Avisos preventivos, pendências ou itens sob atenção" },
+      { name: "Danger", value: "danger", description: "Erros, falhas, bloqueios ou situações críticas" },
+      { name: "Ai-generated", value: "ai-generated", description: "Conteúdo, sugestão ou metadado gerado por inteligência artificial" },
     ],
-    states: [
-      { name: "Default", description: "Estado de repouso — único estado real do componente. Tag não recebe foco e não tem hover/disabled próprios." },
-      { name: "Highlight", description: "Prop highlight=true inverte fundo⇄texto de QUALQUER variant de cor (ex.: danger normal = fundo claro/texto escuro; danger highlight = fundo escuro/texto claro) e remove a borda — a própria superfície escura da escala já faz o destaque, sem precisar de contorno. Combinável com qualquer variant, não é uma variante fixa separada." },
-      { name: "Composição via asChild", description: "Quando usado com asChild para tornar o Tag clicável, hover/focus/disabled passam a ser responsabilidade do elemento filho." },
-    ],
+    states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use para metadados e rótulos estáticos que não disparam ações.", "Combine variantes semânticas de forma consistente em todo o produto.", "Prefira textos concisos com uma ou duas palavras."],
+    dontGuidelines: ["Usar para filtros interativos com remoção → chip.", "Usar para contadores numéricos flutuantes → badge.", "Depender somente da cor para comunicar sucesso ou falha → inclua texto claro."],
     code: `import { Tag } from "@/components/ui/tag"
-import { Icon } from "@/components/ui/icon"
 
-// Tag simples (categorização estática)
-<Tag>Categoria: Roupas</Tag>
-
-// Variantes de status — fundo claro + borda + texto, mesma paleta de tom
-<Tag variant="primary">Novidade</Tag>
-<Tag variant="success">Aprovado</Tag>
-<Tag variant="warning">Pendente</Tag>
-<Tag variant="danger">Recusado</Tag>
-
-// highlight inverte fundo⇄texto e remove a borda — funciona com
-// qualquer variant, não é uma variante fixa
-<Tag variant="danger" highlight>Em destaque</Tag>
-
-// Tag com ícone composto via children (sem prop icon dedicada)
-<Tag variant="ai-generated">
-  <Icon name="sell" />
-  Sugestão gerada por IA
-</Tag>
-
-// Placeholder de carregamento
-<Tag.Skeleton />`,
+<div className="flex items-center gap-2">
+  <Tag>Design</Tag>
+  <Tag variant="success">Aprovado</Tag>
+  <Tag variant="ai-generated">IA</Tag>
+</div>`,
     props: [
-      { name: "children", type: "React.ReactNode", description: "Conteúdo do tag — texto e, opcionalmente, um ícone composto junto (obrigatório)." },
-      { name: "variant", type: "\"default\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"ai-generated\"", default: "\"default\"", description: "Aparência visual do tag — sempre fundo claro + borda + texto, na mesma paleta de tom." },
-      { name: "highlight", type: "boolean", default: "false", description: "Inverte fundo⇄texto do variant ativo e remove a borda, pra destacar o tag sem trocar de variant." },
-      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <span>." },
-      { name: "...props", type: "React.ComponentProps<\"span\">", description: "Demais atributos nativos do elemento raiz." },
+      { name: "variant", type: "default · primary · success · warning · danger · ai-generated", default: "default", description: "Tom semântico da etiqueta" },
+      { name: "highlight", type: "true · false", default: "false", description: "Inverte as cores de fundo e texto para criar maior contraste" },
+      { name: "asChild", type: "boolean", default: "false", description: "Delega a renderização para o elemento filho via Radix Slot" },
+    ],
+    meta: {
+      nome: "Tag",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/tag.tsx",
+      story: "src/components/ui/tag.stories.tsx",
+      vizinhos: ["badge", "chip"],
+    },
+    whenToUseItems: ["Categorizar itens de catálogo ou artigos com palavras-chave estáticas.", "Indicar status textual ou características secundárias que não possuem interação."],
+    whenNotToUse: ["Filtro interativo ou tag com botão de remover → chip.", "Notificação pontual de contagem numérica ou badge sobreposto → badge."],
+    content: ["Rótulos curtos de uma ou duas palavras: \"Tecnologia\", \"Em análise\".", "Evite frases completas ou pontuação final dentro da etiqueta."],
+    accessibility: {
+      keyboard: "Não recebe foco por se tratar de um elemento estático de leitura.",
+      screenReader: "Anuncia o texto contido no children. Quando usada como indicação de estado, adicione contexto textual sem depender apenas da cor.",
+      focus: "Não retém foco de navegação.",
+      cautions: "A cor da variante nunca deve ser a única portadora de significado; garanta que o texto explique claramente o estado ou categoria.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-ai-interactive", "bg-ai-surface", "bg-danger-100", "bg-danger-900", "bg-muted", "bg-muted-foreground", "bg-primary", "bg-success-100", "bg-success-900", "bg-warning-100", "bg-warning-900", "border-ai-interactive", "border-border", "border-danger-300", "border-primary", "border-success-300", "border-warning-300", "text-ai-surface", "text-ai-text-high", "text-danger-100", "text-danger-900", "text-muted", "text-muted-foreground", "text-primary", "text-primary-foreground", "text-success-100", "text-success-900", "text-warning-100", "text-warning-900"] },
+      { contexto: "Tipografia", itens: ["font-medium", "leading-none", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1", "h-6", "min-h-6", "px-1.5", "size-3", "w-20"] },
+      { contexto: "Raio", itens: ["rounded-sm"] },
     ],
   },
   text: {
@@ -992,79 +1305,119 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   textarea: {
-    description: "Exibe uma área de texto (textarea) de formulário ou um componente com aparência de textarea.",
-    whenToUse: "Use para capturar textos mais longos, como comentários, descrições ou mensagens.",
+    description: "Campo de entrada para textos longos de múltiplas linhas. Expande verticalmente conforme o conteúdo digitado graças ao dimensionamento automático.",
+    whenToUse: "Coleta de textos com parágrafos, comentários longos, observações ou descrições detalhadas. Formulários onde a resposta esperada pode ultrapassar uma única linha de digitação.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <textarea> com field-sizing-content — cresce com o conteúdo até o min-h-16." },
+      { part: "Textarea", description: "Elemento <textarea> com dimensionamento automático (field-sizing-content) e altura mínima de 64 px" },
+      { part: "Rótulo (opcional)", description: "Componente Label embutido, estático ou com animação flutuante (animatedLabel)" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Focus", description: "focus-visible:border-ring + ring." },
-      { name: "Disabled", description: "cursor not-allowed, opacidade reduzida." },
-      { name: "Aria-invalid", description: "Borda e ring em --destructive." },
+      { name: "Padrão", description: "Borda sutil em border-input com fundo transparente" },
+      { name: "Foco", description: "Borda em border-ring com anel visível de 3 px em ring-ring" },
+      { name: "Erro", description: "Borda vermelha border-destructive e anel de erro (aria-invalid:ring-destructive)" },
+      { name: "Desabilitado", description: "Cursor não permitido e opacidade em 50% (disabled:opacity-50)" },
     ],
     sizes: [],
-    doGuidelines: ["Use para entrada de texto com múltiplas linhas. Defina altura mínima adequada ao conteúdo."],
-    dontGuidelines: ["Não use textarea para textos curtos de uma linha — use Input."],
+    doGuidelines: ["Forneça sempre um rótulo compreensível usando a prop label ou aria-label.", "Use a prop animatedLabel quando desejar economizar espaço vertical inicial.", "Indique erros de validação aplicando o atributo aria-invalid."],
+    dontGuidelines: ["Usar para respostas de uma única linha → input.", "Colocar instruções cruciais apenas no placeholder → use rótulo ou descrição em field.", "Bloquear a expansão natural do texto sem aviso ao usuário → ajuste a altura mínima."],
     code: `import { Textarea } from "@/components/ui/textarea"
 
-<Textarea placeholder="Escreva uma mensagem..." />`,
+<Textarea
+  label="Observações"
+  placeholder="Digite seus comentários sobre o projeto..."
+/>`,
     props: [
-      { name: "label", type: "React.ReactNode", description: "Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
-      { name: "animatedLabel", type: "boolean", default: "false", description: "Com label presente, ativa o padrão de label flutuante (motion) em vez da label fixa acima do campo." },
-      { name: "...props", type: "React.ComponentProps<\"textarea\">", description: "Todos os atributos nativos de <textarea>." },
+      { name: "label", type: "React.ReactNode", default: "—", description: "Rótulo textual vinculado ao campo via ID gerado" },
+      { name: "animatedLabel", type: "boolean", default: "false", description: "Ativa a transição suave de rótulo flutuante no foco" },
+      { name: "placeholder", type: "string", default: "—", description: "Texto de exemplo exibido enquanto o campo estiver vazio" },
+      { name: "disabled", type: "boolean", default: "false", description: "Desabilita a digitação e aplica opacidade reduzida" },
+      { name: "aria-invalid", type: "boolean", default: "—", description: "Destaca a borda e anel em tons de erro (border-destructive)" },
+    ],
+    meta: {
+      nome: "Textarea",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/textarea.tsx",
+      story: "src/components/ui/textarea.stories.tsx",
+      vizinhos: ["input", "field"],
+    },
+    whenToUseItems: ["Coleta de textos com parágrafos, comentários longos, observações ou descrições detalhadas.", "Formulários onde a resposta esperada pode ultrapassar uma única linha de digitação."],
+    whenNotToUse: ["Respostas curtas de uma única linha como nome, e-mail ou telefone → input.", "Campo complexo com mensagens de erro estruturadas e texto de ajuda → field."],
+    content: ["Rótulos claros e objetivos posicionados acima do campo: \"Comentários adicionais\", \"Descrição da vaga\".", "Não use o placeholder como substituto para o rótulo principal."],
+    accessibility: {
+      keyboard: "Tab move o foco para o campo. Enter cria quebra de linha normal. Tab sai do campo para o próximo elemento.",
+      screenReader: "Quando fornecida a prop label, o campo é vinculado automaticamente pelo atributo id e anunciado com seu nome.",
+      focus: "Anel de foco nítido de 3 px em focus-visible:ring-ring.",
+      cautions: "Evite instruções críticas apenas no placeholder, pois ele desaparece ao digitar. Sempre passe label ou aria-label.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["border-destructive", "border-input", "border-ring", "text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["text-base", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1.5", "left-0", "left-3", "min-h-16", "mt-5", "px-3", "py-2", "top-0", "top-3"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
+      { contexto: "Movimento", itens: ["duration-motion-fast"] },
+      { contexto: "Foco", itens: ["ring-destructive", "ring-ring"] },
     ],
   },
   thumbnail: {
-    description: "O Thumbnail serve para exibir miniaturas de imagem, com um container de cantos arredondados para apresentar conteúdo visual.",
-    whenToUse: "Use para visualização de imagem de produto, exibição em galeria de imagens ou apresentação de foto em detalhe de pedido/anexo. Sem dimensões fixas — altura e largura são customizáveis, sempre respeitando a proporção escolhida para não distorcer a imagem.",
+    description: "Miniatura visual de imagem com proporção fixa e cantos arredondados. Oferece fallback integrado para erros de carregamento e preserva o layout.",
+    whenToUse: "Apresentação de fotos de produtos em listagens, catálogos e carrinhos de compras. Exibição de prévias em galerias de mídia, comprovantes ou detalhes de pedidos.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <div> com data-slot=\"thumbnail\" e data-size, controla o tamanho (largura) via cva." },
-      { part: "Wrapper de proporção", description: "AspectRatio (Radix, mesmo componente de aspect-ratio.tsx) — mantém a proporção (ratio numérico) sem distorcer a imagem." },
-      { part: "Imagem", description: "Um <img> nativo com data-slot=\"thumbnail-image\", object-cover, tratamento de erro via onError." },
-      { part: "Fallback", description: "Mostrado quando src está vazio/ausente ou a imagem falha ao carregar. <div role=\"img\" aria-label={alt}>, sem ícone — só a cor de fundo do token --muted." },
-      { part: "Conteúdo sobreposto (opcional)", description: "children — nó sobreposto à imagem (ex.: badge de status), via composição." },
-      { part: "Skeleton (Thumbnail.Skeleton)", description: "Placeholder de carregamento com o mesmo tamanho e proporção do thumbnail real, evita layout shift." },
+      { part: "Thumbnail", description: "Container raiz com proporção fixa (AspectRatio) que renderiza a imagem ou fallback de erro" },
+      { part: "Thumbnail.Skeleton", description: "Placeholder de carregamento (ThumbnailSkeleton) que preserva as dimensões e o aspecto" },
     ],
     variants: [],
     states: [
-      { name: "Default (carregado)", description: "Imagem exibida via <img>, preenchendo o container mantendo a proporção (object-cover)." },
-      { name: "Fallback", description: "Ativado quando src está vazio/ausente OU a imagem falha ao carregar (onError). Mostra só a cor de fundo --muted, sem ícone, mantendo role=\"img\" + aria-label={alt}." },
-      { name: "Loading (placeholder)", description: "Thumbnail.Skeleton — mesmo tamanho/proporção do estado carregado, evita layout shift." },
+      { name: "Carregada", description: "Imagem exibida cobrindo toda a área proporcional (object-cover)" },
+      { name: "Fallback", description: "Superfície neutra em bg-muted com role=\"img\" e aria-label quando a imagem falha ou não possui src" },
     ],
     sizes: [
-      { name: "Small", value: "sm", description: "Largura w-16 (4rem / 64px)." },
-      { name: "Default", value: "default", description: "Largura w-24 (6rem / 96px)." },
-      { name: "Large", value: "lg", description: "Largura w-40 (10rem / 160px)." },
+      { name: "sm", value: "sm", description: "— — Miniatura compacta com largura de 64 px (w-16) para listas densas ou tabelas" },
+      { name: "default", value: "default", description: "— — Tamanho intermediário com largura de 96 px (w-24) para visualização de pedidos ou produtos" },
+      { name: "lg", value: "lg", description: "— — Destaque com largura de 160 px (w-40) para galerias de fotos ou cartões amplos" },
     ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Sempre preencha a propriedade alt com uma descrição objetiva do conteúdo da imagem.", "Escolha a proporção aspectRatio adequada à orientação original da imagem para evitar cortes excessivos.", "Use Thumbnail.Skeleton com a mesma proporção e tamanho enquanto a imagem carrega."],
+    dontGuidelines: ["Omitir o texto alternativo descritivo na prop alt → descreva o conteúdo visual da imagem.", "Usar Thumbnail para exibir avatares de pessoas com recorte circular → avatar.", "Usar para containers de proporção livre sem imagem → aspect-ratio."],
     code: `import { Thumbnail } from "@/components/ui/thumbnail"
 
-// Miniatura padrão (1:1, tamanho default)
-<Thumbnail src="/produto.jpg" alt="Camiseta azul, vista frontal" />
-
-// Tamanho pequeno, proporção widescreen
 <Thumbnail
-  src="/capa-video.jpg"
-  alt="Capa do vídeo de instalação"
-  size="sm"
-  aspectRatio="16/9"
-/>
-
-// Sem src (ou falha ao carregar) — cai no fallback automaticamente
-<Thumbnail src="" alt="Anexo sem preview disponível" size="lg" />
-
-// Placeholder de carregamento
-<Thumbnail.Skeleton size="lg" aspectRatio="16/9" />`,
+  src="/produtos/relogio.jpg"
+  alt="Relógio de pulso clássico com pulseira de couro marrom"
+  size="default"
+  aspectRatio="1/1"
+/>`,
     props: [
-      { name: "src", type: "string", description: "Origem da imagem. Vazio/ausente aciona o fallback direto." },
-      { name: "alt", type: "string", description: "Nome acessível da imagem (obrigatório). Usado também como aria-label do fallback." },
-      { name: "size", type: "\"sm\" | \"default\" | \"lg\"", default: "\"default\"", description: "Largura do thumbnail." },
-      { name: "aspectRatio", type: "\"1/1\" | \"4/3\" | \"3/4\" | \"16/9\" | \"9/16\" | \"2/1\" | \"1/2\"", default: "\"1/1\"", description: "Proporção largura/altura." },
-      { name: "children", type: "React.ReactNode", description: "Conteúdo sobreposto à imagem (ex.: badge)." },
-      { name: "...props", type: "Omit<React.ComponentProps<\"img\">, \"className\" | \"alt\">", description: "Demais atributos nativos de <img> (loading, decoding, crossOrigin, onError...)." },
+      { name: "alt", type: "string", default: "—", description: "Texto alternativo e acessível obrigatório da imagem" },
+      { name: "src", type: "string", default: "—", description: "Caminho ou URL da imagem a ser exibida" },
+      { name: "size", type: "sm · default · lg", default: "default", description: "Largura da miniatura" },
+      { name: "aspectRatio", type: "1/1 · 4/3 · 3/4 · 16/9 · 9/16 · 2/1 · 1/2", default: "1/1", description: "Proporção fixa entre largura e altura" },
+      { name: "children", type: "React.ReactNode", default: "—", description: "Conteúdo opcional sobreposto à miniatura, como badges" },
+      { name: "size (ThumbnailSkeleton)", type: "sm · default · lg", default: "default", description: "Mesma largura do thumbnail substituído" },
+      { name: "aspectRatio (ThumbnailSkeleton)", type: "ThumbnailAspectRatio", default: "1/1", description: "Mesma proporção mantida durante o carregamento" },
+    ],
+    meta: {
+      nome: "Thumbnail",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/thumbnail.tsx",
+      story: "src/components/ui/thumbnail.stories.tsx",
+      vizinhos: ["avatar", "aspect-ratio"],
+    },
+    whenToUseItems: ["Apresentação de fotos de produtos em listagens, catálogos e carrinhos de compras.", "Exibição de prévias em galerias de mídia, comprovantes ou detalhes de pedidos."],
+    whenNotToUse: ["Exibir foto de perfil ou identificação de usuário em formato circular → avatar.", "Bloquear a proporção de containers de mídia arbitrária sem tratamento de imagem → aspect-ratio."],
+    content: ["Passe sempre um texto alternativo significativo e descritivo na prop alt: \"Tênis esportivo azul\", \"Foto de capa do artigo\".", "Evite frases redundantes como \"Foto de\" ou \"Imagem de\" no texto alternativo."],
+    accessibility: {
+      keyboard: "Não recebe foco direto; quando a miniatura for interativa, envolva-a em um botão ou link.",
+      screenReader: "Elemento de imagem anuncia a propriedade alt obrigatória. No fallback de erro, expõe role=\"img\" com o mesmo aria-label.",
+      focus: "Não retém foco de navegação por padrão.",
+      cautions: "A propriedade alt é obrigatória no componente para atender às diretrizes da WCAG 1.1.1 (conteúdo não textual).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-muted"] },
+      { contexto: "Espaço", itens: ["w-16", "w-24", "w-40"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
     ],
   },
   "time-picker": {
@@ -1166,88 +1519,175 @@ function Exemplo() {
     ],
   },
   toggle: {
-    description: "Um botão de dois estados, que pode estar ativado ou desativado.",
-    whenToUse: "Use para uma ação isolada com estado binário, como favoritar ou negrito/itálico numa toolbar, sem formar um grupo.",
+    description: "Botão de dois estados que alterna entre ativado e desativado. Preserva a escolha visualmente para formatações ou marcações independentes.",
+    whenToUse: "Alternar formatação de texto isolada, como negrito, itálico ou sublinhado. Ações independentes de dois estados, como favoritar ou fixar um item sem formar um grupo.",
     anatomy: [
-      { part: "Elemento raiz", description: "TogglePrimitive.Root — data-state=\"on\"/\"off\"." },
+      { part: "Toggle", description: "Botão binário de dois estados (TogglePrimitive.Root) com suporte a ícone e texto" },
     ],
     variants: [
-      { name: "Default", value: "default", description: "Fundo transparente até ativar." },
-      { name: "Outline", value: "outline", description: "Contorno visível mesmo desativado." },
+      { name: "Default", value: "default", description: "Fundo transparente em repouso; ideal para barras de ferramentas ou áreas limpas" },
+      { name: "Outline", value: "outline", description: "Borda delimitadora visível mesmo quando desativado; bom para controles isolados" },
     ],
     states: [
-      { name: "Off", description: "data-state=off — estado de repouso, font-normal (400) e --icon-fill:0 fixado (ícone em contorno, independente do preset ativo)." },
-      { name: "On", description: "data-state=on — bg-accent, font-bold (700) e --icon-fill:1 fixado (ícone preenchido). Contorno↔preenchido é característica do Toggle, não do preset — os dois estados sobrescrevem --icon-fill explicitamente, então o comportamento é igual em todos os presets, mesmo nos que definem --icon-fill:1 como padrão global (ex.: preset soft). Funciona automaticamente em qualquer <Icon> passado como children, desde que ele não receba a prop fill fixa (aí ela sempre vence a CSS var)." },
-      { name: "Focus", description: "focus-visible:ring." },
-      { name: "Disabled", description: "opacidade reduzida, sem interação." },
+      { name: "Desativado", description: "Fundo transparente e texto ou ícone com peso normal (font-normal)" },
+      { name: "Ativado", description: "Fundo destacado bg-accent, texto em negrito (font-bold) e ícone preenchido" },
+      { name: "Hover", description: "Fundo suave hover:bg-muted" },
+      { name: "Foco", description: "Borda border-ring com anel visível de 3 px em ring-ring" },
+      { name: "Desabilitado", description: "Opacidade reduzida em 50% (disabled:opacity-50) e sem interação" },
     ],
     sizes: [
-      { name: "sm", value: "sm", description: "h-8 min-w-8." },
-      { name: "default", value: "default", description: "h-9 min-w-9." },
-      { name: "lg", value: "lg", description: "h-10 min-w-10." },
+      { name: "default", value: "default", description: "36 px — Altura padrão (h-9) para a maioria das barras de ferramentas e ações" },
+      { name: "sm", value: "sm", description: "32 px — Altura compacta (h-8) para barras densas ou painéis laterais estreitos" },
+      { name: "lg", value: "lg", description: "40 px — Altura maior (h-10) para telas de toque ou botões com maior área de clique" },
     ],
-    doGuidelines: ["Use para alternar entre dois estados com efeito imediato."],
-    dontGuidelines: ["Não use toggle para formulários que exigem salvamento explícito."],
+    doGuidelines: ["Passe aria-label sempre que o conteúdo for apenas um ícone.", "Use variantes transparentes (default) dentro de barras de ferramentas compartilhadas.", "Combine com ícones sem preenchimento fixo para permitir a troca automática de estilo."],
+    dontGuidelines: ["Agrupar múltiplos botões de seleção sem um container apropriado → toggle-group.", "Usar para ativar ou desativar configurações de conta com efeito imediato → switch.", "Usar para ações de disparo único que não guardam estado → button."],
     code: `import { Toggle } from "@/components/ui/toggle"
 
-<Toggle aria-label="Negrito">
+<Toggle aria-label="Alternar negrito">
   Negrito
 </Toggle>`,
     props: [
-      { name: "variant", type: "\"default\" | \"outline\"", default: "\"default\"", description: "Estilo visual." },
-      { name: "size", type: "\"default\" | \"sm\" | \"lg\"", default: "\"default\"", description: "Dimensão." },
-      { name: "pressed / defaultPressed", type: "boolean", description: "Estado controlado ou inicial." },
-      { name: "onPressedChange", type: "(pressed: boolean) => void", description: "Callback de mudança." },
+      { name: "variant", type: "default · outline", default: "default", description: "Estilo visual do botão" },
+      { name: "size", type: "default · sm · lg", default: "default", description: "Altura e espaçamento interno" },
+      { name: "pressed · defaultPressed", type: "boolean", default: "—", description: "Estado ativo do controle, controlado ou inicial" },
+      { name: "onPressedChange", type: "(pressed: boolean) => void", default: "—", description: "Função disparada ao alternar o estado" },
+      { name: "disabled", type: "boolean", default: "false", description: "Desabilita a interação com o botão" },
+    ],
+    meta: {
+      nome: "Toggle",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/toggle.tsx",
+      story: "src/components/ui/toggle.stories.tsx",
+      vizinhos: ["toggle-group", "button", "switch"],
+    },
+    whenToUseItems: ["Alternar formatação de texto isolada, como negrito, itálico ou sublinhado.", "Ações independentes de dois estados, como favoritar ou fixar um item sem formar um grupo."],
+    whenNotToUse: ["Conjunto de opções em barra de ferramentas com seleção única ou múltipla → toggle-group.", "Alternar uma configuração de sistema ou conta que tenha efeito imediato → switch.", "Disparar uma ação que não mantém estado persistente na tela → button."],
+    content: ["Use rótulo curto ou ícone autoexplicativo: \"Negrito\", \"Itálico\", \"Favorito\".", "Quando usar apenas ícone, é obrigatório passar aria-label descritivo."],
+    accessibility: {
+      keyboard: "Tab move o foco para o botão. Espaço ou Enter alterna entre os estados ativado e desativado.",
+      screenReader: "Papel role=\"button\" com aria-pressed=\"true\" ou aria-pressed=\"false\". Anuncia o rótulo do botão ou aria-label.",
+      focus: "Anel visível de 3 px em focus-visible:ring-ring.",
+      cautions: "Ao usar apenas ícone como filho, passe sempre aria-label para garantir que tecnologias assistivas compreendam a ação.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-muted", "border-destructive", "border-input", "border-ring", "text-accent-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-bold", "font-normal", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2", "h-10", "h-8", "h-9", "min-w-10", "min-w-8", "min-w-9", "px-1.5", "px-2", "px-2.5", "size-4"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
+      { contexto: "Foco", itens: ["ring-destructive", "ring-ring"] },
     ],
   },
   tooltip: {
-    description: "Um popup que exibe informações relacionadas a um elemento quando ele recebe foco de teclado ou o mouse passa sobre ele.",
-    whenToUse: "Use para complementar um elemento com uma explicação curta, sem ocupar espaço permanente na tela.",
+    description: "Balão flutuante que exibe uma explicação curta quando o usuário passa o mouse ou foca um elemento. Descreve ações sem poluir a interface.",
+    whenToUse: "Explicar a função de botões compostos exclusivamente por ícones. Oferecer contexto complementar breve para elementos compactos ou truncados.",
     anatomy: [
-      { part: "TooltipProvider", description: "Contexto global — já registrado no shell do app (delayDuration=0)." },
-      { part: "Tooltip", description: "Root — controla aberto/fechado." },
-      { part: "TooltipTrigger", description: "Elemento que dispara o tooltip no hover/foco." },
-      { part: "TooltipContent", description: "Balão de conteúdo, com seta (Arrow) apontando pro trigger." },
+      { part: "TooltipProvider", description: "Provedor de contexto global que gerencia o atraso de exibição (delayDuration)" },
+      { part: "Tooltip", description: "Componente raiz que coordena os estados de visibilidade e posicionamento" },
+      { part: "TooltipTrigger", description: "Elemento gatilho que recebe hover ou foco para abrir o balão" },
+      { part: "TooltipContent", description: "Painel flutuante com seta (TooltipPrimitive.Arrow) e texto informativo" },
     ],
     variants: [],
     states: [
-      { name: "Closed", description: "Estado padrão." },
-      { name: "Open", description: "Hover ou foco no trigger — anima fade + zoom." },
+      { name: "Fechado", description: "Elemento desmontado ou invisível fora da tela" },
+      { name: "Aberto", description: "Animação de entrada suave com fade e leve zoom (zoom-in-95)" },
     ],
     sizes: [],
-    doGuidelines: ["Use para revelar informação adicional breve ao passar o mouse ou receber foco."],
-    dontGuidelines: ["Não use tooltip para informação crítica ou essencial — deve estar visível sempre. Não use para ações interativas."],
-    code: `import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+    doGuidelines: ["Use em todos os botões que apresentem apenas ícone sem rótulo visível.", "Mantenha o texto extremamente conciso em até uma linha.", "Permita dispensar o tooltip via tecla Esc sem mover o cursor."],
+    dontGuidelines: ["Inserir links, botões ou elementos interativos dentro do balão → popover.", "Exibir cartões ricos com fotos de perfil ou mídia no hover → hover-card.", "Repetir no balão exatamente o mesmo texto já escrito no gatilho → use apenas para complementar."],
+    code: `import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
-<Tooltip>
-  <TooltipTrigger>Hover</TooltipTrigger>
-  <TooltipContent>Conteúdo do tooltip</TooltipContent>
-</Tooltip>`,
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <button type="button">Salvar</button>
+    </TooltipTrigger>
+    <TooltipContent>
+      Salvar alterações
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>`,
     props: [
-      { name: "side", type: "\"top\" | \"right\" | \"bottom\" | \"left\"", default: "\"top\"", description: "(TooltipContent) lado preferido de exibição." },
-      { name: "sideOffset", type: "number", default: "0", description: "Distância do trigger." },
-      { name: "align", type: "\"start\" | \"center\" | \"end\"", default: "\"center\"", description: "Alinhamento em relação ao trigger." },
+      { name: "delayDuration (TooltipProvider)", type: "number", default: "0", description: "Tempo de espera em milissegundos antes de abrir o tooltip" },
+      { name: "sideOffset (TooltipContent)", type: "number", default: "0", description: "Distância em pixels entre o gatilho e a borda do balão" },
+      { name: "side (TooltipContent)", type: "top · right · bottom · left", default: "top", description: "Lado preferencial de ancoragem em relação ao gatilho" },
+      { name: "align (TooltipContent)", type: "start · center · end", default: "center", description: "Alinhamento do balão ao longo do eixo do gatilho" },
+    ],
+    meta: {
+      nome: "Tooltip",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/tooltip.tsx",
+      story: "src/components/ui/tooltip.stories.tsx",
+      vizinhos: ["popover", "hover-card"],
+    },
+    whenToUseItems: ["Explicar a função de botões compostos exclusivamente por ícones.", "Oferecer contexto complementar breve para elementos compactos ou truncados."],
+    whenNotToUse: ["Conteúdo rico com links, botões ou ações clicáveis → popover.", "Prévia de perfil ou cartão de conteúdo expandido no hover → hover-card."],
+    content: ["Use frases curtas em uma linha, iniciando com verbo imperativo: \"Copiar link\", \"Editar dados\".", "Não repita o mesmo texto que já está visível no próprio elemento gatilho."],
+    accessibility: {
+      keyboard: "O balão aparece automaticamente quando o elemento gatilho recebe foco e pode ser dispensado pressionando Esc.",
+      screenReader: "Papel role=\"tooltip\". O gatilho é associado dinamicamente via aria-describedby ao conteúdo da dica.",
+      focus: "O foco permanece sempre no elemento gatilho e nunca se move para dentro do balão.",
+      cautions: "Permite manter o ponteiro do mouse sobre o próprio balão sem que ele se feche repentinamente, atendendo ao critério WCAG 1.4.13.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-popover", "fill-popover", "text-popover-foreground"] },
+      { contexto: "Tipografia", itens: ["text-xs"] },
+      { contexto: "Espaço", itens: ["px-3", "py-1.5", "size-2.5"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
+      { contexto: "Sombra", itens: ["shadow-md"] },
     ],
   },
   "aspect-ratio": {
-    description: "Exibe conteúdo dentro de uma proporção desejada.",
-    whenToUse: "Use para manter a proporção de imagens, vídeos ou embeds ao redimensionar o layout.",
+    description: "Mantém a proporção exata entre largura e altura de imagens, vídeos e embeds. Evita que o layout mude de tamanho enquanto o conteúdo carrega.",
+    whenToUse: "Manter proporções fixas como 16:9 ou 4:3 em vídeos, mapas ou embeds responsivos. Padronizar imagens em grades e listas de cards para evitar alturas desalinhadas. Reservar o espaço exato de mídia antes do carregamento para prevenir saltos de layout (CLS).",
     anatomy: [
-      { part: "Elemento raiz", description: "AspectRatioPrimitive.Root — wrapper que reserva o espaço proporcional pro conteúdo filho (ex: uma imagem)." },
+      { part: "AspectRatio", description: "Container com data-slot=\"aspect-ratio\" que reserva a proporção calculada" },
     ],
     variants: [],
     states: [],
     sizes: [],
-    doGuidelines: ["Use para manter proporção consistente em imagens, vídeos e embeds."],
-    dontGuidelines: ["Não use aspect-ratio para conteúdo que precisa se adaptar livremente ao container."],
+    doGuidelines: ["Use proporções padronizadas como 16 / 9 para vídeos e 1 para imagens quadradas.", "Combine com object-cover no elemento filho para preencher a área proporcional sem distorção.", "Defina a largura no elemento pai para que o container calcule a altura correspondente."],
+    dontGuidelines: ["Esticar ou achatar imagens para caber no container → utilize object-cover ou object-contain.", "Misturar proporções variadas na mesma grade de cards → proporção uniforme em toda a listagem.", "Inserir cards de texto com altura dinâmica dentro da proporção fixa → card."],
     code: `import { AspectRatio } from "@/components/ui/aspect-ratio"
 
-<AspectRatio ratio={16 / 9}>
-  <img src="/foto.jpg" alt="" className="size-full rounded-md object-cover" />
-</AspectRatio>`,
+<div className="w-full max-w-sm">
+  <AspectRatio ratio={16 / 9}>
+    <img
+      src="/foto.jpg"
+      alt="Paisagem ao pôr do sol"
+      className="size-full rounded-md object-cover"
+    />
+  </AspectRatio>
+</div>`,
     props: [
-      { name: "ratio", type: "number", default: "1", description: "Proporção largura/altura (ex: 16 / 9)." },
+      { name: "ratio (AspectRatio)", type: "number", default: "1", description: "Proporção entre largura e altura (ex.: 16 / 9)" },
+      { name: "asChild (AspectRatio)", type: "boolean", default: "false", description: "Repassa propriedades e comportamento para o elemento filho" },
     ],
+    meta: {
+      nome: "Aspect Ratio",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/aspect-ratio.tsx",
+      story: "src/components/ui/aspect-ratio.stories.tsx",
+      vizinhos: ["avatar", "thumbnail", "card"],
+    },
+    whenToUseItems: ["Manter proporções fixas como 16:9 ou 4:3 em vídeos, mapas ou embeds responsivos.", "Padronizar imagens em grades e listas de cards para evitar alturas desalinhadas.", "Reservar o espaço exato de mídia antes do carregamento para prevenir saltos de layout (CLS)."],
+    whenNotToUse: ["Foto de perfil ou identificação de usuário → avatar.", "Miniatura de anexo ou arquivo com ações de visualização → thumbnail.", "Container de conteúdo textual que cresce livremente com o texto → card."],
+    content: ["Não tem texto próprio.", "O conteúdo interno (imagem ou vídeo) deve conter texto alternativo acessível quando não for decorativo.", "Mantenha legendas e títulos fora do container do AspectRatio, em texto real na estrutura da página."],
+    accessibility: {
+      keyboard: "Não recebe foco nem responde a eventos de teclado.",
+      screenReader: "Não possui semântica própria. Imagens filhas precisam de atributo alt descritivo ou alt vazio caso sejam decorativas; vídeos precisam de título ou legenda.",
+      focus: "Nenhum. O elemento não é interativo e não altera a ordem natural de tabulação.",
+      cautions: "Ao aplicar proporções com corte visual (object-cover), garanta que informações visuais cruciais ou rostos não fiquem cortados fora da área visível (WCAG 1.1.1).",
+    },
   },
   "tree-select": {
     description: "Campo de seleção em árvore: escolhe valores de uma lista hierárquica dentro de um painel flutuante. Tem três variações: single (um valor), multiple (vários valores, nó a nó) e checkable (vários valores com caixa de marcação e cascata pai/filhos).",
@@ -1388,38 +1828,68 @@ function Exemplo() {
     ],
   },
   "native-select": {
-    description: "Um elemento <select> nativo do HTML, estilizado e integrado de forma consistente ao design system.",
-    whenToUse: "Use quando quiser o comportamento nativo do navegador para seleção (melhor em mobile e acessibilidade) em vez do Select customizado.",
+    description: "Menu suspenso que usa o elemento select nativo do navegador para escolher uma opção em uma lista. Garante a melhor experiência nativa em dispositivos móveis e formulários simples.",
+    whenToUse: "Formulários em dispositivos móveis que se beneficiam do seletor nativo do sistema operacional. Seleção única entre mais de 5 opções simples, como estados, países ou anos.",
     anatomy: [
-      { part: "Wrapper", description: "div relativo que posiciona o ícone sobre o <select>." },
-      { part: "Elemento raiz", description: "Um <select> nativo do navegador — data-slot=\"native-select\"." },
-      { part: "Ícone", description: "Chevron decorativo (aria-hidden), não captura clique." },
-      { part: "NativeSelectOption / OptGroup", description: "<option>/<optgroup> estilizados pra contraste em qualquer tema do SO." },
+      { part: "NativeSelect", description: "Container relativo com o elemento select nativo, chevron decorativo e suporte a rótulo fixo ou animado" },
+      { part: "NativeSelectOption", description: "Opção individual (<option>) com contraste e cores adaptadas ao tema" },
+      { part: "NativeSelectOptGroup", description: "Agrupador de opções (<optgroup>) para organizar categorias dentro do menu" },
+      { part: "Ícone (opcional)", description: "Seta para baixo decorativa (Icon), posicionada à direita com clique desabilitado" },
+      { part: "Rótulo (opcional)", description: "Texto via Label integrado, com opção de transição animada no foco" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Focus", description: "focus-visible:ring." },
-      { name: "Disabled", description: "cursor not-allowed." },
-      { name: "Aria-invalid", description: "Borda e ring em --destructive." },
+      { name: "Padrão", description: "Borda border-input, fundo transparente e sombra sutil shadow-xs" },
+      { name: "Hover", description: "Fundo suavemente realçado no tema escuro" },
+      { name: "Foco", description: "Anel de 3 px em ring-ring e borda border-ring no select" },
+      { name: "Inválido", description: "Borda destacada em border-destructive via aria-invalid" },
+      { name: "Desabilitado", description: "Opacidade reduzida em 50% no wrapper e cursor not-allowed no select" },
     ],
-    sizes: [
-      { name: "sm", value: "sm", description: "h-8." },
-      { name: "default", value: "default", description: "h-9." },
-    ],
-    doGuidelines: ["Use para selecionar uma opção em formulários simples com poucas opções."],
-    dontGuidelines: ["Não use native-select para opções que precisam de busca ou filtro — use Select."],
-    code: `import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
+    sizes: [],
+    doGuidelines: ["Forneça uma primeira opção vazia ou com instrução clara como \"Selecione uma opção\".", "Agrupe listas longas por categorias usando NativeSelectOptGroup.", "Use em interfaces móveis para aproveitar a rolagem nativa do sistema operacional."],
+    dontGuidelines: ["Usar para 2 a 4 opções visíveis → prefira radio-group ou segmented-control.", "Lista que exige busca interna ou digitação livre → combobox.", "Deixar o seletor sem rótulo acessível → passe a prop label ou use aria-label."],
+    code: `import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/components/ui/native-select"
 
-<NativeSelect defaultValue="br">
-  <NativeSelectOption value="br">Brasil</NativeSelectOption>
-  <NativeSelectOption value="pt">Portugal</NativeSelectOption>
+<NativeSelect defaultValue="sp" aria-label="Estado">
+  <NativeSelectOption value="pr">Paraná</NativeSelectOption>
+  <NativeSelectOption value="rj">Rio de Janeiro</NativeSelectOption>
+  <NativeSelectOption value="sp">São Paulo</NativeSelectOption>
 </NativeSelect>`,
     props: [
-      { name: "size", type: "\"sm\" | \"default\"", default: "\"default\"", description: "Dimensão do select." },
-      { name: "label", type: "React.ReactNode", description: "Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
-      { name: "animatedLabel", type: "boolean", default: "false", description: "Com label presente, ativa o padrão de label flutuante (motion). O gatilho de \"tem valor\" é estado React, não CSS puro — ver decisão provisória se precisar revisar." },
-      { name: "...props", type: "React.ComponentProps<\"select\">", description: "Todos os atributos nativos de <select>." },
+      { name: "size", type: "sm · default", default: "default", description: "Altura do seletor: default com 36 px (h-9) e sm com 32 px (h-8)" },
+      { name: "label", type: "React.ReactNode", default: "—", description: "Rótulo exibido acima ou animado sobre o seletor" },
+      { name: "animatedLabel", type: "boolean", default: "false", description: "Ativa o rótulo com animação flutuante ao focar ou preencher" },
+      { name: "value · defaultValue (NativeSelect)", type: "string", default: "—", description: "Valor controlado ou inicial da opção selecionada" },
+      { name: "disabled (NativeSelect)", type: "boolean", default: "false", description: "Desativa a interação e reduz a opacidade" },
+    ],
+    meta: {
+      nome: "Native Select",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/native-select.tsx",
+      story: "src/components/ui/native-select.stories.tsx",
+      vizinhos: ["select", "radio-group", "combobox"],
+    },
+    whenToUseItems: ["Formulários em dispositivos móveis que se beneficiam do seletor nativo do sistema operacional.", "Seleção única entre mais de 5 opções simples, como estados, países ou anos."],
+    whenNotToUse: ["Seleção com busca interna, ícones ou renderização customizada de itens → select.", "Poucas alternativas (até 5 opções) que cabem visíveis diretamente na tela → radio-group.", "Lista muito longa (acima de 15 opções) que exige digitação para filtrar → combobox."],
+    content: ["Primeira opção com texto de instrução neutro enquanto nada for escolhido: \"Selecione um estado\".", "Rótulo claro com substantivo indicando o que está sendo escolhido: \"Estado de entrega\".", "Opções concisas em ordem alfabética ou cronológica, sem ponto final."],
+    accessibility: {
+      keyboard: "Tab move o foco para o campo. Espaço, Enter ou Alt+Seta Abaixo abrem a lista nativa do sistema. Setas navegam entre opções. Enter confirma a escolha e Esc fecha sem alterar.",
+      screenReader: "Elemento select nativo anunciado com seu papel, rótulo via label associado ou aria-label e valor selecionado.",
+      focus: "Anel visível de 3 px em ring-ring ao receber foco pelo teclado. Ao fechar o menu nativo, o foco permanece no elemento select.",
+      cautions: "Sempre associe um rótulo visível via prop label ou passe aria-label quando o campo for exibido sem texto ao lado. Ao usar animatedLabel, passe value ou defaultValue explícitos para o rótulo não sobrepor a primeira opção selecionada pelo navegador.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-input", "bg-primary", "border-destructive", "border-input", "border-ring", "text-foreground", "text-muted-foreground", "text-primary-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1.5", "h-8", "h-9", "left-0", "left-3", "min-w-0", "mt-5", "pr-9", "px-3", "py-1", "py-2", "right-3.5", "top-0", "top-1"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
+      { contexto: "Movimento", itens: ["duration-motion-fast"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   "segmented-control": {
@@ -1461,29 +1931,32 @@ function Exemplo() {
     ],
   },
   select: {
-    description: "Exibe uma lista de opções para o usuário escolher, acionada por um botão.",
-    whenToUse: "Use para seleção única entre várias opções, quando quiser um menu customizado (com ícones, grupos etc.) em vez do select nativo.",
+    description: "Menu suspenso customizado acionado por botão para seleção de uma opção em uma lista. Suporta itens estruturados com ícones, grupos de opções e rótulo integrado ou animado.",
+    whenToUse: "Seleção única entre 5 e 15 opções em formulários desktop e interfaces ricas. Itens que necessitam de formatação rica, como ícones, descrições secundárias ou separadores temáticos.",
     anatomy: [
-      { part: "Select", description: "Root — controla valor selecionado e abertura." },
-      { part: "SelectTrigger", description: "Botão que abre o menu — inclui ícone de chevron." },
-      { part: "SelectValue", description: "Mostra o valor selecionado ou o placeholder." },
-      { part: "SelectContent", description: "Menu flutuante (portal) com as opções." },
-      { part: "SelectItem", description: "Cada opção — mostra ícone de check quando selecionada." },
-      { part: "SelectGroup / SelectLabel / SelectSeparator", description: "Agrupam e rotulam opções relacionadas." },
+      { part: "Select", description: "Raiz (Radix Select) que gerencia o valor selecionado e o estado aberto ou fechado" },
+      { part: "SelectTrigger", description: "Botão que exibe o valor atual e abre o menu suspenso ao ser acionado" },
+      { part: "SelectValue", description: "Espaço interno que renderiza o valor da opção selecionada ou o texto de placeholder" },
+      { part: "SelectContent", description: "Painel flutuante renderizado em portal com rolagem e opções disponíveis" },
+      { part: "SelectItem", description: "Opção individual com destaque de foco e ícone de seleção (check)" },
+      { part: "SelectGroup", description: "Agrupador semântico de opções relacionadas" },
+      { part: "SelectLabel", description: "Rótulo descritivo para um grupo de opções dentro do menu" },
+      { part: "SelectSeparator", description: "Linha divisória fina para separar grupos ou seções no menu" },
+      { part: "SelectScrollUpButton", description: "Botão indicador de rolagem para cima quando a lista excede a altura máxima" },
+      { part: "SelectScrollDownButton", description: "Botão indicador de rolagem para baixo quando há itens adicionais ocultos" },
     ],
     variants: [],
     states: [
-      { name: "Closed", description: "Estado padrão do menu." },
-      { name: "Open", description: "Menu visível, anima fade + zoom." },
-      { name: "Item em foco", description: "focus:bg-accent no item navegado." },
-      { name: "Disabled", description: "opacidade reduzida, sem interação." },
+      { name: "Padrão", description: "Gatilho com borda border-input e texto placeholder atenuado" },
+      { name: "Foco no gatilho", description: "Anel de 3 px em ring-ring e borda border-ring no SelectTrigger" },
+      { name: "Aberto", description: "Menu flutuante exibido com animação de fade e zoom" },
+      { name: "Item em foco", description: "Fundo bg-accent e texto text-accent-foreground no SelectItem navegado" },
+      { name: "Inválido", description: "Borda destacada em border-destructive e anel sutil em ring-destructive/20" },
+      { name: "Desabilitado", description: "Opacidade reduzida em 50% com cursor not-allowed no gatilho" },
     ],
-    sizes: [
-      { name: "sm", value: "sm", description: "h-8 (SelectTrigger)." },
-      { name: "default", value: "default", description: "h-9 (SelectTrigger)." },
-    ],
-    doGuidelines: ["Use para selecionar uma opção em listas com busca ou muitas opções."],
-    dontGuidelines: ["Não use select para 3 opções ou menos — use Radio Group."],
+    sizes: [],
+    doGuidelines: ["Mantenha um texto de placeholder claro como \"Selecione uma opção\".", "Agrupe itens semelhantes utilizando SelectGroup e SelectLabel.", "Use em formulários desktop onde formatações visuais enriquecidas agregam valor."],
+    dontGuidelines: ["Usar para 2 a 4 opções simples que cabem visíveis → prefira radio-group ou segmented-control.", "Listas muito extensas com mais de 15 itens sem busca → utilize combobox.", "Usar para lista de ações ou comandos que executam funções → utilize dropdown-menu."],
     code: `import {
   Select,
   SelectContent,
@@ -1493,7 +1966,7 @@ function Exemplo() {
 } from "@/components/ui/select"
 
 <Select defaultValue="mensal">
-  <SelectTrigger className="w-40">
+  <SelectTrigger className="w-48" aria-label="Frequência de pagamento">
     <SelectValue placeholder="Selecione" />
   </SelectTrigger>
   <SelectContent>
@@ -1502,227 +1975,359 @@ function Exemplo() {
   </SelectContent>
 </Select>`,
     props: [
-      { name: "value / defaultValue", type: "string", description: "(Select) valor selecionado." },
-      { name: "onValueChange", type: "(value: string) => void", description: "(Select) callback de mudança." },
-      { name: "size", type: "\"sm\" | \"default\"", default: "\"default\"", description: "(SelectTrigger) dimensão." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa o select ou um item." },
-      { name: "label", type: "React.ReactNode", description: "(SelectTrigger) Rótulo renderizado internamente via Label. Ausente = comportamento idêntico ao anterior, sem wrapper." },
-      { name: "animatedLabel", type: "boolean", default: "false", description: "(SelectTrigger) Com label presente, ativa o padrão de label flutuante (motion)." },
+      { name: "size (SelectTrigger)", type: "sm · default", default: "default", description: "Altura do gatilho: default com 36 px (h-9) e sm com 32 px (h-8)" },
+      { name: "label (SelectTrigger)", type: "React.ReactNode", default: "—", description: "Rótulo exibido acima ou animado sobre o gatilho" },
+      { name: "animatedLabel (SelectTrigger)", type: "boolean", default: "false", description: "Ativa animação flutuante do rótulo no foco ou preenchimento" },
+      { name: "position (SelectContent)", type: "item-aligned · popper", default: "item-aligned", description: "Posicionamento alinhado ao item ativo ou ancorado como popover" },
+      { name: "align (SelectContent)", type: "start · center · end", default: "center", description: "Alinhamento horizontal do painel em relação ao gatilho" },
+      { name: "value · defaultValue (Select)", type: "string", default: "—", description: "Valor controlado ou inicial da opção selecionada" },
+      { name: "onValueChange (Select)", type: "(value: string) => void", default: "—", description: "Callback disparado quando o valor selecionado muda" },
+      { name: "disabled (Select, SelectItem)", type: "boolean", default: "false", description: "Desativa a interação do componente ou da opção" },
+    ],
+    meta: {
+      nome: "Select",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/select.tsx",
+      story: "src/components/ui/select.stories.tsx",
+      vizinhos: ["native-select", "combobox", "radio-group", "dropdown-menu"],
+    },
+    whenToUseItems: ["Seleção única entre 5 e 15 opções em formulários desktop e interfaces ricas.", "Itens que necessitam de formatação rica, como ícones, descrições secundárias ou separadores temáticos."],
+    whenNotToUse: ["Até 4 ou 5 opções que podem permanecer visíveis diretamente na tela → radio-group.", "Listas muito extensas (acima de 15 itens) que exigem campo de busca ou filtro por digitação → combobox.", "Preferência pelo comportamento e rolagem nativos do dispositivo móvel sem customização → native-select."],
+    content: ["Placeholder conciso no gatilho quando nenhuma opção estiver selecionada: \"Selecione um plano\".", "Rótulos de itens curtos e objetivos em ordem alfabética ou hierárquica.", "Use SelectGroup e SelectLabel para categorizar opções em listas com mais de 7 itens."],
+    accessibility: {
+      keyboard: "Espaço, Enter ou Setas Acima/Abaixo abrem o menu a partir do SelectTrigger focado. As setas navegam entre os itens. Enter ou Espaço selecionam a opção focada e fecham o menu. Esc fecha sem alterar e devolve o foco ao gatilho.",
+      screenReader: "Papel combobox no gatilho com aria-expanded e aria-haspopup=\"listbox\". O painel atua com papel listbox e os itens com papel option, anunciando o estado selecionado via aria-selected.",
+      focus: "Anel visível de 3 px em ring-ring no gatilho. Ao abrir o menu, o foco se move para o item selecionado ou o primeiro item. Ao fechar, retorna para o SelectTrigger.",
+      cautions: "Sempre associe um rótulo textual via prop label ou aria-label no SelectTrigger. Para listas longas acima de 15 opções que necessitam de digitação e busca, prefira o componente combobox.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-border", "bg-input", "bg-popover", "border-destructive", "border-input", "border-ring", "text-accent-foreground", "text-foreground", "text-muted-foreground", "text-popover-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1.5", "gap-2", "h-8", "h-9", "h-px", "left-0", "left-3", "min-w-32", "mt-5", "mx-1", "my-1", "p-1", "pl-2", "pr-8", "px-2", "px-3", "py-1", "py-1.5", "py-2", "right-2", "size-3.5", "size-4", "top-0", "top-1"] },
+      { contexto: "Raio", itens: ["rounded-md", "rounded-sm"] },
+      { contexto: "Sombra", itens: ["shadow-md", "shadow-xs"] },
+      { contexto: "Movimento", itens: ["duration-motion-fast"] },
+      { contexto: "Foco", itens: ["outline-ring", "ring-destructive", "ring-ring"] },
     ],
   },
   popover: {
-    description: "Exibe conteúdo rico em um portal, acionado por um botão.",
-    whenToUse: "Use para mostrar conteúdo adicional (formulário curto, opções, detalhes) ancorado a um elemento, sem sair da tela atual.",
+    description: "Painel flutuante acionado por clique que exibe conteúdo rico, configurações rápidas ou detalhes adicionais. Mantém a pessoa no contexto da tela sem a interrupção de uma janela modal.",
+    whenToUse: "Exibir formulários curtos ou controles interativos ancorados a um botão, como filtros rápidos. Mostrar detalhes complementares ou contexto enriquecido de um item com links ou ações secundárias.",
     anatomy: [
-      { part: "Popover", description: "Root — controla abertura." },
-      { part: "PopoverTrigger", description: "Elemento que abre o popover ao clicar." },
-      { part: "PopoverContent", description: "Painel flutuante (portal), largura fixa w-72 por padrão." },
-      { part: "PopoverAnchor (opcional)", description: "Ponto de ancoragem alternativo ao trigger." },
-      { part: "PopoverHeader / Title / Description (opcional)", description: "Composição de conteúdo estruturado dentro do painel." },
+      { part: "Popover", description: "Raiz (Radix Popover) que gerencia o estado aberto ou fechado do painel" },
+      { part: "PopoverTrigger", description: "Elemento interativo que abre o painel flutuante ao ser clicado" },
+      { part: "PopoverContent", description: "Painel flutuante renderizado em portal com elevação e largura padrão w-72" },
+      { part: "PopoverAnchor", description: "Ponto de ancoragem opcional para posicionar o painel separado do botão de disparo" },
+      { part: "PopoverHeader", description: "Cabeçalho interno para agrupar título e descrição com espaçamento consistente" },
+      { part: "PopoverTitle", description: "Título do painel com tipografia semibold (h2) para identificar o conteúdo" },
+      { part: "PopoverDescription", description: "Texto de apoio com cor atenuada para contextualizar a ação" },
     ],
     variants: [],
     states: [
-      { name: "Closed", description: "Estado padrão." },
-      { name: "Open", description: "Anima fade + zoom conforme o lado de abertura." },
+      { name: "Fechado", description: "Oculto e fora da árvore de renderização visível" },
+      { name: "Aberto", description: "Visível com animação de fade e zoom a partir da origem da ancoragem" },
+      { name: "Foco no conteúdo", description: "Primeiro elemento interativo do painel recebe o foco inicial" },
     ],
     sizes: [],
-    doGuidelines: ["Use para mostrar ações secundárias ou informações complementares ancoradas a um elemento."],
-    dontGuidelines: ["Não use popover para texto de ajuda breve — use Tooltip. Não use para formulários extensos — use Dialog."],
-    code: `import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Button } from "@/components/ui/button"
+    doGuidelines: ["Mantenha o conteúdo enxuto com poucas ações para manter o contexto ágil.", "Forneça um gatilho claro e acessível com Button ou elemento focável.", "Deixe o fechamento automático ao clicar fora ou pressionar a tecla Esc."],
+    dontGuidelines: ["Abrir o painel apenas com o cursor do mouse (hover) → use tooltip.", "Formulários complexos ou longos com múltiplos passos dentro do painel → utilize dialog ou sheet.", "Abrir múltiplos popovers simultâneos competindo na mesma tela → feche o anterior antes de abrir outro ou use dropdown-menu."],
+    code: `import { Button } from "@/components/ui/button"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
 <Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline">Abrir</Button>
+    <Button variant="outline">Filtros rápidos</Button>
   </PopoverTrigger>
-  <PopoverContent>Conteúdo do popover.</PopoverContent>
+  <PopoverContent>
+    <p className="text-sm">Opções de filtragem rápida.</p>
+  </PopoverContent>
 </Popover>`,
     props: [
-      { name: "align", type: "\"start\" | \"center\" | \"end\"", default: "\"center\"", description: "(PopoverContent) alinhamento." },
-      { name: "sideOffset", type: "number", default: "4", description: "(PopoverContent) distância do trigger." },
+      { name: "align (PopoverContent)", type: "start · center · end", default: "center", description: "Alinhamento do painel em relação ao elemento disparador" },
+      { name: "sideOffset (PopoverContent)", type: "number", default: "4", description: "Distância em pixels entre o painel flutuante e o disparador" },
+      { name: "open · defaultOpen (Popover)", type: "boolean", default: "—", description: "Estado de visibilidade controlado ou inicial do painel" },
+      { name: "onOpenChange (Popover)", type: "(open: boolean) => void", default: "—", description: "Callback disparado na abertura ou fechamento" },
+    ],
+    meta: {
+      nome: "Popover",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/popover.tsx",
+      story: "src/components/ui/popover.stories.tsx",
+      vizinhos: ["tooltip", "dialog", "dropdown-menu"],
+    },
+    whenToUseItems: ["Exibir formulários curtos ou controles interativos ancorados a um botão, como filtros rápidos.", "Mostrar detalhes complementares ou contexto enriquecido de um item com links ou ações secundárias."],
+    whenNotToUse: ["Formulário extenso, fluxo complexo ou decisão crítica que interrompe o usuário → dialog.", "Texto curto e estritamente informativo disparado apenas no hover → tooltip.", "Lista vertical de comandos ou opções de navegação simples → dropdown-menu."],
+    content: ["Título curto e direto com até 3 palavras: \"Configurações\", \"Dimensões\".", "Limite o conteúdo a um ou dois campos ou até duas ações secundárias.", "Textos de descrição concisos, sem ponto final em títulos."],
+    accessibility: {
+      keyboard: "Enter ou Espaço no gatilho abrem o popover. O foco move para o primeiro elemento focável dentro do painel. Tab navega entre os controles internos. Esc fecha o painel e devolve o foco ao gatilho.",
+      screenReader: "O gatilho recebe aria-haspopup=\"dialog\" e aria-expanded indicando se o painel está aberto. O painel atua com papel dialog associado ao título.",
+      focus: "Ao abrir, o foco é transferido para dentro do painel; ao fechar por Esc, clique fora ou ação, o foco retorna exatamente para o PopoverTrigger.",
+      cautions: "Não use popover para decisões críticas ou fluxos que exijam confirmação do usuário; nesses casos utilize dialog com bloqueio de foco. Garanta que o botão disparador possua rótulo acessível quando contiver apenas ícone.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-popover", "text-muted-foreground", "text-popover-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1", "p-4", "w-72"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
+      { contexto: "Sombra", itens: ["shadow-md"] },
     ],
   },
   item: {
-    description: "Um componente versátil para exibir conteúdo com mídia, título, descrição e ações.",
-    whenToUse: "Use como linha de lista genérica — contatos, arquivos, notificações — combinando ícone ou imagem, texto e ações.",
+    description: "Linha estruturada para exibir informações com mídia, texto e ações em listas e coleções. Organiza metadados, títulos e controles com espaçamento consistente.",
+    whenToUse: "Montar linhas de listagem para contatos, arquivos, notificações ou configurações. Exibir registros com mídia à esquerda (ícone, avatar ou miniatura) e ações à direita. Agrupar itens com divisores verticais ou contorno através de ItemGroup e ItemSeparator.",
     anatomy: [
-      { part: "Item", description: "Elemento raiz — linha de uma lista (data-variant, data-size)." },
-      { part: "ItemMedia (opcional)", description: "Ícone ou imagem à esquerda." },
-      { part: "ItemContent", description: "Envolve título e descrição." },
-      { part: "ItemTitle / ItemDescription", description: "Texto principal e secundário do item." },
-      { part: "ItemActions (opcional)", description: "Botões/controles à direita." },
-      { part: "ItemHeader / ItemFooter (opcional)", description: "Linhas extras de cabeçalho/rodapé dentro do item." },
-      { part: "ItemGroup / ItemSeparator", description: "Agrupam vários Items numa lista (role=list)." },
+      { part: "ItemGroup", description: "Container vertical flexível para agrupar múltiplos itens" },
+      { part: "ItemSeparator", description: "Divisor horizontal sutil entre itens consecutivos" },
+      { part: "Item", description: "Linha principal flexível com suporte a link ou elemento filho" },
+      { part: "ItemMedia", description: "Container de mídia alinhado ao início para ícones ou imagens" },
+      { part: "ItemContent", description: "Área central flexível que empilha título e descrição" },
+      { part: "ItemTitle", description: "Título com tipografia média e alinhamento compacto" },
+      { part: "ItemDescription", description: "Texto descritivo com truncamento automático em duas linhas" },
+      { part: "ItemActions", description: "Bloco horizontal alinhado ao final para botões e controles" },
+      { part: "ItemHeader", description: "Linha superior opcional para cabeçalho interno da linha" },
+      { part: "ItemFooter", description: "Linha inferior opcional para rodapé interno da linha" },
     ],
     variants: [
-      { name: "Default", value: "default", description: "Fundo transparente." },
-      { name: "Outline", value: "outline", description: "Borda visível." },
-      { name: "Muted", value: "muted", description: "Fundo levemente destacado (bg-muted/50)." },
+      { name: "Default", value: "default", description: "Superfície transparente, ideal para listas densas e contínuas" },
+      { name: "Outline", value: "outline", description: "Borda delimitadora visível para separar linhas individuais" },
+      { name: "Muted", value: "muted", description: "Superfície com fundo sutil para destacar itens secundários" },
+      { name: "Icon", value: "icon", description: "Caixa de 32×32 px com borda para ícones de sistema" },
+      { name: "Image", value: "image", description: "Caixa de 40×40 px com corte arredondado para fotos e miniaturas" },
     ],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Hover", description: "Quando renderizado como link (a) — hover:bg-accent/50." },
-      { name: "Focus", description: "focus-visible:ring." },
+      { name: "Padrão", description: "Fundo transparente ou de acordo com a variante escolhida" },
+      { name: "Hover", description: "Fundo sutil hover:bg-accent/50 quando configurado como link interativo" },
+      { name: "Foco", description: "Anel de 3 px em ring-ring com border-ring via focus-visible" },
     ],
     sizes: [
-      { name: "default", value: "default", description: "gap-4 p-4." },
-      { name: "sm", value: "sm", description: "gap-2.5 px-4 py-3." },
+      { name: "default", value: "default", description: "— — Espaçamento padrão de 16 px com padding p-4 e gap-4 para listas gerais" },
+      { name: "sm", value: "sm", description: "— — Espaçamento compacto com padding px-4 py-3 e gap-2.5 para painéis densos" },
     ],
-    doGuidelines: ["Use como container flexível para itens de lista com layout consistente."],
-    dontGuidelines: ["Não use item para substituir componentes com semântica própria como Card."],
-    code: `import { Item, ItemContent, ItemMedia, ItemTitle } from "@/components/ui/item"
+    doGuidelines: ["Mantenha a mesma composição de mídia e texto em todos os itens da mesma lista.", "Utilize ItemSeparator ou a variante outline para delimitar linhas quando não houver divisores externos.", "Use asChild para compor com links de navegação mantendo semântica adequada."],
+    dontGuidelines: ["Usar item como cartão de destaque com sombra e margens amplas → card", "Misturar itens com alturas e alinhamentos divergentes na mesma listagem → list", "Colocar botões de ação sem nome acessível em ItemActions → icon-button"],
+    code: `import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item"
+import { Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
 
 <Item variant="outline">
   <ItemMedia variant="icon">
-    <Icon name="person" />
+    <Icon name="folder" />
   </ItemMedia>
   <ItemContent>
-    <ItemTitle>Rafael Anhaia</ItemTitle>
+    <ItemTitle>Documentos</ItemTitle>
+    <ItemDescription>Arquivos e relatórios compartilhados da equipe.</ItemDescription>
   </ItemContent>
+  <ItemActions>
+    <Button variant="ghost" size="sm">Abrir</Button>
+  </ItemActions>
 </Item>`,
     props: [
-      { name: "variant", type: "\"default\" | \"outline\" | \"muted\"", default: "\"default\"", description: "Estilo visual da linha." },
-      { name: "size", type: "\"default\" | \"sm\"", default: "\"default\"", description: "Densidade (padding/gap)." },
-      { name: "asChild", type: "boolean", default: "false", description: "Renderiza no elemento filho (ex: <a>)." },
+      { name: "variant", type: "default · outline · muted", default: "default", description: "Estilo de superfície e borda do item" },
+      { name: "size", type: "default · sm", default: "default", description: "Espaçamento interno e distância entre elementos" },
+      { name: "asChild", type: "boolean", default: "false", description: "Renderiza no elemento filho como link de navegação" },
+      { name: "variant (ItemMedia)", type: "default · icon · image", default: "default", description: "Dimensões e acabamento da mídia à esquerda" },
+    ],
+    meta: {
+      nome: "Item",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/item.tsx",
+      story: "src/components/ui/item.stories.tsx",
+      vizinhos: ["list", "card", "button"],
+    },
+    whenToUseItems: ["Montar linhas de listagem para contatos, arquivos, notificações ou configurações.", "Exibir registros com mídia à esquerda (ícone, avatar ou miniatura) e ações à direita.", "Agrupar itens com divisores verticais ou contorno através de ItemGroup e ItemSeparator."],
+    whenNotToUse: ["Bloco de conteúdo independente e destacado com elevação própria → card", "Lista de texto corrido ou parágrafos sem mídia ou ações → list", "Botão isolado de navegação ou ação simples → button"],
+    content: ["Título curto e direto identificando a entidade ou assunto principal.", "Descrição complementar resumida com no máximo duas linhas de texto.", "Ações com rótulos descritivos ou botões de ícone com rótulo acessível."],
+    accessibility: {
+      keyboard: "Quando usado como link com asChild, Tab navega para a linha; controles em ItemActions recebem foco subsequente.",
+      screenReader: "Itens dentro de listas anunciam posição ordinal e total; o título provê o rótulo principal da linha.",
+      focus: "Anel visível de 3 px contorna o item interativo ou botões de ação internos individualmente.",
+      cautions: "A mídia inicial deve ter aria-hidden quando for decorativa; não coloque múltiplos links aninhados na mesma linha.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-muted", "border-border", "border-ring", "text-muted-foreground", "text-primary"] },
+      { contexto: "Tipografia", itens: ["font-medium", "font-normal", "leading-normal", "leading-snug", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1", "gap-2", "gap-2.5", "gap-4", "my-0", "p-4", "px-4", "py-3", "size-10", "size-4", "size-8"] },
+      { contexto: "Raio", itens: ["rounded-md", "rounded-sm"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   link: {
-    description: "O Link é um componente que possibilita a navegação entre páginas internas ou externas. É composto por texto e, opcionalmente, ícones.",
-    whenToUse: "Use para navegar entre seções de um app ou site, para direcionar o usuário a páginas ou aplicações externas (nesse caso, inclua um ícone indicando a saída do contexto atual), ou para executar ações de menor destaque. O texto deve descrever claramente a ação, em linguagem coloquial e endereçada diretamente ao usuário. Ícones podem aparecer antes ou depois do texto — omita quando o link aparece dentro de um parágrafo corrido.",
+    description: "Permite navegar entre páginas, seções internas ou sites externos. Reaproveita o estilo visual de link do botão e dá suporte a indicador de saída externa e carregamento esqueleto.",
+    whenToUse: "Navegar entre diferentes páginas ou rotas da aplicação em links isolados ou corridos. Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external. Ações secundárias de navegação em rodapés, termos de serviço ou textos explicativos.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <a> (ou o elemento filho, via asChild) com data-slot=\"link\" e data-size. Reaproveita exatamente as classes de buttonVariants({ variant: \"link\", size }) — mesma cor (--primary), mesmo underline-offset-4 hover:underline." },
-      { part: "Label", description: "Texto do link — via `children` (obrigatório, é o nome acessível do link)." },
-      { part: "Ícone de saída (opcional)", description: "Só aparece quando `external=true`. <Icon name=\"open_in_new\" /> renderizado depois do texto." },
-      { part: "Skeleton (Link.Skeleton)", description: "Placeholder de carregamento com o mesmo formato do link real por tamanho, pra evitar layout shift." },
+      { part: "Link", description: "Elemento <a> (ou elemento filho via asChild) com classes da variante link do Button" },
+      { part: "Ícone de saída (opcional)", description: "Ícone open_in_new renderizado automaticamente à direita quando external=true" },
+      { part: "LinkSkeleton", description: "Placeholder de carregamento (Link.Skeleton) com a mesma escala de altura e largura" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso — herdado 1:1 da variant \"link\" do Button." },
-      { name: "Hover", description: "hover:underline — herdado 1:1 da variant \"link\" do Button." },
-      { name: "Focus", description: "Navegação por teclado — anel de foco (focus-visible:ring), herdado da classe base de buttonVariants." },
-      { name: "Externo", description: "Quando external=true: target=\"_blank\" + rel=\"noopener noreferrer\" + ícone de saída depois do texto." },
-      { name: "Aria-disabled", description: "Suportado via aria-disabled nativo (repassado por ...props) — <a> não tem atributo disabled HTML, então não existe estado \"disabled\", só aria-disabled." },
+      { name: "Padrão", description: "Texto na cor primária com sublinhado deslocado" },
+      { name: "Hover", description: "Sublinhado destacado via hover:underline" },
+      { name: "Foco", description: "Anel visível via focus-visible:ring" },
+      { name: "Externo", description: "Exibe o ícone open_in_new e abre em nova aba" },
+      { name: "Desabilitado", description: "Suportado via aria-disabled com opacidade reduzida" },
     ],
-    sizes: [
-      { name: "xs", value: "xs", description: "h-6 — herdado da escala do Button." },
-      { name: "sm", value: "sm", description: "h-8." },
-      { name: "md (default)", value: "default", description: "h-9 — tamanho padrão." },
-      { name: "lg", value: "lg", description: "h-10." },
-    ],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    sizes: [],
+    doGuidelines: ["Escreva textos descritivos que deixem o destino evidente antes do clique.", "Use a prop external ao apontar para URLs de terceiros fora da aplicação.", "Componha com next/link através de asChild para manter o roteamento client-side."],
+    dontGuidelines: ["Usar link para disparar mutações de dados ou ações de formulário → button", "Montar navegação em migalhas de pão com links manuais soltos → breadcrumb", "Substituir barras ou menus de navegação estruturados por links avulsos → navigation-menu"],
     code: `import { Link } from "@/components/ui/link"
 
-// Link simples
-<Link href="/relatorios">Ver relatórios</Link>
-
-// Tamanhos
-<Link href="#" size="sm">Link pequeno</Link>
-<Link href="#" size="lg">Link grande</Link>
-
-// Link externo (ícone + target/rel automáticos)
-<Link href="https://ui.shadcn.com" external>
-  Documentação do shadcn/ui
+<Link href="/relatorios">Ver relatórios da equipe</Link>
+<Link href="https://example.com" external>
+  Documentação externa
 </Link>
-
-// Composição com next/link (navegação interna client-side)
-import NextLink from "next/link"
-<Link asChild>
-  <NextLink href="/dashboard">Ir para o dashboard</NextLink>
-</Link>
-
-// Placeholder de carregamento
 <Link.Skeleton size="sm" />`,
     props: [
-      { name: "children", type: "React.ReactNode", description: "Texto do link (obrigatório)." },
-      { name: "href", type: "string", description: "Herdado de React.ComponentProps<\"a\"> (nativo)." },
-      { name: "size", type: "\"default\" | \"xs\" | \"sm\" | \"lg\"", default: "\"default\"", description: "Reaproveita a escala de tamanho do Button (subconjunto sem os tamanhos icon-*)." },
-      { name: "external", type: "boolean", default: "false", description: "Força target=\"_blank\" + rel=\"noopener noreferrer\" + ícone open_in_new depois do texto." },
-      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <a>. Uso pretendido: compor com next/link." },
-      { name: "...props", type: "React.ComponentProps<\"a\">", description: "Demais atributos nativos do elemento raiz (target, rel, etc., sobrescritos quando external=true)." },
+      { name: "size", type: "LinkSize", default: "default", description: "Escala de tamanho e altura herdada do botão (default, xs, sm, lg)" },
+      { name: "asChild", type: "boolean", default: "false", description: "Delega a renderização para o elemento filho como next/link" },
+      { name: "external", type: "boolean", default: "false", description: "Força target=\"_blank\", rel=\"noopener noreferrer\" e ícone de saída" },
+      { name: "href", type: "string", default: "—", description: "Endereço de destino da navegação" },
+      { name: "size (LinkSkeleton)", type: "LinkSize", default: "default", description: "Tamanho do placeholder esqueleto correspondente" },
+    ],
+    meta: {
+      nome: "Link",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/link.tsx",
+      story: "src/components/ui/link.stories.tsx",
+      vizinhos: ["button", "navigation-menu", "breadcrumb"],
+    },
+    whenToUseItems: ["Navegar entre diferentes páginas ou rotas da aplicação em links isolados ou corridos.", "Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external.", "Ações secundárias de navegação em rodapés, termos de serviço ou textos explicativos."],
+    whenNotToUse: ["Ação que altera dados, envia formulário ou abre janelas modais → button", "Menus complexos de navegação hierárquica com múltiplos níveis → navigation-menu", "Trilha de localização indicando o caminho atual da página → breadcrumb"],
+    content: ["O texto deve indicar com clareza o destino ou objetivo: \"Ver relatórios\", \"Documentação da API\".", "Evite expressões genéricas e isoladas como \"clique aqui\" ou \"saiba mais\".", "Para destinos externos, a indicação de nova aba é reforçada pelo ícone visual."],
+    accessibility: {
+      keyboard: "Focável através da tecla Tab; a tecla Enter ativa a navegação para o destino informado no href.",
+      screenReader: "Anunciado com papel link e o texto do children como nome acessível; com external, deve-se avisar abertura em nova aba.",
+      focus: "Destacado por anel de foco visível via classes focus-visible herdadas do botão.",
+      cautions: "Links externos devem incluir aviso de abertura em nova aba no texto ou acessibilidade; nunca use link para ações destrutivas.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["h-10", "h-6", "h-8", "h-9", "w-14", "w-16", "w-20", "w-24"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
     ],
   },
   list: {
-    description: "Organiza informações em formato de texto numa lista.",
-    whenToUse: "Use para organizar informações textuais verticalmente, quando fizer sentido apresentá-las como uma sequência numerada ou com marcadores. Use as=\"ol\" para sequências onde a ordem importa (passo a passo, instruções); use as=\"ul\" (default) quando a ordem não é relevante.",
+    description: "Organiza informações textuais ou blocos de conteúdo verticalmente em lista. Suporta formato ordenado ou não ordenado, com ou sem marcadores visuais.",
+    whenToUse: "Apresentar sequências textuais de itens relacionados, como requisitos, recursos ou regras. Estruturar instruções passo a passo numeradas onde a ordem de execução importa (as=\"ol\"). Agrupar verticalmente componentes como Item em uma lista sem marcadores visuais (variant=\"none\").",
     anatomy: [
-      { part: "List (elemento raiz)", description: "Um <ul> ou <ol> (controlado pela prop as, default \"ul\") com data-slot=\"list\", data-as e data-variant. Container que define o espaçamento vertical entre itens." },
-      { part: "ListItem", description: "Um <li> com data-slot=\"list-item\". Cada linha da lista — pode conter texto simples ou qualquer composição (ex.: Item/ItemContent)." },
+      { part: "List", description: "Container raiz renderizado como ul ou ol que define o espaçamento vertical entre itens" },
+      { part: "ListItem", description: "Elemento li individual para texto corrido ou composição com outros componentes" },
     ],
     variants: [
-      { name: "Sem marcador", value: "none", description: "list-none — nenhum bullet/numerador visível. Uso mais comum neste catálogo: agrupar ListItem (com Item/ItemContent dentro, ou texto livre) numa lista vertical de layout." },
-      { name: "Com marcador", value: "marker", description: "Bullet nativo (as=\"ul\") ou numerador nativo (as=\"ol\"), com a cor do marcador em --muted-foreground." },
+      { name: "None", value: "none", description: "Lista limpa sem marcador visual, ideal para layout ou composição com itens customizados" },
+      { name: "Marker", value: "marker", description: "Exibe marcadores nativos: marcadores circulares no ul ou numeração sequencial no ol" },
     ],
-    states: [
-      { name: "Default", description: "Estado de repouso — variant=\"none\", as=\"ul\"." },
-      { name: "Com marcador", description: "variant=\"marker\" — bullet ou numerador nativo, conforme as." },
-    ],
+    states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use as=\"ol\" com variant=\"marker\" quando a ordem for cronológica ou sequencial.", "Agrupe linhas compostas por Item utilizando variant=\"none\" para manter a semântica de lista.", "Mantenha paralelismo gramatical e extensão semelhante entre os itens da mesma lista."],
+    dontGuidelines: ["Usar List para exibir dados tabulares comparativos em múltiplas colunas → table", "Montar árvores com múltiplos níveis e expansão hierárquica → tree-select", "Montar linhas de lista densas com avatar e botões acoplados em texto livre → item"],
     code: `import { List, ListItem } from "@/components/ui/list"
-import { Item, ItemContent, ItemTitle, ItemDescription } from "@/components/ui/item"
 
-// Lista sem marcador, agrupando Item — uso mais comum neste catálogo
-<List>
-  <ListItem>
-    <Item variant="outline" size="sm">
-      <ItemContent>
-        <ItemTitle>Passo 1</ItemTitle>
-        <ItemDescription>Confirme seus dados pessoais.</ItemDescription>
-      </ItemContent>
-    </Item>
-  </ListItem>
-</List>
-
-// Lista com marcador (bullet), texto simples
 <List variant="marker">
   <ListItem>Documento de identidade com foto</ListItem>
   <ListItem>Comprovante de residência atualizado</ListItem>
 </List>
 
-// Lista ordenada (numerada) — ordem importa
 <List as="ol" variant="marker">
-  <ListItem>Preencha o formulário de solicitação.</ListItem>
-  <ListItem>Envie os documentos exigidos.</ListItem>
+  <ListItem>Preencha o formulário inicial.</ListItem>
+  <ListItem>Envie os documentos solicitados.</ListItem>
 </List>`,
     props: [
-      { name: "as", type: "\"ul\" | \"ol\"", default: "\"ul\"", description: "Elemento HTML renderizado." },
-      { name: "variant", type: "\"none\" | \"marker\"", default: "\"none\"", description: "Controla a visibilidade do marcador nativo. Decisão provisória, diverge do Nimbus (que não tem essa prop)." },
-      { name: "children", type: "React.ReactNode", description: "Os ListItem (ou qualquer conteúdo)." },
-      { name: "...props", type: "React.ComponentPropsWithoutRef<\"ul\">", description: "Demais atributos nativos do elemento raiz (compatível também com <ol>)." },
+      { name: "variant", type: "none · marker", default: "none", description: "Controla a visibilidade dos marcadores nativos (bullet ou números)" },
+      { name: "as", type: "ListElement", default: "ul", description: "Elemento HTML semântico da lista (ul para não ordenada ou ol para ordenada)" },
+    ],
+    meta: {
+      nome: "List",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/list.tsx",
+      story: "src/components/ui/list.stories.tsx",
+      vizinhos: ["item", "table", "tree-select"],
+    },
+    whenToUseItems: ["Apresentar sequências textuais de itens relacionados, como requisitos, recursos ou regras.", "Estruturar instruções passo a passo numeradas onde a ordem de execução importa (as=\"ol\").", "Agrupar verticalmente componentes como Item em uma lista sem marcadores visuais (variant=\"none\")."],
+    whenNotToUse: ["Linhas complexas com avatar, metadados e múltiplos botões de ação → item", "Dados tabulares bidimensionais com colunas, ordenação e paginação → table", "Estruturas de pastas ou dados hierárquicos com múltiplos níveis recolhíveis → tree-select"],
+    content: ["Mantenha padrão gramatical uniforme entre os itens (todos começando por verbo ou substantivo).", "Frases completas levam ponto final; termos curtos ou palavras isoladas dispensam pontuação.", "Em listas ordenadas com ol, certifique-se de que a sequência numérica representa ordem cronológica ou prioridade."],
+    accessibility: {
+      keyboard: "Não recebe foco direto; elementos interativos contidos nos itens recebem Tab normalmente.",
+      screenReader: "Usa tags semânticas ul, ol e li; anuncia o número total de itens e a posição relativa de cada um.",
+      focus: "Nenhum no container da lista; o foco flui sequencialmente pelos elementos focáveis internos.",
+      cautions: "Use semântica nativa ol quando a ordem for essencial para compreensão; nunca use caracteres visuais manuais no lugar de marcadores de lista.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["leading-normal", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-1"] },
     ],
   },
   marker: {
-    description: "Exibe um status em linha, uma nota do sistema, uma linha com borda ou um separador rotulado dentro de uma conversa.",
-    whenToUse: "Use em interfaces de conversa (chat) para marcar eventos do sistema, status ou separadores entre mensagens.",
+    description: "Exibe status em linha, notas de sistema ou divisores rotulados em conversas e fluxos. Destaca eventos intermediários com ícone opcional e linhas delimitadoras.",
+    whenToUse: "Marcar eventos de sistema e status temporais em interfaces de chat e mensagens. Inserir divisores contextuais com texto centralizado (\"ou\", \"ontem\") via variante separator. Delimitar seções de notas com linha de borda inferior discreta via variante border.",
     anatomy: [
-      { part: "Marker", description: "Elemento raiz — linha de texto com ícone (data-variant)." },
-      { part: "MarkerIcon", description: "Ícone à esquerda, aria-hidden (decorativo)." },
-      { part: "MarkerContent", description: "Texto/conteúdo da marca." },
+      { part: "Marker", description: "Container raiz flexível com data-slot=\"marker\" e suporte a asChild" },
+      { part: "MarkerIcon", description: "Container de ícone de 16×16 px com aria-hidden para apoio visual" },
+      { part: "MarkerContent", description: "Conteúdo textual com suporte a links sublinhados e alinhamento flexível" },
     ],
     variants: [
-      { name: "Default", value: "default", description: "Sem decoração extra." },
-      { name: "Separator", value: "separator", description: "Linhas antes/depois do conteúdo (estilo divisor com texto)." },
-      { name: "Border", value: "border", description: "Borda inferior — separa seções." },
+      { name: "Default", value: "default", description: "Linha informativa simples com ícone e texto para notas de sistema" },
+      { name: "Separator", value: "separator", description: "Divisor centralizado com linhas de 1 px à esquerda e à direita" },
+      { name: "Border", value: "border", description: "Linha delimitadora com borda inferior sutil para fechar blocos de mensagens" },
     ],
     states: [],
     sizes: [],
-    doGuidelines: ["Use para destacar visualmente um elemento ou região específica."],
-    dontGuidelines: ["Não use marker como único indicador de estado — combine com texto ou ícone."],
-    code: `import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker"
-import { Icon } from "@/components/ui/icon"
+    doGuidelines: ["Utilize MarkerIcon com aria-hidden sempre que incluir glifos ou ícones ilustrativos.", "Use a variante separator para criar divisores com texto legível entre mensagens.", "Mantenha textos de sistema concisos e objetivos para não sobrecarregar o fluxo de leitura."],
+    dontGuidelines: ["Usar Marker para criar divisões estruturais sem qualquer conteúdo textual → separator", "Exibir contadores ou selos de status destacados em cabeçalhos → badge", "Usar Marker como botão interativo ou filtro clicável → tag"],
+    code: `import { Icon } from "@/components/ui/icon"
+import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker"
 
 <Marker>
   <MarkerIcon>
-    <Icon name="check" />
+    <Icon name="check_circle" />
   </MarkerIcon>
   <MarkerContent>Etapa concluída</MarkerContent>
+</Marker>
+
+<Marker variant="separator">
+  <MarkerContent>ou</MarkerContent>
 </Marker>`,
     props: [
-      { name: "variant", type: "\"default\" | \"separator\" | \"border\"", default: "\"default\"", description: "Estilo visual da marca." },
-      { name: "asChild", type: "boolean", default: "false", description: "Renderiza no elemento filho." },
+      { name: "variant", type: "default · separator · border", default: "default", description: "Estilo visual: padrão simples, divisor com linhas laterais ou borda inferior" },
+      { name: "asChild", type: "boolean", default: "false", description: "Delega a renderização para o elemento filho" },
+    ],
+    meta: {
+      nome: "Marker",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/marker.tsx",
+      story: "src/components/ui/marker.stories.tsx",
+      vizinhos: ["separator", "badge", "tag"],
+    },
+    whenToUseItems: ["Marcar eventos de sistema e status temporais em interfaces de chat e mensagens.", "Inserir divisores contextuais com texto centralizado (\"ou\", \"ontem\") via variante separator.", "Delimitar seções de notas com linha de borda inferior discreta via variante border."],
+    whenNotToUse: ["Linha divisória simples sem texto ou ícone associado → separator", "Rótulo compacto de status só de leitura em cards ou tabelas → badge", "Etiqueta interativa com suporte a seleção ou remoção → tag"],
+    content: ["Textos curtos e diretos em tom neutro: \"Tokens aplicados\", \"Ontem às 14:30\".", "Em divisores de contexto (variante separator), use conjunções curtas: \"ou\", \"hoje\".", "Links inseridos em MarkerContent devem possuir destino claro e texto autoexplicativo."],
+    accessibility: {
+      keyboard: "Não recebe foco: o componente possui finalidade informativa e estrutural.",
+      screenReader: "MarkerIcon possui aria-hidden por padrão; o texto em MarkerContent é anunciado como texto de suporte.",
+      focus: "Nenhum no container; links ou botões internos recebem foco por Tab na ordem natural.",
+      cautions: "A cor e as linhas do divisor são decorativas; nunca transmita informações críticas exclusivamente por símbolos sem texto.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-border", "border-border", "text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2", "h-px", "min-h-4", "min-w-0", "ml-1", "mr-1", "pb-2", "size-4"] },
     ],
   },
   alert: {
@@ -2688,53 +3293,64 @@ import { Button } from "@/components/ui/button"
     ],
   },
   "file-uploader": {
-    description: "Componente para receber arquivos por upload — uma caixa com um ícone e um rótulo opcional.",
-    whenToUse: "Use para capturar arquivos enviados pelo usuário: comprovantes/recibos, imagens (ex.: fotos de sinistro), planilhas ou outros documentos anexados a um formulário.",
+    description: "Área interativa para envio de arquivos por clique ou arrastar e soltar (drag and drop). Atua como zona de captura acessível associada a um campo de arquivo nativo.",
+    whenToUse: "Receber anexos de formulários como comprovantes, documentos em PDF ou planilhas. Permitir o upload de fotos e imagens com suporte a múltiplos arquivos. Fornecer uma área ampla de drop com feedback visual imediato ao arrastar arquivos.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <label> com data-slot=\"file-uploader\", data-dragging e data-disabled. Recebe os handlers de drag-and-drop (onDragOver/onDragLeave/onDrop) como reforço visual — arrastar não é a única forma de anexar." },
-      { part: "Ícone", description: "Icon name=\"cloud_upload\" — mesmo ícone já confirmado em uso real no Pattern Upload (src/components/patterns/upload.tsx) e em src/app/templates/novo-sinistro/page.tsx." },
-      { part: "Texto", description: "Rótulo visível explicando a ação (prop label, default \"Arraste um arquivo ou clique para selecionar\")." },
-      { part: "Input nativo", description: "<input type=\"file\"> real, associado ao label via htmlFor/id, visualmente escondido com sr-only (nunca display:none) mas focável e navegável por teclado — herda toda a acessibilidade nativa do elemento." },
+      { part: "FileUploader", description: "Elemento raiz label com borda tracejada associado ao input nativo" },
+      { part: "Ícone (interno)", description: "Glifo cloud_upload do componente icon no centro da área" },
+      { part: "Texto (interno)", description: "Rótulo explicativo com instrução de clique ou arrasto" },
+      { part: "Input (interno)", description: "Elemento input type=\"file\" nativo escondido com sr-only" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso, borda tracejada." },
-      { name: "Dragging", description: "data-dragging verdadeiro enquanto um arquivo é arrastado sobre a zona — borda e fundo usam --primary." },
-      { name: "Focus", description: "O <input> real recebe foco de teclado (Tab); o anel de foco (mesma régua do Input) é aplicado ao <label> via has-[:focus-visible]." },
-      { name: "Disabled", description: "prop disabled — desativa o <input> nativamente, remove do fluxo de clique/drag e reduz a opacidade." },
+      { name: "Padrão", description: "Borda tracejada border-input com texto muted e cursor de ponteiro" },
+      { name: "Arrastando", description: "Borda border-primary e fundo sutil bg-primary/5 com data-dragging" },
+      { name: "Foco", description: "Anel de foco externo de 3 px em ring-ring acionado via has-[:focus-visible]" },
+      { name: "Desabilitado", description: "Opacidade reduzida em 50% com cursor-not-allowed e ponteiro desativado" },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Informe com clareza os formatos aceitos e o tamanho máximo permitido antes do envio.", "Conecte o callback onFilesSelected para receber os arquivos e exibir o progresso com o componente attachment.", "Disponibilize sempre o clique para abrir o explorador de arquivos, sem depender apenas do arrasto."],
+    dontGuidelines: ["Rejeitar arquivos grandes sem fornecer mensagem clara ao usuário → use onFilesRejected com instrução amigável.", "Usar a zona de captura para listar arquivos já enviados → liste os itens enviados com attachment.", "Exibir área de captura com texto em língua estrangeira → forneça a prop label em português."],
     code: `import { FileUploader } from "@/components/ui/file-uploader"
 
-// Uso simples, um arquivo
-<FileUploader onFilesSelected={(files) => console.log(files)} />
-
-// Múltiplos arquivos, tipo restrito
 <FileUploader
-  multiple
-  accept="image/*"
-  label="Arraste uma imagem ou clique para selecionar"
+  accept="image/*,.pdf"
+  maxSize={10 * 1024 * 1024}
+  label="Arraste seus documentos ou clique para selecionar"
   onFilesSelected={(files) => console.log(files)}
-/>
-
-// Com limite de tamanho
-<FileUploader
-  maxSize={5 * 1024 * 1024}
-  onFilesSelected={(files) => console.log("aceitos", files)}
-  onFilesRejected={(files) => console.log("rejeitados (muito grandes)", files)}
 />`,
     props: [
-      { name: "label", type: "string", default: "\"Arraste um arquivo ou clique para selecionar\"", description: "Texto visível dentro da zona de drop, explicando a ação." },
-      { name: "accept", type: "string", description: "Repassado direto ao <input type=\"file\"> nativo (tipos de arquivo aceitos)." },
-      { name: "multiple", type: "boolean", default: "false", description: "Repassado direto ao <input> nativo — permite selecionar mais de um arquivo." },
-      { name: "maxSize", type: "number", description: "Tamanho máximo aceito por arquivo, em bytes. Sem limite quando ausente." },
-      { name: "onFilesSelected", type: "(files: File[]) => void", description: "Chamado com os arquivos aceitos (dentro do limite de maxSize, quando informado)." },
-      { name: "onFilesRejected", type: "(files: File[]) => void", description: "Chamado com os arquivos que excederam maxSize. Só dispara quando maxSize é informado." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa o <input> nativamente e bloqueia clique/drag." },
-      { name: "id", type: "string", default: "auto-gerado via React.useId()", description: "Associa <label htmlFor> ao <input id>." },
-      { name: "...props", type: "React.ComponentProps<\"input\">", description: "Demais atributos nativos repassados ao <input type=\"file\"> (ex.: name, required, capture, aria-describedby)." },
+      { name: "label", type: "string", default: "Arraste um arquivo ou clique para selecionar", description: "Texto visível de instrução dentro da zona de captura" },
+      { name: "multiple", type: "boolean", default: "false", description: "Permite selecionar múltiplos arquivos simultaneamente" },
+      { name: "disabled", type: "boolean", default: "false", description: "Desabilita a área e bloqueia eventos de clique e arrasto" },
+      { name: "accept (FileUploader)", type: "string", default: "—", description: "Extensões ou tipos MIME aceitos (ex.: image/* ou .pdf)" },
+      { name: "maxSize (FileUploader)", type: "number", default: "—", description: "Limite máximo em bytes aceito por arquivo" },
+      { name: "onFilesSelected (FileUploader)", type: "(files: File[]) => void", default: "—", description: "Callback chamado com os arquivos válidos selecionados" },
+      { name: "onFilesRejected (FileUploader)", type: "(files: File[]) => void", default: "—", description: "Callback chamado quando arquivos excedem maxSize" },
+    ],
+    meta: {
+      nome: "File Uploader",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/file-uploader.tsx",
+      story: "src/components/ui/file-uploader.stories.tsx",
+      vizinhos: ["attachment", "thumbnail", "input"],
+    },
+    whenToUseItems: ["Receber anexos de formulários como comprovantes, documentos em PDF ou planilhas.", "Permitir o upload de fotos e imagens com suporte a múltiplos arquivos.", "Fornecer uma área ampla de drop com feedback visual imediato ao arrastar arquivos."],
+    whenNotToUse: ["Exibir a lista de arquivos já anexados com progresso e botão de remoção → attachment.", "Miniatura visual de imagem enviada com opção de visualização → thumbnail.", "Campo simples de texto ou entrada de URL externa → input."],
+    content: ["Indique explicitamente na instrução os formatos suportados e limites de tamanho (ex.: PDF até 10 MB).", "Mantenha o texto da ação claro e direto, informando que é possível tanto clicar quanto arrastar.", "Em caso de arquivo rejeitado por tamanho, mostre uma mensagem de erro explicando o motivo e como corrigir."],
+    accessibility: {
+      keyboard: "Foco navega com Tab até o input nativo associado. Teclas Enter e Espaço abrem a janela de seleção de arquivos do sistema operacional. O arrastar e soltar funciona como atalho complementar, nunca exclusivo (WCAG 2.5.7).",
+      screenReader: "O label anuncia a instrução ao receber foco. O input anuncia tipo de controle e formatos aceitos quando informados via accept.",
+      focus: "O anel de foco de 3 px (ring-ring) é projetado no container raiz através do seletor has-[:focus-visible] quando o input interno recebe foco.",
+      cautions: "Nunca remova a opção de clique, pois usuários que navegam por teclado ou com dificuldades motoras não utilizam arrastar e soltar (WCAG 2.5.7).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-primary", "border-input", "border-primary", "border-ring", "text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2", "p-8"] },
+      { contexto: "Raio", itens: ["rounded-xl"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   form: {

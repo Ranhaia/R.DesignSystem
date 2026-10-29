@@ -94,17 +94,42 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 `src/lib/component-docs.ts` até a migração (`H-replicar-doc-componentes`).
 
+- [aspect-ratio](aspect-ratio.md) — Mantém a proporção exata entre largura e altura de imagens, vídeos e embeds.
+- [avatar](avatar.md) — Representa visualmente uma pessoa, conta ou organização com fallback.
+- [badge](badge.md) — Rótulo compacto para destacar status, contagem ou metadado.
 - [box](box.md) — Container flexível e sem estilo próprio para agrupar e organizar elementos.
 - [button](button.md) — Dispara uma ação. Um primário por contexto.
+- [checkbox](checkbox.md) — Permite marcar ou desmarcar opções independentes em formulários.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
 - [direction](direction.md) — Entrega o sentido de leitura aos componentes; não renderiza nada.
+- [file-uploader](file-uploader.md) — Área interativa para envio de arquivos por clique ou arrastar e soltar.
 - [icon](icon.md) — Renderiza um glifo do Material Symbols com eixos variáveis.
+- [input](input.md) — Campo de entrada para capturar textos ou valores de linha única.
+- [input-otp](input-otp.md) — Campo especializado para captura de códigos de verificação pontuais (OTP/2FA).
+- [item](item.md) — Linha estruturada para exibir informações com mídia, texto e ações.
+- [kbd](kbd.md) — Indica teclas ou combinações de atalhos de teclado em formato visual compacto.
 - [label](label.md) — Rótulo acessível associado a controles de formulário.
+- [link](link.md) — Permite navegar entre páginas, seções internas ou sites externos.
+- [list](list.md) — Organiza informações textuais ou blocos de conteúdo verticalmente em lista.
+- [marker](marker.md) — Exibe status em linha, notas de sistema ou divisores rotulados em conversas.
+- [native-select](native-select.md) — Menu suspenso nativo do navegador para seleção simples em dispositivos móveis.
+- [popover](popover.md) — Painel flutuante no clique para conteúdo rico ou configurações rápidas.
+- [progress](progress.md) — Barra que indica o andamento de tarefas com duração determinada.
+- [radio-group](radio-group.md) — Opções exclusivas para escolher exatamente uma alternativa visível.
+- [select](select.md) — Menu suspenso customizado para selecionar uma opção em listas estruturadas.
 - [separator](separator.md) — Linha fina entre grupos do mesmo container.
 - [skeleton](skeleton.md) — Placeholder com pulso que antecipa a forma do conteúdo.
+- [slider](slider.md) — Controle deslizante para ajustar valores contínuos ou faixas em um trilho.
+- [spinner](spinner.md) — Indicador giratório para esperas de tempo indeterminado.
+- [switch](switch.md) — Controle deslizante binário que alterna entre ativado e desativado com efeito imediato.
 - [tabs](tabs.md) — Alterna visões do mesmo conteúdo sem sair da página.
+- [tag](tag.md) — Rótulo estático para categorização, metadados e status.
 - [text](text.md) — Formata blocos de texto e parágrafos com escala tipográfica e semântica.
+- [textarea](textarea.md) — Campo de entrada multilinha que expande verticalmente conforme o conteúdo.
+- [thumbnail](thumbnail.md) — Miniatura visual com proporção fixa e fallback integrado.
 - [title](title.md) — Aplica hierarquia visual e semântica a cabeçalhos e títulos de seções.
+- [toggle](toggle.md) — Botão de dois estados que alterna entre ativado e desativado.
+- [tooltip](tooltip.md) — Balão flutuante com dica curta ao passar o mouse ou receber foco.
 
 ## Crédito
 

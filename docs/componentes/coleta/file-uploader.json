@@ -1,0 +1,44 @@
+{
+  "slug": "file-uploader",
+  "partes": [
+    "FileUploader"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "label",
+      "parte": "FileUploader",
+      "tipo": null,
+      "padrao": "Arraste um arquivo ou clique para selecionar"
+    },
+    {
+      "nome": "multiple",
+      "parte": "FileUploader",
+      "tipo": null,
+      "padrao": "false"
+    },
+    {
+      "nome": "disabled",
+      "parte": "FileUploader",
+      "tipo": null,
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "bg-primary",
+    "border-input",
+    "border-primary",
+    "border-ring",
+    "gap-2",
+    "p-8",
+    "ring-ring",
+    "rounded-xl",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

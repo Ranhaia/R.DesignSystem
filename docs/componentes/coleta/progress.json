@@ -1,0 +1,15 @@
+{
+  "slug": "progress",
+  "partes": [
+    "Progress"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "bg-primary",
+    "h-2",
+    "rounded-full"
+  ],
+  "compoe": []
+}
