@@ -72,6 +72,8 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - 1 de 5 ou mais → `select` (`native-select` no celular).
 - Lista longa, com digitação → `combobox`. Várias de uma lista longa → `multi-select`.
 - Opções independentes → `checkbox`. Liga/desliga que vale na hora → `switch`.
+- Opções de alternância em barra compacta → `toggle-group`.
+- Opções estruturadas em árvore com seleção em cascata → `tree-select`.
 - Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
 
 **Mostrar mensagem**
@@ -85,6 +87,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Visões do mesmo conteúdo, uma por vez → `tabs`. Etapas em sequência → `stepper`.
 - Seções que abrem e fecham → `accordion` (uma só → `collapsible`).
 - Agrupar informação de um assunto → `card`. Lista de itens parecidos → `item` / `list`.
+- Dados estruturados em linhas e colunas → `table`.
 - Status só de leitura → `badge`. Filtro ou seleção clicável → `chip` / `tag`.
 - Carregando com formato conhecido → `skeleton`. Sem formato → `spinner`. Com porcentagem → `progress`.
 - Nada para mostrar ainda → `empty`.
@@ -138,8 +141,11 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 - [separator](separator.md) — Linha fina entre grupos do mesmo container.
 - [skeleton](skeleton.md) — Placeholder com pulso que antecipa a forma do conteúdo.
 - [slider](slider.md) — Controle deslizante para ajustar valores contínuos ou faixas em um trilho.
+- [sonner](sonner.md) — Confirma uma ação ou exibe um aviso rápido sem interromper a pessoa.
+- [speed-dial](speed-dial.md) — Botão de ação flutuante que se expande em sequência de ações secundárias.
 - [spinner](spinner.md) — Indicador giratório para esperas de tempo indeterminado.
 - [switch](switch.md) — Controle deslizante binário que alterna entre ativado e desativado com efeito imediato.
+- [table](table.md) — Organiza informações em linhas e colunas para visualização e consulta estruturada.
 - [tabs](tabs.md) — Alterna visões do mesmo conteúdo sem sair da página.
 - [tag](tag.md) — Rótulo estático para categorização, metadados e status.
 - [text](text.md) — Formata blocos de texto e parágrafos com escala tipográfica e semântica.
@@ -147,7 +153,9 @@ Formato: `slug` — uma linha do que é. Os demais ainda vivem só em
 - [thumbnail](thumbnail.md) — Miniatura visual com proporção fixa e fallback integrado.
 - [title](title.md) — Aplica hierarquia visual e semântica a cabeçalhos e títulos de seções.
 - [toggle](toggle.md) — Botão de dois estados que alterna entre ativado e desativado.
+- [toggle-group](toggle-group.md) — Agrupa botões de alternância de dois estados para seleção única ou múltipla.
 - [tooltip](tooltip.md) — Balão flutuante com dica curta ao passar o mouse ou receber foco.
+- [tree-select](tree-select.md) — Campo de seleção em árvore para opções hierárquicas em painel flutuante.
 
 ## Crédito
 

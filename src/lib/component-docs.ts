@@ -1685,78 +1685,90 @@ function Exemplo() {
     },
   },
   "tree-select": {
-    description: "Campo de seleção em árvore: escolhe valores de uma lista hierárquica dentro de um painel flutuante. Tem três variações: single (um valor), multiple (vários valores, nó a nó) e checkable (vários valores com caixa de marcação e cascata pai/filhos).",
-    whenToUse: "Use quando as opções têm hierarquia (grupo > item) e o usuário precisa escolher entre elas. Prefira checkable quando marcar um grupo deve marcar tudo dentro dele; multiple quando cada nó é independente; single para um valor só. Para listas planas, use Select (um valor) ou MultiSelect (vários).",
+    description: "Campo de seleção em árvore que permite escolher itens estruturados em hierarquia dentro de um painel flutuante. Suporta seleção única, múltipla independente ou em cascata com caixas de marcação.",
+    whenToUse: "Estruturas hierárquicas onde as opções possuem relação pai e filho, como categorias, departamentos ou ramos de seguro. Seleção com marcação em cascata (checkable), onde marcar uma categoria pai marca automaticamente todas as suas subcategorias. Filtro de opções multinível que necessita de busca integrada e contador de itens selecionados.",
     anatomy: [
-      { part: "TreeSelect", description: "Elemento único — API monolítica. Compõe Popover + Checkbox; não usa Select/Combobox porque nenhum modela hierarquia." },
-      { part: "Campo", description: "Gatilho com role=combobox. Em single mostra o rótulo escolhido; em multiple/checkable mostra tags removíveis." },
-      { part: "Árvore", description: "role=tree dentro do painel. Cada nó é um treeitem com seta de expandir/recolher e, em checkable, uma caixa de marcação." },
-      { part: "Busca", description: "Campo no topo do painel que filtra a árvore (showSearch, ligado por padrão)." },
-      { part: "Rodapé", description: "Só checkable: contador de marcados e ações Todos / Limpar." },
-      { part: "TreeSelect.Skeleton", description: "Placeholder de carregamento." },
+      { part: "TreeSelect", description: "Componente principal que engloba o campo gatilho e o painel flutuante com a árvore de nós" },
+      { part: "TreeSelectSkeleton", description: "Placeholder de carregamento que simula as dimensões e o formato do campo" },
+      { part: "Gatilho", description: "Botão com papel combobox que exibe o placeholder, o valor único ou as tags dos itens marcados" },
+      { part: "Painel", description: "Área flutuante PopoverContent contendo a busca, a árvore de opções e o rodapé de ações" },
     ],
-    variants: [
-      { name: "single", value: "single", description: "Um valor. Clicar num nó escolhe e fecha o painel; pais também são escolhíveis." },
-      { name: "multiple", value: "multiple", description: "Vários valores sem relação pai/filho; o painel fica aberto." },
-      { name: "checkable", value: "checkable", description: "Caixa de marcação com cascata: marcar o pai marca os filhos; marcar todos os filhos marca o pai; parcial = indeterminado." },
-    ],
+    variants: [],
     states: [
-      { name: "Vazio", description: "Mostra o placeholder." },
-      { name: "Com seleção", description: "Rótulo (single) ou tags removíveis (multiple/checkable)." },
-      { name: "Aberto", description: "Painel com a árvore; nós expandem/recolhem por clique ou setas ←/→." },
-      { name: "Indeterminado", description: "Só em checkable: pai com parte dos filhos marcados." },
-      { name: "Nó desabilitado", description: "Não pode ser escolhido e não entra na cascata do pai." },
-      { name: "Disabled", description: "Campo inteiro desativado." },
+      { name: "Vazio", description: "Gatilho exibe o texto de placeholder com text-muted-foreground" },
+      { name: "Selecionado", description: "Gatilho exibe o rótulo do item ou chips compactos com botão de remoção" },
+      { name: "Aberto", description: "Painel flutuante exibe a árvore de nós com foco virtual via aria-activedescendant" },
+      { name: "Indeterminado", description: "Caixa de marcação exibe traço horizontal quando o nó pai possui apenas parte dos filhos selecionados" },
+      { name: "Nó desabilitado", description: "Opacidade reduzida em 50% e nó bloqueado para seleção ou cascata" },
+      { name: "Desabilitado", description: "Campo inteiro inativo com opacity-50 e sem abertura do painel" },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Limite a profundidade da árvore a no máximo 3 níveis para evitar sobrecarga cognitiva.", "Use checkable quando marcar uma categoria pai deva abranger todos os seus itens filhos.", "Ative showSearch para auxiliar a localização rápida em árvores com muitas opções."],
+    dontGuidelines: ["Usar árvore para listas de opções simples e sem nenhuma hierarquia → select ou list.", "Empregar para seleção múltipla plana sem relação entre categorias → multi-select.", "Forçar navegação em árvore dentro de formulários densos sem fornecer busca → ative showSearch."],
     code: `import * as React from "react"
 import { TreeSelect } from "@/components/ui/tree-select"
 
-const ramos = [
-  { value: "patrimonial", label: "Patrimonial", children: [
-    { value: "auto", label: "Auto" },
-    { value: "residencial", label: "Residencial" },
-  ] },
-  { value: "pet", label: "Pet" },
+const categorias = [
+  {
+    value: "seguros",
+    label: "Seguros",
+    children: [
+      { value: "auto", label: "Automóvel" },
+      { value: "vida", label: "Vida" },
+    ],
+  },
 ]
 
-function Exemplo() {
-  const [value, setValue] = React.useState<string[]>(["auto"])
+export function ExemploTreeSelect() {
+  const [selecao, setSelecao] = React.useState<string[]>(["auto"])
 
   return (
     <TreeSelect
       checkable
-      treeData={ramos}
-      value={value}
-      onValueChange={setValue}
-      showCheckedStrategy="parent"
-      defaultExpandAll
+      treeData={categorias}
+      value={selecao}
+      onValueChange={setSelecao}
       aria-label="Ramos de seguro"
     />
   )
 }`,
     props: [
-      { name: "treeData", type: "{ label: string; value: string; children?: …[]; disabled?: boolean; exclusive?: boolean; closeOnClick?: boolean }[]", description: "Árvore de opções (obrigatório). Só checkable: exclusive faz o nó ser marcado sozinho (desmarca os demais e é desmarcado quando outro nó é marcado); closeOnClick fecha o painel ao clicar no nó." },
-      { name: "value", type: "string | null | string[]", description: "Controlado. single: string | null; multiple/checkable: string[]. Em checkable aceita folhas e/ou pais." },
-      { name: "onValueChange", type: "(value) => void", description: "Em checkable devolve sempre as folhas marcadas." },
-      { name: "multiple", type: "boolean", default: "false", description: "Vários valores, nó a nó." },
-      { name: "checkable", type: "boolean", default: "false", description: "Caixas de marcação com cascata pai/filhos (implica multiple)." },
-      { name: "showCheckedStrategy", type: "\"child\" | \"parent\" | \"all\"", default: "\"child\"", description: "Só checkable. Como as marcações aparecem no campo." },
-      { name: "defaultExpandAll", type: "boolean", default: "false", description: "Abre com todos os nós expandidos." },
-      { name: "defaultExpandedValues", type: "string[]", description: "Nós expandidos no primeiro render." },
-      { name: "placeholder", type: "string", default: "\"Selecione...\"", description: "Texto com o campo vazio." },
-      { name: "disabled", type: "boolean", default: "false", description: "Desativa o campo." },
-      { name: "aria-label", type: "string", description: "Nome acessível do campo e da árvore." },
-      { name: "showSearch", type: "boolean", default: "true", description: "Campo de busca no topo do painel." },
-      { name: "allowClear", type: "boolean", default: "false", description: "Botão de limpar a seleção (X) no campo." },
-      { name: "maxTagCount", type: "number", description: "Multiple/checkable: máximo de tags visíveis no campo; o resto vira +N." },
-      { name: "emptyText", type: "string", default: "\"Nenhum resultado encontrado.\"", description: "Texto quando a busca não encontra nós." },
-      { name: "dropdownClassName", type: "string", description: "Classes extras para o painel flutuante." },
-      { name: "searchPlaceholder", type: "string", default: "\"Buscar...\"", description: "Texto do campo de busca. Use para o vocabulário do produto." },
-      { name: "selectAllLabel", type: "string", default: "\"Todos\"", description: "Só checkable: rótulo da ação que marca todas as folhas." },
-      { name: "selectedCountText", type: "(count: number) => string", default: "\"Nenhum item selecionado\" / \"N selecionado(s)\"", description: "Só checkable: frase do contador no rodapé." },
+      { name: "treeData", type: "TreeSelectNode[]", default: "—", description: "Estrutura hierárquica de nós com label, value e children" },
+      { name: "value", type: "string | null · string[]", default: "—", description: "Valor ou lista de valores selecionados" },
+      { name: "onValueChange", type: "(value: any) => void", default: "—", description: "Função disparada ao alterar a seleção" },
+      { name: "checkable", type: "boolean", default: "false", description: "Habilita caixas de marcação com cascata entre pais e filhos" },
+      { name: "multiple", type: "boolean", default: "false", description: "Permite selecionar múltiplos nós de forma independente" },
+      { name: "showCheckedStrategy", type: "child · parent · all", default: "child", description: "Define se exibe no campo apenas as folhas, os pais ou ambos" },
+      { name: "defaultExpandAll", type: "boolean", default: "false", description: "Inicia o componente com todos os ramos expandidos" },
+      { name: "showSearch", type: "boolean", default: "true", description: "Exibe campo de busca rápida no topo do painel" },
+      { name: "allowClear", type: "boolean", default: "false", description: "Exibe botão para limpar toda a seleção atual" },
+      { name: "maxTagCount", type: "number", default: "—", description: "Limite máximo de tags visíveis antes de agrupar em contador" },
+    ],
+    meta: {
+      nome: "TreeSelect",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/tree-select.tsx",
+      story: "src/components/ui/tree-select.stories.tsx",
+      vizinhos: ["select", "multi-select", "combobox", "list"],
+    },
+    whenToUseItems: ["Estruturas hierárquicas onde as opções possuem relação pai e filho, como categorias, departamentos ou ramos de seguro.", "Seleção com marcação em cascata (checkable), onde marcar uma categoria pai marca automaticamente todas as suas subcategorias.", "Filtro de opções multinível que necessita de busca integrada e contador de itens selecionados."],
+    whenNotToUse: ["Lista plana e simples de opções com seleção única → select.", "Lista plana com seleção de múltiplos valores sem hierarquia → multi-select.", "Lista de opções planas muito longa com busca e digitação direta no campo → combobox."],
+    content: ["Rótulos dos nós curtos e objetivos que caibam em uma linha: \"Patrimonial\", \"Residencial\".", "Mantenha hierarquia visual clara limitada a no máximo 3 níveis de profundidade.", "Use placeholders explicativos no campo e na busca: \"Selecione o ramo...\", \"Buscar opções...\"."],
+    accessibility: {
+      keyboard: "Tab foca o gatilho; Espaço ou Enter abre o painel. Dentro da árvore, setas Cima e Baixo navegam entre os nós visíveis. Seta Direita expande o nó pai e Seta Esquerda recolhe. Espaço marca/desmarca o item. Escape fecha o painel e devolve o foco ao gatilho.",
+      screenReader: "Gatilho possui role=\"combobox\" com aria-expanded e aria-haspopup=\"tree\". A lista possui role=\"tree\" e os nós possuem role=\"treeitem\", aria-level indicando profundidade e aria-selected ou aria-checked para status.",
+      focus: "O foco visual permanece no contêiner da árvore e se move virtualmente entre nós usando aria-activedescendant. Ao fechar, o foco retorna ao gatilho.",
+      cautions: "Passe sempre aria-label quando não houver label visível associado ao campo (WCAG 4.1.2). Mantenha contraste adequado nos ícones de expansão e nas caixas de marcação indeterminadas.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-input", "bg-muted", "border-border", "border-input", "border-ring", "text-accent-foreground", "text-foreground", "text-muted-foreground", "text-primary"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-0.5", "gap-1", "gap-1.5", "gap-2", "h-5.5", "h-9", "max-h-72", "max-w-115", "max-w-32.5", "min-h-9", "min-w-0", "min-w-75", "p-0", "p-1", "pl-1.5", "pr-0.5", "pr-2", "px-1.5", "px-2.5", "px-3", "py-1", "py-1.5", "py-2", "py-4", "size-4", "size-5", "w-64"] },
+      { contexto: "Raio", itens: ["rounded-md", "rounded-sm"] },
+      { contexto: "Sombra", itens: ["shadow-md", "shadow-xs"] },
+      { contexto: "Movimento", itens: ["duration-motion-base", "duration-motion-fast"] },
+      { contexto: "Foco", itens: ["outline-ring", "ring-ring"] },
     ],
   },
   "multi-select": {
@@ -3014,41 +3026,67 @@ import {
     ],
   },
   "toggle-group": {
-    description: "Um conjunto de botões de dois estados que podem ser ativados ou desativados.",
-    whenToUse: "Use para um grupo de opções que alternam estado (ativo/inativo), com seleção única ou múltipla, como alinhamento de texto ou filtros.",
+    description: "Agrupa botões de alternância de dois estados para seleção única ou múltipla. Ideal para barras de ferramentas, formatação e filtros visuais compactos.",
+    whenToUse: "Conjuntos de opções de estilo ou formatação (como negrito, itálico e sublinhado) com seleção múltipla. Seleção exclusiva de alinhamento ou visualização (como esquerda, centro e direita) em barras de ferramentas. Filtros rápidos em linha onde o estado ativo de cada botão precisa ficar evidente.",
     anatomy: [
-      { part: "ToggleGroup", description: "Root — define variant/size/spacing compartilhados via contexto." },
-      { part: "ToggleGroupItem", description: "Cada opção — herda variant/size do grupo se não especificar o próprio." },
+      { part: "ToggleGroup", description: "Contêiner raiz que gerencia o tipo de seleção e compartilha variantes, tamanhos e espaçamento via contexto" },
+      { part: "ToggleGroupItem", description: "Cada botão individual do grupo que herda o estilo ou define suas próprias propriedades" },
     ],
-    variants: [
-      { name: "Default", value: "default", description: "Fundo transparente até ativar." },
-      { name: "Outline", value: "outline", description: "Contorno visível no grupo inteiro." },
-    ],
+    variants: [],
     states: [
-      { name: "Off", description: "Item não selecionado — font-normal (400) e --icon-fill:0 fixado, independente do preset ativo." },
-      { name: "On", description: "data-state=on — bg-accent, font-bold (700) e --icon-fill:1 fixado no item selecionado (herdado de toggleVariants, mesmo mecanismo do Toggle isolado — os dois estados sobrescrevem --icon-fill, então o comportamento é igual em qualquer preset)." },
-      { name: "Focus", description: "focus-visible:ring, com z-index elevado pra não cortar o anel." },
-      { name: "Disabled", description: "opacidade reduzida." },
+      { name: "Desativado (off)", description: "Fundo transparente ou contorno padrão com texto font-normal e icon-fill em zero" },
+      { name: "Ativado (on)", description: "Fundo bg-accent, texto text-accent-foreground, font-bold e icon-fill preenchido" },
+      { name: "Hover", description: "Fundo hover:bg-muted ou hover:bg-accent conforme a variante" },
+      { name: "Foco", description: "Anel visível com elevação de z-index para não cortar a borda" },
+      { name: "Desabilitado", description: "Opacidade reduzida e cursor bloqueado" },
     ],
-    sizes: [
-      { name: "sm", value: "sm", description: "h-8 min-w-8." },
-      { name: "default", value: "default", description: "h-9 min-w-9." },
-      { name: "lg", value: "lg", description: "h-10 min-w-10." },
-    ],
-    doGuidelines: ["Use para agrupar opções mutuamente excludentes em formato de botões."],
-    dontGuidelines: ["Não use toggle-group para ações que não são de seleção."],
+    sizes: [],
+    doGuidelines: ["Use type=\"single\" para escolhas exclusivas e type=\"multiple\" para formatações independentes.", "Adicione aria-label descritivo em todos os itens compostos apenas por ícones.", "Mantenha espaçamento zero (spacing={0}) para formar barras de ferramentas visualmente coesas."],
+    dontGuidelines: ["Usar para alternar páginas inteiras ou painéis de conteúdo extenso → tabs.", "Agrupar ações de envio ou disparo de formulário que não retêm estado → button-group.", "Utilizar botões de alternância sem nenhum rótulo textual ou acessível → icon-button."],
     code: `import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
-<ToggleGroup type="single" defaultValue="center">
-  <ToggleGroupItem value="left">Esquerda</ToggleGroupItem>
-  <ToggleGroupItem value="center">Centro</ToggleGroupItem>
-  <ToggleGroupItem value="right">Direita</ToggleGroupItem>
+<ToggleGroup type="single" defaultValue="centro">
+  <ToggleGroupItem value="esquerda" aria-label="Alinhar à esquerda">
+    Esquerda
+  </ToggleGroupItem>
+  <ToggleGroupItem value="centro" aria-label="Alinhar ao centro">
+    Centro
+  </ToggleGroupItem>
+  <ToggleGroupItem value="direita" aria-label="Alinhar à direita">
+    Direita
+  </ToggleGroupItem>
 </ToggleGroup>`,
     props: [
-      { name: "type", type: "\"single\" | \"multiple\"", description: "Seleção única ou múltipla — obrigatório (do Radix)." },
-      { name: "value / onValueChange", type: "string | string[]", description: "Valor(es) selecionado(s)." },
-      { name: "variant / size", type: "\"default\" | \"outline\" / \"default\" | \"sm\" | \"lg\"", description: "Aplicados a todos os itens via contexto." },
-      { name: "spacing", type: "number", default: "0", description: "Espaço entre itens — 0 mantém bordas coladas." },
+      { name: "type (ToggleGroup)", type: "single · multiple", default: "—", description: "Define se a seleção é exclusiva ou permite múltiplas opções" },
+      { name: "value · defaultValue (ToggleGroup)", type: "string · string[]", default: "—", description: "Valor selecionado, controlado ou inicial" },
+      { name: "onValueChange (ToggleGroup)", type: "(value: any) => void", default: "—", description: "Notifica alteração na seleção dos itens" },
+      { name: "variant (ToggleGroup, Item)", type: "default · outline", default: "default", description: "Estilo visual dos botões, compartilhado via contexto" },
+      { name: "size (ToggleGroup, Item)", type: "sm · default · lg", default: "default", description: "Dimensão vertical e espaçamento horizontal dos botões" },
+      { name: "spacing (ToggleGroup)", type: "number", default: "0", description: "Distância entre os botões; valor zero mantém bordas acopladas" },
+      { name: "value (ToggleGroupItem)", type: "string", default: "—", description: "Identificador obrigatório do item" },
+      { name: "disabled (ToggleGroup, Item)", type: "boolean", default: "false", description: "Desabilita o grupo inteiro ou um item específico" },
+    ],
+    meta: {
+      nome: "Toggle Group",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/toggle-group.tsx",
+      story: "src/components/ui/toggle-group.stories.tsx",
+      vizinhos: ["toggle", "button-group", "segmented-control", "radio-group"],
+    },
+    whenToUseItems: ["Conjuntos de opções de estilo ou formatação (como negrito, itálico e sublinhado) com seleção múltipla.", "Seleção exclusiva de alinhamento ou visualização (como esquerda, centro e direita) em barras de ferramentas.", "Filtros rápidos em linha onde o estado ativo de cada botão precisa ficar evidente."],
+    whenNotToUse: ["Alternar a exibição de seções ou abas com painel de conteúdo associado → tabs.", "Seleção exclusiva de poucas opções de tela com animação de trilho deslizante → segmented-control.", "Ações simples de disparo único que não guardam estado ativado → button-group."],
+    content: ["Use ícones reconhecíveis com rótulo descritivo acessível via aria-label ou tooltip.", "Para textos nos itens, limite a uma única palavra: \"Centro\", \"Esquerda\", \"Direita\".", "Agrupe no máximo de 3 a 7 opções relacionadas em um mesmo conjunto."],
+    accessibility: {
+      keyboard: "Em grupos com type=\"single\" atua como rádio, navegando com setas direcionais. Em type=\"multiple\" o Tab percorre os itens e Espaço/Enter alterna o estado de cada botão.",
+      screenReader: "Utiliza papel toolbar ou group (Radix). Botões possuem aria-pressed para anunciar estado ativado/desativado ou aria-checked para seleção exclusiva.",
+      focus: "Itens recebem focus-visible:ring-ring com z-10 para manter o anel de foco destacado sobre as bordas adjacentes.",
+      cautions: "Forneça sempre aria-label para cada ToggleGroupItem que contenha apenas ícone (WCAG 4.1.2). Não exceda 10 itens na mesma barra sem agrupar opções secundárias.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["min-w-0", "px-3"] },
+      { contexto: "Raio", itens: ["rounded-l-md", "rounded-md", "rounded-r-md"] },
+      { contexto: "Sombra", itens: ["shadow-xs"] },
     ],
   },
   "scroll-area": {
@@ -4206,23 +4244,28 @@ import { Button } from "@/components/ui/button"
     ],
   },
   table: {
-    description: "Um componente de tabela responsivo.",
-    whenToUse: "Use para exibir dados tabulares — linhas e colunas — como listas de apólices, sinistros ou transações.",
+    description: "Organiza informações em linhas e colunas para visualização, comparação e consulta estruturada. Conta com contêiner responsivo com rolagem horizontal automática.",
+    whenToUse: "Listas densas de dados estruturados para comparação entre atributos: faturas, apólices ou transações. Exibição de registros tabulares com necessidade de cabeçalho descritivo e rodapé de totais. Conjunto de dados homogêneos que se beneficiam de ordenação por coluna e paginação.",
     anatomy: [
-      { part: "Table", description: "Wrapper com overflow-x-auto + <table>." },
-      { part: "TableHeader / TableBody / TableFooter", description: "<thead>/<tbody>/<tfoot>." },
-      { part: "TableRow", description: "<tr> — hover e data-state=selected." },
-      { part: "TableHead / TableCell", description: "<th>/<td> — alinhamento e espaçamento padronizados." },
-      { part: "TableCaption", description: "<caption> — legenda abaixo da tabela." },
+      { part: "Table", description: "Contêiner raiz com overflow horizontal que envolve o elemento table" },
+      { part: "TableHeader", description: "Seção thead com borda inferior para os títulos das colunas" },
+      { part: "TableBody", description: "Seção tbody que agrupa as linhas de dados" },
+      { part: "TableFooter", description: "Seção tfoot com fundo bg-muted/50 para totais ou somatórios" },
+      { part: "TableRow", description: "Linha tr com transição de cor no hover e estado selecionado" },
+      { part: "TableHead", description: "Célula de cabeçalho th com altura de 40 px e alinhamento à esquerda" },
+      { part: "TableCell", description: "Célula de dados td com espaçamento interno e suporte a checkbox" },
+      { part: "TableCaption", description: "Legenda descritiva caption posicionada abaixo da tabela" },
     ],
     variants: [],
     states: [
-      { name: "Hover", description: "hover:bg-muted/50 na linha." },
-      { name: "Selecionada", description: "data-state=selected — bg-muted." },
+      { name: "Padrão", description: "Linhas com borda inferior sutil e fundo transparente" },
+      { name: "Hover", description: "Linha ganha fundo hover:bg-muted/50" },
+      { name: "Selecionada", description: "Linha com data-[state=selected]:bg-muted" },
+      { name: "Expandida", description: "Linha com has-aria-expanded:bg-muted/50" },
     ],
     sizes: [],
-    doGuidelines: ["Use para exibir dados tabulares com colunas e linhas. Suporte ordenação quando relevante."],
-    dontGuidelines: ["Não use table para layouts de página — use CSS Grid ou Box."],
+    doGuidelines: ["Alinhe textos à esquerda e números ou valores à direita.", "Use TableCaption para fornecer contexto claro sobre os dados.", "Mantenha os títulos das colunas concisos e descritivos."],
+    dontGuidelines: ["Usar tabela para construir grades e layouts gerais de página → box.", "Exibir listas de texto simples com apenas uma coluna em formato tabular → list ou item.", "Forçar muitas colunas comprimidas em telas móveis estreitas → card."],
     code: `import {
   Table,
   TableBody,
@@ -4235,19 +4278,45 @@ import { Button } from "@/components/ui/button"
 <Table>
   <TableHeader>
     <TableRow>
-      <TableHead>Nome</TableHead>
+      <TableHead>Fatura</TableHead>
       <TableHead>Status</TableHead>
+      <TableHead className="text-right">Valor</TableHead>
     </TableRow>
   </TableHeader>
   <TableBody>
     <TableRow>
-      <TableCell>Apólice AP-001</TableCell>
-      <TableCell>Ativa</TableCell>
+      <TableCell className="font-medium">INV-001</TableCell>
+      <TableCell>Pago</TableCell>
+      <TableCell className="text-right">R$ 250,00</TableCell>
     </TableRow>
   </TableBody>
 </Table>`,
     props: [
-      { name: "...props", type: "React.ComponentProps<\"table\">", description: "Atributos nativos de <table> e das demais peças." },
+      { name: "children (Table)", type: "React.ReactNode", default: "—", description: "Conteúdo estruturado da tabela com cabeçalho, corpo e rodapé" },
+      { name: "className (Table)", type: "string", default: "—", description: "Classes CSS adicionais aplicadas ao elemento table interno" },
+      { name: "colSpan · rowSpan (Cell, Head)", type: "number", default: "—", description: "Mescla horizontal ou vertical de células nativas" },
+    ],
+    meta: {
+      nome: "Table",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/table.tsx",
+      story: "src/components/ui/table.stories.tsx",
+      vizinhos: ["list", "item", "card"],
+    },
+    whenToUseItems: ["Listas densas de dados estruturados para comparação entre atributos: faturas, apólices ou transações.", "Exibição de registros tabulares com necessidade de cabeçalho descritivo e rodapé de totais.", "Conjunto de dados homogêneos que se beneficiam de ordenação por coluna e paginação."],
+    whenNotToUse: ["Layout de página ou organização visual de blocos sem relação tabular → box.", "Lista simples de itens sem comparação direta entre colunas → list ou item.", "Visualização de itens ricos em telas pequenas de celular → card."],
+    content: ["Cabeçalhos de coluna curtos e claros com substantivos no singular: \"Fatura\", \"Valor\", \"Status\".", "Alinhe textos à esquerda e valores numéricos ou monetários à direita.", "Use TableCaption para descrever resumidamente o conjunto de dados exibido."],
+    accessibility: {
+      keyboard: "Células não recebem foco por padrão. Controles interativos dentro das células (como botões, links e checkboxes) seguem a ordem natural do Tab. O contêiner permite navegação horizontal por setas quando há estouro de largura.",
+      screenReader: "Utiliza tags HTML semânticas nativas (table, thead, tbody, tfoot, tr, th, td). Leitores de tela associam automaticamente cabeçalhos th às células td. TableCaption fornece o resumo auditivo inicial.",
+      focus: "O foco recai exclusivamente sobre elementos interativos internos. Células que possuem checkbox ajustam espaçamento automaticamente para manter alvo adequado.",
+      cautions: "Utilize cabeçalhos TableHead em todas as colunas para garantir leitura contextual (WCAG 1.3.1). Nunca monte tabelas sem cabeçalho semântico ou use tabelas apenas para fins de diagramação visual.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-muted", "text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm"] },
+      { contexto: "Espaço", itens: ["h-10", "mt-4", "p-2", "pr-0", "px-2"] },
     ],
   },
   tabs: {
@@ -4320,39 +4389,56 @@ import { Button } from "@/components/ui/button"
     ],
   },
   sonner: {
-    description: "Um componente de notificação toast opinativo para React.",
-    whenToUse: "Use para dar feedback rápido e não bloqueante sobre o resultado de uma ação (sucesso, erro, carregamento), sem interromper o fluxo do usuário.",
+    description: "Confirma uma ação ou exibe um aviso rápido sem interromper a pessoa. Permanece na tela por alguns segundos e desaparece sozinho.",
+    whenToUse: "Confirmação de ação concluída ou reversível, como \"Link copiado\" ou \"Mensagem enviada\". Notificação temporária que acompanha o progresso de uma operação assíncrona até o desfecho. Aviso rápido do sistema que não bloqueia o fluxo nem exige intervenção imediata.",
     anatomy: [
-      { part: "Toaster", description: "Montado uma vez na raiz do app — é o container que renderiza as notificações disparadas em qualquer lugar." },
-      { part: "toast()", description: "Função (não é um componente React) que dispara a notificação — toast(\"mensagem\") ou toast.success/error/warning/info/promise." },
+      { part: "Toaster", description: "Container montado na raiz da aplicação que gerencia a área e o empilhamento das notificações" },
     ],
-    variants: [
-      { name: "Default", value: "default", description: "Notificação neutra." },
-      { name: "Success", value: "success", description: "Confirmação de uma ação concluída." },
-      { name: "Info", value: "info", description: "Informação neutra adicional." },
-      { name: "Warning", value: "warning", description: "Alerta que não bloqueia o fluxo." },
-      { name: "Error", value: "error", description: "Falha em uma ação." },
-      { name: "Promise", value: "promise", description: "Acompanha o ciclo de uma Promise — loading, depois success ou error." },
-    ],
+    variants: [],
     states: [
-      { name: "Entrando", description: "Anima deslizando para a posição configurada (padrão: canto inferior direito)." },
-      { name: "Visível", description: "Permanece na tela até o tempo definido ou o fechamento manual." },
-      { name: "Saindo", description: "Anima ao fechar automaticamente ou por interação do usuário." },
+      { name: "Entrada", description: "Surge com deslizamento e transição de opacidade na posição configurada" },
+      { name: "Visível", description: "Cartão com fundo var(--popover), texto var(--popover-foreground) e borda var(--border)" },
+      { name: "Hover", description: "Pausa a contagem regressiva enquanto o cursor estiver sobre a notificação" },
+      { name: "Foco", description: "Botões de ação ou de fechar recebem anel de foco visível" },
+      { name: "Saída", description: "Desliza para fora da tela e reduz a opacidade ao expirar o tempo" },
     ],
     sizes: [],
-    doGuidelines: ["Use para notificações temporárias que desaparecem automaticamente. Mantenha a mensagem concisa."],
-    dontGuidelines: ["Não use sonner para mensagens críticas que exigem ação do usuário. Não use para erros de formulário — use Field."],
+    doGuidelines: ["Mantenha a mensagem concisa em até uma linha.", "Ofereça ação \"Desfazer\" para operações destrutivas ou acidentais.", "Reserve o aviso rápido para confirmações pontuais e não impeditivas."],
+    dontGuidelines: ["Exibir erros graves que exigem confirmação em aviso temporário → alert-dialog.", "Usar para instruções fixas de formulário ou alertas persistentes de página → alert.", "Colocar textos longos com múltiplos parágrafos dentro da notificação → dialog."],
     code: `import { Toaster } from "@/components/ui/sonner"
-import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 
-// <Toaster /> é montado uma vez na raiz do app (ver app-shell.tsx)
-<Button onClick={() => toast.success("Apólice atualizada com sucesso.")}>
-  Salvar
-</Button>`,
+// Montado na raiz da aplicação
+<Toaster />
+
+// Acionado em eventos ou respostas
+toast("Link copiado com sucesso")`,
     props: [
-      { name: "position", type: "\"top-left\" | \"top-center\" | \"top-right\" | \"bottom-left\" | \"bottom-center\" | \"bottom-right\"", default: "\"bottom-right\"", description: "(Toaster) posição das notificações na tela." },
-      { name: "richColors", type: "boolean", default: "false", description: "(Toaster) usa cores mais vivas por tipo de toast." },
+      { name: "position (Toaster)", type: "top-left · top-center · top-right · bottom-left · bottom-center · bottom-right", default: "bottom-right", description: "Posição onde as notificações são exibidas na janela" },
+      { name: "richColors (Toaster)", type: "boolean", default: "false", description: "Aplica cores temáticas e contrastantes por tipo de notificação" },
+      { name: "duration (Toaster)", type: "number", default: "4000", description: "Tempo padrão de permanência em milissegundos antes de desaparecer" },
+      { name: "closeButton (Toaster)", type: "boolean", default: "false", description: "Exibe botão explícito para fechar cada notificação" },
+    ],
+    meta: {
+      nome: "Sonner",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/sonner.tsx",
+      story: "src/components/ui/sonner.stories.tsx",
+      vizinhos: ["alert", "alert-dialog", "dialog"],
+    },
+    whenToUseItems: ["Confirmação de ação concluída ou reversível, como \"Link copiado\" ou \"Mensagem enviada\".", "Notificação temporária que acompanha o progresso de uma operação assíncrona até o desfecho.", "Aviso rápido do sistema que não bloqueia o fluxo nem exige intervenção imediata."],
+    whenNotToUse: ["Erro impeditivo ou decisão crítica que exige resposta obrigatória da pessoa → alert-dialog.", "Mensagem persistente que precisa permanecer visível junto ao contexto do conteúdo → alert.", "Formulário ou fluxo de múltiplas etapas com entrada de dados → dialog."],
+    content: ["Mensagens curtas e diretas em uma linha: \"Link copiado\", \"Arquivo salvo\".", "Verbo no particípio ou passado para confirmar ações já concluídas.", "Ofereça ação rotulada como \"Desfazer\" quando a operação puder ser revertida."],
+    accessibility: {
+      keyboard: "Notificações não capturam foco automaticamente. Quando há ação interativa, ela fica acessível por navegação de teclado antes de o aviso expirar.",
+      screenReader: "Renderizado em região viva com aria-live=\"polite\" ou role=\"status\", informando a mensagem sem interromper a leitura atual.",
+      focus: "Não move o foco ao surgir para evitar perda de contexto. Foco retorna ao fluxo normal após o encerramento.",
+      cautions: "Garanta tempo de exibição de pelo menos 4 a 6 segundos e pausa ao passar o mouse ou receber foco (WCAG 2.2.1). Nunca confie apenas em avisos rápidos para alertas críticos (WCAG 2.4.11).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["--border", "--popover", "--popover-foreground"] },
+      { contexto: "Raio", itens: ["--radius"] },
     ],
   },
   icon: {
@@ -4438,27 +4524,25 @@ import { toast } from "sonner"
     ],
   },
   "speed-dial": {
-    description: "Botão de ação flutuante (FAB) que, ao ser acionado, se expande em uma sequência de ações secundárias relacionadas.",
-    whenToUse: "Use quando várias ações secundárias relacionadas precisam ficar a um toque, sem ocupar espaço na tela até serem pedidas. Abre por clique/toque, não por hover, então funciona em mobile.",
+    description: "Botão de ação flutuante que se expande em uma sequência de ações secundárias relacionadas. Permite acessar comandos rápidos sem ocupar espaço permanente na tela.",
+    whenToUse: "Ações secundárias frequentes em telas operacionais ou móveis, como Compartilhar, Copiar e Imprimir. Comandos contextuais rápidos agrupados em um único ponto de contato flutuante. Interface onde o espaço visual precisa ficar livre até a pessoa solicitar as opções.",
     anatomy: [
-      { part: "Raiz", description: "Contêiner com data-slot=\"speed-dial\" e data-state (open/closed); fecha ao clicar fora." },
-      { part: "Botão principal", description: "FAB que abre e fecha o menu; nome acessível vem de `triggerLabel`." },
-      { part: "Ações", description: "Lista de botões (`actionButtons`) que surgem em sequência escalonada na direção escolhida." },
+      { part: "SpeedDial", description: "Contêiner raiz com controle de abertura, clique fora e navegação por teclado" },
+      { part: "Gatilho principal", description: "Botão flutuante com ícone que rotaciona em 45 graus quando aberto" },
+      { part: "Menu flutuante", description: "Lista de botões de ação com animação escalonada na direção configurada" },
     ],
-    variants: [
-      { name: "Para cima", value: "up", description: "Ações acima do botão (padrão)." },
-      { name: "Para baixo", value: "down", description: "Ações abaixo do botão." },
-      { name: "Para a esquerda", value: "left", description: "Ações à esquerda do botão." },
-      { name: "Para a direita", value: "right", description: "Ações à direita do botão." },
-    ],
+    variants: [],
     states: [
-      { name: "Fechado / aberto", description: "Controlado (`open` + `onOpenChange`) ou não controlado (`defaultOpen`)." },
-      { name: "Ação desabilitada", description: "`disabled` em um item de `actionButtons`." },
-      { name: "Teclado", description: "Escape fecha e devolve o foco ao botão principal; setas percorrem as ações no eixo da direção." },
+      { name: "Fechado", description: "Gatilho em bg-primary, text-primary-foreground e ícone com rotação zero" },
+      { name: "Aberto", description: "Ícone do gatilho rotaciona 45 graus e botões secundários surgem com atraso escalonado" },
+      { name: "Hover", description: "Gatilho muda para bg-primary/90; botões de ação ganham bg-accent e text-accent-foreground" },
+      { name: "Pressionado", description: "Aplica redução de escala com active:scale-(--scale-pressed)" },
+      { name: "Foco", description: "Anel visível com focus-visible:ring-2 focus-visible:ring-ring" },
+      { name: "Desabilitado", description: "Botão de ação com disabled:opacity-50 e sem resposta a cliques" },
     ],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Limite a quantidade de ações secundárias entre 3 e 5 itens para facilitar o alcance.", "Defina rótulos textuais claros e acionáveis para todas as opções secundárias.", "Posicione o gatilho em canto livre da tela sem sobrepor áreas essenciais de leitura."],
+    dontGuidelines: ["Usar como substituto para uma barra de ferramentas com muitas opções fixas → toggle-group.", "Utilizar para acionar apenas um comando isolado sem ações filhas → button ou icon-button.", "Agrupar ações hierárquicas densas ou aninhadas em botão flutuante → dropdown-menu."],
     code: `import { SpeedDial } from "@/components/ui/speed-dial"
 import { Icon } from "@/components/ui/icon"
 
@@ -4466,15 +4550,51 @@ import { Icon } from "@/components/ui/icon"
   direction="up"
   triggerLabel="Ações rápidas"
   actionButtons={[
-    { key: "share", label: "Compartilhar", icon: <Icon name="share" />, action: () => {} },
-    { key: "print", label: "Imprimir", icon: <Icon name="print" />, action: () => {} },
+    {
+      key: "compartilhar",
+      label: "Compartilhar",
+      icon: <Icon name="share" size={1} className="size-4" />,
+      action: () => {},
+    },
+    {
+      key: "imprimir",
+      label: "Imprimir",
+      icon: <Icon name="print" size={1} className="size-4" />,
+      action: () => {},
+    },
   ]}
 />`,
     props: [
-      { name: "actionButtons", type: "{ key, label, icon, action, disabled? }[]", description: "Ações secundárias exibidas ao abrir." },
-      { name: "direction", type: "\"up\" | \"down\" | \"left\" | \"right\"", default: "\"up\"", description: "Para onde as ações se expandem." },
-      { name: "triggerLabel", type: "string", default: "\"Ações rápidas\"", description: "Nome acessível do botão principal." },
-      { name: "open / defaultOpen / onOpenChange", type: "boolean / boolean / (open: boolean) => void", description: "Estado controlado ou não controlado." },
+      { name: "actionButtons", type: "SpeedDialAction[]", default: "—", description: "Lista de ações secundárias com ícone, rótulo e manipulador" },
+      { name: "direction", type: "up · down · left · right", default: "up", description: "Direção para onde as ações secundárias se expandem" },
+      { name: "triggerLabel", type: "string", default: "Ações rápidas", description: "Rótulo acessível anunciado para o botão gatilho" },
+      { name: "defaultOpen", type: "boolean", default: "false", description: "Estado inicial de abertura quando não controlado" },
+      { name: "open · onOpenChange", type: "boolean · (open: boolean) => void", default: "—", description: "Estado controlado de abertura do menu" },
+    ],
+    meta: {
+      nome: "Speed Dial",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/speed-dial.tsx",
+      story: "src/components/ui/speed-dial.stories.tsx",
+      vizinhos: ["button", "icon-button", "dropdown-menu", "split-button"],
+    },
+    whenToUseItems: ["Ações secundárias frequentes em telas operacionais ou móveis, como Compartilhar, Copiar e Imprimir.", "Comandos contextuais rápidos agrupados em um único ponto de contato flutuante.", "Interface onde o espaço visual precisa ficar livre até a pessoa solicitar as opções."],
+    whenNotToUse: ["Apenas uma ação principal direta sem variações secundárias → button ou icon-button.", "Ação principal acompanhada de menu de opções acoplado em linha → split-button.", "Lista extensa de opções ou comandos hierárquicos em menus estruturados → dropdown-menu."],
+    content: ["Rótulo descritivo obrigatório em cada ação de actionButtons: \"Compartilhar\", \"Imprimir\".", "Comece os rótulos de ações sempre com verbos de ação no infinitivo.", "Mantenha triggerLabel claro e em português: \"Ações rápidas\" ou \"Novo registro\"."],
+    accessibility: {
+      keyboard: "Tab foca o gatilho principal. Espaço ou Enter abre o menu. Setas direcionais navegam entre as ações filhas no eixo da expansão. Escape fecha o menu e devolve o foco ao botão principal.",
+      screenReader: "Gatilho possui aria-haspopup=\"menu\", aria-expanded e aria-label configurado por triggerLabel. O contêiner de opções possui role=\"menu\" e cada item possui role=\"menuitem\" com texto em .sr-only.",
+      focus: "Ao fechar via teclado (Escape) ou ao disparar uma ação, o foco retorna imediatamente ao gatilho principal.",
+      cautions: "Forneça sempre ícones com significados reconhecíveis e garanta rótulos textuais claros em todas as ações secundárias (WCAG 1.3.1, 4.1.2).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-background", "bg-primary", "border-border", "text-accent-foreground", "text-foreground", "text-primary-foreground"] },
+      { contexto: "Espaço", itens: ["gap-2", "left-1", "mb-3", "ml-3", "mr-3", "mt-3", "size-10", "size-11", "size-4", "size-5", "top-1"] },
+      { contexto: "Raio", itens: ["rounded-lg", "rounded-xl"] },
+      { contexto: "Sombra", itens: ["shadow-md", "shadow-sm"] },
+      { contexto: "Movimento", itens: ["--motion-duration-base", "--motion-ease-spring", "--scale-pressed", "duration-motion-base", "duration-motion-fast", "ease-spring"] },
+      { contexto: "Foco", itens: ["ring-offset-background", "ring-ring"] },
     ],
   },
   direction: {

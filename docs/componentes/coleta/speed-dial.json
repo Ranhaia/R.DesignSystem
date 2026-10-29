@@ -1,0 +1,63 @@
+{
+  "slug": "speed-dial",
+  "partes": [
+    "SpeedDial"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "direction",
+      "parte": "SpeedDial",
+      "tipo": null,
+      "padrao": "up"
+    },
+    {
+      "nome": "triggerLabel",
+      "parte": "SpeedDial",
+      "tipo": null,
+      "padrao": "Ações rápidas"
+    },
+    {
+      "nome": "defaultOpen",
+      "parte": "SpeedDial",
+      "tipo": null,
+      "padrao": "false"
+    }
+  ],
+  "tokens": [
+    "--motion-duration-base",
+    "--motion-ease-spring",
+    "--scale-pressed",
+    "bg-accent",
+    "bg-background",
+    "bg-primary",
+    "border-border",
+    "duration-motion-base",
+    "duration-motion-fast",
+    "ease-spring",
+    "gap-2",
+    "left-1",
+    "mb-3",
+    "ml-3",
+    "mr-3",
+    "mt-3",
+    "ring-offset-background",
+    "ring-ring",
+    "rounded-lg",
+    "rounded-xl",
+    "shadow-md",
+    "shadow-sm",
+    "size-10",
+    "size-11",
+    "size-4",
+    "size-5",
+    "text-accent-foreground",
+    "text-foreground",
+    "text-primary-foreground",
+    "top-1"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}
