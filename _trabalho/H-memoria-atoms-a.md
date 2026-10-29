@@ -53,6 +53,12 @@ Para cada componente do lote:
    (`- [slug](slug.md) — uma linha`), tire o slug de `PENDENTES_MD` em `src/lib/memoria-componentes.test.ts` e crie a
    chave em `docs/sinonimos.json` se faltar.
 
+Precisão: o MD não pode afirmar o que o código não faz. Em Acessibilidade, Estados e Conteúdo só descreva comportamento que
+está no `.tsx`, na story ou herdado do Radix/biblioteca (confira no código). O que o **chamador** precisa fazer (`aria-hidden`,
+`aria-label`, `aria-busy`…) entra como instrução ("passe `aria-label`"), nunca como se o componente já fizesse. Em "Quando NÃO usar"
+e "NÃO faça", escreva o slug entre crases (`→ \`card\``). Não mude testes existentes além de tirar o slug de `PENDENTES_MD`; se um
+teste parecer errado para o seu componente, registre como Decisão.
+
 Fora do escopo: não altere `src/components/ui/*.tsx`. Se achar defeito no componente (texto em inglês, falta de
 `aria-label`…), documente a armadilha em Cuidados e registre o defeito em `## Contribuições`. Se o registro reprovar com
 "Token sem contexto", pare e registre como Decisão. Lacuna que a coleta deveria ter lido: anote em `## Contribuições`, não
