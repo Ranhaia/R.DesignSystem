@@ -1,0 +1,19 @@
+{
+  "slug": "icon",
+  "partes": [
+    "Icon"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "--font-material-rounded",
+    "--font-material-sharp",
+    "--icon-fill",
+    "--icon-font-family",
+    "--icon-grade",
+    "--icon-optical-size",
+    "--icon-weight"
+  ],
+  "compoe": []
+}

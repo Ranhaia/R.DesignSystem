@@ -2,14 +2,14 @@
 tipo: historia
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: progresso
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/6
+tarefas: 6/6
 bloqueada-por:
 criado: 2026-10-29
 fechado:
@@ -64,13 +64,20 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `box` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `icon` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `label` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `skeleton` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `box` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `icon` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `label` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `skeleton` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- 2026-10-29 · antigravity · Registrar e declarar box: docs:registrar executado, intenção declarada em docs/componentes/box.md com vizinhos [card, separator, item] e referências [spec:box]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar icon: docs:registrar executado, intenção declarada em docs/componentes/icon.md com vizinhos [icon-button, button, spinner] e referências [shadcn:icon]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar label: docs:registrar executado, intenção declarada em docs/componentes/label.md com vizinhos [field, text, tooltip] e referências [passi:campo-de-texto, shadcn:label]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar skeleton: docs:registrar executado, intenção declarada em docs/componentes/skeleton.md com vizinhos [spinner, progress, card] e referências [passi:carregando, shadcn:skeleton]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Encaixar lote primitivos a: box, icon, label e skeleton adicionados ao README.md da porta de entrada, removidos de PENDENTES_MD em memoria-componentes.test.ts e sinonimos.json atualizado com chaves de box e icon. Prova: vitest memoria-componentes.test.ts e docs:check verdes.
+- 2026-10-29 · antigravity · Validação final da suíte: npx tsc --noEmit (0 erros), npm run test:unit (29 arquivos, 1633 testes passando) e npm run docs:check verdes. Ajustado teste component-docs.campos.test.ts para permitir componente sem tokens (box).
 
 ## Histórico

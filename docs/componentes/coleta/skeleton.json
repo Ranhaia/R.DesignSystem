@@ -1,0 +1,14 @@
+{
+  "slug": "skeleton",
+  "partes": [
+    "Skeleton"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [],
+  "tokens": [
+    "bg-accent",
+    "rounded-md"
+  ],
+  "compoe": []
+}

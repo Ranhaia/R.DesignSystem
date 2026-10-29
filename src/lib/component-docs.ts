@@ -201,39 +201,42 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   box: {
-    description: "Utilitário de layout para agrupar e espaçar elementos ou componentes — um container flexível, sem estilo próprio.",
-    whenToUse: "Use para construir containers, agrupar elementos e posicionar/espaçar conteúdo (padding, margin, borda, cor de fundo) via classes Tailwind aplicadas em `className` — Box não expõe props de estilo nomeadas, o estilo é 100% via `className`.",
+    description: "Container flexível e sem estilo próprio para agrupar e organizar elementos no layout. O visual, espaçamento e alinhamento vêm das classes utilitárias do Tailwind.",
+    whenToUse: "Agrupar e espaçar elementos lado a lado ou em coluna num layout simples. Criar containers genéricos com fundo, borda ou espaçamento customizados via classes do Tailwind. Renderizar tags HTML semânticas como section ou article com polimorfismo via asChild.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <div> (ou o filho, via asChild) com data-slot=\"box\". Nenhuma classe de estilo própria — 100% do visual vem de `className`." },
+      { part: "Box", description: "Elemento raiz (div ou o elemento filho via asChild) com data-slot=\"box\"" },
     ],
     variants: [],
-    states: [
-      { name: "Default", description: "Único estado — Box não tem interatividade nem estado próprio; qualquer estado visual (hover, disabled, etc.) é responsabilidade do conteúdo/className passado pelo chamador." },
-    ],
+    states: [],
     sizes: [],
-    doGuidelines: ["[a preencher]"],
-    dontGuidelines: ["[a preencher]"],
+    doGuidelines: ["Use utilitários do Tailwind para controlar padding, gap e alinhamento do container.", "Use asChild quando precisar que o container seja uma tag semântica como section ou header.", "Combine com tokens de cor e borda para manter a consistência do sistema."],
+    dontGuidelines: ["Usar Box quando um container semântico com padrão visual próprio já existe → card.", "Criar divisões estruturais usando estilos arbitrários em vez de tokens do sistema → use classes utilitárias baseadas em tokens.", "Deixar de fornecer rotulagem acessível ao transformar Box em um marco de navegação → forneça aria-label ou aria-labelledby."],
     code: `import { Box } from "@/components/ui/box"
 
-// Box como container simples — padding/borda/cor via className
-<Box className="rounded-md border bg-muted p-4 text-sm text-foreground">
-  Conteúdo do container.
-</Box>
-
-// Box como layout flex
-<Box className="flex items-center justify-between gap-2 rounded-md border p-4">
-  <span>Rótulo</span>
-  <span className="text-muted-foreground">Valor</span>
-</Box>
-
-// Box polimórfico via asChild — renderiza como <section>
-<Box asChild className="rounded-md border border-dashed p-4">
-  <section aria-label="Exemplo">Conteúdo</section>
+<Box className="flex items-center justify-between gap-4 rounded-md border p-4">
+  <span>Status do sistema</span>
+  <span className="text-sm text-muted-foreground">Operacional</span>
 </Box>`,
     props: [
-      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as props no elemento filho (via Radix Slot) em vez de <div> — mecanismo de polimorfismo já convencionado no catálogo (Chip/Badge/Button), equivalente funcional à prop `as` do Nimbus." },
-      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Demais atributos nativos do elemento raiz, incluindo `className` — mecanismo real de estilização do Box (padding, margin, display, flex, cor via token, etc.), já que o componente não expõe props de estilo nomeadas." },
+      { name: "asChild", type: "boolean", default: "false", description: "Renderiza as propriedades no elemento filho via Radix Slot em vez de criar uma div" },
     ],
+    meta: {
+      nome: "Box",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/box.tsx",
+      story: "src/components/ui/box.stories.tsx",
+      vizinhos: ["card", "separator", "item"],
+    },
+    whenToUseItems: ["Agrupar e espaçar elementos lado a lado ou em coluna num layout simples.", "Criar containers genéricos com fundo, borda ou espaçamento customizados via classes do Tailwind.", "Renderizar tags HTML semânticas como section ou article com polimorfismo via asChild."],
+    whenNotToUse: ["Agrupar informações com superfície, borda e cabeçalho padronizados → card.", "Dividir seções apenas com uma linha fina visual → separator.", "Organizar itens estruturados dentro de uma lista interativa → item."],
+    content: ["Não tem texto próprio.", "O texto e a hierarquia tipográfica são definidos pelos elementos filhos ou pelo componente text."],
+    accessibility: {
+      keyboard: "Não recebe foco diretamente.",
+      screenReader: "É um container neutro sem papel semântico padrão (div). Quando usado como marco estrutural, combine asChild com uma tag semântica ou adicione role e aria-label.",
+      focus: "Não retém nem altera o fluxo de foco. O foco passa normalmente para os elementos filhos focáveis.",
+      cautions: "Não substitua marcos semânticos da página (main, nav, aside) por simples div sem a devida identificação estrutural (WCAG 1.3.1).",
+    },
   },
   checkbox: {
     description: "Um controle que permite ao usuário alternar entre marcado e desmarcado.",
@@ -480,25 +483,49 @@ import { Icon } from "@/components/ui/icon"
     ],
   },
   label: {
-    description: "Renderiza um rótulo acessível associado a controles de formulário.",
-    whenToUse: "Use para nomear um campo ou controle, associando-o via htmlFor para leitores de tela.",
+    description: "Rótulo acessível associado a controles de formulário. Identifica a finalidade do campo e amplia a área de clique para focar ou alternar o controle.",
+    whenToUse: "Nomear campos de formulário como inputs, textareas, checkboxes e switches. Fornecer um rótulo clicável que transfere o foco diretamente para o controle associado. Apresentar o título identificador de opções em grupos de escolha.",
     anatomy: [
-      { part: "Elemento raiz", description: "LabelPrimitive.Root, renderiza <label> com data-slot=\"label\"." },
+      { part: "Label", description: "Elemento raiz com data-slot=\"label\", tipografia text-sm font-medium e tratamento de estado desabilitado" },
     ],
     variants: [],
     states: [
-      { name: "Default", description: "Estado de repouso." },
-      { name: "Disabled", description: "Herdado via group-data-[disabled=true] ou peer-disabled quando associado a um controle desativado." },
+      { name: "Padrão", description: "Texto em font-medium text-sm, selecionável sem foco próprio" },
+      { name: "Desabilitado", description: "Opacidade reduzida e cursor não permitido quando o controle associado está inativo" },
     ],
     sizes: [],
-    doGuidelines: ["Associe ao campo com htmlFor. Mantenha o texto curto e descritivo."],
-    dontGuidelines: ["Não use label para texto de ajuda ou instruções — use helpText. Não duplique label em Checkbox/Radio."],
-    code: `import { Label } from "@/components/ui/label"
+    doGuidelines: ["Vincule sempre a propriedade htmlFor ao id do controle correspondente.", "Mantenha o rótulo sempre visível acima ou ao lado do campo que identifica.", "Use texto conciso que descreva com clareza o dado solicitado."],
+    dontGuidelines: ["Usar texto de placeholder como substituto do rótulo visível → mantenha o Label acima do campo.", "Usar Label para parágrafos explicativos longos ou textos soltos → text.", "Agrupar campo, mensagem de ajuda e erro manualmente com Label solto → field."],
+    code: `import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
-<Label htmlFor="email">E-mail</Label>`,
+<div className="grid gap-2">
+  <Label htmlFor="email">E-mail</Label>
+  <Input id="email" type="email" placeholder="nome@exemplo.com" />
+</div>`,
     props: [
-      { name: "htmlFor", type: "string", description: "Associa o label ao id do controle." },
-      { name: "...props", type: "React.ComponentProps<typeof LabelPrimitive.Root>", description: "Demais props do Radix Label." },
+      { name: "htmlFor", type: "string", default: "—", description: "Identificador do elemento de formulário associado a este rótulo" },
+    ],
+    meta: {
+      nome: "Label",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/label.tsx",
+      story: "src/components/ui/label.stories.tsx",
+      vizinhos: ["field", "text", "tooltip"],
+    },
+    whenToUseItems: ["Nomear campos de formulário como inputs, textareas, checkboxes e switches.", "Fornecer um rótulo clicável que transfere o foco diretamente para o controle associado.", "Apresentar o título identificador de opções em grupos de escolha."],
+    whenNotToUse: ["Compor campo com rótulo, descrição de ajuda e mensagem de erro estruturados → field.", "Exibir texto informativo que não está associado a nenhum controle de formulário → text.", "Explicar um conceito complexo ou termo técnico em uma dica suspensa → tooltip."],
+    content: ["Rótulo curto e direto, sem ponto final e sem dois-pontos: \"Nome completo\", \"E-mail\".", "Indique termos opcionais com a palavra \"(opcional)\" por extenso quando a maioria dos campos for obrigatória.", "Nunca use o texto de exemplo (placeholder) em substituição ao rótulo visível."],
+    accessibility: {
+      keyboard: "Não recebe foco pelo Tab. Clicar no rótulo transfere o foco automaticamente para o controle referenciado por htmlFor.",
+      screenReader: "Anunciado como nome acessível do controle ao qual está associado via htmlFor ou quando envolve o elemento de entrada.",
+      focus: "Não retém foco próprio. Ao receber clique, encaminha o foco para o controle interativo associado.",
+      cautions: "Sempre associe o rótulo ao campo correspondente através de htmlFor casando com o id do elemento, garantindo conformidade com a WCAG 1.3.1 e 3.3.2.",
+    },
+    tokens: [
+      { contexto: "Tipografia", itens: ["font-medium", "leading-none", "text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2"] },
     ],
   },
   progress: {
@@ -611,21 +638,50 @@ import { Label } from "@/components/ui/label"
     ],
   },
   skeleton: {
-    description: "Use para mostrar um espaço reservado (placeholder) enquanto o conteúdo está carregando.",
-    whenToUse: "Use enquanto os dados reais ainda não chegaram, para indicar onde o conteúdo vai aparecer.",
+    description: "Placeholder com animação de pulso que antecipa o formato do conteúdo durante o carregamento. Reduz a percepção de espera simulando a estrutura visual da tela.",
+    whenToUse: "Indicar carregamento assíncrono de dados quando a estrutura final do layout já é conhecida (cards, listas, textos). Preservar o espaço ocupado por imagens, títulos e blocos para evitar saltos de layout (CLS). Compor telas de carregamento estruturadas combinando formas retangulares, circulares e linhas de texto.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <div> com animate-pulse — o tamanho/forma vem 100% da className (h-4 w-32, rounded-full, etc.)." },
+      { part: "Skeleton", description: "Elemento raiz com data-slot=\"skeleton\", animação de pulso suave e fundo bg-accent" },
     ],
     variants: [],
-    states: [],
+    states: [
+      { name: "Carregando", description: "Pulso contínuo com animate-pulse sobre fundo bg-accent com cantos rounded-md" },
+    ],
     sizes: [],
-    doGuidelines: ["Use para indicar carregamento de conteúdo com formato similar ao componente final."],
-    dontGuidelines: ["Não use skeleton para operações instantâneas. Não mantenha skeleton por mais de alguns segundos sem feedback."],
+    doGuidelines: ["Reproduza a geometria e a proporção do componente real que será exibido.", "Use rounded-full para avatares e rounded-md com alturas consistentes para blocos de texto.", "Agrupe múltiplos skeletons na mesma disposição do layout final com classes de grid ou flex."],
+    dontGuidelines: ["Usar skeleton quando o tempo de resposta é quase instantâneo → renderize o conteúdo diretamente sem piscar.", "Usar skeleton quando a estrutura final do conteúdo for totalmente imprevisível → spinner.", "Manter o skeleton ativo indefinidamente quando a requisição falhar → exiba mensagem de erro com alert."],
     code: `import { Skeleton } from "@/components/ui/skeleton"
 
-<Skeleton className="h-4 w-32" />`,
+<div className="flex items-center gap-4">
+  <Skeleton className="size-12 rounded-full" />
+  <div className="space-y-2">
+    <Skeleton className="h-4 w-48" />
+    <Skeleton className="h-4 w-32" />
+  </div>
+</div>`,
     props: [
-      { name: "...props", type: "React.ComponentProps<\"div\">", description: "Atributos nativos de <div> — a forma é controlada via className." },
+      { name: "className", type: "string", default: "—", description: "Classes do Tailwind para definir altura, largura e raio compatíveis com o conteúdo final" },
+    ],
+    meta: {
+      nome: "Skeleton",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/skeleton.tsx",
+      story: "src/components/ui/skeleton.stories.tsx",
+      vizinhos: ["spinner", "progress", "card"],
+    },
+    whenToUseItems: ["Indicar carregamento assíncrono de dados quando a estrutura final do layout já é conhecida (cards, listas, textos).", "Preservar o espaço ocupado por imagens, títulos e blocos para evitar saltos de layout (CLS).", "Compor telas de carregamento estruturadas combinando formas retangulares, circulares e linhas de texto."],
+    whenNotToUse: ["Espera sem formato previsível ou quando a duração é indeterminada e rápida → spinner.", "Processo com porcentagem, etapas ou progresso numérico mensurável → progress.", "Estado de tela sem nenhum dado para exibir após o carregamento → empty."],
+    content: ["Não tem texto próprio nem exibe caracteres legíveis.", "O tamanho e a proporção devem mimetizar a extensão média do texto ou imagem que substituirá.", "Em parágrafos simulados, a última linha deve ter largura menor para sugerir uma quebra de linha natural."],
+    accessibility: {
+      keyboard: "Não recebe foco. Fica fora da ordem de tabulação.",
+      screenReader: "Deve ser omitido de anúncios individuais (aria-hidden=\"true\"); a área mãe deve utilizar aria-busy=\"true\" ou uma região viva discreta.",
+      focus: "Não move nem retém o foco. O foco do usuário é mantido onde estava até que o conteúdo real termine de ser montado.",
+      cautions: "A animação de pulso deve respeitar a preferência de movimento reduzido (prefers-reduced-motion), e a substituição do skeleton não pode causar saltos de layout (WCAG 2.3.3).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent"] },
+      { contexto: "Raio", itens: ["rounded-md"] },
     ],
   },
   slider: {
@@ -3167,44 +3223,48 @@ import { toast } from "sonner"
     ],
   },
   icon: {
-    description: "Renderiza um ícone do Google Material Symbols com suporte a variantes (fill, weight, grade, optical size) e cores do tema.",
-    whenToUse: "Para ilustrar ações, estados ou seções dentro de botões, menus, cards e mensagens. Use quando um conceito é mais claro visualmente do que com texto.",
+    description: "Renderiza um glifo do Material Symbols com controle de eixos variáveis e suporte a cor do tema. Usado para apoiar ações, estados e navegação.",
+    whenToUse: "Ilustrar ações e comandos dentro de botões, menus e barras de ferramentas. Reforçar o significado visual de alertas, badges e itens de listas informativas. Indicar estados do sistema como sucesso, erro ou aviso ao lado de texto explicativo.",
     anatomy: [
-      { part: "Elemento raiz", description: "Um <svg viewBox=\"0 0 24 24\"> com data-slot=\"icon\". Recebe aria-hidden=\"true\" automaticamente, exceto quando o chamador já passou aria-label/aria-labelledby/role (ex.: Spinner)." },
-      { part: "Glifo (<text>)", description: "Ligadura de texto (nome do ícone do Material Symbols) renderizada via <text>, com fontVariationSettings controlando os eixos FILL/wght/GRAD/opsz do glifo variável." },
+      { part: "Icon", description: "Elemento raiz SVG com data-slot=\"icon\" que gerencia acessibilidade e dimensões" },
+      { part: "Glifo", description: "Elemento de texto interno que renderiza a ligadura do Material Symbols" },
     ],
-    variants: [
-      { name: "Rounded", value: "rounded", description: "Family Material Symbols Rounded — default do preset ativo se a prop `rounded` não for informada." },
-      { name: "Sharp", value: "sharp", description: "Family Material Symbols Sharp, ativada com `rounded={false}`." },
-      { name: "Fill", value: "fill", description: "Eixo FILL do glifo variável — preenchido (true) ou apenas contorno (false/ausente, usa --icon-fill do preset)." },
-    ],
+    variants: [],
     states: [],
-    sizes: [
-      { name: "Auto (herdado)", value: "auto", description: "Sem a prop `size`, herda o tamanho do elemento ambiente (ex.: size-4 dentro de um Button), igual ao comportamento antigo do lucide-react." },
-      { name: "Customizado", value: "custom", description: "Com a prop `size` (em rem), define width/height inline e recalcula o optical size automaticamente via computeOpticalSize, a menos que `opticalSize` seja passado explicitamente." },
-    ],
-    doGuidelines: ["Escolha ícones com significado universal e reconhecível. Use aria-label quando o ícone for o único elemento interativo. Mantenha consistência — não misture famílias de ícones."],
-    dontGuidelines: ["Não use ícone como único feedback de estado crítico — sempre acompanhe de texto. Não use ícones decorativos sem contexto acessível. Não distorça a proporção original."],
+    sizes: [],
+    doGuidelines: ["Acompanhe o ícone de texto explicativo sempre que o significado não for universal.", "Use aria-hidden=\"true\" para ícones puramente decorativos ao lado de rótulos de texto.", "Defina tamanhos proporcionais à escala tipográfica do elemento pai ou contexto visual."],
+    dontGuidelines: ["Usar ícone isolado sem rótulo textual em um botão interativo → icon-button com aria-label.", "Usar cor ou ícone como único indicador de status crítico ou erro → combine com mensagem textual clara.", "Utilizar ícone estático para indicar espera ou carregamento em andamento → spinner."],
     code: `import { Icon } from "@/components/ui/icon"
 
-<Icon name="check_circle" />
-
-// Tamanho customizado (rem) + fill ativado
-<Icon name="favorite" size={1.5} fill />
-
-// Ícone como único elemento interativo — precisa de aria-label
-<Button size="icon" aria-label="Excluir">
-  <Icon name="delete" aria-label="Excluir" />
-</Button>`,
+<Icon name="check_circle" className="size-5 text-primary" />`,
     props: [
-      { name: "name", type: "MaterialSymbol", description: "Nome do ícone no catálogo do Google Material Symbols (tipagem via pacote material-symbols)." },
-      { name: "size", type: "number", description: "Tamanho em rem. Ausente = herda o auto-tamanho ambiente." },
-      { name: "rounded", type: "boolean", description: "true = Material Symbols Rounded, false = Sharp. Ausente = default do preset ativo (--icon-font-family)." },
-      { name: "fill", type: "boolean", description: "Ativa a variação FILL do glifo (preenchido). Ausente = usa --icon-fill do preset." },
-      { name: "weight", type: "number", description: "Eixo wght do glifo variável. Ausente = usa --icon-weight do preset." },
-      { name: "grade", type: "number", description: "Eixo GRAD do glifo variável. Ausente = usa --icon-grade do preset." },
-      { name: "opticalSize", type: "number", description: "Eixo opsz do glifo variável. Ausente = calculado automaticamente a partir de `size` (computeOpticalSize) ou usa --icon-optical-size do preset." },
-      { name: "...props", type: "React.ComponentProps<\"svg\">", description: "Todos os atributos nativos de <svg> (aria-label, role, className, style, etc.), exceto `name` e `fill` (sobrescritos pela API pública do componente)." },
+      { name: "name", type: "MaterialSymbol", default: "—", description: "Nome do símbolo no catálogo do Google Material Symbols" },
+      { name: "size", type: "number", default: "—", description: "Tamanho do ícone em rem. Quando omitido, herda a dimensão do elemento pai" },
+      { name: "fill", type: "boolean", default: "—", description: "Ativa o preenchimento do glifo quando verdadeiro, ou contorno quando falso" },
+      { name: "rounded", type: "boolean", default: "—", description: "Alterna entre as famílias Material Symbols Rounded e Sharp" },
+      { name: "weight", type: "number", default: "—", description: "Espessura do traço do símbolo (eixo wght da fonte variável)" },
+      { name: "grade", type: "number", default: "—", description: "Ajuste fino de ênfase visual do glifo (eixo GRAD)" },
+      { name: "opticalSize", type: "number", default: "—", description: "Tamanho óptico (eixo opsz), calculado automaticamente quando size é informado" },
+    ],
+    meta: {
+      nome: "Icon",
+      camada: "primitive",
+      status: "piloto",
+      codigo: "src/components/ui/icon.tsx",
+      story: "src/components/ui/icon.stories.tsx",
+      vizinhos: ["icon-button", "button", "spinner"],
+    },
+    whenToUseItems: ["Ilustrar ações e comandos dentro de botões, menus e barras de ferramentas.", "Reforçar o significado visual de alertas, badges e itens de listas informativas.", "Indicar estados do sistema como sucesso, erro ou aviso ao lado de texto explicativo."],
+    whenNotToUse: ["Ação interativa que contém apenas o ícone, sem texto → icon-button.", "Disparar uma ação com texto e ícone de suporte → button.", "Indicar espera ou carregamento contínuo sem direção definida → spinner."],
+    content: ["Não tem texto legível próprio; renderiza um símbolo visual.", "Deve sempre acompanhar texto de apoio ou receber rótulo acessível quando utilizado em elementos interativos.", "Mantenha o mesmo estilo e família de ícones em todo o fluxo da interface."],
+    accessibility: {
+      keyboard: "Não recebe foco diretamente. Quando inserido dentro de um controle interativo, o foco é tratado pelo componente pai.",
+      screenReader: "Recebe aria-hidden=\"true\" por padrão para ser ignorado como elemento decorativo. Se atributos como aria-label, aria-labelledby ou role forem fornecidos, eles são preservados no SVG.",
+      focus: "Não recebe nem retém foco.",
+      cautions: "Nunca transmita uma informação crítica apenas pela presença do ícone sem alternativa em texto visível ou audível (WCAG 1.1.1 e 1.4.1).",
+    },
+    tokens: [
+      { contexto: "Ícone", itens: ["--font-material-rounded", "--font-material-sharp", "--icon-fill", "--icon-font-family", "--icon-grade", "--icon-optical-size", "--icon-weight"] },
     ],
   },
   files: {
