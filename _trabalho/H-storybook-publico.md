@@ -1,5 +1,6 @@
 ---
 tipo: historia
+codigo: 006
 projeto: 🎨 P-DS-SHADCN
 epico: E-case-publico
 status: descartado

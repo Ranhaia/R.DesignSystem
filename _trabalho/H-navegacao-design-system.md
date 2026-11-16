@@ -1,5 +1,6 @@
 ---
 tipo: historia
+codigo: 002
 projeto: 🎨 P-DS-SHADCN
 epico: E-documentacao-ds
 status: entregue

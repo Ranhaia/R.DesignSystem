@@ -1,5 +1,6 @@
 ---
 tipo: historia
+codigo: 03Y
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
 status: entregue

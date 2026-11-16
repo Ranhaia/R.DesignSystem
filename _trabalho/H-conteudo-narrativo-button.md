@@ -1,5 +1,6 @@
 ---
 tipo: historia
+codigo: 000
 projeto: 🎨 P-DS-SHADCN
 epico: E-documentacao-ds
 status: aguardando
