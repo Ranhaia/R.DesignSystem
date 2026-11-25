@@ -1,0 +1,96 @@
+# R.DS
+
+> Design System operacional em Next.js + shadcn/ui + Tailwind v4, em atomic design, para montar telas funcionais por IA. Só token, nada fixo.
+
+Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Markdown abaixo; use só o que está listado.
+
+## Primitivos
+
+- [Box](/ia/componentes/box.md): Container flexível e sem estilo próprio para agrupar e organizar elementos no layout. O visual, espaçamento e alinhamento vêm das classes utilitárias do Tailwind.
+- [Direction](/ia/componentes/direction.md): Diz aos componentes qual é o sentido de leitura (da esquerda para a direita ou o contrário). É base que os outros consomem: não renderiza nada.
+- [Icon](/ia/componentes/icon.md): Renderiza um glifo do Material Symbols com controle de eixos variáveis e suporte a cor do tema. Usado para apoiar ações, estados e navegação.
+- [Label](/ia/componentes/label.md): Rótulo acessível associado a controles de formulário. Identifica a finalidade do campo e amplia a área de clique para focar ou alternar o controle.
+- [Separator](/ia/componentes/separator.md): Linha fina que separa grupos de conteúdo dentro do mesmo container. Use com moderação: espaço costuma separar melhor do que linha.
+- [Skeleton](/ia/componentes/skeleton.md): Placeholder com animação de pulso que antecipa o formato do conteúdo durante o carregamento. Reduz a percepção de espera simulando a estrutura visual da tela.
+- [Text](/ia/componentes/text.md): Formata blocos de texto e parágrafos com escala tipográfica e peso definidos. Garante a semântica correta com a tag HTML adequada.
+- [Title](/ia/componentes/title.md): Aplica hierarquia visual e semântica a cabeçalhos e títulos de páginas ou seções. Permite desacoplar a tag HTML semântica da escala visual aplicada.
+
+## Atoms
+
+- [Aspect Ratio](/ia/componentes/aspect-ratio.md): Mantém a proporção exata entre largura e altura de imagens, vídeos e embeds. Evita que o layout mude de tamanho enquanto o conteúdo carrega.
+- [Avatar](/ia/componentes/avatar.md): Representa visualmente uma pessoa, conta ou organização. Exibe a foto do usuário com fallback automático para iniciais ou ícone quando a imagem não carregar.
+- [Badge](/ia/componentes/badge.md): Rótulo compacto para destacar status, contagem ou metadado associado a um item. Componente puramente informativo, projetado para leitura e não para interação direta.
+- [Button](/ia/componentes/button.md): Dispara uma ação. O texto diz exatamente o que vai acontecer: "Salvar alterações", não "OK".
+- [Checkbox](/ia/componentes/checkbox.md): Permite marcar ou desmarcar opções independentes em formulários e listagens. Suporta estados marcado, desmarcado e indeterminado.
+- [File Uploader](/ia/componentes/file-uploader.md): Área interativa para envio de arquivos por clique ou arrastar e soltar (drag and drop). Atua como zona de captura acessível associada a um campo de arquivo nativo.
+- [Input Otp](/ia/componentes/input-otp.md): Campo especializado para captura de códigos de verificação pontuais (OTP/2FA). Distribui os caracteres em casas individuais com avanço automático e suporte a colar o código completo.
+- [Input](/ia/componentes/input.md): Campo de entrada para capturar textos ou valores de linha única. Dá suporte a rótulo embutido ou flutuante e ação interativa no final.
+- [Item](/ia/componentes/item.md): Linha estruturada para exibir informações com mídia, texto e ações em listas e coleções. Organiza metadados, títulos e controles com espaçamento consistente.
+- [Kbd](/ia/componentes/kbd.md): Indica teclas ou combinações de atalhos de teclado em formato visual compacto. Usado em menus, tooltips, campos de busca e documentação técnica.
+- [Link](/ia/componentes/link.md): Permite navegar entre páginas, seções internas ou sites externos. Reaproveita o estilo visual de link do botão e dá suporte a indicador de saída externa e carregamento esqueleto.
+- [List](/ia/componentes/list.md): Organiza informações textuais ou blocos de conteúdo verticalmente em lista. Suporta formato ordenado ou não ordenado, com ou sem marcadores visuais.
+- [Marker](/ia/componentes/marker.md): Exibe status em linha, notas de sistema ou divisores rotulados em conversas e fluxos. Destaca eventos intermediários com ícone opcional e linhas delimitadoras.
+- [Native Select](/ia/componentes/native-select.md): Menu suspenso que usa o elemento select nativo do navegador para escolher uma opção em uma lista. Garante a melhor experiência nativa em dispositivos móveis e formulários simples.
+- [Popover](/ia/componentes/popover.md): Painel flutuante acionado por clique que exibe conteúdo rico, configurações rápidas ou detalhes adicionais. Mantém a pessoa no contexto da tela sem a interrupção de uma janela modal.
+- [Progress](/ia/componentes/progress.md): Barra indicadora que exibe visualmente o avanço de uma tarefa com duração determinada. Comunica a porcentagem concluída em uploads, downloads ou etapas de processamento.
+- [Radio Group](/ia/componentes/radio-group.md): Conjunto de botões de opção exclusivos em que a pessoa seleciona exatamente uma alternativa. Ao marcar uma opção nova, a escolha anterior é desmarcada automaticamente.
+- [Select](/ia/componentes/select.md): Menu suspenso customizado acionado por botão para seleção de uma opção em uma lista. Suporta itens estruturados com ícones, grupos de opções e rótulo integrado ou animado.
+- [Slider](/ia/componentes/slider.md): Controle deslizante que permite selecionar um valor ou intervalo contínuo arrastando um ou mais marcadores sobre um trilho. Ideal para ajustes visuais e valores aproximados.
+- [Spinner](/ia/componentes/spinner.md): Indicador giratório para esperas de tempo indeterminado. Mostra que o sistema está ocupado processando uma ação.
+- [Switch](/ia/componentes/switch.md): Controle deslizante binário para ativar ou desativar uma preferência. A alteração tem efeito imediato e dispensa botão de confirmação.
+- [Tag](/ia/componentes/tag.md): Rótulo estático para categorização, metadados e indicação de status. Organiza informações sem disparar ações nem remover filtros.
+- [Textarea](/ia/componentes/textarea.md): Campo de entrada para textos longos de múltiplas linhas. Expande verticalmente conforme o conteúdo digitado graças ao dimensionamento automático.
+- [Thumbnail](/ia/componentes/thumbnail.md): Miniatura visual de imagem com proporção fixa e cantos arredondados. Oferece fallback integrado para erros de carregamento e preserva o layout.
+- [Toggle](/ia/componentes/toggle.md): Botão de dois estados que alterna entre ativado e desativado. Preserva a escolha visualmente para formatações ou marcações independentes.
+- [Tooltip](/ia/componentes/tooltip.md): Balão flutuante que exibe uma explicação curta quando o usuário passa o mouse ou foca um elemento. Descreve ações sem poluir a interface.
+
+## Molecules
+
+- [Accordion](/ia/componentes/accordion.md): Organiza o conteúdo em seções empilhadas que expandem e recolhem. Permite explorar tópicos sob demanda sem sobrecarregar a rolagem da página.
+- [Alert](/ia/componentes/alert.md): Exibe uma mensagem contextual fixa na página para informar, orientar ou alertar a pessoa. Permanece visível junto ao conteúdo relevante até ser resolvida ou dispensada.
+- [Attachment](/ia/componentes/attachment.md): Exibe um anexo de arquivo ou mídia com metadados, miniatura, estado de processamento e ações rápidas. Representa arquivos já selecionados ou enviados em formulários e conversas.
+- [Breadcrumb](/ia/componentes/breadcrumb.md): Mostra a localização da página atual na hierarquia do site e o caminho percorrido. Permite navegar diretamente para qualquer nível ancestral da estrutura.
+- [Bubble](/ia/componentes/bubble.md): Exibe o texto ou mídia de uma mensagem em formato de balão de conversa. Oferece variantes de destaque, alinhamento direcional para remetente ou destinatário e suporte a reações.
+- [Button Group](/ia/componentes/button-group.md): Agrupa visualmente botões e controles relacionados com cantos e bordas combinados. Mantém alinhamento consistente entre ações complementares, como confirmação e cancelamento ou botões com seletor.
+- [Card](/ia/componentes/card.md): Agrupa informações e ações sobre o mesmo assunto em uma superfície delimitada. Funciona como unidade visual para organizar painéis, resumos e blocos de conteúdo.
+- [Chip](/ia/componentes/chip.md): Sinaliza um critério ou atributo ativo aplicado a uma busca ou filtragem de lista. Permite ao usuário visualizar e remover regras ativas.
+- [Collapsible](/ia/componentes/collapsible.md): Alterna a visibilidade de uma seção de conteúdo secundário sob demanda. Mantém a página limpa ao esconder blocos opcionais sem a estrutura de um acordeão.
+- [Empty](/ia/componentes/empty.md): Comunica um estado vazio em listas, tabelas ou telas sem dados. Orienta a pessoa sobre o que deveria estar ali e oferece o próximo passo.
+- [Field](/ia/componentes/field.md): Estrutura controles de formulário combinando rótulo, descrição, erros e agrupamentos acessíveis. Garante a conexão semântica correta entre as partes do campo.
+- [Hover Card](/ia/componentes/hover-card.md): Exibe uma prévia flutuante de informações enriquecidas ao passar o mouse ou focar um link. Permite consultar contexto adicional sem navegar até outra página.
+- [Icon Button](/ia/componentes/icon-button.md): Dispara uma ação representada exclusivamente por um ícone visual, sem rótulo textual visível. O nome acessível é obrigatório via tipagem estática para navegação acessível.
+- [Input Group](/ia/componentes/input-group.md): Agrupa um campo de entrada com elementos auxiliares como ícones, botões, atalhos ou textos em uma única borda unificada. Resolve a integração visual de ações diretas no campo, como busca, limpar ou envio.
+- [Message](/ia/componentes/message.md): Estrutura cada turno de fala em interfaces conversacionais ou fluxos de chat. Organiza avatar, cabeçalho, corpo da mensagem e rodapé de ações conforme o emissor.
+- [Pagination](/ia/componentes/pagination.md): Divide listas e conjuntos volumosos de dados em páginas sequenciais numeradas. Facilita o salto direto entre blocos de conteúdo e o controle de avanço e retrocesso.
+- [Scroll Area](/ia/componentes/scroll-area.md): Fornece uma área de rolagem com barras customizadas e comportamento consistente entre diferentes navegadores e sistemas operacionais. Resolve a contenção de conteúdos extensos dentro de dimensões fixas sem depender de barras nativas discrepantes.
+- [SegmentedControl](/ia/componentes/segmented-control.md): Alterna entre opções mutuamente excludentes em formato de pílula contínua com seleção estritamente única. Oferece troca imediata de modo ou visualização na mesma tela sem acoplamento a painéis de conteúdo.
+- [Sonner](/ia/componentes/sonner.md): Confirma uma ação ou exibe um aviso rápido sem interromper a pessoa. Permanece na tela por alguns segundos e desaparece sozinho.
+- [Speed Dial](/ia/componentes/speed-dial.md): Botão de ação flutuante que se expande em uma sequência de ações secundárias relacionadas. Permite acessar comandos rápidos sem ocupar espaço permanente na tela.
+- [Table](/ia/componentes/table.md): Organiza informações em linhas e colunas para visualização, comparação e consulta estruturada. Conta com contêiner responsivo com rolagem horizontal automática.
+- [Tabs](/ia/componentes/tabs.md): Divide um conteúdo em partes e mostra uma de cada vez, sem sair da página. A aba ativa fica destacada para a pessoa saber onde está.
+- [Toggle Group](/ia/componentes/toggle-group.md): Agrupa botões de alternância de dois estados para seleção única ou múltipla. Ideal para barras de ferramentas, formatação e filtros visuais compactos.
+- [TreeSelect](/ia/componentes/tree-select.md): Campo de seleção em árvore que permite escolher itens estruturados em hierarquia dentro de um painel flutuante. Suporta seleção única, múltipla independente ou em cascata com caixas de marcação.
+
+## Organisms
+
+- [Alert Dialog](/ia/componentes/alert-dialog.md): Interrompe o fluxo da tela com um aviso crítico e exige resposta explícita antes de continuar. Diferente do diálogo comum, não fecha ao clicar fora.
+- [Calendar](/ia/componentes/calendar.md): Exibe uma grade mensal interativa para seleção visual de uma data ou período. Já vem configurado com localização pt-BR por padrão.
+- [Carousel](/ia/componentes/carousel.md): Exibe uma sequência de itens e painéis navegáveis horizontalmente ou verticalmente, com suporte a gestos de toque baseado em Embla Carousel.
+- [Chart](/ia/componentes/chart.md): Container e utilitários para renderização de gráficos baseados em Recharts, com suporte a variáveis de cor e tooltips temáticos.
+- [Combobox](/ia/componentes/combobox.md): Combina um campo de entrada de texto com menu suspenso de sugestões filtradas sob demanda, suportando seleção única ou múltipla por chips.
+- [Command](/ia/componentes/command.md): Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado. Funciona inline na página ou dentro de uma janela modal para paleta de comandos.
+- [Context Menu](/ia/componentes/context-menu.md): Menu contextual flutuante acionado pelo clique com o botão direito do mouse ou toque longo. Agrupa ações específicas aplicadas ao elemento apontado.
+- [Dialog](/ia/componentes/dialog.md): Janela por cima da tela para uma tarefa curta e focada — editar, preencher, escolher. O resto da página fica inerte e escurecido.
+- [Drawer](/ia/componentes/drawer.md): Painel deslizante que emerge das bordas da tela sobre uma camada escurecida, ideal para dispositivos móveis. Permite arrastar para fechar ou tocar fora para dispensar.
+- [Dropdown Menu](/ia/componentes/dropdown-menu.md): Menu suspenso ancorado a um botão acionador que exibe uma lista de ações ou opções. Fecha ao selecionar um item ou ao clicar fora do painel.
+- [Files](/ia/componentes/files.md): Árvore hierárquica de navegação por pastas e arquivos com expansão e recolhimento animados. Apresenta a estrutura de diretórios e permite selecionar itens.
+- [Form](/ia/componentes/form.md): Estrutura e gerencia formulários com validação integrada ao React Hook Form. Conecta campos, rótulos, mensagens de erro e atributos acessíveis automaticamente.
+- [Menubar](/ia/componentes/menubar.md): Barra horizontal persistente de menus inspirada em aplicações desktop. Oferece acesso consistente e agrupado a comandos globais por categorias e atalhos.
+- [MultiSelect](/ia/componentes/multi-select.md): Campo de seleção múltipla com autocompletar que exibe cada escolha como um chip removível no próprio container.
+- [Navigation Menu](/ia/componentes/navigation-menu.md): Menu estruturado para navegação principal em websites e portais. Oferece suporte a links diretos, painéis suspensos ricos e transição animada entre seções.
+- [Resizable](/ia/componentes/resizable.md): Divisão de layout em painéis redimensionáveis e acessíveis com suporte a mouse, toque e teclado. Permite ajustar a proporção entre seções contíguas em layouts complexos.
+- [Sheet](/ia/componentes/sheet.md): Painel sobreposto que desliza a partir de uma das bordas da tela. Permite exibir formulários longos, detalhes de itens ou configurações sem perder o contexto da página.
+- [Sidebar](/ia/componentes/sidebar.md): Barra de navegação lateral para organizar a hierarquia e as seções de um produto. Suporta agrupamento, submenus, estado recolhido em ícones e adaptação mobile em folha deslizante.
+- [Split Button](/ia/componentes/split-button.md): Combina uma ação principal direta com um menu suspenso de ações secundárias relacionadas. Permite executar o comando mais frequente com um clique e acessar variações pelo gatilho lateral.
+- [Stepper](/ia/componentes/stepper.md): Indicador de progresso sequencial que guia o usuário através de um processo dividido em etapas. Mostra quais passos já foram concluídos, qual está em andamento e quais ainda faltam.
+- [TimePicker](/ia/componentes/time-picker.md): Campo com painel suspenso para seleção de horário (hora e minuto). Suporta formato de 24 horas ou 12 horas com AM/PM e intervalos customizáveis de minutos.
