@@ -5,6 +5,7 @@ import { Dialog as SheetPrimitive } from "radix-ui"
 
 import { Icon } from "@/components/ui/icon"
 import { cn } from "@/lib/utils"
+import { useTexto } from "@/lib/idioma"
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />
@@ -49,7 +50,7 @@ function SheetContent({
   children,
   side = "right",
   showCloseButton = true,
-  closeLabel = "Fechar",
+  closeLabel,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
   side?: "top" | "right" | "bottom" | "left"
@@ -57,6 +58,8 @@ function SheetContent({
   /** Texto que o leitor de tela anuncia no "X". */
   closeLabel?: string
 }) {
+  const t = useTexto()
+  closeLabel ??= t("comum.fechar")
   return (
     <SheetPortal>
       <SheetOverlay />

@@ -8,10 +8,10 @@
   "tamanhos": [],
   "props": [
     {
-      "nome": "placeholder",
+      "nome": "disabled",
       "parte": "MultiSelect",
       "tipo": null,
-      "padrao": "Selecione..."
+      "padrao": "false"
     },
     {
       "nome": "emptyText",
@@ -20,10 +20,10 @@
       "padrao": "Nenhum resultado encontrado."
     },
     {
-      "nome": "disabled",
+      "nome": "placeholder",
       "parte": "MultiSelect",
       "tipo": null,
-      "padrao": "false"
+      "padrao": "Selecione..."
     }
   ],
   "tokens": [

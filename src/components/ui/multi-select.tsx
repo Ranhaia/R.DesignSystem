@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useTexto } from "@/lib/idioma"
 
 import { cn } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -60,14 +61,17 @@ function MultiSelect({
   options,
   value,
   onValueChange,
-  placeholder = "Selecione...",
-  emptyText = "Nenhum resultado encontrado.",
+  placeholder,
+  emptyText,
   disabled = false,
   className,
   id,
   name,
   "aria-label": ariaLabel,
 }: MultiSelectProps) {
+  const t = useTexto()
+  emptyText ??= t("comum.semResultado")
+  placeholder ??= t("comum.selecione")
   const anchor = useComboboxAnchor()
 
   const labelByValue = React.useMemo(

@@ -4,6 +4,7 @@ import * as React from "react"
 import { Slider as SliderPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
+import { useTexto } from "@/lib/idioma"
 
 function Slider({
   className,
@@ -13,6 +14,7 @@ function Slider({
   max = 100,
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root>) {
+  const t = useTexto()
   const _values = React.useMemo(
     () =>
       Array.isArray(value)
@@ -60,9 +62,9 @@ function Slider({
                 : props["aria-label"]
               : _values.length > 1
                 ? index === 0
-                  ? "Valor mínimo"
-                  : "Valor máximo"
-                : "Valor"
+                  ? t("slider.minimo")
+                  : t("slider.maximo")
+                : t("slider.valor")
           }
           className="block size-4 shrink-0 rounded-full border border-primary bg-white shadow-sm ring-ring transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
         />

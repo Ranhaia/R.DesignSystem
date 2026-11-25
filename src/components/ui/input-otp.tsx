@@ -5,15 +5,18 @@ import { OTPInput, OTPInputContext } from "input-otp"
 
 import { Icon } from "@/components/ui/icon"
 import { cn } from "@/lib/utils"
+import { useTexto } from "@/lib/idioma"
 
 function InputOTP({
   className,
   containerClassName,
-  "aria-label": ariaLabel = "Código de verificação",
+  "aria-label": ariaLabel,
   ...props
 }: React.ComponentProps<typeof OTPInput> & {
   containerClassName?: string
 }) {
+  const t = useTexto()
+  ariaLabel ??= t("inputOtp.codigo")
   return (
     <OTPInput
       data-slot="input-otp"

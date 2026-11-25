@@ -1776,6 +1776,10 @@ export function ExemploTreeSelect() {
       { name: "showSearch", type: "boolean", default: "true", description: "Exibe campo de busca rápida no topo do painel" },
       { name: "allowClear", type: "boolean", default: "false", description: "Exibe botão para limpar toda a seleção atual" },
       { name: "maxTagCount", type: "number", default: "—", description: "Limite máximo de tags visíveis antes de agrupar em contador" },
+      { name: "placeholder", type: "—", default: "Selecione...", description: "Texto do gatilho quando nada está escolhido" },
+      { name: "emptyText", type: "—", default: "Nenhum resultado encontrado.", description: "Mensagem quando a busca não encontra itens" },
+      { name: "searchPlaceholder", type: "—", default: "Buscar...", description: "Texto de apoio do campo de busca" },
+      { name: "selectAllLabel", type: "—", default: "Todos", description: "Rótulo do item que marca todos" },
     ],
     meta: {
       nome: "TreeSelect",
@@ -3520,7 +3524,6 @@ export function ExemploCalendario() {
       { name: "buttonVariant", type: "React.ComponentProps<typeof Button>[\"variant\"]", default: "ghost", description: "Variante visual dos botões de navegação de mês" },
       { name: "showOutsideDays", type: "boolean", default: "true", description: "Exibe os dias do mês anterior e posterior na grade" },
       { name: "captionLayout", type: "\"label\" · \"dropdown\"", default: "label", description: "Estilo do cabeçalho: texto estático ou menus suspensos de mês e ano" },
-      { name: "locale", type: "Locale", default: "ptBR", description: "Localização do calendário (date-fns); padrão fixado em português do Brasil" },
     ],
     meta: {
       nome: "Calendar",
@@ -3535,7 +3538,7 @@ export function ExemploCalendario() {
     content: ["Rótulos dos dias da semana iniciam em domingo (\"dom\", \"seg\", \"ter\") conforme a convenção brasileira.", "Meses abreviados em 3 letras no seletor suspenso (\"jan\", \"fev\", \"mar\").", "Ao exibir a data escolhida em campo de apoio, use formato \"DD/MM/AAAA\"."],
     accessibility: {
       keyboard: "Setas direcionais navegam entre os dias da grade. PageUp e PageDown alternam os meses; Shift+PageUp e Shift+PageDown alternam os anos. Enter ou Espaço seleciona o dia em foco.",
-      screenReader: "Tabela com papel grid. Dias anunciados com data completa e estado selecionado via aria-selected=\"true\". Botões de avançar e voltar possuem nomes acessíveis internacionalizados pelo ptBR.",
+      screenReader: "Tabela com papel grid. Dias anunciados com data completa e estado selecionado via aria-selected=\"true\". Botões de avançar e voltar possuem nomes acessíveis no idioma do IdiomaProvider (pt-BR por padrão, ou en); passe locale para forçar outro.",
       focus: "O foco visual destaca o dia ativo com anel de foco ring-[3px] ring-ring e borda border-ring.",
       cautions: "Não use calendário como meio único para datas distantes ou cadastrais (WCAG 2.1.1); permita sempre digitação manual direta em campo de texto.",
     },

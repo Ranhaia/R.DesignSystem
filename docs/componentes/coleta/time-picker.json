@@ -19,16 +19,16 @@
       "padrao": "5"
     },
     {
-      "nome": "placeholder",
-      "parte": "TimePicker",
-      "tipo": null,
-      "padrao": "Selecione um horário"
-    },
-    {
       "nome": "disabled",
       "parte": "TimePicker",
       "tipo": null,
       "padrao": "false"
+    },
+    {
+      "nome": "placeholder",
+      "parte": "TimePicker",
+      "tipo": null,
+      "padrao": "Selecione um horário"
     }
   ],
   "tokens": [

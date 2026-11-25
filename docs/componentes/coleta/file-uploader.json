@@ -7,12 +7,6 @@
   "tamanhos": [],
   "props": [
     {
-      "nome": "label",
-      "parte": "FileUploader",
-      "tipo": null,
-      "padrao": "Arraste um arquivo ou clique para selecionar"
-    },
-    {
       "nome": "multiple",
       "parte": "FileUploader",
       "tipo": null,
@@ -23,6 +17,12 @@
       "parte": "FileUploader",
       "tipo": null,
       "padrao": "false"
+    },
+    {
+      "nome": "label",
+      "parte": "FileUploader",
+      "tipo": null,
+      "padrao": "Arraste um arquivo ou clique para selecionar"
     }
   ],
   "tokens": [

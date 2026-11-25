@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Icon } from "@/components/ui/icon"
+import { useTexto } from "@/lib/idioma"
 
 // Tamanhos aceitos na raiz do SplitButton: só os "com texto" da escala do
 // Button (default/sm/lg) — os size icon-* não fazem sentido pra ação
@@ -68,11 +69,13 @@ function SplitButton({
   variant = "default",
   size = "default",
   disabled = false,
-  triggerLabel = "Mais ações",
+  triggerLabel,
   align = "end",
   children,
   ...props
 }: SplitButtonProps) {
+  const t = useTexto()
+  triggerLabel ??= t("splitButton.mais")
   return (
     <ButtonGroup data-slot="split-button" className={className} {...props}>
       <Button

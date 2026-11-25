@@ -12,6 +12,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { Icon } from "@/components/ui/icon"
+import { useTexto } from "@/lib/idioma"
 
 function Command({
   className,
@@ -30,8 +31,8 @@ function Command({
 }
 
 function CommandDialog({
-  title = "Paleta de comandos",
-  description = "Busque um comando para executar.",
+  title,
+  description,
   children,
   className,
   showCloseButton = true,
@@ -46,6 +47,9 @@ function CommandDialog({
   // que ignora acento e ranqueia por nome); o cmdk só cuida do teclado.
   shouldFilter?: boolean
 }) {
+  const t = useTexto()
+  description ??= t("command.descricao")
+  title ??= t("command.titulo")
   return (
     <Dialog {...props}>
       <DialogHeader className="sr-only">

@@ -8,6 +8,7 @@ import useEmblaCarousel, {
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
+import { useTexto } from "@/lib/idioma"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -51,6 +52,7 @@ function Carousel({
   children,
   ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
+  const t = useTexto()
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...opts,
@@ -122,7 +124,7 @@ function Carousel({
         onKeyDownCapture={handleKeyDown}
         className={cn("relative", className)}
         role="region"
-        aria-roledescription="carrossel"
+        aria-roledescription={t("carousel.papel")}
         data-slot="carousel"
         {...props}
       >
@@ -154,12 +156,13 @@ function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
+  const t = useTexto()
   const { orientation } = useCarousel()
 
   return (
     <div
       role="group"
-      aria-roledescription="slide"
+      aria-roledescription={t("carousel.slide")}
       data-slot="carousel-item"
       className={cn(
         "min-w-0 shrink-0 grow-0 basis-full",
@@ -175,12 +178,14 @@ function CarouselPrevious({
   className,
   variant = "outline",
   size = "icon",
-  label = "Slide anterior",
+  label,
   ...props
 }: Omit<React.ComponentProps<typeof Button>, "children" | "icon" | "label"> & {
   /** Texto que o leitor de tela anuncia no botão. */
   label?: string
 }) {
+  const t = useTexto()
+  label ??= t("carousel.anterior")
   // Omit de children/icon/label: mesmo motivo do SidebarTrigger (ver
   // sidebar.tsx) — este componente já hardcoda seu próprio ícone + texto
   // sr-only abaixo, não repassa esses props pro Button interno. O `label`
@@ -213,12 +218,14 @@ function CarouselNext({
   className,
   variant = "outline",
   size = "icon",
-  label = "Próximo slide",
+  label,
   ...props
 }: Omit<React.ComponentProps<typeof Button>, "children" | "icon" | "label"> & {
   /** Texto que o leitor de tela anuncia no botão. */
   label?: string
 }) {
+  const t = useTexto()
+  label ??= t("carousel.proximo")
   // Omit de children/icon/label: mesmo motivo do CarouselPrevious acima.
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 

@@ -4,12 +4,14 @@ import * as React from "react"
 import { ScrollArea as ScrollAreaPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
+import { useTexto } from "@/lib/idioma"
 
 function ScrollArea({
   className,
   children,
   ...props
 }: React.ComponentProps<typeof ScrollAreaPrimitive.Root>) {
+  const t = useTexto()
   return (
     <ScrollAreaPrimitive.Root
       data-slot="scroll-area"
@@ -19,7 +21,7 @@ function ScrollArea({
       <ScrollAreaPrimitive.Viewport
         data-slot="scroll-area-viewport"
         tabIndex={0}
-        aria-label={props["aria-label"] ?? "Conteúdo rolável"}
+        aria-label={props["aria-label"] ?? t("scrollArea.conteudo")}
         className="size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-ring focus-visible:outline-2"
       >
         {children}

@@ -54,6 +54,10 @@ Usa: [`checkbox`](checkbox.md) · [`icon`](icon.md) · [`skeleton`](skeleton.md)
 | `showSearch` | `boolean` | `true` | Exibe campo de busca rápida no topo do painel |
 | `allowClear` | `boolean` | `false` | Exibe botão para limpar toda a seleção atual |
 | `maxTagCount` | `number` | — | Limite máximo de tags visíveis antes de agrupar em contador |
+| `placeholder` | — | `Selecione...` | Texto do gatilho quando nada está escolhido |
+| `emptyText` | — | `Nenhum resultado encontrado.` | Mensagem quando a busca não encontra itens |
+| `searchPlaceholder` | — | `Buscar...` | Texto de apoio do campo de busca |
+| `selectAllLabel` | — | `Todos` | Rótulo do item que marca todos |
 
 ## Variantes
 

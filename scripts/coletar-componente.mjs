@@ -92,7 +92,7 @@ function lerCva(chamada) {
 
 const lista = (valores) => valores.map((v) => `\`${v}\``).join(" · ")
 
-export function coletarFonte(slug, source, conhecidos) {
+export function coletarFonte(slug, source, conhecidos, textos = {}) {
   const sf = ts.createSourceFile(`${slug}.tsx`, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX)
   const cvas = {}
   const aliases = {}
@@ -177,6 +177,15 @@ export function coletarFonte(slug, source, conhecidos) {
       for (const el of param.name.elements)
         if (!el.dotDotDotToken && el.initializer)
           padroes.set(nomeDe(el.propertyName ?? el.name), textoLiteral(el.initializer) || el.initializer.getText())
+    // padrão vindo do dicionário de idioma: `nome ??= t("chave")` ou `const nome = nomeProp ?? t("chave")`
+    const corpo = fn.body?.getText() ?? ""
+    const propDe = new Map() // nome local → nome da prop (`"aria-label": ariaLabel`)
+    if (ts.isObjectBindingPattern(param.name))
+      for (const el of param.name.elements) if (el.propertyName) propDe.set(nomeDe(el.name), nomeDe(el.propertyName))
+    for (const m of corpo.matchAll(/(?:^|\s)(\w+) \?\?= t\("([\w.]+)"\)|const (\w+) = \w+ \?\? t\("([\w.]+)"\)/g)) {
+      const local = m[1] ?? m[3]
+      if (textos[m[2] ?? m[4]]) padroes.set(propDe.get(local) ?? local, textos[m[2] ?? m[4]])
+    }
     for (const [nome, info] of proprias)
       props.push({ nome, parte, tipo: info.tipo, padrao: padroes.get(nome) ?? info.padrao ?? null })
     for (const [nome, padrao] of padroes) if (!proprias.has(nome)) props.push({ nome, parte, tipo: null, padrao })
@@ -198,5 +207,13 @@ export function coletarFonte(slug, source, conhecidos) {
 
 export function coletarComponente(slug, root) {
   const source = fs.readFileSync(path.join(root, "src/components/ui", `${slug}.tsx`), "utf8")
-  return coletarFonte(slug, source, tokensDoProjeto(root))
+  return coletarFonte(slug, source, tokensDoProjeto(root), textosPtBR(root))
+}
+
+// Textos pt-BR do dicionário central, para a coluna "padrão" das props.
+function textosPtBR(root) {
+  const p = path.join(root, "src/lib/idioma/dicionario.ts")
+  if (!fs.existsSync(p)) return {}
+  const pt = fs.readFileSync(p, "utf8").split("export type ChaveTexto")[0]
+  return Object.fromEntries([...pt.matchAll(/^\s*"([\w.]+)": "(.*)",\r?$/gm)].map((m) => [m[1], m[2]]))
 }

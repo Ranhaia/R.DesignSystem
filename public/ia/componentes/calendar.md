@@ -45,7 +45,6 @@ Usa: [`button`](button.md) · [`icon`](icon.md).
 | `buttonVariant` | `React.ComponentProps<typeof Button>["variant"]` | `ghost` | Variante visual dos botões de navegação de mês |
 | `showOutsideDays` | `boolean` | `true` | Exibe os dias do mês anterior e posterior na grade |
 | `captionLayout` | `"label"` · `"dropdown"` | `label` | Estilo do cabeçalho: texto estático ou menus suspensos de mês e ano |
-| `locale` | `Locale` | `ptBR` | Localização do calendário (date-fns); padrão fixado em português do Brasil |
 
 ## Variantes
 
@@ -75,7 +74,7 @@ Tamanho adaptável ao container (`w-fit`), com células baseadas em escala de 32
 ## Acessibilidade
 
 - **Teclado:** Setas direcionais navegam entre os dias da grade. PageUp e PageDown alternam os meses; Shift+PageUp e Shift+PageDown alternam os anos. Enter ou Espaço seleciona o dia em foco.
-- **Leitor de tela:** Tabela com papel `grid`. Dias anunciados com data completa e estado selecionado via `aria-selected="true"`. Botões de avançar e voltar possuem nomes acessíveis internacionalizados pelo `ptBR`.
+- **Leitor de tela:** Tabela com papel `grid`. Dias anunciados com data completa e estado selecionado via `aria-selected="true"`. Botões de avançar e voltar possuem nomes acessíveis no idioma do `IdiomaProvider` (pt-BR por padrão, ou en); passe `locale` para forçar outro.
 - **Foco:** O foco visual destaca o dia ativo com anel de foco `ring-[3px] ring-ring` e borda `border-ring`.
 - **Cuidados:** Não use calendário como meio único para datas distantes ou cadastrais (WCAG 2.1.1); permita sempre digitação manual direta em campo de texto.
 

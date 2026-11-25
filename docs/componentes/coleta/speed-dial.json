@@ -13,16 +13,16 @@
       "padrao": "up"
     },
     {
-      "nome": "triggerLabel",
-      "parte": "SpeedDial",
-      "tipo": null,
-      "padrao": "Ações rápidas"
-    },
-    {
       "nome": "defaultOpen",
       "parte": "SpeedDial",
       "tipo": null,
       "padrao": "false"
+    },
+    {
+      "nome": "triggerLabel",
+      "parte": "SpeedDial",
+      "tipo": null,
+      "padrao": "Ações rápidas"
     }
   ],
   "tokens": [

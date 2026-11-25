@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useTexto } from "@/lib/idioma"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -92,12 +93,14 @@ function TimePicker({
   onValueChange,
   format = "24h",
   minuteStep = 5,
-  placeholder = "Selecione um horário",
+  placeholder,
   disabled = false,
   className,
   contentClassName,
   ...props
 }: TimePickerProps) {
+  const t = useTexto()
+  placeholder ??= t("timePicker.selecione")
   const parsed = parseValue(value)
   const hour12Data = parsed ? to12h(parsed.hour) : null
 
@@ -156,7 +159,7 @@ function TimePicker({
         align="start"
       >
         <div className="flex flex-col gap-1">
-          <span className="text-xs text-muted-foreground">Hora</span>
+          <span className="text-xs text-muted-foreground">{t("timePicker.hora")}</span>
           <Select
             value={
               format === "24h"
@@ -166,7 +169,7 @@ function TimePicker({
             onValueChange={handleHourChange}
             disabled={disabled}
           >
-            <SelectTrigger size="sm" className="w-18" aria-label="Hora">
+            <SelectTrigger size="sm" className="w-18" aria-label={t("timePicker.hora")}>
               <SelectValue placeholder="--" />
             </SelectTrigger>
             <SelectContent>
@@ -180,13 +183,13 @@ function TimePicker({
         </div>
 
         <div className="flex flex-col gap-1">
-          <span className="text-xs text-muted-foreground">Minuto</span>
+          <span className="text-xs text-muted-foreground">{t("timePicker.minuto")}</span>
           <Select
             value={parsed ? String(parsed.minute) : undefined}
             onValueChange={handleMinuteChange}
             disabled={disabled}
           >
-            <SelectTrigger size="sm" className="w-18" aria-label="Minuto">
+            <SelectTrigger size="sm" className="w-18" aria-label={t("timePicker.minuto")}>
               <SelectValue placeholder="--" />
             </SelectTrigger>
             <SelectContent>
@@ -201,7 +204,7 @@ function TimePicker({
 
         {format === "12h" && (
           <div className="flex flex-col gap-1">
-            <span className="text-xs text-muted-foreground">Período</span>
+            <span className="text-xs text-muted-foreground">{t("timePicker.periodo")}</span>
             <Select
               value={hour12Data?.period}
               onValueChange={handlePeriodChange}
@@ -210,7 +213,7 @@ function TimePicker({
               <SelectTrigger
                 size="sm"
                 className="w-17"
-                aria-label="Período"
+                aria-label={t("timePicker.periodo")}
               >
                 <SelectValue placeholder="--" />
               </SelectTrigger>

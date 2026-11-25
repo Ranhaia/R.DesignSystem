@@ -1,14 +1,18 @@
+"use client"
+
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants, type Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
+import { useTexto } from "@/lib/idioma"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
+  const t = useTexto()
   return (
     <nav
       role="navigation"
-      aria-label="paginação"
+      aria-label={t("pagination.nome")}
       data-slot="pagination"
       className={cn("mx-auto flex w-full justify-center", className)}
       {...props}
@@ -65,15 +69,16 @@ function PaginationPrevious({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) {
+  const t = useTexto()
   return (
     <PaginationLink
-      aria-label="Ir para a página anterior"
+      aria-label={t("pagination.anterior")}
       size="default"
       className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
       {...props}
     >
       <Icon name="chevron_left" />
-      <span className="hidden sm:block">Anterior</span>
+      <span className="hidden sm:block">{t("pagination.anteriorCurto")}</span>
     </PaginationLink>
   )
 }
@@ -82,14 +87,15 @@ function PaginationNext({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) {
+  const t = useTexto()
   return (
     <PaginationLink
-      aria-label="Ir para a próxima página"
+      aria-label={t("pagination.proxima")}
       size="default"
       className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
       {...props}
     >
-      <span className="hidden sm:block">Próxima</span>
+      <span className="hidden sm:block">{t("pagination.proximaCurto")}</span>
       <Icon name="chevron_right" />
     </PaginationLink>
   )
@@ -99,6 +105,7 @@ function PaginationEllipsis({
   className,
   ...props
 }: React.ComponentProps<"span">) {
+  const t = useTexto()
   return (
     <span
       aria-hidden
@@ -107,7 +114,7 @@ function PaginationEllipsis({
       {...props}
     >
       <Icon name="more_horiz" size={1} />
-      <span className="sr-only">Mais páginas</span>
+      <span className="sr-only">{t("pagination.mais")}</span>
     </span>
   )
 }
