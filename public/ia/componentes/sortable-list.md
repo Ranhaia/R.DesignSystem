@@ -77,7 +77,7 @@ Sem tamanho: cada item tem o espaço do conteúdo; a alça tem área de toque fi
 - **Teclado:** Espaço ou Enter na alça pega o item; setas do eixo movem; Espaço ou Enter solta; Esc volta à origem; sair da alça solta. Sem pegar, as setas não fazem nada.
 - **Leitor de tela:** A alça diz "Reordenar <item>" e se está pega. A região de status anuncia pegar, mover, soltar e cancelar com a posição ("na posição 2 de 4").
 - **Foco:** Fica na alça depois de cada movimento; o anel aparece no item inteiro.
-- **Cuidados:** A ordem visual é a do DOM, então o leitor e o Tab seguem o que se vê.
+- **Cuidados:** A ordem visual é a do DOM, então o leitor e o Tab seguem o que se vê. Limites: sem rolagem automática durante o arrasto, sem animação dos vizinhos e sem inverter as setas em direita-para-esquerda; campo ou mídia dentro do item pode perder o estado ao mudar de posição.
 
 ## Tokens usados
 

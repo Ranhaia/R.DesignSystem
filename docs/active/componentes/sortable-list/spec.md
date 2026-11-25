@@ -38,8 +38,11 @@ com atraso curto para o refoco da alça não engolir o anúncio.
 
 ## Limites
 
-Controlada (`itens` + `onReordenar`). Sem rolagem automática durante o
-arrasto e sem animação de deslocamento (FLIP) dos vizinhos.
+Controlada (`itens` + `onReordenar`). Fica de fora do guia, por ora: rolagem
+automática durante o arrasto, animação de deslocamento (FLIP) dos vizinhos,
+setas invertidas em direita-para-esquerda e `moveBefore` (o React reinsere o
+nó, então campo ou mídia dentro do item pode perder o estado). Esc cancela o
+arrasto de ponteiro mesmo sem foco na alça.
 
 ## Textos
 
