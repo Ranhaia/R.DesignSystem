@@ -22,7 +22,8 @@ lote ou levar os dados para uma planilha usa `data-table`.
   A última coluna visível não pode sair.
 - **Seleção em lote** (`selecionavel`): checkbox por linha e no cabeçalho
   (marca ou desmarca o que a vista mostra; fica indeterminado no meio).
-  A seleção guarda a identidade de `idDaLinha`, então sobrevive a busca e
+  Vale para as linhas da vista: a que o filtro esconde sai do lote e do
+  CSV (volta marcada se o filtro sair). A seleção guarda a identidade de `idDaLinha`, então sobrevive a busca e
   ordem. `acoesEmLote` recebe as linhas marcadas.
 - **Exportar CSV**: exporta as colunas visíveis das linhas selecionadas ou,
   sem seleção, das linhas da vista. Valor cru (não o `celula`), UTF-8 com

@@ -68,7 +68,7 @@ Sem tamanho: a densidade é a da `table`.
 |---|---|
 | Ordenada | Seta para cima ou para baixo no cabeçalho da coluna; as outras ordenáveis mostram a seta dupla apagada |
 | Filtrada | O botão do filtro mostra quantos valores estão marcados, ex.: "Status (2)" |
-| Com seleção | Linha marcada com o fundo de selecionada; a barra mostra "N selecionada(s)" e as ações em lote |
+| Com seleção | Linha marcada com o fundo de selecionada; a barra mostra "N selecionadas" e as ações em lote |
 | Seleção parcial | Checkbox do cabeçalho indeterminado |
 | Vazia | Uma linha com o texto de `vazio` |
 

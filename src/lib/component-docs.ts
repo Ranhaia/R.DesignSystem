@@ -5428,7 +5428,7 @@ export function ExemploSenha() {
     states: [
       { name: "Ordenada", description: "Seta para cima ou para baixo no cabeçalho da coluna; as outras ordenáveis mostram a seta dupla apagada" },
       { name: "Filtrada", description: "O botão do filtro mostra quantos valores estão marcados, ex.: \"Status (2)\"" },
-      { name: "Com seleção", description: "Linha marcada com o fundo de selecionada; a barra mostra \"N selecionada(s)\" e as ações em lote" },
+      { name: "Com seleção", description: "Linha marcada com o fundo de selecionada; a barra mostra \"N selecionadas\" e as ações em lote" },
       { name: "Seleção parcial", description: "Checkbox do cabeçalho indeterminado" },
       { name: "Vazia", description: "Uma linha com o texto de vazio" },
     ],

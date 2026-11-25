@@ -51,7 +51,7 @@ function filtrarLinhas<T>(linhas: T[], colunas: ColunaDados<T>[], busca: string,
   return linhas.filter(
     (l) =>
       (!termo || colunas.some((c) => normalizar(l[c.chave]).includes(termo))) &&
-      Object.entries(filtros).every(([chave, vals]) => !vals.length || vals.includes(String(l[chave as keyof T])))
+      Object.entries(filtros).every(([chave, vals]) => !vals.length || vals.includes(String(l[chave as keyof T] ?? "")))
   )
 }
 
@@ -85,8 +85,11 @@ function baixarCSV(csv: string, nome: string) {
   // BOM: o Excel só lê acentos de CSV em UTF-8 com ele
   const url = URL.createObjectURL(new Blob(["﻿", csv], { type: "text/csv;charset=utf-8" }))
   const a = Object.assign(document.createElement("a"), { href: url, download: nome })
+  document.body.append(a)
   a.click()
-  URL.revokeObjectURL(url)
+  a.remove()
+  // revogar já no clique cancela o download em alguns navegadores
+  setTimeout(() => URL.revokeObjectURL(url))
 }
 
 function DataTable<T>({
@@ -127,9 +130,9 @@ function DataTable<T>({
   const idDe = new Map(comId.map(({ l, id }) => [l, id]))
   const visiveis = colunas.filter((c) => !ocultas.has(c.chave))
   const linhas = ordenarLinhas(filtrarLinhas(dados, colunas, busca, filtros), ordem)
-  const selecionadas = comId.filter(({ id }) => selecao.has(id)).map(({ l }) => l)
-  const marcadasNaVista = linhas.filter((l) => selecao.has(idDe.get(l)!)).length
-  const todas = linhas.length > 0 && marcadasNaVista === linhas.length
+  // A seleção vale para o que a vista mostra: linha que o filtro escondeu não entra no lote nem no CSV.
+  const selecionadas = linhas.filter((l) => selecao.has(idDe.get(l)!))
+  const todas = linhas.length > 0 && selecionadas.length === linhas.length
 
   const alternar = (id: string, marcar: boolean) =>
     setSelecao((s) => {
@@ -187,14 +190,12 @@ function DataTable<T>({
             )
           })}
         <div className="ml-auto flex items-center gap-2">
-          {selecionadas.length > 0 && (
-            <>
-              <span aria-live="polite" className="text-sm text-muted-foreground">
-                {t("dataTable.selecionadas", { n: selecionadas.length })}
-              </span>
-              {acoesEmLote?.(selecionadas)}
-            </>
-          )}
+          {/* a região viva existe sempre: leitor de tela não anuncia região que nasce preenchida */}
+          <span role="status" className="text-sm text-muted-foreground">
+            {selecionadas.length > 0 &&
+              t(selecionadas.length === 1 ? "dataTable.umaSelecionada" : "dataTable.variasSelecionadas", { n: selecionadas.length })}
+          </span>
+          {selecionadas.length > 0 && acoesEmLote?.(selecionadas)}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
@@ -228,7 +229,7 @@ function DataTable<T>({
             variant="outline"
             size="sm"
             // com seleção, exporta só as selecionadas; sem, o que a vista mostra
-            onClick={() => baixarCSV(paraCSV(selecionadas.length ? ordenarLinhas(selecionadas, ordem) : linhas, visiveis), nomeArquivo)}
+            onClick={() => baixarCSV(paraCSV(selecionadas.length ? selecionadas : linhas, visiveis), nomeArquivo)}
           >
             <Icon name="download" size={1} aria-hidden="true" />
             {t("dataTable.exportar")}
@@ -243,7 +244,7 @@ function DataTable<T>({
               <TableHead className="w-0">
                 <Checkbox
                   aria-label={t("dataTable.selecionarTodas")}
-                  checked={todas ? true : marcadasNaVista > 0 ? "indeterminate" : false}
+                  checked={todas ? true : selecionadas.length > 0 ? "indeterminate" : false}
                   onCheckedChange={(on) =>
                     setSelecao((s) => {
                       const n = new Set(s)
