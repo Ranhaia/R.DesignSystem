@@ -20,6 +20,12 @@ describe("eventosDoDia", () => {
     expect(eventosDoDia(eventos, d(10)).map((e) => e.id)).toEqual(["c", "b", "a"])
     expect(eventosDoDia(eventos, d(13)).map((e) => e.id)).toEqual([])
   })
+  it("quem termina à 00:00 não ocupa o dia seguinte; fim antes do início vale como sem fim", () => {
+    const noite = { id: "n", titulo: "Noite", inicio: d(14, 22), fim: d(15, 0) }
+    const torto = { id: "t", titulo: "Torto", inicio: d(14, 10), fim: d(13, 10) }
+    expect(eventosDoDia([noite, torto], d(14)).map((e) => e.id)).toEqual(["t", "n"])
+    expect(eventosDoDia([noite, torto], d(15))).toEqual([])
+  })
   it("evento sem fim vale só no dia do início", () => {
     expect(eventosDoDia(eventos, new Date(2026, 11, 3)).map((e) => e.id)).toEqual(["d"])
   })

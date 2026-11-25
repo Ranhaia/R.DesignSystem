@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { addDays, addMonths, addWeeks, endOfDay, isSameDay, startOfDay, startOfWeek } from "date-fns"
+import { addDays, addMonths, addWeeks, endOfDay, getDaysInMonth, isSameDay, startOfDay, startOfWeek } from "date-fns"
 import type { DayButton } from "react-day-picker"
 
 import { useIdioma, useTexto } from "@/lib/idioma"
@@ -31,7 +31,11 @@ function eventosDoDia(eventos: EventoAgenda[], dia: Date) {
   const ini = startOfDay(dia)
   const fim = endOfDay(dia)
   return eventos
-    .filter((e) => e.inicio <= fim && (e.fim ?? e.inicio) >= ini)
+    .filter((e) => {
+      const termino = e.fim && e.fim > e.inicio ? e.fim : null // fim inválido (antes do início) vale como sem fim
+      // quem termina à 00:00 em ponto não ocupa o dia seguinte
+      return e.inicio <= fim && (termino ? termino > ini : e.inicio >= ini)
+    })
     .sort((a, b) => Number(!!b.diaInteiro) - Number(!!a.diaInteiro) || a.inicio.getTime() - b.inicio.getTime())
 }
 
@@ -113,7 +117,7 @@ function Agenda({
     focarDia.current = true
   }
 
-  const evento = (e: EventoAgenda) => (
+  const evento = (e: EventoAgenda, dia: Date) => (
     <Button
       key={e.id}
       data-slot="agenda-evento"
@@ -123,7 +127,8 @@ function Agenda({
       onClick={() => onEventoClick?.(e)}
     >
       <span className="shrink-0 text-xs text-muted-foreground tabular-nums">
-        {e.diaInteiro ? t("agenda.diaInteiro") : hora.format(e.inicio)}
+        {/* evento que começou em outro dia ocupa este dia inteiro até onde ele termina */}
+        {e.diaInteiro || !isSameDay(e.inicio, dia) ? t("agenda.diaInteiro") : hora.format(e.inicio)}
       </span>
       <span className="truncate">{e.titulo}</span>
     </Button>
@@ -172,7 +177,8 @@ function Agenda({
             selected={data}
             onDayClick={abrirDia}
             month={data}
-            onMonthChange={setData}
+            // o calendar entrega o dia 1; mantém o dia do mês (limitado ao último) para semana e dia seguirem o foco
+            onMonthChange={(m) => setData((d) => new Date(m.getFullYear(), m.getMonth(), Math.min(d.getDate(), getDaysInMonth(m))))}
             hideNavigation
             className="w-full p-0"
             classNames={{ root: "w-full", month_caption: "sr-only", day: "group/day relative flex-1 p-0.5 select-none" }}
@@ -203,7 +209,7 @@ function Agenda({
                 </span>
                 <span>{dia.getDate()}</span>
               </Button>
-              {eventosDoDia(eventos, dia).map(evento)}
+              {eventosDoDia(eventos, dia).map((e) => evento(e, dia))}
             </div>
           ))}
         </div>
@@ -219,7 +225,7 @@ function Agenda({
           className="flex flex-col gap-1 rounded-md outline-none focus-visible:ring-[3px] focus-visible:ring-ring"
         >
           {eventosDoDia(eventos, data).length ? (
-            eventosDoDia(eventos, data).map(evento)
+            eventosDoDia(eventos, data).map((e) => evento(e, data))
           ) : (
             <p className="py-6 text-center text-sm text-muted-foreground">{t("agenda.semEventos")}</p>
           )}

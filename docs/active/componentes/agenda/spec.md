@@ -19,8 +19,10 @@ mostra o que acontece em cada data.
 - **Dia**: lista dos eventos do dia, dia inteiro primeiro e depois por hora.
   Sem eventos, diz "Nenhum evento".
 
-Evento que dura vários dias aparece em todos eles. Evento sem `fim` vale só
-no dia do início.
+Evento que dura vários dias aparece em todos eles; fora do dia de início ele
+mostra "Dia inteiro" no lugar da hora. Quem termina à 00:00 em ponto não ocupa
+o dia seguinte. Evento sem `fim` (ou com `fim` antes do início) vale só no dia
+do início. Trocar de mês pelo teclado mantém o dia do mês.
 
 ## Barra
 
