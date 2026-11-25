@@ -79,7 +79,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Dinheiro → `currency-input` (moeda em `currency`).
 - Número exato, com − e + → `number-input`.
 - Busca → `search-input` (com atalho de teclado: `shortcut`).
-- Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
+- Valor aproximado num intervalo → `slider`. Data → `date-picker` (digitável; período com `mode="range"`); a grade solta, sempre visível → `calendar`. Hora → `time-picker`.
 
 **Mostrar mensagem**
 - Fica na página, perto do assunto → `alert`.
@@ -130,6 +130,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.
 - [context-menu](context-menu.md) — Menu contextual flutuante acionado pelo clique com o botão direito do mouse.
 - [currency-input](currency-input.md) — Campo de dinheiro formatado no idioma e na moeda.
+- [date-picker](date-picker.md) — Campo de data digitável com calendário; data única ou período.
 - [data-table](data-table.md) — Tabela de dados com busca, filtros, ordenação, colunas visíveis, seleção em lote e exportar CSV.
 - [description-list](description-list.md) — Pares rótulo/valor de uma ficha de detalhes, em lista de definições.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
