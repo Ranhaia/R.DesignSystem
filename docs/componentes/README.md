@@ -76,6 +76,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Opções de alternância em barra compacta → `toggle-group`.
 - Opções estruturadas em árvore com seleção em cascata → `tree-select`.
 - Senha → `password-input` (cadastro: `variant="new"`).
+- Dinheiro → `currency-input` (moeda em `currency`).
 - Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
 
 **Mostrar mensagem**
@@ -121,6 +122,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [combobox](combobox.md) — Combina campo de texto com lista de sugestões filtradas e seleção por chips.
 - [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.
 - [context-menu](context-menu.md) — Menu contextual flutuante acionado pelo clique com o botão direito do mouse.
+- [currency-input](currency-input.md) — Campo de dinheiro formatado no idioma e na moeda.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
 - [direction](direction.md) — Entrega o sentido de leitura aos componentes; não renderiza nada.
 - [drawer](drawer.md) — Painel deslizante que emerge das bordas da tela sobre camada escurecida.
