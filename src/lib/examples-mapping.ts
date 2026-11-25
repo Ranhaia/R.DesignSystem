@@ -48,7 +48,7 @@ export const examplesMapping: Record<string, string[]> = {
   "kbd": ["kbd-button", "kbd-demo", "kbd-group", "kbd-input-group", "kbd-tooltip"],
   "label": ["label-demo"],
   "list": ["list-demo"],
-  "link": ["link-demo"],
+  "link": ["link-demo", "link-acao-inline"],
   "marker": ["marker-demo"],
   "menubar": ["menubar-demo"],
   "message": ["message-demo"],

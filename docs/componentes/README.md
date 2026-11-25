@@ -61,7 +61,7 @@ mudar ou documentar um componente está em `.claude/skills/componente-rds/SKILL.
 Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 
 **Agir ou ir para outro lugar**
-- Dispara uma ação → `button`. Leva a outra página → `link`.
+- Dispara uma ação → `button`. Leva a outra página → `link`. Ação discreta dentro do texto (+ ou →) → `link` com `action`.
 - Navegação persistente em barra lateral → `sidebar`. Menu horizontal no topo → `navigation-menu`.
 - Ação só com ícone → `icon-button` (com `aria-label` e `tooltip`).
 - Ação principal + variações → `split-button`. Várias ações flutuantes → `speed-dial`.
