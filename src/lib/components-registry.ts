@@ -7,6 +7,7 @@ export interface ComponentEntry {
 // de componentes usado pela documentacao oficial do shadcn/ui.
 export const componentsList: ComponentEntry[] = [
   { slug: "accordion", name: "Accordion" },
+  { slug: "agenda", name: "Agenda" },
   { slug: "alert", name: "Alert" },
   { slug: "announcement-banner", name: "Announcement Banner" },
   { slug: "alert-dialog", name: "Alert Dialog" },

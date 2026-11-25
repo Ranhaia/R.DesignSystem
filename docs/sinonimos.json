@@ -1,6 +1,7 @@
 {
   "_sobre": "Nome que alguém pode usar para pedir uma peça → slug real em src/components/ui/. Chave = slug; valor = termos (minúsculas, com e sem acento). Base: fichas/indice.json do PASSI DS (CC BY 4.0), trocado para os slugs do R.DS. Um termo aparece em um slug só.",
   "accordion": ["acordeao", "acordeão", "sanfona", "expansivel", "expansível"],
+  "agenda": ["calendario-de-eventos", "calendário-de-eventos", "event-calendar", "scheduler", "eventos", "compromissos"],
   "alert": ["alerta", "callout", "aviso", "notice", "mensagem-na-pagina"],
   "announcement-banner": ["banner", "banner-de-anuncio", "faixa-de-anuncio", "anuncio", "announcement", "announcement-bar", "site-banner"],
   "alert-dialog": ["confirmacao", "confirmação", "janela-de-confirmacao", "confirm", "dialogo-de-alerta"],

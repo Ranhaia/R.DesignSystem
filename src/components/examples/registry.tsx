@@ -2,6 +2,7 @@ import dynamic from "next/dynamic"
 
 export const exampleRegistry: Record<string, React.ComponentType> = {
   "accordion-demo": dynamic(() => import("@/components/examples/accordion-demo")),
+  "agenda-demo": dynamic(() => import("@/components/examples/agenda-demo")),
   "alert-demo": dynamic(() => import("@/components/examples/alert-demo")),
   "alert-destructive": dynamic(() => import("@/components/examples/alert-destructive")),
   "alert-dialog-demo": dynamic(() => import("@/components/examples/alert-dialog-demo")),

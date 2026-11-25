@@ -5416,6 +5416,71 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
+  agenda: {
+    description: "Mostra compromissos no mês, na semana ou no dia. O mês monta sobre o calendar e herda o teclado dele; semana e dia listam os eventos como botões.",
+    whenToUse: "Ver o que acontece em cada data: reuniões, entregas, plantões, reservas. A pessoa alterna entre a visão geral do mês e o detalhe do dia.",
+    anatomy: [
+      { part: "DiaDoMes", description: "Interno: o botão de dia do calendar com os chips do dia; não é exportado." },
+      { part: "Agenda", description: "Raiz <section data-slot=\"agenda\" data-visao> com o aria-label; o className vai nela." },
+      { part: "Barra", description: "<div data-slot=\"agenda-toolbar\">: Hoje, período anterior e próximo, o título do período (anunciado ao mudar) e a vista (segmented-control)." },
+      { part: "Dia", description: "No mês, o botão de dia do calendar com até 2 chips (data-slot=\"agenda-chip\") e \"+N mais\". Na semana e no dia, <div data-slot=\"agenda-dia\">." },
+      { part: "Evento", description: "button secundário (data-slot=\"agenda-evento\") com hora ou \"Dia inteiro\" e o título." },
+    ],
+    variants: [],
+    states: [
+      { name: "Hoje", description: "Dia com fundo de destaque no mês; cabeçalho secundário na semana" },
+      { name: "Dia selecionado", description: "O dia em foco, com fundo da cor principal no mês" },
+      { name: "Mais eventos", description: "\"+N mais\" abaixo dos 2 primeiros chips do dia" },
+      { name: "Dia vazio", description: "Na vista dia, \"Nenhum evento\"" },
+      { name: "Fora do mês", description: "Dias de outro mês em cor apagada, como no calendar" },
+    ],
+    sizes: [],
+    doGuidelines: ["Abra na vista que a pessoa mais usa (visaoInicial).", "Passe fim em todo evento com duração.", "Use onEventoClick para abrir o detalhe (sheet ou dialog)."],
+    dontGuidelines: ["Usar a agenda para escolher data → calendar", "Título longo no evento → resuma e mostre o resto no detalhe", "Data distante, como nascimento → campo de data"],
+    code: `import { Agenda } from "@/components/ui/agenda"
+
+export function ExemploAgenda() {
+  return (
+    <Agenda
+      aria-label="Agenda da equipe"
+      eventos={[{ id: "1", titulo: "Daily", inicio: new Date(2026, 10, 10, 9), fim: new Date(2026, 10, 10, 9, 15) }]}
+      onEventoClick={(e) => console.log(e.titulo)}
+    />
+  )
+}`,
+    props: [
+      { name: "eventos", type: "EventoAgenda[]", default: "—", description: "id, titulo, inicio e, se houver, fim e diaInteiro. Evento de vários dias aparece em todos." },
+      { name: "dataInicial", type: "Date", default: "—", description: "Dia em foco ao abrir. Sem ela, hoje." },
+      { name: "visaoInicial", type: "VisaoAgenda", default: "mes", description: "Vista ao abrir: mes, semana ou dia." },
+      { name: "onEventoClick", type: "(evento: EventoAgenda) => void", default: "—", description: "Chamado ao clicar num evento na semana ou no dia." },
+      { name: "className", type: "string", default: "—", description: "Classes extras na raiz." },
+      { name: "aria-label", type: "string", default: "—", description: "Nome da agenda para o leitor de tela. Obrigatório." },
+    ],
+    meta: {
+      nome: "Agenda",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/agenda.tsx",
+      story: "src/components/ui/agenda.stories.tsx",
+      vizinhos: ["calendar", "time-picker", "list"],
+    },
+    whenToUseItems: ["Ver o que acontece em cada data: reuniões, entregas, plantões, reservas.", "A pessoa alterna entre a visão geral do mês e o detalhe do dia."],
+    whenNotToUse: ["Escolher uma data ou um período → calendar", "Escolher um horário → time-picker", "Poucos eventos em sequência, sem precisar da grade → list"],
+    content: ["Título curto no evento: ele é cortado no chip do mês.", "Datas e horas saem do Intl no idioma ativo; botões e vazio vêm do dicionário (pt-BR ou en).", "A semana começa no domingo."],
+    accessibility: {
+      keyboard: "No mês, setas andam de dia em dia, PageUp e PageDown trocam de mês, Home e End vão ao início e ao fim da semana, Enter abre o dia. Na semana e no dia, Tab passa pelos dias e eventos.",
+      screenReader: "A agenda tem nome (aria-label). Cada dia do mês diz a data completa e quantos eventos tem. O título do período é anunciado ao mudar (aria-live).",
+      focus: "Anel de foco do calendar no mês e do button nos eventos.",
+      cautions: "No mês o chip é só leitura; o evento se abre na vista dia. Dia com raio concêntrico: o chip usa rounded-inner.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-base", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-0", "gap-0.5", "gap-1", "gap-2", "gap-3", "h-24", "min-w-0", "min-w-24", "p-0", "p-0.5", "p-1", "px-1", "py-1", "py-6"] },
+      { contexto: "Raio", itens: ["radius-inset-1", "rounded-inner", "rounded-md", "rounded-outer-md"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
   "description-list": {
     description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
     whenToUse: "Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar. Rótulos curtos com valores de tamanho variado.",
