@@ -5362,4 +5362,57 @@ import { Icon } from "@/components/ui/icon"
       cautions: "O provider e o atributo dir não se sincronizam sozinhos: passe o mesmo valor aos dois, senão o texto e as setas do teclado vão para lados diferentes (WCAG 1.3.2).",
     },
   },
+  "password-input": {
+    description: "Campo de senha montado sobre o input, com o botão de mostrar e ocultar. No cadastro, mostra a força da senha e os requisitos enquanto a pessoa digita.",
+    whenToUse: "Entrar numa conta: a pessoa digita uma senha que já tem. Criar ou trocar uma senha (variant=\"new\"): a pessoa vê se ela é forte o bastante.",
+    anatomy: [
+      { part: "PasswordInput", description: "Raiz <div> com data-slot=\"password-input\" e data-variant; o className vai nela." },
+      { part: "Campo", description: "O input, com type alternando entre password e text e o botão de olho no endAction." },
+      { part: "Força (só new)", description: "<div data-slot=\"password-strength\"> com a barra (progress) e o nível Fraca, Média ou Forte." },
+      { part: "Requisito (só new)", description: "Cada <li data-slot=\"password-requirement\" data-ok>, com ícone que marca quando o requisito é cumprido." },
+    ],
+    variants: [],
+    states: [
+      { name: "Oculta", description: "Caracteres mascarados; o botão diz \"Mostrar senha\"" },
+      { name: "Visível", description: "Texto aberto; o botão diz \"Ocultar senha\"" },
+      { name: "Força", description: "Barra de 0 a 4 quartos, com o nível escrito ao lado (só new)" },
+      { name: "Requisito cumprido", description: "Ícone de marcado e texto na cor principal (só new)" },
+      { name: "Desabilitado", description: "Herdado do input: campo e botão sem interação" },
+    ],
+    sizes: [],
+    doGuidelines: ["Use variant=\"new\" em cadastro e troca de senha.", "Deixe o autoComplete padrão, para o gerenciador de senhas acertar.", "Mostre os erros do formulário pelo field, junto do campo."],
+    dontGuidelines: ["Pedir \"confirmar senha\" num segundo campo → o botão de olho já deixa conferir", "Usar input type=\"password\" solto → password-input", "Bloquear colar no campo → deixe colar, o gerenciador de senhas precisa"],
+    code: `import { PasswordInput } from "@/components/ui/password-input"
+
+export function ExemploSenha() {
+  return <PasswordInput variant="new" label="Crie uma senha" />
+}`,
+    props: [
+      { name: "label", type: "ReactNode", default: "—", description: "Rótulo do campo (do input)" },
+      { name: "autoComplete", type: "string", default: "current-password / new-password", description: "Sai do variant; um valor explícito vence" },
+      { name: "variant", type: "default · new", default: "default", description: "default para entrar; new para cadastro, com força e requisitos" },
+    ],
+    meta: {
+      nome: "Password Input",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/password-input.tsx",
+      story: "src/components/ui/password-input.stories.tsx",
+      vizinhos: ["input", "input-otp", "field"],
+    },
+    whenToUseItems: ["Entrar numa conta: a pessoa digita uma senha que já tem.", "Criar ou trocar uma senha (variant=\"new\"): a pessoa vê se ela é forte o bastante."],
+    whenNotToUse: ["Texto comum, e-mail ou busca → input", "Código de verificação enviado por SMS ou e-mail → input-otp"],
+    content: ["O rótulo diz o que pedir: \"Senha\" para entrar, \"Crie uma senha\" no cadastro.", "Os requisitos e o nível vêm do dicionário de idioma (pt-BR ou en); não escreva por fora."],
+    accessibility: {
+      keyboard: "Tab vai do campo para o botão de olho; Enter ou Espaço alterna mostrar e ocultar.",
+      screenReader: "O botão anuncia \"Mostrar senha\" ou \"Ocultar senha\". No new, força e requisitos ficam ligados ao campo por aria-describedby, e o nível é anunciado ao mudar (aria-live).",
+      focus: "Anel de foco do input no campo e no botão.",
+      cautions: "Passe label ou aria-label para o campo ter nome. A cor nunca é o único sinal: o requisito cumprido troca o ícone e o leitor de tela ouve \"cumprido\" ou \"pendente\" em cada um. A barra informa o valor (aria-valuenow).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
+    ],
+  },
 }

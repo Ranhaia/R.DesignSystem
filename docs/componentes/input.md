@@ -5,7 +5,7 @@ camada: atom
 codigo: src/components/ui/input.tsx
 story: src/components/ui/input.stories.tsx
 status: piloto
-sinonimos: [campo, campo-de-texto, text-field, textfield, input-text, senha, password, email]
+sinonimos: [campo, campo-de-texto, text-field, textfield, input-text, email]
 vizinhos: [textarea, field, input-otp, combobox]
 referencias: [passi:campo-de-texto, shadcn:input]
 ---

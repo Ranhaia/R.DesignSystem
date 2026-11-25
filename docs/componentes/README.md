@@ -75,6 +75,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Opções independentes → `checkbox`. Liga/desliga que vale na hora → `switch`.
 - Opções de alternância em barra compacta → `toggle-group`.
 - Opções estruturadas em árvore com seleção em cascata → `tree-select`.
+- Senha → `password-input` (cadastro: `variant="new"`).
 - Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
 
 **Mostrar mensagem**
@@ -146,6 +147,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [multi-select](multi-select.md) — Campo de seleção múltipla com autocompletar e remoção por chips.
 - [native-select](native-select.md) — Menu suspenso nativo do navegador para seleção simples em dispositivos móveis.
 - [navigation-menu](navigation-menu.md) — Menu estruturado para navegação principal com suporte a painéis suspensos ricos.
+- [password-input](password-input.md) — Campo de senha com mostrar e ocultar e, no cadastro, a força da senha.
 - [pagination](pagination.md) — Divide listas longas em páginas sequenciais numeradas.
 - [popover](popover.md) — Painel flutuante no clique para conteúdo rico ou configurações rápidas.
 - [progress](progress.md) — Barra que indica o andamento de tarefas com duração determinada.

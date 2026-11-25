@@ -103,6 +103,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   field: "molecule",
   "hover-card": "molecule",
   "input-group": "molecule",
+  "password-input": "molecule",
   pagination: "molecule",
   "toggle-group": "molecule",
   "scroll-area": "molecule",
