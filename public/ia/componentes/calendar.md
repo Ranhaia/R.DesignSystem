@@ -5,7 +5,7 @@ camada: organism
 codigo: src/components/ui/calendar.tsx
 story: src/components/ui/calendar.stories.tsx
 status: piloto
-sinonimos: [calendario, calendário, date-picker, datepicker, seletor-de-data, data]
+sinonimos: [calendario, calendário, grade-de-datas]
 vizinhos: [popover, input]
 referencias: [passi:padroes/calendario, shadcn:calendar]
 ---

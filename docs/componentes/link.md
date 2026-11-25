@@ -5,7 +5,7 @@ camada: atom
 codigo: src/components/ui/link.tsx
 story: src/components/ui/link.stories.tsx
 status: piloto
-sinonimos: [anchor, a, hiperlink]
+sinonimos: [anchor, a, hiperlink, acao-inline, ação-inline, inline-action, link-de-acao, ver-todos]
 vizinhos: [button, navigation-menu, breadcrumb]
 referencias: [passi:link, shadcn:link, spec:link]
 ---
@@ -16,9 +16,9 @@ Permite navegar entre páginas, seções internas ou sites externos. Reaproveita
 
 ## Quando usar
 
-- Navegar entre diferentes páginas ou rotas da aplicação em links isolados ou corridos.
+- Navegar entre páginas ou rotas, em links isolados, corridos no texto ou em rodapés e termos de serviço.
 - Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external.
-- Ações secundárias de navegação em rodapés, termos de serviço ou textos explicativos.
+- Ação inline, a mais discreta, dentro do conteúdo: "+ Adicionar contato", "Ver faturas →" (prop `action`).
 
 ## Quando NÃO usar
 
@@ -47,10 +47,11 @@ Usa: [`icon`](icon.md) · [`skeleton`](skeleton.md).
 | `external` | `boolean` | `false` | Força target="_blank", rel="noopener noreferrer" e ícone de saída |
 | `href` | `string` | — | Endereço de destino da navegação |
 | `size` (LinkSkeleton) | `LinkSize` | `default` | Tamanho do placeholder esqueleto correspondente |
+| `action` | `add` · `next` | — | Ação inline: `add` põe o + antes do texto, `next` põe a seta depois (espelhada em RTL). Tira a altura e o recuo de botão para caber no texto. Use texto curto: a ação não quebra no meio. Não combine `next` com `external` |
 
 ## Variantes
 
-Nenhuma variante própria. O componente utiliza visualmente a variante link do Button, com sublinhado em hover.
+Nenhuma variante própria. O componente utiliza visualmente a variante link do Button, com sublinhado em hover. Com `action`, vira a ação inline: sem altura de botão, com + ou seta.
 
 ## Tamanhos
 
@@ -64,6 +65,7 @@ Escala com quatro tamanhos: xs (24 px), sm (32 px), default (36 px) e lg (40 px)
 | Hover | Sublinhado destacado via hover:underline |
 | Foco | Anel visível via focus-visible:ring |
 | Externo | Exibe o ícone open_in_new e abre em nova aba |
+| Ação inline | + antes ou seta depois do texto, colado ao conteúdo |
 | Desabilitado | Suportado via aria-disabled com opacidade reduzida |
 
 ## Conteúdo
@@ -81,7 +83,8 @@ Escala com quatro tamanhos: xs (24 px), sm (32 px), default (36 px) e lg (40 px)
 
 ## Tokens usados
 
-- **Espaço:** `h-10` `h-6` `h-8` `h-9` `w-14` `w-16` `w-20` `w-24`
+- **Espaço:** `gap-1` `h-10` `h-6` `h-8` `h-9` `p-0` `w-14` `w-16`
+  `w-20` `w-24`
 - **Raio:** `rounded-md`
 
 ## Faça

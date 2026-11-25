@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 import { Link } from "@/components/ui/link"
 import LinkDemo from "@/components/examples/link-demo"
+import LinkAcaoInline from "@/components/examples/link-acao-inline"
 
 const meta: Meta<typeof Link> = {
   title: "Atoms/Link",
@@ -41,4 +42,8 @@ export const Skeleton: Story = {
 
 export const Examples: Story = {
   render: () => <LinkDemo />,
+}
+
+export const AcaoInline: Story = {
+  render: () => <LinkAcaoInline />,
 }

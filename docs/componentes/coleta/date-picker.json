@@ -1,0 +1,49 @@
+{
+  "slug": "date-picker",
+  "partes": [
+    "DatePicker"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "isDateDisabled",
+      "parte": "DatePicker",
+      "tipo": "`(data: PlainDate) => boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "mode",
+      "parte": "DatePicker",
+      "tipo": "`\"single\"`",
+      "padrao": null
+    },
+    {
+      "nome": "value",
+      "parte": "DatePicker",
+      "tipo": "`PlainDate` · `null`",
+      "padrao": null
+    },
+    {
+      "nome": "defaultValue",
+      "parte": "DatePicker",
+      "tipo": "`PlainDate` · `null`",
+      "padrao": null
+    },
+    {
+      "nome": "onValueChange",
+      "parte": "DatePicker",
+      "tipo": "`(value: PlainDate | null) => void`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "p-0"
+  ],
+  "compoe": [
+    "calendar",
+    "icon",
+    "input-group",
+    "popover"
+  ]
+}
