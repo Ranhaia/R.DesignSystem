@@ -35,6 +35,7 @@ export const examplesMapping: Record<string, string[]> = {
   "input": ["input-demo", "input-disabled", "input-file", "input-fixed-label", "input-floating-label", "input-with-button", "input-with-label", "input-with-text"],
   "input-group": ["input-group-button", "input-group-button-group", "input-group-custom", "input-group-demo", "input-group-dropdown", "input-group-icon", "input-group-label", "input-group-spinner", "input-group-text", "input-group-textarea", "input-group-tooltip"],
   "password-input": ["password-input-demo", "password-input-cadastro"],
+  "timeline": ["timeline-demo", "timeline-icones"],
   "input-otp": ["input-otp-controlled", "input-otp-demo", "input-otp-pattern", "input-otp-separator"],
   "item": ["item-avatar", "item-demo", "item-dropdown", "item-group", "item-header", "item-icon", "item-image", "item-link", "item-size", "item-variant"],
   "kbd": ["kbd-button", "kbd-demo", "kbd-group", "kbd-input-group", "kbd-tooltip"],

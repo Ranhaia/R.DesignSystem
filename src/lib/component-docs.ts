@@ -5415,4 +5415,66 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
+  timeline: {
+    description: "Eventos em ordem, como o histórico de atividade de um pedido ou chamado. É o list como lista ordenada, com um marcador por evento e uma linha ligando os marcadores.",
+    whenToUse: "Mostrar o que já aconteceu com um registro, na ordem: pedido, chamado, aprovação. Feed de atividade de uma pessoa ou de um projeto.",
+    anatomy: [
+      { part: "Timeline", description: "A lista ordenada (ol) com os eventos." },
+      { part: "TimelineItem", description: "Um evento (li): marcador à esquerda, conteúdo à direita e a linha até o próximo." },
+      { part: "TimelineMarker", description: "O ponto do evento, ou o ícone passado como filho. Decorativo." },
+      { part: "TimelineContent", description: "Coluna do texto do evento." },
+      { part: "TimelineTitle", description: "O que aconteceu, texto médio (não é cabeçalho)." },
+      { part: "TimelineTime", description: "Quando aconteceu, em <time> com dateTime." },
+      { part: "TimelineDescription", description: "Detalhe opcional, texto apagado." },
+    ],
+    variants: [],
+    states: [],
+    sizes: [],
+    doGuidelines: ["Manter uma ordem só na tela inteira (mais novo em cima ou embaixo).", "Usar ícone no marcador quando os tipos de evento variam.", "Pôr a data em todo evento."],
+    dontGuidelines: ["Usar para passos futuros → stepper.", "Usar cabeçalho no título de cada evento → TimelineTitle, que é texto.", "Marcar falha só com a cor → escrever a falha no título."],
+    code: `import {
+  Timeline,
+  TimelineContent,
+  TimelineItem,
+  TimelineMarker,
+  TimelineTime,
+  TimelineTitle,
+} from "@/components/ui/timeline"
+
+<Timeline>
+  <TimelineItem>
+    <TimelineMarker />
+    <TimelineContent>
+      <TimelineTitle>Pedido criado</TimelineTitle>
+      <TimelineTime dateTime="2026-11-20">20 nov</TimelineTime>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>`,
+    props: [
+      { name: "dateTime (TimelineTime)", type: "string", default: "—", description: "Data em formato de máquina (ISO), para leitor de tela e buscadores." },
+      { name: "tone (TimelineMarker)", type: "default · primary · destructive", default: "default", description: "Cor do marcador: neutro, destaque ou problema." },
+    ],
+    meta: {
+      nome: "Timeline",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/timeline.tsx",
+      story: "src/components/ui/timeline.stories.tsx",
+      vizinhos: ["list", "item", "stepper"],
+    },
+    whenToUseItems: ["Mostrar o que já aconteceu com um registro, na ordem: pedido, chamado, aprovação.", "Feed de atividade de uma pessoa ou de um projeto."],
+    whenNotToUse: ["Etapas que a pessoa ainda vai percorrer → stepper.", "Itens sem ordem no tempo, com ações → item / list."],
+    content: ["Título no passado e curto: \"Pagamento aprovado\".", "Data no formato da tela e a mesma data em ISO no dateTime."],
+    accessibility: {
+      keyboard: "não recebe foco; links dentro do evento seguem a ordem normal.",
+      screenReader: "anuncia a lista com o número de eventos; marcador e linha ficam de fora.",
+      focus: "sem foco próprio.",
+      cautions: "a cor do marcador não pode ser a única pista: falha precisa estar escrita no título.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-border", "bg-destructive", "bg-muted", "bg-primary", "text-destructive-foreground", "text-muted-foreground", "text-primary-foreground"] },
+      { contexto: "Espaço", itens: ["bottom-1", "gap-0", "gap-1", "gap-x-3", "left-3", "min-w-0", "pb-0", "pb-6", "pt-0.5", "size-2", "size-4", "size-6", "top-7", "w-px"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+    ],
+  },
 }

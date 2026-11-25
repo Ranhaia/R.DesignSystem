@@ -86,7 +86,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Explica um elemento no hover/foco → `tooltip`. Painel pequeno no clique → `popover`.
 
 **Organizar conteúdo**
-- Visões do mesmo conteúdo, uma por vez → `tabs`. Etapas em sequência → `stepper`.
+- Visões do mesmo conteúdo, uma por vez → `tabs`. Etapas em sequência → `stepper`. Histórico do que já aconteceu → `timeline`.
 - Seções que abrem e fecham → `accordion` (uma só → `collapsible`).
 - Agrupar informação de um assunto → `card`. Lista de itens parecidos → `item` / `list`.
 - Dados estruturados em linhas e colunas → `table`.
@@ -174,6 +174,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [textarea](textarea.md) — Campo de entrada multilinha que expande verticalmente conforme o conteúdo.
 - [thumbnail](thumbnail.md) — Miniatura visual com proporção fixa e fallback integrado.
 - [time-picker](time-picker.md) — Seletor de horário com hora, minuto e formato de 24h ou 12h.
+- [timeline](timeline.md) — Eventos em ordem, como um histórico de atividade.
 - [title](title.md) — Aplica hierarquia visual e semântica a cabeçalhos e títulos de seções.
 - [toggle](toggle.md) — Botão de dois estados que alterna entre ativado e desativado.
 - [toggle-group](toggle-group.md) — Agrupa botões de alternância de dois estados para seleção única ou múltipla.
