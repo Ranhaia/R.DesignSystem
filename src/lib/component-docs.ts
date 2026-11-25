@@ -3126,7 +3126,7 @@ import {
   },
   "toggle-group": {
     description: "Agrupa botões de alternância de dois estados para seleção única ou múltipla. Ideal para barras de ferramentas, formatação e filtros visuais compactos.",
-    whenToUse: "Conjuntos de opções de estilo ou formatação (como negrito, itálico e sublinhado) com seleção múltipla. Seleção exclusiva de alinhamento ou visualização (como esquerda, centro e direita) em barras de ferramentas. Filtros rápidos em linha onde o estado ativo de cada botão precisa ficar evidente.",
+    whenToUse: "Conjuntos de opções de estilo ou formatação (como negrito, itálico e sublinhado) com seleção múltipla. Seleção exclusiva de alinhamento ou visualização (como esquerda, centro e direita), com type=\"single\". Barra de ferramentas de botões de ícone liga/desliga: type=\"multiple\" com aria-label; um Tab entra e as setas andam.",
     anatomy: [
       { part: "ToggleGroup", description: "Contêiner raiz que gerencia o tipo de seleção e compartilha variantes, tamanhos e espaçamento via contexto" },
       { part: "ToggleGroupItem", description: "Cada botão individual do grupo que herda o estilo ou define suas próprias propriedades" },
@@ -3173,12 +3173,12 @@ import {
       story: "src/components/ui/toggle-group.stories.tsx",
       vizinhos: ["toggle", "button-group", "segmented-control", "radio-group"],
     },
-    whenToUseItems: ["Conjuntos de opções de estilo ou formatação (como negrito, itálico e sublinhado) com seleção múltipla.", "Seleção exclusiva de alinhamento ou visualização (como esquerda, centro e direita) em barras de ferramentas.", "Filtros rápidos em linha onde o estado ativo de cada botão precisa ficar evidente."],
+    whenToUseItems: ["Conjuntos de opções de estilo ou formatação (como negrito, itálico e sublinhado) com seleção múltipla.", "Seleção exclusiva de alinhamento ou visualização (como esquerda, centro e direita), com type=\"single\".", "Barra de ferramentas de botões de ícone liga/desliga: type=\"multiple\" com aria-label; um Tab entra e as setas andam."],
     whenNotToUse: ["Alternar a exibição de seções ou abas com painel de conteúdo associado → tabs.", "Seleção exclusiva de poucas opções de tela com animação de trilho deslizante → segmented-control.", "Ações simples de disparo único que não guardam estado ativado → button-group."],
     content: ["Use ícones reconhecíveis com rótulo descritivo acessível via aria-label ou tooltip.", "Para textos nos itens, limite a uma única palavra: \"Centro\", \"Esquerda\", \"Direita\".", "Agrupe no máximo de 3 a 7 opções relacionadas em um mesmo conjunto."],
     accessibility: {
-      keyboard: "Em grupos com type=\"single\" atua como rádio, navegando com setas direcionais. Em type=\"multiple\" o Tab percorre os itens e Espaço/Enter alterna o estado de cada botão.",
-      screenReader: "Utiliza papel toolbar ou group (Radix). Botões possuem aria-pressed para anunciar estado ativado/desativado ou aria-checked para seleção exclusiva.",
+      keyboard: "Um Tab só entra e sai do grupo (roving tabindex); as setas andam entre os botões, Home/End vão às pontas e, no fim, voltam ao começo; Espaço/Enter alterna o botão. Item disabled sai do percurso das setas.",
+      screenReader: "type=\"multiple\" é toolbar com botões aria-pressed: dê um aria-label ao grupo. type=\"single\" é radiogroup com itens radio; não force role=\"toolbar\" nele. Só botões de alternar: ação sem estado (copiar, desfazer) não entra aqui. Botões possuem aria-pressed para anunciar estado ativado/desativado ou aria-checked para seleção exclusiva.",
       focus: "Itens recebem focus-visible:ring-ring com z-10 para manter o anel de foco destacado sobre as bordas adjacentes.",
       cautions: "Forneça sempre aria-label para cada ToggleGroupItem que contenha apenas ícone (WCAG 4.1.2). Não exceda 10 itens na mesma barra sem agrupar opções secundárias.",
     },

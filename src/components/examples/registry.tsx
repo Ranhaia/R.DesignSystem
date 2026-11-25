@@ -245,6 +245,7 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "toggle-group-single": dynamic(() => import("@/components/examples/toggle-group-single")),
   "toggle-group-sm": dynamic(() => import("@/components/examples/toggle-group-sm")),
   "toggle-group-spacing": dynamic(() => import("@/components/examples/toggle-group-spacing")),
+  "toggle-group-toolbar": dynamic(() => import("@/components/examples/toggle-group-toolbar")),
   "toggle-lg": dynamic(() => import("@/components/examples/toggle-lg")),
   "toggle-outline": dynamic(() => import("@/components/examples/toggle-outline")),
   "toggle-sm": dynamic(() => import("@/components/examples/toggle-sm")),
