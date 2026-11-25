@@ -13,6 +13,8 @@ import { CodeBlock } from "@/components/ui/code-block"
 import { SegmentedControl, SegmentedControlItem } from "@/components/ui/segmented-control"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input-group"
 import { Kbd } from "@/components/ui/kbd"
+import { ColorPickerPanel } from "@/components/ui/color-picker"
+import { Agenda } from "@/components/ui/agenda"
 
 // Só no contexto padrão: a story aninha os 5 presets em wrappers, e com outro preset no <html> o aninhado
 // herda o que não redefine (ex.: --border-width do tech), coisa que no app, com o preset só no <html>, não acontece.
@@ -45,6 +47,10 @@ function Casos() {
               <InputGroupButton data-child>Ir</InputGroupButton>
             </InputGroupAddon>
           </InputGroup>
+          <ColorPickerPanel defaultValue="#2563eb" />
+          <div className="w-full max-w-md">
+            <Agenda aria-label="Agenda" dataInicial={new Date(2026, 10, 10)} eventos={[{ id: "1", titulo: "Evento", inicio: new Date(2026, 10, 10, 9) }]} />
+          </div>
           <InputGroup data-case="input-kbd" className="w-64">
             <InputGroupInput placeholder="Comando" aria-label="Comando" />
             <InputGroupAddon align="inline-end">
@@ -64,6 +70,16 @@ export const Concentrico: Story = {
   render: () => <Casos />,
   play: async ({ canvasElement }) => {
     const falhas: string[] = []
+    // painel do seletor de cor: a área é o filho do contêiner sem afastamento
+    for (const area of canvasElement.querySelectorAll<HTMLElement>('[data-slot="color-picker-area"]')) {
+      area.dataset.child = ""
+      area.closest<HTMLElement>('[data-slot="color-picker-panel"]')!.parentElement!.dataset.case = "color-picker"
+    }
+    // o dia do mês da Agenda é o contêiner do chip de evento
+    for (const chip of canvasElement.querySelectorAll<HTMLElement>('[data-slot="agenda-chip"]')) {
+      chip.dataset.child = ""
+      chip.closest<HTMLElement>("button")!.dataset.case = "agenda-dia"
+    }
     for (const container of canvasElement.querySelectorAll<HTMLElement>("[data-case]")) {
       // o botão de copiar é interno ao CodeBlock, sem como receber data-child
       const child = container.querySelector<HTMLElement>("[data-child], [data-slot=icon-button]")!

@@ -37,6 +37,18 @@ export interface MultiSelectOption {
   value: string
 }
 
+/**
+ * Novo `value` com o texto digitado. Se o texto é uma opção (rótulo ou valor,
+ * sem diferença de caixa), entra a opção; senão, o texto como valor livre.
+ * `null` se vazio ou já escolhido.
+ */
+function adicionarValorLivre(texto: string, value: string[], options: MultiSelectOption[] = []) {
+  const novo = texto.trim()
+  const igual = (a: string) => a.toLocaleLowerCase() === novo.toLocaleLowerCase()
+  const escolhido = options.find((o) => igual(o.label) || igual(o.value))?.value ?? novo
+  return !novo || value.some(igual) || value.includes(escolhido) ? null : [...value, escolhido]
+}
+
 interface MultiSelectProps {
   /** Opções disponíveis para seleção. */
   options: MultiSelectOption[]
@@ -55,6 +67,8 @@ interface MultiSelectProps {
    *  isso, cai no `placeholder` como fallback, mas placeholder não é
    *  substituto confiável de nome acessível — prefira passar esta prop. */
   "aria-label"?: string
+  /** Aceita valor digitado: Enter num texto que não é opção vira chip (campo de tags). */
+  creatable?: boolean
 }
 
 function MultiSelect({
@@ -68,47 +82,86 @@ function MultiSelect({
   id,
   name,
   "aria-label": ariaLabel,
+  creatable = false,
 }: MultiSelectProps) {
   const t = useTexto()
   emptyText ??= t("comum.semResultado")
   placeholder ??= t("comum.selecione")
   const anchor = useComboboxAnchor()
 
+  // Map, não objeto: valor livre como "constructor" não pode cair no protótipo
   const labelByValue = React.useMemo(
-    () =>
-      Object.fromEntries(options.map((option) => [option.value, option.label])),
+    () => new Map(options.map((option) => [option.value, option.label])),
     [options]
   )
+  const rotulo = (item: string) => labelByValue.get(item) ?? item
+
+  const [texto, setTexto] = React.useState("")
+  const destacado = React.useRef<string | undefined>(undefined)
+  // valor livre já escolhido continua na lista, para dar para desmarcar
+  const itens = React.useMemo(() => {
+    const opcoes = options.map((option) => option.value)
+    if (!creatable) return opcoes
+    // com valor livre o filtro é nosso: o do Combobox fica preso no texto anterior
+    // quando o campo é limpo por fora (depois de criar um chip)
+    const busca = texto.trim().toLocaleLowerCase()
+    return [...opcoes, ...value.filter((v) => !labelByValue.has(v))].filter(
+      (v) => !busca || rotulo(v).toLocaleLowerCase().includes(busca)
+    )
+  }, [options, value, creatable, labelByValue, texto])
 
   return (
     <Combobox
-      items={options.map((option) => option.value)}
-      itemToStringLabel={(item: string) => labelByValue[item] ?? item}
+      items={itens}
+      itemToStringLabel={(item: string) => rotulo(item)}
       multiple
       value={value}
-      onValueChange={onValueChange}
+      onValueChange={(novo: string[]) => {
+        onValueChange(novo)
+        if (creatable) setTexto("")
+      }}
       disabled={disabled}
       id={id}
       name={name}
+      {...(creatable && {
+        filter: null,
+        onItemHighlighted: (item: string | undefined) => {
+          destacado.current = item
+        },
+        inputValue: texto,
+        onInputValueChange: (novo: string) => setTexto(novo),
+      })}
     >
       <ComboboxChips
         ref={anchor}
         data-slot="multi-select"
+        data-creatable={creatable || undefined}
         className={cn("min-w-56", className)}
       >
         {value.map((item) => (
-          <ComboboxChip key={item}>{labelByValue[item] ?? item}</ComboboxChip>
+          <ComboboxChip key={item}>{rotulo(item)}</ComboboxChip>
         ))}
         <ComboboxChipsInput
           aria-label={ariaLabel ?? placeholder}
           placeholder={value.length === 0 ? placeholder : undefined}
+          onKeyDown={(e) => {
+            // Enter com opção destacada é do Combobox; sem destaque, o texto vira chip.
+            // keyCode 229: Safari entrega o Enter da composição de IME com isComposing já falso
+            if (!creatable || e.key !== "Enter" || destacado.current !== undefined) return
+            if (e.nativeEvent.isComposing || e.keyCode === 229) return
+            if (!texto.trim()) return // campo vazio: Enter segue para o formulário
+            const novo = adicionarValorLivre(texto, value, options)
+            e.preventDefault()
+            if (novo) onValueChange(novo)
+            setTexto("")
+          }}
         />
       </ComboboxChips>
       <ComboboxContent anchor={anchor}>
         <ComboboxList>
           {(item: string) => (
             <ComboboxItem key={item} value={item}>
-              {labelByValue[item] ?? item}
+              {rotulo(item)}
             </ComboboxItem>
           )}
         </ComboboxList>
@@ -140,4 +193,4 @@ const MultiSelectWithSkeleton = Object.assign(MultiSelect, {
   Skeleton: MultiSelectSkeleton,
 })
 
-export { MultiSelectWithSkeleton as MultiSelect }
+export { MultiSelectWithSkeleton as MultiSelect, adicionarValorLivre }

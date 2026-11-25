@@ -1,0 +1,135 @@
+{
+  "slug": "color-picker",
+  "partes": [
+    "Painel",
+    "ColorPickerPanel",
+    "ColorPicker"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "value",
+      "parte": "Painel",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "defaultValue",
+      "parte": "Painel",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "onValueChange",
+      "parte": "Painel",
+      "tipo": "`(hex: string) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "paleta",
+      "parte": "Painel",
+      "tipo": "`string[]`",
+      "padrao": null
+    },
+    {
+      "nome": "value",
+      "parte": "ColorPickerPanel",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "defaultValue",
+      "parte": "ColorPickerPanel",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "onValueChange",
+      "parte": "ColorPickerPanel",
+      "tipo": "`(hex: string) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "paleta",
+      "parte": "ColorPickerPanel",
+      "tipo": "`string[]`",
+      "padrao": null
+    },
+    {
+      "nome": "className",
+      "parte": "ColorPickerPanel",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "value",
+      "parte": "ColorPicker",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "defaultValue",
+      "parte": "ColorPicker",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "onValueChange",
+      "parte": "ColorPicker",
+      "tipo": "`(hex: string) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "paleta",
+      "parte": "ColorPicker",
+      "tipo": "`string[]`",
+      "padrao": null
+    },
+    {
+      "nome": "label",
+      "parte": "ColorPicker",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "className",
+      "parte": "ColorPicker",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "disabled",
+      "parte": "ColorPicker",
+      "tipo": "`boolean`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "gap-1.5",
+    "gap-2",
+    "gap-3",
+    "h-3",
+    "h-36",
+    "inset-0",
+    "radius-inset-0",
+    "radius-inset-2.5",
+    "radius-inset-4",
+    "ring-ring",
+    "rounded-full",
+    "rounded-inner",
+    "rounded-outer-md",
+    "shadow-sm",
+    "size-4",
+    "size-5",
+    "size-6",
+    "size-9",
+    "w-56"
+  ],
+  "compoe": [
+    "button",
+    "input",
+    "popover",
+    "slider"
+  ]
+}

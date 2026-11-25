@@ -7,6 +7,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 import { MultiSelect } from "@/components/ui/multi-select"
 import MultiSelectDemo from "@/components/examples/multi-select-demo"
+import MultiSelectLivre from "@/components/examples/multi-select-livre"
 
 const meta: Meta<typeof MultiSelect> = {
   title: "Organisms/MultiSelect",
@@ -20,4 +21,8 @@ type Story = StoryObj<typeof MultiSelect>
 
 export const Default: Story = {
   render: () => <MultiSelectDemo />,
+}
+
+export const ValorLivre: Story = {
+  render: () => <MultiSelectLivre />,
 }
