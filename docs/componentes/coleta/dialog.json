@@ -22,10 +22,22 @@
       "padrao": "true"
     },
     {
+      "nome": "closeLabel",
+      "parte": "DialogContent",
+      "tipo": "`string`",
+      "padrao": "Fechar"
+    },
+    {
       "nome": "showCloseButton",
       "parte": "DialogFooter",
       "tipo": "`boolean`",
       "padrao": "false"
+    },
+    {
+      "nome": "closeLabel",
+      "parte": "DialogFooter",
+      "tipo": "`string`",
+      "padrao": "Fechar"
     }
   ],
   "tokens": [

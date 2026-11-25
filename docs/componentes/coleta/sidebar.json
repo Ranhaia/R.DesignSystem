@@ -78,6 +78,18 @@
       "padrao": null
     },
     {
+      "nome": "mobileTitle",
+      "parte": "Sidebar",
+      "tipo": "`string`",
+      "padrao": "Barra lateral"
+    },
+    {
+      "nome": "mobileDescription",
+      "parte": "Sidebar",
+      "tipo": "`string`",
+      "padrao": "Exibe a barra lateral no celular."
+    },
+    {
       "nome": "variant",
       "parte": "Sidebar",
       "tipo": "`sidebar` · `floating` · `inset`",
@@ -88,6 +100,12 @@
       "parte": "Sidebar",
       "tipo": "`offcanvas` · `icon` · `none`",
       "padrao": "offcanvas"
+    },
+    {
+      "nome": "label",
+      "parte": "SidebarTrigger",
+      "tipo": "`string`",
+      "padrao": "Alternar barra lateral"
     },
     {
       "nome": "asChild",

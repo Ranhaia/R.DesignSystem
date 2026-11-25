@@ -47,6 +47,9 @@ export default defineConfig({
     reporters: ['default', new ReporterComponentes()],
     projects: [
       {
+        // Os componentes de src/components/ui importam por "@/"; sem o alias o
+        // projeto unit não consegue renderizá-los (o storybook resolve por conta própria).
+        resolve: { alias: { '@': path.join(dirname, 'src') } },
         test: {
           name: 'unit',
           environment: 'node',

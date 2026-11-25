@@ -122,7 +122,7 @@ function Carousel({
         onKeyDownCapture={handleKeyDown}
         className={cn("relative", className)}
         role="region"
-        aria-roledescription="carousel"
+        aria-roledescription="carrossel"
         data-slot="carousel"
         {...props}
       >
@@ -175,11 +175,16 @@ function CarouselPrevious({
   className,
   variant = "outline",
   size = "icon",
+  label = "Slide anterior",
   ...props
-}: Omit<React.ComponentProps<typeof Button>, "children" | "icon" | "label">) {
+}: Omit<React.ComponentProps<typeof Button>, "children" | "icon" | "label"> & {
+  /** Texto que o leitor de tela anuncia no botão. */
+  label?: string
+}) {
   // Omit de children/icon/label: mesmo motivo do SidebarTrigger (ver
   // sidebar.tsx) — este componente já hardcoda seu próprio ícone + texto
-  // sr-only abaixo, não repassa esses props pro Button interno.
+  // sr-only abaixo, não repassa esses props pro Button interno. O `label`
+  // aqui é só o texto sr-only, não o `label` do Button.
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
@@ -199,7 +204,7 @@ function CarouselPrevious({
       {...props}
     >
       <Icon name="arrow_back" />
-      <span className="sr-only">Previous slide</span>
+      <span className="sr-only">{label}</span>
     </Button>
   )
 }
@@ -208,8 +213,12 @@ function CarouselNext({
   className,
   variant = "outline",
   size = "icon",
+  label = "Próximo slide",
   ...props
-}: Omit<React.ComponentProps<typeof Button>, "children" | "icon" | "label">) {
+}: Omit<React.ComponentProps<typeof Button>, "children" | "icon" | "label"> & {
+  /** Texto que o leitor de tela anuncia no botão. */
+  label?: string
+}) {
   // Omit de children/icon/label: mesmo motivo do CarouselPrevious acima.
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
@@ -230,7 +239,7 @@ function CarouselNext({
       {...props}
     >
       <Icon name="arrow_forward" />
-      <span className="sr-only">Next slide</span>
+      <span className="sr-only">{label}</span>
     </Button>
   )
 }

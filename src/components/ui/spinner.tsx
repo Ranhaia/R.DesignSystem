@@ -21,7 +21,7 @@ function Spinner({
     <Icon
       name="progress_activity"
       role="status"
-      aria-label="Loading"
+      aria-label="Carregando"
       className={cn("size-4 animate-spin", className)}
       {...props}
     />

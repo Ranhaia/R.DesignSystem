@@ -49,8 +49,8 @@ Usa: [`dialog`](dialog.md) · [`icon`](icon.md).
 | Prop | Tipo | Padrão | O que faz |
 |---|---|---|---|
 | `value` · `onValueChange` (Command) | `string` | — | Valor controlado do item selecionado na lista |
-| `title` (CommandDialog) | `string` | `Command Palette` | Título acessível da janela modal para leitor de tela (sr-only) |
-| `description` (CommandDialog) | `string` | `Search for a command to run...` | Descrição acessível da janela modal para leitor de tela (sr-only) |
+| `title` (CommandDialog) | `string` | `Paleta de comandos` | Título acessível da janela modal para leitor de tela (sr-only) |
+| `description` (CommandDialog) | `string` | `Busque um comando para executar.` | Descrição acessível da janela modal para leitor de tela (sr-only) |
 | `className` (CommandDialog) | `string` | — | Classes adicionais aplicadas ao contêiner DialogContent |
 | `showCloseButton` (CommandDialog) | `boolean` | `true` | Exibe o botão de fechar no canto superior da janela modal |
 | `shouldFilter` (CommandDialog) | `boolean` | — | Desativa a filtragem interna do cmdk para usar busca e ordenação customizadas |
@@ -85,7 +85,7 @@ Tamanho único. A lista rolável tem altura máxima de 300 px (`max-h-75`), adap
 - **Teclado:** Setas Cima e Baixo navegam entre os itens da lista. Enter executa a ação do item selecionado. Esc fecha o `CommandDialog` e devolve o foco ao elemento acionador. Digitação no `CommandInput` filtra os itens em tempo real.
 - **Leitor de tela:** Papel `combobox` no input gerenciando a lista de resultados com `aria-expanded` e `aria-controls`. `CommandDialog` possui `DialogTitle` e `DialogDescription` ocultos visualmente (`sr-only`) para identificação acessível.
 - **Foco:** Ao abrir o `CommandDialog`, o foco vai automaticamente para o campo de busca (`CommandInput`). Ao fechar, o foco retorna ao botão ou elemento que abriu a paleta.
-- **Cuidados:** Os textos padrão de título e descrição de `CommandDialog` estão em inglês no código. Em aplicações em português, passe `title` e `description` explicitamente em português do Brasil.
+- **Cuidados:** `CommandDialog` se chama "Paleta de comandos" e se descreve como "Busque um comando para executar." para o leitor de tela. Passe `title` e `description` quando a paleta tiver um propósito mais específico ("Ir para uma página").
 
 ## Tokens usados
 
@@ -107,7 +107,7 @@ Tamanho único. A lista rolável tem altura máxima de 300 px (`max-h-75`), adap
 ## NÃO faça
 
 - Substituir a navegação principal da aplicação por uma paleta de comandos → `sidebar`.
-- Usar textos padrão em inglês de `CommandDialog` em interfaces em português → passe `title` e `description` localizados.
+- Deixar o título padrão numa paleta com propósito específico → passe `title` e `description` que digam o que ela faz.
 - Lista longa sem divisão por grupos ou atalhos visíveis → divida comandos com `CommandGroup` e indique `CommandShortcut`.
 
 ## Exemplo mínimo

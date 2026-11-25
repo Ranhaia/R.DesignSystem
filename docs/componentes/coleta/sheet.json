@@ -26,6 +26,12 @@
       "parte": "SheetContent",
       "tipo": "`boolean`",
       "padrao": "true"
+    },
+    {
+      "nome": "closeLabel",
+      "parte": "SheetContent",
+      "tipo": "`string`",
+      "padrao": "Fechar"
     }
   ],
   "tokens": [

@@ -35,6 +35,12 @@
       "padrao": null
     },
     {
+      "nome": "label",
+      "parte": "CarouselPrevious",
+      "tipo": "`string`",
+      "padrao": "Slide anterior"
+    },
+    {
       "nome": "variant",
       "parte": "CarouselPrevious",
       "tipo": null,
@@ -45,6 +51,12 @@
       "parte": "CarouselPrevious",
       "tipo": null,
       "padrao": "icon"
+    },
+    {
+      "nome": "label",
+      "parte": "CarouselNext",
+      "tipo": "`string`",
+      "padrao": "Próximo slide"
     },
     {
       "nome": "variant",

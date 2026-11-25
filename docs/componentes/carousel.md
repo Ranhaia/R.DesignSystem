@@ -51,6 +51,8 @@ Usa: [`button`](button.md) · [`icon`](icon.md).
 | `size` (CarouselPrevious) | `ButtonProps["size"]` | `icon` | Tamanho do botão anterior |
 | `variant` (CarouselNext) | `ButtonProps["variant"]` | `outline` | Estilo visual do botão próximo herdado de `Button` |
 | `size` (CarouselNext) | `ButtonProps["size"]` | `icon` | Tamanho do botão próximo |
+| `label` (CarouselPrevious) | `string` | `Slide anterior` | Texto que o leitor de tela anuncia no botão (não aparece na tela) |
+| `label` (CarouselNext) | `string` | `Próximo slide` | Texto que o leitor de tela anuncia no botão (não aparece na tela) |
 
 ## Variantes
 
@@ -77,9 +79,9 @@ Sem medidas fixas. Cada `CarouselItem` ocupa 100% da largura por padrão (`basis
 ## Acessibilidade
 
 - **Teclado:** Foco no container permite avançar e voltar usando ArrowLeft e ArrowRight. Tab alcança os botões de controle anterior e próximo.
-- **Leitor de tela:** Container com `role="region"` e `aria-roledescription="carousel"`. Cada slide possui `role="group"` e `aria-roledescription="slide"`.
+- **Leitor de tela:** Container com `role="region"` e `aria-roledescription="carrossel"`. Cada slide possui `role="group"` e `aria-roledescription="slide"`.
 - **Foco:** O foco permanece nos botões de navegação ao clicar ou navega pelos links e elementos interativos dentro do slide ativo.
-- **Cuidados:** Os botões nativos trazem texto acessível em inglês ("Previous slide" e "Next slide"). Passe botões personalizados ou sobrescreva o texto para leitores de tela em telas em português (WCAG 3.1.2).
+- **Cuidados:** Os botões anunciam "Slide anterior" e "Próximo slide". Para um texto mais específico ("Foto anterior"), passe `label` em `CarouselPrevious` e `CarouselNext`.
 
 ## Tokens usados
 
