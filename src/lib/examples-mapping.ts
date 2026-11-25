@@ -90,6 +90,6 @@ export const examplesMapping: Record<string, string[]> = {
   "time-picker": ["time-picker-demo"],
   "title": ["title-demo"],
   "toggle": ["toggle-demo", "toggle-disabled", "toggle-lg", "toggle-outline", "toggle-sm", "toggle-with-text"],
-  "toggle-group": ["toggle-group-demo", "toggle-group-disabled", "toggle-group-lg", "toggle-group-outline", "toggle-group-single", "toggle-group-sm", "toggle-group-spacing"],
+  "toggle-group": ["toggle-group-demo", "toggle-group-disabled", "toggle-group-lg", "toggle-group-outline", "toggle-group-single", "toggle-group-sm", "toggle-group-spacing", "toggle-group-toolbar"],
   "tooltip": ["tooltip-demo"],
 }

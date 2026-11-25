@@ -74,7 +74,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - 1 de 5 ou mais → `select` (`native-select` no celular).
 - Lista longa, com digitação → `combobox`. Várias de uma lista longa → `multi-select`.
 - Opções independentes → `checkbox`. Liga/desliga que vale na hora → `switch`.
-- Opções de alternância em barra compacta → `toggle-group`.
+- Opções de alternância em barra compacta → `toggle-group`. Barra de ferramentas de ícones liga/desliga (um Tab, setas) → `toggle-group` `type="multiple"` com `aria-label`.
 - Opções estruturadas em árvore com seleção em cascata → `tree-select`.
 - Senha → `password-input` (cadastro: `variant="new"`).
 - Dinheiro → `currency-input` (moeda em `currency`).

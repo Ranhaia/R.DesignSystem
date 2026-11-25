@@ -6,6 +6,7 @@ import ToggleGroupLg from "@/components/examples/toggle-group-lg"
 import ToggleGroupSingle from "@/components/examples/toggle-group-single"
 import ToggleGroupSm from "@/components/examples/toggle-group-sm"
 import ToggleGroupSpacing from "@/components/examples/toggle-group-spacing"
+import ToggleGroupToolbar from "@/components/examples/toggle-group-toolbar"
 
 type ToggleGroupArgs = {
   variant: "default" | "outline"
@@ -67,4 +68,8 @@ export const Small: Story = {
 
 export const Spacing: Story = {
   render: () => <ToggleGroupSpacing />,
+}
+
+export const BarraDeFerramentas: Story = {
+  render: () => <ToggleGroupToolbar />,
 }
