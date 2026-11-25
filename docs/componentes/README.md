@@ -130,6 +130,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [chip](chip.md) — Sinaliza critérios ou atributos ativos aplicados a uma busca ou filtragem de lista.
 - [code-block](code-block.md) — Código com botão de copiar.
 - [collapsible](collapsible.md) — Alterna a visibilidade de uma seção de conteúdo secundário sob demanda.
+- [color-picker](color-picker.md) — Escolhe uma cor livre ou da paleta, com hexadecimal e teclado.
 - [combobox](combobox.md) — Combina campo de texto com lista de sugestões filtradas e seleção por chips.
 - [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.
 - [context-menu](context-menu.md) — Menu contextual flutuante acionado pelo clique com o botão direito do mouse.
