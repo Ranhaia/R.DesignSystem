@@ -74,6 +74,7 @@ export const Concentrico: Story = {
     for (const area of canvasElement.querySelectorAll<HTMLElement>('[data-slot="color-picker-area"]')) {
       area.dataset.child = ""
       area.closest<HTMLElement>('[data-slot="color-picker-panel"]')!.parentElement!.dataset.case = "color-picker"
+    }
     // o dia do mês da Agenda é o contêiner do chip de evento
     for (const chip of canvasElement.querySelectorAll<HTMLElement>('[data-slot="agenda-chip"]')) {
       chip.dataset.child = ""
