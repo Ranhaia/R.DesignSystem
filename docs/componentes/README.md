@@ -76,12 +76,14 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Opções de alternância em barra compacta → `toggle-group`.
 - Opções estruturadas em árvore com seleção em cascata → `tree-select`.
 - Senha → `password-input` (cadastro: `variant="new"`).
+- Dinheiro → `currency-input` (moeda em `currency`).
 - Número exato, com − e + → `number-input`.
 - Busca → `search-input` (com atalho de teclado: `shortcut`).
 - Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
 
 **Mostrar mensagem**
 - Fica na página, perto do assunto → `alert`.
+- Recado para todos, no topo do app, que a pessoa fecha → `announcement-banner`.
 - Confirma algo e some sozinha → `sonner`.
 - Avisos que se acumulam para ler depois, com lidas e não lidas → `notification-center`.
 - Interrompe para pedir decisão → `alert-dialog`. Tarefa focada (editar, preencher) → `dialog`.
@@ -104,6 +106,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 
 - [accordion](accordion.md) — Organiza o conteúdo em seções empilhadas que expandem e recolhem.
 - [alert](alert.md) — Exibe uma mensagem contextual fixa na página para informar ou alertar.
+- [announcement-banner](announcement-banner.md) — Faixa no topo do app com um recado para todos, que a pessoa fecha.
 - [alert-dialog](alert-dialog.md) — Interrompe o fluxo da tela com um aviso crítico e exige resposta explícita.
 - [aspect-ratio](aspect-ratio.md) — Mantém a proporção exata entre largura e altura de imagens, vídeos e embeds.
 - [attachment](attachment.md) — Exibe anexo de arquivo com mídia, metadados e ações rápidas.
@@ -124,6 +127,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [combobox](combobox.md) — Combina campo de texto com lista de sugestões filtradas e seleção por chips.
 - [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.
 - [context-menu](context-menu.md) — Menu contextual flutuante acionado pelo clique com o botão direito do mouse.
+- [currency-input](currency-input.md) — Campo de dinheiro formatado no idioma e na moeda.
 - [data-table](data-table.md) — Tabela de dados com busca, filtros, ordenação, colunas visíveis, seleção em lote e exportar CSV.
 - [description-list](description-list.md) — Pares rótulo/valor de uma ficha de detalhes, em lista de definições.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.

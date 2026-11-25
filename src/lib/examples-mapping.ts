@@ -1,6 +1,7 @@
 export const examplesMapping: Record<string, string[]> = {
   "accordion": ["accordion-demo"],
   "alert": ["alert-demo", "alert-destructive"],
+  "announcement-banner": ["announcement-banner-demo"],
   "alert-dialog": ["alert-dialog-demo"],
   "aspect-ratio": ["aspect-ratio-demo"],
   "attachment": ["attachment-demo"],
@@ -21,6 +22,7 @@ export const examplesMapping: Record<string, string[]> = {
   "combobox": ["combobox-demo", "combobox-dropdown-menu", "combobox-popover", "combobox-responsive"],
   "command": ["command-demo", "command-dialog"],
   "context-menu": ["context-menu-demo"],
+  "currency-input": ["currency-input-demo", "currency-input-moeda"],
   "data-table": ["data-table-demo"],
   "dialog": ["dialog-close-button", "dialog-demo"],
   "direction": ["direction-demo"],

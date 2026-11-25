@@ -4,6 +4,8 @@
 // Idioma novo: acrescente um objeto com as mesmas chaves; a trava é idioma.test.ts.
 
 const ptBR = {
+  "announcement.nome": "Anúncio",
+  "announcement.fechar": "Fechar anúncio",
   "breadcrumb.trilha": "Trilha de navegação",
   "breadcrumb.mais": "Mais níveis",
   "carousel.anterior": "Slide anterior",
@@ -85,6 +87,8 @@ const ptBR = {
 export type ChaveTexto = keyof typeof ptBR
 
 const en: Record<ChaveTexto, string> = {
+  "announcement.nome": "Announcement",
+  "announcement.fechar": "Dismiss announcement",
   "breadcrumb.trilha": "Breadcrumb",
   "breadcrumb.mais": "More levels",
   "carousel.anterior": "Previous slide",
