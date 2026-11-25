@@ -70,6 +70,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Speed Dial](/ia/componentes/speed-dial.md): Botão de ação flutuante que se expande em uma sequência de ações secundárias relacionadas. Permite acessar comandos rápidos sem ocupar espaço permanente na tela.
 - [Table](/ia/componentes/table.md): Organiza informações em linhas e colunas para visualização, comparação e consulta estruturada. Conta com contêiner responsivo com rolagem horizontal automática.
 - [Tabs](/ia/componentes/tabs.md): Divide um conteúdo em partes e mostra uma de cada vez, sem sair da página. A aba ativa fica destacada para a pessoa saber onde está.
+- [Timeline](/ia/componentes/timeline.md): Eventos em ordem, como o histórico de atividade de um pedido ou chamado. É o `list` como lista ordenada, com um marcador por evento e uma linha ligando os marcadores.
 - [Toggle Group](/ia/componentes/toggle-group.md): Agrupa botões de alternância de dois estados para seleção única ou múltipla. Ideal para barras de ferramentas, formatação e filtros visuais compactos.
 - [TreeSelect](/ia/componentes/tree-select.md): Campo de seleção em árvore que permite escolher itens estruturados em hierarquia dentro de um painel flutuante. Suporta seleção única, múltipla independente ou em cascata com caixas de marcação.
 
@@ -83,6 +84,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Combobox](/ia/componentes/combobox.md): Combina um campo de entrada de texto com menu suspenso de sugestões filtradas sob demanda, suportando seleção única ou múltipla por chips.
 - [Command](/ia/componentes/command.md): Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado. Funciona inline na página ou dentro de uma janela modal para paleta de comandos.
 - [Context Menu](/ia/componentes/context-menu.md): Menu contextual flutuante acionado pelo clique com o botão direito do mouse ou toque longo. Agrupa ações específicas aplicadas ao elemento apontado.
+- [Data Table](/ia/componentes/data-table.md): Tabela montada sobre a `table` para trabalhar com os dados: procurar, filtrar, ordenar, escolher as colunas, agir sobre várias linhas de uma vez e levar tudo para uma planilha em CSV.
 - [Dialog](/ia/componentes/dialog.md): Janela por cima da tela para uma tarefa curta e focada — editar, preencher, escolher. O resto da página fica inerte e escurecido.
 - [Drawer](/ia/componentes/drawer.md): Painel deslizante que emerge das bordas da tela sobre uma camada escurecida, ideal para dispositivos móveis. Permite arrastar para fechar ou tocar fora para dispensar.
 - [Dropdown Menu](/ia/componentes/dropdown-menu.md): Menu suspenso ancorado a um botão acionador que exibe uma lista de ações ou opções. Fecha ao selecionar um item ou ao clicar fora do painel.
@@ -91,7 +93,9 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Menubar](/ia/componentes/menubar.md): Barra horizontal persistente de menus inspirada em aplicações desktop. Oferece acesso consistente e agrupado a comandos globais por categorias e atalhos.
 - [MultiSelect](/ia/componentes/multi-select.md): Campo de seleção múltipla com autocompletar que exibe cada escolha como um chip removível no próprio container.
 - [Navigation Menu](/ia/componentes/navigation-menu.md): Menu estruturado para navegação principal em websites e portais. Oferece suporte a links diretos, painéis suspensos ricos e transição animada entre seções.
+- [Number Input](/ia/componentes/number-input.md): Campo para um número exato, com botões − e + nas pontas e setas do teclado. Respeita `min`, `max` e `step` e escreve o número no formato do idioma ativo.
 - [Resizable](/ia/componentes/resizable.md): Divisão de layout em painéis redimensionáveis e acessíveis com suporte a mouse, toque e teclado. Permite ajustar a proporção entre seções contíguas em layouts complexos.
+- [Search Input](/ia/componentes/search-input.md): Campo de busca pronto: lupa no início, botão de limpar quando há texto e, se quiser, uma tecla de atalho que leva o foco até ele. Resolve a busca de lista ou página sem montar o `input-group` à mão.
 - [Sheet](/ia/componentes/sheet.md): Painel sobreposto que desliza a partir de uma das bordas da tela. Permite exibir formulários longos, detalhes de itens ou configurações sem perder o contexto da página.
 - [Sidebar](/ia/componentes/sidebar.md): Barra de navegação lateral para organizar a hierarquia e as seções de um produto. Suporta agrupamento, submenus, estado recolhido em ícones e adaptação mobile em folha deslizante.
 - [Split Button](/ia/componentes/split-button.md): Combina uma ação principal direta com um menu suspenso de ações secundárias relacionadas. Permite executar o comando mais frequente com um clique e acessar variações pelo gatilho lateral.
