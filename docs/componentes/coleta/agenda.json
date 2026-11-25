@@ -1,0 +1,79 @@
+{
+  "slug": "agenda",
+  "partes": [
+    "DiaDoMes",
+    "Agenda"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "eventos",
+      "parte": "Agenda",
+      "tipo": "`EventoAgenda[]`",
+      "padrao": null
+    },
+    {
+      "nome": "dataInicial",
+      "parte": "Agenda",
+      "tipo": "`Date`",
+      "padrao": null
+    },
+    {
+      "nome": "visaoInicial",
+      "parte": "Agenda",
+      "tipo": "`VisaoAgenda`",
+      "padrao": "mes"
+    },
+    {
+      "nome": "onEventoClick",
+      "parte": "Agenda",
+      "tipo": "`(evento: EventoAgenda) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "className",
+      "parte": "Agenda",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "aria-label",
+      "parte": "Agenda",
+      "tipo": "`string`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "font-medium",
+    "gap-0",
+    "gap-0.5",
+    "gap-1",
+    "gap-2",
+    "gap-3",
+    "h-24",
+    "min-w-0",
+    "min-w-24",
+    "p-0",
+    "p-0.5",
+    "p-1",
+    "px-1",
+    "py-1",
+    "py-6",
+    "radius-inset-1",
+    "ring-ring",
+    "rounded-inner",
+    "rounded-md",
+    "rounded-outer-md",
+    "text-base",
+    "text-muted-foreground",
+    "text-sm",
+    "text-xs"
+  ],
+  "compoe": [
+    "button",
+    "calendar",
+    "icon",
+    "segmented-control"
+  ]
+}
