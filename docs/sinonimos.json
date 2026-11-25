@@ -7,6 +7,7 @@
   "aspect-ratio": ["proporcao", "proporção", "proporcao-de-imagem", "ratio"],
   "attachment": ["anexo", "arquivo-anexado"],
   "avatar": ["foto-de-perfil", "imagem-de-perfil"],
+  "back-to-top": ["voltar-ao-topo", "ir-ao-topo", "subir", "scroll-to-top", "back-to-top"],
   "badge": ["selo", "status", "rotulo-de-status"],
   "box": ["container", "caixa", "bloco"],
   "breadcrumb": ["breadcrumbs", "migalhas", "migalhas-de-pao", "trilha"],

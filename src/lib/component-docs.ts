@@ -5907,4 +5907,49 @@ export function ExemploValor() {
       { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
+  "back-to-top": {
+    description: "Botão flutuante que aparece depois de rolar uma página longa e leva de volta ao começo. Poupa a pessoa de rolar tudo para cima.",
+    whenToUse: "Páginas longas: listas, artigos, documentação, resultados de busca. Um por página, no canto inferior direito.",
+    anatomy: [
+      { part: "BackToTop", description: "icon-button outline redondo com a seta para cima, fixo no canto inferior direito" },
+    ],
+    variants: [],
+    states: [
+      { name: "Escondido", description: "Antes de rolar o threshold: invisível e fora da ordem do Tab" },
+      { name: "Visível", description: "Depois de rolar: aparece com transição de opacidade" },
+    ],
+    sizes: [],
+    doGuidelines: ["Use em páginas com mais de duas telas de conteúdo.", "Ajuste o threshold para a altura de uma tela, mais ou menos.", "Deixe espaço no canto para ele não cobrir conteúdo."],
+    dontGuidelines: ["Dois botões fixos no mesmo canto → suba um deles com className.", "Usar em página curta → tire o botão.", "Texto no lugar do ícone → mantenha só a seta e o nome acessível."],
+    code: `import { BackToTop } from "@/components/ui/back-to-top"
+
+<BackToTop />`,
+    props: [
+      { name: "className", type: "string", default: "—", description: "Ajusta a posição (ex.: subir acima de outro botão fixo)" },
+      { name: "threshold", type: "number", default: "400", description: "Quanto rolar, em pixels de rolagem, até o botão aparecer" },
+      { name: "label", type: "string", default: "—", description: "Nome para o leitor de tela. Padrão do dicionário: \"Voltar ao topo\"" },
+    ],
+    meta: {
+      nome: "Back To Top",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/back-to-top.tsx",
+      story: "src/components/ui/back-to-top.stories.tsx",
+      vizinhos: ["icon-button", "link", "scroll-area"],
+    },
+    whenToUseItems: ["Páginas longas: listas, artigos, documentação, resultados de busca.", "Um por página, no canto inferior direito."],
+    whenNotToUse: ["Página curta, que cabe em duas telas → não precisa.", "Ir para uma seção específica → link para a âncora.", "Rolagem dentro de um painel → scroll-area."],
+    content: ["Só o ícone de seta para cima; o nome vai no aria-label."],
+    accessibility: {
+      keyboard: "Quando visível, entra na ordem do Tab; Enter ou Espaço leva ao topo.",
+      screenReader: "Botão com nome \"Voltar ao topo\". Escondido, não é anunciado.",
+      focus: "Ao clicar, o foco vai para o conteúdo principal (main, ou o documento se não houver), e o próximo Tab segue dali.",
+      cautions: "Com prefers-reduced-motion, o salto é direto, sem rolagem suave.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["bottom-6", "right-6"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+      { contexto: "Sombra", itens: ["shadow-md"] },
+    ],
+  },
 }

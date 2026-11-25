@@ -66,6 +66,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Ação só com ícone → `icon-button` (com `aria-label` e `tooltip`).
 - Ação principal + variações → `split-button`. Várias ações flutuantes → `speed-dial`.
 - Ações relacionadas lado a lado → `button-group`.
+- Voltar ao começo de uma página longa → `back-to-top`.
 
 **Escolher**
 - 1 de 2 a 4 opções, troca a visão na hora → `segmented-control`.
@@ -111,6 +112,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [alert-dialog](alert-dialog.md) — Interrompe o fluxo da tela com um aviso crítico e exige resposta explícita.
 - [aspect-ratio](aspect-ratio.md) — Mantém a proporção exata entre largura e altura de imagens, vídeos e embeds.
 - [attachment](attachment.md) — Exibe anexo de arquivo com mídia, metadados e ações rápidas.
+- [back-to-top](back-to-top.md) — Botão flutuante que aparece em página longa e leva ao começo.
 - [avatar](avatar.md) — Representa visualmente uma pessoa, conta ou organização com fallback.
 - [badge](badge.md) — Rótulo compacto para destacar status, contagem ou metadado.
 - [box](box.md) — Container flexível e sem estilo próprio para agrupar e organizar elementos.

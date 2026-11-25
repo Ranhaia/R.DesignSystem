@@ -6,6 +6,7 @@
 const ptBR = {
   "announcement.nome": "Anúncio",
   "announcement.fechar": "Fechar anúncio",
+  "backToTop.rotulo": "Voltar ao topo",
   "breadcrumb.trilha": "Trilha de navegação",
   "breadcrumb.mais": "Mais níveis",
   "carousel.anterior": "Slide anterior",
@@ -92,6 +93,7 @@ export type ChaveTexto = keyof typeof ptBR
 const en: Record<ChaveTexto, string> = {
   "announcement.nome": "Announcement",
   "announcement.fechar": "Dismiss announcement",
+  "backToTop.rotulo": "Back to top",
   "breadcrumb.trilha": "Breadcrumb",
   "breadcrumb.mais": "More levels",
   "carousel.anterior": "Previous slide",
