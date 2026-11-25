@@ -1811,7 +1811,7 @@ export function ExemploTreeSelect() {
   },
   "multi-select": {
     description: "Campo de seleção múltipla com autocompletar que exibe cada escolha como um chip removível no próprio container.",
-    whenToUse: "Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips. Filtros avançados com busca textual onde cada critério selecionado precisa ser removido de forma independente. Formulários com listas longas de opções que demandam filtragem rápida por digitação.",
+    whenToUse: "Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips. Formulários com listas longas de opções que demandam filtragem rápida por digitação. Campo de tags ou etiquetas que aceita valor novo além das sugestões (creatable).",
     anatomy: [
       { part: "MultiSelect", description: "Campo completo de seleção múltipla com suporte a busca e chips" },
       { part: "MultiSelectSkeleton", description: "Placeholder animado de carregamento enquanto as opções são carregadas" },
@@ -1822,6 +1822,7 @@ export function ExemploTreeSelect() {
       { name: "Foco", description: "Anel de foco visível ao redor do container enquanto o cursor de busca estiver ativo" },
       { name: "Aberto", description: "Painel suspenso visível ancorado ao container com lista de itens filtrados" },
       { name: "Desabilitado", description: "Container opaco com disabled desativando cliques, busca e remoção de chips" },
+      { name: "Valor livre", description: "Com creatable, o texto digitado vira chip e passa a aparecer na lista para ser desmarcado" },
       { name: "Vazio", description: "Mensagem de emptyText exibida no painel quando nenhum item corresponde à busca" },
     ],
     sizes: [],
@@ -1857,6 +1858,7 @@ function Exemplo() {
       { name: "emptyText", type: "string", default: "Nenhum resultado encontrado.", description: "Mensagem apresentada quando a busca não encontra correspondências" },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa interação com o campo de busca e os chips" },
       { name: "aria-label", type: "string", default: "—", description: "Nome acessível para leitores de tela quando não houver rótulo visível" },
+      { name: "creatable", type: "—", default: "false", description: "Aceita valor digitado: Enter num texto sem opção em destaque vira chip (campo de tags). Texto igual a uma opção (sem diferença de caixa) escolhe a opção; repetido ou vazio é ignorado. Com o campo vazio, Enter segue para o formulário" },
     ],
     meta: {
       nome: "MultiSelect",
@@ -1866,11 +1868,11 @@ function Exemplo() {
       story: "src/components/ui/multi-select.stories.tsx",
       vizinhos: ["combobox", "select", "checkbox"],
     },
-    whenToUseItems: ["Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips.", "Filtros avançados com busca textual onde cada critério selecionado precisa ser removido de forma independente.", "Formulários com listas longas de opções que demandam filtragem rápida por digitação."],
+    whenToUseItems: ["Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips.", "Formulários com listas longas de opções que demandam filtragem rápida por digitação.", "Campo de tags ou etiquetas que aceita valor novo além das sugestões (creatable)."],
     whenNotToUse: ["Selecionar apenas uma opção em lista longa com autocompletar → combobox.", "Seleção única entre 5 ou mais opções sem necessidade de busca → select.", "Poucas opções independentes que cabem visíveis diretamente na tela → checkbox."],
     content: ["Rótulos das opções devem ser concisos, substantivos e sem ponto final.", "O placeholder orienta a ação esperada quando nenhum valor foi escolhido (ex.: \"Selecione as modalidades...\").", "Defina mensagens de emptyText claras e instrutivas para orientar nova digitação."],
     accessibility: {
-      keyboard: "Digitação filtra opções; setas cima e baixo percorrem a lista; Enter seleciona ou desmarca o item em destaque; Backspace com campo vazio remove o último chip selecionado.",
+      keyboard: "Digitação filtra opções; setas cima e baixo percorrem a lista; Enter seleciona ou desmarca o item em destaque; Backspace com campo vazio remove o último chip selecionado. Com creatable, Enter sem item em destaque transforma o texto em chip (fora da composição de IME).",
       screenReader: "Baseado no Combobox do Base UI com suporte a seleção múltipla; chips anunciam seus rótulos com botão de remoção; passe aria-label caso não haja rótulo visível.",
       focus: "O foco permanece no campo de texto de busca; abrir e fechar a lista não perde o controle do cursor de digitação.",
       cautions: "Passe sempre aria-label ou associe um <label> via id para garantir que tecnologias assistivas anunciem o propósito do campo de seleção.",
