@@ -5,7 +5,7 @@ camada: molecule
 codigo: src/components/ui/alert.tsx
 story: src/components/ui/alert.stories.tsx
 status: piloto
-sinonimos: [alerta, callout, banner, aviso, notice, mensagem-na-pagina]
+sinonimos: [alerta, callout, aviso, notice, mensagem-na-pagina]
 vizinhos: [sonner, alert-dialog, dialog]
 referencias: [passi:alerta, shadcn:alert]
 ---

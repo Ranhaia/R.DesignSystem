@@ -5415,4 +5415,53 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
+  "announcement-banner": {
+    description: "Faixa no topo do app com um recado para todas as pessoas, que cada uma pode fechar. É o alert em largura total, sem cantos, com o botão de fechar.",
+    whenToUse: "Recado que vale para todo o app e por um tempo: manutenção programada, novidade, mudança de termos. Uma faixa por vez, acima do cabeçalho do app.",
+    anatomy: [
+      { part: "AnnouncementBanner", description: "Raiz: alert com role=\"region\", largura total, sem cantos e só a borda de baixo" },
+      { part: "Conteúdo", description: "Texto e, se houver, um link, centralizados e quebrando linha no celular" },
+      { part: "Fechar", description: "icon-button ghost com ícone close, no fim da faixa" },
+    ],
+    variants: [],
+    states: [
+      { name: "Aberta", description: "Faixa visível com o recado" },
+      { name: "Fechada", description: "Sai da página; onDismiss é chamado" },
+    ],
+    sizes: [],
+    doGuidelines: ["Guarde no produto, via onDismiss, que a pessoa fechou, para não mostrar de novo.", "Escreva a data e a hora do que vai acontecer.", "Ponha a faixa acima do cabeçalho, ocupando a largura toda."],
+    dontGuidelines: ["Empilhar várias faixas → uma por vez, a mais importante.", "Recado que só vale para uma tela → alert nessa tela.", "Recado sem como fechar quando não é obrigatório → deixe dismissible."],
+    code: `import { AnnouncementBanner } from "@/components/ui/announcement-banner"
+
+<AnnouncementBanner onDismiss={() => salvarVisto()}>
+  O sistema fica fora do ar no sábado, das 22h às 23h.
+</AnnouncementBanner>`,
+    props: [
+      { name: "variant", type: "default · destructive", default: "default", description: "Tom do alert: destructive para recado de problema em andamento" },
+      { name: "dismissible", type: "boolean", default: "true", description: "Mostra o botão de fechar" },
+      { name: "onDismiss", type: "() => void", default: "—", description: "Chamado ao fechar; o produto usa para lembrar que a pessoa já viu" },
+      { name: "label", type: "string", default: "—", description: "Nome da região para o leitor de tela. Padrão do dicionário: \"Anúncio\"" },
+      { name: "closeLabel", type: "string", default: "—", description: "Nome do fechar. Padrão do dicionário: \"Fechar anúncio\"" },
+    ],
+    meta: {
+      nome: "Announcement Banner",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/announcement-banner.tsx",
+      story: "src/components/ui/announcement-banner.stories.tsx",
+      vizinhos: ["alert", "sonner", "alert-dialog"],
+    },
+    whenToUseItems: ["Recado que vale para todo o app e por um tempo: manutenção programada, novidade, mudança de termos.", "Uma faixa por vez, acima do cabeçalho do app."],
+    whenNotToUse: ["Recado sobre um trecho da página → alert.", "Confirmação de uma ação que acabou de acontecer → sonner.", "Decisão que a pessoa precisa tomar antes de seguir → alert-dialog."],
+    content: ["Uma frase curta, com data e hora quando houver: \"O sistema fica fora do ar no sábado, das 22h às 23h.\"", "No máximo um link para detalhes."],
+    accessibility: {
+      keyboard: "O fechar entra na ordem do Tab; Enter ou Espaço fecha.",
+      screenReader: "Região com nome (\"Anúncio\"), achada pela lista de regiões. Não usa role=\"alert\": o recado está lá desde a carga e não interrompe a leitura.",
+      focus: "Não rouba o foco ao aparecer. Ao fechar, o foco segue para o primeiro controle depois da faixa.",
+      cautions: "Não use a faixa para algo urgente que exige ação; aí é alert-dialog.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["gap-3", "gap-x-2", "py-2"] },
+    ],
+  },
 }

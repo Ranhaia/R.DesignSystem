@@ -80,6 +80,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 
 **Mostrar mensagem**
 - Fica na página, perto do assunto → `alert`.
+- Recado para todos, no topo do app, que a pessoa fecha → `announcement-banner`.
 - Confirma algo e some sozinha → `sonner`.
 - Interrompe para pedir decisão → `alert-dialog`. Tarefa focada (editar, preencher) → `dialog`.
 - Painel lateral com conteúdo longo → `sheet`. No celular, vindo de baixo → `drawer`.
@@ -101,6 +102,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 
 - [accordion](accordion.md) — Organiza o conteúdo em seções empilhadas que expandem e recolhem.
 - [alert](alert.md) — Exibe uma mensagem contextual fixa na página para informar ou alertar.
+- [announcement-banner](announcement-banner.md) — Faixa no topo do app com um recado para todos, que a pessoa fecha.
 - [alert-dialog](alert-dialog.md) — Interrompe o fluxo da tela com um aviso crítico e exige resposta explícita.
 - [aspect-ratio](aspect-ratio.md) — Mantém a proporção exata entre largura e altura de imagens, vídeos e embeds.
 - [attachment](attachment.md) — Exibe anexo de arquivo com mídia, metadados e ações rápidas.

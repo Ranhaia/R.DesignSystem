@@ -136,6 +136,7 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "input-otp-pattern": dynamic(() => import("@/components/examples/input-otp-pattern")),
   "input-otp-separator": dynamic(() => import("@/components/examples/input-otp-separator")),
   "password-input-cadastro": dynamic(() => import("@/components/examples/password-input-cadastro")),
+  "announcement-banner-demo": dynamic(() => import("@/components/examples/announcement-banner-demo")),
   "password-input-demo": dynamic(() => import("@/components/examples/password-input-demo")),
   "input-with-button": dynamic(() => import("@/components/examples/input-with-button")),
   "input-with-label": dynamic(() => import("@/components/examples/input-with-label")),
