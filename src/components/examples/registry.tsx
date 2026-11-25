@@ -9,6 +9,7 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "aspect-ratio-demo": dynamic(() => import("@/components/examples/aspect-ratio-demo")),
   "attachment-demo": dynamic(() => import("@/components/examples/attachment-demo")),
   "avatar-demo": dynamic(() => import("@/components/examples/avatar-demo")),
+  "back-to-top-demo": dynamic(() => import("@/components/examples/back-to-top-demo")),
   "badge-demo": dynamic(() => import("@/components/examples/badge-demo")),
   "badge-destructive": dynamic(() => import("@/components/examples/badge-destructive")),
   "badge-outline": dynamic(() => import("@/components/examples/badge-outline")),

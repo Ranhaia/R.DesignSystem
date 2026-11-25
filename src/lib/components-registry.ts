@@ -14,6 +14,7 @@ export const componentsList: ComponentEntry[] = [
   { slug: "aspect-ratio", name: "Aspect Ratio" },
   { slug: "attachment", name: "Attachment" },
   { slug: "avatar", name: "Avatar" },
+  { slug: "back-to-top", name: "Back To Top" },
   { slug: "badge", name: "Badge" },
   { slug: "box", name: "Box" },
   { slug: "breadcrumb", name: "Breadcrumb" },
