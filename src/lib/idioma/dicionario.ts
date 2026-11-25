@@ -4,6 +4,18 @@
 // Idioma novo: acrescente um objeto com as mesmas chaves; a trava é idioma.test.ts.
 
 const ptBR = {
+  "agenda.hoje": "Hoje",
+  "agenda.anterior": "Período anterior",
+  "agenda.proximo": "Próximo período",
+  "agenda.visao": "Visualização",
+  "agenda.mes": "Mês",
+  "agenda.semana": "Semana",
+  "agenda.dia": "Dia",
+  "agenda.mais": "+{n} mais",
+  "agenda.umEvento": "{n} evento",
+  "agenda.eventos": "{n} eventos",
+  "agenda.diaInteiro": "Dia inteiro",
+  "agenda.semEventos": "Nenhum evento",
   "announcement.nome": "Anúncio",
   "announcement.fechar": "Fechar anúncio",
   "breadcrumb.trilha": "Trilha de navegação",
@@ -90,6 +102,18 @@ const ptBR = {
 export type ChaveTexto = keyof typeof ptBR
 
 const en: Record<ChaveTexto, string> = {
+  "agenda.hoje": "Today",
+  "agenda.anterior": "Previous period",
+  "agenda.proximo": "Next period",
+  "agenda.visao": "View",
+  "agenda.mes": "Month",
+  "agenda.semana": "Week",
+  "agenda.dia": "Day",
+  "agenda.mais": "+{n} more",
+  "agenda.umEvento": "{n} event",
+  "agenda.eventos": "{n} events",
+  "agenda.diaInteiro": "All day",
+  "agenda.semEventos": "No events",
   "announcement.nome": "Announcement",
   "announcement.fechar": "Dismiss announcement",
   "breadcrumb.trilha": "Breadcrumb",
