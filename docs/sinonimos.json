@@ -35,6 +35,7 @@
   "icon": ["icone", "ícone", "simbolo", "símbolo"],
   "icon-button": ["botao-de-icone", "botão-de-ícone"],
   "input": ["campo", "campo-de-texto", "text-field", "textfield", "input-text", "email"],
+  "search-input": ["busca", "campo-de-busca", "search", "pesquisa", "search-bar", "barra-de-busca"],
   "password-input": ["senha", "password", "campo-de-senha", "nova-senha", "forca-de-senha", "password-strength"],
   "input-group": ["campo-com-icone", "campo-com-botao", "campo-de-pedido", "prompt"],
   "input-otp": ["otp", "codigo-de-verificacao", "código-de-verificação", "pin", "2fa"],

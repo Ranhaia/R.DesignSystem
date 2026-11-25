@@ -5415,4 +5415,53 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
+  "search-input": {
+    description: "Campo de busca pronto: lupa no início, botão de limpar quando há texto e, se quiser, uma tecla de atalho que leva o foco até ele. Resolve a busca de lista ou página sem montar o input-group à mão.",
+    whenToUse: "Filtrar uma lista, tabela ou página pelo texto digitado. Busca principal de uma tela, com atalho de teclado (shortcut=\"/\").",
+    anatomy: [
+      { part: "SearchInput", description: "Raiz input-group com data-slot=\"search-input\"; o className vai nela." },
+      { part: "Lupa", description: "input-group-addon no início, com o ícone search." },
+      { part: "Campo", description: "input-group-input com type=\"search\"; recebe as props de <input>." },
+      { part: "Limpar", description: "input-group-button com ícone close, no fim, só quando há texto." },
+      { part: "Atalho", description: "kbd com a tecla, no fim, enquanto o campo está vazio." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "Lupa e, se houver atalho, a tecla no fim" },
+      { name: "Com texto", description: "O botão de limpar troca a tecla do atalho" },
+      { name: "Foco", description: "Anel de foco do input-group em volta de tudo" },
+      { name: "Desabilitado", description: "" },
+    ],
+    sizes: [],
+    doGuidelines: ["Use onValueChange para filtrar; ele também avisa quando o campo é limpo.", "Dê um aria-label com o alvo quando houver mais de uma busca na tela.", "Prefira / como atalho: não briga com a digitação nem com atalhos do navegador."],
+    dontGuidelines: ["Montar lupa e limpar à mão no input-group → search-input", "Usar busca para escolher um único valor → combobox", "Tratar o limpar só pelo onChange em modo controlado → use onValueChange"],
+    code: `import { SearchInput } from "@/components/ui/search-input"
+
+export function ExemploBusca() {
+  return <SearchInput shortcut="/" placeholder="Buscar pedidos" onValueChange={console.log} />
+}`,
+    props: [
+      { name: "value / defaultValue", type: "string", default: "—", description: "Texto controlado ou inicial" },
+      { name: "aria-label", type: "string", default: "\"Buscar\"", description: "Nome do campo; troque quando a busca tem alvo (\"Buscar pedidos\")" },
+      { name: "onValueChange", type: "(value: string) => void", default: "—", description: "Recebe o texto a cada mudança, inclusive ao limpar. Em modo controlado, é por ele que o limpar chega ao estado" },
+      { name: "shortcut", type: "string", default: "—", description: "Uma tecla (ex.: \"/\") que leva o foco ao campo; aparece com kbd" },
+    ],
+    meta: {
+      nome: "Search Input",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/search-input.tsx",
+      story: "src/components/ui/search-input.stories.tsx",
+      vizinhos: ["input-group", "command", "combobox"],
+    },
+    whenToUseItems: ["Filtrar uma lista, tabela ou página pelo texto digitado.", "Busca principal de uma tela, com atalho de teclado (shortcut=\"/\")."],
+    whenNotToUse: ["Escolher um valor de uma lista fechada → combobox", "Executar comandos ou navegar por atalhos → command", "Campo com outro ícone ou botão que não é busca → input-group"],
+    content: ["O placeholder diz o que se busca (\"Buscar pedidos\"), sem reticências.", "\"Buscar\" e \"Limpar busca\" vêm do dicionário de idioma; não escreva por fora."],
+    accessibility: {
+      keyboard: "Esc com texto limpa o campo. A tecla de shortcut, apertada fora de outro campo e sem Ctrl, ⌘ ou Alt, leva o foco à busca.",
+      screenReader: "O campo é type=\"search\" com nome \"Buscar\" por padrão; o atalho é anunciado por aria-keyshortcuts e a kbd fica fora da leitura. O botão diz \"Limpar busca\".",
+      focus: "Limpar pelo botão devolve o foco ao campo.",
+      cautions: "O atalho não dispara enquanto alguém digita em outro campo. Evite letras comuns como atalho; prefira /.",
+    },
+  },
 }

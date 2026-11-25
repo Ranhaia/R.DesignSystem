@@ -76,6 +76,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Opções de alternância em barra compacta → `toggle-group`.
 - Opções estruturadas em árvore com seleção em cascata → `tree-select`.
 - Senha → `password-input` (cadastro: `variant="new"`).
+- Busca → `search-input` (com atalho de teclado: `shortcut`).
 - Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
 
 **Mostrar mensagem**
@@ -154,6 +155,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [radio-group](radio-group.md) — Opções exclusivas para escolher exatamente uma alternativa visível.
 - [resizable](resizable.md) — Grupos de painéis com divisores arrastáveis e proporcionais para layouts flexíveis.
 - [scroll-area](scroll-area.md) — Área de rolagem customizada e consistente entre navegadores.
+- [search-input](search-input.md) — Campo de busca com lupa, limpar e atalho de teclado.
 - [segmented-control](segmented-control.md) — Alternador em pílula contínua para seleção única entre 2 a 4 opções.
 - [select](select.md) — Menu suspenso customizado para selecionar uma opção em listas estruturadas.
 - [separator](separator.md) — Linha fina entre grupos do mesmo container.
