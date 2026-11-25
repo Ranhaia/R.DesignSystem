@@ -1,0 +1,28 @@
+{
+  "slug": "search-input",
+  "partes": [
+    "SearchInput"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "onValueChange",
+      "parte": "SearchInput",
+      "tipo": "`(value: string) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "shortcut",
+      "parte": "SearchInput",
+      "tipo": "`string`",
+      "padrao": null
+    }
+  ],
+  "tokens": [],
+  "compoe": [
+    "icon",
+    "input-group",
+    "kbd"
+  ]
+}
