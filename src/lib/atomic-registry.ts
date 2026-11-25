@@ -78,10 +78,12 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   popover: "atom",
   item: "atom",
   marker: "atom",
+  "rating": "atom",
   "description-list": "atom",
 
   // Molecules
   accordion: "molecule",
+  agenda: "organism",
   bubble: "molecule",
   card: "molecule",
   message: "molecule",
@@ -106,6 +108,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   "input-group": "molecule",
   "password-input": "molecule",
   "notification-center": "organism",
+  "back-to-top": "organism",
   "announcement-banner": "organism",
   pagination: "molecule",
   "toggle-group": "molecule",

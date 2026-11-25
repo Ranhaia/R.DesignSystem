@@ -5418,6 +5418,71 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
+  agenda: {
+    description: "Mostra compromissos no mês, na semana ou no dia. O mês monta sobre o calendar e herda o teclado dele; semana e dia listam os eventos como botões.",
+    whenToUse: "Ver o que acontece em cada data: reuniões, entregas, plantões, reservas. A pessoa alterna entre a visão geral do mês e o detalhe do dia.",
+    anatomy: [
+      { part: "DiaDoMes", description: "Interno: o botão de dia do calendar com os chips do dia; não é exportado." },
+      { part: "Agenda", description: "Raiz <section data-slot=\"agenda\" data-visao> com o aria-label; o className vai nela." },
+      { part: "Barra", description: "<div data-slot=\"agenda-toolbar\">: Hoje, período anterior e próximo, o título do período (anunciado ao mudar) e a vista (segmented-control)." },
+      { part: "Dia", description: "No mês, o botão de dia do calendar com até 2 chips (data-slot=\"agenda-chip\") e \"+N mais\". Na semana e no dia, <div data-slot=\"agenda-dia\">." },
+      { part: "Evento", description: "button secundário (data-slot=\"agenda-evento\") com hora ou \"Dia inteiro\" e o título." },
+    ],
+    variants: [],
+    states: [
+      { name: "Hoje", description: "Dia com fundo de destaque no mês; cabeçalho secundário na semana" },
+      { name: "Dia selecionado", description: "O dia em foco, com fundo da cor principal no mês" },
+      { name: "Mais eventos", description: "\"+N mais\" abaixo dos 2 primeiros chips do dia" },
+      { name: "Dia vazio", description: "Na vista dia, \"Nenhum evento\"" },
+      { name: "Fora do mês", description: "Dias de outro mês em cor apagada, como no calendar" },
+    ],
+    sizes: [],
+    doGuidelines: ["Abra na vista que a pessoa mais usa (visaoInicial).", "Passe fim em todo evento com duração.", "Use onEventoClick para abrir o detalhe (sheet ou dialog)."],
+    dontGuidelines: ["Usar a agenda para escolher data → calendar", "Título longo no evento → resuma e mostre o resto no detalhe", "Data distante, como nascimento → campo de data"],
+    code: `import { Agenda } from "@/components/ui/agenda"
+
+export function ExemploAgenda() {
+  return (
+    <Agenda
+      aria-label="Agenda da equipe"
+      eventos={[{ id: "1", titulo: "Daily", inicio: new Date(2026, 10, 10, 9), fim: new Date(2026, 10, 10, 9, 15) }]}
+      onEventoClick={(e) => console.log(e.titulo)}
+    />
+  )
+}`,
+    props: [
+      { name: "eventos", type: "EventoAgenda[]", default: "—", description: "id, titulo, inicio e, se houver, fim e diaInteiro. Evento de vários dias aparece em todos." },
+      { name: "dataInicial", type: "Date", default: "—", description: "Dia em foco ao abrir. Sem ela, hoje." },
+      { name: "visaoInicial", type: "VisaoAgenda", default: "mes", description: "Vista ao abrir: mes, semana ou dia." },
+      { name: "onEventoClick", type: "(evento: EventoAgenda) => void", default: "—", description: "Chamado ao clicar num evento na semana ou no dia." },
+      { name: "className", type: "string", default: "—", description: "Classes extras na raiz." },
+      { name: "aria-label", type: "string", default: "—", description: "Nome da agenda para o leitor de tela. Obrigatório." },
+    ],
+    meta: {
+      nome: "Agenda",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/agenda.tsx",
+      story: "src/components/ui/agenda.stories.tsx",
+      vizinhos: ["calendar", "time-picker", "list"],
+    },
+    whenToUseItems: ["Ver o que acontece em cada data: reuniões, entregas, plantões, reservas.", "A pessoa alterna entre a visão geral do mês e o detalhe do dia."],
+    whenNotToUse: ["Escolher uma data ou um período → calendar", "Escolher um horário → time-picker", "Poucos eventos em sequência, sem precisar da grade → list"],
+    content: ["Título curto no evento: ele é cortado no chip do mês.", "Datas e horas saem do Intl no idioma ativo; botões e vazio vêm do dicionário (pt-BR ou en).", "A semana começa no domingo."],
+    accessibility: {
+      keyboard: "No mês, setas andam de dia em dia, PageUp e PageDown trocam de mês, Home e End vão ao início e ao fim da semana, Enter abre o dia. Na semana e no dia, Tab passa pelos dias e eventos.",
+      screenReader: "A agenda tem nome (aria-label). Cada dia do mês diz a data completa e quantos eventos tem. O título do período é anunciado ao mudar (aria-live).",
+      focus: "Anel de foco do calendar no mês e do button nos eventos.",
+      cautions: "No mês o chip é só leitura; o evento se abre na vista dia. Dia com raio concêntrico: o chip usa rounded-inner.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-base", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-0", "gap-0.5", "gap-1", "gap-2", "gap-3", "h-24", "min-w-0", "min-w-24", "p-0", "p-0.5", "p-1", "px-1", "py-1", "py-6"] },
+      { contexto: "Raio", itens: ["radius-inset-1", "rounded-inner", "rounded-md", "rounded-outer-md"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
   "description-list": {
     description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
     whenToUse: "Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar. Rótulos curtos com valores de tamanho variado.",
@@ -5906,6 +5971,114 @@ export function ExemploValor() {
       { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs"] },
       { contexto: "Espaço", itens: ["gap-0.5", "gap-2", "min-h-5", "min-w-0", "min-w-5", "mt-1.5", "mx-2", "px-1", "px-2", "py-2", "py-6", "right-0.5", "size-2", "top-0.5", "w-80"] },
       { contexto: "Raio", itens: ["rounded-full", "rounded-md"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
+  "back-to-top": {
+    description: "Botão flutuante que aparece depois de rolar uma página longa e leva de volta ao começo. Poupa a pessoa de rolar tudo para cima.",
+    whenToUse: "Páginas longas: listas, artigos, documentação, resultados de busca. Um por página, no canto inferior direito.",
+    anatomy: [
+      { part: "BackToTop", description: "icon-button outline redondo com a seta para cima, fixo no canto inferior direito" },
+    ],
+    variants: [],
+    states: [
+      { name: "Escondido", description: "Antes de rolar o threshold: invisível e fora da ordem do Tab" },
+      { name: "Visível", description: "Depois de rolar: aparece com transição de opacidade" },
+    ],
+    sizes: [],
+    doGuidelines: ["Use em páginas com mais de duas telas de conteúdo.", "Ajuste o threshold para a altura de uma tela, mais ou menos.", "Deixe espaço no canto para ele não cobrir conteúdo."],
+    dontGuidelines: ["Dois botões fixos no mesmo canto → suba um deles com className.", "Usar em página curta → tire o botão.", "Texto no lugar do ícone → mantenha só a seta e o nome acessível."],
+    code: `import { BackToTop } from "@/components/ui/back-to-top"
+
+<BackToTop />`,
+    props: [
+      { name: "className", type: "string", default: "—", description: "Ajusta a posição (ex.: subir acima de outro botão fixo)" },
+      { name: "threshold", type: "number", default: "400", description: "Quanto rolar, em pixels de rolagem, até o botão aparecer" },
+      { name: "label", type: "string", default: "—", description: "Nome para o leitor de tela. Padrão do dicionário: \"Voltar ao topo\"" },
+    ],
+    meta: {
+      nome: "Back To Top",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/back-to-top.tsx",
+      story: "src/components/ui/back-to-top.stories.tsx",
+      vizinhos: ["icon-button", "link", "scroll-area"],
+    },
+    whenToUseItems: ["Páginas longas: listas, artigos, documentação, resultados de busca.", "Um por página, no canto inferior direito."],
+    whenNotToUse: ["Página curta, que cabe em duas telas → não precisa.", "Ir para uma seção específica → link para a âncora.", "Rolagem dentro de um painel → scroll-area."],
+    content: ["Só o ícone de seta para cima; o nome vai no aria-label."],
+    accessibility: {
+      keyboard: "Quando visível, entra na ordem do Tab; Enter ou Espaço leva ao topo.",
+      screenReader: "Botão com nome \"Voltar ao topo\". Escondido, não é anunciado.",
+      focus: "Ao clicar, o foco vai para o conteúdo principal (main, ou o documento se não houver), e o próximo Tab segue dali.",
+      cautions: "Com prefers-reduced-motion, o salto é direto, sem rolagem suave.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["bottom-6", "right-6"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+      { contexto: "Sombra", itens: ["shadow-md"] },
+    ],
+  },
+  rating: {
+    description: "Estrelas para dar uma nota ou mostrar a média. Para dar nota, é um grupo de radios nativos (setas trocam, o valor vai no formulário); só leitura, é uma imagem com a nota por extenso.",
+    whenToUse: "Pedir uma nota rápida: entrega, atendimento, produto. Mostrar a média de avaliações ao lado do número de avaliações.",
+    anatomy: [
+      { part: "Estrela", description: "Uma estrela desenhada (cheia, meia ou vazia); interna, sem export." },
+      { part: "Rating", description: "O grupo de estrelas: radios para dar nota ou imagem só leitura." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "Estrelas em contorno." },
+      { name: "Escolhido", description: "Estrelas até a nota cheias (e meia, com allowHalf)." },
+      { name: "Hover", description: "Prevê a nota sob o cursor; ao sair volta à escolhida." },
+      { name: "Foco", description: "Anel na estrela da opção focada." },
+      { name: "Desabilitado", description: "Cursor bloqueado; os radios ficam fora do teclado." },
+    ],
+    sizes: [
+      { name: "sm", value: "sm", description: "16 px — Média ao lado de texto, em listas e cards." },
+      { name: "default", value: "default", description: "24 px — Dar nota num formulário." },
+      { name: "lg", value: "lg", description: "32 px — Nota como pergunta principal da tela, no toque." },
+    ],
+    doGuidelines: ["Dar nome ao grupo com a pergunta.", "Mostrar a quantidade de avaliações junto da média.", "Usar allowHalf só quando a média precisa de precisão."],
+    dontGuidelines: ["Usar estrelas para opções com nome → radio-group.", "Mostrar média sem o número ao lado → texto \"4,5 (128)\" junto.", "Usar readOnly para nota que a pessoa ainda vai dar → modo padrão."],
+    code: `import { Rating } from "@/components/ui/rating"
+
+<Rating aria-label="Nota da entrega" name="nota" />`,
+    props: [
+      { name: "aria-label / aria-labelledby", type: "string", default: "—", description: "Pergunta que a nota responde; obrigatório para dar nota." },
+      { name: "preenchimento (Estrela)", type: "Preenchimento", default: "—", description: "Como a estrela é desenhada; calculado pelo Rating." },
+      { name: "size", type: "sm · default · lg", default: "default", description: "Tamanho de cada estrela." },
+      { name: "value", type: "number", default: "—", description: "Nota atual, controlada." },
+      { name: "defaultValue", type: "number", default: "0", description: "Nota inicial, sem controle." },
+      { name: "onValueChange", type: "(valor: number) => void", default: "—", description: "Chamado ao escolher uma nota." },
+      { name: "max", type: "number", default: "5", description: "Total de estrelas." },
+      { name: "allowHalf", type: "boolean", default: "false", description: "Permite escolher meia estrela." },
+      { name: "readOnly", type: "boolean", default: "false", description: "Só mostra a nota (média), com meia estrela quando cabe." },
+      { name: "disabled", type: "boolean", default: "—", description: "Desabilita todos os radios." },
+      { name: "required", type: "boolean", default: "—", description: "Nota obrigatória na validação do formulário." },
+      { name: "name", type: "string", default: "—", description: "Nome do campo enviado no formulário." },
+    ],
+    meta: {
+      nome: "Rating",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/rating.tsx",
+      story: "src/components/ui/rating.stories.tsx",
+      vizinhos: ["radio-group", "slider"],
+    },
+    whenToUseItems: ["Pedir uma nota rápida: entrega, atendimento, produto.", "Mostrar a média de avaliações ao lado do número de avaliações."],
+    whenNotToUse: ["Escolha entre opções com nome (Ruim, Bom, Ótimo) → radio-group.", "Valor contínuo num intervalo → slider."],
+    content: ["Pergunta visível acima, ligada por aria-labelledby.", "Média só leitura sempre com o número e o total de avaliações ao lado."],
+    accessibility: {
+      keyboard: "Tab entra no grupo; setas trocam a nota (radios nativos).",
+      screenReader: "grupo de opções com a pergunta como nome; cada opção é \"3 de 5 estrelas\". Só leitura: imagem \"3,5 de 5 estrelas\".",
+      focus: "anel em volta da estrela focada.",
+      cautions: "estrelas vazias em muted-foreground para o contorno ter contraste; a cor nunca é a única pista (o nome traz o número).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground", "text-warning-600"] },
+      { contexto: "Espaço", itens: ["end-0", "gap-0.5", "inset-0", "inset-x-0", "inset-y-0", "size-4", "size-6", "size-8", "start-0", "w-1"] },
+      { contexto: "Raio", itens: ["rounded-sm"] },
       { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
