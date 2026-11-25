@@ -6,6 +6,7 @@ import { useTexto } from "@/lib/idioma"
 import { cn } from "@/lib/utils"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Icon } from "@/components/ui/icon"
+import { Tree, visibleTreeValues } from "@/components/ui/tree"
 import { Skeleton } from "@/components/ui/skeleton"
 import {
   Popover,
@@ -255,42 +256,12 @@ function TreeSelect(props: TreeSelectProps) {
     return visibleWithAncestors
   }, [searchQuery, index])
 
-  const visible = React.useMemo(() => {
-    const out: string[] = []
-    if (matchingSet) {
-      const walk = (nodes: TreeSelectNode[]) => {
-        for (const node of nodes) {
-          if (matchingSet.has(node.value)) {
-            out.push(node.value)
-            if (hasChildren(node)) walk(node.children!)
-          }
-        }
-      }
-      walk(treeData)
-      return out
-    }
-    const walk = (nodes: TreeSelectNode[]) => {
-      for (const node of nodes) {
-        out.push(node.value)
-        if (hasChildren(node) && expanded.has(node.value)) walk(node.children!)
-      }
-    }
-    walk(treeData)
-    return out
-  }, [treeData, expanded, matchingSet])
+  const visible = React.useMemo(() => visibleTreeValues(treeData, expanded, matchingSet), [treeData, expanded, matchingSet])
 
   // ---- ações -------------------------------------------------------------
   const emit = (next: string[] | string | null) => {
     ;(props.onValueChange as (v: string[] | string | null) => void)(next)
   }
-
-  const toggleExpanded = (value: string) =>
-    setExpanded((prev) => {
-      const next = new Set(prev)
-      if (next.has(value)) next.delete(value)
-      else next.add(value)
-      return next
-    })
 
   const choose = (value: string) => {
     const entry = index.get(value)
@@ -392,48 +363,7 @@ function TreeSelect(props: TreeSelectProps) {
   const labelOf = (value: string) => index.get(value)?.node.label ?? value
   const singleValue = !multiple ? (props.value as string | null) : null
 
-  // ---- teclado (WAI-ARIA TreeView) ---------------------------------------
-  const onKeyDown = (event: React.KeyboardEvent) => {
-    if (visible.length === 0) return
-    const current = activeValue && visible.includes(activeValue) ? activeValue : visible[0]
-    const at = visible.indexOf(current)
-    const entry = index.get(current)!
-    switch (event.key) {
-      case "ArrowDown":
-        setActiveValue(visible[Math.min(at + 1, visible.length - 1)])
-        break
-      case "ArrowUp":
-        setActiveValue(visible[Math.max(at - 1, 0)])
-        break
-      case "Home":
-        setActiveValue(visible[0])
-        break
-      case "End":
-        setActiveValue(visible[visible.length - 1])
-        break
-      case "ArrowRight":
-        if (hasChildren(entry.node)) {
-          if (!expanded.has(current)) toggleExpanded(current)
-          else setActiveValue(entry.node.children![0].value)
-        }
-        break
-      case "ArrowLeft":
-        if (hasChildren(entry.node) && expanded.has(current)) toggleExpanded(current)
-        else if (entry.parent) setActiveValue(entry.parent)
-        break
-      case "Enter":
-      case " ":
-        choose(current)
-        break
-      default:
-        return
-    }
-    event.preventDefault()
-  }
-
   const hasValue = multiple ? tags.length > 0 : singleValue !== null
-  const activeDescendant =
-    open && activeValue ? `${listId}-${activeValue}` : undefined
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -575,87 +505,22 @@ function TreeSelect(props: TreeSelectProps) {
           {treeData.length === 0 || visible.length === 0 ? (
             <p className="px-3 py-4 text-center text-xs text-muted-foreground">{emptyText}</p>
           ) : (
-            <ul
+            <Tree
               id={listId}
-              role="tree"
-              aria-multiselectable={multiple || undefined}
+              data={treeData}
               aria-label={ariaLabel ?? placeholder}
-              aria-activedescendant={activeDescendant}
-              tabIndex={0}
-              onKeyDown={onKeyDown}
-              className="max-h-72 overflow-y-auto outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-ring focus-visible:-outline-offset-2"
-            >
-              {visible.map((value) => {
-                const { node, level } = index.get(value)!
-                const parentNode = hasChildren(node)
-                const state = checkable ? checkState(value) : undefined
-                const selected = checkable
-                  ? state === true
-                  : multiple
-                    ? (props.value as string[]).includes(value)
-                    : singleValue === value
-                const isExpanded = matchingSet ? true : expanded.has(value)
-                return (
-                  <li
-                    key={value}
-                    id={`${listId}-${value}`}
-                    role="treeitem"
-                    aria-level={level}
-                    aria-expanded={parentNode ? isExpanded : undefined}
-                    aria-selected={checkable ? undefined : selected}
-                    aria-checked={checkable ? (state === "indeterminate" ? "mixed" : state) : undefined}
-                    aria-disabled={node.disabled || undefined}
-                    data-slot="tree-select-item"
-                    data-active={activeValue === value ? "" : undefined}
-                    data-selected={selected ? "" : undefined}
-                    className={cn(
-                      "flex cursor-pointer items-center gap-1.5 rounded-sm py-1 pr-2 text-sm select-none transition-colors data-[active]:bg-accent data-[active]:text-accent-foreground data-[active]:outline-solid data-[active]:outline-2 data-[active]:outline-ring data-[active]:-outline-offset-2 aria-disabled:pointer-events-none aria-disabled:opacity-50",
-                      !checkable && selected && "font-medium"
-                    )}
-                    style={{ paddingLeft: `${(level - 1) * 1.125 + 0.25}rem` }}
-                    onMouseMove={() => setActiveValue(value)}
-                    onClick={() => choose(value)}
-                  >
-                    {parentNode ? (
-                      <button
-                        type="button"
-                        tabIndex={-1}
-                        aria-label={isExpanded ? t("treeSelect.recolher") : t("treeSelect.expandir")}
-                        className="flex size-5 shrink-0 items-center justify-center rounded-sm text-muted-foreground hover:bg-muted"
-                        onClick={(event) => {
-                          event.stopPropagation()
-                          toggleExpanded(value)
-                        }}
-                      >
-                        <Icon
-                          name="chevron_right"
-                          size={1}
-                          className={cn(
-                            "transition-transform duration-motion-fast",
-                            isExpanded && "rotate-90"
-                          )}
-                        />
-                      </button>
-                    ) : (
-                      <span className="size-5 shrink-0" aria-hidden="true" />
-                    )}
-                    {checkable && (
-                      <Checkbox
-                        tabIndex={-1}
-                        aria-hidden="true"
-                        checked={state}
-                        disabled={node.disabled}
-                        className="pointer-events-none shrink-0"
-                      />
-                    )}
-                    <span className="min-w-0 flex-1 truncate text-xs sm:text-sm">{node.label}</span>
-                    {!checkable && selected && (
-                      <Icon name="check" size={1} className="shrink-0 text-primary" />
-                    )}
-                  </li>
-                )
-              })}
-            </ul>
+              aria-multiselectable={multiple || undefined}
+              multiselectable={multiple}
+              expanded={expanded}
+              onExpandedChange={setExpanded}
+              filter={matchingSet}
+              activeValue={activeValue}
+              onActiveValueChange={setActiveValue}
+              onSelect={choose}
+              isSelected={(value) => (multiple ? (props.value as string[]).includes(value) : singleValue === value)}
+              checkState={checkable ? checkState : undefined}
+              className="max-h-72 overflow-y-auto"
+            />
           )}
         </div>
 

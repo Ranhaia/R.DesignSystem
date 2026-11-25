@@ -33,14 +33,12 @@
     }
   ],
   "tokens": [
-    "bg-accent",
     "bg-input",
     "bg-muted",
     "border-border",
     "border-input",
     "border-ring",
     "duration-motion-base",
-    "duration-motion-fast",
     "font-medium",
     "gap-0.5",
     "gap-1",
@@ -54,16 +52,13 @@
     "min-h-9",
     "min-w-0",
     "min-w-75",
-    "outline-ring",
     "p-0",
     "p-1",
     "pl-1.5",
     "pr-0.5",
-    "pr-2",
     "px-1.5",
     "px-2.5",
     "px-3",
-    "py-1",
     "py-1.5",
     "py-2",
     "py-4",
@@ -74,7 +69,6 @@
     "shadow-xs",
     "size-4",
     "size-5",
-    "text-accent-foreground",
     "text-foreground",
     "text-muted-foreground",
     "text-primary",
@@ -85,6 +79,7 @@
   "compoe": [
     "checkbox",
     "icon",
+    "tree",
     "skeleton",
     "popover"
   ]

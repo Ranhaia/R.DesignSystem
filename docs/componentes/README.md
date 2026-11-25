@@ -75,7 +75,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Lista longa, com digitação → `combobox`. Várias de uma lista longa → `multi-select`.
 - Opções independentes → `checkbox`. Liga/desliga que vale na hora → `switch`.
 - Opções de alternância em barra compacta → `toggle-group`. Barra de ferramentas de ícones liga/desliga (um Tab, setas) → `toggle-group` `type="multiple"` com `aria-label`.
-- Opções estruturadas em árvore com seleção em cascata → `tree-select`.
+- Opções estruturadas em árvore com seleção em cascata, dentro de um campo → `tree-select`. Hierarquia sempre à vista na página → `tree`.
 - Senha → `password-input` (cadastro: `variant="new"`).
 - Dinheiro → `currency-input` (moeda em `currency`).
 - Número exato, com − e + → `number-input`.
@@ -203,6 +203,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [toggle](toggle.md) — Botão de dois estados que alterna entre ativado e desativado.
 - [toggle-group](toggle-group.md) — Agrupa botões de alternância de dois estados para seleção única ou múltipla.
 - [tooltip](tooltip.md) — Balão flutuante com dica curta ao passar o mouse ou receber foco.
+- [tree](tree.md) — Lista de itens em níveis, em que cada pasta abre e fecha, com escolha simples ou caixa de marcação.
 - [tree-select](tree-select.md) — Campo de seleção em árvore para opções hierárquicas em painel flutuante.
 
 ## Crédito

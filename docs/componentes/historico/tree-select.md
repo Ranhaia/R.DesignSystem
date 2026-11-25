@@ -11,3 +11,9 @@ Só acrescenta. Escrito por `npm run docs:registrar`; não edite entradas antiga
 
 - Props: + `placeholder (TreeSelect)` · + `emptyText (TreeSelect)` · + `searchPlaceholder (TreeSelect)` · + `selectAllLabel (TreeSelect)`
 - Por quê: Textos de sistema passam a vir do dicionário central (pt/en)
+
+## 2026-11-25 · feat/tree
+
+- Tokens: − `bg-accent` · − `duration-motion-fast` · − `outline-ring` · − `pr-2` · − `py-1` · − `text-accent-foreground`
+- Composição: + `tree`
+- Por quê: Painel passa a usar o Tree; sinônimos de árvore vão para o tree

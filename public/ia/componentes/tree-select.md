@@ -1,12 +1,12 @@
 ---
 slug: tree-select
 nome: TreeSelect
-camada: molecule
+camada: organism
 codigo: src/components/ui/tree-select.tsx
 story: src/components/ui/tree-select.stories.tsx
 status: piloto
-sinonimos: [lista-em-arvore, árvore, arvore, tree]
-vizinhos: [select, multi-select, combobox, list]
+sinonimos: [lista-em-arvore, select-em-arvore, campo-em-arvore, tree-select]
+vizinhos: [select, multi-select, combobox, list, tree]
 referencias: [passi:lista-em-arvore]
 ---
 
@@ -38,7 +38,7 @@ Suporta seleção única, múltipla independente ou em cascata com caixas de mar
 
 ## Composição
 
-Usa: [`checkbox`](checkbox.md) · [`icon`](icon.md) · [`skeleton`](skeleton.md) · [`popover`](popover.md).
+Usa: [`checkbox`](checkbox.md) · [`icon`](icon.md) · [`tree`](tree.md) · [`skeleton`](skeleton.md) · [`popover`](popover.md).
 
 ## Props
 
@@ -93,18 +93,17 @@ Tamanho único com altura de 36 px (`h-9`) no gatilho e painel com largura míni
 
 ## Tokens usados
 
-- **Cor:** `bg-accent` `bg-input` `bg-muted` `border-border`
-  `border-input` `border-ring` `text-accent-foreground`
-  `text-foreground` `text-muted-foreground` `text-primary`
+- **Cor:** `bg-input` `bg-muted` `border-border` `border-input`
+  `border-ring` `text-foreground` `text-muted-foreground` `text-primary`
 - **Tipografia:** `font-medium` `text-sm` `text-xs`
 - **Espaço:** `gap-0.5` `gap-1` `gap-1.5` `gap-2` `h-5.5` `h-9`
   `max-h-72` `max-w-115` `max-w-32.5` `min-h-9` `min-w-0` `min-w-75`
-  `p-0` `p-1` `pl-1.5` `pr-0.5` `pr-2` `px-1.5` `px-2.5` `px-3` `py-1`
-  `py-1.5` `py-2` `py-4` `size-4` `size-5` `w-64`
+  `p-0` `p-1` `pl-1.5` `pr-0.5` `px-1.5` `px-2.5` `px-3` `py-1.5` `py-2`
+  `py-4` `size-4` `size-5` `w-64`
 - **Raio:** `rounded-md` `rounded-sm`
 - **Sombra:** `shadow-md` `shadow-xs`
-- **Movimento:** `duration-motion-base` `duration-motion-fast`
-- **Foco:** `outline-ring` `ring-ring`
+- **Movimento:** `duration-motion-base`
+- **Foco:** `ring-ring`
 
 ## Faça
 
