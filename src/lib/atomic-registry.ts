@@ -128,6 +128,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   "split-button": "organism",
   "alert-dialog": "organism",
   calendar: "organism",
+  "date-picker": "organism",
   carousel: "organism",
   "currency-input": "organism",
   chart: "organism",

@@ -6209,4 +6209,58 @@ export function ExemploCor() {
       { contexto: "Foco", itens: ["ring-primary", "ring-ring"] },
     ],
   },
+  "date-picker": {
+    description: "Campo de data que dá para digitar no formato do idioma, com o calendar num popover ao lado. Escolhe uma data ou um período, e o valor é Temporal.PlainDate (data de calendário, sem fuso).",
+    whenToUse: "Data em formulário: nascimento, vencimento, início de vigência. Período com início e fim (mode=\"range\"): viagem, relatório, filtro de datas.",
+    anatomy: [
+      { part: "DatePicker", description: "Raiz input-group com data-slot=\"date-picker\" e data-mode; o className vai nela." },
+      { part: "Campo", description: "input-group-input digitável, inputMode=\"numeric\", com o formato do idioma no placeholder." },
+      { part: "Botão", description: "input-group-button com ícone calendar_month, no fim; abre o popover." },
+      { part: "Calendário", description: "calendar dentro do popover: um mês na data única, dois no período." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "placeholder com o formato do idioma (dd/mm/aaaa ou mm/dd/yyyy)" },
+      { name: "Digitando", description: "Texto livre; vira data ao sair do campo ou com Enter" },
+      { name: "Inválido", description: "Data que não existe (31/02) volta ao último valor válido" },
+      { name: "Aberto", description: "popover com o calendar no mês da data atual" },
+      { name: "Carregando", description: "Sem Temporal nativo, o botão fica desligado até o polyfill chegar" },
+    ],
+    sizes: [],
+    doGuidelines: ["Guarde e envie a data como PlainDate (ou plain.toString(), \"2026-03-07\").", "Use mode=\"range\" para início e fim, em vez de dois campos soltos.", "Converta para Date só com paraDate e deDate."],
+    dontGuidelines: ["Montar new Date(\"2026-03-07\") ou string ISO com hora → paraDate(plain)", "Usar o calendar solto num popover à mão → date-picker", "Usar para data e hora juntas → date-picker + time-picker"],
+    code: `import { DatePicker } from "@/components/ui/date-picker"
+
+export function ExemploData() {
+  return <DatePicker aria-label="Data de nascimento" onValueChange={(d) => console.log(d?.toString())} />
+}`,
+    props: [
+      { name: "aria-label", type: "string", default: "—", description: "Nome do campo quando não há label por fora" },
+      { name: "isDateDisabled", type: "(data: PlainDate) => boolean", default: "—", description: "Desliga dias no calendário (ex.: fins de semana)" },
+      { name: "mode", type: "\"single\"", default: "\"single\"", description: "Data única ou período; no período, value é { from, to } com PlainDate \\| null em cada ponta" },
+      { name: "value", type: "PlainDate · null", default: "—", description: "Data controlada (Temporal.PlainDate); null é vazio" },
+      { name: "defaultValue", type: "PlainDate · null", default: "—", description: "Data inicial" },
+      { name: "onValueChange", type: "(value: PlainDate | null) => void", default: "—", description: "Recebe a data (ou o período) ao sair do campo, com Enter ou ao escolher no calendário" },
+    ],
+    meta: {
+      nome: "Date Picker",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/date-picker.tsx",
+      story: "src/components/ui/date-picker.stories.tsx",
+      vizinhos: ["calendar", "time-picker"],
+    },
+    whenToUseItems: ["Data em formulário: nascimento, vencimento, início de vigência.", "Período com início e fim (mode=\"range\"): viagem, relatório, filtro de datas."],
+    whenNotToUse: ["Grade de datas sempre visível na tela, sem campo → calendar", "Hora do dia → time-picker"],
+    content: ["O rótulo diz que data é (\"Data de nascimento\"); o formato já está no placeholder.", "Formato e nomes de mês vêm do idioma ativo; não formate por fora."],
+    accessibility: {
+      keyboard: "Digita a data direto no campo; Enter confirma. Tab chega ao botão, que abre o calendário (navegação do calendar por setas).",
+      screenReader: "O botão diz \"Abrir calendário\"; o placeholder anuncia o formato esperado.",
+      focus: "O popover leva o foco ao calendário e o devolve ao botão ao fechar.",
+      cautions: "Passe label ou aria-label. O valor é Temporal.PlainDate: crie com (await carregarTemporal()).PlainDate.from(\"2026-03-07\") de @/lib/temporal. Para Date, use paraDate(plain) (meia-noite local) e deDate(date, T); nunca monte Date por string ISO, que muda o dia conforme o fuso.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["p-0"] },
+    ],
+  },
 }
