@@ -176,6 +176,7 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "menubar-demo": dynamic(() => import("@/components/examples/menubar-demo")),
   "message-demo": dynamic(() => import("@/components/examples/message-demo")),
   "multi-select-demo": dynamic(() => import("@/components/examples/multi-select-demo")),
+  "multi-select-livre": dynamic(() => import("@/components/examples/multi-select-livre")),
   "native-select-demo": dynamic(() => import("@/components/examples/native-select-demo")),
   "native-select-disabled": dynamic(() => import("@/components/examples/native-select-disabled")),
   "native-select-fixed-label": dynamic(() => import("@/components/examples/native-select-fixed-label")),

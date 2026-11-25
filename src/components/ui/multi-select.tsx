@@ -37,6 +37,12 @@ export interface MultiSelectOption {
   value: string
 }
 
+/** Novo `value` com o texto digitado como valor livre; `null` se vazio ou repetido. */
+function adicionarValorLivre(texto: string, value: string[]) {
+  const novo = texto.trim()
+  return !novo || value.includes(novo) ? null : [...value, novo]
+}
+
 interface MultiSelectProps {
   /** Opções disponíveis para seleção. */
   options: MultiSelectOption[]
@@ -55,6 +61,8 @@ interface MultiSelectProps {
    *  isso, cai no `placeholder` como fallback, mas placeholder não é
    *  substituto confiável de nome acessível — prefira passar esta prop. */
   "aria-label"?: string
+  /** Aceita valor digitado: Enter num texto que não é opção vira chip (campo de tags). */
+  creatable?: boolean
 }
 
 function MultiSelect({
@@ -68,6 +76,7 @@ function MultiSelect({
   id,
   name,
   "aria-label": ariaLabel,
+  creatable = false,
 }: MultiSelectProps) {
   const t = useTexto()
   emptyText ??= t("comum.semResultado")
@@ -80,9 +89,16 @@ function MultiSelect({
     [options]
   )
 
+  const [texto, setTexto] = React.useState("")
+  // valor livre já escolhido continua na lista, para dar para desmarcar
+  const itens = React.useMemo(() => {
+    const opcoes = options.map((option) => option.value)
+    return creatable ? [...opcoes, ...value.filter((v) => !(v in labelByValue))] : opcoes
+  }, [options, value, creatable, labelByValue])
+
   return (
     <Combobox
-      items={options.map((option) => option.value)}
+      items={itens}
       itemToStringLabel={(item: string) => labelByValue[item] ?? item}
       multiple
       value={value}
@@ -90,10 +106,15 @@ function MultiSelect({
       disabled={disabled}
       id={id}
       name={name}
+      {...(creatable && {
+        inputValue: texto,
+        onInputValueChange: (novo: string) => setTexto(novo),
+      })}
     >
       <ComboboxChips
         ref={anchor}
         data-slot="multi-select"
+        data-creatable={creatable || undefined}
         className={cn("min-w-56", className)}
       >
         {value.map((item) => (
@@ -102,6 +123,16 @@ function MultiSelect({
         <ComboboxChipsInput
           aria-label={ariaLabel ?? placeholder}
           placeholder={value.length === 0 ? placeholder : undefined}
+          onKeyDown={(e) => {
+            // Enter com opção destacada é do Combobox; sem destaque, o texto vira chip.
+            // keyCode 229: Safari entrega o Enter da composição de IME com isComposing já falso
+            if (!creatable || e.key !== "Enter" || e.currentTarget.getAttribute("aria-activedescendant")) return
+            if (e.nativeEvent.isComposing || e.keyCode === 229) return
+            const novo = adicionarValorLivre(texto, value)
+            e.preventDefault()
+            if (novo) onValueChange(novo)
+            setTexto("")
+          }}
         />
       </ComboboxChips>
       <ComboboxContent anchor={anchor}>
@@ -140,4 +171,4 @@ const MultiSelectWithSkeleton = Object.assign(MultiSelect, {
   Skeleton: MultiSelectSkeleton,
 })
 
-export { MultiSelectWithSkeleton as MultiSelect }
+export { MultiSelectWithSkeleton as MultiSelect, adicionarValorLivre }

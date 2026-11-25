@@ -18,7 +18,7 @@ Campo de seleção múltipla com autocompletar que exibe cada escolha como um ch
 
 - Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips.
 - Filtros avançados com busca textual onde cada critério selecionado precisa ser removido de forma independente.
-- Formulários com listas longas de opções que demandam filtragem rápida por digitação.
+- Campo de tags ou etiquetas que aceita valor novo além das sugestões (`creatable`).
 
 ## Quando NÃO usar
 
@@ -48,6 +48,7 @@ Usa: [`skeleton`](skeleton.md) · [`combobox`](combobox.md).
 | `emptyText` | `string` | `Nenhum resultado encontrado.` | Mensagem apresentada quando a busca não encontra correspondências |
 | `disabled` | `boolean` | `false` | Desativa interação com o campo de busca e os chips |
 | `aria-label` | `string` | — | Nome acessível para leitores de tela quando não houver rótulo visível |
+| `creatable` | — | `false` | Aceita valor digitado: Enter num texto sem opção em destaque vira chip (campo de tags). Valor repetido ou vazio é ignorado |
 
 ## Variantes
 
@@ -65,6 +66,7 @@ Um só. O container possui largura mínima de 224 px (`min-w-56`) e altura base 
 | Foco | Anel de foco visível ao redor do container enquanto o cursor de busca estiver ativo |
 | Aberto | Painel suspenso visível ancorado ao container com lista de itens filtrados |
 | Desabilitado | Container opaco com `disabled` desativando cliques, busca e remoção de chips |
+| Valor livre | Com `creatable`, o texto digitado vira chip e passa a aparecer na lista para ser desmarcado |
 | Vazio | Mensagem de `emptyText` exibida no painel quando nenhum item corresponde à busca |
 
 ## Conteúdo
@@ -75,7 +77,7 @@ Um só. O container possui largura mínima de 224 px (`min-w-56`) e altura base 
 
 ## Acessibilidade
 
-- **Teclado:** Digitação filtra opções; setas cima e baixo percorrem a lista; Enter seleciona ou desmarca o item em destaque; Backspace com campo vazio remove o último chip selecionado.
+- **Teclado:** Digitação filtra opções; setas cima e baixo percorrem a lista; Enter seleciona ou desmarca o item em destaque; Backspace com campo vazio remove o último chip selecionado. Com `creatable`, Enter sem item em destaque transforma o texto em chip (fora da composição de IME).
 - **Leitor de tela:** Baseado no Combobox do Base UI com suporte a seleção múltipla; chips anunciam seus rótulos com botão de remoção; passe `aria-label` caso não haja rótulo visível.
 - **Foco:** O foco permanece no campo de texto de busca; abrir e fechar a lista não perde o controle do cursor de digitação.
 - **Cuidados:** Passe sempre `aria-label` ou associe um `<label>` via `id` para garantir que tecnologias assistivas anunciem o propósito do campo de seleção.
