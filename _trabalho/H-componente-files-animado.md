@@ -1,5 +1,6 @@
 ---
 tipo: historia
+codigo: 01O
 projeto: 🎨 P-DS-SHADCN
 epico:
 status: aguardando

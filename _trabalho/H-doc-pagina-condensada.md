@@ -1,5 +1,6 @@
 ---
 tipo: historia
+codigo: 03X
 projeto: 🎨 P-DS-SHADCN
 epico: E-documentacao-ds
 status: entregue
