@@ -2,12 +2,14 @@ import dynamic from "next/dynamic"
 
 export const exampleRegistry: Record<string, React.ComponentType> = {
   "accordion-demo": dynamic(() => import("@/components/examples/accordion-demo")),
+  "agenda-demo": dynamic(() => import("@/components/examples/agenda-demo")),
   "alert-demo": dynamic(() => import("@/components/examples/alert-demo")),
   "alert-destructive": dynamic(() => import("@/components/examples/alert-destructive")),
   "alert-dialog-demo": dynamic(() => import("@/components/examples/alert-dialog-demo")),
   "aspect-ratio-demo": dynamic(() => import("@/components/examples/aspect-ratio-demo")),
   "attachment-demo": dynamic(() => import("@/components/examples/attachment-demo")),
   "avatar-demo": dynamic(() => import("@/components/examples/avatar-demo")),
+  "back-to-top-demo": dynamic(() => import("@/components/examples/back-to-top-demo")),
   "badge-demo": dynamic(() => import("@/components/examples/badge-demo")),
   "badge-destructive": dynamic(() => import("@/components/examples/badge-destructive")),
   "badge-outline": dynamic(() => import("@/components/examples/badge-outline")),

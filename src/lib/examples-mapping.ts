@@ -1,11 +1,13 @@
 export const examplesMapping: Record<string, string[]> = {
   "accordion": ["accordion-demo"],
+  "agenda": ["agenda-demo"],
   "alert": ["alert-demo", "alert-destructive"],
   "announcement-banner": ["announcement-banner-demo"],
   "alert-dialog": ["alert-dialog-demo"],
   "aspect-ratio": ["aspect-ratio-demo"],
   "attachment": ["attachment-demo"],
   "avatar": ["avatar-demo"],
+  "back-to-top": ["back-to-top-demo"],
   "badge": ["badge-demo", "badge-destructive", "badge-outline", "badge-secondary"],
   "box": ["box-demo"],
   "breadcrumb": ["breadcrumb-demo", "breadcrumb-dropdown", "breadcrumb-ellipsis", "breadcrumb-link", "breadcrumb-responsive", "breadcrumb-separator"],
