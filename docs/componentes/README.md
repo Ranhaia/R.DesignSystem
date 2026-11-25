@@ -80,9 +80,8 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Dinheiro → `currency-input` (moeda em `currency`).
 - Número exato, com − e + → `number-input`.
 - Busca → `search-input` (com atalho de teclado: `shortcut`).
-- Valor aproximado num intervalo → `slider`. Data → `date-picker` (digitável; período com `mode="range"`); a grade solta, sempre visível → `calendar`. Hora → `time-picker`.
+- Valor aproximado num intervalo → `slider`. Data → `date-picker` (digitável; período com `mode="range"`); a grade solta, sempre visível → `calendar`; ver compromissos no mês, semana ou dia → `agenda`. Hora → `time-picker`. Cor → `color-picker`.
 - Nota em estrelas → `rating` (média só para ler: `readOnly`).
-- Valor aproximado num intervalo → `slider`. Data → `calendar`; ver compromissos no mês, semana ou dia → `agenda`. Hora → `time-picker`. Cor → `color-picker`.
 
 **Mostrar mensagem**
 - Fica na página, perto do assunto → `alert`.
