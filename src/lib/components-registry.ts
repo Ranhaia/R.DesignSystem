@@ -64,6 +64,7 @@ export const componentsList: ComponentEntry[] = [
   { slug: "native-select", name: "Native Select" },
   { slug: "navigation-menu", name: "Navigation Menu" },
   { slug: "pagination", name: "Pagination" },
+  { slug: "notification-center", name: "Notification Center" },
   { slug: "popover", name: "Popover" },
   { slug: "progress", name: "Progress" },
   { slug: "radio-group", name: "Radio Group" },

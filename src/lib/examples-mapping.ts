@@ -56,6 +56,7 @@ export const examplesMapping: Record<string, string[]> = {
   "native-select": ["native-select-demo", "native-select-disabled", "native-select-fixed-label", "native-select-floating-label", "native-select-groups", "native-select-invalid"],
   "navigation-menu": ["navigation-menu-demo"],
   "pagination": ["pagination-demo"],
+  "notification-center": ["notification-center-demo"],
   "popover": ["popover-demo"],
   "progress": ["progress-demo", "progress-circulo"],
   "radio-group": ["radio-group-demo"],
