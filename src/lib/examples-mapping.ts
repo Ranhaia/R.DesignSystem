@@ -1,6 +1,7 @@
 export const examplesMapping: Record<string, string[]> = {
   "accordion": ["accordion-demo"],
   "alert": ["alert-demo", "alert-destructive"],
+  "announcement-banner": ["announcement-banner-demo"],
   "alert-dialog": ["alert-dialog-demo"],
   "aspect-ratio": ["aspect-ratio-demo"],
   "attachment": ["attachment-demo"],

@@ -8,6 +8,7 @@ export interface ComponentEntry {
 export const componentsList: ComponentEntry[] = [
   { slug: "accordion", name: "Accordion" },
   { slug: "alert", name: "Alert" },
+  { slug: "announcement-banner", name: "Announcement Banner" },
   { slug: "alert-dialog", name: "Alert Dialog" },
   { slug: "aspect-ratio", name: "Aspect Ratio" },
   { slug: "attachment", name: "Attachment" },

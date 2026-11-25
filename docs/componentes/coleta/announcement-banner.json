@@ -1,0 +1,44 @@
+{
+  "slug": "announcement-banner",
+  "partes": [
+    "AnnouncementBanner"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "dismissible",
+      "parte": "AnnouncementBanner",
+      "tipo": "`boolean`",
+      "padrao": "true"
+    },
+    {
+      "nome": "onDismiss",
+      "parte": "AnnouncementBanner",
+      "tipo": "`() => void`",
+      "padrao": null
+    },
+    {
+      "nome": "label",
+      "parte": "AnnouncementBanner",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "closeLabel",
+      "parte": "AnnouncementBanner",
+      "tipo": "`string`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "gap-3",
+    "gap-x-2",
+    "py-2"
+  ],
+  "compoe": [
+    "alert",
+    "icon",
+    "icon-button"
+  ]
+}

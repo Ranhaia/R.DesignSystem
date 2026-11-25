@@ -105,6 +105,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   "hover-card": "molecule",
   "input-group": "molecule",
   "password-input": "molecule",
+  "announcement-banner": "organism",
   pagination: "molecule",
   "toggle-group": "molecule",
   "scroll-area": "molecule",
