@@ -77,6 +77,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Opções estruturadas em árvore com seleção em cascata → `tree-select`.
 - Senha → `password-input` (cadastro: `variant="new"`).
 - Número exato, com − e + → `number-input`.
+- Busca → `search-input` (com atalho de teclado: `shortcut`).
 - Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
 
 **Mostrar mensagem**
@@ -87,12 +88,13 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Explica um elemento no hover/foco → `tooltip`. Painel pequeno no clique → `popover`.
 
 **Organizar conteúdo**
-- Visões do mesmo conteúdo, uma por vez → `tabs`. Etapas em sequência → `stepper`.
+- Visões do mesmo conteúdo, uma por vez → `tabs`. Etapas em sequência → `stepper`. Histórico do que já aconteceu → `timeline`.
 - Seções que abrem e fecham → `accordion` (uma só → `collapsible`).
 - Agrupar informação de um assunto → `card`. Lista de itens parecidos → `item` / `list`.
-- Dados estruturados em linhas e colunas → `table`.
+- Dados estruturados em linhas e colunas → `table`; com busca, filtro, ordenação, seleção em lote ou exportar CSV → `data-table`.
+- Dados estruturados em linhas e colunas → `table`. Pares rótulo/valor de um registro só (ficha de detalhes) → `description-list`.
 - Status só de leitura → `badge`. Filtro ou seleção clicável → `chip` / `tag`.
-- Carregando com formato conhecido → `skeleton`. Sem formato → `spinner`. Com porcentagem → `progress`.
+- Carregando com formato conhecido → `skeleton`. Sem formato → `spinner`. Com porcentagem → `progress` (barra; em espaço curto, `shape="circle"`).
 - Nada para mostrar ainda → `empty`.
 
 ## Componentes documentados
@@ -122,6 +124,8 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [combobox](combobox.md) — Combina campo de texto com lista de sugestões filtradas e seleção por chips.
 - [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.
 - [context-menu](context-menu.md) — Menu contextual flutuante acionado pelo clique com o botão direito do mouse.
+- [data-table](data-table.md) — Tabela de dados com busca, filtros, ordenação, colunas visíveis, seleção em lote e exportar CSV.
+- [description-list](description-list.md) — Pares rótulo/valor de uma ficha de detalhes, em lista de definições.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
 - [direction](direction.md) — Entrega o sentido de leitura aos componentes; não renderiza nada.
 - [drawer](drawer.md) — Painel deslizante que emerge das bordas da tela sobre camada escurecida.
@@ -152,10 +156,11 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [password-input](password-input.md) — Campo de senha com mostrar e ocultar e, no cadastro, a força da senha.
 - [pagination](pagination.md) — Divide listas longas em páginas sequenciais numeradas.
 - [popover](popover.md) — Painel flutuante no clique para conteúdo rico ou configurações rápidas.
-- [progress](progress.md) — Barra que indica o andamento de tarefas com duração determinada.
+- [progress](progress.md) — Barra ou anel que indica o andamento de tarefas com duração determinada.
 - [radio-group](radio-group.md) — Opções exclusivas para escolher exatamente uma alternativa visível.
 - [resizable](resizable.md) — Grupos de painéis com divisores arrastáveis e proporcionais para layouts flexíveis.
 - [scroll-area](scroll-area.md) — Área de rolagem customizada e consistente entre navegadores.
+- [search-input](search-input.md) — Campo de busca com lupa, limpar e atalho de teclado.
 - [segmented-control](segmented-control.md) — Alternador em pílula contínua para seleção única entre 2 a 4 opções.
 - [select](select.md) — Menu suspenso customizado para selecionar uma opção em listas estruturadas.
 - [separator](separator.md) — Linha fina entre grupos do mesmo container.
@@ -176,6 +181,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [textarea](textarea.md) — Campo de entrada multilinha que expande verticalmente conforme o conteúdo.
 - [thumbnail](thumbnail.md) — Miniatura visual com proporção fixa e fallback integrado.
 - [time-picker](time-picker.md) — Seletor de horário com hora, minuto e formato de 24h ou 12h.
+- [timeline](timeline.md) — Eventos em ordem, como um histórico de atividade.
 - [title](title.md) — Aplica hierarquia visual e semântica a cabeçalhos e títulos de seções.
 - [toggle](toggle.md) — Botão de dois estados que alterna entre ativado e desativado.
 - [toggle-group](toggle-group.md) — Agrupa botões de alternância de dois estados para seleção única ou múltipla.
