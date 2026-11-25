@@ -5416,6 +5416,106 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
+  "search-input": {
+    description: "Campo de busca pronto: lupa no início, botão de limpar quando há texto e, se quiser, uma tecla de atalho que leva o foco até ele. Resolve a busca de lista ou página sem montar o input-group à mão.",
+    whenToUse: "Filtrar uma lista, tabela ou página pelo texto digitado. Busca principal de uma tela, com atalho de teclado (shortcut=\"/\").",
+    anatomy: [
+      { part: "SearchInput", description: "Raiz <search> (landmark de busca) com data-slot=\"search-input\"; o className vai nela. Dentro, o input-group." },
+      { part: "Lupa", description: "input-group-addon no início, com o ícone search." },
+      { part: "Campo", description: "input-group-input com type=\"search\"; recebe as props de <input>." },
+      { part: "Limpar", description: "input-group-button com ícone close, no fim, só quando há texto." },
+      { part: "Atalho", description: "kbd com a tecla, no fim, enquanto o campo está vazio." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "Lupa e, se houver atalho, a tecla no fim" },
+      { name: "Com texto", description: "O botão de limpar troca a tecla do atalho" },
+      { name: "Foco", description: "Anel de foco do input-group em volta de tudo" },
+      { name: "Desabilitado", description: "disabled vale para o campo e para o botão de limpar" },
+    ],
+    sizes: [],
+    doGuidelines: ["Use onValueChange para filtrar; ele também avisa quando o campo é limpo.", "Dê um aria-label com o alvo quando houver mais de uma busca na tela.", "Prefira / como atalho: não briga com a digitação nem com atalhos do navegador."],
+    dontGuidelines: ["Montar lupa e limpar à mão no input-group → search-input", "Usar busca para escolher um único valor → combobox", "Tratar o limpar só pelo onChange em modo controlado → use onValueChange"],
+    code: `import { SearchInput } from "@/components/ui/search-input"
+
+export function ExemploBusca() {
+  return <SearchInput shortcut="/" placeholder="Buscar pedidos" onValueChange={console.log} />
+}`,
+    props: [
+      { name: "value / defaultValue", type: "string", default: "—", description: "Texto controlado ou inicial" },
+      { name: "aria-label", type: "string", default: "\"Buscar\"", description: "Nome do campo; troque quando a busca tem alvo (\"Buscar pedidos\")" },
+      { name: "onValueChange", type: "(value: string) => void", default: "—", description: "Recebe o texto a cada mudança, inclusive ao limpar. Em modo controlado, é por ele que o limpar chega ao estado" },
+      { name: "shortcut", type: "string", default: "—", description: "Uma tecla (ex.: \"/\") que leva o foco ao campo; aparece com kbd" },
+    ],
+    meta: {
+      nome: "Search Input",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/search-input.tsx",
+      story: "src/components/ui/search-input.stories.tsx",
+      vizinhos: ["input-group", "command", "combobox"],
+    },
+    whenToUseItems: ["Filtrar uma lista, tabela ou página pelo texto digitado.", "Busca principal de uma tela, com atalho de teclado (shortcut=\"/\")."],
+    whenNotToUse: ["Escolher um valor de uma lista fechada → combobox", "Executar comandos ou navegar por atalhos → command", "Campo com outro ícone ou botão que não é busca → input-group"],
+    content: ["O placeholder diz o que se busca (\"Buscar pedidos\"), sem reticências.", "\"Buscar\" e \"Limpar busca\" vêm do dicionário de idioma; não escreva por fora."],
+    accessibility: {
+      keyboard: "Esc com texto limpa o campo. A tecla de shortcut, apertada fora de outro campo e sem Ctrl, ⌘ ou Alt, leva o foco à busca.",
+      screenReader: "O campo é type=\"search\" com nome \"Buscar\" por padrão; o atalho é anunciado por aria-keyshortcuts e a kbd fica fora da leitura. O botão diz \"Limpar busca\".",
+      focus: "Limpar pelo botão devolve o foco ao campo.",
+      cautions: "O atalho não dispara enquanto alguém digita em outro campo, com a tecla repetida nem durante composição de IME. Dois campos com o mesmo atalho disputam o foco: use um por tela. Evite letras comuns como atalho; prefira /.",
+    },
+  },
+  "description-list": {
+    description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
+    whenToUse: "Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar. Rótulos curtos com valores de tamanho variado.",
+    anatomy: [
+      { part: "DescriptionList", description: "O conjunto (dl). Define o layout." },
+      { part: "DescriptionItem", description: "Um par (div), o agrupador válido dentro de dl." },
+      { part: "DescriptionTerm", description: "O rótulo (dt), texto base apagado." },
+      { part: "DescriptionDetails", description: "O valor (dd), texto base médio. Pode haver mais de um por item." },
+    ],
+    variants: [],
+    states: [],
+    sizes: [],
+    doGuidelines: ["Agrupar fichas longas em seções com título (title) acima de cada lista.", "Manter a mesma ordem de campos em todas as fichas do mesmo tipo.", "Usar inline só quando os rótulos têm tamanho parecido."],
+    dontGuidelines: ["Comparar vários registros lado a lado numa lista → table.", "Deixar o valor vazio → traço ou \"Não informado\".", "Pôr campo editável no valor → field num formulário."],
+    code: `import {
+  DescriptionDetails,
+  DescriptionItem,
+  DescriptionList,
+  DescriptionTerm,
+} from "@/components/ui/description-list"
+
+<DescriptionList>
+  <DescriptionItem>
+    <DescriptionTerm>Plano</DescriptionTerm>
+    <DescriptionDetails>Profissional</DescriptionDetails>
+  </DescriptionItem>
+</DescriptionList>`,
+    props: [
+      { name: "layout", type: "stacked · inline", default: "stacked", description: "stacked põe o rótulo em cima do valor; inline põe lado a lado, com a coluna de rótulos alinhada." },
+    ],
+    meta: {
+      nome: "Description List",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/description-list.tsx",
+      story: "src/components/ui/description-list.stories.tsx",
+      vizinhos: ["table", "item", "card"],
+    },
+    whenToUseItems: ["Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar.", "Rótulos curtos com valores de tamanho variado."],
+    whenNotToUse: ["Vários registros com os mesmos campos → table.", "Lista de itens parecidos, cada um com ação → item / list.", "Valores que a pessoa edita → field com o controle certo."],
+    content: ["Rótulo curto, sem dois-pontos (o layout já separa).", "Valor ausente: mostre um traço ou \"Não informado\", nunca deixe o dd vazio."],
+    accessibility: {
+      keyboard: "não recebe foco; links ou botões dentro do valor seguem a ordem normal.",
+      screenReader: "anuncia a lista de definições e cada rótulo com seu valor.",
+      focus: "sem foco próprio.",
+      cautions: "só DescriptionItem, dt e dd dentro de dl; não troque por div soltos.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["gap-4", "gap-x-6", "gap-y-1", "gap-y-3"] },
+    ],
+  },
   timeline: {
     description: "Eventos em ordem, como o histórico de atividade de um pedido ou chamado. É o list como lista ordenada, com um marcador por evento e uma linha ligando os marcadores.",
     whenToUse: "Mostrar o que já aconteceu com um registro, na ordem: pedido, chamado, aprovação. Feed de atividade de uma pessoa ou de um projeto.",
@@ -5476,57 +5576,6 @@ export function ExemploSenha() {
       { contexto: "Cor", itens: ["bg-border", "bg-destructive", "bg-muted", "bg-primary", "text-destructive-foreground", "text-muted-foreground", "text-primary-foreground"] },
       { contexto: "Espaço", itens: ["bottom-1", "gap-0", "gap-1", "gap-x-3", "left-3", "min-w-0", "pb-0", "pb-6", "pt-0.5", "size-2", "size-4", "size-6", "top-7", "w-px"] },
       { contexto: "Raio", itens: ["rounded-full"] },
-    ],
-  },
-  "description-list": {
-    description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
-    whenToUse: "Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar. Rótulos curtos com valores de tamanho variado.",
-    anatomy: [
-      { part: "DescriptionList", description: "O conjunto (dl). Define o layout." },
-      { part: "DescriptionItem", description: "Um par (div), o agrupador válido dentro de dl." },
-      { part: "DescriptionTerm", description: "O rótulo (dt), texto base apagado." },
-      { part: "DescriptionDetails", description: "O valor (dd), texto base médio. Pode haver mais de um por item." },
-    ],
-    variants: [],
-    states: [],
-    sizes: [],
-    doGuidelines: ["Agrupar fichas longas em seções com título (title) acima de cada lista.", "Manter a mesma ordem de campos em todas as fichas do mesmo tipo.", "Usar inline só quando os rótulos têm tamanho parecido."],
-    dontGuidelines: ["Comparar vários registros lado a lado numa lista → table.", "Deixar o valor vazio → traço ou \"Não informado\".", "Pôr campo editável no valor → field num formulário."],
-    code: `import {
-  DescriptionDetails,
-  DescriptionItem,
-  DescriptionList,
-  DescriptionTerm,
-} from "@/components/ui/description-list"
-
-<DescriptionList>
-  <DescriptionItem>
-    <DescriptionTerm>Plano</DescriptionTerm>
-    <DescriptionDetails>Profissional</DescriptionDetails>
-  </DescriptionItem>
-</DescriptionList>`,
-    props: [
-      { name: "layout", type: "stacked · inline", default: "stacked", description: "stacked põe o rótulo em cima do valor; inline põe lado a lado, com a coluna de rótulos alinhada." },
-    ],
-    meta: {
-      nome: "Description List",
-      camada: "atom",
-      status: "piloto",
-      codigo: "src/components/ui/description-list.tsx",
-      story: "src/components/ui/description-list.stories.tsx",
-      vizinhos: ["table", "item", "card"],
-    },
-    whenToUseItems: ["Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar.", "Rótulos curtos com valores de tamanho variado."],
-    whenNotToUse: ["Vários registros com os mesmos campos → table.", "Lista de itens parecidos, cada um com ação → item / list.", "Valores que a pessoa edita → field com o controle certo."],
-    content: ["Rótulo curto, sem dois-pontos (o layout já separa).", "Valor ausente: mostre um traço ou \"Não informado\", nunca deixe o dd vazio."],
-    accessibility: {
-      keyboard: "não recebe foco; links ou botões dentro do valor seguem a ordem normal.",
-      screenReader: "anuncia a lista de definições e cada rótulo com seu valor.",
-      focus: "sem foco próprio.",
-      cautions: "só DescriptionItem, dt e dd dentro de dl; não troque por div soltos.",
-    },
-    tokens: [
-      { contexto: "Espaço", itens: ["gap-4", "gap-x-6", "gap-y-1", "gap-y-3"] },
     ],
   },
 }

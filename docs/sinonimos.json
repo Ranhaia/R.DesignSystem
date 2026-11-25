@@ -35,6 +35,7 @@
   "icon": ["icone", "ícone", "simbolo", "símbolo"],
   "icon-button": ["botao-de-icone", "botão-de-ícone"],
   "input": ["campo", "campo-de-texto", "text-field", "textfield", "input-text", "email"],
+  "search-input": ["busca", "campo-de-busca", "search", "pesquisa", "search-bar", "barra-de-busca"],
   "password-input": ["senha", "password", "campo-de-senha", "nova-senha", "forca-de-senha", "password-strength"],
   "timeline": ["linha-do-tempo", "historico", "historico-de-atividade", "atividade", "eventos", "cronologia", "feed-de-atividade", "activity"],
   "description-list": ["lista-de-definicoes", "lista-de-descricao", "ficha", "ficha-de-detalhes", "detalhes", "rotulo-valor", "chave-valor", "dl", "definition-list", "key-value"],
