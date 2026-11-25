@@ -30,7 +30,7 @@ Mostra a localização da página atual na hierarquia do site e o caminho percor
 
 | Parte | O que é |
 |---|---|
-| `Breadcrumb` | Elemento raiz `<nav>` com `aria-label="breadcrumb"` e `data-slot="breadcrumb"`. |
+| `Breadcrumb` | Elemento raiz `<nav>` com `aria-label="Trilha de navegação"` e `data-slot="breadcrumb"`. |
 | `BreadcrumbList` | Lista ordenada `<ol>` com `data-slot="breadcrumb-list"` e quebra flexível de itens. |
 | `BreadcrumbItem` | Item individual `<li>` com `data-slot="breadcrumb-item"` que agrupa link e separador. |
 | `BreadcrumbLink` | Link navegável para nível anterior com `data-slot="breadcrumb-link"`, suportando `asChild`. |
@@ -76,9 +76,9 @@ Tamanho único com espaçamento responsivo de `gap-1.5` no celular para `gap-2.5
 ## Acessibilidade
 
 - **Teclado:** Tab navega sequencialmente apenas pelos links anteriores (`BreadcrumbLink`) e botões de expansão (`BreadcrumbEllipsis`). A página atual não recebe foco por não ser link.
-- **Leitor de tela:** O contêiner `<nav>` possui `aria-label="breadcrumb"` e a página atual é identificada via `aria-current="page"` e `aria-disabled="true"`.
+- **Leitor de tela:** O contêiner `<nav>` possui `aria-label="Trilha de navegação"` (passe `aria-label` para outro nome) e a página atual é identificada via `aria-current="page"` e `aria-disabled="true"`.
 - **Foco:** O anel de foco visível destaca o item focado durante a navegação por teclado.
-- **Cuidados:** Os separadores possuem `aria-hidden="true"` para não poluir a leitura de tela. Atenção: o elemento `BreadcrumbEllipsis` traz `More` fixo em inglês no `sr-only`, devendo ser sobrescrito para português quando necessário.
+- **Cuidados:** Os separadores possuem `aria-hidden="true"` para não poluir a leitura de tela. O `BreadcrumbEllipsis` traz o texto `sr-only` "Mais níveis", mas o próprio elemento é `aria-hidden="true"`: o leitor de tela não o lê. Quando as reticências abrem um menu, dê o nome ao gatilho (`aria-label="Abrir menu"`, como nos exemplos).
 
 ## Tokens usados
 

@@ -71,6 +71,9 @@ Usa: [`button`](button.md) · [`icon`](icon.md) · [`input`](input.md) · [`sepa
 | `asChild` (SidebarMenuSubButton) | `boolean` | `false` | Renderiza elemento filho |
 | `size` (SidebarMenuSubButton) | `sm` · `md` | `md` | Tamanho do sub-botão |
 | `isActive` (SidebarMenuSubButton) | `boolean` | `false` | Marca subitem ativo |
+| `mobileTitle` | `string` | `Barra lateral` | Nome da folha no celular (leitor de tela) |
+| `mobileDescription` | `string` | `Exibe a barra lateral no celular.` | Descrição da folha (leitor de tela) |
+| `label` (SidebarTrigger) | `string` | `Alternar barra lateral` | Texto do gatilho (leitor de tela) |
 
 ## Variantes
 
@@ -102,7 +105,6 @@ Usa: [`button`](button.md) · [`icon`](icon.md) · [`input`](input.md) · [`sepa
 
 - Rótulos curtos em maiúsculas: "Painel", "Relatórios" ou "Configurações".
 - Títulos de grupos em caixa alta ou subtítulo curto: "Geral", "Projetos".
-- O atalho global de teclado exibe Ctrl+B ou Cmd+B.
 - Sem ponto final em rótulos e itens de navegação.
 
 ## Acessibilidade
@@ -110,7 +112,7 @@ Usa: [`button`](button.md) · [`icon`](icon.md) · [`input`](input.md) · [`sepa
 - **Teclado:** Tab e Shift+Tab navegam entre os itens. Ctrl+B (ou Cmd+B) alterna o estado aberto/recolhido. Esc fecha a folha no celular.
 - **Leitor de tela:** Itens usam papéis semânticos de botão ou link. Quando recolhida em ícones, os botões exibem tooltip acessível.
 - **Foco:** Anel de foco visível em cada item navegável. Na versão móvel, o foco fica contido no painel deslizante.
-- **Cuidados:** `SidebarTrigger` tem rótulo padrão "Toggle Sidebar" em inglês. Sempre passe `aria-label="Alternar barra lateral"` em português.
+- **Cuidados:** `SidebarTrigger` e `SidebarRail` anunciam "Alternar barra lateral"; a folha do celular, "Barra lateral". Troque com `label`, `mobileTitle` e `mobileDescription`.
 
 ## Tokens usados
 
@@ -151,18 +153,15 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Icon } from "@/components/ui/icon"
 
 <SidebarProvider>
   <Sidebar>
-    <SidebarHeader className="p-3 font-semibold">Sistema</SidebarHeader>
     <SidebarContent>
       <SidebarGroup>
         <SidebarGroupLabel>Menu</SidebarGroupLabel>
@@ -170,7 +169,6 @@ import { Icon } from "@/components/ui/icon"
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton tooltip="Início" isActive>
-                <Icon name="home" />
                 <span>Início</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -179,6 +177,6 @@ import { Icon } from "@/components/ui/icon"
       </SidebarGroup>
     </SidebarContent>
   </Sidebar>
-  <SidebarTrigger aria-label="Alternar barra lateral" />
+  <SidebarTrigger />
 </SidebarProvider>
 ```

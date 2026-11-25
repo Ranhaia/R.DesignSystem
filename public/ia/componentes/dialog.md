@@ -50,6 +50,8 @@ Usa: [`button`](button.md) · [`icon`](icon.md).
 | `showCloseButton` (DialogContent) | `boolean` | `true` | Mostra o "X" no canto |
 | `showCloseButton` (DialogFooter) | `boolean` | `false` | Acrescenta um botão `outline` de fechar |
 | `onEscapeKeyDown` · `onPointerDownOutside` (Content) | evento | — | Impedir fechar por Esc ou clique fora |
+| `closeLabel` (DialogContent) | `string` | `Fechar` | Texto que o leitor de tela anuncia no "X" |
+| `closeLabel` (DialogFooter) | `string` | `Fechar` | Texto do botão de fechar do rodapé (com `showCloseButton`) |
 
 ## Variantes
 
@@ -77,7 +79,7 @@ Um só. No celular ocupa a largura menos 32 px de margem.
 - **Teclado:** Tab e Shift+Tab ficam presos na janela. Esc fecha.
 - **Leitor de tela:** papel `dialog` modal; `DialogTitle` vira o nome e `DialogDescription` a descrição. O resto da página fica inacessível enquanto aberto. **Título é obrigatório** — sem ele, a Radix avisa no console.
 - **Foco:** ao abrir, vai para o primeiro elemento focável. Ao fechar, volta para o gatilho.
-- **Cuidados:** o "X" anuncia "Close" e o botão do `DialogFooter` diz "Close", em inglês. Em tela em português, passe `showCloseButton={false}` no footer e use um `DialogClose` com texto em português.
+- **Cuidados:** o "X" anuncia "Fechar" e o botão do `DialogFooter` (`showCloseButton`) também diz "Fechar". Para outro texto, passe `closeLabel` (ex.: `closeLabel="Dispensar"`); se o rodapé precisa de uma ação com verbo próprio ("Cancelar"), use um `DialogClose` com esse texto em vez de `showCloseButton`.
 
 ## Tokens usados
 
