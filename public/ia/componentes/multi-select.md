@@ -17,7 +17,7 @@ Campo de seleção múltipla com autocompletar que exibe cada escolha como um ch
 ## Quando usar
 
 - Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips.
-- Filtros avançados com busca textual onde cada critério selecionado precisa ser removido de forma independente.
+- Formulários com listas longas de opções que demandam filtragem rápida por digitação.
 - Campo de tags ou etiquetas que aceita valor novo além das sugestões (`creatable`).
 
 ## Quando NÃO usar
@@ -48,7 +48,7 @@ Usa: [`skeleton`](skeleton.md) · [`combobox`](combobox.md).
 | `emptyText` | `string` | `Nenhum resultado encontrado.` | Mensagem apresentada quando a busca não encontra correspondências |
 | `disabled` | `boolean` | `false` | Desativa interação com o campo de busca e os chips |
 | `aria-label` | `string` | — | Nome acessível para leitores de tela quando não houver rótulo visível |
-| `creatable` | — | `false` | Aceita valor digitado: Enter num texto sem opção em destaque vira chip (campo de tags). Valor repetido ou vazio é ignorado |
+| `creatable` | — | `false` | Aceita valor digitado: Enter num texto sem opção em destaque vira chip (campo de tags). Texto igual a uma opção (sem diferença de caixa) escolhe a opção; repetido ou vazio é ignorado. Com o campo vazio, Enter segue para o formulário |
 
 ## Variantes
 

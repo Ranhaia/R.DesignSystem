@@ -31,3 +31,19 @@ describe("MultiSelect creatable", () => {
     expect(s).not.toContain("data-creatable")
   })
 })
+
+describe("adicionarValorLivre com opções", () => {
+  const opcoes = [{ label: "Urgente", value: "urgente" }]
+  it("texto igual a uma opção escolhe a opção", () => {
+    expect(adicionarValorLivre("URGENTE", [], opcoes)).toEqual(["urgente"])
+  })
+  it("repetido sem diferença de caixa é ignorado", () => {
+    expect(adicionarValorLivre("Tag", ["tag"])).toBeNull()
+    expect(adicionarValorLivre("urgente", ["urgente"], opcoes)).toBeNull()
+  })
+  it("valor livre com nome de protótipo vira chip normal", () => {
+    const s = renderToString(h(MultiSelect, { options: opcoes, value: ["constructor"], onValueChange: () => {}, creatable: true, "aria-label": "T" }))
+    expect(s).toContain("constructor")
+    expect(s).not.toContain("function")
+  })
+})
