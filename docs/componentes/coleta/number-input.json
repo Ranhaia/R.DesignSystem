@@ -1,0 +1,51 @@
+{
+  "slug": "number-input",
+  "partes": [
+    "NumberInput"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "value",
+      "parte": "NumberInput",
+      "tipo": "`number` · `null`",
+      "padrao": null
+    },
+    {
+      "nome": "defaultValue",
+      "parte": "NumberInput",
+      "tipo": "`number` · `null`",
+      "padrao": null
+    },
+    {
+      "nome": "onValueChange",
+      "parte": "NumberInput",
+      "tipo": "`(value: number | null) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "min",
+      "parte": "NumberInput",
+      "tipo": "`number`",
+      "padrao": null
+    },
+    {
+      "nome": "max",
+      "parte": "NumberInput",
+      "tipo": "`number`",
+      "padrao": null
+    },
+    {
+      "nome": "step",
+      "parte": "NumberInput",
+      "tipo": "`number`",
+      "padrao": "1"
+    }
+  ],
+  "tokens": [],
+  "compoe": [
+    "icon",
+    "input-group"
+  ]
+}

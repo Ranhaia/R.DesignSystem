@@ -1,0 +1,49 @@
+{
+  "slug": "timeline",
+  "partes": [
+    "Timeline",
+    "TimelineItem",
+    "TimelineMarker",
+    "TimelineContent",
+    "TimelineTitle",
+    "TimelineTime",
+    "TimelineDescription"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "tone",
+      "parte": "TimelineMarker",
+      "tipo": "`default` · `primary` · `destructive`",
+      "padrao": "default"
+    }
+  ],
+  "tokens": [
+    "bg-border",
+    "bg-destructive",
+    "bg-muted",
+    "bg-primary",
+    "bottom-1",
+    "gap-0",
+    "gap-1",
+    "gap-x-3",
+    "left-3",
+    "min-w-0",
+    "pb-0",
+    "pb-6",
+    "pt-0.5",
+    "rounded-full",
+    "size-2",
+    "size-4",
+    "size-6",
+    "text-destructive-foreground",
+    "text-muted-foreground",
+    "text-primary-foreground",
+    "top-7",
+    "w-px"
+  ],
+  "compoe": [
+    "list"
+  ]
+}

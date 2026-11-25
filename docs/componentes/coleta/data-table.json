@@ -1,0 +1,89 @@
+{
+  "slug": "data-table",
+  "partes": [
+    "DataTable"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "dados",
+      "parte": "DataTable",
+      "tipo": "`T[]`",
+      "padrao": null
+    },
+    {
+      "nome": "colunas",
+      "parte": "DataTable",
+      "tipo": "`ColunaDados<T>[]`",
+      "padrao": null
+    },
+    {
+      "nome": "idDaLinha",
+      "parte": "DataTable",
+      "tipo": "`(linha: T, indice: number) => string`",
+      "padrao": "(_l, i) => String(i)"
+    },
+    {
+      "nome": "selecionavel",
+      "parte": "DataTable",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "ordemInicial",
+      "parte": "DataTable",
+      "tipo": "`Ordem<T>`",
+      "padrao": "null"
+    },
+    {
+      "nome": "nomeArquivo",
+      "parte": "DataTable",
+      "tipo": "`string`",
+      "padrao": "dados.csv"
+    },
+    {
+      "nome": "acoesEmLote",
+      "parte": "DataTable",
+      "tipo": "`(selecionadas: T[]) => React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "vazio",
+      "parte": "DataTable",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "className",
+      "parte": "DataTable",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "aria-label",
+      "parte": "DataTable",
+      "tipo": "`string`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "gap-2",
+    "gap-3",
+    "h-24",
+    "max-w-xs",
+    "ml-3",
+    "mr-3",
+    "text-muted-foreground",
+    "text-sm",
+    "w-0"
+  ],
+  "compoe": [
+    "button",
+    "checkbox",
+    "dropdown-menu",
+    "icon",
+    "input",
+    "table"
+  ]
+}

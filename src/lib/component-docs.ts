@@ -711,7 +711,7 @@ import { Label } from "@/components/ui/label"
     variants: [],
     states: [
       { name: "Em andamento", description: "Indicador preenchido proporcionalmente com transição suave via transition-all" },
-      { name: "0%", description: "Indicador totalmente recuado para a esquerda" },
+      { name: "0%", description: "Barra: indicador recuado à esquerda. Anel: só o trilho, sem arco" },
       { name: "Concluído (100%)", description: "Indicador cobre todo o comprimento do trilho" },
     ],
     sizes: [],
@@ -730,6 +730,7 @@ import { Label } from "@/components/ui/label"
       { name: "value (Progress)", type: "number", default: "0", description: "Porcentagem concluída da tarefa, variando de 0 a 100" },
       { name: "max (Progress)", type: "number", default: "100", description: "Valor máximo de referência do progresso" },
       { name: "getValueLabel (Progress)", type: "(value: number, max: number) => string", default: "—", description: "Função que formata o texto acessível do valor" },
+      { name: "shape", type: "bar · circle", default: "bar", description: "Forma do indicador: barra linear ou anel. Valor e leitura de tela iguais nas duas" },
     ],
     meta: {
       nome: "Progress",
@@ -749,8 +750,8 @@ import { Label } from "@/components/ui/label"
       cautions: "Não anuncie cada porcentagem intermediária para evitar poluir o leitor de tela; anuncie apenas marcos relevantes ou a conclusão da tarefa. Sempre forneça um nome acessível via aria-label ou texto associado.",
     },
     tokens: [
-      { contexto: "Cor", itens: ["bg-primary"] },
-      { contexto: "Espaço", itens: ["h-2"] },
+      { contexto: "Cor", itens: ["bg-primary", "stroke-primary"] },
+      { contexto: "Espaço", itens: ["h-2", "size-10"] },
       { contexto: "Raio", itens: ["rounded-full"] },
     ],
   },
@@ -4993,10 +4994,10 @@ import { Button } from "@/components/ui/button"
       status: "piloto",
       codigo: "src/components/ui/table.tsx",
       story: "src/components/ui/table.stories.tsx",
-      vizinhos: ["list", "item", "card"],
+      vizinhos: ["data-table", "list", "item", "card"],
     },
     whenToUseItems: ["Listas densas de dados estruturados para comparação entre atributos: faturas, apólices ou transações.", "Exibição de registros tabulares com necessidade de cabeçalho descritivo e rodapé de totais.", "Conjunto de dados homogêneos que se beneficiam de ordenação por coluna e paginação."],
-    whenNotToUse: ["Layout de página ou organização visual de blocos sem relação tabular → box.", "Lista simples de itens sem comparação direta entre colunas → list ou item.", "Visualização de itens ricos em telas pequenas de celular → card."],
+    whenNotToUse: ["Busca, filtro, ordenação, seleção em lote ou exportar CSV → data-table", "Layout de página ou organização visual de blocos sem relação tabular → box.", "Lista sem comparação entre colunas, ou itens ricos no celular → list, item ou card."],
     content: ["Cabeçalhos de coluna curtos e claros com substantivos no singular: \"Fatura\", \"Valor\", \"Status\".", "Alinhe textos à esquerda e valores numéricos ou monetários à direita.", "Use TableCaption para descrever resumidamente o conjunto de dados exibido."],
     accessibility: {
       keyboard: "Células não recebem foco por padrão. Controles interativos dentro das células (como botões, links e checkboxes) seguem a ordem natural do Tab. O contêiner permite navegação horizontal por setas quando há estouro de largura.",
@@ -5462,6 +5463,292 @@ export function ExemploSenha() {
     },
     tokens: [
       { contexto: "Espaço", itens: ["gap-3", "gap-x-2", "py-2"] },
+    ],
+  },
+  "data-table": {
+    description: "Tabela montada sobre a table para trabalhar com os dados: procurar, filtrar, ordenar, escolher as colunas, agir sobre várias linhas de uma vez e levar tudo para uma planilha em CSV.",
+    whenToUse: "Muitos itens que a pessoa precisa comparar, achar ou ordenar (faturas, pedidos, usuários). A mesma ação vale para vários itens de uma vez (selecionavel + acoesEmLote). A pessoa precisa levar os dados para uma planilha.",
+    anatomy: [
+      { part: "DataTable", description: "Raiz <div data-slot=\"data-table\">; o className vai nela." },
+      { part: "Barra", description: "<div data-slot=\"data-table-toolbar\"> com a busca (input), um filtro por coluna filtravel (dropdown-menu), a contagem e as ações em lote, o menu Colunas e Exportar CSV." },
+      { part: "Tabela", description: "A table, com cabeçalho ordenável (button + aria-sort) e, com selecionavel, a coluna de checkbox." },
+      { part: "Vazio", description: "Uma linha que ocupa todas as colunas com o texto de vazio." },
+    ],
+    variants: [],
+    states: [
+      { name: "Ordenada", description: "Seta para cima ou para baixo no cabeçalho da coluna; as outras ordenáveis mostram a seta dupla apagada" },
+      { name: "Filtrada", description: "O botão do filtro mostra quantos valores estão marcados, ex.: \"Status (2)\"" },
+      { name: "Com seleção", description: "Linha marcada com o fundo de selecionada; a barra mostra \"N selecionadas\" e as ações em lote" },
+      { name: "Seleção parcial", description: "Checkbox do cabeçalho indeterminado" },
+      { name: "Vazia", description: "Uma linha com o texto de vazio" },
+    ],
+    sizes: [],
+    doGuidelines: ["Passe idDaLinha com um id real.", "Marque números com numerica, para alinharem à direita.", "Diga em vazio por que está vazio e qual o primeiro passo."],
+    dontGuidelines: ["Mais de 7 colunas visíveis → esconda as menos usadas com oculta", "Ação importante só no menu → coloque o botão em acoesEmLote", "Tabela no celular → list ou cards"],
+    code: `import { DataTable } from "@/components/ui/data-table"
+
+const pedidos = [{ id: "1", cliente: "Ana", valor: 30 }]
+
+export function ExemploPedidos() {
+  return (
+    <DataTable
+      aria-label="Pedidos"
+      dados={pedidos}
+      idDaLinha={(p) => p.id}
+      selecionavel
+      colunas={[
+        { chave: "cliente", titulo: "Cliente", ordenavel: true },
+        { chave: "valor", titulo: "Valor", ordenavel: true, numerica: true },
+      ]}
+    />
+  )
+}`,
+    props: [
+      { name: "dados", type: "T[]", default: "—", description: "As linhas. Qualquer objeto." },
+      { name: "colunas", type: "ColunaDados<T>[]", default: "—", description: "Uma por coluna: chave, titulo e, se precisar, ordenavel, filtravel, numerica, oculta e celula (o que desenhar na célula)." },
+      { name: "idDaLinha", type: "(linha: T, indice: number) => string", default: "(_l, i) => String(i)", description: "Identidade da linha. Passe um id real para a seleção sobreviver a dados que mudam." },
+      { name: "selecionavel", type: "boolean", default: "false", description: "Liga a coluna de checkbox e a seleção em lote." },
+      { name: "ordemInicial", type: "Ordem<T>", default: "null", description: "Coluna e direção (asc/desc) com que a tabela abre." },
+      { name: "nomeArquivo", type: "string", default: "dados.csv", description: "Nome do arquivo do Exportar CSV." },
+      { name: "acoesEmLote", type: "(selecionadas: T[]) => React.ReactNode", default: "—", description: "Botões que aparecem na barra quando há linhas marcadas; recebe as linhas." },
+      { name: "className", type: "string", default: "—", description: "Classes extras na raiz." },
+      { name: "aria-label", type: "string", default: "—", description: "Nome da tabela para o leitor de tela. Obrigatório." },
+      { name: "vazio", type: "React.ReactNode", default: "—", description: "O que dizer sem linhas: o motivo e o primeiro passo. Padrão: \"Nenhum resultado encontrado.\"" },
+    ],
+    meta: {
+      nome: "Data Table",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/data-table.tsx",
+      story: "src/components/ui/data-table.stories.tsx",
+      vizinhos: ["table", "list", "pagination"],
+    },
+    whenToUseItems: ["Muitos itens que a pessoa precisa comparar, achar ou ordenar (faturas, pedidos, usuários).", "A mesma ação vale para vários itens de uma vez (selecionavel + acoesEmLote).", "A pessoa precisa levar os dados para uma planilha."],
+    whenNotToUse: ["Poucas linhas só para ler, sem busca nem ação → table", "No celular, ou itens com pouco para comparar → list ou cards", "Milhares de linhas vindas do servidor → busque e pagine no servidor e use table com pagination"],
+    content: ["A primeira coluna é o nome do item: ela também nomeia o checkbox da linha (\"Selecionar Ana Souza\").", "Títulos de coluna e ações em lote são texto de produto e vêm por prop; busca, filtros, Colunas e Exportar vêm do dicionário (pt-BR ou en).", "Status com badge na celula, nunca só a cor do texto."],
+    accessibility: {
+      keyboard: "Tab passa pela busca, filtros, Colunas, Exportar, cabeçalhos ordenáveis e checkboxes. Enter ou Espaço ordena, marca e abre os menus; nos menus, setas navegam e Espaço marca sem fechar.",
+      screenReader: "A tabela tem nome (aria-label); a coluna ordenada anuncia aria-sort; cada checkbox diz qual linha marca; a contagem de selecionadas é anunciada ao mudar (aria-live).",
+      focus: "Anel de foco de cada peça (input, button, checkbox).",
+      cautions: "Até 7 colunas visíveis; deixe as outras com oculta. O CSV usa o valor cru e neutraliza texto que a planilha leria como fórmula.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2", "gap-3", "h-24", "max-w-xs", "ml-3", "mr-3", "w-0"] },
+    ],
+  },
+  "description-list": {
+    description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
+    whenToUse: "Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar. Rótulos curtos com valores de tamanho variado.",
+    anatomy: [
+      { part: "DescriptionList", description: "O conjunto (dl). Define o layout." },
+      { part: "DescriptionItem", description: "Um par (div), o agrupador válido dentro de dl." },
+      { part: "DescriptionTerm", description: "O rótulo (dt), texto base apagado." },
+      { part: "DescriptionDetails", description: "O valor (dd), texto base médio. Pode haver mais de um por item." },
+    ],
+    variants: [],
+    states: [],
+    sizes: [],
+    doGuidelines: ["Agrupar fichas longas em seções com título (title) acima de cada lista.", "Manter a mesma ordem de campos em todas as fichas do mesmo tipo.", "Usar inline só quando os rótulos têm tamanho parecido."],
+    dontGuidelines: ["Comparar vários registros lado a lado numa lista → table.", "Deixar o valor vazio → traço ou \"Não informado\".", "Pôr campo editável no valor → field num formulário."],
+    code: `import {
+  DescriptionDetails,
+  DescriptionItem,
+  DescriptionList,
+  DescriptionTerm,
+} from "@/components/ui/description-list"
+
+<DescriptionList>
+  <DescriptionItem>
+    <DescriptionTerm>Plano</DescriptionTerm>
+    <DescriptionDetails>Profissional</DescriptionDetails>
+  </DescriptionItem>
+</DescriptionList>`,
+    props: [
+      { name: "layout", type: "stacked · inline", default: "stacked", description: "stacked põe o rótulo em cima do valor; inline põe lado a lado, com a coluna de rótulos alinhada." },
+    ],
+    meta: {
+      nome: "Description List",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/description-list.tsx",
+      story: "src/components/ui/description-list.stories.tsx",
+      vizinhos: ["table", "item", "card"],
+    },
+    whenToUseItems: ["Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar.", "Rótulos curtos com valores de tamanho variado."],
+    whenNotToUse: ["Vários registros com os mesmos campos → table.", "Lista de itens parecidos, cada um com ação → item / list.", "Valores que a pessoa edita → field com o controle certo."],
+    content: ["Rótulo curto, sem dois-pontos (o layout já separa).", "Valor ausente: mostre um traço ou \"Não informado\", nunca deixe o dd vazio."],
+    accessibility: {
+      keyboard: "não recebe foco; links ou botões dentro do valor seguem a ordem normal.",
+      screenReader: "anuncia a lista de definições e cada rótulo com seu valor.",
+      focus: "sem foco próprio.",
+      cautions: "só DescriptionItem, dt e dd dentro de dl; não troque por div soltos.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["gap-4", "gap-x-6", "gap-y-1", "gap-y-3"] },
+    ],
+  },
+  "number-input": {
+    description: "Campo para um número exato, com botões − e + nas pontas e setas do teclado. Respeita min, max e step e escreve o número no formato do idioma ativo.",
+    whenToUse: "Quantidade, número de pessoas, parcelas: valor exato e curto. Medida com casas decimais e passo fixo (step={0.5}).",
+    anatomy: [
+      { part: "NumberInput", description: "Raiz input-group com data-slot=\"number-input\"; o className vai nela." },
+      { part: "Diminuir", description: "input-group-button com ícone remove, no início; desligado no min." },
+      { part: "Campo", description: "input-group-input com role=\"spinbutton\" e inputMode=\"decimal\", texto centralizado." },
+      { part: "Aumentar", description: "input-group-button com ícone add, no fim; desligado no max." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "Campo em branco; o primeiro passo vai para o min" },
+      { name: "No limite", description: "O botão do lado do limite fica desligado" },
+      { name: "Digitando", description: "Texto livre; vira número ao sair do campo ou com Enter. Texto inválido volta ao último valor" },
+      { name: "Desabilitado", description: "disabled vale para o campo e os dois botões" },
+    ],
+    sizes: [],
+    doGuidelines: ["Defina min e max sempre que o negócio tiver limite.", "Use step com as casas que o valor aceita (0.5, 0.01).", "Leia o valor por onValueChange, que já entrega número."],
+    dontGuidelines: ["Usar para dinheiro → currency-input", "Usar para CEP, telefone ou documento → input com inputMode=\"numeric\"", "Formatar o número à mão no value → deixe o componente formatar no idioma"],
+    code: `import { NumberInput } from "@/components/ui/number-input"
+
+export function ExemploQuantidade() {
+  return <NumberInput aria-label="Quantidade" defaultValue={1} min={1} max={10} />
+}`,
+    props: [
+      { name: "aria-label", type: "string", default: "—", description: "Nome do campo quando não há label por fora" },
+      { name: "value", type: "number · null", default: "—", description: "Número controlado; null é vazio" },
+      { name: "defaultValue", type: "number · null", default: "—", description: "Número inicial" },
+      { name: "onValueChange", type: "(value: number | null) => void", default: "—", description: "Recebe o número (ou null) ao passo, ao sair do campo ou com Enter" },
+      { name: "min", type: "number", default: "—", description: "Menor valor aceito" },
+      { name: "max", type: "number", default: "—", description: "Maior valor aceito" },
+      { name: "step", type: "number", default: "1", description: "Quanto − e + (e ↑ ↓) mudam; as casas do step definem o arredondamento" },
+    ],
+    meta: {
+      nome: "Number Input",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/number-input.tsx",
+      story: "src/components/ui/number-input.stories.tsx",
+      vizinhos: ["input", "slider"],
+    },
+    whenToUseItems: ["Quantidade, número de pessoas, parcelas: valor exato e curto.", "Medida com casas decimais e passo fixo (step={0.5})."],
+    whenNotToUse: ["Valor aproximado num intervalo → slider", "Código, CEP, telefone ou documento (não é quantidade) → input com inputMode=\"numeric\""],
+    content: ["O rótulo diz a unidade quando houver (\"Peso em kg\").", "O formato (milhar e decimal) vem do idioma ativo; não formate por fora."],
+    accessibility: {
+      keyboard: "↑ e ↓ dão um passo; Enter confirma o texto digitado. Os botões ficam fora do Tab, porque as setas fazem o mesmo.",
+      screenReader: "O campo é spinbutton, com valor (já formatado, aria-valuetext), mínimo e máximo anunciados. Os botões dizem \"Diminuir\" e \"Aumentar\".",
+      focus: "Anel do input-group em volta de tudo; clicar em − ou + não tira o foco do lugar.",
+      cautions: "Passe label ou aria-label. Não é type=\"number\": esse tipo ignora o separador do idioma e muda o valor com a rolagem.",
+    },
+  },
+  "search-input": {
+    description: "Campo de busca pronto: lupa no início, botão de limpar quando há texto e, se quiser, uma tecla de atalho que leva o foco até ele. Resolve a busca de lista ou página sem montar o input-group à mão.",
+    whenToUse: "Filtrar uma lista, tabela ou página pelo texto digitado. Busca principal de uma tela, com atalho de teclado (shortcut=\"/\").",
+    anatomy: [
+      { part: "SearchInput", description: "Raiz <search> (landmark de busca) com data-slot=\"search-input\"; o className vai nela. Dentro, o input-group." },
+      { part: "Lupa", description: "input-group-addon no início, com o ícone search." },
+      { part: "Campo", description: "input-group-input com type=\"search\"; recebe as props de <input>." },
+      { part: "Limpar", description: "input-group-button com ícone close, no fim, só quando há texto." },
+      { part: "Atalho", description: "kbd com a tecla, no fim, enquanto o campo está vazio." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "Lupa e, se houver atalho, a tecla no fim" },
+      { name: "Com texto", description: "O botão de limpar troca a tecla do atalho" },
+      { name: "Foco", description: "Anel de foco do input-group em volta de tudo" },
+      { name: "Desabilitado", description: "disabled vale para o campo e para o botão de limpar" },
+    ],
+    sizes: [],
+    doGuidelines: ["Use onValueChange para filtrar; ele também avisa quando o campo é limpo.", "Dê um aria-label com o alvo quando houver mais de uma busca na tela.", "Prefira / como atalho: não briga com a digitação nem com atalhos do navegador."],
+    dontGuidelines: ["Montar lupa e limpar à mão no input-group → search-input", "Usar busca para escolher um único valor → combobox", "Tratar o limpar só pelo onChange em modo controlado → use onValueChange"],
+    code: `import { SearchInput } from "@/components/ui/search-input"
+
+export function ExemploBusca() {
+  return <SearchInput shortcut="/" placeholder="Buscar pedidos" onValueChange={console.log} />
+}`,
+    props: [
+      { name: "value / defaultValue", type: "string", default: "—", description: "Texto controlado ou inicial" },
+      { name: "aria-label", type: "string", default: "\"Buscar\"", description: "Nome do campo; troque quando a busca tem alvo (\"Buscar pedidos\")" },
+      { name: "onValueChange", type: "(value: string) => void", default: "—", description: "Recebe o texto a cada mudança, inclusive ao limpar. Em modo controlado, é por ele que o limpar chega ao estado" },
+      { name: "shortcut", type: "string", default: "—", description: "Uma tecla (ex.: \"/\") que leva o foco ao campo; aparece com kbd" },
+    ],
+    meta: {
+      nome: "Search Input",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/search-input.tsx",
+      story: "src/components/ui/search-input.stories.tsx",
+      vizinhos: ["input-group", "command", "combobox"],
+    },
+    whenToUseItems: ["Filtrar uma lista, tabela ou página pelo texto digitado.", "Busca principal de uma tela, com atalho de teclado (shortcut=\"/\")."],
+    whenNotToUse: ["Escolher um valor de uma lista fechada → combobox", "Executar comandos ou navegar por atalhos → command", "Campo com outro ícone ou botão que não é busca → input-group"],
+    content: ["O placeholder diz o que se busca (\"Buscar pedidos\"), sem reticências.", "\"Buscar\" e \"Limpar busca\" vêm do dicionário de idioma; não escreva por fora."],
+    accessibility: {
+      keyboard: "Esc com texto limpa o campo. A tecla de shortcut, apertada fora de outro campo e sem Ctrl, ⌘ ou Alt, leva o foco à busca.",
+      screenReader: "O campo é type=\"search\" com nome \"Buscar\" por padrão; o atalho é anunciado por aria-keyshortcuts e a kbd fica fora da leitura. O botão diz \"Limpar busca\".",
+      focus: "Limpar pelo botão devolve o foco ao campo.",
+      cautions: "O atalho não dispara enquanto alguém digita em outro campo, com a tecla repetida nem durante composição de IME. Dois campos com o mesmo atalho disputam o foco: use um por tela. Evite letras comuns como atalho; prefira /.",
+    },
+  },
+  timeline: {
+    description: "Eventos em ordem, como o histórico de atividade de um pedido ou chamado. É o list como lista ordenada, com um marcador por evento e uma linha ligando os marcadores.",
+    whenToUse: "Mostrar o que já aconteceu com um registro, na ordem: pedido, chamado, aprovação. Feed de atividade de uma pessoa ou de um projeto.",
+    anatomy: [
+      { part: "Timeline", description: "A lista ordenada (ol) com os eventos." },
+      { part: "TimelineItem", description: "Um evento (li): marcador à esquerda, conteúdo à direita e a linha até o próximo." },
+      { part: "TimelineMarker", description: "O ponto do evento, ou o ícone passado como filho. Decorativo." },
+      { part: "TimelineContent", description: "Coluna do texto do evento." },
+      { part: "TimelineTitle", description: "O que aconteceu, texto médio (não é cabeçalho)." },
+      { part: "TimelineTime", description: "Quando aconteceu, em <time> com dateTime." },
+      { part: "TimelineDescription", description: "Detalhe opcional, texto apagado." },
+    ],
+    variants: [],
+    states: [],
+    sizes: [],
+    doGuidelines: ["Manter uma ordem só na tela inteira (mais novo em cima ou embaixo).", "Usar ícone no marcador quando os tipos de evento variam.", "Pôr a data em todo evento."],
+    dontGuidelines: ["Usar para passos futuros → stepper.", "Usar cabeçalho no título de cada evento → TimelineTitle, que é texto.", "Marcar falha só com a cor → escrever a falha no título."],
+    code: `import {
+  Timeline,
+  TimelineContent,
+  TimelineItem,
+  TimelineMarker,
+  TimelineTime,
+  TimelineTitle,
+} from "@/components/ui/timeline"
+
+<Timeline>
+  <TimelineItem>
+    <TimelineMarker />
+    <TimelineContent>
+      <TimelineTitle>Pedido criado</TimelineTitle>
+      <TimelineTime dateTime="2026-11-20">20 nov</TimelineTime>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>`,
+    props: [
+      { name: "dateTime (TimelineTime)", type: "string", default: "—", description: "Data em formato de máquina (ISO), para leitor de tela e buscadores." },
+      { name: "tone (TimelineMarker)", type: "default · primary · destructive", default: "default", description: "Cor do marcador: neutro, destaque ou problema." },
+    ],
+    meta: {
+      nome: "Timeline",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/timeline.tsx",
+      story: "src/components/ui/timeline.stories.tsx",
+      vizinhos: ["list", "item", "stepper"],
+    },
+    whenToUseItems: ["Mostrar o que já aconteceu com um registro, na ordem: pedido, chamado, aprovação.", "Feed de atividade de uma pessoa ou de um projeto."],
+    whenNotToUse: ["Etapas que a pessoa ainda vai percorrer → stepper.", "Itens sem ordem no tempo, com ações → item / list."],
+    content: ["Título no passado e curto: \"Pagamento aprovado\".", "Data no formato da tela e a mesma data em ISO no dateTime."],
+    accessibility: {
+      keyboard: "não recebe foco; links dentro do evento seguem a ordem normal.",
+      screenReader: "anuncia a lista com o número de eventos; marcador e linha ficam de fora.",
+      focus: "sem foco próprio.",
+      cautions: "a cor do marcador não pode ser a única pista: falha precisa estar escrita no título.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-border", "bg-destructive", "bg-muted", "bg-primary", "text-destructive-foreground", "text-muted-foreground", "text-primary-foreground"] },
+      { contexto: "Espaço", itens: ["bottom-1", "gap-0", "gap-1", "gap-x-3", "left-3", "min-w-0", "pb-0", "pb-6", "pt-0.5", "size-2", "size-4", "size-6", "top-7", "w-px"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
     ],
   },
 }
