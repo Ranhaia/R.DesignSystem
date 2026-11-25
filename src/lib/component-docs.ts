@@ -5415,4 +5415,53 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
+  "code-block": {
+    description: "Trecho de código para ler e copiar. Cabeçalho com título e linguagem opcionais e um botão que copia o código inteiro, com aviso de copiado para quem vê e para o leitor de tela.",
+    whenToUse: "Comando ou trecho que a pessoa vai colar em outro lugar: instalação, configuração, chave de exemplo. Documentação e telas de integração.",
+    anatomy: [
+      { part: "CodeBlock", description: "O bloco inteiro: cabeçalho (título, linguagem, botão de copiar com o aviso) e o código em pre/code." },
+    ],
+    variants: [],
+    states: [
+      { name: "Repouso", description: "Ícone de copiar." },
+      { name: "Copiado", description: "Ícone de check e balão \"Copiado\" por 2 s." },
+      { name: "Falha", description: "Ícone de erro e balão \"Não foi possível copiar\" por 2 s." },
+    ],
+    sizes: [],
+    doGuidelines: ["Dar título quando há mais de um bloco na tela, para os botões terem nomes diferentes.", "Informar a linguagem.", "Separar comandos em blocos diferentes quando a pessoa roda um de cada vez."],
+    dontGuidelines: ["Pôr código no meio de uma frase → kbd ou code inline.", "Usar para texto editável → textarea.", "Esconder o botão de copiar no hover → deixar sempre visível."],
+    code: `import { CodeBlock } from "@/components/ui/code-block"
+
+<CodeBlock language="bash" code="npm install" />`,
+    props: [
+      { name: "code", type: "string", default: "—", description: "O código exibido e copiado, como texto puro." },
+      { name: "language", type: "string", default: "—", description: "Linguagem (ex.: tsx, bash), mostrada no cabeçalho." },
+      { name: "title", type: "string", default: "—", description: "Nome do trecho; entra também no nome do botão de copiar." },
+    ],
+    meta: {
+      nome: "Code Block",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/code-block.tsx",
+      story: "src/components/ui/code-block.stories.tsx",
+      vizinhos: ["kbd", "textarea"],
+    },
+    whenToUseItems: ["Comando ou trecho que a pessoa vai colar em outro lugar: instalação, configuração, chave de exemplo.", "Documentação e telas de integração."],
+    whenNotToUse: ["Tecla ou atalho no meio do texto → kbd.", "Código que a pessoa edita → textarea."],
+    content: ["Código pronto para colar: sem $ de prompt nem saída misturada.", "Título curto: nome do arquivo ou do passo."],
+    accessibility: {
+      keyboard: "Tab chega ao botão e depois ao código, que rola com as setas.",
+      screenReader: "o botão tem nome (\"Copiar código\", com o título quando há) e o resultado é anunciado pela região role=\"status\".",
+      focus: "anel no botão e anel interno no código; o botão nunca é desabilitado, então o foco não se perde.",
+      cautions: "a cópia precisa de HTTPS ou localhost; fora disso cai no estado de falha, que também é avisado.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-foreground", "bg-muted", "text-background", "text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "leading-relaxed", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-2", "me-1", "min-w-0", "p-1", "p-4", "ps-3", "px-2", "py-1"] },
+      { contexto: "Raio", itens: ["rounded-inner", "rounded-md", "rounded-outer-lg"] },
+      { contexto: "Movimento", itens: ["duration-motion-fast"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
 }

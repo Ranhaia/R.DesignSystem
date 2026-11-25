@@ -1,0 +1,56 @@
+{
+  "slug": "code-block",
+  "partes": [
+    "CodeBlock"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "code",
+      "parte": "CodeBlock",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "language",
+      "parte": "CodeBlock",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "title",
+      "parte": "CodeBlock",
+      "tipo": "`string`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-foreground",
+    "bg-muted",
+    "duration-motion-fast",
+    "font-medium",
+    "gap-2",
+    "leading-relaxed",
+    "me-1",
+    "min-w-0",
+    "p-1",
+    "p-4",
+    "ps-3",
+    "px-2",
+    "py-1",
+    "ring-ring",
+    "rounded-inner",
+    "rounded-md",
+    "rounded-outer-lg",
+    "text-background",
+    "text-foreground",
+    "text-muted-foreground",
+    "text-sm",
+    "text-xs"
+  ],
+  "compoe": [
+    "icon",
+    "icon-button"
+  ]
+}

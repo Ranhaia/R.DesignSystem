@@ -78,6 +78,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Calendar](/ia/componentes/calendar.md): Exibe uma grade mensal interativa para seleção visual de uma data ou período. Já vem configurado com localização pt-BR por padrão.
 - [Carousel](/ia/componentes/carousel.md): Exibe uma sequência de itens e painéis navegáveis horizontalmente ou verticalmente, com suporte a gestos de toque baseado em Embla Carousel.
 - [Chart](/ia/componentes/chart.md): Container e utilitários para renderização de gráficos baseados em Recharts, com suporte a variáveis de cor e tooltips temáticos.
+- [Code Block](/ia/componentes/code-block.md): Trecho de código para ler e copiar. Cabeçalho com título e linguagem opcionais e um botão que copia o código inteiro, com aviso de copiado para quem vê e para o leitor de tela.
 - [Combobox](/ia/componentes/combobox.md): Combina um campo de entrada de texto com menu suspenso de sugestões filtradas sob demanda, suportando seleção única ou múltipla por chips.
 - [Command](/ia/componentes/command.md): Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado. Funciona inline na página ou dentro de uma janela modal para paleta de comandos.
 - [Context Menu](/ia/componentes/context-menu.md): Menu contextual flutuante acionado pelo clique com o botão direito do mouse ou toque longo. Agrupa ações específicas aplicadas ao elemento apontado.
