@@ -76,6 +76,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Opções de alternância em barra compacta → `toggle-group`.
 - Opções estruturadas em árvore com seleção em cascata → `tree-select`.
 - Senha → `password-input` (cadastro: `variant="new"`).
+- Número exato, com − e + → `number-input`.
 - Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
 
 **Mostrar mensagem**
@@ -145,6 +146,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [menubar](menubar.md) — Barra horizontal de menus persistente no topo para comandos e atalhos de aplicação.
 - [message](message.md) — Estrutura cada turno de fala em interfaces conversacionais ou chat.
 - [multi-select](multi-select.md) — Campo de seleção múltipla com autocompletar e remoção por chips.
+- [number-input](number-input.md) — Campo numérico com − e +, limites e formato do idioma.
 - [native-select](native-select.md) — Menu suspenso nativo do navegador para seleção simples em dispositivos móveis.
 - [navigation-menu](navigation-menu.md) — Menu estruturado para navegação principal com suporte a painéis suspensos ricos.
 - [password-input](password-input.md) — Campo de senha com mostrar e ocultar e, no cadastro, a força da senha.

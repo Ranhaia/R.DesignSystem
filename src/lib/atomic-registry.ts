@@ -114,6 +114,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   // Organisms
   combobox: "organism",
   files: "organism",
+  "number-input": "organism",
   "multi-select": "organism",
   "split-button": "organism",
   "alert-dialog": "organism",
