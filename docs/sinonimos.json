@@ -22,6 +22,7 @@
   "checkbox": ["check-box", "caixa-de-selecao", "caixa-de-seleção", "marcar"],
   "chip": ["etiqueta", "filtro", "pill"],
   "collapsible": ["recolhivel", "recolhível", "mostrar-mais"],
+  "color-picker": ["seletor-de-cor", "cor", "color", "colorpicker", "paleta", "hex", "hexadecimal"],
   "combobox": ["campo-com-sugestoes", "autocomplete", "autocompletar", "typeahead"],
   "currency-input": ["dinheiro", "moeda", "valor", "preco", "preço", "campo-de-dinheiro", "money-input", "currency"],
   "command": ["paleta-de-comandos", "command-palette", "cmdk", "busca-rapida"],

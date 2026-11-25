@@ -102,6 +102,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   breadcrumb: "molecule",
   "button-group": "molecule",
   collapsible: "molecule",
+  "color-picker": "molecule",
   empty: "molecule",
   field: "molecule",
   "hover-card": "molecule",
