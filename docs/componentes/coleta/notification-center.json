@@ -1,0 +1,92 @@
+{
+  "slug": "notification-center",
+  "partes": [
+    "NotificationList",
+    "NotificationCenter"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "notifications",
+      "parte": "NotificationList",
+      "tipo": "`Notification[]`",
+      "padrao": null
+    },
+    {
+      "nome": "onSelect",
+      "parte": "NotificationList",
+      "tipo": "`(id: string) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "onMarkAllRead",
+      "parte": "NotificationList",
+      "tipo": "`() => void`",
+      "padrao": null
+    },
+    {
+      "nome": "className",
+      "parte": "NotificationList",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "notifications",
+      "parte": "NotificationCenter",
+      "tipo": "`Notification[]`",
+      "padrao": null
+    },
+    {
+      "nome": "onSelect",
+      "parte": "NotificationCenter",
+      "tipo": "`(id: string) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "onMarkAllRead",
+      "parte": "NotificationCenter",
+      "tipo": "`() => void`",
+      "padrao": null
+    },
+    {
+      "nome": "className",
+      "parte": "NotificationCenter",
+      "tipo": "`string`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-primary",
+    "font-medium",
+    "gap-0.5",
+    "gap-2",
+    "min-h-5",
+    "min-w-0",
+    "min-w-5",
+    "mt-1.5",
+    "mx-2",
+    "px-1",
+    "px-2",
+    "py-2",
+    "py-6",
+    "right-0.5",
+    "ring-ring",
+    "rounded-full",
+    "rounded-md",
+    "size-2",
+    "text-muted-foreground",
+    "text-sm",
+    "text-xs",
+    "top-0.5",
+    "w-80"
+  ],
+  "compoe": [
+    "badge",
+    "button",
+    "icon",
+    "icon-button",
+    "popover"
+  ]
+}

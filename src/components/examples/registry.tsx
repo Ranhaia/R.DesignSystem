@@ -169,6 +169,7 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "native-select-groups": dynamic(() => import("@/components/examples/native-select-groups")),
   "native-select-invalid": dynamic(() => import("@/components/examples/native-select-invalid")),
   "navigation-menu-demo": dynamic(() => import("@/components/examples/navigation-menu-demo")),
+  "notification-center-demo": dynamic(() => import("@/components/examples/notification-center-demo")),
   "pagination-demo": dynamic(() => import("@/components/examples/pagination-demo")),
   "popover-demo": dynamic(() => import("@/components/examples/popover-demo")),
   "progress-demo": dynamic(() => import("@/components/examples/progress-demo")),

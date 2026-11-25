@@ -81,6 +81,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 **Mostrar mensagem**
 - Fica na página, perto do assunto → `alert`.
 - Confirma algo e some sozinha → `sonner`.
+- Avisos que se acumulam para ler depois, com lidas e não lidas → `notification-center`.
 - Interrompe para pedir decisão → `alert-dialog`. Tarefa focada (editar, preencher) → `dialog`.
 - Painel lateral com conteúdo longo → `sheet`. No celular, vindo de baixo → `drawer`.
 - Explica um elemento no hover/foco → `tooltip`. Painel pequeno no clique → `popover`.
@@ -148,6 +149,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [native-select](native-select.md) — Menu suspenso nativo do navegador para seleção simples em dispositivos móveis.
 - [navigation-menu](navigation-menu.md) — Menu estruturado para navegação principal com suporte a painéis suspensos ricos.
 - [password-input](password-input.md) — Campo de senha com mostrar e ocultar e, no cadastro, a força da senha.
+- [notification-center](notification-center.md) — Sino com contador de não lidas que abre a lista de notificações.
 - [pagination](pagination.md) — Divide listas longas em páginas sequenciais numeradas.
 - [popover](popover.md) — Painel flutuante no clique para conteúdo rico ou configurações rápidas.
 - [progress](progress.md) — Barra que indica o andamento de tarefas com duração determinada.
