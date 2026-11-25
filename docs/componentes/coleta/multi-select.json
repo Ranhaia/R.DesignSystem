@@ -14,6 +14,12 @@
       "padrao": "false"
     },
     {
+      "nome": "creatable",
+      "parte": "MultiSelect",
+      "tipo": null,
+      "padrao": "false"
+    },
+    {
       "nome": "emptyText",
       "parte": "MultiSelect",
       "tipo": null,

@@ -25,6 +25,7 @@ function Link({
   size = "default",
   asChild = false,
   external = false,
+  action,
   target,
   rel,
   children,
@@ -42,6 +43,9 @@ function Link({
       (target="_blank" rel="noopener noreferrer" + <Icon name="open_in_new" />)
       — só formalizei como prop de conveniência. */
   external?: boolean
+  /** Ação inline: a mais discreta, dentro do conteúdo. `add` põe o + antes
+      do texto; `next` põe a seta depois. Tira a altura e o recuo de botão. */
+  action?: "add" | "next"
 }) {
   const Comp = asChild ? Slot.Root : "a"
 
@@ -49,12 +53,20 @@ function Link({
     <Comp
       data-slot="link"
       data-size={size}
-      className={cn(buttonVariants({ variant: "link", size }), className)}
+      data-action={action}
+      className={cn(
+        buttonVariants({ variant: "link", size }),
+        action && "h-auto gap-1 p-0 has-[>svg]:p-0",
+        className
+      )}
       target={external ? "_blank" : target}
       rel={external ? "noopener noreferrer" : rel}
       {...props}
     >
-      {children}
+      {action === "add" && <Icon name="add" />}
+      {/* Slottable: com asChild, o filho recebe as props e os ícones ficam dentro dele. */}
+      {asChild ? <Slot.Slottable>{children}</Slot.Slottable> : children}
+      {action === "next" && <Icon name="arrow_forward" className="rtl:rotate-180" />}
       {external && <Icon name="open_in_new" />}
     </Comp>
   )

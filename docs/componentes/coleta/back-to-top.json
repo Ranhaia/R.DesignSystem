@@ -1,0 +1,32 @@
+{
+  "slug": "back-to-top",
+  "partes": [
+    "BackToTop"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "threshold",
+      "parte": "BackToTop",
+      "tipo": "`number`",
+      "padrao": "400"
+    },
+    {
+      "nome": "label",
+      "parte": "BackToTop",
+      "tipo": "`string`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bottom-6",
+    "right-6",
+    "rounded-full",
+    "shadow-md"
+  ],
+  "compoe": [
+    "icon",
+    "icon-button"
+  ]
+}
