@@ -1,16 +1,20 @@
 "use client"
 
 import * as React from "react"
-import { ptBR } from "date-fns/locale"
+import { enUS, ptBR } from "date-fns/locale"
 import {
   DayPicker,
   getDefaultClassNames,
   type DayButton,
 } from "react-day-picker"
 
+import { useIdioma, type Idioma } from "@/lib/idioma"
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
+
+// Idioma vem do IdiomaProvider (pt-BR sem provider); `locale` explícito ainda vence.
+const LOCALE_DATAS: Record<Idioma, typeof ptBR> = { "pt-BR": ptBR, en: enUS }
 
 // 2026-07-23: locale pt-BR fixado como default — pedido do Rafael, o
 // componente estava em inglês (cabeçalho de dias da semana "Su Mo Tu...",
@@ -30,11 +34,13 @@ function Calendar({
   buttonVariant = "ghost",
   formatters,
   components,
-  locale = ptBR,
+  locale,
   ...props
 }: React.ComponentProps<typeof DayPicker> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"]
 }) {
+  const idioma = useIdioma()
+  locale ??= LOCALE_DATAS[idioma]
   const defaultClassNames = getDefaultClassNames()
 
   return (
@@ -50,7 +56,7 @@ function Calendar({
       captionLayout={captionLayout}
       formatters={{
         formatMonthDropdown: (date) =>
-          date.toLocaleString("pt-BR", { month: "short" }),
+          date.toLocaleString(idioma, { month: "short" }),
         ...formatters,
       }}
       classNames={{

@@ -3,6 +3,7 @@
 import * as React from "react"
 import { Icon } from "@/components/ui/icon"
 import { cn } from "@/lib/utils"
+import { useTexto } from "@/lib/idioma"
 
 export type SpeedDialDirection = "up" | "down" | "left" | "right"
 
@@ -47,13 +48,15 @@ const animationClassMap: Record<SpeedDialDirection, string> = {
 export function SpeedDial({
   direction = "up",
   actionButtons,
-  triggerLabel = "Ações rápidas",
+  triggerLabel,
   open: controlledOpen,
   defaultOpen = false,
   onOpenChange,
   className,
   ...props
 }: SpeedDialProps) {
+  const t = useTexto()
+  triggerLabel ??= t("speedDial.acoes")
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen)
   const isControlled = controlledOpen !== undefined
   const isOpen = isControlled ? controlledOpen : uncontrolledOpen

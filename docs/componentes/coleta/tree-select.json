@@ -6,7 +6,32 @@
   ],
   "variantes": [],
   "tamanhos": [],
-  "props": [],
+  "props": [
+    {
+      "nome": "placeholder",
+      "parte": "TreeSelect",
+      "tipo": null,
+      "padrao": "Selecione..."
+    },
+    {
+      "nome": "emptyText",
+      "parte": "TreeSelect",
+      "tipo": null,
+      "padrao": "Nenhum resultado encontrado."
+    },
+    {
+      "nome": "searchPlaceholder",
+      "parte": "TreeSelect",
+      "tipo": null,
+      "padrao": "Buscar..."
+    },
+    {
+      "nome": "selectAllLabel",
+      "parte": "TreeSelect",
+      "tipo": null,
+      "padrao": "Todos"
+    }
+  ],
   "tokens": [
     "bg-accent",
     "bg-input",

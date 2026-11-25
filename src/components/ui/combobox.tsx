@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useTexto } from "@/lib/idioma"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 
 import { cn, FLOATING_COLLISION_PADDING } from "@/lib/utils"
@@ -42,6 +43,7 @@ function ComboboxTrigger({
 }
 
 function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
+  const t = useTexto()
   return (
     <ComboboxPrimitive.Clear
       data-slot="combobox-clear"
@@ -51,7 +53,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
       // já recebe (<Icon name="close" /> abaixo), então na prática o texto
       // nunca chega a aparecer, mas cobre o caso de o comportamento de
       // clone mudar.
-      render={<InputGroupButton variant="ghost" size="icon-xs" label="Limpar" />}
+      render={<InputGroupButton variant="ghost" size="icon-xs" label={t("comum.limpar")} />}
       className={cn(className)}
       {...props}
     >
@@ -267,6 +269,7 @@ function ComboboxChip({
 }: ComboboxPrimitive.Chip.Props & {
   showRemove?: boolean
 }) {
+  const t = useTexto()
   return (
     <ComboboxPrimitive.Chip
       data-slot="combobox-chip"
@@ -279,8 +282,8 @@ function ComboboxChip({
       {children}
       {showRemove && (
         <ComboboxPrimitive.ChipRemove
-          aria-label="Remover"
-          render={<Button variant="ghost" size="icon-xs" aria-label="Remover" label="Remover" />}
+          aria-label={t("comum.remover")}
+          render={<Button variant="ghost" size="icon-xs" aria-label={t("comum.remover")} label={t("comum.remover")} />}
           className="-ml-1 opacity-50 hover:opacity-100"
           data-slot="combobox-chip-remove"
         >

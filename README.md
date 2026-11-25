@@ -182,6 +182,7 @@ src/
   hooks/                          # hooks reutilizáveis entre features
   lib/
     utils.ts                       # cn() e outros helpers puros
+    idioma/                         # dicionário central pt/en dos componentes (copiado deste DS)
     api/                             # camada de acesso a dados (fetch/axios/client de API)
       client.ts
       apolices.ts                     # 1 arquivo por recurso/domínio
@@ -208,6 +209,12 @@ pasta nova) do que caçar 5 pastas diferentes (`components/`, `hooks/`,
   presets) — copiar os dois arquivos inteiros é mais seguro do que recriar
   os tokens à mão, evita divergência de valor entre o catálogo e o projeto
   novo. Cor nova se pede ao DS (via `presets.ts`), não se edita na cópia.
+- `src/lib/idioma/` — dicionário central dos textos de sistema (o que o
+  leitor de tela fala: "Fechar", "Carregando"…). Os componentes importam
+  `useTexto()` dele, então ele vai junto com qualquer componente. Sem
+  provider tudo sai em pt-BR; para inglês, envolva o app em
+  `<IdiomaProvider idioma="en">`. Texto que falta ou idioma novo se pede
+  ao DS, não se edita na cópia.
 
 **O que é sempre próprio do projeto novo, nunca deste DS:**
 - `app/` (rotas), `lib/api/`, `lib/validations/`, `types/` — regra de

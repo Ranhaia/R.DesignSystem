@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
@@ -6,6 +8,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
 import { Skeleton } from "@/components/ui/skeleton"
+import { useTexto } from "@/lib/idioma"
 
 // 2026-08-03: altura corrigida de 22px (h-[calc(--spacing(5.5))], 5.5 x
 // 4px) pra 24px — mesmo bug/mesma correção já aplicada em badge.tsx e
@@ -36,7 +39,7 @@ function Chip({
   icon,
   removable = false,
   onRemove,
-  removeLabel = "Remover",
+  removeLabel,
   disabled = false,
   ...props
 }: React.ComponentProps<"span"> &
@@ -48,6 +51,8 @@ function Chip({
     removeLabel?: string
     disabled?: boolean
   }) {
+  const t = useTexto()
+  removeLabel ??= t("comum.remover")
   const Comp = asChild ? Slot.Root : "span"
 
   return (

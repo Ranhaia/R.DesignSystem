@@ -1,13 +1,17 @@
+"use client"
+
 import * as React from "react"
 import { Slot } from "radix-ui"
 
 import { Icon } from "@/components/ui/icon"
 import { cn } from "@/lib/utils"
+import { useTexto } from "@/lib/idioma"
 
 function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
+  const t = useTexto()
   return (
     <nav
-      aria-label="Trilha de navegação"
+      aria-label={t("breadcrumb.trilha")}
       data-slot="breadcrumb"
       {...props}
     />
@@ -90,6 +94,7 @@ function BreadcrumbEllipsis({
   className,
   ...props
 }: React.ComponentProps<"span">) {
+  const t = useTexto()
   return (
     <span
       data-slot="breadcrumb-ellipsis"
@@ -99,7 +104,7 @@ function BreadcrumbEllipsis({
       {...props}
     >
       <Icon name="more_horiz" size={1} />
-      <span className="sr-only">Mais níveis</span>
+      <span className="sr-only">{t("breadcrumb.mais")}</span>
     </span>
   )
 }

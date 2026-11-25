@@ -28,6 +28,7 @@ Regras que valem sempre:
 - Use só componentes que estão no índice. Não invente componente, variante, tamanho nem prop.
 - Cor, espaço, raio, texto e tempo só por token (escala do Tailwind ou var(--token)); nunca valor fixo em px, rem ou cor solta.
 - Siga as seções "Quando usar", "Quando NÃO usar" e "Acessibilidade" de cada componente: são regras.
+- Idioma: os componentes falam pt-BR por padrão; para inglês, envolva o app em <IdiomaProvider idioma="en"> (src/lib/idioma). Nunca escreva texto de sistema (aria-label, "Fechar", "Carregando") por fora.
 - Elemento arredondado dentro de outro não repete o raio de fora (rounded-outer + rounded-inner).
 - Se o índice não cobre o caso, avise a pessoa e diga qual foi a escolha mais próxima.
 

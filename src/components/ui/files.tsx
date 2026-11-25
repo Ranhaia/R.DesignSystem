@@ -8,6 +8,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import { cn } from "@/lib/utils"
+import { useTexto } from "@/lib/idioma"
 
 /*
   =============================================================================
@@ -24,10 +25,12 @@ interface FilesProps extends React.HTMLAttributes<HTMLDivElement> {
 
 function Files({
   className,
-  label = "Navegador de arquivos",
+  label,
   children,
   ...props
 }: FilesProps) {
+  const t = useTexto()
+  label ??= t("files.navegador")
   return (
     <div
       role="tree"

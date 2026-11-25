@@ -6,3 +6,8 @@ Só acrescenta. Escrito por `npm run docs:registrar`; não edite entradas antiga
 
 - Primeiro registro: 2 partes, 0 variantes, 0 tamanhos, 4 props, 32 tokens.
 - Por quê: Primeiro registro
+
+## 2026-11-25 · feat/dicionario-idioma
+
+- Props: − `locale (Calendar)`
+- Por quê: Textos de sistema passam a vir do dicionário central (pt/en)

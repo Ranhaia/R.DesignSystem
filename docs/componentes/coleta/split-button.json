@@ -25,16 +25,16 @@
       "padrao": "false"
     },
     {
-      "nome": "triggerLabel",
-      "parte": "SplitButton",
-      "tipo": null,
-      "padrao": "Mais ações"
-    },
-    {
       "nome": "align",
       "parte": "SplitButton",
       "tipo": null,
       "padrao": "end"
+    },
+    {
+      "nome": "triggerLabel",
+      "parte": "SplitButton",
+      "tipo": null,
+      "padrao": "Mais ações"
     }
   ],
   "tokens": [],

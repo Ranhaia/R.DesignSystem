@@ -3,6 +3,7 @@ import type { Preview } from '@storybook/nextjs-vite'
 import '../src/app/globals.css'
 import { stylesList } from '../src/lib/styles-registry'
 import { TooltipProvider } from '../src/components/ui/tooltip'
+import { IdiomaProvider, type Idioma } from '../src/lib/idioma'
 import { aplicarContextoNoHtml, contextoDosGlobals, regrasAxe } from '../src/lib/a11y/contexto-story'
 import { nomeContexto } from '../src/lib/a11y/css-tokens'
 import { medirAlvos, medirFoco } from '../src/lib/a11y/medir-dom'
@@ -34,6 +35,19 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    idioma: {
+      description: 'Idioma dos textos de sistema (dicionário central)',
+      defaultValue: 'pt-BR',
+      toolbar: {
+        title: 'Idioma',
+        icon: 'globe',
+        items: [
+          { value: 'pt-BR', title: 'Português' },
+          { value: 'en', title: 'English' },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
   decorators: [
     (Story, context) => {
@@ -41,9 +55,11 @@ const preview: Preview = {
       return (
         <div className="antialiased font-sans">
           {/* No app o provider vem do SidebarProvider; sem ele toda story com Tooltip quebra. */}
-          <TooltipProvider>
-            <Story />
-          </TooltipProvider>
+          <IdiomaProvider idioma={context.globals.idioma as Idioma}>
+            <TooltipProvider>
+              <Story />
+            </TooltipProvider>
+          </IdiomaProvider>
         </div>
       )
     },

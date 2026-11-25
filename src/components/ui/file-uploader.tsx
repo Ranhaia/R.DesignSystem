@@ -4,6 +4,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 import { Icon } from "@/components/ui/icon"
+import { useTexto } from "@/lib/idioma"
 
 // FileUploader (Atom) — zona de captura de arquivo reutilizável. Parente:
 // Input (src/components/ui/input.tsx) + comportamento já validado no Pattern
@@ -31,7 +32,7 @@ interface FileUploaderProps
 
 function FileUploader({
   id,
-  label = "Arraste um arquivo ou clique para selecionar",
+  label,
   accept,
   multiple = false,
   maxSize,
@@ -41,6 +42,8 @@ function FileUploader({
   className,
   ...props
 }: FileUploaderProps) {
+  const t = useTexto()
+  label ??= t("fileUploader.instrucao")
   const generatedId = React.useId()
   const resolvedId = id ?? generatedId
   const [dragging, setDragging] = React.useState(false)

@@ -1,5 +1,8 @@
+"use client"
+
 import { Icon } from "@/components/ui/icon"
 import { cn } from "@/lib/utils"
+import { useTexto } from "@/lib/idioma"
 
 // Omit<"name" | "fill">: SVGAttributes nativo tem `name?: string` e
 // `fill?: string` (atributo SVG de preenchimento) que colidiriam com o
@@ -10,6 +13,7 @@ function Spinner({
   className,
   ...props
 }: Omit<React.ComponentProps<"svg">, "name" | "fill">) {
+  const t = useTexto()
   // Desvio pontual: NÃO usar a prop `size` do Icon aqui. Vários consumidores
   // (ver src/components/examples/spinner-size.tsx, spinner-color.tsx)
   // sobrescrevem o tamanho passando className="size-N" — como `size` do
@@ -21,7 +25,7 @@ function Spinner({
     <Icon
       name="progress_activity"
       role="status"
-      aria-label="Carregando"
+      aria-label={t("comum.carregando")}
       className={cn("size-4 animate-spin", className)}
       {...props}
     />

@@ -24,12 +24,6 @@
       "parte": "Calendar",
       "tipo": null,
       "padrao": "label"
-    },
-    {
-      "nome": "locale",
-      "parte": "Calendar",
-      "tipo": null,
-      "padrao": "ptBR"
     }
   ],
   "tokens": [

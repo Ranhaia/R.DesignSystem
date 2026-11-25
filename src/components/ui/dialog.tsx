@@ -6,6 +6,7 @@ import { Dialog as DialogPrimitive } from "radix-ui"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
+import { useTexto } from "@/lib/idioma"
 
 function Dialog({
   ...props
@@ -51,13 +52,15 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
-  closeLabel = "Fechar",
+  closeLabel,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean
   /** Texto que o leitor de tela anuncia no "X". */
   closeLabel?: string
 }) {
+  const t = useTexto()
+  closeLabel ??= t("comum.fechar")
   return (
     <DialogPortal data-slot="dialog-portal">
       <DialogOverlay />
@@ -106,7 +109,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
 function DialogFooter({
   className,
   showCloseButton = false,
-  closeLabel = "Fechar",
+  closeLabel,
   children,
   ...props
 }: React.ComponentProps<"div"> & {
@@ -114,6 +117,8 @@ function DialogFooter({
   /** Texto do botão de fechar do rodapé. */
   closeLabel?: string
 }) {
+  const t = useTexto()
+  closeLabel ??= t("comum.fechar")
   return (
     <div
       data-slot="dialog-footer"

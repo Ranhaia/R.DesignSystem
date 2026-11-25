@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useTexto } from "@/lib/idioma"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
@@ -154,8 +155,8 @@ function SidebarProvider({
 function Sidebar({
   side = "left",
   mobileSide,
-  mobileTitle = "Barra lateral",
-  mobileDescription = "Exibe a barra lateral no celular.",
+  mobileTitle,
+  mobileDescription,
   variant = "sidebar",
   collapsible = "offcanvas",
   className,
@@ -172,6 +173,9 @@ function Sidebar({
   variant?: "sidebar" | "floating" | "inset"
   collapsible?: "offcanvas" | "icon" | "none"
 }) {
+  const t = useTexto()
+  mobileDescription ??= t("sidebar.descricao")
+  mobileTitle ??= t("sidebar.titulo")
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
 
   if (collapsible === "none") {
@@ -265,12 +269,14 @@ function Sidebar({
 function SidebarTrigger({
   className,
   onClick,
-  label = "Alternar barra lateral",
+  label,
   ...props
 }: Omit<React.ComponentProps<typeof Button>, "children" | "icon" | "label"> & {
   /** Texto que o leitor de tela anuncia no botão. */
   label?: string
 }) {
+  const t = useTexto()
+  label ??= t("sidebar.alternar")
   // Omit de children/icon/label: este wrapper já define seu próprio
   // conteúdo acessível (ícone + texto sr-only) fixo abaixo — não repassa
   // esses três props pro Button interno, então quem usa <SidebarTrigger />
@@ -299,16 +305,17 @@ function SidebarTrigger({
 }
 
 function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
+  const t = useTexto()
   const { toggleSidebar } = useSidebar()
 
   return (
     <button
       data-sidebar="rail"
       data-slot="sidebar-rail"
-      aria-label="Alternar barra lateral"
+      aria-label={t("sidebar.alternar")}
       tabIndex={-1}
       onClick={toggleSidebar}
-      title="Alternar barra lateral"
+      title={t("sidebar.alternar")}
       className={cn(
         "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-0.5 hover:after:bg-sidebar-border sm:flex",
         "in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize",

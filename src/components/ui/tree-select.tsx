@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useTexto } from "@/lib/idioma"
 
 import { cn } from "@/lib/utils"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -39,9 +40,6 @@ export interface TreeSelectNode {
 }
 
 type ShowCheckedStrategy = "child" | "parent" | "all"
-
-const defaultSelectedCountText = (n: number) =>
-  n === 0 ? "Nenhum item selecionado" : `${n} ${n === 1 ? "selecionado" : "selecionados"}`
 
 interface TreeSelectBaseProps {
   /** Árvore de opções. */
@@ -144,10 +142,11 @@ function hasChildren(node: TreeSelectNode) {
 }
 
 function TreeSelect(props: TreeSelectProps) {
+  const t = useTexto()
   const {
     treeData,
-    placeholder = "Selecione...",
-    emptyText = "Nenhum resultado encontrado.",
+    placeholder: placeholderProp,
+    emptyText: emptyTextProp,
     disabled = false,
     className,
     id,
@@ -158,10 +157,17 @@ function TreeSelect(props: TreeSelectProps) {
     allowClear = false,
     showSearch = true,
     dropdownClassName,
-    searchPlaceholder = "Buscar...",
-    selectAllLabel = "Todos",
-    selectedCountText = defaultSelectedCountText,
+    searchPlaceholder: searchPlaceholderProp,
+    selectAllLabel: selectAllLabelProp,
+    selectedCountText: selectedCountTextProp,
   } = props
+  const placeholder = placeholderProp ?? t("comum.selecione")
+  const emptyText = emptyTextProp ?? t("comum.semResultado")
+  const searchPlaceholder = searchPlaceholderProp ?? t("comum.buscar")
+  const selectAllLabel = selectAllLabelProp ?? t("treeSelect.todos")
+  const selectedCountText =
+    selectedCountTextProp ??
+    ((n: number) => t(n === 0 ? "treeSelect.nenhum" : n === 1 ? "treeSelect.um" : "treeSelect.varios", { n }))
   const checkable = props.checkable === true
   const multiple = checkable || props.multiple === true
   // Padrão "child" é o contrato documentado do DS; quem quer "parent" passa explícito.
@@ -498,7 +504,7 @@ function TreeSelect(props: TreeSelectProps) {
             {allowClear && hasValue && !disabled && (
               <button
                 type="button"
-                aria-label="Limpar seleção"
+                aria-label={t("treeSelect.limparSelecao")}
                 className="flex size-5 items-center justify-center rounded-sm text-muted-foreground opacity-50 outline-none hover:opacity-100 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
                 onClick={(event) => {
                   event.stopPropagation()
@@ -522,7 +528,7 @@ function TreeSelect(props: TreeSelectProps) {
       </PopoverTrigger>
       <PopoverContent
         align="start"
-        aria-label={ariaLabel ?? placeholder ?? "Opções em árvore"}
+        aria-label={ariaLabel ?? placeholder ?? t("treeSelect.opcoes")}
         className={cn(
           "w-(--radix-popover-trigger-width) min-w-75 max-w-115 p-0 shadow-md",
           dropdownClassName
@@ -549,13 +555,13 @@ function TreeSelect(props: TreeSelectProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={searchPlaceholder}
-              aria-label="Buscar na lista"
+              aria-label={t("treeSelect.buscar")}
               className="w-full bg-transparent text-xs text-foreground outline-none placeholder:text-muted-foreground focus-visible:outline-hidden"
             />
             {searchQuery && (
               <button
                 type="button"
-                aria-label="Limpar busca"
+                aria-label={t("treeSelect.limparBusca")}
                 onClick={() => setSearchQuery("")}
                 className="flex size-4 items-center justify-center rounded-xs opacity-60 hover:opacity-100"
               >
@@ -614,7 +620,7 @@ function TreeSelect(props: TreeSelectProps) {
                       <button
                         type="button"
                         tabIndex={-1}
-                        aria-label={isExpanded ? "Recolher" : "Expandir"}
+                        aria-label={isExpanded ? t("treeSelect.recolher") : t("treeSelect.expandir")}
                         className="flex size-5 shrink-0 items-center justify-center rounded-sm text-muted-foreground hover:bg-muted"
                         onClick={(event) => {
                           event.stopPropagation()
