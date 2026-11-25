@@ -83,11 +83,14 @@ function Painel({ hsv, hex, setHsv, paleta }: ReturnType<typeof useCor> & Pick<P
 
   const porPonteiro = (e: React.PointerEvent) => {
     const r = area.current!.getBoundingClientRect()
+    if (!r.width || !r.height) return // área oculta: sem medida, não há posição
     setHsv({ ...hsv, s: limitar(((e.clientX - r.left) / r.width) * 100), v: limitar(100 - ((e.clientY - r.top) / r.height) * 100) })
   }
   const confirmarHex = () => {
     const h = digitado === null ? null : normalizarHex(digitado)
-    if (h) setHsv(hexParaHsv(h))
+    // inválido continua no campo, marcado, até a pessoa corrigir; a cor não muda
+    if (!h) return
+    setHsv(hexParaHsv(h))
     setDigitado(null)
   }
 
@@ -101,6 +104,8 @@ function Painel({ hsv, hex, setHsv, paleta }: ReturnType<typeof useCor> & Pick<P
         aria-label={t("colorPicker.area")}
         aria-valuetext={t("colorPicker.valorArea", { s: Math.round(hsv.s), v: Math.round(hsv.v) })}
         aria-valuenow={Math.round(hsv.s)}
+        aria-valuemin={0}
+        aria-valuemax={100}
         className="relative h-36 touch-none rounded-inner outline-none focus-visible:ring-[3px] focus-visible:ring-ring"
         style={{ backgroundColor: `hsl(${hsv.h} 100% 50%)` }}
         onPointerDown={(e) => {
@@ -132,13 +137,12 @@ function Painel({ hsv, hex, setHsv, paleta }: ReturnType<typeof useCor> & Pick<P
         className="[&_[data-slot=slider-range]]:hidden [&_[data-slot=slider-track]]:h-3 [&_[data-slot=slider-track]]:bg-[linear-gradient(to_right,red,yellow,lime,cyan,blue,magenta,red)]"
       />
       <div className="flex items-center gap-2">
-        <span aria-hidden="true" className="size-9 shrink-0 rounded-md border" style={{ backgroundColor: hex }} />
+        <span aria-hidden="true" className="size-9 shrink-0 rounded-inner border" style={{ backgroundColor: hex }} />
         <Input
           id={hexId}
           aria-label={t("colorPicker.hex")}
           value={digitado ?? hex}
           spellCheck={false}
-          maxLength={7}
           aria-invalid={digitado !== null && !normalizarHex(digitado)}
           onChange={(e) => setDigitado(e.target.value)}
           onBlur={confirmarHex}
@@ -148,8 +152,7 @@ function Painel({ hsv, hex, setHsv, paleta }: ReturnType<typeof useCor> & Pick<P
       </div>
       {paleta && paleta.length > 0 && (
         <div role="group" aria-label={t("colorPicker.paleta")} className="flex flex-wrap gap-1.5">
-          {paleta.map((c) => {
-            const cor = normalizarHex(c)
+          {[...new Set(paleta.map(normalizarHex))].map((cor) => {
             if (!cor) return null
             return (
               <button
@@ -159,7 +162,7 @@ function Painel({ hsv, hex, setHsv, paleta }: ReturnType<typeof useCor> & Pick<P
                 aria-label={cor}
                 aria-pressed={cor === hex}
                 onClick={() => setHsv(hexParaHsv(cor))}
-                className="size-6 rounded-md border outline-none focus-visible:ring-[3px] focus-visible:ring-ring aria-pressed:ring-2 aria-pressed:ring-ring aria-pressed:ring-offset-2"
+                className="size-6 rounded-inner border outline-none focus-visible:ring-[3px] focus-visible:ring-ring aria-pressed:ring-2 aria-pressed:ring-ring aria-pressed:ring-offset-2"
                 style={{ backgroundColor: cor }}
               />
             )

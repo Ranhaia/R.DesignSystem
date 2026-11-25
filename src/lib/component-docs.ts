@@ -5920,7 +5920,7 @@ export function ExemploValor() {
     variants: [],
     states: [
       { name: "Aberto", description: "Painel no popover, sob o botão" },
-      { name: "Hex inválido", description: "Campo marcado como inválido (aria-invalid); a cor não muda" },
+      { name: "Hex inválido", description: "Campo continua com o texto e marcado como inválido (aria-invalid) até ser corrigido; a cor não muda" },
       { name: "Cor da paleta", description: "A amostra da cor atual ganha anel (aria-pressed)" },
       { name: "Desabilitado", description: "Botão sem interação" },
     ],
@@ -5969,7 +5969,7 @@ export function ExemploCor() {
     },
     tokens: [
       { contexto: "Espaço", itens: ["gap-1.5", "gap-2", "gap-3", "h-3", "h-36", "inset-0", "size-4", "size-5", "size-6", "size-9", "w-56"] },
-      { contexto: "Raio", itens: ["radius-inset-0", "radius-inset-2.5", "radius-inset-4", "rounded-full", "rounded-inner", "rounded-md", "rounded-outer-md"] },
+      { contexto: "Raio", itens: ["radius-inset-0", "radius-inset-2.5", "radius-inset-4", "rounded-full", "rounded-inner", "rounded-outer-md"] },
       { contexto: "Sombra", itens: ["shadow-sm"] },
       { contexto: "Foco", itens: ["ring-ring"] },
     ],

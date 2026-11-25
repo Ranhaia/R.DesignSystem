@@ -18,7 +18,8 @@ token: o componente só devolve o hex.
   anda 10.
 - Matiz: o `slider` do DS, de 0 a 360.
 - Hexadecimal: o `input`; aceita com ou sem `#`, curto (`#abc`) ou longo.
-  Confirma no Enter ou ao sair; inválido fica marcado e não muda a cor.
+  Confirma no Enter ou ao sair; inválido fica no campo, marcado, e não muda
+  a cor. Paleta repetida (`#fff` e `#ffffff`) vira uma amostra só.
 - Paleta (opcional): botões com `aria-pressed` na cor atual.
 
 ## Estado
