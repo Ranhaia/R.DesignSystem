@@ -89,7 +89,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Visões do mesmo conteúdo, uma por vez → `tabs`. Etapas em sequência → `stepper`.
 - Seções que abrem e fecham → `accordion` (uma só → `collapsible`).
 - Agrupar informação de um assunto → `card`. Lista de itens parecidos → `item` / `list`.
-- Dados estruturados em linhas e colunas → `table`.
+- Dados estruturados em linhas e colunas → `table`; com busca, filtro, ordenação, seleção em lote ou exportar CSV → `data-table`.
 - Status só de leitura → `badge`. Filtro ou seleção clicável → `chip` / `tag`.
 - Carregando com formato conhecido → `skeleton`. Sem formato → `spinner`. Com porcentagem → `progress`.
 - Nada para mostrar ainda → `empty`.
@@ -121,6 +121,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [combobox](combobox.md) — Combina campo de texto com lista de sugestões filtradas e seleção por chips.
 - [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.
 - [context-menu](context-menu.md) — Menu contextual flutuante acionado pelo clique com o botão direito do mouse.
+- [data-table](data-table.md) — Tabela de dados com busca, filtros, ordenação, colunas visíveis, seleção em lote e exportar CSV.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
 - [direction](direction.md) — Entrega o sentido de leitura aos componentes; não renderiza nada.
 - [drawer](drawer.md) — Painel deslizante que emerge das bordas da tela sobre camada escurecida.

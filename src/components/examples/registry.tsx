@@ -71,6 +71,7 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "command-demo": dynamic(() => import("@/components/examples/command-demo")),
   "command-dialog": dynamic(() => import("@/components/examples/command-dialog")),
   "context-menu-demo": dynamic(() => import("@/components/examples/context-menu-demo")),
+  "data-table-demo": dynamic(() => import("@/components/examples/data-table-demo")),
   "date-picker-demo": dynamic(() => import("@/components/examples/date-picker-demo")),
   "date-picker-with-presets": dynamic(() => import("@/components/examples/date-picker-with-presets")),
   "date-picker-with-range": dynamic(() => import("@/components/examples/date-picker-with-range")),

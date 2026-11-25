@@ -4993,10 +4993,10 @@ import { Button } from "@/components/ui/button"
       status: "piloto",
       codigo: "src/components/ui/table.tsx",
       story: "src/components/ui/table.stories.tsx",
-      vizinhos: ["list", "item", "card"],
+      vizinhos: ["data-table", "list", "item", "card"],
     },
     whenToUseItems: ["Listas densas de dados estruturados para comparação entre atributos: faturas, apólices ou transações.", "Exibição de registros tabulares com necessidade de cabeçalho descritivo e rodapé de totais.", "Conjunto de dados homogêneos que se beneficiam de ordenação por coluna e paginação."],
-    whenNotToUse: ["Layout de página ou organização visual de blocos sem relação tabular → box.", "Lista simples de itens sem comparação direta entre colunas → list ou item.", "Visualização de itens ricos em telas pequenas de celular → card."],
+    whenNotToUse: ["Busca, filtro, ordenação, seleção em lote ou exportar CSV → data-table", "Layout de página ou organização visual de blocos sem relação tabular → box.", "Lista sem comparação entre colunas, ou itens ricos no celular → list, item ou card."],
     content: ["Cabeçalhos de coluna curtos e claros com substantivos no singular: \"Fatura\", \"Valor\", \"Status\".", "Alinhe textos à esquerda e valores numéricos ou monetários à direita.", "Use TableCaption para descrever resumidamente o conjunto de dados exibido."],
     accessibility: {
       keyboard: "Células não recebem foco por padrão. Controles interativos dentro das células (como botões, links e checkboxes) seguem a ordem natural do Tab. O contêiner permite navegação horizontal por setas quando há estouro de largura.",
@@ -5413,6 +5413,79 @@ export function ExemploSenha() {
       { contexto: "Cor", itens: ["text-foreground", "text-muted-foreground"] },
       { contexto: "Tipografia", itens: ["text-xs"] },
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
+    ],
+  },
+  "data-table": {
+    description: "Tabela montada sobre a table para trabalhar com os dados: procurar, filtrar, ordenar, escolher as colunas, agir sobre várias linhas de uma vez e levar tudo para uma planilha em CSV.",
+    whenToUse: "Muitos itens que a pessoa precisa comparar, achar ou ordenar (faturas, pedidos, usuários). A mesma ação vale para vários itens de uma vez (selecionavel + acoesEmLote). A pessoa precisa levar os dados para uma planilha.",
+    anatomy: [
+      { part: "DataTable", description: "Raiz <div data-slot=\"data-table\">; o className vai nela." },
+      { part: "Barra", description: "<div data-slot=\"data-table-toolbar\"> com a busca (input), um filtro por coluna filtravel (dropdown-menu), a contagem e as ações em lote, o menu Colunas e Exportar CSV." },
+      { part: "Tabela", description: "A table, com cabeçalho ordenável (button + aria-sort) e, com selecionavel, a coluna de checkbox." },
+      { part: "Vazio", description: "Uma linha que ocupa todas as colunas com o texto de vazio." },
+    ],
+    variants: [],
+    states: [
+      { name: "Ordenada", description: "Seta para cima ou para baixo no cabeçalho da coluna; as outras ordenáveis mostram a seta dupla apagada" },
+      { name: "Filtrada", description: "O botão do filtro mostra quantos valores estão marcados, ex.: \"Status (2)\"" },
+      { name: "Com seleção", description: "Linha marcada com o fundo de selecionada; a barra mostra \"N selecionada(s)\" e as ações em lote" },
+      { name: "Seleção parcial", description: "Checkbox do cabeçalho indeterminado" },
+      { name: "Vazia", description: "Uma linha com o texto de vazio" },
+    ],
+    sizes: [],
+    doGuidelines: ["Passe idDaLinha com um id real.", "Marque números com numerica, para alinharem à direita.", "Diga em vazio por que está vazio e qual o primeiro passo."],
+    dontGuidelines: ["Mais de 7 colunas visíveis → esconda as menos usadas com oculta", "Ação importante só no menu → coloque o botão em acoesEmLote", "Tabela no celular → list ou cards"],
+    code: `import { DataTable } from "@/components/ui/data-table"
+
+const pedidos = [{ id: "1", cliente: "Ana", valor: 30 }]
+
+export function ExemploPedidos() {
+  return (
+    <DataTable
+      aria-label="Pedidos"
+      dados={pedidos}
+      idDaLinha={(p) => p.id}
+      selecionavel
+      colunas={[
+        { chave: "cliente", titulo: "Cliente", ordenavel: true },
+        { chave: "valor", titulo: "Valor", ordenavel: true, numerica: true },
+      ]}
+    />
+  )
+}`,
+    props: [
+      { name: "dados", type: "T[]", default: "—", description: "As linhas. Qualquer objeto." },
+      { name: "colunas", type: "ColunaDados<T>[]", default: "—", description: "Uma por coluna: chave, titulo e, se precisar, ordenavel, filtravel, numerica, oculta e celula (o que desenhar na célula)." },
+      { name: "idDaLinha", type: "(linha: T, indice: number) => string", default: "(_l, i) => String(i)", description: "Identidade da linha. Passe um id real para a seleção sobreviver a dados que mudam." },
+      { name: "selecionavel", type: "boolean", default: "false", description: "Liga a coluna de checkbox e a seleção em lote." },
+      { name: "ordemInicial", type: "Ordem<T>", default: "null", description: "Coluna e direção (asc/desc) com que a tabela abre." },
+      { name: "nomeArquivo", type: "string", default: "dados.csv", description: "Nome do arquivo do Exportar CSV." },
+      { name: "acoesEmLote", type: "(selecionadas: T[]) => React.ReactNode", default: "—", description: "Botões que aparecem na barra quando há linhas marcadas; recebe as linhas." },
+      { name: "className", type: "string", default: "—", description: "Classes extras na raiz." },
+      { name: "aria-label", type: "string", default: "—", description: "Nome da tabela para o leitor de tela. Obrigatório." },
+      { name: "vazio", type: "React.ReactNode", default: "—", description: "O que dizer sem linhas: o motivo e o primeiro passo. Padrão: \"Nenhum resultado encontrado.\"" },
+    ],
+    meta: {
+      nome: "Data Table",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/data-table.tsx",
+      story: "src/components/ui/data-table.stories.tsx",
+      vizinhos: ["table", "list", "pagination"],
+    },
+    whenToUseItems: ["Muitos itens que a pessoa precisa comparar, achar ou ordenar (faturas, pedidos, usuários).", "A mesma ação vale para vários itens de uma vez (selecionavel + acoesEmLote).", "A pessoa precisa levar os dados para uma planilha."],
+    whenNotToUse: ["Poucas linhas só para ler, sem busca nem ação → table", "No celular, ou itens com pouco para comparar → list ou cards", "Milhares de linhas vindas do servidor → busque e pagine no servidor e use table com pagination"],
+    content: ["A primeira coluna é o nome do item: ela também nomeia o checkbox da linha (\"Selecionar Ana Souza\").", "Títulos de coluna e ações em lote são texto de produto e vêm por prop; busca, filtros, Colunas e Exportar vêm do dicionário (pt-BR ou en).", "Status com badge na celula, nunca só a cor do texto."],
+    accessibility: {
+      keyboard: "Tab passa pela busca, filtros, Colunas, Exportar, cabeçalhos ordenáveis e checkboxes. Enter ou Espaço ordena, marca e abre os menus; nos menus, setas navegam e Espaço marca sem fechar.",
+      screenReader: "A tabela tem nome (aria-label); a coluna ordenada anuncia aria-sort; cada checkbox diz qual linha marca; a contagem de selecionadas é anunciada ao mudar (aria-live).",
+      focus: "Anel de foco de cada peça (input, button, checkbox).",
+      cautions: "Até 7 colunas visíveis; deixe as outras com oculta. O CSV usa o valor cru e neutraliza texto que a planilha leria como fórmula.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2", "gap-3", "h-24", "max-w-xs", "ml-3", "mr-3", "w-0"] },
     ],
   },
 }

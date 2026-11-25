@@ -5,8 +5,8 @@ camada: molecule
 codigo: src/components/ui/table.tsx
 story: src/components/ui/table.stories.tsx
 status: piloto
-sinonimos: [tabela, tabela-de-dados, data-table, grid-de-dados]
-vizinhos: [list, item, card]
+sinonimos: [tabela, tabela-simples]
+vizinhos: [data-table, list, item, card]
 referencias: [passi:tabela-de-dados, shadcn:table]
 ---
 
@@ -23,9 +23,9 @@ Conta com contêiner responsivo com rolagem horizontal automática.
 
 ## Quando NÃO usar
 
+- Busca, filtro, ordenação, seleção em lote ou exportar CSV → `data-table`
 - Layout de página ou organização visual de blocos sem relação tabular → `box`.
-- Lista simples de itens sem comparação direta entre colunas → `list` ou `item`.
-- Visualização de itens ricos em telas pequenas de celular → `card`.
+- Lista sem comparação entre colunas, ou itens ricos no celular → `list`, `item` ou `card`.
 
 ## Anatomia
 
