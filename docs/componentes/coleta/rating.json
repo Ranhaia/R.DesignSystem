@@ -1,0 +1,112 @@
+{
+  "slug": "rating",
+  "partes": [
+    "Estrela",
+    "Rating"
+  ],
+  "variantes": [],
+  "tamanhos": [
+    {
+      "valor": "sm",
+      "px": 16,
+      "igualA": null
+    },
+    {
+      "valor": "default",
+      "px": 24,
+      "igualA": null
+    },
+    {
+      "valor": "lg",
+      "px": 32,
+      "igualA": null
+    }
+  ],
+  "props": [
+    {
+      "nome": "preenchimento",
+      "parte": "Estrela",
+      "tipo": "`Preenchimento`",
+      "padrao": null
+    },
+    {
+      "nome": "size",
+      "parte": "Rating",
+      "tipo": "`sm` · `default` · `lg`",
+      "padrao": "default"
+    },
+    {
+      "nome": "value",
+      "parte": "Rating",
+      "tipo": "`number`",
+      "padrao": null
+    },
+    {
+      "nome": "defaultValue",
+      "parte": "Rating",
+      "tipo": "`number`",
+      "padrao": "0"
+    },
+    {
+      "nome": "onValueChange",
+      "parte": "Rating",
+      "tipo": "`(valor: number) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "max",
+      "parte": "Rating",
+      "tipo": "`number`",
+      "padrao": "5"
+    },
+    {
+      "nome": "allowHalf",
+      "parte": "Rating",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "readOnly",
+      "parte": "Rating",
+      "tipo": "`boolean`",
+      "padrao": "false"
+    },
+    {
+      "nome": "disabled",
+      "parte": "Rating",
+      "tipo": "`boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "required",
+      "parte": "Rating",
+      "tipo": "`boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "name",
+      "parte": "Rating",
+      "tipo": "`string`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "end-0",
+    "gap-0.5",
+    "inset-0",
+    "inset-x-0",
+    "inset-y-0",
+    "ring-ring",
+    "rounded-sm",
+    "size-4",
+    "size-6",
+    "size-8",
+    "start-0",
+    "text-muted-foreground",
+    "text-warning-600",
+    "w-1"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}
