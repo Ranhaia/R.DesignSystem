@@ -91,8 +91,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Visões do mesmo conteúdo, uma por vez → `tabs`. Etapas em sequência → `stepper`. Histórico do que já aconteceu → `timeline`.
 - Seções que abrem e fecham → `accordion` (uma só → `collapsible`).
 - Agrupar informação de um assunto → `card`. Lista de itens parecidos → `item` / `list`.
-- Dados estruturados em linhas e colunas → `table`; com busca, filtro, ordenação, seleção em lote ou exportar CSV → `data-table`.
-- Dados estruturados em linhas e colunas → `table`. Pares rótulo/valor de um registro só (ficha de detalhes) → `description-list`.
+- Dados estruturados em linhas e colunas → `table`; com busca, filtro, ordenação, seleção em lote ou exportar CSV → `data-table`. Pares rótulo/valor de um registro só (ficha de detalhes) → `description-list`.
 - Status só de leitura → `badge`. Filtro ou seleção clicável → `chip` / `tag`.
 - Carregando com formato conhecido → `skeleton`. Sem formato → `spinner`. Com porcentagem → `progress` (barra; em espaço curto, `shape="circle"`).
 - Nada para mostrar ainda → `empty`.
