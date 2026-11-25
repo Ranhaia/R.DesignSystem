@@ -38,7 +38,7 @@ describe("Tree", () => {
 
   it("ul role=tree focável com li treeitem, nível e expansão", () => {
     const s = html({ defaultExpanded: ["a"] })
-    expect(s).toMatch(/<ul[^>]*role="tree"[^>]*aria-label="Ramos"[^>]*tabindex="0"/i)
+    expect(s).toMatch(/<ul[^>]*role="tree"[^>]*tabindex="0"[^>]*aria-label="Ramos"/i)
     expect(s.match(/role="treeitem"/g)).toHaveLength(4)
     expect(s).toMatch(/id="t-a"[^>]*role="treeitem"[^>]*aria-level="1"[^>]*aria-expanded="true"/)
     expect(s).toMatch(/id="t-a1"[^>]*aria-level="2"/)

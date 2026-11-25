@@ -1784,11 +1784,11 @@ export function ExemploTreeSelect() {
     ],
     meta: {
       nome: "TreeSelect",
-      camada: "molecule",
+      camada: "organism",
       status: "piloto",
       codigo: "src/components/ui/tree-select.tsx",
       story: "src/components/ui/tree-select.stories.tsx",
-      vizinhos: ["select", "multi-select", "combobox", "list"],
+      vizinhos: ["select", "multi-select", "combobox", "list", "tree"],
     },
     whenToUseItems: ["Estruturas hierárquicas onde as opções possuem relação pai e filho, como categorias, departamentos ou ramos de seguro.", "Seleção com marcação em cascata (checkable), onde marcar uma categoria pai marca automaticamente todas as suas subcategorias.", "Filtro de opções multinível que necessita de busca integrada e contador de itens selecionados."],
     whenNotToUse: ["Lista plana e simples de opções com seleção única → select.", "Lista plana com seleção de múltiplos valores sem hierarquia → multi-select.", "Lista de opções planas muito longa com busca e digitação direta no campo → combobox."],
@@ -1800,13 +1800,13 @@ export function ExemploTreeSelect() {
       cautions: "Passe sempre aria-label quando não houver label visível associado ao campo (WCAG 4.1.2). Mantenha contraste adequado nos ícones de expansão e nas caixas de marcação indeterminadas.",
     },
     tokens: [
-      { contexto: "Cor", itens: ["bg-accent", "bg-input", "bg-muted", "border-border", "border-input", "border-ring", "text-accent-foreground", "text-foreground", "text-muted-foreground", "text-primary"] },
+      { contexto: "Cor", itens: ["bg-input", "bg-muted", "border-border", "border-input", "border-ring", "text-foreground", "text-muted-foreground", "text-primary"] },
       { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs"] },
-      { contexto: "Espaço", itens: ["gap-0.5", "gap-1", "gap-1.5", "gap-2", "h-5.5", "h-9", "max-h-72", "max-w-115", "max-w-32.5", "min-h-9", "min-w-0", "min-w-75", "p-0", "p-1", "pl-1.5", "pr-0.5", "pr-2", "px-1.5", "px-2.5", "px-3", "py-1", "py-1.5", "py-2", "py-4", "size-4", "size-5", "w-64"] },
+      { contexto: "Espaço", itens: ["gap-0.5", "gap-1", "gap-1.5", "gap-2", "h-5.5", "h-9", "max-h-72", "max-w-115", "max-w-32.5", "min-h-9", "min-w-0", "min-w-75", "p-0", "p-1", "pl-1.5", "pr-0.5", "px-1.5", "px-2.5", "px-3", "py-1.5", "py-2", "py-4", "size-4", "size-5", "w-64"] },
       { contexto: "Raio", itens: ["rounded-md", "rounded-sm"] },
       { contexto: "Sombra", itens: ["shadow-md", "shadow-xs"] },
-      { contexto: "Movimento", itens: ["duration-motion-base", "duration-motion-fast"] },
-      { contexto: "Foco", itens: ["outline-ring", "ring-ring"] },
+      { contexto: "Movimento", itens: ["duration-motion-base"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
   "multi-select": {
@@ -6327,6 +6327,87 @@ export function ExemploPrioridade() {
       { contexto: "Raio", itens: ["rounded-full", "rounded-md", "rounded-sm"] },
       { contexto: "Sombra", itens: ["shadow-lg"] },
       { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
+  tree: {
+    description: "Lista de itens em níveis, em que cada pasta abre e fecha. Mostra uma hierarquia sempre à vista e deixa escolher ou marcar itens nela.",
+    whenToUse: "Conteúdo em níveis que a pessoa percorre sem abrir painel, como ramos de seguro, pastas ou partes e capítulos. Escolher ou marcar itens dentro de uma hierarquia, com a caixa de marcação (checkState). Árvore de apoio a outra peça, como o painel do tree-select.",
+    anatomy: [
+      { part: "Tree", description: "A lista inteira: ul com papel tree, que recebe o foco e controla o item ativo" },
+      { part: "Item", description: "Uma linha li com papel treeitem, recuada pelo nível" },
+      { part: "Seta", description: "Botão que abre e fecha a pasta; só aparece em item com filhos" },
+      { part: "Caixa de marcação", description: "Aparece em cada item quando há checkState; mostra marcado, vazio ou indeterminado" },
+    ],
+    variants: [],
+    states: [
+      { name: "Padrão", description: "Texto em text-sm, sem fundo" },
+      { name: "Hover e ativo", description: "bg-accent com text-accent-foreground; o ativo ganha contorno de foco por dentro" },
+      { name: "Escolhido", description: "Texto em font-medium e check em text-primary; com marcação, a caixa mostra o estado" },
+      { name: "Desabilitado", description: "opacity-50 e sem clique" },
+      { name: "Aberto", description: "A seta gira 90°" },
+    ],
+    sizes: [],
+    doGuidelines: ["Dê nome acessível à árvore com aria-label.", "Abra o caminho até o item escolhido com defaultExpanded.", "Mostre só os resultados de uma busca com filter."],
+    dontGuidelines: ["Usar árvore para lista sem níveis → select", "Passar de três níveis → reagrupe os itens ou divida em duas telas", "Esquecer multiselectable ao usar checkState → passe as duas props juntas"],
+    code: `import { Tree, type TreeNode } from "@/components/ui/tree"
+
+const ramos: TreeNode[] = [
+  {
+    value: "pessoas",
+    label: "Pessoas",
+    children: [
+      { value: "vida", label: "Vida" },
+      { value: "saude", label: "Saúde" },
+    ],
+  },
+  { value: "pet", label: "Pet" },
+]
+
+<Tree
+  aria-label="Ramos de seguro"
+  data={ramos}
+  defaultExpanded={["pessoas"]}
+  isSelected={(valor) => valor === "vida"}
+  onSelect={(valor) => abrir(valor)}
+/>`,
+    props: [
+      { name: "aria-label (ul)", type: "string", default: "—", description: "Nome acessível da árvore. Obrigatório quando não há título visível" },
+      { name: "data", type: "TreeNode[]", default: "—", description: "Os itens: label, value único, children e disabled" },
+      { name: "expanded", type: "Set<string>", default: "—", description: "Valores abertos, quando quem usa controla a abertura" },
+      { name: "defaultExpanded", type: "Iterable<string>", default: "—", description: "Valores abertos no primeiro desenho" },
+      { name: "onExpandedChange", type: "(abertos: Set<string>) => void", default: "—", description: "Chamada ao abrir ou fechar uma pasta, com o novo conjunto" },
+      { name: "filter", type: "Set<string> · null", default: "null", description: "Mostra só estes valores, com tudo aberto. Serve para resultado de busca" },
+      { name: "activeValue", type: "string · null", default: "—", description: "Item com o foco virtual, quando quem usa controla" },
+      { name: "onActiveValueChange", type: "(valor: string) => void", default: "—", description: "Chamada quando o item ativo muda, por seta ou mouse" },
+      { name: "onSelect", type: "(valor: string) => void", default: "—", description: "Chamada no clique, Enter ou Espaço num item que não está desabilitado" },
+      { name: "isSelected", type: "(valor: string) => boolean", default: "—", description: "Diz se o item está escolhido; ele ganha o check e o destaque" },
+      { name: "checkState", type: "(valor: string) => CheckState", default: "—", description: "Liga a caixa de marcação em cada item: true, false ou \"indeterminate\"" },
+      { name: "multiselectable", type: "boolean", default: "—", description: "Avisa o leitor de tela que mais de um item pode ficar escolhido" },
+    ],
+    meta: {
+      nome: "Tree",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/tree.tsx",
+      story: "src/components/ui/tree.stories.tsx",
+      vizinhos: ["tree-select", "accordion", "navigation-menu"],
+    },
+    whenToUseItems: ["Conteúdo em níveis que a pessoa percorre sem abrir painel, como ramos de seguro, pastas ou partes e capítulos.", "Escolher ou marcar itens dentro de uma hierarquia, com a caixa de marcação (checkState).", "Árvore de apoio a outra peça, como o painel do tree-select."],
+    whenNotToUse: ["Escolher um valor numa hierarquia dentro de um campo de formulário → tree-select", "Lista plana, sem níveis → select", "Navegar entre páginas do app → navigation-menu"],
+    content: ["Nome curto, que caiba em uma linha: Pessoas, Auto. O texto é cortado com reticências, não quebra.", "Substantivo, sem ponto final.", "Ordene do mais usado ao menos usado, e não passe de três níveis."],
+    accessibility: {
+      keyboard: "Tab entra na árvore; ↓ e ↑ movem; → abre a pasta ou desce ao primeiro filho; ← fecha ou sobe ao pai; Home e End vão ao primeiro e ao último; Enter e Espaço escolhem.",
+      screenReader: "tree e treeitem, com aria-level, aria-expanded nas pastas e aria-selected ou aria-checked (mixed no indeterminado). A seta tem nome: \"Expandir\" ou \"Recolher\".",
+      focus: "fica no ul, e o item ativo vai em aria-activedescendant. Só a árvore recebe Tab; dentro dela as setas movem.",
+      cautions: "o recuo não é a única pista de nível, pois o leitor anuncia aria-level. Passe multiselectable com checkState. A cor sozinha não indica o escolhido (WCAG 1.4.1): há check ou caixa.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-muted", "text-accent-foreground", "text-muted-foreground", "text-primary"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-1.5", "min-w-0", "pr-2", "py-1", "size-5"] },
+      { contexto: "Raio", itens: ["rounded-sm"] },
+      { contexto: "Movimento", itens: ["duration-motion-fast"] },
+      { contexto: "Foco", itens: ["outline-ring"] },
     ],
   },
 }

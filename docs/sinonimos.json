@@ -95,5 +95,6 @@
   "toggle": ["botao-alternavel", "toggle-button"],
   "toggle-group": ["grupo-alternavel", "barra-de-ferramentas", "toolbar"],
   "tooltip": ["dica", "dica-flutuante", "hint"],
-  "tree-select": ["lista-em-arvore", "árvore", "arvore", "tree"]
+  "tree": ["arvore", "árvore", "treeview", "tree-view", "hierarquia", "arvore-de-itens", "pastas", "estrutura-em-arvore"],
+  "tree-select": ["lista-em-arvore", "select-em-arvore", "campo-em-arvore", "tree-select"]
 }

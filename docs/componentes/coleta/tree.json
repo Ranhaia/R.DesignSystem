@@ -1,0 +1,98 @@
+{
+  "slug": "tree",
+  "partes": [
+    "Tree"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "data",
+      "parte": "Tree",
+      "tipo": "`TreeNode[]`",
+      "padrao": null
+    },
+    {
+      "nome": "expanded",
+      "parte": "Tree",
+      "tipo": "`Set<string>`",
+      "padrao": null
+    },
+    {
+      "nome": "defaultExpanded",
+      "parte": "Tree",
+      "tipo": "`Iterable<string>`",
+      "padrao": null
+    },
+    {
+      "nome": "onExpandedChange",
+      "parte": "Tree",
+      "tipo": "`(abertos: Set<string>) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "filter",
+      "parte": "Tree",
+      "tipo": "`Set<string>` · `null`",
+      "padrao": "null"
+    },
+    {
+      "nome": "activeValue",
+      "parte": "Tree",
+      "tipo": "`string` · `null`",
+      "padrao": null
+    },
+    {
+      "nome": "onActiveValueChange",
+      "parte": "Tree",
+      "tipo": "`(valor: string) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "onSelect",
+      "parte": "Tree",
+      "tipo": "`(valor: string) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "isSelected",
+      "parte": "Tree",
+      "tipo": "`(valor: string) => boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "checkState",
+      "parte": "Tree",
+      "tipo": "`(valor: string) => CheckState`",
+      "padrao": null
+    },
+    {
+      "nome": "multiselectable",
+      "parte": "Tree",
+      "tipo": "`boolean`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-muted",
+    "duration-motion-fast",
+    "font-medium",
+    "gap-1.5",
+    "min-w-0",
+    "outline-ring",
+    "pr-2",
+    "py-1",
+    "rounded-sm",
+    "size-5",
+    "text-accent-foreground",
+    "text-muted-foreground",
+    "text-primary",
+    "text-sm",
+    "text-xs"
+  ],
+  "compoe": [
+    "checkbox",
+    "icon"
+  ]
+}

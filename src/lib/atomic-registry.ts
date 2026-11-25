@@ -92,7 +92,8 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   tabs: "molecule",
   chip: "molecule",
   "icon-button": "molecule",
-  "tree-select": "molecule",
+  "tree": "molecule",
+  "tree-select": "organism",
   alert: "molecule",
   // Sonner substituiu o Toast antigo do shadcn/ui — é uma composição de
   // ícone + texto + ação (igual em complexidade ao Alert, que também é
