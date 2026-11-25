@@ -78,6 +78,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   popover: "atom",
   item: "atom",
   marker: "atom",
+  "description-list": "atom",
 
   // Molecules
   accordion: "molecule",
@@ -110,9 +111,11 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   "segmented-control": "molecule",
   attachment: "molecule",
   "speed-dial": "molecule",
+  "timeline": "molecule",
 
   // Organisms
   combobox: "organism",
+  "search-input": "organism",
   files: "organism",
   "multi-select": "organism",
   "split-button": "organism",

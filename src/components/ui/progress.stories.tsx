@@ -24,3 +24,7 @@ type Story = StoryObj<typeof Progress>
 export const Default: Story = {
   render: () => <ProgressDemo />,
 }
+
+export const Circulo: Story = {
+  args: { shape: "circle", value: 66, "aria-label": "Progresso do envio" },
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "description-list",
+  "partes": [
+    "DescriptionList",
+    "DescriptionItem",
+    "DescriptionTerm",
+    "DescriptionDetails"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "layout",
+      "parte": "DescriptionList",
+      "tipo": "`stacked` · `inline`",
+      "padrao": "stacked"
+    }
+  ],
+  "tokens": [
+    "gap-4",
+    "gap-x-6",
+    "gap-y-1",
+    "gap-y-3"
+  ],
+  "compoe": []
+}
