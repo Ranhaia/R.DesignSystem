@@ -1,0 +1,84 @@
+{
+  "slug": "sortable-list",
+  "partes": [
+    "SortableList"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "itens",
+      "parte": "SortableList",
+      "tipo": "`T[]`",
+      "padrao": null
+    },
+    {
+      "nome": "idDoItem",
+      "parte": "SortableList",
+      "tipo": "`(item: T) => string`",
+      "padrao": null
+    },
+    {
+      "nome": "rotuloDoItem",
+      "parte": "SortableList",
+      "tipo": "`(item: T) => string`",
+      "padrao": null
+    },
+    {
+      "nome": "onReordenar",
+      "parte": "SortableList",
+      "tipo": "`(itens: T[]) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "children",
+      "parte": "SortableList",
+      "tipo": "`(item: T) => React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "orientacao",
+      "parte": "SortableList",
+      "tipo": "`Orientacao`",
+      "padrao": "vertical"
+    },
+    {
+      "nome": "className",
+      "parte": "SortableList",
+      "tipo": "`string`",
+      "padrao": null
+    },
+    {
+      "nome": "aria-label",
+      "parte": "SortableList",
+      "tipo": "`string`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "bg-accent",
+    "bg-card",
+    "bg-primary",
+    "gap-2",
+    "h-0.5",
+    "inset-x-0",
+    "inset-y-0",
+    "min-w-0",
+    "p-2",
+    "ring-ring",
+    "rounded-full",
+    "rounded-md",
+    "rounded-sm",
+    "shadow-lg",
+    "size-8",
+    "text-card-foreground",
+    "text-muted-foreground",
+    "text-primary-foreground",
+    "text-sm",
+    "text-xs",
+    "w-0.5"
+  ],
+  "compoe": [
+    "icon"
+  ]
+}

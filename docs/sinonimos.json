@@ -78,6 +78,7 @@
   "skeleton": ["esqueleto", "placeholder-de-carregamento", "shimmer"],
   "slider": ["controle-deslizante", "range", "deslizante"],
   "sonner": ["toast", "snackbar", "aviso-rapido", "aviso-rápido", "notificacao", "notificação"],
+  "sortable-list": ["lista-arrastavel", "lista-arrastável", "reordenar", "arrastar-e-soltar", "drag-and-drop", "sortable", "ordenar-arrastando"],
   "speed-dial": ["botao-flutuante", "fab"],
   "spinner": ["carregando", "loader", "loading"],
   "split-button": ["botao-dividido", "botão-dividido"],

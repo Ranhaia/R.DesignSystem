@@ -6263,4 +6263,70 @@ export function ExemploData() {
       { contexto: "Espaço", itens: ["p-0"] },
     ],
   },
+  "sortable-list": {
+    description: "Lista em que a pessoa muda a ordem dos itens arrastando pela alça, com mouse, toque ou teclado. É a base do kanban.",
+    whenToUse: "A ordem é dado da pessoa: prioridade, sequência de etapas, ordem de exibição. Poucos itens (dezenas), todos visíveis.",
+    anatomy: [
+      { part: "SortableList", description: "Raiz <div data-slot=\"sortable-list\"> com a lista <ul> (nomeada por aria-label) e a região de status." },
+      { part: "Item", description: "<li data-slot=\"sortable-list-item\">, com data-pego enquanto pego ou erguido." },
+      { part: "Alça", description: "<button data-slot=\"sortable-list-handle\"> com aria-pressed; só ela começa o arrasto." },
+      { part: "Marcador", description: "data-slot=\"sortable-list-marker\": a linha onde o item vai cair." },
+    ],
+    variants: [],
+    states: [
+      { name: "Pego (teclado)", description: "Alça preenchida na cor principal (aria-pressed), item com sombra e escala" },
+      { name: "Erguido (ponteiro)", description: "Item segue o ponteiro com sombra; o marcador mostra onde cai" },
+      { name: "Foco", description: "Anel no item inteiro e a dica de teclado ao lado" },
+    ],
+    sizes: [],
+    doGuidelines: ["Dê a cada item um idDoItem estável.", "Salve a ordem em onReordenar: a lista é controlada.", "Use horizontal para etapas lado a lado."],
+    dontGuidelines: ["Arrastar pelo item inteiro → a alça deixa o texto selecionável", "Centenas de itens → filtre ou pagine", "Ordem que a pessoa não escolhe → ordene pela coluna"],
+    code: `import * as React from "react"
+
+import { SortableList } from "@/components/ui/sortable-list"
+
+export function ExemploPrioridade() {
+  const [itens, setItens] = React.useState(["Alta", "Média", "Baixa"])
+  return (
+    <SortableList aria-label="Prioridades" itens={itens} idDoItem={(i) => i} rotuloDoItem={(i) => i} onReordenar={setItens}>
+      {(i) => i}
+    </SortableList>
+  )
+}`,
+    props: [
+      { name: "itens", type: "T[]", default: "—", description: "Os itens, na ordem atual." },
+      { name: "idDoItem", type: "(item: T) => string", default: "—", description: "Identidade estável de cada item (chave e foco)." },
+      { name: "rotuloDoItem", type: "(item: T) => string", default: "—", description: "Nome do item na alça e nos anúncios." },
+      { name: "onReordenar", type: "(itens: T[]) => void", default: "—", description: "Recebe a nova ordem: ao soltar (ponteiro) ou a cada seta (teclado)." },
+      { name: "children", type: "(item: T) => React.ReactNode", default: "—", description: "Conteúdo de cada item, ao lado da alça." },
+      { name: "orientacao", type: "Orientacao", default: "vertical", description: "vertical (↑↓) ou horizontal (←→)." },
+      { name: "className", type: "string", default: "—", description: "Classes extras na raiz." },
+      { name: "aria-label", type: "string", default: "—", description: "Nome da lista para o leitor de tela. Obrigatório." },
+    ],
+    meta: {
+      nome: "Sortable List",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/sortable-list.tsx",
+      story: "src/components/ui/sortable-list.stories.tsx",
+      vizinhos: ["list", "item", "data-table"],
+    },
+    whenToUseItems: ["A ordem é dado da pessoa: prioridade, sequência de etapas, ordem de exibição.", "Poucos itens (dezenas), todos visíveis."],
+    whenNotToUse: ["Ordem por critério (nome, data, valor) → ordenação da data-table", "Itens que passam entre grupos → kanban", "Lista só de leitura → list"],
+    content: ["rotuloDoItem é curto e único: ele nomeia a alça e os anúncios.", "Dicas e anúncios vêm do dicionário (pt-BR ou en)."],
+    accessibility: {
+      keyboard: "Espaço ou Enter na alça pega o item; setas do eixo movem; Espaço ou Enter solta; Esc volta à origem; sair da alça solta. Sem pegar, as setas não fazem nada.",
+      screenReader: "A alça diz \"Reordenar <item>\" e se está pega. A região de status anuncia pegar, mover, soltar e cancelar com a posição (\"na posição 2 de 4\").",
+      focus: "Fica na alça depois de cada movimento; o anel aparece no item inteiro.",
+      cautions: "A ordem visual é a do DOM, então o leitor e o Tab seguem o que se vê. Limites: sem rolagem automática durante o arrasto, sem animação dos vizinhos e sem inverter as setas em direita-para-esquerda; campo ou mídia dentro do item pode perder o estado ao mudar de posição.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-card", "bg-primary", "text-card-foreground", "text-muted-foreground", "text-primary-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-2", "h-0.5", "inset-x-0", "inset-y-0", "min-w-0", "p-2", "size-8", "w-0.5"] },
+      { contexto: "Raio", itens: ["rounded-full", "rounded-md", "rounded-sm"] },
+      { contexto: "Sombra", itens: ["shadow-lg"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
 }

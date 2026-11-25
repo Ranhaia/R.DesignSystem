@@ -97,7 +97,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 **Organizar conteúdo**
 - Visões do mesmo conteúdo, uma por vez → `tabs`. Etapas em sequência → `stepper`. Histórico do que já aconteceu → `timeline`.
 - Seções que abrem e fecham → `accordion` (uma só → `collapsible`).
-- Agrupar informação de um assunto → `card`. Lista de itens parecidos → `item` / `list`.
+- Agrupar informação de um assunto → `card`. Lista de itens parecidos → `item` / `list`; a pessoa muda a ordem → `sortable-list`.
 - Dados estruturados em linhas e colunas → `table`; com busca, filtro, ordenação, seleção em lote ou exportar CSV → `data-table`. Pares rótulo/valor de um registro só (ficha de detalhes) → `description-list`.
 - Status só de leitura → `badge`. Filtro ou seleção clicável → `chip` / `tag`.
 - Carregando com formato conhecido → `skeleton`. Sem formato → `spinner`. Com porcentagem → `progress` (barra; em espaço curto, `shape="circle"`).
@@ -186,6 +186,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [skeleton](skeleton.md) — Placeholder com pulso que antecipa a forma do conteúdo.
 - [slider](slider.md) — Controle deslizante para ajustar valores contínuos ou faixas em um trilho.
 - [sonner](sonner.md) — Confirma uma ação ou exibe um aviso rápido sem interromper a pessoa.
+- [sortable-list](sortable-list.md) — Lista que a pessoa reordena arrastando, com mouse, toque ou teclado.
 - [speed-dial](speed-dial.md) — Botão de ação flutuante que se expande em sequência de ações secundárias.
 - [spinner](spinner.md) — Indicador giratório para esperas de tempo indeterminado.
 - [split-button](split-button.md) — Ação principal combinada com menu suspenso de ações secundárias.

@@ -38,6 +38,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Rating](/ia/componentes/rating.md): Estrelas para dar uma nota ou mostrar a média. Para dar nota, é um grupo de radios nativos (setas trocam, o valor vai no formulário); só leitura, é uma imagem com a nota por extenso.
 - [Select](/ia/componentes/select.md): Menu suspenso customizado acionado por botão para seleção de uma opção em uma lista. Suporta itens estruturados com ícones, grupos de opções e rótulo integrado ou animado.
 - [Slider](/ia/componentes/slider.md): Controle deslizante que permite selecionar um valor ou intervalo contínuo arrastando um ou mais marcadores sobre um trilho. Ideal para ajustes visuais e valores aproximados.
+- [Sortable List](/ia/componentes/sortable-list.md): Lista em que a pessoa muda a ordem dos itens arrastando pela alça, com mouse, toque ou teclado. É a base do `kanban`.
 - [Spinner](/ia/componentes/spinner.md): Indicador giratório para esperas de tempo indeterminado. Mostra que o sistema está ocupado processando uma ação.
 - [Switch](/ia/componentes/switch.md): Controle deslizante binário para ativar ou desativar uma preferência. A alteração tem efeito imediato e dispensa botão de confirmação.
 - [Tag](/ia/componentes/tag.md): Rótulo estático para categorização, metadados e indicação de status. Organiza informações sem disparar ações nem remover filtros.
