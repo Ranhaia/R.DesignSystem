@@ -75,3 +75,26 @@ describe("NumberInput", () => {
     expect(s).toContain('aria-label="Increase"')
   })
 })
+
+describe("lerNumero rígido", () => {
+  it("milhar só em grupos de 3; o resto é inválido", () => {
+    expect(lerNumero("1.5", "pt-BR")).toBeNull()
+    expect(lerNumero("1,5", "en")).toBeNull()
+    expect(lerNumero("1.2.3", "pt-BR")).toBeNull()
+    expect(lerNumero("1,2,3", "pt-BR")).toBeNull()
+    expect(lerNumero("1.234.567,8", "pt-BR")).toBe(1234567.8)
+    expect(lerNumero("1234,5", "pt-BR")).toBe(1234.5)
+    expect(lerNumero(",5", "pt-BR")).toBe(0.5)
+    expect(lerNumero("9".repeat(400), "pt-BR")).toBeNull()
+  })
+  it("passo pequeno em notação científica anda", () => {
+    expect(passoNumero(0, 1, { step: 1e-7 })).toBe(1e-7)
+  })
+})
+
+describe("NumberInput anuncia o valor formatado", () => {
+  it("aria-valuetext no idioma", () => {
+    const s = renderToString(h(NumberInput, { "aria-label": "Q", defaultValue: 1500 }))
+    expect(s).toContain('aria-valuetext="1.500"')
+  })
+})

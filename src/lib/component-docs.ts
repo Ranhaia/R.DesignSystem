@@ -5428,7 +5428,7 @@ export function ExemploSenha() {
     states: [
       { name: "Vazio", description: "Campo em branco; o primeiro passo vai para o min" },
       { name: "No limite", description: "O botão do lado do limite fica desligado" },
-      { name: "Digitando", description: "Texto livre; vira número ao sair do campo ou com Enter" },
+      { name: "Digitando", description: "Texto livre; vira número ao sair do campo ou com Enter. Texto inválido volta ao último valor" },
       { name: "Desabilitado", description: "disabled vale para o campo e os dois botões" },
     ],
     sizes: [],
@@ -5461,7 +5461,7 @@ export function ExemploQuantidade() {
     content: ["O rótulo diz a unidade quando houver (\"Peso em kg\").", "O formato (milhar e decimal) vem do idioma ativo; não formate por fora."],
     accessibility: {
       keyboard: "↑ e ↓ dão um passo; Enter confirma o texto digitado. Os botões ficam fora do Tab, porque as setas fazem o mesmo.",
-      screenReader: "O campo é spinbutton, com valor, mínimo e máximo anunciados. Os botões dizem \"Diminuir\" e \"Aumentar\".",
+      screenReader: "O campo é spinbutton, com valor (já formatado, aria-valuetext), mínimo e máximo anunciados. Os botões dizem \"Diminuir\" e \"Aumentar\".",
       focus: "Anel do input-group em volta de tudo; clicar em − ou + não tira o foco do lugar.",
       cautions: "Passe label ou aria-label. Não é type=\"number\": esse tipo ignora o separador do idioma e muda o valor com a rolagem.",
     },

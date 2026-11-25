@@ -63,7 +63,7 @@ Sem tamanhos próprios: a altura é a do `input-group`.
 |---|---|
 | Vazio | Campo em branco; o primeiro passo vai para o `min` |
 | No limite | O botão do lado do limite fica desligado |
-| Digitando | Texto livre; vira número ao sair do campo ou com Enter |
+| Digitando | Texto livre; vira número ao sair do campo ou com Enter. Texto inválido volta ao último valor |
 | Desabilitado | `disabled` vale para o campo e os dois botões |
 
 ## Conteúdo
@@ -74,7 +74,7 @@ Sem tamanhos próprios: a altura é a do `input-group`.
 ## Acessibilidade
 
 - **Teclado:** ↑ e ↓ dão um passo; Enter confirma o texto digitado. Os botões ficam fora do Tab, porque as setas fazem o mesmo.
-- **Leitor de tela:** O campo é `spinbutton`, com valor, mínimo e máximo anunciados. Os botões dizem "Diminuir" e "Aumentar".
+- **Leitor de tela:** O campo é `spinbutton`, com valor (já formatado, `aria-valuetext`), mínimo e máximo anunciados. Os botões dizem "Diminuir" e "Aumentar".
 - **Foco:** Anel do `input-group` em volta de tudo; clicar em − ou + não tira o foco do lugar.
 - **Cuidados:** Passe `label` ou `aria-label`. Não é `type="number"`: esse tipo ignora o separador do idioma e muda o valor com a rolagem.
 
