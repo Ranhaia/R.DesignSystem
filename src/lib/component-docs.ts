@@ -5419,7 +5419,7 @@ export function ExemploSenha() {
     description: "Campo de busca pronto: lupa no início, botão de limpar quando há texto e, se quiser, uma tecla de atalho que leva o foco até ele. Resolve a busca de lista ou página sem montar o input-group à mão.",
     whenToUse: "Filtrar uma lista, tabela ou página pelo texto digitado. Busca principal de uma tela, com atalho de teclado (shortcut=\"/\").",
     anatomy: [
-      { part: "SearchInput", description: "Raiz input-group com data-slot=\"search-input\"; o className vai nela." },
+      { part: "SearchInput", description: "Raiz <search> (landmark de busca) com data-slot=\"search-input\"; o className vai nela. Dentro, o input-group." },
       { part: "Lupa", description: "input-group-addon no início, com o ícone search." },
       { part: "Campo", description: "input-group-input com type=\"search\"; recebe as props de <input>." },
       { part: "Limpar", description: "input-group-button com ícone close, no fim, só quando há texto." },
@@ -5430,7 +5430,7 @@ export function ExemploSenha() {
       { name: "Vazio", description: "Lupa e, se houver atalho, a tecla no fim" },
       { name: "Com texto", description: "O botão de limpar troca a tecla do atalho" },
       { name: "Foco", description: "Anel de foco do input-group em volta de tudo" },
-      { name: "Desabilitado", description: "" },
+      { name: "Desabilitado", description: "disabled vale para o campo e para o botão de limpar" },
     ],
     sizes: [],
     doGuidelines: ["Use onValueChange para filtrar; ele também avisa quando o campo é limpo.", "Dê um aria-label com o alvo quando houver mais de uma busca na tela.", "Prefira / como atalho: não briga com a digitação nem com atalhos do navegador."],
@@ -5461,7 +5461,7 @@ export function ExemploBusca() {
       keyboard: "Esc com texto limpa o campo. A tecla de shortcut, apertada fora de outro campo e sem Ctrl, ⌘ ou Alt, leva o foco à busca.",
       screenReader: "O campo é type=\"search\" com nome \"Buscar\" por padrão; o atalho é anunciado por aria-keyshortcuts e a kbd fica fora da leitura. O botão diz \"Limpar busca\".",
       focus: "Limpar pelo botão devolve o foco ao campo.",
-      cautions: "O atalho não dispara enquanto alguém digita em outro campo. Evite letras comuns como atalho; prefira /.",
+      cautions: "O atalho não dispara enquanto alguém digita em outro campo, com a tecla repetida nem durante composição de IME. Dois campos com o mesmo atalho disputam o foco: use um por tela. Evite letras comuns como atalho; prefira /.",
     },
   },
 }

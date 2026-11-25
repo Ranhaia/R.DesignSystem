@@ -20,6 +20,9 @@ describe("atalhoDisparou", () => {
     expect(atalhoDisparou(tecla("a"), "/")).toBe(false)
     expect(atalhoDisparou(tecla("/"), undefined)).toBe(false)
     expect(atalhoDisparou(tecla("k", { ctrlKey: true }), "k")).toBe(false)
+    expect(atalhoDisparou(tecla("/", { repeat: true }), "/")).toBe(false)
+    expect(atalhoDisparou(tecla("/", { isComposing: true }), "/")).toBe(false)
+    expect(atalhoDisparou(tecla("/", { defaultPrevented: true }), "/")).toBe(false)
   })
   it("não rouba a tecla de quem está digitando", () => {
     expect(atalhoDisparou(tecla("/", {}, { tagName: "INPUT" }), "/")).toBe(false)
@@ -36,7 +39,8 @@ describe("SearchInput", () => {
 
   it("campo de busca com lupa e nome acessível padrão", () => {
     const s = html()
-    expect(s).toContain('data-slot="search-input"')
+    expect(s).toMatch(/<search[^>]*data-slot="search-input"/)
+    expect(s).toContain('spellCheck="false"')
     expect(s).toContain('type="search"')
     expect(s).toContain('aria-label="Buscar"')
     expect(s).toContain('data-slot="icon"')
@@ -53,6 +57,11 @@ describe("SearchInput", () => {
     expect(s).toContain('aria-keyshortcuts="/"')
     expect(s).toMatch(/<kbd[^>]*>\/<\/kbd>/)
     expect(html()).not.toContain("<kbd")
+  })
+
+  it("value null não vira texto e disabled chega ao limpar", () => {
+    expect(html({ value: null })).not.toContain('value="null"')
+    expect(html({ defaultValue: "x", disabled: true })).toMatch(/<button[^>]*disabled=""[^>]*aria-label="Limpar busca"|aria-label="Limpar busca"[^>]*disabled=""/)
   })
 
   it("aria-label explícito vence", () => {

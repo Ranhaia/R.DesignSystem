@@ -29,7 +29,7 @@ Campo de busca pronto: lupa no início, botão de limpar quando há texto e, se 
 
 | Parte | O que é |
 |---|---|
-| `SearchInput` | Raiz `input-group` com `data-slot="search-input"`; o `className` vai nela. |
+| `SearchInput` | Raiz `<search>` (landmark de busca) com `data-slot="search-input"`; o `className` vai nela. Dentro, o `input-group`. |
 | Lupa | `input-group-addon` no início, com o ícone `search`. |
 | Campo | `input-group-input` com `type="search"`; recebe as props de `<input>`. |
 | Limpar | `input-group-button` com ícone `close`, no fim, só quando há texto. |
@@ -63,7 +63,7 @@ Sem tamanhos próprios: a altura é a do `input-group`.
 | Vazio | Lupa e, se houver atalho, a tecla no fim |
 | Com texto | O botão de limpar troca a tecla do atalho |
 | Foco | Anel de foco do `input-group` em volta de tudo |
-| Desabilitado | `disabled` no campo, herdado do `input`
+| Desabilitado | `disabled` vale para o campo e para o botão de limpar |
 
 ## Conteúdo
 
@@ -75,7 +75,7 @@ Sem tamanhos próprios: a altura é a do `input-group`.
 - **Teclado:** Esc com texto limpa o campo. A tecla de `shortcut`, apertada fora de outro campo e sem Ctrl, ⌘ ou Alt, leva o foco à busca.
 - **Leitor de tela:** O campo é `type="search"` com nome "Buscar" por padrão; o atalho é anunciado por `aria-keyshortcuts` e a `kbd` fica fora da leitura. O botão diz "Limpar busca".
 - **Foco:** Limpar pelo botão devolve o foco ao campo.
-- **Cuidados:** O atalho não dispara enquanto alguém digita em outro campo. Evite letras comuns como atalho; prefira `/`.
+- **Cuidados:** O atalho não dispara enquanto alguém digita em outro campo, com a tecla repetida nem durante composição de IME. Dois campos com o mesmo atalho disputam o foco: use um por tela. Evite letras comuns como atalho; prefira `/`.
 
 ## Tokens usados
 
