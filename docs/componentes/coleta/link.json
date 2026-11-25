@@ -26,6 +26,12 @@
       "padrao": "false"
     },
     {
+      "nome": "action",
+      "parte": "Link",
+      "tipo": "`add` · `next`",
+      "padrao": null
+    },
+    {
       "nome": "size",
       "parte": "LinkSkeleton",
       "tipo": "`LinkSize`",
@@ -33,10 +39,12 @@
     }
   ],
   "tokens": [
+    "gap-1",
     "h-10",
     "h-6",
     "h-8",
     "h-9",
+    "p-0",
     "rounded-md",
     "w-14",
     "w-16",

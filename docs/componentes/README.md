@@ -61,11 +61,12 @@ mudar ou documentar um componente está em `.claude/skills/componente-rds/SKILL.
 Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 
 **Agir ou ir para outro lugar**
-- Dispara uma ação → `button`. Leva a outra página → `link`.
+- Dispara uma ação → `button`. Leva a outra página → `link`. Ação discreta dentro do texto (+ ou →) → `link` com `action`.
 - Navegação persistente em barra lateral → `sidebar`. Menu horizontal no topo → `navigation-menu`.
 - Ação só com ícone → `icon-button` (com `aria-label` e `tooltip`).
 - Ação principal + variações → `split-button`. Várias ações flutuantes → `speed-dial`.
 - Ações relacionadas lado a lado → `button-group`.
+- Voltar ao começo de uma página longa → `back-to-top`.
 
 **Escolher**
 - 1 de 2 a 4 opções, troca a visão na hora → `segmented-control`.
@@ -79,7 +80,8 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Dinheiro → `currency-input` (moeda em `currency`).
 - Número exato, com − e + → `number-input`.
 - Busca → `search-input` (com atalho de teclado: `shortcut`).
-- Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
+- Nota em estrelas → `rating` (média só para ler: `readOnly`).
+- Valor aproximado num intervalo → `slider`. Data → `calendar`; ver compromissos no mês, semana ou dia → `agenda`. Hora → `time-picker`. Cor → `color-picker`.
 
 **Mostrar mensagem**
 - Fica na página, perto do assunto → `alert`.
@@ -87,6 +89,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Confirma algo e some sozinha → `sonner`.
 - Avisos que se acumulam para ler depois, com lidas e não lidas → `notification-center`.
 - Interrompe para pedir decisão → `alert-dialog`. Tarefa focada (editar, preencher) → `dialog`.
+- Ver uma foto grande, com zoom e galeria → `image-viewer`. Fotos passando na própria página → `carousel`.
 - Painel lateral com conteúdo longo → `sheet`. No celular, vindo de baixo → `drawer`.
 - Explica um elemento no hover/foco → `tooltip`. Painel pequeno no clique → `popover`.
 
@@ -106,11 +109,13 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 (`src/lib/memoria-componentes.test.ts`) reprova componente sem MD ou sem a linha.
 
 - [accordion](accordion.md) — Organiza o conteúdo em seções empilhadas que expandem e recolhem.
+- [agenda](agenda.md) — Compromissos no mês, na semana ou no dia, com navegação por teclado.
 - [alert](alert.md) — Exibe uma mensagem contextual fixa na página para informar ou alertar.
 - [announcement-banner](announcement-banner.md) — Faixa no topo do app com um recado para todos, que a pessoa fecha.
 - [alert-dialog](alert-dialog.md) — Interrompe o fluxo da tela com um aviso crítico e exige resposta explícita.
 - [aspect-ratio](aspect-ratio.md) — Mantém a proporção exata entre largura e altura de imagens, vídeos e embeds.
 - [attachment](attachment.md) — Exibe anexo de arquivo com mídia, metadados e ações rápidas.
+- [back-to-top](back-to-top.md) — Botão flutuante que aparece em página longa e leva ao começo.
 - [avatar](avatar.md) — Representa visualmente uma pessoa, conta ou organização com fallback.
 - [badge](badge.md) — Rótulo compacto para destacar status, contagem ou metadado.
 - [box](box.md) — Container flexível e sem estilo próprio para agrupar e organizar elementos.
@@ -126,6 +131,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [chip](chip.md) — Sinaliza critérios ou atributos ativos aplicados a uma busca ou filtragem de lista.
 - [code-block](code-block.md) — Código com botão de copiar.
 - [collapsible](collapsible.md) — Alterna a visibilidade de uma seção de conteúdo secundário sob demanda.
+- [color-picker](color-picker.md) — Escolhe uma cor livre ou da paleta, com hexadecimal e teclado.
 - [combobox](combobox.md) — Combina campo de texto com lista de sugestões filtradas e seleção por chips.
 - [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.
 - [context-menu](context-menu.md) — Menu contextual flutuante acionado pelo clique com o botão direito do mouse.
@@ -144,6 +150,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [hover-card](hover-card.md) — Exibe uma prévia flutuante de informações enriquecidas no hover ou foco.
 - [icon](icon.md) — Renderiza um glifo do Material Symbols com eixos variáveis.
 - [icon-button](icon-button.md) — Botão representado exclusivamente por um ícone visual.
+- [image-viewer](image-viewer.md) — Imagem grande sobre a página, com zoom, arrastar e galeria.
 - [input](input.md) — Campo de entrada para capturar textos ou valores de linha única.
 - [input-group](input-group.md) — Agrupa campos de entrada com botões, ícones ou textos na mesma borda.
 - [input-otp](input-otp.md) — Campo especializado para captura de códigos de verificação pontuais (OTP/2FA).
@@ -165,6 +172,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [popover](popover.md) — Painel flutuante no clique para conteúdo rico ou configurações rápidas.
 - [progress](progress.md) — Barra ou anel que indica o andamento de tarefas com duração determinada.
 - [radio-group](radio-group.md) — Opções exclusivas para escolher exatamente uma alternativa visível.
+- [rating](rating.md) — Estrelas para dar nota ou mostrar a média.
 - [resizable](resizable.md) — Grupos de painéis com divisores arrastáveis e proporcionais para layouts flexíveis.
 - [scroll-area](scroll-area.md) — Área de rolagem customizada e consistente entre navegadores.
 - [search-input](search-input.md) — Campo de busca com lupa, limpar e atalho de teclado.

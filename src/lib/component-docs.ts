@@ -1811,7 +1811,7 @@ export function ExemploTreeSelect() {
   },
   "multi-select": {
     description: "Campo de seleção múltipla com autocompletar que exibe cada escolha como um chip removível no próprio container.",
-    whenToUse: "Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips. Filtros avançados com busca textual onde cada critério selecionado precisa ser removido de forma independente. Formulários com listas longas de opções que demandam filtragem rápida por digitação.",
+    whenToUse: "Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips. Formulários com listas longas de opções que demandam filtragem rápida por digitação. Campo de tags ou etiquetas que aceita valor novo além das sugestões (creatable).",
     anatomy: [
       { part: "MultiSelect", description: "Campo completo de seleção múltipla com suporte a busca e chips" },
       { part: "MultiSelectSkeleton", description: "Placeholder animado de carregamento enquanto as opções são carregadas" },
@@ -1822,6 +1822,7 @@ export function ExemploTreeSelect() {
       { name: "Foco", description: "Anel de foco visível ao redor do container enquanto o cursor de busca estiver ativo" },
       { name: "Aberto", description: "Painel suspenso visível ancorado ao container com lista de itens filtrados" },
       { name: "Desabilitado", description: "Container opaco com disabled desativando cliques, busca e remoção de chips" },
+      { name: "Valor livre", description: "Com creatable, o texto digitado vira chip e passa a aparecer na lista para ser desmarcado" },
       { name: "Vazio", description: "Mensagem de emptyText exibida no painel quando nenhum item corresponde à busca" },
     ],
     sizes: [],
@@ -1857,6 +1858,7 @@ function Exemplo() {
       { name: "emptyText", type: "string", default: "Nenhum resultado encontrado.", description: "Mensagem apresentada quando a busca não encontra correspondências" },
       { name: "disabled", type: "boolean", default: "false", description: "Desativa interação com o campo de busca e os chips" },
       { name: "aria-label", type: "string", default: "—", description: "Nome acessível para leitores de tela quando não houver rótulo visível" },
+      { name: "creatable", type: "—", default: "false", description: "Aceita valor digitado: Enter num texto sem opção em destaque vira chip (campo de tags). Texto igual a uma opção (sem diferença de caixa) escolhe a opção; repetido ou vazio é ignorado. Com o campo vazio, Enter segue para o formulário" },
     ],
     meta: {
       nome: "MultiSelect",
@@ -1866,11 +1868,11 @@ function Exemplo() {
       story: "src/components/ui/multi-select.stories.tsx",
       vizinhos: ["combobox", "select", "checkbox"],
     },
-    whenToUseItems: ["Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips.", "Filtros avançados com busca textual onde cada critério selecionado precisa ser removido de forma independente.", "Formulários com listas longas de opções que demandam filtragem rápida por digitação."],
+    whenToUseItems: ["Selecionar múltiplas opções de uma lista pré-definida com visualização e remoção imediata via chips.", "Formulários com listas longas de opções que demandam filtragem rápida por digitação.", "Campo de tags ou etiquetas que aceita valor novo além das sugestões (creatable)."],
     whenNotToUse: ["Selecionar apenas uma opção em lista longa com autocompletar → combobox.", "Seleção única entre 5 ou mais opções sem necessidade de busca → select.", "Poucas opções independentes que cabem visíveis diretamente na tela → checkbox."],
     content: ["Rótulos das opções devem ser concisos, substantivos e sem ponto final.", "O placeholder orienta a ação esperada quando nenhum valor foi escolhido (ex.: \"Selecione as modalidades...\").", "Defina mensagens de emptyText claras e instrutivas para orientar nova digitação."],
     accessibility: {
-      keyboard: "Digitação filtra opções; setas cima e baixo percorrem a lista; Enter seleciona ou desmarca o item em destaque; Backspace com campo vazio remove o último chip selecionado.",
+      keyboard: "Digitação filtra opções; setas cima e baixo percorrem a lista; Enter seleciona ou desmarca o item em destaque; Backspace com campo vazio remove o último chip selecionado. Com creatable, Enter sem item em destaque transforma o texto em chip (fora da composição de IME).",
       screenReader: "Baseado no Combobox do Base UI com suporte a seleção múltipla; chips anunciam seus rótulos com botão de remoção; passe aria-label caso não haja rótulo visível.",
       focus: "O foco permanece no campo de texto de busca; abrir e fechar a lista não perde o controle do cursor de digitação.",
       cautions: "Passe sempre aria-label ou associe um <label> via id para garantir que tecnologias assistivas anunciem o propósito do campo de seleção.",
@@ -2248,7 +2250,7 @@ import { Icon } from "@/components/ui/icon"
   },
   link: {
     description: "Permite navegar entre páginas, seções internas ou sites externos. Reaproveita o estilo visual de link do botão e dá suporte a indicador de saída externa e carregamento esqueleto.",
-    whenToUse: "Navegar entre diferentes páginas ou rotas da aplicação em links isolados ou corridos. Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external. Ações secundárias de navegação em rodapés, termos de serviço ou textos explicativos.",
+    whenToUse: "Navegar entre páginas ou rotas, em links isolados, corridos no texto ou em rodapés e termos de serviço. Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external. Ação inline, a mais discreta, dentro do conteúdo: \"+ Adicionar contato\", \"Ver faturas →\" (prop action).",
     anatomy: [
       { part: "Link", description: "Elemento <a> (ou elemento filho via asChild) com classes da variante link do Button" },
       { part: "Ícone de saída (opcional)", description: "Ícone open_in_new renderizado automaticamente à direita quando external=true" },
@@ -2260,6 +2262,7 @@ import { Icon } from "@/components/ui/icon"
       { name: "Hover", description: "Sublinhado destacado via hover:underline" },
       { name: "Foco", description: "Anel visível via focus-visible:ring" },
       { name: "Externo", description: "Exibe o ícone open_in_new e abre em nova aba" },
+      { name: "Ação inline", description: "+ antes ou seta depois do texto, colado ao conteúdo" },
       { name: "Desabilitado", description: "Suportado via aria-disabled com opacidade reduzida" },
     ],
     sizes: [],
@@ -2278,6 +2281,7 @@ import { Icon } from "@/components/ui/icon"
       { name: "external", type: "boolean", default: "false", description: "Força target=\"_blank\", rel=\"noopener noreferrer\" e ícone de saída" },
       { name: "href", type: "string", default: "—", description: "Endereço de destino da navegação" },
       { name: "size (LinkSkeleton)", type: "LinkSize", default: "default", description: "Tamanho do placeholder esqueleto correspondente" },
+      { name: "action", type: "add · next", default: "—", description: "Ação inline: add põe o + antes do texto, next põe a seta depois (espelhada em RTL). Tira a altura e o recuo de botão para caber no texto. Use texto curto: a ação não quebra no meio. Não combine next com external" },
     ],
     meta: {
       nome: "Link",
@@ -2287,7 +2291,7 @@ import { Icon } from "@/components/ui/icon"
       story: "src/components/ui/link.stories.tsx",
       vizinhos: ["button", "navigation-menu", "breadcrumb"],
     },
-    whenToUseItems: ["Navegar entre diferentes páginas ou rotas da aplicação em links isolados ou corridos.", "Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external.", "Ações secundárias de navegação em rodapés, termos de serviço ou textos explicativos."],
+    whenToUseItems: ["Navegar entre páginas ou rotas, em links isolados, corridos no texto ou em rodapés e termos de serviço.", "Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external.", "Ação inline, a mais discreta, dentro do conteúdo: \"+ Adicionar contato\", \"Ver faturas →\" (prop action)."],
     whenNotToUse: ["Ação que altera dados, envia formulário ou abre janelas modais → button", "Menus complexos de navegação hierárquica com múltiplos níveis → navigation-menu", "Trilha de localização indicando o caminho atual da página → breadcrumb"],
     content: ["O texto deve indicar com clareza o destino ou objetivo: \"Ver relatórios\", \"Documentação da API\".", "Evite expressões genéricas e isoladas como \"clique aqui\" ou \"saiba mais\".", "Para destinos externos, a indicação de nova aba é reforçada pelo ícone visual."],
     accessibility: {
@@ -2297,7 +2301,7 @@ import { Icon } from "@/components/ui/icon"
       cautions: "Links externos devem incluir aviso de abertura em nova aba no texto ou acessibilidade; nunca use link para ações destrutivas.",
     },
     tokens: [
-      { contexto: "Espaço", itens: ["h-10", "h-6", "h-8", "h-9", "w-14", "w-16", "w-20", "w-24"] },
+      { contexto: "Espaço", itens: ["gap-1", "h-10", "h-6", "h-8", "h-9", "p-0", "w-14", "w-16", "w-20", "w-24"] },
       { contexto: "Raio", itens: ["rounded-md"] },
     ],
   },
@@ -5416,6 +5420,71 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
+  agenda: {
+    description: "Mostra compromissos no mês, na semana ou no dia. O mês monta sobre o calendar e herda o teclado dele; semana e dia listam os eventos como botões.",
+    whenToUse: "Ver o que acontece em cada data: reuniões, entregas, plantões, reservas. A pessoa alterna entre a visão geral do mês e o detalhe do dia.",
+    anatomy: [
+      { part: "DiaDoMes", description: "Interno: o botão de dia do calendar com os chips do dia; não é exportado." },
+      { part: "Agenda", description: "Raiz <section data-slot=\"agenda\" data-visao> com o aria-label; o className vai nela." },
+      { part: "Barra", description: "<div data-slot=\"agenda-toolbar\">: Hoje, período anterior e próximo, o título do período (anunciado ao mudar) e a vista (segmented-control)." },
+      { part: "Dia", description: "No mês, o botão de dia do calendar com até 2 chips (data-slot=\"agenda-chip\") e \"+N mais\". Na semana e no dia, <div data-slot=\"agenda-dia\">." },
+      { part: "Evento", description: "button secundário (data-slot=\"agenda-evento\") com hora ou \"Dia inteiro\" e o título." },
+    ],
+    variants: [],
+    states: [
+      { name: "Hoje", description: "Dia com fundo de destaque no mês; cabeçalho secundário na semana" },
+      { name: "Dia selecionado", description: "O dia em foco, com fundo da cor principal no mês" },
+      { name: "Mais eventos", description: "\"+N mais\" abaixo dos 2 primeiros chips do dia" },
+      { name: "Dia vazio", description: "Na vista dia, \"Nenhum evento\"" },
+      { name: "Fora do mês", description: "Dias de outro mês em cor apagada, como no calendar" },
+    ],
+    sizes: [],
+    doGuidelines: ["Abra na vista que a pessoa mais usa (visaoInicial).", "Passe fim em todo evento com duração.", "Use onEventoClick para abrir o detalhe (sheet ou dialog)."],
+    dontGuidelines: ["Usar a agenda para escolher data → calendar", "Título longo no evento → resuma e mostre o resto no detalhe", "Data distante, como nascimento → campo de data"],
+    code: `import { Agenda } from "@/components/ui/agenda"
+
+export function ExemploAgenda() {
+  return (
+    <Agenda
+      aria-label="Agenda da equipe"
+      eventos={[{ id: "1", titulo: "Daily", inicio: new Date(2026, 10, 10, 9), fim: new Date(2026, 10, 10, 9, 15) }]}
+      onEventoClick={(e) => console.log(e.titulo)}
+    />
+  )
+}`,
+    props: [
+      { name: "eventos", type: "EventoAgenda[]", default: "—", description: "id, titulo, inicio e, se houver, fim e diaInteiro. Evento de vários dias aparece em todos." },
+      { name: "dataInicial", type: "Date", default: "—", description: "Dia em foco ao abrir. Sem ela, hoje." },
+      { name: "visaoInicial", type: "VisaoAgenda", default: "mes", description: "Vista ao abrir: mes, semana ou dia." },
+      { name: "onEventoClick", type: "(evento: EventoAgenda) => void", default: "—", description: "Chamado ao clicar num evento na semana ou no dia." },
+      { name: "className", type: "string", default: "—", description: "Classes extras na raiz." },
+      { name: "aria-label", type: "string", default: "—", description: "Nome da agenda para o leitor de tela. Obrigatório." },
+    ],
+    meta: {
+      nome: "Agenda",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/agenda.tsx",
+      story: "src/components/ui/agenda.stories.tsx",
+      vizinhos: ["calendar", "time-picker", "list"],
+    },
+    whenToUseItems: ["Ver o que acontece em cada data: reuniões, entregas, plantões, reservas.", "A pessoa alterna entre a visão geral do mês e o detalhe do dia."],
+    whenNotToUse: ["Escolher uma data ou um período → calendar", "Escolher um horário → time-picker", "Poucos eventos em sequência, sem precisar da grade → list"],
+    content: ["Título curto no evento: ele é cortado no chip do mês.", "Datas e horas saem do Intl no idioma ativo; botões e vazio vêm do dicionário (pt-BR ou en).", "A semana começa no domingo."],
+    accessibility: {
+      keyboard: "No mês, setas andam de dia em dia, PageUp e PageDown trocam de mês, Home e End vão ao início e ao fim da semana, Enter abre o dia. Na semana e no dia, Tab passa pelos dias e eventos.",
+      screenReader: "A agenda tem nome (aria-label). Cada dia do mês diz a data completa e quantos eventos tem. O título do período é anunciado ao mudar (aria-live).",
+      focus: "Anel de foco do calendar no mês e do button nos eventos.",
+      cautions: "No mês o chip é só leitura; o evento se abre na vista dia. Dia com raio concêntrico: o chip usa rounded-inner.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-base", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-0", "gap-0.5", "gap-1", "gap-2", "gap-3", "h-24", "min-w-0", "min-w-24", "p-0", "p-0.5", "p-1", "px-1", "py-1", "py-6"] },
+      { contexto: "Raio", itens: ["radius-inset-1", "rounded-inner", "rounded-md", "rounded-outer-md"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
   "description-list": {
     description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
     whenToUse: "Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar. Rótulos curtos com valores de tamanho variado.",
@@ -5905,6 +5974,239 @@ export function ExemploValor() {
       { contexto: "Espaço", itens: ["gap-0.5", "gap-2", "min-h-5", "min-w-0", "min-w-5", "mt-1.5", "mx-2", "px-1", "px-2", "py-2", "py-6", "right-0.5", "size-2", "top-0.5", "w-80"] },
       { contexto: "Raio", itens: ["rounded-full", "rounded-md"] },
       { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
+  "back-to-top": {
+    description: "Botão flutuante que aparece depois de rolar uma página longa e leva de volta ao começo. Poupa a pessoa de rolar tudo para cima.",
+    whenToUse: "Páginas longas: listas, artigos, documentação, resultados de busca. Um por página, no canto inferior direito.",
+    anatomy: [
+      { part: "BackToTop", description: "icon-button outline redondo com a seta para cima, fixo no canto inferior direito" },
+    ],
+    variants: [],
+    states: [
+      { name: "Escondido", description: "Antes de rolar o threshold: invisível e fora da ordem do Tab" },
+      { name: "Visível", description: "Depois de rolar: aparece com transição de opacidade" },
+    ],
+    sizes: [],
+    doGuidelines: ["Use em páginas com mais de duas telas de conteúdo.", "Ajuste o threshold para a altura de uma tela, mais ou menos.", "Deixe espaço no canto para ele não cobrir conteúdo."],
+    dontGuidelines: ["Dois botões fixos no mesmo canto → suba um deles com className.", "Usar em página curta → tire o botão.", "Texto no lugar do ícone → mantenha só a seta e o nome acessível."],
+    code: `import { BackToTop } from "@/components/ui/back-to-top"
+
+<BackToTop />`,
+    props: [
+      { name: "className", type: "string", default: "—", description: "Ajusta a posição (ex.: subir acima de outro botão fixo)" },
+      { name: "threshold", type: "number", default: "400", description: "Quanto rolar, em pixels de rolagem, até o botão aparecer" },
+      { name: "label", type: "string", default: "—", description: "Nome para o leitor de tela. Padrão do dicionário: \"Voltar ao topo\"" },
+    ],
+    meta: {
+      nome: "Back To Top",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/back-to-top.tsx",
+      story: "src/components/ui/back-to-top.stories.tsx",
+      vizinhos: ["icon-button", "link", "scroll-area"],
+    },
+    whenToUseItems: ["Páginas longas: listas, artigos, documentação, resultados de busca.", "Um por página, no canto inferior direito."],
+    whenNotToUse: ["Página curta, que cabe em duas telas → não precisa.", "Ir para uma seção específica → link para a âncora.", "Rolagem dentro de um painel → scroll-area."],
+    content: ["Só o ícone de seta para cima; o nome vai no aria-label."],
+    accessibility: {
+      keyboard: "Quando visível, entra na ordem do Tab; Enter ou Espaço leva ao topo.",
+      screenReader: "Botão com nome \"Voltar ao topo\". Escondido, não é anunciado.",
+      focus: "Ao clicar, o foco vai para o conteúdo principal (main, ou o documento se não houver), e o próximo Tab segue dali.",
+      cautions: "Com prefers-reduced-motion, o salto é direto, sem rolagem suave.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["bottom-6", "right-6"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+      { contexto: "Sombra", itens: ["shadow-md"] },
+    ],
+  },
+  rating: {
+    description: "Estrelas para dar uma nota ou mostrar a média. Para dar nota, é um grupo de radios nativos (setas trocam, o valor vai no formulário); só leitura, é uma imagem com a nota por extenso.",
+    whenToUse: "Pedir uma nota rápida: entrega, atendimento, produto. Mostrar a média de avaliações ao lado do número de avaliações.",
+    anatomy: [
+      { part: "Estrela", description: "Uma estrela desenhada (cheia, meia ou vazia); interna, sem export." },
+      { part: "Rating", description: "O grupo de estrelas: radios para dar nota ou imagem só leitura." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "Estrelas em contorno." },
+      { name: "Escolhido", description: "Estrelas até a nota cheias (e meia, com allowHalf)." },
+      { name: "Hover", description: "Prevê a nota sob o cursor; ao sair volta à escolhida." },
+      { name: "Foco", description: "Anel na estrela da opção focada." },
+      { name: "Desabilitado", description: "Cursor bloqueado; os radios ficam fora do teclado." },
+    ],
+    sizes: [
+      { name: "sm", value: "sm", description: "16 px — Média ao lado de texto, em listas e cards." },
+      { name: "default", value: "default", description: "24 px — Dar nota num formulário." },
+      { name: "lg", value: "lg", description: "32 px — Nota como pergunta principal da tela, no toque." },
+    ],
+    doGuidelines: ["Dar nome ao grupo com a pergunta.", "Mostrar a quantidade de avaliações junto da média.", "Usar allowHalf só quando a média precisa de precisão."],
+    dontGuidelines: ["Usar estrelas para opções com nome → radio-group.", "Mostrar média sem o número ao lado → texto \"4,5 (128)\" junto.", "Usar readOnly para nota que a pessoa ainda vai dar → modo padrão."],
+    code: `import { Rating } from "@/components/ui/rating"
+
+<Rating aria-label="Nota da entrega" name="nota" />`,
+    props: [
+      { name: "aria-label / aria-labelledby", type: "string", default: "—", description: "Pergunta que a nota responde; obrigatório para dar nota." },
+      { name: "preenchimento (Estrela)", type: "Preenchimento", default: "—", description: "Como a estrela é desenhada; calculado pelo Rating." },
+      { name: "size", type: "sm · default · lg", default: "default", description: "Tamanho de cada estrela." },
+      { name: "value", type: "number", default: "—", description: "Nota atual, controlada." },
+      { name: "defaultValue", type: "number", default: "0", description: "Nota inicial, sem controle." },
+      { name: "onValueChange", type: "(valor: number) => void", default: "—", description: "Chamado ao escolher uma nota." },
+      { name: "max", type: "number", default: "5", description: "Total de estrelas." },
+      { name: "allowHalf", type: "boolean", default: "false", description: "Permite escolher meia estrela." },
+      { name: "readOnly", type: "boolean", default: "false", description: "Só mostra a nota (média), com meia estrela quando cabe." },
+      { name: "disabled", type: "boolean", default: "—", description: "Desabilita todos os radios." },
+      { name: "required", type: "boolean", default: "—", description: "Nota obrigatória na validação do formulário." },
+      { name: "name", type: "string", default: "—", description: "Nome do campo enviado no formulário." },
+    ],
+    meta: {
+      nome: "Rating",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/rating.tsx",
+      story: "src/components/ui/rating.stories.tsx",
+      vizinhos: ["radio-group", "slider"],
+    },
+    whenToUseItems: ["Pedir uma nota rápida: entrega, atendimento, produto.", "Mostrar a média de avaliações ao lado do número de avaliações."],
+    whenNotToUse: ["Escolha entre opções com nome (Ruim, Bom, Ótimo) → radio-group.", "Valor contínuo num intervalo → slider."],
+    content: ["Pergunta visível acima, ligada por aria-labelledby.", "Média só leitura sempre com o número e o total de avaliações ao lado."],
+    accessibility: {
+      keyboard: "Tab entra no grupo; setas trocam a nota (radios nativos).",
+      screenReader: "grupo de opções com a pergunta como nome; cada opção é \"3 de 5 estrelas\". Só leitura: imagem \"3,5 de 5 estrelas\".",
+      focus: "anel em volta da estrela focada.",
+      cautions: "estrelas vazias em muted-foreground para o contorno ter contraste; a cor nunca é a única pista (o nome traz o número).",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground", "text-warning-600"] },
+      { contexto: "Espaço", itens: ["end-0", "gap-0.5", "inset-0", "inset-x-0", "inset-y-0", "size-4", "size-6", "size-8", "start-0", "w-1"] },
+      { contexto: "Raio", itens: ["rounded-sm"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
+  "color-picker": {
+    description: "Escolhe uma cor: livre, na área de saturação e brilho mais a matiz; digitada em hexadecimal; ou tirada de uma paleta. Devolve sempre o hex.",
+    whenToUse: "A pessoa escolhe uma cor qualquer: tema de marca, etiqueta, destaque. A paleta sugere cores, mas a pessoa pode sair dela.",
+    anatomy: [
+      { part: "Painel", description: "Interno: área, matiz, hex e paleta; não é exportado." },
+      { part: "ColorPickerPanel", description: "O painel solto, para usar inline. Raiz <div> com o className." },
+      { part: "ColorPicker", description: "Botão data-slot=\"color-picker\" (amostra + hex) que abre o painel num popover." },
+      { part: "Área", description: "data-slot=\"color-picker-area\", role=\"slider\": saturação na horizontal, brilho na vertical." },
+      { part: "Amostra da paleta", description: "button data-slot=\"color-picker-swatch\" com aria-pressed." },
+    ],
+    variants: [],
+    states: [
+      { name: "Aberto", description: "Painel no popover, sob o botão" },
+      { name: "Hex inválido", description: "Campo continua com o texto e marcado como inválido (aria-invalid) até ser corrigido; a cor não muda" },
+      { name: "Cor da paleta", description: "A amostra da cor atual ganha anel (aria-pressed)" },
+      { name: "Desabilitado", description: "Botão sem interação" },
+    ],
+    sizes: [],
+    doGuidelines: ["Passe label com a finalidade da cor.", "Ofereça paleta com as cores da marca.", "Confira o contraste da cor escolhida onde ela for usada."],
+    dontGuidelines: ["Usar para trocar token do tema → construtor de tema", "Só a amostra, sem o hex → deixe o hex visível", "Paleta com dezenas de cores → poucas, as da marca"],
+    code: `import { ColorPicker } from "@/components/ui/color-picker"
+
+export function ExemploCor() {
+  return <ColorPicker label="Cor da etiqueta" defaultValue="#2563eb" paleta={["#2563eb", "#16a34a"]} />
+}`,
+    props: [
+      { name: "value (Painel)", type: "string", default: "—", description: "Cor controlada, em hex (#abc ou #aabbcc). Use com onValueChange." },
+      { name: "defaultValue (Painel)", type: "string", default: "—", description: "Cor inicial quando não controlada. Padrão: #000000." },
+      { name: "onValueChange (Painel)", type: "(hex: string) => void", default: "—", description: "Recebe a cor nova, sempre #rrggbb minúsculo." },
+      { name: "paleta (Painel)", type: "string[]", default: "—", description: "Cores prontas em hex. Sem ela, não há paleta." },
+      { name: "value (ColorPickerPanel)", type: "string", default: "—", description: "Cor controlada, em hex (#abc ou #aabbcc). Use com onValueChange." },
+      { name: "defaultValue (ColorPickerPanel)", type: "string", default: "—", description: "Cor inicial quando não controlada. Padrão: #000000." },
+      { name: "onValueChange (ColorPickerPanel)", type: "(hex: string) => void", default: "—", description: "Recebe a cor nova, sempre #rrggbb minúsculo." },
+      { name: "paleta (ColorPickerPanel)", type: "string[]", default: "—", description: "Cores prontas em hex. Sem ela, não há paleta." },
+      { name: "className (ColorPickerPanel)", type: "string", default: "—", description: "Classes extras na raiz." },
+      { name: "value", type: "string", default: "—", description: "Cor controlada, em hex (#abc ou #aabbcc). Use com onValueChange." },
+      { name: "defaultValue", type: "string", default: "—", description: "Cor inicial quando não controlada. Padrão: #000000." },
+      { name: "onValueChange", type: "(hex: string) => void", default: "—", description: "Recebe a cor nova, sempre #rrggbb minúsculo." },
+      { name: "paleta", type: "string[]", default: "—", description: "Cores prontas em hex. Sem ela, não há paleta." },
+      { name: "label", type: "string", default: "—", description: "Nome do campo, dito antes do hex no botão. Padrão: \"Cor\"." },
+      { name: "className", type: "string", default: "—", description: "Classes extras na raiz." },
+      { name: "disabled", type: "boolean", default: "—", description: "Desliga o botão." },
+    ],
+    meta: {
+      nome: "Color Picker",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/color-picker.tsx",
+      story: "src/components/ui/color-picker.stories.tsx",
+      vizinhos: ["input", "popover", "slider"],
+    },
+    whenToUseItems: ["A pessoa escolhe uma cor qualquer: tema de marca, etiqueta, destaque.", "A paleta sugere cores, mas a pessoa pode sair dela."],
+    whenNotToUse: ["Só algumas cores possíveis, sem cor livre → toggle-group com amostras", "Cor que é token do tema → o construtor de tema em Fundamentos"],
+    content: ["O label diz para que serve a cor (\"Cor da marca\"); o leitor de tela ouve o nome e o hex.", "Textos de sistema (área, matiz, hexadecimal, paleta) vêm do dicionário (pt-BR ou en)."],
+    accessibility: {
+      keyboard: "Na área, setas mudam saturação (←→) e brilho (↑↓); Shift anda 10. A matiz é o slider (setas, Home, End). Enter no hex confirma; Tab percorre as amostras.",
+      screenReader: "A área anuncia \"Saturação X%, brilho Y%\"; o botão diz o nome e a cor atual; cada amostra diz o hex e se é a atual.",
+      focus: "Anel de foco em todas as peças; ao abrir, o foco entra no popover.",
+      cautions: "O hex fica sempre visível: a cor nunca depende só de ver a amostra.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["gap-1.5", "gap-2", "gap-3", "h-3", "h-36", "inset-0", "size-4", "size-5", "size-6", "size-9", "w-56"] },
+      { contexto: "Raio", itens: ["radius-inset-0", "radius-inset-2.5", "radius-inset-4", "rounded-full", "rounded-inner", "rounded-outer-md"] },
+      { contexto: "Sombra", itens: ["shadow-sm"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
+  "image-viewer": {
+    description: "Imagem grande por cima da página, com zoom, arrastar e galeria. É o dialog em tela cheia, com barra de ações, setas para trocar de imagem e miniaturas.",
+    whenToUse: "Ver em detalhe a foto de um produto, imóvel ou documento. Percorrer as fotos de uma galeria a partir da miniatura.",
+    anatomy: [
+      { part: "ImageViewer", description: "O visualizador: gatilho, barra (posição, reduzir, ampliar, fechar), palco com a imagem e as setas, e as miniaturas." },
+    ],
+    variants: [],
+    states: [
+      { name: "Sem zoom", description: "Imagem inteira; cursor de lupa." },
+      { name: "Com zoom", description: "De 1,5× a 4×; cursor de mão, arrastar move a imagem." },
+      { name: "Limite do zoom", description: "O botão do limite fica marcado como indisponível." },
+      { name: "Miniatura atual", description: "Opaca e com contorno; as outras, esmaecidas." },
+    ],
+    sizes: [],
+    doGuidelines: ["Usar a miniatura como gatilho, com nome (\"Ampliar foto 1\").", "Abrir na imagem clicada (defaultIndex).", "Escrever o alt de cada imagem."],
+    dontGuidelines: ["Usar para imagem decorativa → deixar só na página.", "Pôr formulário ou texto longo junto da imagem → dialog.", "Abrir sem gatilho visível → miniatura ou botão \"Ver fotos\"."],
+    code: `import { ImageViewer } from "@/components/ui/image-viewer"
+
+<ImageViewer images={[{ src: "/foto.jpg", alt: "Fachada" }]}>
+  <button type="button">Ver foto</button>
+</ImageViewer>`,
+    props: [
+      { name: "images", type: "ImagemDoVisualizador[]", default: "—", description: "Lista de imagens (src e alt); com mais de uma, vira galeria." },
+      { name: "children", type: "React.ReactNode", default: "—", description: "Gatilho que abre o visualizador, como a miniatura." },
+      { name: "open", type: "boolean", default: "—", description: "Aberto, controlado." },
+      { name: "defaultOpen", type: "boolean", default: "—", description: "Aberto no início, sem controle." },
+      { name: "onOpenChange", type: "(aberto: boolean) => void", default: "—", description: "Chamado ao abrir ou fechar." },
+      { name: "index", type: "number", default: "—", description: "Imagem atual, controlada." },
+      { name: "defaultIndex", type: "number", default: "0", description: "Imagem mostrada ao abrir, sem controle." },
+      { name: "onIndexChange", type: "(indice: number) => void", default: "—", description: "Chamado ao trocar de imagem." },
+      { name: "className", type: "string", default: "—", description: "Classes extras na superfície em tela cheia." },
+    ],
+    meta: {
+      nome: "Image Viewer",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/image-viewer.tsx",
+      story: "src/components/ui/image-viewer.stories.tsx",
+      vizinhos: ["dialog", "carousel", "aspect-ratio"],
+    },
+    whenToUseItems: ["Ver em detalhe a foto de um produto, imóvel ou documento.", "Percorrer as fotos de uma galeria a partir da miniatura."],
+    whenNotToUse: ["Fotos passando dentro da própria página → carousel.", "Imagem em proporção fixa na página → aspect-ratio."],
+    content: ["alt de cada imagem descreve o que se vê; ele vira o título do dialog e o nome da miniatura.", "Imagem em resolução alta: o zoom chega a 4×."],
+    accessibility: {
+      keyboard: "setas trocam a imagem; +, - e 0 controlam o zoom; Esc fecha; Tab passa pela barra, setas e miniaturas.",
+      screenReader: "anuncia o dialog com o alt da imagem; a posição (\"2 de 5\") é anunciada ao trocar.",
+      focus: "preso no visualizador enquanto aberto e devolvido ao gatilho ao fechar (do dialog).",
+      cautions: "sem pinça de dois dedos; no toque, o zoom é pelo duplo toque e pelos botões.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm"] },
+      { contexto: "Espaço", itens: ["end-2", "gap-0", "gap-1", "gap-2", "inset-0", "left-0", "min-h-0", "p-0", "p-2", "px-2", "size-14", "start-2", "top-0", "top-1"] },
+      { contexto: "Raio", itens: ["rounded-full", "rounded-md"] },
+      { contexto: "Movimento", itens: ["duration-motion-fast"] },
+      { contexto: "Foco", itens: ["ring-primary", "ring-ring"] },
     ],
   },
 }
