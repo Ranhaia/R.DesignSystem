@@ -79,6 +79,7 @@ export const componentsList: ComponentEntry[] = [
   { slug: "skeleton", name: "Skeleton" },
   { slug: "slider", name: "Slider" },
   { slug: "sonner", name: "Sonner" },
+  { slug: "sortable-list", name: "Sortable List" },
   { slug: "speed-dial", name: "Speed Dial" },
   { slug: "spinner", name: "Spinner" },
   { slug: "split-button", name: "Split Button" },

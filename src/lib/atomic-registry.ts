@@ -65,6 +65,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   progress: "atom",
   "radio-group": "atom",
   slider: "atom",
+  "sortable-list": "atom",
   spinner: "atom",
   switch: "atom",
   tag: "atom",
