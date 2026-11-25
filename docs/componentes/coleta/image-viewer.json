@@ -1,0 +1,92 @@
+{
+  "slug": "image-viewer",
+  "partes": [
+    "ImageViewer"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "images",
+      "parte": "ImageViewer",
+      "tipo": "`ImagemDoVisualizador[]`",
+      "padrao": null
+    },
+    {
+      "nome": "children",
+      "parte": "ImageViewer",
+      "tipo": "`React.ReactNode`",
+      "padrao": null
+    },
+    {
+      "nome": "open",
+      "parte": "ImageViewer",
+      "tipo": "`boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "defaultOpen",
+      "parte": "ImageViewer",
+      "tipo": "`boolean`",
+      "padrao": null
+    },
+    {
+      "nome": "onOpenChange",
+      "parte": "ImageViewer",
+      "tipo": "`(aberto: boolean) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "index",
+      "parte": "ImageViewer",
+      "tipo": "`number`",
+      "padrao": null
+    },
+    {
+      "nome": "defaultIndex",
+      "parte": "ImageViewer",
+      "tipo": "`number`",
+      "padrao": "0"
+    },
+    {
+      "nome": "onIndexChange",
+      "parte": "ImageViewer",
+      "tipo": "`(indice: number) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "className",
+      "parte": "ImageViewer",
+      "tipo": "`string`",
+      "padrao": null
+    }
+  ],
+  "tokens": [
+    "duration-motion-fast",
+    "end-2",
+    "gap-0",
+    "gap-1",
+    "gap-2",
+    "inset-0",
+    "left-0",
+    "min-h-0",
+    "p-0",
+    "p-2",
+    "px-2",
+    "ring-primary",
+    "ring-ring",
+    "rounded-full",
+    "rounded-md",
+    "size-14",
+    "start-2",
+    "text-muted-foreground",
+    "text-sm",
+    "top-0",
+    "top-1"
+  ],
+  "compoe": [
+    "dialog",
+    "icon",
+    "icon-button"
+  ]
+}

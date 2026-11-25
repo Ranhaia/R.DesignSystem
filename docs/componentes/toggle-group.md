@@ -18,8 +18,8 @@ Ideal para barras de ferramentas, formatação e filtros visuais compactos.
 ## Quando usar
 
 - Conjuntos de opções de estilo ou formatação (como negrito, itálico e sublinhado) com seleção múltipla.
-- Seleção exclusiva de alinhamento ou visualização (como esquerda, centro e direita) em barras de ferramentas.
-- Filtros rápidos em linha onde o estado ativo de cada botão precisa ficar evidente.
+- Seleção exclusiva de alinhamento ou visualização (como esquerda, centro e direita), com `type="single"`.
+- Barra de ferramentas de botões de ícone liga/desliga: `type="multiple"` com `aria-label`; um Tab entra e as setas andam.
 
 ## Quando NÃO usar
 
@@ -77,8 +77,8 @@ Não tem tamanhos próprios declarados no código; as opções sm (32 px), defau
 
 ## Acessibilidade
 
-- **Teclado:** Em grupos com `type="single"` atua como rádio, navegando com setas direcionais. Em `type="multiple"` o Tab percorre os itens e Espaço/Enter alterna o estado de cada botão.
-- **Leitor de tela:** Utiliza papel `toolbar` ou `group` (Radix). Botões possuem `aria-pressed` para anunciar estado ativado/desativado ou `aria-checked` para seleção exclusiva.
+- **Teclado:** Um Tab só entra e sai do grupo (roving tabindex); as setas andam entre os botões, Home/End vão às pontas e, no fim, voltam ao começo; Espaço/Enter alterna o botão. Item `disabled` sai do percurso das setas.
+- **Leitor de tela:** `type="multiple"` é `toolbar` com botões `aria-pressed`: dê um `aria-label` ao grupo. `type="single"` é `radiogroup` com itens `radio`; não force `role="toolbar"` nele. Só botões de alternar: ação sem estado (copiar, desfazer) não entra aqui. Botões possuem `aria-pressed` para anunciar estado ativado/desativado ou `aria-checked` para seleção exclusiva.
 - **Foco:** Itens recebem `focus-visible:ring-ring` com `z-10` para manter o anel de foco destacado sobre as bordas adjacentes.
 - **Cuidados:** Forneça sempre `aria-label` para cada `ToggleGroupItem` que contenha apenas ícone (WCAG 4.1.2). Não exceda 10 itens na mesma barra sem agrupar opções secundárias.
 
