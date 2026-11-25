@@ -78,6 +78,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   popover: "atom",
   item: "atom",
   marker: "atom",
+  "description-list": "atom",
 
   // Molecules
   accordion: "molecule",

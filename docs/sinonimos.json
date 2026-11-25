@@ -37,6 +37,7 @@
   "input": ["campo", "campo-de-texto", "text-field", "textfield", "input-text", "email"],
   "password-input": ["senha", "password", "campo-de-senha", "nova-senha", "forca-de-senha", "password-strength"],
   "code-block": ["bloco-de-codigo", "codigo", "code", "snippet", "trecho-de-codigo", "copiar-codigo", "pre"],
+  "description-list": ["lista-de-definicoes", "lista-de-descricao", "ficha", "ficha-de-detalhes", "detalhes", "rotulo-valor", "chave-valor", "dl", "definition-list", "key-value"],
   "input-group": ["campo-com-icone", "campo-com-botao", "campo-de-pedido", "prompt"],
   "input-otp": ["otp", "codigo-de-verificacao", "código-de-verificação", "pin", "2fa"],
   "item": ["item-de-lista", "list-item", "linha"],

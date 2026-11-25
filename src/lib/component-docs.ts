@@ -5415,6 +5415,57 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
+  "description-list": {
+    description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
+    whenToUse: "Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar. Rótulos curtos com valores de tamanho variado.",
+    anatomy: [
+      { part: "DescriptionList", description: "O conjunto (dl). Define o layout." },
+      { part: "DescriptionItem", description: "Um par (div), o agrupador válido dentro de dl." },
+      { part: "DescriptionTerm", description: "O rótulo (dt), texto base apagado." },
+      { part: "DescriptionDetails", description: "O valor (dd), texto base médio. Pode haver mais de um por item." },
+    ],
+    variants: [],
+    states: [],
+    sizes: [],
+    doGuidelines: ["Agrupar fichas longas em seções com título (title) acima de cada lista.", "Manter a mesma ordem de campos em todas as fichas do mesmo tipo.", "Usar inline só quando os rótulos têm tamanho parecido."],
+    dontGuidelines: ["Comparar vários registros lado a lado numa lista → table.", "Deixar o valor vazio → traço ou \"Não informado\".", "Pôr campo editável no valor → field num formulário."],
+    code: `import {
+  DescriptionDetails,
+  DescriptionItem,
+  DescriptionList,
+  DescriptionTerm,
+} from "@/components/ui/description-list"
+
+<DescriptionList>
+  <DescriptionItem>
+    <DescriptionTerm>Plano</DescriptionTerm>
+    <DescriptionDetails>Profissional</DescriptionDetails>
+  </DescriptionItem>
+</DescriptionList>`,
+    props: [
+      { name: "layout", type: "stacked · inline", default: "stacked", description: "stacked põe o rótulo em cima do valor; inline põe lado a lado, com a coluna de rótulos alinhada." },
+    ],
+    meta: {
+      nome: "Description List",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/description-list.tsx",
+      story: "src/components/ui/description-list.stories.tsx",
+      vizinhos: ["table", "item", "card"],
+    },
+    whenToUseItems: ["Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar.", "Rótulos curtos com valores de tamanho variado."],
+    whenNotToUse: ["Vários registros com os mesmos campos → table.", "Lista de itens parecidos, cada um com ação → item / list.", "Valores que a pessoa edita → field com o controle certo."],
+    content: ["Rótulo curto, sem dois-pontos (o layout já separa).", "Valor ausente: mostre um traço ou \"Não informado\", nunca deixe o dd vazio."],
+    accessibility: {
+      keyboard: "não recebe foco; links ou botões dentro do valor seguem a ordem normal.",
+      screenReader: "anuncia a lista de definições e cada rótulo com seu valor.",
+      focus: "sem foco próprio.",
+      cautions: "só DescriptionItem, dt e dd dentro de dl; não troque por div soltos.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["gap-4", "gap-x-6", "gap-y-1", "gap-y-3"] },
+    ],
+  },
   "code-block": {
     description: "Trecho de código para ler e copiar. Cabeçalho com título e linguagem opcionais e um botão que copia o código inteiro, com aviso de copiado para quem vê e para o leitor de tela.",
     whenToUse: "Comando ou trecho que a pessoa vai colar em outro lugar: instalação, configuração, chave de exemplo. Documentação e telas de integração.",
