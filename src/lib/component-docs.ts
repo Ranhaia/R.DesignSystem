@@ -2250,7 +2250,7 @@ import { Icon } from "@/components/ui/icon"
   },
   link: {
     description: "Permite navegar entre páginas, seções internas ou sites externos. Reaproveita o estilo visual de link do botão e dá suporte a indicador de saída externa e carregamento esqueleto.",
-    whenToUse: "Navegar entre diferentes páginas ou rotas da aplicação em links isolados ou corridos. Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external. Ações secundárias de navegação em rodapés, termos de serviço ou textos explicativos.",
+    whenToUse: "Navegar entre páginas ou rotas, em links isolados, corridos no texto ou em rodapés e termos de serviço. Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external. Ação inline, a mais discreta, dentro do conteúdo: \"+ Adicionar contato\", \"Ver faturas →\" (prop action).",
     anatomy: [
       { part: "Link", description: "Elemento <a> (ou elemento filho via asChild) com classes da variante link do Button" },
       { part: "Ícone de saída (opcional)", description: "Ícone open_in_new renderizado automaticamente à direita quando external=true" },
@@ -2262,6 +2262,7 @@ import { Icon } from "@/components/ui/icon"
       { name: "Hover", description: "Sublinhado destacado via hover:underline" },
       { name: "Foco", description: "Anel visível via focus-visible:ring" },
       { name: "Externo", description: "Exibe o ícone open_in_new e abre em nova aba" },
+      { name: "Ação inline", description: "+ antes ou seta depois do texto, colado ao conteúdo" },
       { name: "Desabilitado", description: "Suportado via aria-disabled com opacidade reduzida" },
     ],
     sizes: [],
@@ -2280,6 +2281,7 @@ import { Icon } from "@/components/ui/icon"
       { name: "external", type: "boolean", default: "false", description: "Força target=\"_blank\", rel=\"noopener noreferrer\" e ícone de saída" },
       { name: "href", type: "string", default: "—", description: "Endereço de destino da navegação" },
       { name: "size (LinkSkeleton)", type: "LinkSize", default: "default", description: "Tamanho do placeholder esqueleto correspondente" },
+      { name: "action", type: "add · next", default: "—", description: "Ação inline: add põe o + antes do texto, next põe a seta depois (espelhada em RTL). Tira a altura e o recuo de botão para caber no texto. Use texto curto: a ação não quebra no meio. Não combine next com external" },
     ],
     meta: {
       nome: "Link",
@@ -2289,7 +2291,7 @@ import { Icon } from "@/components/ui/icon"
       story: "src/components/ui/link.stories.tsx",
       vizinhos: ["button", "navigation-menu", "breadcrumb"],
     },
-    whenToUseItems: ["Navegar entre diferentes páginas ou rotas da aplicação em links isolados ou corridos.", "Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external.", "Ações secundárias de navegação em rodapés, termos de serviço ou textos explicativos."],
+    whenToUseItems: ["Navegar entre páginas ou rotas, em links isolados, corridos no texto ou em rodapés e termos de serviço.", "Conectar o usuário a sites ou serviços externos abrindo em nova aba com a prop external.", "Ação inline, a mais discreta, dentro do conteúdo: \"+ Adicionar contato\", \"Ver faturas →\" (prop action)."],
     whenNotToUse: ["Ação que altera dados, envia formulário ou abre janelas modais → button", "Menus complexos de navegação hierárquica com múltiplos níveis → navigation-menu", "Trilha de localização indicando o caminho atual da página → breadcrumb"],
     content: ["O texto deve indicar com clareza o destino ou objetivo: \"Ver relatórios\", \"Documentação da API\".", "Evite expressões genéricas e isoladas como \"clique aqui\" ou \"saiba mais\".", "Para destinos externos, a indicação de nova aba é reforçada pelo ícone visual."],
     accessibility: {
@@ -2299,7 +2301,7 @@ import { Icon } from "@/components/ui/icon"
       cautions: "Links externos devem incluir aviso de abertura em nova aba no texto ou acessibilidade; nunca use link para ações destrutivas.",
     },
     tokens: [
-      { contexto: "Espaço", itens: ["h-10", "h-6", "h-8", "h-9", "w-14", "w-16", "w-20", "w-24"] },
+      { contexto: "Espaço", itens: ["gap-1", "h-10", "h-6", "h-8", "h-9", "p-0", "w-14", "w-16", "w-20", "w-24"] },
       { contexto: "Raio", itens: ["rounded-md"] },
     ],
   },

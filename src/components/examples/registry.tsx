@@ -177,6 +177,7 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "kbd-tooltip": dynamic(() => import("@/components/examples/kbd-tooltip")),
   "label-demo": dynamic(() => import("@/components/examples/label-demo")),
   "list-demo": dynamic(() => import("@/components/examples/list-demo")),
+  "link-acao-inline": dynamic(() => import("@/components/examples/link-acao-inline")),
   "link-demo": dynamic(() => import("@/components/examples/link-demo")),
   "marker-demo": dynamic(() => import("@/components/examples/marker-demo")),
   "menubar-demo": dynamic(() => import("@/components/examples/menubar-demo")),
