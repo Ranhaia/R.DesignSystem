@@ -35,6 +35,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Popover](/ia/componentes/popover.md): Painel flutuante acionado por clique que exibe conteúdo rico, configurações rápidas ou detalhes adicionais. Mantém a pessoa no contexto da tela sem a interrupção de uma janela modal.
 - [Progress](/ia/componentes/progress.md): Barra indicadora que exibe visualmente o avanço de uma tarefa com duração determinada. Comunica a porcentagem concluída em uploads, downloads ou etapas de processamento.
 - [Radio Group](/ia/componentes/radio-group.md): Conjunto de botões de opção exclusivos em que a pessoa seleciona exatamente uma alternativa. Ao marcar uma opção nova, a escolha anterior é desmarcada automaticamente.
+- [Rating](/ia/componentes/rating.md): Estrelas para dar uma nota ou mostrar a média. Para dar nota, é um grupo de radios nativos (setas trocam, o valor vai no formulário); só leitura, é uma imagem com a nota por extenso.
 - [Select](/ia/componentes/select.md): Menu suspenso customizado acionado por botão para seleção de uma opção em uma lista. Suporta itens estruturados com ícones, grupos de opções e rótulo integrado ou animado.
 - [Slider](/ia/componentes/slider.md): Controle deslizante que permite selecionar um valor ou intervalo contínuo arrastando um ou mais marcadores sobre um trilho. Ideal para ajustes visuais e valores aproximados.
 - [Spinner](/ia/componentes/spinner.md): Indicador giratório para esperas de tempo indeterminado. Mostra que o sistema está ocupado processando uma ação.

@@ -79,6 +79,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Dinheiro → `currency-input` (moeda em `currency`).
 - Número exato, com − e + → `number-input`.
 - Busca → `search-input` (com atalho de teclado: `shortcut`).
+- Nota em estrelas → `rating` (média só para ler: `readOnly`).
 - Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
 
 **Mostrar mensagem**
@@ -165,6 +166,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [popover](popover.md) — Painel flutuante no clique para conteúdo rico ou configurações rápidas.
 - [progress](progress.md) — Barra ou anel que indica o andamento de tarefas com duração determinada.
 - [radio-group](radio-group.md) — Opções exclusivas para escolher exatamente uma alternativa visível.
+- [rating](rating.md) — Estrelas para dar nota ou mostrar a média.
 - [resizable](resizable.md) — Grupos de painéis com divisores arrastáveis e proporcionais para layouts flexíveis.
 - [scroll-area](scroll-area.md) — Área de rolagem customizada e consistente entre navegadores.
 - [search-input](search-input.md) — Campo de busca com lupa, limpar e atalho de teclado.
