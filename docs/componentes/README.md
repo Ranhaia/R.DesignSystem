@@ -98,6 +98,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Status só de leitura → `badge`. Filtro ou seleção clicável → `chip` / `tag`.
 - Carregando com formato conhecido → `skeleton`. Sem formato → `spinner`. Com porcentagem → `progress` (barra; em espaço curto, `shape="circle"`).
 - Nada para mostrar ainda → `empty`.
+- Código para ler e copiar → `code-block`. Tecla ou atalho no meio do texto → `kbd`.
 
 ## Componentes documentados
 
@@ -123,6 +124,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [chart](chart.md) — Renderiza gráficos visuais baseados em Recharts com variáveis e tooltips.
 - [checkbox](checkbox.md) — Permite marcar ou desmarcar opções independentes em formulários.
 - [chip](chip.md) — Sinaliza critérios ou atributos ativos aplicados a uma busca ou filtragem de lista.
+- [code-block](code-block.md) — Código com botão de copiar.
 - [collapsible](collapsible.md) — Alterna a visibilidade de uma seção de conteúdo secundário sob demanda.
 - [combobox](combobox.md) — Combina campo de texto com lista de sugestões filtradas e seleção por chips.
 - [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.

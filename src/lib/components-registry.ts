@@ -48,6 +48,7 @@ export const componentsList: ComponentEntry[] = [
   { slug: "input-otp", name: "Input Otp" },
   { slug: "number-input", name: "Number Input" },
   { slug: "password-input", name: "Password Input" },
+  { slug: "code-block", name: "Code Block" },
   { slug: "search-input", name: "Search Input" },
   { slug: "timeline", name: "Timeline" },
   { slug: "description-list", name: "Description List" },

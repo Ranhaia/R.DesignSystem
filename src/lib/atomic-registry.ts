@@ -141,6 +141,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   sidebar: "organism",
   stepper: "organism",
   "time-picker": "organism",
+  "code-block": "organism",
 }
 
 export function getAtomicCategory(slug: string): AtomicCategory | null {

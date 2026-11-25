@@ -5416,62 +5416,103 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
-  "notification-center": {
-    description: "Sino com o número de não lidas que abre, num popover, a lista de notificações lidas e não lidas. Junta num lugar os avisos que a pessoa lê depois.",
-    whenToUse: "Avisos que se acumulam e a pessoa lê quando quiser: comentários, relatórios prontos, aprovações. No cabeçalho do app, perto do avatar.",
+  "description-list": {
+    description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
+    whenToUse: "Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar. Rótulos curtos com valores de tamanho variado.",
     anatomy: [
-      { part: "NotificationList", description: "Título, \"Marcar todas como lidas\" e a lista; cada item é um botão com ponto de não lida, título, descrição e hora" },
-      { part: "NotificationCenter", description: "Sino (icon-button) com o badge de não lidas, que abre a NotificationList num popover" },
+      { part: "DescriptionList", description: "O conjunto (dl). Define o layout." },
+      { part: "DescriptionItem", description: "Um par (div), o agrupador válido dentro de dl." },
+      { part: "DescriptionTerm", description: "O rótulo (dt), texto base apagado." },
+      { part: "DescriptionDetails", description: "O valor (dd), texto base médio. Pode haver mais de um por item." },
+    ],
+    variants: [],
+    states: [],
+    sizes: [],
+    doGuidelines: ["Agrupar fichas longas em seções com título (title) acima de cada lista.", "Manter a mesma ordem de campos em todas as fichas do mesmo tipo.", "Usar inline só quando os rótulos têm tamanho parecido."],
+    dontGuidelines: ["Comparar vários registros lado a lado numa lista → table.", "Deixar o valor vazio → traço ou \"Não informado\".", "Pôr campo editável no valor → field num formulário."],
+    code: `import {
+  DescriptionDetails,
+  DescriptionItem,
+  DescriptionList,
+  DescriptionTerm,
+} from "@/components/ui/description-list"
+
+<DescriptionList>
+  <DescriptionItem>
+    <DescriptionTerm>Plano</DescriptionTerm>
+    <DescriptionDetails>Profissional</DescriptionDetails>
+  </DescriptionItem>
+</DescriptionList>`,
+    props: [
+      { name: "layout", type: "stacked · inline", default: "stacked", description: "stacked põe o rótulo em cima do valor; inline põe lado a lado, com a coluna de rótulos alinhada." },
+    ],
+    meta: {
+      nome: "Description List",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/description-list.tsx",
+      story: "src/components/ui/description-list.stories.tsx",
+      vizinhos: ["table", "item", "card"],
+    },
+    whenToUseItems: ["Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar.", "Rótulos curtos com valores de tamanho variado."],
+    whenNotToUse: ["Vários registros com os mesmos campos → table.", "Lista de itens parecidos, cada um com ação → item / list.", "Valores que a pessoa edita → field com o controle certo."],
+    content: ["Rótulo curto, sem dois-pontos (o layout já separa).", "Valor ausente: mostre um traço ou \"Não informado\", nunca deixe o dd vazio."],
+    accessibility: {
+      keyboard: "não recebe foco; links ou botões dentro do valor seguem a ordem normal.",
+      screenReader: "anuncia a lista de definições e cada rótulo com seu valor.",
+      focus: "sem foco próprio.",
+      cautions: "só DescriptionItem, dt e dd dentro de dl; não troque por div soltos.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["gap-4", "gap-x-6", "gap-y-1", "gap-y-3"] },
+    ],
+  },
+  "code-block": {
+    description: "Trecho de código para ler e copiar. Cabeçalho com título e linguagem opcionais e um botão que copia o código inteiro, com aviso de copiado para quem vê e para o leitor de tela.",
+    whenToUse: "Comando ou trecho que a pessoa vai colar em outro lugar: instalação, configuração, chave de exemplo. Documentação e telas de integração.",
+    anatomy: [
+      { part: "CodeBlock", description: "O bloco inteiro: cabeçalho (título, linguagem, botão de copiar com o aviso) e o código em pre/code." },
     ],
     variants: [],
     states: [
-      { name: "Com não lidas", description: "badge com o número no sino (9+ acima de 9); itens com ponto e título em destaque" },
-      { name: "Tudo lido", description: "Sino sem badge; \"Marcar todas como lidas\" some" },
-      { name: "Vazia", description: "\"Nenhuma notificação\" no lugar da lista" },
+      { name: "Repouso", description: "Ícone de copiar." },
+      { name: "Copiado", description: "Ícone de check e balão \"Copiado\" por 2 s." },
+      { name: "Falha", description: "Ícone de erro e balão \"Não foi possível copiar\" por 2 s." },
     ],
     sizes: [],
-    doGuidelines: ["Marque como lida no onSelect, ao abrir o item.", "Ofereça \"Marcar todas como lidas\" pelo onMarkAllRead.", "Ordene da mais nova para a mais antiga."],
-    dontGuidelines: ["Usar para confirmar uma ação que acabou de acontecer → sonner.", "Contador sem a lista → badge sozinho.", "Pôr ações longas dentro do item → leve para a tela do assunto."],
-    code: `import { NotificationCenter } from "@/components/ui/notification-center"
+    doGuidelines: ["Dar título quando há mais de um bloco na tela, para os botões terem nomes diferentes.", "Informar a linguagem.", "Separar comandos em blocos diferentes quando a pessoa roda um de cada vez."],
+    dontGuidelines: ["Pôr código no meio de uma frase → kbd ou code inline.", "Usar para texto editável → textarea.", "Esconder o botão de copiar no hover → deixar sempre visível."],
+    code: `import { CodeBlock } from "@/components/ui/code-block"
 
-<NotificationCenter
-  notifications={itens}
-  onSelect={marcarComoLida}
-  onMarkAllRead={marcarTodas}
-/>`,
+<CodeBlock language="bash" code="npm install" />`,
     props: [
-      { name: "open / onOpenChange", type: "boolean / (open: boolean) => void", default: "—", description: "Controlam o popover, como no popover" },
-      { name: "notifications (NotificationList)", type: "Notification[]", default: "—", description: "Lista com id, title, description?, time? e read?" },
-      { name: "onSelect (NotificationList)", type: "(id: string) => void", default: "—", description: "Clique num item: o produto marca como lida e/ou navega" },
-      { name: "onMarkAllRead (NotificationList)", type: "() => void", default: "—", description: "Clique em \"Marcar todas como lidas\"" },
-      { name: "className (NotificationList)", type: "string", default: "—", description: "Classes extras na raiz" },
-      { name: "notifications", type: "Notification[]", default: "—", description: "Lista com id, title, description?, time? e read?" },
-      { name: "onSelect", type: "(id: string) => void", default: "—", description: "Clique num item: o produto marca como lida e/ou navega" },
-      { name: "onMarkAllRead", type: "() => void", default: "—", description: "Clique em \"Marcar todas como lidas\"" },
-      { name: "className", type: "string", default: "—", description: "Classes extras na raiz" },
+      { name: "code", type: "string", default: "—", description: "O código exibido e copiado, como texto puro." },
+      { name: "language", type: "string", default: "—", description: "Linguagem (ex.: tsx, bash), mostrada no cabeçalho." },
+      { name: "title", type: "string", default: "—", description: "Nome do trecho; entra também no nome do botão de copiar." },
     ],
     meta: {
-      nome: "Notification Center",
+      nome: "Code Block",
       camada: "organism",
       status: "piloto",
-      codigo: "src/components/ui/notification-center.tsx",
-      story: "src/components/ui/notification-center.stories.tsx",
-      vizinhos: ["sonner", "popover", "badge"],
+      codigo: "src/components/ui/code-block.tsx",
+      story: "src/components/ui/code-block.stories.tsx",
+      vizinhos: ["kbd", "textarea"],
     },
-    whenToUseItems: ["Avisos que se acumulam e a pessoa lê quando quiser: comentários, relatórios prontos, aprovações.", "No cabeçalho do app, perto do avatar."],
-    whenNotToUse: ["Confirmação de algo que acabou de acontecer → sonner.", "Recado para todos, de uma vez → announcement-banner.", "Número solto, sem lista → badge."],
-    content: ["Título curto que diz o que aconteceu: \"Relatório mensal pronto\".", "Descrição opcional com o próximo passo; hora já formatada pelo produto (\"há 5 min\")."],
+    whenToUseItems: ["Comando ou trecho que a pessoa vai colar em outro lugar: instalação, configuração, chave de exemplo.", "Documentação e telas de integração."],
+    whenNotToUse: ["Tecla ou atalho no meio do texto → kbd.", "Código que a pessoa edita → textarea."],
+    content: ["Código pronto para colar: sem $ de prompt nem saída misturada.", "Título curto: nome do arquivo ou do passo."],
     accessibility: {
-      keyboard: "Tab chega ao sino; Enter ou Espaço abre. Dentro, Tab percorre os itens; Esc fecha e devolve o foco ao sino.",
-      screenReader: "O nome do sino traz o número (\"Notificações, 2 não lidas\"); o badge é escondido para não repetir. Item não lido começa com \"Não lida:\".",
-      focus: "Ao abrir, vai para o painel (comportamento do popover); ao fechar, volta ao sino.",
-      cautions: "Não lida nunca é só cor: tem ponto, peso do título e o prefixo para o leitor.",
+      keyboard: "Tab chega ao botão e depois ao código, que rola com as setas.",
+      screenReader: "o botão tem nome (\"Copiar código\", com o título quando há) e o resultado é anunciado pela região role=\"status\".",
+      focus: "anel no botão e anel interno no código; o botão nunca é desabilitado, então o foco não se perde.",
+      cautions: "a cópia precisa de HTTPS ou localhost; fora disso cai no estado de falha, que também é avisado.",
     },
     tokens: [
-      { contexto: "Cor", itens: ["bg-accent", "bg-primary", "text-muted-foreground"] },
-      { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs"] },
-      { contexto: "Espaço", itens: ["gap-0.5", "gap-2", "min-h-5", "min-w-0", "min-w-5", "mt-1.5", "mx-2", "px-1", "px-2", "py-2", "py-6", "right-0.5", "size-2", "top-0.5", "w-80"] },
-      { contexto: "Raio", itens: ["rounded-full", "rounded-md"] },
+      { contexto: "Cor", itens: ["bg-foreground", "bg-muted", "text-background", "text-foreground", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "leading-relaxed", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-2", "me-1", "min-w-0", "p-1", "p-4", "ps-3", "px-2", "py-1"] },
+      { contexto: "Raio", itens: ["rounded-inner", "rounded-md", "rounded-outer-lg"] },
+      { contexto: "Movimento", itens: ["duration-motion-fast"] },
       { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
@@ -5546,57 +5587,6 @@ export function ExemploPedidos() {
       { contexto: "Cor", itens: ["text-muted-foreground"] },
       { contexto: "Tipografia", itens: ["text-sm"] },
       { contexto: "Espaço", itens: ["gap-2", "gap-3", "h-24", "max-w-xs", "ml-3", "mr-3", "w-0"] },
-    ],
-  },
-  "description-list": {
-    description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
-    whenToUse: "Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar. Rótulos curtos com valores de tamanho variado.",
-    anatomy: [
-      { part: "DescriptionList", description: "O conjunto (dl). Define o layout." },
-      { part: "DescriptionItem", description: "Um par (div), o agrupador válido dentro de dl." },
-      { part: "DescriptionTerm", description: "O rótulo (dt), texto base apagado." },
-      { part: "DescriptionDetails", description: "O valor (dd), texto base médio. Pode haver mais de um por item." },
-    ],
-    variants: [],
-    states: [],
-    sizes: [],
-    doGuidelines: ["Agrupar fichas longas em seções com título (title) acima de cada lista.", "Manter a mesma ordem de campos em todas as fichas do mesmo tipo.", "Usar inline só quando os rótulos têm tamanho parecido."],
-    dontGuidelines: ["Comparar vários registros lado a lado numa lista → table.", "Deixar o valor vazio → traço ou \"Não informado\".", "Pôr campo editável no valor → field num formulário."],
-    code: `import {
-  DescriptionDetails,
-  DescriptionItem,
-  DescriptionList,
-  DescriptionTerm,
-} from "@/components/ui/description-list"
-
-<DescriptionList>
-  <DescriptionItem>
-    <DescriptionTerm>Plano</DescriptionTerm>
-    <DescriptionDetails>Profissional</DescriptionDetails>
-  </DescriptionItem>
-</DescriptionList>`,
-    props: [
-      { name: "layout", type: "stacked · inline", default: "stacked", description: "stacked põe o rótulo em cima do valor; inline põe lado a lado, com a coluna de rótulos alinhada." },
-    ],
-    meta: {
-      nome: "Description List",
-      camada: "atom",
-      status: "piloto",
-      codigo: "src/components/ui/description-list.tsx",
-      story: "src/components/ui/description-list.stories.tsx",
-      vizinhos: ["table", "item", "card"],
-    },
-    whenToUseItems: ["Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar.", "Rótulos curtos com valores de tamanho variado."],
-    whenNotToUse: ["Vários registros com os mesmos campos → table.", "Lista de itens parecidos, cada um com ação → item / list.", "Valores que a pessoa edita → field com o controle certo."],
-    content: ["Rótulo curto, sem dois-pontos (o layout já separa).", "Valor ausente: mostre um traço ou \"Não informado\", nunca deixe o dd vazio."],
-    accessibility: {
-      keyboard: "não recebe foco; links ou botões dentro do valor seguem a ordem normal.",
-      screenReader: "anuncia a lista de definições e cada rótulo com seu valor.",
-      focus: "sem foco próprio.",
-      cautions: "só DescriptionItem, dt e dd dentro de dl; não troque por div soltos.",
-    },
-    tokens: [
-      { contexto: "Espaço", itens: ["gap-4", "gap-x-6", "gap-y-1", "gap-y-3"] },
     ],
   },
   "number-input": {
@@ -5857,5 +5847,64 @@ export function ExemploValor() {
       focus: "Anel do input-group em volta do símbolo e do campo.",
       cautions: "Passe label ou aria-label. Não é type=\"number\": esse tipo não aceita o separador do idioma. Sem máscara durante a digitação, para não brigar com o cursor.",
     },
+  },
+  "notification-center": {
+    description: "Sino com o número de não lidas que abre, num popover, a lista de notificações lidas e não lidas. Junta num lugar os avisos que a pessoa lê depois.",
+    whenToUse: "Avisos que se acumulam e a pessoa lê quando quiser: comentários, relatórios prontos, aprovações. No cabeçalho do app, perto do avatar.",
+    anatomy: [
+      { part: "NotificationList", description: "Título, \"Marcar todas como lidas\" e a lista; cada item é um botão com ponto de não lida, título, descrição e hora" },
+      { part: "NotificationCenter", description: "Sino (icon-button) com o badge de não lidas, que abre a NotificationList num popover" },
+    ],
+    variants: [],
+    states: [
+      { name: "Com não lidas", description: "badge com o número no sino (9+ acima de 9); itens com ponto e título em destaque" },
+      { name: "Tudo lido", description: "Sino sem badge; \"Marcar todas como lidas\" some" },
+      { name: "Vazia", description: "\"Nenhuma notificação\" no lugar da lista" },
+    ],
+    sizes: [],
+    doGuidelines: ["Marque como lida no onSelect, ao abrir o item.", "Ofereça \"Marcar todas como lidas\" pelo onMarkAllRead.", "Ordene da mais nova para a mais antiga."],
+    dontGuidelines: ["Usar para confirmar uma ação que acabou de acontecer → sonner.", "Contador sem a lista → badge sozinho.", "Pôr ações longas dentro do item → leve para a tela do assunto."],
+    code: `import { NotificationCenter } from "@/components/ui/notification-center"
+
+<NotificationCenter
+  notifications={itens}
+  onSelect={marcarComoLida}
+  onMarkAllRead={marcarTodas}
+/>`,
+    props: [
+      { name: "open / onOpenChange", type: "boolean / (open: boolean) => void", default: "—", description: "Controlam o popover, como no popover" },
+      { name: "notifications (NotificationList)", type: "Notification[]", default: "—", description: "Lista com id, title, description?, time? e read?" },
+      { name: "onSelect (NotificationList)", type: "(id: string) => void", default: "—", description: "Clique num item: o produto marca como lida e/ou navega" },
+      { name: "onMarkAllRead (NotificationList)", type: "() => void", default: "—", description: "Clique em \"Marcar todas como lidas\"" },
+      { name: "className (NotificationList)", type: "string", default: "—", description: "Classes extras na raiz" },
+      { name: "notifications", type: "Notification[]", default: "—", description: "Lista com id, title, description?, time? e read?" },
+      { name: "onSelect", type: "(id: string) => void", default: "—", description: "Clique num item: o produto marca como lida e/ou navega" },
+      { name: "onMarkAllRead", type: "() => void", default: "—", description: "Clique em \"Marcar todas como lidas\"" },
+      { name: "className", type: "string", default: "—", description: "Classes extras na raiz" },
+    ],
+    meta: {
+      nome: "Notification Center",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/notification-center.tsx",
+      story: "src/components/ui/notification-center.stories.tsx",
+      vizinhos: ["sonner", "popover", "badge"],
+    },
+    whenToUseItems: ["Avisos que se acumulam e a pessoa lê quando quiser: comentários, relatórios prontos, aprovações.", "No cabeçalho do app, perto do avatar."],
+    whenNotToUse: ["Confirmação de algo que acabou de acontecer → sonner.", "Recado para todos, de uma vez → announcement-banner.", "Número solto, sem lista → badge."],
+    content: ["Título curto que diz o que aconteceu: \"Relatório mensal pronto\".", "Descrição opcional com o próximo passo; hora já formatada pelo produto (\"há 5 min\")."],
+    accessibility: {
+      keyboard: "Tab chega ao sino; Enter ou Espaço abre. Dentro, Tab percorre os itens; Esc fecha e devolve o foco ao sino.",
+      screenReader: "O nome do sino traz o número (\"Notificações, 2 não lidas\"); o badge é escondido para não repetir. Item não lido começa com \"Não lida:\".",
+      focus: "Ao abrir, vai para o painel (comportamento do popover); ao fechar, volta ao sino.",
+      cautions: "Não lida nunca é só cor: tem ponto, peso do título e o prefixo para o leitor.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-primary", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-0.5", "gap-2", "min-h-5", "min-w-0", "min-w-5", "mt-1.5", "mx-2", "px-1", "px-2", "py-2", "py-6", "right-0.5", "size-2", "top-0.5", "w-80"] },
+      { contexto: "Raio", itens: ["rounded-full", "rounded-md"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ],
   },
 }

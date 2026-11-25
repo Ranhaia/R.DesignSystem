@@ -9,6 +9,7 @@ import { expect } from "storybook/test"
 
 import { stylesList } from "@/lib/styles-registry"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { CodeBlock } from "@/components/ui/code-block"
 import { SegmentedControl, SegmentedControlItem } from "@/components/ui/segmented-control"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input-group"
 import { Kbd } from "@/components/ui/kbd"
@@ -50,6 +51,7 @@ function Casos() {
               <Kbd data-child>⌘K</Kbd>
             </InputGroupAddon>
           </InputGroup>
+          <CodeBlock data-case="code-block" code="npm i" className="w-64" />
         </div>
       ))}
     </div>
@@ -63,12 +65,13 @@ export const Concentrico: Story = {
   play: async ({ canvasElement }) => {
     const falhas: string[] = []
     for (const container of canvasElement.querySelectorAll<HTMLElement>("[data-case]")) {
-      const child = container.querySelector<HTMLElement>("[data-child]")!
+      // o botão de copiar é interno ao CodeBlock, sem como receber data-child
+      const child = container.querySelector<HTMLElement>("[data-child], [data-slot=icon-button]")!
       const preset = container.closest<HTMLElement>("[data-preset]")!.dataset.preset
       const o = container.getBoundingClientRect()
       const c = child.getBoundingClientRect()
       // canto mais próximo: superior direito para addon inline-end, senão superior esquerdo
-      const end = container.dataset.case!.startsWith("input")
+      const end = container.dataset.case!.startsWith("input") || container.dataset.case === "code-block"
       const gap = Math.min(c.top - o.top, end ? o.right - c.right : c.left - o.left)
       // raio efetivo: o navegador limita a metade do lado menor (pílula), mas o
       // estilo computado devolve o valor declarado
