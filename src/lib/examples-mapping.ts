@@ -40,6 +40,7 @@ export const examplesMapping: Record<string, string[]> = {
   "timeline": ["timeline-demo", "timeline-icones"],
   "description-list": ["description-list-demo", "description-list-inline"],
   "input-otp": ["input-otp-controlled", "input-otp-demo", "input-otp-pattern", "input-otp-separator"],
+  "number-input": ["number-input-demo", "number-input-decimal"],
   "item": ["item-avatar", "item-demo", "item-dropdown", "item-group", "item-header", "item-icon", "item-image", "item-link", "item-size", "item-variant"],
   "kbd": ["kbd-button", "kbd-demo", "kbd-group", "kbd-input-group", "kbd-tooltip"],
   "label": ["label-demo"],

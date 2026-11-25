@@ -5416,6 +5416,57 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
+  "number-input": {
+    description: "Campo para um número exato, com botões − e + nas pontas e setas do teclado. Respeita min, max e step e escreve o número no formato do idioma ativo.",
+    whenToUse: "Quantidade, número de pessoas, parcelas: valor exato e curto. Medida com casas decimais e passo fixo (step={0.5}).",
+    anatomy: [
+      { part: "NumberInput", description: "Raiz input-group com data-slot=\"number-input\"; o className vai nela." },
+      { part: "Diminuir", description: "input-group-button com ícone remove, no início; desligado no min." },
+      { part: "Campo", description: "input-group-input com role=\"spinbutton\" e inputMode=\"decimal\", texto centralizado." },
+      { part: "Aumentar", description: "input-group-button com ícone add, no fim; desligado no max." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "Campo em branco; o primeiro passo vai para o min" },
+      { name: "No limite", description: "O botão do lado do limite fica desligado" },
+      { name: "Digitando", description: "Texto livre; vira número ao sair do campo ou com Enter. Texto inválido volta ao último valor" },
+      { name: "Desabilitado", description: "disabled vale para o campo e os dois botões" },
+    ],
+    sizes: [],
+    doGuidelines: ["Defina min e max sempre que o negócio tiver limite.", "Use step com as casas que o valor aceita (0.5, 0.01).", "Leia o valor por onValueChange, que já entrega número."],
+    dontGuidelines: ["Usar para dinheiro → currency-input", "Usar para CEP, telefone ou documento → input com inputMode=\"numeric\"", "Formatar o número à mão no value → deixe o componente formatar no idioma"],
+    code: `import { NumberInput } from "@/components/ui/number-input"
+
+export function ExemploQuantidade() {
+  return <NumberInput aria-label="Quantidade" defaultValue={1} min={1} max={10} />
+}`,
+    props: [
+      { name: "aria-label", type: "string", default: "—", description: "Nome do campo quando não há label por fora" },
+      { name: "value", type: "number · null", default: "—", description: "Número controlado; null é vazio" },
+      { name: "defaultValue", type: "number · null", default: "—", description: "Número inicial" },
+      { name: "onValueChange", type: "(value: number | null) => void", default: "—", description: "Recebe o número (ou null) ao passo, ao sair do campo ou com Enter" },
+      { name: "min", type: "number", default: "—", description: "Menor valor aceito" },
+      { name: "max", type: "number", default: "—", description: "Maior valor aceito" },
+      { name: "step", type: "number", default: "1", description: "Quanto − e + (e ↑ ↓) mudam; as casas do step definem o arredondamento" },
+    ],
+    meta: {
+      nome: "Number Input",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/number-input.tsx",
+      story: "src/components/ui/number-input.stories.tsx",
+      vizinhos: ["input", "slider"],
+    },
+    whenToUseItems: ["Quantidade, número de pessoas, parcelas: valor exato e curto.", "Medida com casas decimais e passo fixo (step={0.5})."],
+    whenNotToUse: ["Valor aproximado num intervalo → slider", "Código, CEP, telefone ou documento (não é quantidade) → input com inputMode=\"numeric\""],
+    content: ["O rótulo diz a unidade quando houver (\"Peso em kg\").", "O formato (milhar e decimal) vem do idioma ativo; não formate por fora."],
+    accessibility: {
+      keyboard: "↑ e ↓ dão um passo; Enter confirma o texto digitado. Os botões ficam fora do Tab, porque as setas fazem o mesmo.",
+      screenReader: "O campo é spinbutton, com valor (já formatado, aria-valuetext), mínimo e máximo anunciados. Os botões dizem \"Diminuir\" e \"Aumentar\".",
+      focus: "Anel do input-group em volta de tudo; clicar em − ou + não tira o foco do lugar.",
+      cautions: "Passe label ou aria-label. Não é type=\"number\": esse tipo ignora o separador do idioma e muda o valor com a rolagem.",
+    },
+  },
   "data-table": {
     description: "Tabela montada sobre a table para trabalhar com os dados: procurar, filtrar, ordenar, escolher as colunas, agir sobre várias linhas de uma vez e levar tudo para uma planilha em CSV.",
     whenToUse: "Muitos itens que a pessoa precisa comparar, achar ou ordenar (faturas, pedidos, usuários). A mesma ação vale para vários itens de uma vez (selecionavel + acoesEmLote). A pessoa precisa levar os dados para uma planilha.",

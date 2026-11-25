@@ -41,6 +41,7 @@
   "timeline": ["linha-do-tempo", "historico", "historico-de-atividade", "atividade", "eventos", "cronologia", "feed-de-atividade", "activity"],
   "description-list": ["lista-de-definicoes", "lista-de-descricao", "ficha", "ficha-de-detalhes", "detalhes", "rotulo-valor", "chave-valor", "dl", "definition-list", "key-value"],
   "input-group": ["campo-com-icone", "campo-com-botao", "campo-de-pedido", "prompt"],
+  "number-input": ["numero", "número", "campo-numerico", "quantidade", "stepper-numerico", "spinbutton", "numeric-input"],
   "input-otp": ["otp", "codigo-de-verificacao", "código-de-verificação", "pin", "2fa"],
   "item": ["item-de-lista", "list-item", "linha"],
   "kbd": ["atalho", "atalho-de-teclado", "tecla"],
