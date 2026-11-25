@@ -4,6 +4,8 @@
 // Idioma novo: acrescente um objeto com as mesmas chaves; a trava é idioma.test.ts.
 
 const ptBR = {
+  "announcement.nome": "Anúncio",
+  "announcement.fechar": "Fechar anúncio",
   "breadcrumb.trilha": "Trilha de navegação",
   "breadcrumb.mais": "Mais níveis",
   "carousel.anterior": "Slide anterior",
@@ -29,6 +31,11 @@ const ptBR = {
   "fileUploader.instrucao": "Arraste um arquivo ou clique para selecionar",
   "files.navegador": "Navegador de arquivos",
   "inputOtp.codigo": "Código de verificação",
+  "notifications.titulo": "Notificações",
+  "notifications.botaoNaoLidas": "Notificações, {n} não lidas",
+  "notifications.naoLida": "Não lida",
+  "notifications.marcarTodas": "Marcar todas como lidas",
+  "notifications.vazio": "Nenhuma notificação",
   "numberInput.diminuir": "Diminuir",
   "numberInput.aumentar": "Aumentar",
   "pagination.nome": "paginação",
@@ -83,6 +90,8 @@ const ptBR = {
 export type ChaveTexto = keyof typeof ptBR
 
 const en: Record<ChaveTexto, string> = {
+  "announcement.nome": "Announcement",
+  "announcement.fechar": "Dismiss announcement",
   "breadcrumb.trilha": "Breadcrumb",
   "breadcrumb.mais": "More levels",
   "carousel.anterior": "Previous slide",
@@ -108,6 +117,11 @@ const en: Record<ChaveTexto, string> = {
   "fileUploader.instrucao": "Drag a file or click to select",
   "files.navegador": "File browser",
   "inputOtp.codigo": "Verification code",
+  "notifications.titulo": "Notifications",
+  "notifications.botaoNaoLidas": "Notifications, {n} unread",
+  "notifications.naoLida": "Unread",
+  "notifications.marcarTodas": "Mark all as read",
+  "notifications.vazio": "No notifications",
   "numberInput.diminuir": "Decrease",
   "numberInput.aumentar": "Increase",
   "pagination.nome": "pagination",

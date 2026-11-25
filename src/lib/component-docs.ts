@@ -5751,4 +5751,160 @@ export function ExemploBusca() {
       { contexto: "Raio", itens: ["rounded-full"] },
     ],
   },
+  "announcement-banner": {
+    description: "Faixa no topo do app com um recado para todas as pessoas, que cada uma pode fechar. É o alert em largura total, sem cantos, com o botão de fechar.",
+    whenToUse: "Recado que vale para todo o app e por um tempo: manutenção programada, novidade, mudança de termos. Uma faixa por vez, acima do cabeçalho do app.",
+    anatomy: [
+      { part: "AnnouncementBanner", description: "Raiz: alert com role=\"region\", largura total, sem cantos e só a borda de baixo" },
+      { part: "Conteúdo", description: "Texto e, se houver, um link, centralizados e quebrando linha no celular" },
+      { part: "Fechar", description: "icon-button ghost com ícone close, no fim da faixa" },
+    ],
+    variants: [],
+    states: [
+      { name: "Aberta", description: "Faixa visível com o recado" },
+      { name: "Fechada", description: "Sai da página; onDismiss é chamado" },
+    ],
+    sizes: [],
+    doGuidelines: ["Guarde no produto, via onDismiss, que a pessoa fechou, para não mostrar de novo.", "Escreva a data e a hora do que vai acontecer.", "Ponha a faixa acima do cabeçalho, ocupando a largura toda."],
+    dontGuidelines: ["Empilhar várias faixas → uma por vez, a mais importante.", "Recado que só vale para uma tela → alert nessa tela.", "Recado sem como fechar quando não é obrigatório → deixe dismissible."],
+    code: `import { AnnouncementBanner } from "@/components/ui/announcement-banner"
+
+<AnnouncementBanner onDismiss={() => salvarVisto()}>
+  O sistema fica fora do ar no sábado, das 22h às 23h.
+</AnnouncementBanner>`,
+    props: [
+      { name: "variant", type: "default · destructive", default: "default", description: "Tom do alert: destructive para recado de problema em andamento" },
+      { name: "dismissible", type: "boolean", default: "true", description: "Mostra o botão de fechar" },
+      { name: "onDismiss", type: "() => void", default: "—", description: "Chamado ao fechar; o produto usa para lembrar que a pessoa já viu" },
+      { name: "label", type: "string", default: "—", description: "Nome da região para o leitor de tela. Padrão do dicionário: \"Anúncio\"" },
+      { name: "closeLabel", type: "string", default: "—", description: "Nome do fechar. Padrão do dicionário: \"Fechar anúncio\"" },
+    ],
+    meta: {
+      nome: "Announcement Banner",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/announcement-banner.tsx",
+      story: "src/components/ui/announcement-banner.stories.tsx",
+      vizinhos: ["alert", "sonner", "alert-dialog"],
+    },
+    whenToUseItems: ["Recado que vale para todo o app e por um tempo: manutenção programada, novidade, mudança de termos.", "Uma faixa por vez, acima do cabeçalho do app."],
+    whenNotToUse: ["Recado sobre um trecho da página → alert.", "Confirmação de uma ação que acabou de acontecer → sonner.", "Decisão que a pessoa precisa tomar antes de seguir → alert-dialog."],
+    content: ["Uma frase curta, com data e hora quando houver: \"O sistema fica fora do ar no sábado, das 22h às 23h.\"", "No máximo um link para detalhes."],
+    accessibility: {
+      keyboard: "O fechar entra na ordem do Tab; Enter ou Espaço fecha.",
+      screenReader: "Região com nome (\"Anúncio\"), achada pela lista de regiões. Não usa role=\"alert\": o recado está lá desde a carga e não interrompe a leitura.",
+      focus: "Não rouba o foco ao aparecer. Ao fechar, o foco segue para o primeiro controle depois da faixa.",
+      cautions: "Não use a faixa para algo urgente que exige ação; aí é alert-dialog.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["gap-3", "gap-x-2", "py-2"] },
+    ],
+  },
+  "currency-input": {
+    description: "Campo para valor em dinheiro: digita livre e, ao sair, mostra no formato do idioma e da moeda, com o símbolo ao lado. Entrega o número pronto em onValueChange.",
+    whenToUse: "Preço, valor de seguro, renda, limite: qualquer quantia em dinheiro. Telas em mais de um idioma ou moeda (currency=\"USD\").",
+    anatomy: [
+      { part: "CurrencyInput", description: "Raiz input-group com data-slot=\"currency-input\"; o className vai nela." },
+      { part: "Símbolo", description: "input-group-addon no início com o símbolo da moeda no idioma (R$, $)." },
+      { part: "Campo", description: "input-group-input com inputMode=\"decimal\" e números tabulares." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "Só o símbolo; o campo em branco é null" },
+      { name: "Digitando", description: "Texto livre, sem máscara" },
+      { name: "Confirmado", description: "Ao sair ou com Enter, o valor aparece formatado com as casas da moeda" },
+      { name: "Inválido", description: "Texto que não é valor volta ao último valor válido" },
+    ],
+    sizes: [],
+    doGuidelines: ["Guarde o número de onValueChange, nunca o texto do campo.", "Passe currency sempre que a moeda não for real.", "Valide limites (mínimo, máximo) no formulário, pelo field."],
+    dontGuidelines: ["Escrever \"R$\" no rótulo ou no placeholder → o símbolo já aparece no campo", "Usar input com máscara de dinheiro → currency-input", "Usar para quantidade sem moeda → number-input"],
+    code: `import { CurrencyInput } from "@/components/ui/currency-input"
+
+export function ExemploValor() {
+  return <CurrencyInput aria-label="Valor do seguro" onValueChange={console.log} />
+}`,
+    props: [
+      { name: "aria-label", type: "string", default: "—", description: "Nome do campo quando não há label por fora" },
+      { name: "value", type: "number · null", default: "—", description: "Valor controlado; null é vazio" },
+      { name: "defaultValue", type: "number · null", default: "—", description: "Valor inicial" },
+      { name: "onValueChange", type: "(value: number | null) => void", default: "—", description: "Recebe o número (ou null) ao sair do campo ou com Enter, só quando muda" },
+      { name: "currency", type: "string", default: "BRL", description: "Código ISO 4217; define o símbolo e as casas decimais" },
+    ],
+    meta: {
+      nome: "Currency Input",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/currency-input.tsx",
+      story: "src/components/ui/currency-input.stories.tsx",
+      vizinhos: ["input", "slider"],
+    },
+    whenToUseItems: ["Preço, valor de seguro, renda, limite: qualquer quantia em dinheiro.", "Telas em mais de um idioma ou moeda (currency=\"USD\")."],
+    whenNotToUse: ["Quantidade sem moeda, com − e + → number-input", "Faixa de preço aproximada → slider"],
+    content: ["O rótulo diz o que é o valor (\"Valor do seguro\"), sem a moeda: o símbolo já está no campo.", "Formato e símbolo vêm do idioma ativo; não formate por fora."],
+    accessibility: {
+      keyboard: "Enter confirma e formata o texto digitado; Tab sai e também confirma.",
+      screenReader: "O símbolo fica no grupo junto do campo; o valor lido é o texto formatado.",
+      focus: "Anel do input-group em volta do símbolo e do campo.",
+      cautions: "Passe label ou aria-label. Não é type=\"number\": esse tipo não aceita o separador do idioma. Sem máscara durante a digitação, para não brigar com o cursor.",
+    },
+  },
+  "notification-center": {
+    description: "Sino com o número de não lidas que abre, num popover, a lista de notificações lidas e não lidas. Junta num lugar os avisos que a pessoa lê depois.",
+    whenToUse: "Avisos que se acumulam e a pessoa lê quando quiser: comentários, relatórios prontos, aprovações. No cabeçalho do app, perto do avatar.",
+    anatomy: [
+      { part: "NotificationList", description: "Título, \"Marcar todas como lidas\" e a lista; cada item é um botão com ponto de não lida, título, descrição e hora" },
+      { part: "NotificationCenter", description: "Sino (icon-button) com o badge de não lidas, que abre a NotificationList num popover" },
+    ],
+    variants: [],
+    states: [
+      { name: "Com não lidas", description: "badge com o número no sino (9+ acima de 9); itens com ponto e título em destaque" },
+      { name: "Tudo lido", description: "Sino sem badge; \"Marcar todas como lidas\" some" },
+      { name: "Vazia", description: "\"Nenhuma notificação\" no lugar da lista" },
+    ],
+    sizes: [],
+    doGuidelines: ["Marque como lida no onSelect, ao abrir o item.", "Ofereça \"Marcar todas como lidas\" pelo onMarkAllRead.", "Ordene da mais nova para a mais antiga."],
+    dontGuidelines: ["Usar para confirmar uma ação que acabou de acontecer → sonner.", "Contador sem a lista → badge sozinho.", "Pôr ações longas dentro do item → leve para a tela do assunto."],
+    code: `import { NotificationCenter } from "@/components/ui/notification-center"
+
+<NotificationCenter
+  notifications={itens}
+  onSelect={marcarComoLida}
+  onMarkAllRead={marcarTodas}
+/>`,
+    props: [
+      { name: "open / onOpenChange", type: "boolean / (open: boolean) => void", default: "—", description: "Controlam o popover, como no popover" },
+      { name: "notifications (NotificationList)", type: "Notification[]", default: "—", description: "Lista com id, title, description?, time? e read?" },
+      { name: "onSelect (NotificationList)", type: "(id: string) => void", default: "—", description: "Clique num item: o produto marca como lida e/ou navega" },
+      { name: "onMarkAllRead (NotificationList)", type: "() => void", default: "—", description: "Clique em \"Marcar todas como lidas\"" },
+      { name: "className (NotificationList)", type: "string", default: "—", description: "Classes extras na raiz" },
+      { name: "notifications", type: "Notification[]", default: "—", description: "Lista com id, title, description?, time? e read?" },
+      { name: "onSelect", type: "(id: string) => void", default: "—", description: "Clique num item: o produto marca como lida e/ou navega" },
+      { name: "onMarkAllRead", type: "() => void", default: "—", description: "Clique em \"Marcar todas como lidas\"" },
+      { name: "className", type: "string", default: "—", description: "Classes extras na raiz" },
+    ],
+    meta: {
+      nome: "Notification Center",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/notification-center.tsx",
+      story: "src/components/ui/notification-center.stories.tsx",
+      vizinhos: ["sonner", "popover", "badge"],
+    },
+    whenToUseItems: ["Avisos que se acumulam e a pessoa lê quando quiser: comentários, relatórios prontos, aprovações.", "No cabeçalho do app, perto do avatar."],
+    whenNotToUse: ["Confirmação de algo que acabou de acontecer → sonner.", "Recado para todos, de uma vez → announcement-banner.", "Número solto, sem lista → badge."],
+    content: ["Título curto que diz o que aconteceu: \"Relatório mensal pronto\".", "Descrição opcional com o próximo passo; hora já formatada pelo produto (\"há 5 min\")."],
+    accessibility: {
+      keyboard: "Tab chega ao sino; Enter ou Espaço abre. Dentro, Tab percorre os itens; Esc fecha e devolve o foco ao sino.",
+      screenReader: "O nome do sino traz o número (\"Notificações, 2 não lidas\"); o badge é escondido para não repetir. Item não lido começa com \"Não lida:\".",
+      focus: "Ao abrir, vai para o painel (comportamento do popover); ao fechar, volta ao sino.",
+      cautions: "Não lida nunca é só cor: tem ponto, peso do título e o prefixo para o leitor.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-accent", "bg-primary", "text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["font-medium", "text-sm", "text-xs"] },
+      { contexto: "Espaço", itens: ["gap-0.5", "gap-2", "min-h-5", "min-w-0", "min-w-5", "mt-1.5", "mx-2", "px-1", "px-2", "py-2", "py-6", "right-0.5", "size-2", "top-0.5", "w-80"] },
+      { contexto: "Raio", itens: ["rounded-full", "rounded-md"] },
+      { contexto: "Foco", itens: ["ring-ring"] },
+    ],
+  },
 }

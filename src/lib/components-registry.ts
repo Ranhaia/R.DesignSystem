@@ -8,6 +8,7 @@ export interface ComponentEntry {
 export const componentsList: ComponentEntry[] = [
   { slug: "accordion", name: "Accordion" },
   { slug: "alert", name: "Alert" },
+  { slug: "announcement-banner", name: "Announcement Banner" },
   { slug: "alert-dialog", name: "Alert Dialog" },
   { slug: "aspect-ratio", name: "Aspect Ratio" },
   { slug: "attachment", name: "Attachment" },
@@ -28,6 +29,7 @@ export const componentsList: ComponentEntry[] = [
   { slug: "combobox", name: "Combobox" },
   { slug: "command", name: "Command" },
   { slug: "context-menu", name: "Context Menu" },
+  { slug: "currency-input", name: "Currency Input" },
   { slug: "data-table", name: "Data Table" },
   { slug: "dialog", name: "Dialog" },
   { slug: "direction", name: "Direction" },
@@ -63,6 +65,7 @@ export const componentsList: ComponentEntry[] = [
   { slug: "native-select", name: "Native Select" },
   { slug: "navigation-menu", name: "Navigation Menu" },
   { slug: "pagination", name: "Pagination" },
+  { slug: "notification-center", name: "Notification Center" },
   { slug: "popover", name: "Popover" },
   { slug: "progress", name: "Progress" },
   { slug: "radio-group", name: "Radio Group" },
