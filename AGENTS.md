@@ -20,6 +20,23 @@ Resumo do que você precisa saber para não errar:
 - Ao terminar uma passada: atualize `tarefas`, acrescente linha em
   `## Contribuições`, esvazie `dono`.
 
+## Skills (gerenciadas pelo Hub, não edite aqui)
+
+`.claude/skills/` e `.agents/skills/` são **cópias geradas** a partir do Hub
+`C:\dev\_ferramentas\shared-skill-router\skills\`. A lista do que entra está
+em `.skills.json`. Regra completa: seção 4 do `PROTOCOLO.md`.
+
+- **Mudar uma skill** (inclusive `componente-rds`): edite no Hub e rode
+  `node C:\dev\_ferramentas\shared-skill-router\scripts\sync-skills.mjs C:\dev\R.DS`.
+  Edição feita direto aqui é apagada no próximo sync.
+- **Skill nova ou instalador pronto** (`npx ... install`, `npx skills add`):
+  nunca rode no repo. Baixe num diretório temporário, copie para o Hub,
+  registre com `add-skill.mjs`, acrescente o id em `.skills.json` e sincronize.
+- **Nada solto nas pastas de skill:** o sync apaga tudo que não estiver no
+  `.skills.json`, inclusive arquivos que não são skill.
+- **`.skills.json` em UTF-8 sem BOM.** No PowerShell 5.1, `Set-Content` grava
+  com BOM e o sync recusa o arquivo.
+
 ## Componentes
 
 Criar, mudar ou documentar um componente de `src/components/ui/` segue

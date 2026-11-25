@@ -1,18 +1,19 @@
 ---
 tipo: historia
+codigo: 044
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: progresso
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 2
 perfil: front
-dono: claude
+dono:
 tarefas: 5/5
 bloqueada-por:
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem:
 ---
@@ -75,5 +76,7 @@ Fora do escopo: cópias nos outros projetos (decisão 5 do Épico); a Onda 2.
 - 2026-10-29 · claude · `DocLinhas` (`src/components/doc/doc-linhas.tsx`) em Anatomia, Estados, Acessibilidade e Tokens; rótulo com a mesma largura (160 px) nas linhas de Tokens e de Acessibilidade, conferido no navegador. Tokens agrupados por `scripts/contexto-token.mjs`, que o coletor, o registro e o teste dos 79 componentes usam; `docs:registrar` rodou nos 4 MDs e `npm run docs:check` passou.
 - 2026-10-29 · claude · Limpeza: variantes `ai-*` do Button sem o aviso (texto novo: "Ação principal/secundária que dispara IA"); ⚠️ e "Até corrigir" fora do Cuidados do Dialog; `piloto` fora da faixa (separator conferido no navegador). Trava em `src/lib/doc-texto-interno.test.ts` e regra na `_baliza.md`. Crédito do PASSI mantido nos docs internos.
 - 2026-10-29 · claude · Prova final: `npx tsc --noEmit` sem erro, `npx vitest run --project unit` 29 arquivos e 1593 testes verdes, `npm run docs:check` verde. Não rodei `test:a11y:todos` (nenhum componente de `src/components/ui/` mudou). Achado fora do escopo: o `Dialog` ainda anuncia "Close" em inglês (X e botão do footer); é defeito do componente, não de documentação.
+
+- 2026-10-29 · claude · Entregue no PR #32. A Onda 2 está em [[H-memoria-replicar-lotes]].
 
 ## Histórico

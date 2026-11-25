@@ -1,20 +1,19 @@
 ---
 tipo: historia
+codigo: 046
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/8
+tarefas: 8/8
 bloqueada-por:
-  - "[[H-memoria-primitivos-a]]"
-  - "[[H-memoria-primitivos-b]]"
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -72,15 +71,26 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `input` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `item` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `kbd` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `link` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `list` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `marker` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `input` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `item` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `kbd` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `link` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `list` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `marker` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- docs(input): primeiro registro e declaração de intenção completa (`docs/componentes/input.md`). Comando: `npm run docs:registrar -- input --motivo "Primeiro registro (memoria-atoms-b)"` e `npx vitest run --project unit src/lib/doc-texto-interno.test.ts`. Resultado: MD com seções da baliza, sem avisos internos e sincronizado.
+- docs(item): primeiro registro e declaração de intenção completa (`docs/componentes/item.md`). Comando: `npm run docs:registrar -- item --motivo "Primeiro registro (memoria-atoms-b)"` e `npx vitest run --project unit src/lib/doc-texto-interno.test.ts`. Resultado: MD com variantes, anatomia e acessibilidade em 4 chaves declaradas.
+- docs(kbd): primeiro registro e declaração de intenção completa (`docs/componentes/kbd.md`). Comando: `npm run docs:registrar -- kbd --motivo "Primeiro registro (memoria-atoms-b)"` e `npx vitest run --project unit src/lib/doc-texto-interno.test.ts`. Resultado: MD de atalho de teclado declarado, Kbd e KbdGroup documentados e sincronizados.
+- docs(link): primeiro registro e declaração de intenção completa (`docs/componentes/link.md`). Comando: `npm run docs:registrar -- link --motivo "Primeiro registro (memoria-atoms-b)"` e `npx vitest run --project unit src/lib/doc-texto-interno.test.ts`. Resultado: MD com suporte a prop external, Link.Skeleton e composição com next/link documentados.
+- docs(list): primeiro registro e declaração de intenção completa (`docs/componentes/list.md`). Comando: `npm run docs:registrar -- list --motivo "Primeiro registro (memoria-atoms-b)"` e `npx vitest run --project unit src/lib/doc-texto-interno.test.ts`. Resultado: MD com variantes none e marker, suporte a as=ul e as=ol e semântica acessível declarada.
+- docs(marker): primeiro registro e declaração de intenção completa (`docs/componentes/marker.md`). Comando: `npm run docs:registrar -- marker --motivo "Primeiro registro (memoria-atoms-b)"` e `npx vitest run --project unit src/lib/doc-texto-interno.test.ts`. Resultado: MD com variantes default, separator e border, sinônimos cadastrados e sincronizados.
+- docs(atoms-b): encaixe do lote no README.md, remoção de PENDENTES_MD e cadastro de sinônimos de marker. Comando: `npx vitest run --project unit src/lib/memoria-componentes.test.ts` e `npm run docs:check`. Resultado: 272 testes passando, sincronia 100% verde.
+- test(atoms-b): verificação final de integridade. Comandos: `npx tsc --noEmit` (0 erros), `npm run test:unit` (29 arquivos, 1713 testes passados) e `npm run docs:check` (em sincronia). Resultado: suíte completa aprovada.
+
+- 2026-10-29 · claude · Entregue no PR #37 (montado a partir da main, só com código e docs; as notas de _trabalho/ não sobem para o GitHub). Verificado antes: tsc, test:unit e docs:check rodados por mim, e as páginas conferidas no navegador. Texto `piloto`, à espera da revisão do Rafael.
 
 ## Histórico

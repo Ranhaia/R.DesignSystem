@@ -1,22 +1,19 @@
 ---
 tipo: historia
+codigo: 04D
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/7
+tarefas: 7/7
 bloqueada-por:
-  - "[[H-memoria-atoms-a]]"
-  - "[[H-memoria-atoms-b]]"
-  - "[[H-memoria-atoms-c]]"
-  - "[[H-memoria-atoms-d]]"
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -74,14 +71,24 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `sonner` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `speed-dial` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `table` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `toggle-group` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `tree-select` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `sonner` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `speed-dial` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `table` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `toggle-group` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `tree-select` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- Registrar e declarar `sonner`: `npm run docs:registrar -- sonner --motivo "Primeiro registro (memoria-molecules-d)"`, intenção e acessibilidade preenchidas, referências `passi:aviso-rapido` e `shadcn:sonner`, docs:gerar e docs:check verdes.
+- Registrar e declarar `speed-dial`: `npm run docs:registrar -- speed-dial --motivo "Primeiro registro (memoria-molecules-d)"`, intenção e acessibilidade preenchidas, referência `spec:speed-dial`, docs:gerar e docs:check verdes.
+- Registrar e declarar `table`: `npm run docs:registrar -- table --motivo "Primeiro registro (memoria-molecules-d)"`, intenção e acessibilidade preenchidas, referências `passi:tabela-de-dados` e `shadcn:table`, docs:gerar e docs:check verdes.
+- Registrar e declarar `toggle-group`: `npm run docs:registrar -- toggle-group --motivo "Primeiro registro (memoria-molecules-d)"`, intenção e acessibilidade preenchidas, referências `passi:barra-de-ferramentas` e `shadcn:toggle-group`, docs:gerar e docs:check verdes.
+- Registrar e declarar `tree-select`: `npm run docs:registrar -- tree-select --motivo "Primeiro registro (memoria-molecules-d)"`, intenção e acessibilidade preenchidas, referência `passi:lista-em-arvore`, docs:gerar e docs:check verdes.
+- Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json: slugs adicionados à porta de entrada e árvore de decisão em `docs/componentes/README.md`, retirados de `PENDENTES_MD` em `src/lib/memoria-componentes.test.ts`, sinônimos conferidos.
+- Verificação final: `npx tsc --noEmit` (sem erros), `npm run test:unit` (29 arquivos, 1968 testes verdes) e `npm run docs:check` (em sincronia e memória em dia).
+
+- 2026-10-29 · claude · Entregue no PR #40 (montado a partir da main, só com código e docs; as notas de _trabalho/ não sobem para o GitHub). Verificado antes: tsc, test:unit e docs:check rodados por mim, e as páginas conferidas no navegador. Texto `piloto`, à espera da revisão do Rafael.
 
 ## Histórico

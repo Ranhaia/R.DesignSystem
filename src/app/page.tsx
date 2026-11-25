@@ -1,5 +1,12 @@
 import type { MaterialSymbol } from "material-symbols"
 
+import Link from "next/link"
+
+import { CatalogCard } from "@/components/catalog-card"
+import { categoryDescriptions, categoryTitles } from "@/components/atomic-index"
+import { atomicRegistry, categoryHref, contagemPorCamada, type AtomicCategory } from "@/lib/atomic-registry"
+import { componentDocs } from "@/lib/component-docs"
+import { componentsList } from "@/lib/components-registry"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -71,16 +78,68 @@ const statusVariant: Record<string, "default" | "secondary" | "outline" | "destr
   Bloqueado: "destructive",
 }
 
+const camadas = Object.keys(categoryTitles) as AtomicCategory[]
+
 export default function Home() {
+  const contagem = contagemPorCamada()
   return (
-    <div className="flex flex-1 flex-col gap-6">
+    <div className="flex flex-1 flex-col gap-10">
+      <header className="max-w-prose space-y-3">
+        <h1 className="font-heading text-4xl font-semibold tracking-tight">R.DS</h1>
+        <p className="text-muted-foreground">
+          Sistema de componentes em Atomic Design: tokens, primitivos, atoms, molecules e organisms,
+          todos ao vivo. Troque o estilo no seletor da barra lateral e veja o efeito.
+        </p>
+        <div className="flex gap-2">
+          <Button asChild>
+            <Link href="/fundamentos">Começar pelos fundamentos</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/fundamentos/componentes">Ver componentes</Link>
+          </Button>
+        </div>
+      </header>
+
+      <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border bg-border sm:grid-cols-4">
+        {camadas.map((c) => (
+          <Link key={c} href={categoryHref[c]} className="bg-background p-4 outline-none transition-colors hover:bg-muted focus-visible:ring-[3px] focus-visible:ring-inset focus-visible:ring-ring">
+            <dd className="font-heading text-3xl font-semibold tabular-nums">{contagem[c]}</dd>
+            <dt className="text-sm text-muted-foreground">{categoryTitles[c]}</dt>
+          </Link>
+        ))}
+      </dl>
+
+      {camadas.map((c) => {
+        const itens = componentsList.filter((i) => atomicRegistry[i.slug] === c)
+        return (
+          <section key={c} aria-labelledby={`camada-${c}`} className="space-y-4">
+            <div className="flex flex-wrap items-end justify-between gap-2">
+              <div>
+                <h2 id={`camada-${c}`} className="font-heading text-xl font-semibold tracking-tight">
+                  {categoryTitles[c]}
+                </h2>
+                <p className="text-sm text-muted-foreground">{categoryDescriptions[c]}</p>
+              </div>
+              <Link href={categoryHref[c]} className="text-sm text-primary underline-offset-4 hover:underline">
+                Ver todos
+              </Link>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {itens.slice(0, 4).map((i) => (
+                <CatalogCard key={i.slug} href={`/components/${i.slug}`} name={i.name} description={componentDocs[i.slug]?.description} />
+              ))}
+            </div>
+          </section>
+        )
+      })}
+
+      <section className="flex flex-col gap-6" aria-labelledby="tokens-ao-vivo">
       <div>
-        <h1 className="font-heading text-2xl font-semibold tracking-tight">
-          Visão geral
-        </h1>
+        <h2 id="tokens-ao-vivo" className="font-heading text-xl font-semibold tracking-tight">
+          Tokens ao vivo
+        </h2>
         <p className="text-muted-foreground text-sm">
-          Guia visual dos tokens — troque o estilo no seletor da barra
-          lateral e veja o efeito nos componentes abaixo, todos ao vivo.
+          Componentes reais lendo os tokens do estilo ativo.
         </p>
       </div>
 
@@ -233,6 +292,7 @@ export default function Home() {
           </Tabs>
         </CardContent>
       </Card>
+      </section>
     </div>
   )
 }

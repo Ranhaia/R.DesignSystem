@@ -1,15 +1,5 @@
 import type { ComponentDoc } from "./component-docs"
 
-export interface AbaItem {
-  id: string
-  label: string
-}
-
-export interface AbasContexto {
-  temExemplos?: boolean
-  temComposicao?: boolean
-}
-
 export interface LinhaVarianteProp {
   grupo: "Variantes" | "Tamanhos" | "Props"
   nome: string
@@ -34,105 +24,55 @@ export interface ItemFaixaMeta {
   valores: string[]
 }
 
-export const rotulosBlocosVisaoGeral: Record<string, string> = {
-  "quando-usar": "Quando usar",
-  "quando-nao-usar": "Quando não usar",
-  "variantes-props": "Variantes e props",
-  "estados": "Estados",
-  "faca-nao-faca": "Faça e não faça",
+export interface SecaoItem {
+  id: string
+  label: string
 }
 
-export function abasDoComponente(
-  doc?: ComponentDoc,
-  ctx?: AbasContexto
-): AbaItem[] {
-  const abas: AbaItem[] = [{ id: "visao-geral", label: "Visão geral" }]
-
-  const temExemplos =
-    Boolean(ctx?.temExemplos) ||
-    Boolean(doc?.variants && doc.variants.length > 0) ||
-    Boolean(doc?.sizes && doc.sizes.length > 0)
-
-  if (temExemplos) {
-    abas.push({ id: "exemplos", label: "Exemplos" })
-  }
-
-  const temCodigo =
-    Boolean(ctx?.temComposicao) ||
-    Boolean(doc?.code && doc.code.trim().length > 0) ||
-    Boolean(doc?.anatomy && doc.anatomy.length > 0)
-
-  if (temCodigo) {
-    abas.push({ id: "codigo", label: "Código" })
-  }
-
-  const temTokens = Boolean(doc?.tokens && doc.tokens.length > 0)
-  if (temTokens) {
-    abas.push({ id: "tokens", label: "Tokens" })
-  }
-
-  const temA11y = Boolean(
-    doc?.accessibility &&
-      Object.values(doc.accessibility).some(
-        (v) => typeof v === "string" && v.trim().length > 0
-      )
-  )
-  if (temA11y) {
-    abas.push({ id: "acessibilidade", label: "Acessibilidade" })
-  }
-
-  return abas
+export interface SecoesContexto {
+  temTopo?: boolean
+  temExemplos?: boolean
+  temComposicao?: boolean
 }
 
-export function abaAtiva(
-  hashOuId: string | undefined,
-  abas: { id: string }[]
-): string {
-  if (!hashOuId) return "visao-geral"
-  const limpo = hashOuId.startsWith("#") ? hashOuId.slice(1) : hashOuId
-  if (!limpo) return "visao-geral"
-  const encontrada = abas.find((a) => a.id === limpo)
-  return encontrada ? encontrada.id : "visao-geral"
+const tem = (l?: unknown[]) => Boolean(l && l.length > 0)
+
+// A página é uma rolagem única; o nav âncora e as <section> saem desta lista, na ordem do Lume.
+export function secoesDoComponente(doc?: ComponentDoc, ctx?: SecoesContexto): SecaoItem[] {
+  const a = doc?.accessibility
+  const candidatas: [string, string, boolean][] = [
+    ["playground", "Playground", Boolean(ctx?.temTopo)],
+    ["variantes", "Variantes", tem(doc?.variants)],
+    ["tamanhos", "Tamanhos", tem(doc?.sizes)],
+    ["estados", "Estados", tem(doc?.states)],
+    ["exemplos", "Exemplos", Boolean(ctx?.temExemplos)],
+    ["anatomia", "Anatomia", tem(doc?.anatomy)],
+    ["composicao", "Composição", Boolean(ctx?.temComposicao) || Boolean(doc?.code?.trim()) || tem(doc?.props)],
+    ["acessibilidade", "Acessibilidade", Boolean(a && Object.values(a).some((v) => typeof v === "string" && v.trim()))],
+    ["tokens", "Tokens", tem(doc?.tokens)],
+    [
+      "uso",
+      "Uso",
+      Boolean(doc && itensQuandoUsar(doc).length) || tem(doc?.whenNotToUse) || tem(doc?.doGuidelines) || tem(doc?.dontGuidelines),
+    ],
+  ]
+  return candidatas.filter(([, , ok]) => ok).map(([id, label]) => ({ id, label }))
 }
 
-export function blocosVisaoGeral(doc: ComponentDoc): string[] {
-  const blocos: string[] = []
+export interface MetricaTopo {
+  valor: number
+  rotulo: string
+}
 
-  const temQuandoUsar =
-    Boolean(doc.whenToUseItems && doc.whenToUseItems.length > 0) ||
-    Boolean(doc.whenToUse && doc.whenToUse.trim().length > 0)
-  if (temQuandoUsar) {
-    blocos.push("quando-usar")
-  }
-
-  const temQuandoNaoUsar = Boolean(
-    doc.whenNotToUse && doc.whenNotToUse.length > 0
-  )
-  if (temQuandoNaoUsar) {
-    blocos.push("quando-nao-usar")
-  }
-
-  const temVariantesProps =
-    Boolean(doc.variants && doc.variants.length > 0) ||
-    Boolean(doc.sizes && doc.sizes.length > 0) ||
-    Boolean(doc.props && doc.props.length > 0)
-  if (temVariantesProps) {
-    blocos.push("variantes-props")
-  }
-
-  const temEstados = Boolean(doc.states && doc.states.length > 0)
-  if (temEstados) {
-    blocos.push("estados")
-  }
-
-  const temFacaNaoFaca =
-    Boolean(doc.doGuidelines && doc.doGuidelines.length > 0) ||
-    Boolean(doc.dontGuidelines && doc.dontGuidelines.length > 0)
-  if (temFacaNaoFaca) {
-    blocos.push("faca-nao-faca")
-  }
-
-  return blocos
+// Os números do canto do cabeçalho: só o que o componente tem.
+export function metricasDoTopo(doc?: ComponentDoc): MetricaTopo[] {
+  const par = (n: number | undefined, um: string, varios: string) =>
+    n ? [{ valor: n, rotulo: n === 1 ? um : varios }] : []
+  return [
+    ...par(doc?.variants?.length, "variante", "variantes"),
+    ...par(doc?.sizes?.length, "tamanho", "tamanhos"),
+    ...par(doc?.states?.length, "estado", "estados"),
+  ]
 }
 
 export function itensQuandoUsar(doc: ComponentDoc): string[] {

@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from "node:fs"
 import { join } from "node:path"
 import { describe, expect, it } from "vitest"
 
-import { atomicRegistry, type AtomicCategory } from "./atomic-registry"
+import { atomicRegistry, contagemPorCamada, type AtomicCategory } from "./atomic-registry"
 
 // Trava do critério de camadas (ver o comentário no topo de
 // atomic-registry.ts): um componente só compõe componentes de camada
@@ -61,5 +61,13 @@ describe("componente só compõe camadas abaixo da dele", () => {
       .filter((dep) => dep in atomicRegistry && nivel[atomicRegistry[dep]] >= nivel[camada] && camada !== "organism")
       .map((dep) => `${dep} (${atomicRegistry[dep]})`)
     expect(acima, `${slug} é ${camada}`).toEqual([])
+  })
+})
+
+describe("contagemPorCamada: números da home", () => {
+  it("soma as quatro camadas e bate com o registro", () => {
+    const c = contagemPorCamada()
+    expect(Object.keys(c).sort()).toEqual(["atom", "molecule", "organism", "primitive"])
+    expect(Object.values(c).reduce((a, b) => a + b, 0)).toBe(Object.keys(atomicRegistry).length)
   })
 })

@@ -1,22 +1,19 @@
 ---
 tipo: historia
+codigo: 04H
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/7
+tarefas: 7/7
 bloqueada-por:
-  - "[[H-memoria-molecules-a]]"
-  - "[[H-memoria-molecules-b]]"
-  - "[[H-memoria-molecules-c]]"
-  - "[[H-memoria-molecules-d]]"
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -74,14 +71,24 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `sheet` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `sidebar` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `split-button` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `stepper` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `time-picker` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `sheet` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `sidebar` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `split-button` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `stepper` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `time-picker` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- Registrar e declarar `sheet`: `npm run docs:registrar -- sheet --motivo "Primeiro registro (memoria-organisms-d)"`, intenção e acessibilidade preenchidas, referências `passi:janela-de-acoes` e `shadcn:sheet`, docs:gerar e docs:check verdes.
+- Registrar e declarar `sidebar`: `npm run docs:registrar -- sidebar --motivo "Primeiro registro (memoria-organisms-d)"`, intenção e acessibilidade preenchidas, referências `passi:menu-lateral` e `shadcn:sidebar`, docs:gerar e docs:check verdes.
+- Registrar e declarar `split-button`: `npm run docs:registrar -- split-button --motivo "Primeiro registro (memoria-organisms-d)"`, intenção e acessibilidade preenchidas, referência `spec:split-button`, docs:gerar e docs:check verdes.
+- Registrar e declarar `stepper`: `npm run docs:registrar -- stepper --motivo "Primeiro registro (memoria-organisms-d)"`, intenção e acessibilidade preenchidas, referências `passi:passos` e `spec:stepper`, docs:gerar e docs:check verdes.
+- Registrar e declarar `time-picker`: `npm run docs:registrar -- time-picker --motivo "Primeiro registro (memoria-organisms-d)"`, intenção e acessibilidade preenchidas, referência `spec:time-picker`, docs:gerar e docs:check verdes.
+- Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json: slugs adicionados à porta de entrada e árvore de decisão em `docs/componentes/README.md`, retirados de `PENDENTES_MD` em `src/lib/memoria-componentes.test.ts`, sinônimos conferidos.
+- Verificação final: `npx tsc --noEmit` (sem erros), `npm run test:unit` (30 arquivos, 2204 testes verdes) e `npm run docs:check` (em sincronia e memória em dia).
+
+- 2026-10-29 · claude · Entregue no PR #42 (montado a partir da main, só com código e docs; as notas de _trabalho/ não sobem para o GitHub). Verificado antes: tsc, test:unit e docs:check rodados por mim, e as páginas conferidas no navegador. Texto `piloto`, à espera da revisão do Rafael.
 
 ## Histórico

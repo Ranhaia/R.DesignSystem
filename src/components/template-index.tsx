@@ -8,7 +8,7 @@ export function TemplateIndexPage() {
   return (
     <div className="flex flex-1 flex-col gap-6">
       <CatalogHeader
-        title="Templates"
+        title="Modelos"
         description="Jornadas completas em Next.js, com navegação real entre telas — onde o Design System é testado ponta a ponta com leitor de tela."
         count={templatesList.length}
       />

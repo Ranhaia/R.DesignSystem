@@ -419,3 +419,87 @@
   --ai-text-low: #C2C1FF;
   --ai-text-high: #EFEFFF;
 }
+
+[data-style="clay"] {
+  --background: #DEE6EF;
+  --foreground: #1A1C1D;
+  --card: #FFFFFF;
+  --card-foreground: #1A1C1D;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1C1D;
+  --primary: #2F6FED;
+  --primary-foreground: #FFFFFF;
+  --secondary: #D4E3FF;
+  --secondary-foreground: #081A3D;
+  --muted: #ECEEF1;
+  --muted-foreground: #44474C;
+  --accent: #FDD5B7;
+  --accent-foreground: #361900;
+  --destructive: #B91B25;
+  --destructive-foreground: #FFFFFF;
+  --border: #C3C7CD;
+  --input: #74777D;
+  --ring: #1655D1;
+  --chart-1: #894581;
+  --chart-2: #5468EE;
+  --chart-3: #8485B5;
+  --chart-4: #D495DD;
+  --chart-5: #003CAE;
+  --sidebar: #F8F9FC;
+  --sidebar-foreground: #1A1C1D;
+  --sidebar-primary: #2F6FED;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #D4E3FF;
+  --sidebar-accent-foreground: #081A3D;
+  --sidebar-border: #C3C7CD;
+  --sidebar-ring: #1655D1;
+  --ai-surface: #F9F9FF;
+  --ai-surface-highlight: #EFEFFF;
+  --ai-interactive: #E0E0FF;
+  --ai-interactive-hover: #C2C1FF;
+  --ai-interactive-pressed: #47359C;
+  --ai-text-low: #47359C;
+  --ai-text-high: #20005F;
+}
+
+.dark[data-style="clay"] {
+  --background: #121315;
+  --foreground: #E1E2E5;
+  --card: #1E2021;
+  --card-foreground: #E1E2E5;
+  --popover: #1E2021;
+  --popover-foreground: #E1E2E5;
+  --primary: #2F6FED;
+  --primary-foreground: #FFFFFF;
+  --secondary: #32476D;
+  --secondary-foreground: #D4E3FF;
+  --muted: #292A2C;
+  --muted-foreground: #C3C7CD;
+  --accent: #5D3917;
+  --accent-foreground: #F9DFCB;
+  --destructive: #C82E32;
+  --destructive-foreground: #FFFFFF;
+  --border: #44474C;
+  --input: #8D9197;
+  --ring: #A9C7FF;
+  --chart-1: #FA9DC6;
+  --chart-2: #7EABFF;
+  --chart-3: #978FC0;
+  --chart-4: #9C61A6;
+  --chart-5: #CEDCF8;
+  --sidebar: #1A1C1D;
+  --sidebar-foreground: #E1E2E5;
+  --sidebar-primary: #2F6FED;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #32476D;
+  --sidebar-accent-foreground: #D4E3FF;
+  --sidebar-border: #44474C;
+  --sidebar-ring: #A9C7FF;
+  --ai-surface: #20005F;
+  --ai-surface-highlight: #2A0774;
+  --ai-interactive: #3D278E;
+  --ai-interactive-hover: #5142AA;
+  --ai-interactive-pressed: #C2C1FF;
+  --ai-text-low: #C2C1FF;
+  --ai-text-high: #EFEFFF;
+}

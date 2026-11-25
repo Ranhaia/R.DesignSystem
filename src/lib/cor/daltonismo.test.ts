@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest"
 import { checarDaltonismo, diferenca, PARES_DALTONISMO, simular, VISOES } from "./daltonismo"
 import { paraOklch } from "./espaco"
 import { gerarTema, type Token } from "./gerar"
-import { PRESETS } from "./presets"
+import { PRESETS, SOBRESCRITAS } from "./presets"
 
 describe("simulação de daltonismo", () => {
   it.each(VISOES)("%s: branco, preto e cinza não mudam", (visao) => {
@@ -77,18 +77,24 @@ const CONHECIDAS: Record<string, string[]> = {
     ...l("claro", "--chart-1/--chart-5", "deuteranopia"), ...l("escuro", "--destructive/--primary", ...TODAS),
     ...l("escuro", "--chart-2/--chart-3", "protanopia"),
   ],
+  clay: [], // gráficos corrigidos por sobrescrita em presets.ts (2026-11-09)
   midnight: [...l("claro", "--chart-3/--chart-4", "protanopia"), ...l("escuro", "--chart-1/--chart-5", "deuteranopia")],
 }
 
 describe("os 5 presets (catraca do daltonismo)", () => {
-  const falhasDe = (fonte: string) => checarDaltonismo(gerarTema(fonte)).map((f) => `${f.modo} ${f.a}/${f.b} ${f.visao}`)
+  const temaDe = (nome: string, fonte: string) => {
+    const t = gerarTema(fonte)
+    const sob = SOBRESCRITAS[nome as keyof typeof PRESETS]
+    return { claro: { ...t.claro, ...(sob?.claro ?? {}) }, escuro: { ...t.escuro, ...(sob?.escuro ?? {}) } }
+  }
+  const falhasDe = (nome: string, fonte: string) => checarDaltonismo(temaDe(nome, fonte)).map((f) => `${f.modo} ${f.a}/${f.b} ${f.visao}`)
 
   it.each(Object.entries(PRESETS))("%s: nenhuma falha nova", (nome, preset) => {
-    expect(falhasDe(preset.fonte).filter((f) => !CONHECIDAS[nome].includes(f))).toEqual([])
+    expect(falhasDe(nome, preset.fonte).filter((f) => !CONHECIDAS[nome].includes(f))).toEqual([])
   })
 
   it.each(Object.entries(PRESETS))("%s: falha corrigida sai da lista", (nome, preset) => {
-    const atuais = falhasDe(preset.fonte)
+    const atuais = falhasDe(nome, preset.fonte)
     expect(CONHECIDAS[nome].filter((f) => !atuais.includes(f))).toEqual([])
   })
 })

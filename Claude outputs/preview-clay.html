@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>R.DS · preset Clay</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--font:'DM Sans',ui-sans-serif,system-ui,sans-serif;--radius:0.8rem}
+.claro{--background:#DEE6EF;--foreground:#1A1C1D;--card:#FFFFFF;--card-foreground:#1A1C1D;--primary:#2F6FED;--primary-foreground:#FFFFFF;--secondary:#D4E3FF;--secondary-foreground:#081A3D;--muted:#ECEEF1;--muted-foreground:#44474C;--accent:#FDD5B7;--accent-foreground:#361900;--destructive:#B91B25;--destructive-foreground:#FFFFFF;--border:#C3C7CD;--input:#74777D;--ring:#1655D1;--chart-1:#894581;--chart-2:#5468EE;--chart-3:#8485B5;--chart-4:#D495DD;--chart-5:#003CAE}
+.escuro{--background:#121315;--foreground:#E1E2E5;--card:#1E2021;--card-foreground:#E1E2E5;--primary:#2F6FED;--primary-foreground:#FFFFFF;--secondary:#32476D;--secondary-foreground:#D4E3FF;--muted:#292A2C;--muted-foreground:#C3C7CD;--accent:#5D3917;--accent-foreground:#F9DFCB;--destructive:#C82E32;--destructive-foreground:#FFFFFF;--border:#44474C;--input:#8D9197;--ring:#A9C7FF;--chart-1:#FA9DC6;--chart-2:#7EABFF;--chart-3:#978FC0;--chart-4:#9C61A6;--chart-5:#CEDCF8}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);background:var(--background);color:var(--foreground);font-size:14px}
+.wrap{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+aside{padding:16px;border-right:1px solid var(--border);background:var(--card);overflow:auto;max-height:100vh;position:sticky;top:0}
+aside h2{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-foreground);margin:18px 0 8px}
+aside label{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:6px 0;font-size:12px}
+aside input[type=color]{width:34px;height:24px;border:1px solid var(--border);padding:0;background:none;border-radius:6px}
+aside input[type=range]{width:100%}
+main{padding:28px;display:grid;gap:20px;align-content:start}
+h1{font-size:28px;letter-spacing:-.02em;margin:0;font-weight:600}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.card{background:var(--card);color:var(--card-foreground);border:1px solid var(--border);border-radius:calc(var(--radius) + 4px);padding:20px;box-shadow:0 1px 3px 0 rgb(0 0 0/.08)}
+.card h3{margin:0 0 6px;font-size:16px;font-weight:600}
+.muted{color:var(--muted-foreground)}
+button{font-family:inherit;font-size:14px;font-weight:600;height:40px;padding:0 18px;border-radius:calc(var(--radius) - 2px);border:1px solid transparent;cursor:pointer}
+.b-p{background:var(--primary);color:var(--primary-foreground)}
+.b-s{background:var(--secondary);color:var(--secondary-foreground)}
+.b-o{background:transparent;color:var(--foreground);border-color:var(--border)}
+.b-d{background:var(--destructive);color:var(--destructive-foreground)}
+input.t{height:40px;border:1px solid var(--input);border-radius:calc(var(--radius) - 2px);padding:0 12px;background:var(--background);color:var(--foreground);font-family:inherit;width:240px}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.sw div{border:1px solid var(--border);border-radius:calc(var(--radius) - 4px);padding:8px;font-size:11px;height:64px;display:flex;align-items:flex-end}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.alert{border:1px solid var(--destructive);border-radius:var(--radius);padding:12px 14px;color:var(--destructive)}
+pre{background:var(--muted);padding:12px;border-radius:var(--radius);font-size:12px;white-space:pre-wrap;margin:8px 0 0}
+</style>
+</head>
+<body class="claro">
+<div class="wrap">
+<aside>
+  <div class="row"><button class="b-p" id="modo" style="height:32px;font-size:12px">Alternar claro/escuro</button></div>
+  <h2>Forma</h2>
+  <label>Raio base <span id="rv">0.8rem</span></label>
+  <input type="range" id="radius" min="0" max="1.75" step="0.025" value="0.8">
+  <h2>Cores (token → valor)</h2>
+  <div id="cores"></div>
+  <h2>Exportar</h2>
+  <button class="b-o" id="exp" style="height:32px;font-size:12px;width:100%">Gerar lista das mudanças</button>
+  <pre id="out">Nenhuma mudança ainda.</pre>
+</aside>
+<main>
+  <div><h1>Preset Clay</h1><div class="muted">Prévia do R.DS · DM Sans · raio base ajustável. Os valores vêm de tokens-cor.css (gerado).</div></div>
+  <div class="row">
+    <button class="b-p">Primário</button><button class="b-s">Secundário</button><button class="b-o">Contorno</button><button class="b-d">Excluir</button>
+    <span class="badge" style="background:var(--accent);color:var(--accent-foreground)">Selo</span>
+    <span class="badge" style="background:var(--muted);color:var(--muted-foreground)">Neutro</span>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>Cartão</h3><p class="muted" style="margin:0 0 14px">Superfície por cor e borda, sombra do padrão.</p>
+      <div class="row"><input class="t" placeholder="Campo de texto"><button class="b-p">Salvar</button></div></div>
+    <div class="card"><h3>Primário × destrutivo</h3><p class="muted" style="margin:0 0 14px">Agora distintos: azul e vermelho.</p>
+      <div class="row"><button class="b-p">Confirmar</button><button class="b-d">Excluir</button></div></div>
+  </div>
+  <div class="alert">Alerta destrutivo: não foi possível concluir a ação.</div>
+  <div class="card"><h3>Gráfico (chart-1 a chart-5)</h3>
+    <svg id="ch" viewBox="0 0 300 80" width="100%" height="80"></svg></div>
+  <div class="card"><h3>Paleta</h3><div class="sw" id="sw"></div></div>
+</main>
+</div>
+<script>
+const body=document.body, base={claro:{},escuro:{}};
+const toks=['background','foreground','card','primary','primary-foreground','secondary','accent','destructive','border','input','muted','muted-foreground'];
+let modo='claro', mud={claro:{},escuro:{}};
+const cs=()=>getComputedStyle(body);
+const hex=v=>{v=v.trim();return v.startsWith('#')?v.toUpperCase():v};
+function montar(){
+  const box=document.getElementById('cores');box.innerHTML='';
+  toks.forEach(t=>{const l=document.createElement('label');l.innerHTML='<span>--'+t+'</span>';
+    const i=document.createElement('input');i.type='color';i.value=hex(cs().getPropertyValue('--'+t)).slice(0,7).toLowerCase();
+    i.oninput=()=>{body.style.setProperty('--'+t,i.value);mud[modo][t]=i.value.toUpperCase();pintar()};
+    l.appendChild(i);box.appendChild(l)});pintar()}
+function pintar(){
+  const sw=document.getElementById('sw');sw.innerHTML='';
+  toks.forEach(t=>{const d=document.createElement('div');d.style.background='var(--'+t+')';d.style.color=(t.includes('foreground')||t==='foreground')?'var(--background)':'var(--foreground)';d.textContent=t;sw.appendChild(d)});
+  const ch=document.getElementById('ch');ch.innerHTML='';
+  [60,40,70,30,50].forEach((h,k)=>{ch.insertAdjacentHTML('beforeend','<rect x="'+(20+k*56)+'" y="'+(75-h)+'" width="40" height="'+h+'" rx="6" fill="var(--chart-'+(k+1)+')"/>')})}
+document.getElementById('modo').onclick=()=>{
+  body.removeAttribute('style');body.style.setProperty('--radius',document.getElementById('radius').value+'rem');
+  modo=modo==='claro'?'escuro':'claro';body.className=modo;
+  Object.entries(mud[modo]).forEach(([t,v])=>body.style.setProperty('--'+t,v));montar()};
+document.getElementById('radius').oninput=e=>{body.style.setProperty('--radius',e.target.value+'rem');document.getElementById('rv').textContent=e.target.value+'rem'};
+document.getElementById('exp').onclick=()=>{
+  const r=document.getElementById('radius').value;let s='Raio base: '+r+'rem (atual no R.DS: 0.8rem)\n';
+  ['claro','escuro'].forEach(m=>{const e=Object.entries(mud[m]);if(e.length)s+='\n'+m+':\n'+e.map(([k,v])=>'  --'+k+': '+v).join('\n')});
+  document.getElementById('out').textContent=s+'\n\nMe envie este texto para eu aplicar no R.DS.'};
+montar();
+</script>
+</body>
+</html>

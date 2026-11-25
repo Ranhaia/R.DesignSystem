@@ -1,22 +1,19 @@
 ---
 tipo: historia
+codigo: 04A
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/8
+tarefas: 8/8
 bloqueada-por:
-  - "[[H-memoria-atoms-a]]"
-  - "[[H-memoria-atoms-b]]"
-  - "[[H-memoria-atoms-c]]"
-  - "[[H-memoria-atoms-d]]"
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -74,15 +71,26 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `accordion` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `alert` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `attachment` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `breadcrumb` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `bubble` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `button-group` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `accordion` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `alert` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `attachment` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `breadcrumb` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `bubble` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `button-group` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- 2026-10-29 · antigravity · Registrar e declarar accordion: docs:registrar executado, intenção declarada em docs/componentes/accordion.md com vizinhos [collapsible, tabs, sheet] e referências [passi:acordeao, shadcn:accordion]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar alert: docs:registrar executado, intenção declarada em docs/componentes/alert.md com vizinhos [sonner, alert-dialog, dialog] e referências [passi:alerta, shadcn:alert]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar attachment: docs:registrar executado, intenção declarada em docs/componentes/attachment.md com vizinhos [file-uploader, thumbnail, card] e referências [shadcn:attachment, spec:attachment]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar breadcrumb: docs:registrar executado, intenção declarada em docs/componentes/breadcrumb.md com vizinhos [sidebar, navigation-menu, pagination] e referências [passi:migalhas-de-pao, shadcn:breadcrumb]. Defeito anotado: BreadcrumbEllipsis traz More fixo em inglês no sr-only. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar bubble: chave bubble adicionada em sinonimos.json, docs:registrar executado, intenção declarada em docs/componentes/bubble.md com vizinhos [message, card, alert] e referências [passi:mensagem-da-conversa, spec:bubble]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar button-group: docs:registrar executado, intenção declarada em docs/componentes/button-group.md com vizinhos [button, toggle-group, split-button] e referências [passi:grupo-de-botoes, shadcn:button-group]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Encaixar lote molecules a: accordion, alert, attachment, breadcrumb, bubble e button-group adicionados ao README.md da porta de entrada, removidos de PENDENTES_MD em memoria-componentes.test.ts e chave bubble conferida em sinonimos.json. Prova: vitest memoria-componentes.test.ts (463 testes) e docs:check verdes.
+- 2026-10-29 · antigravity · Validação final da suíte: npx tsc --noEmit (0 erros), npm run test:unit (29 arquivos, 1908 testes passando) e npm run docs:check verdes.
+
+- 2026-10-29 · claude · Entregue no PR #38 (montado a partir da main, só com código e docs; as notas de _trabalho/ não sobem para o GitHub). Verificado antes: tsc, test:unit e docs:check rodados por mim, e as páginas conferidas no navegador. Texto `piloto`, à espera da revisão do Rafael.
 
 ## Histórico

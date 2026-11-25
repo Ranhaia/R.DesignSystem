@@ -1,5 +1,6 @@
 ---
 tipo: historia
+codigo: 042
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
 status: aguardando
@@ -11,7 +12,6 @@ perfil: front
 dono:
 tarefas: 0/3
 bloqueada-por:
-  - "[[H-abas-padronizadas]]"
 criado: 2026-10-28
 fechado:
 motivo-descarte:

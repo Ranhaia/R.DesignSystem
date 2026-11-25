@@ -1,16 +1,15 @@
 import { describe, expect, it } from "vitest"
 import type { ComponentDoc } from "./component-docs"
 import {
-  abaAtiva,
-  abasDoComponente,
-  blocosVisaoGeral,
   exemploPrincipal,
   faixaMeta,
   itensQuandoUsar,
   linhasAcessibilidade,
   linhasTokens,
   linhasVariantesProps,
+  metricasDoTopo,
   previewDoTopo,
+  secoesDoComponente,
   vizinhosNaCamada,
 } from "./doc-abas"
 
@@ -32,102 +31,80 @@ const ctx0 = { temExemplos: false, temComposicao: false }
 const ids = (abas: { id: string }[]) => abas.map((a) => a.id)
 const opcao = (value: string, description = "") => ({ name: value, value, description })
 
-describe("abasDoComponente", () => {
-  it("sem doc, só a Visão geral", () => {
-    expect(abasDoComponente(undefined, ctx0)).toEqual([{ id: "visao-geral", label: "Visão geral" }])
+describe("secoesDoComponente: a ordem da rolagem única", () => {
+  it("doc vazio e sem exemplos: nenhuma seção", () => {
+    expect(secoesDoComponente(doc())).toEqual([])
   })
 
-  it("doc antigo (sem MD): Visão geral, mais Exemplos e Código quando há o que mostrar", () => {
-    const d = doc({ code: "<X />", variants: [opcao("a")] })
-    expect(ids(abasDoComponente(d, ctx0))).toEqual(["visao-geral", "exemplos", "codigo"])
-  })
-
-  it("Exemplos aparece com exemplo cadastrado, mesmo sem variante", () => {
-    expect(ids(abasDoComponente(doc(), { ...ctx0, temExemplos: true }))).toEqual(["visao-geral", "exemplos"])
-  })
-
-  it("Playground mora no topo da página: sozinho não cria a aba Exemplos", () => {
-    expect(ids(abasDoComponente(doc(), { ...ctx0, temPlayground: true } as typeof ctx0))).toEqual(["visao-geral"])
-  })
-
-  it("Código aparece com anatomia ou composição, mesmo sem exemplo mínimo", () => {
-    const anatomia = doc({ anatomy: [{ part: "Raiz", description: "x" }] })
-    expect(ids(abasDoComponente(anatomia, ctx0))).toEqual(["visao-geral", "codigo"])
-    expect(ids(abasDoComponente(doc(), { ...ctx0, temComposicao: true }))).toEqual(["visao-geral", "codigo"])
-  })
-
-  it("Tokens e Acessibilidade só aparecem com dado", () => {
-    expect(ids(abasDoComponente(doc({ tokens: [] }), ctx0))).toEqual(["visao-geral"])
-    expect(ids(abasDoComponente(doc({ tokens: [{ contexto: "Cor", itens: ["bg-primary"] }] }), ctx0))).toEqual(["visao-geral", "tokens"])
-    const a11y = { keyboard: "k", screenReader: "s", focus: "f", cautions: "c" }
-    expect(ids(abasDoComponente(doc({ accessibility: a11y }), ctx0))).toEqual(["visao-geral", "acessibilidade"])
-  })
-
-  it("ordem fixa e rótulos em português", () => {
+  it("segue a ordem Playground, Variantes, Tamanhos, Estados, Exemplos, Anatomia, Composição, Acessibilidade, Tokens, Uso", () => {
     const completo = doc({
-      code: "x",
-      variants: [opcao("a")],
-      tokens: [{ contexto: "Cor", itens: ["t"] }],
-      accessibility: { keyboard: "k", screenReader: "s", focus: "f", cautions: "c" },
-    })
-    expect(abasDoComponente(completo, ctx0)).toEqual([
-      { id: "visao-geral", label: "Visão geral" },
-      { id: "exemplos", label: "Exemplos" },
-      { id: "codigo", label: "Código" },
-      { id: "tokens", label: "Tokens" },
-      { id: "acessibilidade", label: "Acessibilidade" },
+      variants: [{ name: "A", value: "a", description: "" }],
+      sizes: [{ name: "P", value: "p" }],
+      states: [{ name: "Hover", description: "" }],
+      anatomy: [{ part: "Raiz", description: "" }],
+      accessibility: { keyboard: "Tab" },
+      tokens: [{ contexto: "Cor", itens: ["--primary"] }],
+      whenToUseItems: ["x"],
+    } as Partial<ComponentDoc>)
+    const ids = secoesDoComponente(completo, { temTopo: true, temExemplos: true, temComposicao: true }).map((s) => s.id)
+    expect(ids).toEqual([
+      "playground",
+      "variantes",
+      "tamanhos",
+      "estados",
+      "exemplos",
+      "anatomia",
+      "composicao",
+      "acessibilidade",
+      "tokens",
+      "uso",
     ])
   })
+
+  it("só inclui a seção que tem conteúdo", () => {
+    const ids = secoesDoComponente(doc({ states: [{ name: "Hover", description: "" }] })).map((s) => s.id)
+    expect(ids).toEqual(["estados"])
+  })
+
+  it("Uso aparece com Quando não usar ou Faça e não faça, mesmo sem Quando usar", () => {
+    expect(secoesDoComponente(doc({ whenNotToUse: ["y"] })).map((s) => s.id)).toEqual(["uso"])
+    expect(secoesDoComponente(doc({ doGuidelines: ["z"] })).map((s) => s.id)).toEqual(["uso"])
+  })
+
+  it("props sozinhas já abrem a seção Composição (tabela de props)", () => {
+    expect(secoesDoComponente(doc({ props: [{ name: "a", type: "string" }] } as Partial<ComponentDoc>)).map((s) => s.id)).toEqual(["composicao"])
+  })
+
+  it("todo item traz rótulo em português e id único", () => {
+    const todos = secoesDoComponente(
+      doc({ code: "x", variants: [{ name: "A", value: "a", description: "" }] }),
+      { temTopo: true, temExemplos: true, temComposicao: true }
+    )
+    expect(new Set(todos.map((s) => s.id)).size).toBe(todos.length)
+    for (const s of todos) expect(s.label.length).toBeGreaterThan(0)
+  })
 })
 
-describe("abaAtiva", () => {
-  const abas = abasDoComponente(doc({ code: "x", tokens: [{ contexto: "Cor", itens: ["t"] }] }), ctx0)
-
-  it("aceita o id com ou sem #", () => {
-    expect(abaAtiva("codigo", abas)).toBe("codigo")
-    expect(abaAtiva("#codigo", abas)).toBe("codigo")
-    expect(abaAtiva("tokens", abas)).toBe("tokens")
+describe("metricasDoTopo: números do cabeçalho", () => {
+  it("conta variantes, tamanhos e estados; omite o que é zero", () => {
+    const m = metricasDoTopo(
+      doc({
+        variants: [
+          { name: "A", value: "a", description: "" },
+          { name: "B", value: "b", description: "" },
+        ],
+        sizes: [{ name: "P", value: "p" }],
+      } as Partial<ComponentDoc>)
+    )
+    expect(m).toEqual([
+      { valor: 2, rotulo: "variantes" },
+      { valor: 1, rotulo: "tamanho" },
+    ])
   })
 
-  it("cai na Visão geral quando o valor falta, é lixo ou a aba não existe neste componente", () => {
-    expect(abaAtiva(undefined, abas)).toBe("visao-geral")
-    expect(abaAtiva("", abas)).toBe("visao-geral")
-    expect(abaAtiva("#", abas)).toBe("visao-geral")
-    expect(abaAtiva("lixo", abas)).toBe("visao-geral")
-    expect(abaAtiva("acessibilidade", abas)).toBe("visao-geral")
-  })
-})
-
-describe("blocosVisaoGeral", () => {
-  it("doc vazio não tem bloco", () => {
-    expect(blocosVisaoGeral(doc())).toEqual([])
-  })
-
-  it("doc antigo usa whenToUse como Quando usar e esconde Quando NÃO usar", () => {
-    const d = doc({
-      whenToUse: "Para X.",
-      variants: [opcao("a")],
-      states: [{ name: "Padrão", description: "" }],
-      doGuidelines: ["Faça"],
-      dontGuidelines: ["Não faça"],
-    })
-    expect(blocosVisaoGeral(d)).toEqual(["quando-usar", "variantes-props", "estados", "faca-nao-faca"])
-  })
-
-  it("ordem fixa com tudo preenchido", () => {
-    const d = doc({
-      whenToUseItems: ["a"],
-      whenNotToUse: ["b → link"],
-      props: [{ name: "x", type: "string", description: "" }],
-      states: [{ name: "Padrão", description: "" }],
-      dontGuidelines: ["Não faça"],
-    })
-    expect(blocosVisaoGeral(d)).toEqual(["quando-usar", "quando-nao-usar", "variantes-props", "estados", "faca-nao-faca"])
-  })
-
-  it("Variantes e props aparece só com props, e Faça e não faça só com um dos lados", () => {
-    expect(blocosVisaoGeral(doc({ props: [{ name: "x", type: "t", description: "" }] }))).toEqual(["variantes-props"])
-    expect(blocosVisaoGeral(doc({ doGuidelines: ["a"] }))).toEqual(["faca-nao-faca"])
+  it("singular quando é 1 e vazio quando não há nada", () => {
+    expect(metricasDoTopo(doc())).toEqual([])
+    expect(metricasDoTopo(doc({ states: [{ name: "x", description: "" }] }))).toEqual([{ valor: 1, rotulo: "estado" }])
   })
 })
 

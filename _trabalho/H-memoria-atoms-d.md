@@ -1,20 +1,19 @@
 ---
 tipo: historia
+codigo: 048
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/9
+tarefas: 9/9
 bloqueada-por:
-  - "[[H-memoria-primitivos-a]]"
-  - "[[H-memoria-primitivos-b]]"
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -72,16 +71,29 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `spinner` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `switch` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `tag` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `textarea` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `thumbnail` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `toggle` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `tooltip` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `spinner` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `switch` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `tag` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `textarea` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `thumbnail` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `toggle` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `tooltip` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- `spinner`: registrado via `npm run docs:registrar -- spinner --motivo "Primeiro registro (memoria-atoms-d)"`, intenção e acessibilidade declaradas seguindo a baliza e o PASSI (`passi:carregando`). `docs:check` verde.
+- Defeito anotado em `src/components/ui/spinner.tsx`: `aria-label="Loading"` em inglês fixo no componente. Registrado em Cuidados para o consumidor passar `aria-label` em pt-BR.
+- `switch`: registrado via `npm run docs:registrar -- switch --motivo "Primeiro registro (memoria-atoms-d)"`, intenção e acessibilidade declaradas seguindo a baliza e o PASSI (`passi:interruptor`). `docs:check` verde.
+- `tag`: registrado via `npm run docs:registrar -- tag --motivo "Primeiro registro (memoria-atoms-d)"`, intenção e acessibilidade declaradas seguindo a baliza, o spec arquivado (`spec:tag`) e o PASSI (`passi:etiqueta`). `docs:check` verde.
+- `textarea`: registrado via `npm run docs:registrar -- textarea --motivo "Primeiro registro (memoria-atoms-d)"`, intenção e acessibilidade declaradas seguindo a baliza e o PASSI (`passi:area-de-texto`). `docs:check` verde.
+- `thumbnail`: registrado via `npm run docs:registrar -- thumbnail --motivo "Primeiro registro (memoria-atoms-d)"`, intenção e acessibilidade declaradas seguindo a baliza e o spec arquivado (`spec:thumbnail`). Chave criada em `docs/sinonimos.json`. `docs:check` verde.
+- `toggle`: registrado via `npm run docs:registrar -- toggle --motivo "Primeiro registro (memoria-atoms-d)"`, intenção e acessibilidade declaradas seguindo a baliza e o shadcn (`shadcn:toggle`). `docs:check` verde.
+- `tooltip`: registrado via `npm run docs:registrar -- tooltip --motivo "Primeiro registro (memoria-atoms-d)"`, intenção e acessibilidade declaradas seguindo a baliza e o PASSI (`passi:dica-flutuante`). `docs:check` verde.
+- Encaixe do lote: 7 componentes adicionados a "Componentes documentados" em `docs/componentes/README.md`, removidos de `PENDENTES_MD` em `src/lib/memoria-componentes.test.ts` e chave `thumbnail` inserida em `docs/sinonimos.json`. 360 testes de memória verdes.
+- Verificação final: `npx tsc --noEmit` (sem erros), `npm run test:unit` (29 arquivos, 1723 testes passando) e `npm run docs:check` (sincronia e memória em dia).
+
+- 2026-10-29 · claude · Entregue no PR #37 (montado a partir da main, só com código e docs; as notas de _trabalho/ não sobem para o GitHub). Verificado antes: tsc, test:unit e docs:check rodados por mim, e as páginas conferidas no navegador. Texto `piloto`, à espera da revisão do Rafael.
 
 ## Histórico

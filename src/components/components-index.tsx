@@ -95,7 +95,7 @@ export function ComponentsIndexPage() {
     },
     {
       key: "template",
-      title: "Templates",
+      title: "Modelos",
       description: templateDescription,
       href: "/templates",
       icon: "space_dashboard",
@@ -106,8 +106,8 @@ export function ComponentsIndexPage() {
   return (
     <div className="flex flex-1 flex-col gap-10">
       <CatalogHeader
-        title="Components"
-        description="Catálogo completo de componentes do Design System, organizado pela hierarquia do Atomic Design (Primitivos, Atoms, Molecules, Organisms) e Templates."
+        title="Componentes"
+        description="Catálogo completo de componentes do Design System, organizado pela hierarquia do Atomic Design (Primitivos, Átomos, Moléculas, Organismos) e Modelos."
         count={totalCount}
       />
 
@@ -262,7 +262,7 @@ export function ComponentsIndexPage() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <h2 className="font-heading text-lg font-semibold tracking-tight">
-              Templates
+              Modelos
             </h2>
             <Badge variant="outline">{templatesList.length}</Badge>
           </div>

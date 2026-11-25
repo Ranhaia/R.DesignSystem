@@ -3,20 +3,11 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { abasFundamentos } from "@/lib/foundations-registry"
 import { cn } from "@/lib/utils"
 
-const tabs = [
-  { href: "/fundamentos", label: "Visão geral" },
-  { href: "/fundamentos/cores", label: "Colors" },
-  { href: "/fundamentos/tipografia", label: "Typography" },
-  { href: "/fundamentos/espacamento", label: "Spacing" },
-  { href: "/fundamentos/grid", label: "Grid" },
-  { href: "/fundamentos/bordas", label: "Radius" },
-  { href: "/fundamentos/elevacao", label: "Elevation" },
-  { href: "/fundamentos/motion", label: "Motion" },
-  { href: "/fundamentos/icones", label: "Icons" },
-  { href: "/fundamentos/acessibilidade", label: "Accessibility" },
-]
+const tabs = abasFundamentos()
+
 
 export default function FundamentosLayout({
   children,
@@ -32,8 +23,8 @@ export default function FundamentosLayout({
           Fundamentos
         </h1>
         <p className="text-muted-foreground text-sm">
-          Tokens primitivos do Design System — a base sobre a qual todos os
-          componentes são construídos. Valores lidos ao vivo do estilo ativo.
+          A base do R.DS num lugar só: estilo, tokens e o catálogo de
+          componentes. Valores lidos ao vivo do estilo ativo.
         </p>
       </div>
 

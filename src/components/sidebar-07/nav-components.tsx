@@ -50,12 +50,10 @@ const categoryIcons: Record<ComponentCategory, MaterialSymbol> = {
   template: "space_dashboard",
 }
 
-// Grupo "Components" na navegação — agrupa Primitivos, Atoms, Molecules,
-// Organisms e Templates sob um cabeçalho único "Components" (com link pra /components),
-// conforme definido no Épico (E-documentacao-ds) e ratificado na Decisão A (2026-10-28).
+// Grupo "Camadas" na navegação: Primitivos, Átomos, Moléculas, Organismos e Modelos.
+// Sem cabeçalho "Componentes" que fecha tudo: a visão geral virou aba de /fundamentos.
 export function NavComponents() {
   const pathname = usePathname()
-  const [isComponentsOpen, setIsComponentsOpen] = React.useState(true)
   const [openSubGroups, setOpenSubGroups] = React.useState<Record<string, boolean>>({
     primitive: false,
     atom: false,
@@ -126,7 +124,7 @@ export function NavComponents() {
       },
       {
         key: "template",
-        label: "Templates",
+        label: "Modelos",
         href: "/templates",
         icon: categoryIcons.template,
         items: templatesList.map((t) => ({
@@ -140,48 +138,9 @@ export function NavComponents() {
   )
 
   return (
-    <Collapsible open={isComponentsOpen} onOpenChange={setIsComponentsOpen}>
-      <SidebarGroup>
-        {/* Cabeçalho expandido — Components (Link) + chevron do grupo */}
-        <div className="flex items-center gap-1 pr-1 group-data-[collapsible=icon]:hidden max-md:gap-0.5">
-          <SidebarGroupLabel asChild className="min-w-0 flex-1">
-            <Link
-              href="/components"
-              className="gap-2 truncate hover:text-sidebar-foreground"
-            >
-              <Icon name="widgets" className="size-4 shrink-0 max-md:size-3.5" />
-              Components
-            </Link>
-          </SidebarGroupLabel>
-          <CollapsibleTrigger
-            className="flex size-6 shrink-0 items-center justify-center rounded-md text-sidebar-foreground/70 outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground focus-visible:ring-2 focus-visible:ring-sidebar-ring max-md:size-5 [&[data-state=open]>svg]:rotate-180"
-          >
-            <Icon
-              name="keyboard_arrow_down"
-              className="size-4 transition-transform duration-200 max-md:size-3.5"
-            />
-            <span className="sr-only">
-              {isComponentsOpen ? "Recolher Components" : "Expandir Components"}
-            </span>
-          </CollapsibleTrigger>
-        </div>
-
-        {/* Modo recolhido (ícone-only) */}
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Link
-              href="/components"
-              className="mx-auto hidden size-8 items-center justify-center rounded-md text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground group-data-[collapsible=icon]:flex"
-            >
-              <Icon name="widgets" size={1} />
-            </Link>
-          </TooltipTrigger>
-          <TooltipContent side="right" align="center">
-            Components
-          </TooltipContent>
-        </Tooltip>
-
-        <CollapsibleContent className="group-data-[collapsible=icon]:hidden">
+    <SidebarGroup>
+      <SidebarGroupLabel>Camadas</SidebarGroupLabel>
+      <div>
           <SidebarMenu>
             {categories.map((cat) => {
               const isSubOpen = openSubGroups[cat.key] ?? false
@@ -250,8 +209,7 @@ export function NavComponents() {
               )
             })}
           </SidebarMenu>
-        </CollapsibleContent>
-      </SidebarGroup>
-    </Collapsible>
+      </div>
+    </SidebarGroup>
   )
 }

@@ -7,7 +7,7 @@ export default function AcessibilidadePage() {
       <Card>
         <CardHeader className="flex flex-row items-start justify-between gap-2 space-y-0">
           <div>
-            <CardTitle>Accessibility</CardTitle>
+            <CardTitle>Acessibilidade</CardTitle>
             <CardDescription>
               Diretrizes WCAG 2.2 AA, anel de foco visível, contraste e auditoria a11y.
             </CardDescription>

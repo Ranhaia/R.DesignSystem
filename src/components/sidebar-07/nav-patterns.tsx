@@ -37,7 +37,7 @@ export function NavPatterns() {
           <SidebarGroupLabel asChild className="min-w-0 flex-1">
             <Link href="/patterns" className="gap-2 truncate hover:text-sidebar-foreground">
               <Icon name="extension" className="size-4 shrink-0 max-md:size-3.5" />
-              Patterns
+              Padrões
             </Link>
           </SidebarGroupLabel>
           <CollapsibleTrigger
@@ -45,7 +45,7 @@ export function NavPatterns() {
           >
             <Icon name="keyboard_arrow_down" className="size-4 transition-transform duration-200 max-md:size-3.5" />
             <span className="sr-only">
-              {isOpen ? "Recolher Patterns" : "Expandir Patterns"}
+              {isOpen ? "Recolher Padrões" : "Expandir Padrões"}
             </span>
           </CollapsibleTrigger>
         </div>
@@ -60,7 +60,7 @@ export function NavPatterns() {
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right" align="center">
-            Patterns
+            Padrões
           </TooltipContent>
         </Tooltip>
 

@@ -7,7 +7,7 @@ export default function IconesPage() {
       <Card>
         <CardHeader className="flex flex-row items-start justify-between gap-2 space-y-0">
           <div>
-            <CardTitle>Icons</CardTitle>
+            <CardTitle>Ícones</CardTitle>
             <CardDescription>
               Sistema de ícones Material Symbols e padronização ótica via componente Icon.
             </CardDescription>

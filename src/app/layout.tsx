@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  DM_Sans,
   Inter,
   JetBrains_Mono,
   Lora,
@@ -49,6 +50,12 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
 const fontVariables = [
   inter.variable,
   lora.variable,
@@ -56,6 +63,7 @@ const fontVariables = [
   jetbrainsMono.variable,
   poppins.variable,
   manrope.variable,
+  dmSans.variable,
 ].join(" ");
 
 export const metadata: Metadata = {

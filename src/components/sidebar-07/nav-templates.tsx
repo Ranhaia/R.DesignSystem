@@ -39,7 +39,7 @@ export function NavTemplates() {
           <SidebarGroupLabel asChild className="min-w-0 flex-1">
             <Link href="/templates" className="gap-2 truncate hover:text-sidebar-foreground">
               <Icon name="space_dashboard" className="size-4 shrink-0 max-md:size-3.5" />
-              Templates
+              Modelos
             </Link>
           </SidebarGroupLabel>
           <CollapsibleTrigger
@@ -47,7 +47,7 @@ export function NavTemplates() {
           >
             <Icon name="keyboard_arrow_down" className="size-4 transition-transform duration-200 max-md:size-3.5" />
             <span className="sr-only">
-              {isOpen ? "Recolher Templates" : "Expandir Templates"}
+              {isOpen ? "Recolher Modelos" : "Expandir Modelos"}
             </span>
           </CollapsibleTrigger>
         </div>
@@ -62,7 +62,7 @@ export function NavTemplates() {
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right" align="center">
-            Templates
+            Modelos
           </TooltipContent>
         </Tooltip>
 

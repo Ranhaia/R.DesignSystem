@@ -64,4 +64,11 @@ export const stylesList: StyleEntry[] = [
     description: "Violeta, Manrope, sombra com glow — nativamente escuro, mas também tem versão clara",
     nativeMode: "dark",
   },
+  {
+    value: "clay",
+    label: "Clay",
+    swatch: "#2F6FED",
+    description: "DM Sans, cantos arredondados, azul, sombra do padrão",
+    nativeMode: "light",
+  },
 ]

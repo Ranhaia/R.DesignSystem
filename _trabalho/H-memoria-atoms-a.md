@@ -1,20 +1,19 @@
 ---
 tipo: historia
+codigo: 045
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/8
+tarefas: 8/8
 bloqueada-por:
-  - "[[H-memoria-primitivos-a]]"
-  - "[[H-memoria-primitivos-b]]"
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -72,15 +71,26 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `aspect-ratio` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `avatar` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `badge` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `checkbox` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `file-uploader` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `input-otp` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `aspect-ratio` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `avatar` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `badge` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `checkbox` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `file-uploader` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `input-otp` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- 2026-10-29 · antigravity · Registrar e declarar aspect-ratio: docs:registrar executado, intenção declarada em docs/componentes/aspect-ratio.md com vizinhos [avatar, thumbnail, card] e referências [passi:proporcao-de-imagem, shadcn:aspect-ratio]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar avatar: docs:registrar executado, intenção declarada em docs/componentes/avatar.md com vizinhos [badge, thumbnail, icon] e referências [passi:avatar, shadcn:avatar]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar badge: docs:registrar executado, intenção declarada em docs/componentes/badge.md com vizinhos [chip, tag, button] e referências [passi:selo, shadcn:badge]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar checkbox: docs:registrar executado, intenção declarada em docs/componentes/checkbox.md com vizinhos [switch, radio-group, field] e referências [passi:checkbox, shadcn:checkbox]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar file-uploader: docs:registrar executado, intenção declarada em docs/componentes/file-uploader.md com vizinhos [attachment, thumbnail, input] e referências [passi:envio-de-arquivo, spec:file-uploader]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar input-otp: docs:registrar executado, intenção declarada em docs/componentes/input-otp.md com vizinhos [input, field, kbd] e referências [passi:codigo-de-verificacao, shadcn:input-otp]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Encaixar lote atoms a: aspect-ratio, avatar, badge, checkbox, file-uploader e input-otp adicionados ao README.md da porta de entrada, removidos de PENDENTES_MD em memoria-componentes.test.ts e conferidas chaves em sinonimos.json. Prova: vitest memoria-componentes.test.ts (272 testes) e docs:check verdes.
+- 2026-10-29 · antigravity · Validação final da suíte: npx tsc --noEmit (0 erros), npm run test:unit (29 arquivos, 1713 testes passando) e npm run docs:check verdes.
+
+- 2026-10-29 · claude · Entregue no PR #37 (montado a partir da main, só com código e docs; as notas de _trabalho/ não sobem para o GitHub). Verificado antes: tsc, test:unit e docs:check rodados por mim, e as páginas conferidas no navegador. Texto `piloto`, à espera da revisão do Rafael.
 
 ## Histórico

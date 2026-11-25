@@ -7,7 +7,7 @@ export default function MotionPage() {
       <Card>
         <CardHeader className="flex flex-row items-start justify-between gap-2 space-y-0">
           <div>
-            <CardTitle>Motion</CardTitle>
+            <CardTitle>Movimento</CardTitle>
             <CardDescription>
               Durações (--duration-motion-*), curvas de transição e respeito a reduced motion.
             </CardDescription>

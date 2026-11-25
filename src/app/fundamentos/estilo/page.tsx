@@ -218,7 +218,7 @@ export default function StyleGuidePage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Sidebar</CardTitle>
+          <CardTitle>Barra lateral</CardTitle>
           <CardDescription>Tokens dedicados à barra lateral (podem divergir do resto do app).</CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4 sm:grid-cols-4">

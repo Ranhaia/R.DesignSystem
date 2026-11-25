@@ -11,9 +11,9 @@ describe("contexto da story", () => {
     expect(() => contextoDosGlobals({ style: "xpto" })).toThrow(/preset/)
     expect(() => contextoDosGlobals({ modo: "noite" })).toThrow(/modo/)
   })
-  it("10 nomes de projeto únicos; o default claro mantém o nome storybook", () => {
+  it("12 nomes de projeto únicos; o default claro mantém o nome storybook", () => {
     const nomes = CONTEXTOS.map(nomeProjeto)
-    expect(new Set(nomes).size).toBe(10)
+    expect(new Set(nomes).size).toBe(12)
     expect(nomeProjeto({ preset: "default", modo: "claro" })).toBe("storybook")
     expect(nomeProjeto({ preset: "midnight", modo: "escuro" })).toBe("storybook-midnight-escuro")
   })

@@ -3,6 +3,11 @@ tipo: epico
 projeto: 🎨 P-DS-SHADCN
 status: progresso
 criado: 2026-08-23
+decisoes:
+  - "[[D-documentacao-ds-1]]"
+  - "[[D-documentacao-ds-2]]"
+  - "[[D-documentacao-ds-3]]"
+  - "[[D-documentacao-ds-4]]"
 ---
 
 # Documentação estilo Design System

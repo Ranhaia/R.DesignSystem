@@ -12,7 +12,6 @@ perfil: design
 dono:
 tarefas: 0/2
 bloqueada-por:
-  - "[[H-validar-doc-button]]"
 criado: 2026-08-23
 fechado:
 motivo-descarte:

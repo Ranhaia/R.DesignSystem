@@ -3,7 +3,7 @@
 Projeto Next.js (App Router + TypeScript + Tailwind CSS v4) com a biblioteca
 completa de componentes do [shadcn/ui](https://ui.shadcn.com) instalada
 localmente. Não é só uma vitrine de componentes: é um **portal para treinar
-troca de identidade visual por folha de estilo** — 5 presets completos
+troca de identidade visual por folha de estilo** — 6 presets completos
 (cor, fonte principal, fonte de título, radius e elevação) trocáveis em
 tempo real, sem recarregar a página, para qualquer um dos 60 componentes.
 
@@ -41,7 +41,7 @@ npm run start
   linka para as duas seções e, quando há mais de um exemplo, para cada
   exemplo individualmente.
 
-## Os 5 presets de estilo
+## Os 6 presets de estilo
 
 O seletor no topo da sidebar troca `data-style` na tag `<html>` e persiste
 a escolha em `localStorage`. Cada preset é uma identidade completa, não só
@@ -54,13 +54,14 @@ paleta de cor:
 | Tech | Inter | JetBrains Mono | 90° (quinas vivas) | dura |
 | Suave | Poppins | Poppins | bem arredondados | difusa |
 | Midnight | Manrope | Manrope | médios | glow (sempre escuro) |
+| Clay | DM Sans | DM Sans | arredondados (base 0.8rem) | a do Padrão |
 
 `midnight` força tema escuro independente do modo claro/escuro do sistema —
 é o único preset que sobrescreve `background`/`foreground`/`card`/`border`
 diretamente em vez de só cor primária.
 
 Fontes carregadas via `next/font/google` em `src/app/layout.tsx` (Inter,
-Lora, Space Grotesk, JetBrains Mono, Poppins, Manrope) — todas ficam
+Lora, Space Grotesk, JetBrains Mono, Poppins, Manrope, DM Sans) — todas ficam
 disponíveis o tempo todo como variável CSS; trocar de preset só troca qual
 variável cada token (`--font-sans`, `--font-heading`) aponta.
 
@@ -80,7 +81,7 @@ Camadas, em ordem de precedência:
    (`--primary` → `bg-primary`/`text-primary`). Normalmente não se mexe aqui.
 2. **`:root`** — tokens base do tema claro (preset "Padrão").
 3. **`.dark`** — overrides do tema escuro (classe `dark` na `<html>`).
-4. **`[data-style="editorial|tech|soft"]`** (+ variante `.dark[data-style=...]`)
+4. **`[data-style="editorial|tech|soft|clay"]`** (+ variante `.dark[data-style=...]`)
    — overrides de identidade por preset, em cima do claro/escuro ativo.
 5. **`[data-style="midnight"]`** — único preset que ignora a camada
    claro/escuro e força seus próprios valores de superfície.
@@ -115,7 +116,7 @@ que se sente o efeito de "trocar de fornecedor" em vez de só recolorir.
 src/
   app/
     layout.tsx              # fontes (next/font/google) + script anti-flash de estilo
-    globals.css              # tokens (raio, sombra, fonte, movimento) + 5 presets
+    globals.css              # tokens (raio, sombra, fonte, movimento) + 6 presets
     tokens-cor.css           # cores geradas por src/lib/cor (não editar)
     page.tsx                  # Visão geral (dashboard genérico)
     estilo/page.tsx            # Folha de estilo (fontes, escala tipográfica, cores)
@@ -133,7 +134,7 @@ src/
     composition-registry.ts    # peças exportadas por cada componente
     examples-mapping.ts         # slug → lista de exemplos disponíveis
     example-title.ts             # slug + nome de arquivo → título em PT-BR
-    styles-registry.ts            # os 5 presets (label, swatch, descrição)
+    styles-registry.ts            # os 6 presets (label, swatch, descrição)
     utils.ts                       # helper cn() (clsx + tailwind-merge)
 components.json              # configuração da CLI do shadcn (aliases, estilo new-york)
 ```

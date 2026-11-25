@@ -1,22 +1,19 @@
 ---
 tipo: historia
+codigo: 04C
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/8
+tarefas: 8/8
 bloqueada-por:
-  - "[[H-memoria-atoms-a]]"
-  - "[[H-memoria-atoms-b]]"
-  - "[[H-memoria-atoms-c]]"
-  - "[[H-memoria-atoms-d]]"
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -74,15 +71,26 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `icon-button` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `input-group` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `message` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `pagination` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `scroll-area` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `segmented-control` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `icon-button` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `input-group` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `message` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `pagination` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `scroll-area` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `segmented-control` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- 2026-10-29 · antigravity · icon-button registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · input-group registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · message registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · pagination registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · scroll-area registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · segmented-control registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · lote encaixado em docs/componentes/README.md e removido de PENDENTES_MD em memoria-componentes.test.ts (sinonimos.json conferido)
+- 2026-10-29 · antigravity · verificação final com tsc, test:unit (1908 testes) e docs:check todos verdes
+
+- 2026-10-29 · claude · Entregue no PR #39 (montado a partir da main, só com código e docs; as notas de _trabalho/ não sobem para o GitHub). Verificado antes: tsc, test:unit e docs:check rodados por mim, e as páginas conferidas no navegador. Texto `piloto`, à espera da revisão do Rafael.
 
 ## Histórico

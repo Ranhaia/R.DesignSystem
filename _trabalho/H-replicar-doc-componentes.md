@@ -12,7 +12,6 @@ perfil: front
 dono:
 tarefas: 0/3
 bloqueada-por:
-  - "[[H-validar-doc-button]]"
   - "[[H-conteudo-narrativo-button]]"
 criado: 2026-08-23
 fechado:

@@ -2,7 +2,6 @@
 
 import * as React from "react"
 
-import { NavFoundations } from "@/components/sidebar-07/nav-foundations"
 import { NavComponents } from "@/components/sidebar-07/nav-components"
 import { NavPatterns } from "@/components/sidebar-07/nav-patterns"
 import { NavUser } from "@/components/sidebar-07/nav-user"
@@ -53,10 +52,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarGroup>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={pathname === "/estilo"} tooltip="Folha de estilo">
-                <Link href="/estilo">
-                  <Icon name="palette" />
-                  <span>Folha de estilo</span>
+              <SidebarMenuButton asChild isActive={pathname.startsWith("/fundamentos")} tooltip="Fundamentos">
+                <Link href="/fundamentos">
+                  <Icon name="foundation" />
+                  <span>Fundamentos</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -70,7 +69,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
-        <NavFoundations />
         <NavComponents />
         <NavPatterns />
       </SidebarContent>

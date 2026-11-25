@@ -78,7 +78,7 @@ por enquanto.
 |---|---|
 | Ajustar cor | `src/lib/cor/presets.ts` + `npm run tokens:gerar` (gera `src/app/tokens-cor.css`) + `docs/active/decisoes/` (se houver decisão pendente) |
 | Ajustar outros tokens (spacing, raio, tipografia, movimento) | `src/app/globals.css` + `docs/active/decisoes/` (se houver decisão pendente sobre o token) |
-| Criar/editar componente | Skill `.claude/skills/componente-rds/SKILL.md` + `src/components/ui/` + `docs/componentes/<slug>.md` e `_baliza.md` (+ `docs/archive/componentes/<slug>/` pra consultar um spec antigo) |
+| Criar/editar componente | Skill `componente-rds` (ler em `.claude/skills/`; mudar só no Hub) + `src/components/ui/` + `docs/componentes/<slug>.md` e `_baliza.md` (+ `docs/archive/componentes/<slug>/` pra consultar um spec antigo) |
 | Construir tela (`/construir-telas`) | `docs/active/telas/<slug>/` + `src/lib/templates-registry.ts` + `src/lib/atomic-registry.ts` |
 | Documentar uma decisão nova (ADR) | `docs/active/decisoes/` |
 | Revisar/aprovar um plano | `plans/current/` + o `docs/active/` correspondente à fase |
@@ -198,6 +198,7 @@ se contradizer.
 | Como um projeto consome o DS (o que copiar, comando) | `README.md`, seções "Estrutura de pastas para novos projetos" e "Como importar os componentes" |
 | Onde as coisas ficam, regras deste repo | este `CLAUDE.md` |
 | Spec ou decisão finalizada | mover de `docs/active/` para `docs/archive/` |
+| Uma skill (`componente-rds` ou outra), ou skill nova | Editar no Hub `C:\dev\_ferramentas\shared-skill-router\skills\`, nunca em `.claude/skills/` nem `.agents/skills/` (são cópias), e rodar o sync. Passo a passo em `AGENTS.md`, seção "Skills" |
 
 Quem é o quê: **`CLAUDE.md`** orienta quem trabalha *dentro* do DS;
 **`README.md`** orienta quem *usa* o DS num projeto. Não copie conteúdo de

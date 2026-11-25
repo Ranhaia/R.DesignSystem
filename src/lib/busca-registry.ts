@@ -47,14 +47,14 @@ export const ordemGrupos: GrupoBusca[] = [
 ]
 
 const fundamentos: ItemBusca[] = [
-  { grupo: "foundation", nome: "Folha de estilo", slug: "estilo", href: "/estilo" },
+  { grupo: "foundation", nome: "Estilo", slug: "estilo", href: "/fundamentos/estilo" },
   { grupo: "foundation", nome: "Tipografia", slug: "tipografia", href: "/fundamentos/tipografia" },
   { grupo: "foundation", nome: "Cores", slug: "cores", href: "/fundamentos/cores" },
   { grupo: "foundation", nome: "Espaçamento", slug: "espacamento", href: "/fundamentos/espacamento" },
   { grupo: "foundation", nome: "Grid", slug: "grid", href: "/fundamentos/grid" },
-  { grupo: "foundation", nome: "Bordas", slug: "bordas", href: "/fundamentos/bordas" },
+  { grupo: "foundation", nome: "Raios", slug: "bordas", href: "/fundamentos/bordas" },
   { grupo: "foundation", nome: "Elevação", slug: "elevacao", href: "/fundamentos/elevacao" },
-  { grupo: "foundation", nome: "Motion", slug: "motion", href: "/fundamentos/motion" },
+  { grupo: "foundation", nome: "Movimento", slug: "motion", href: "/fundamentos/motion" },
   { grupo: "foundation", nome: "Ícones", slug: "icones", href: "/fundamentos/icones" },
   { grupo: "foundation", nome: "Acessibilidade", slug: "acessibilidade", href: "/fundamentos/acessibilidade" },
 ]

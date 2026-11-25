@@ -20,7 +20,7 @@ describe("tokens de cor gerados", () => {
 
   it("todo contexto (preset × modo) declara todos os tokens", () => {
     const css = gerarCss()
-    for (const sel of [":root {", ".dark {", ...["editorial", "tech", "soft", "midnight"].flatMap((p) => [`[data-style="${p}"] {`, `.dark[data-style="${p}"] {`])]) {
+    for (const sel of [":root {", ".dark {", ...["editorial", "tech", "soft", "midnight", "clay"].flatMap((p) => [`[data-style="${p}"] {`, `.dark[data-style="${p}"] {`])]) {
       const i = css.indexOf(sel)
       expect(i, sel).toBeGreaterThanOrEqual(0)
       const bloco = css.slice(i, css.indexOf("}", i))

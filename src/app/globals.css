@@ -863,3 +863,15 @@
     transform: translateX(0) scale(1);
   }
 }
+
+/* ---- Clay: DM Sans, cantos arredondados, azul (referência: Referencia/design-md-clay/DESIGN.md) ----
+   2026-11-09: a cor vem do motor (cor-fonte #2F6FED, definida pelo Rafael, em src/lib/cor/presets.ts, sem sobrescrita).
+   --radius 0.8rem, valor pedido pelo Rafael (md = 10,8px, xl = 16,8px). O Clay usa 12px em
+   botão/campo (rounded.md) e 24px nos cartões (rounded.xl), então fica um pouco abaixo dele.
+   PROVISÓRIO: revisar visualmente. Sombra, ícone e hero herdam de :root (o Clay não
+   especifica). Fonte: DM Sans no lugar da Plain Black (proprietária), escolha do Rafael. */
+[data-style="clay"] {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --radius: 0.8rem;
+}

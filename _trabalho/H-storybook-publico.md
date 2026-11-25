@@ -4,8 +4,8 @@ codigo: 006
 projeto: 🎨 P-DS-SHADCN
 epico: E-case-publico
 status: descartado
-sinal: 🟡 Aguardando definição
-sinal-desde: 2026-08-23
+sinal: 🟢 Pronto para desenvolver
+sinal-desde: 2026-11-24
 ciclo:
 estimativa:
 perfil: front

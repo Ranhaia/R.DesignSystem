@@ -1,22 +1,19 @@
 ---
 tipo: historia
+codigo: 04F
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/7
+tarefas: 7/7
 bloqueada-por:
-  - "[[H-memoria-molecules-a]]"
-  - "[[H-memoria-molecules-b]]"
-  - "[[H-memoria-molecules-c]]"
-  - "[[H-memoria-molecules-d]]"
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -74,14 +71,24 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `command` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `context-menu` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `drawer` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `dropdown-menu` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `files` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `command` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `context-menu` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `drawer` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `dropdown-menu` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `files` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- 2026-10-29 · antigravity · command registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · context-menu registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · drawer registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · dropdown-menu registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · files registrado e declarado com docs:registrar e intenção preenchida (`npm run docs:check` verde)
+- 2026-10-29 · antigravity · lote encaixado em docs/componentes/README.md, removido de PENDENTES_MD em memoria-componentes.test.ts e chave files adicionada em sinonimos.json
+- 2026-10-29 · antigravity · verificação final com tsc, test:unit (2154 testes) e docs:check todos verdes
+
+- 2026-10-29 · claude · Entregue no PR #41 (montado a partir da main, só com código e docs; as notas de _trabalho/ não sobem para o GitHub). Verificado antes: tsc, test:unit e docs:check rodados por mim, e as páginas conferidas no navegador. Texto `piloto`, à espera da revisão do Rafael.
 
 ## Histórico

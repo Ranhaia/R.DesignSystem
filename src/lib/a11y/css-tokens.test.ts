@@ -19,8 +19,8 @@ describe("css-tokens", () => {
   const blocos = lerBlocos(CSS)
   const t = (preset: string, modo: string) => tokensDoContexto(blocos, { preset, modo } as never)
 
-  it("tem 10 contextos", () => {
-    expect(CONTEXTOS).toHaveLength(10)
+  it("tem 12 contextos", () => {
+    expect(CONTEXTOS).toHaveLength(12)
     expect(CONTEXTOS.map(nomeContexto)).toContain("midnight/escuro")
   })
   it("ignora @theme, @media e comentários", () => {

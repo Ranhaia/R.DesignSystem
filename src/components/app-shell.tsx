@@ -8,7 +8,7 @@ import {
   categoryHref,
   categoryLabels,
 } from "@/lib/atomic-registry"
-import { foundationsList } from "@/lib/foundations-registry"
+import { abasFundamentos } from "@/lib/foundations-registry"
 import { componentsList } from "@/lib/components-registry"
 import { patternsList } from "@/lib/patterns-registry"
 import { templatesList } from "@/lib/templates-registry"
@@ -47,10 +47,6 @@ function useBreadcrumb() {
     return { section: null, sectionHref: null, page: "Visão geral" }
   }
 
-  if (pathname === "/estilo") {
-    return { section: null, sectionHref: null, page: "Folha de estilo" }
-  }
-
   if (pathname === "/assistente") {
     return { section: null, sectionHref: null, page: "Assistente" }
   }
@@ -60,11 +56,7 @@ function useBreadcrumb() {
   }
 
   if (pathname === "/fundamentos" || pathname === "/foundations") {
-    return { section: null, sectionHref: null, page: "Foundations" }
-  }
-
-  if (pathname === "/components") {
-    return { section: null, sectionHref: null, page: "Components" }
+    return { section: null, sectionHref: null, page: "Fundamentos" }
   }
 
   // Índices das camadas (/primitivos, /atoms, /molecules, /organisms).
@@ -76,11 +68,11 @@ function useBreadcrumb() {
   }
 
   if (pathname === "/templates") {
-    return { section: null, sectionHref: null, page: "Templates" }
+    return { section: null, sectionHref: null, page: "Modelos" }
   }
 
   if (pathname === "/patterns") {
-    return { section: null, sectionHref: null, page: "Patterns" }
+    return { section: null, sectionHref: null, page: "Padrões" }
   }
 
   const componentMatch = pathname.match(/^\/components\/(.+)$/)
@@ -100,7 +92,7 @@ function useBreadcrumb() {
   if (patternMatch) {
     const entry = patternsList.find((p) => p.slug === patternMatch[1])
     return {
-      section: "Patterns",
+      section: "Padrões",
       sectionHref: "/patterns",
       page: entry?.name ?? patternMatch[1],
     }
@@ -108,13 +100,11 @@ function useBreadcrumb() {
 
   const foundationMatch = pathname.match(/^\/fundamentos\/(.+)$/)
   if (foundationMatch) {
-    const entry = foundationsList.find(
-      (f) => f.slug === foundationMatch[1] || f.href === pathname
-    )
+    const entry = abasFundamentos().find((a) => a.href === pathname)
     return {
-      section: "Foundations",
+      section: "Fundamentos",
       sectionHref: "/fundamentos",
-      page: entry?.name ?? foundationMatch[1],
+      page: entry?.label ?? foundationMatch[1],
     }
   }
 
@@ -122,7 +112,7 @@ function useBreadcrumb() {
   if (templateMatch) {
     const entry = templatesList.find((t) => t.slug === templateMatch[1])
     return {
-      section: "Templates",
+      section: "Modelos",
       sectionHref: "/templates",
       page: entry?.name ?? templateMatch[1],
     }

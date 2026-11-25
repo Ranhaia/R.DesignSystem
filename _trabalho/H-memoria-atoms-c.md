@@ -1,20 +1,19 @@
 ---
 tipo: historia
+codigo: 047
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/8
+tarefas: 8/8
 bloqueada-por:
-  - "[[H-memoria-primitivos-a]]"
-  - "[[H-memoria-primitivos-b]]"
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -72,15 +71,26 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `native-select` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `popover` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `progress` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `radio-group` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `select` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `slider` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `native-select` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `popover` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `progress` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `radio-group` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `select` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `slider` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- 2026-10-29 · antigravity · Registrar e declarar native-select: docs:registrar executado, intenção declarada em docs/componentes/native-select.md com vizinhos [select, radio-group, combobox] e referências [passi:selecao, shadcn:native-select]. Prova: npm run docs:check e vitest doc-texto-interno.test.ts verdes.
+- 2026-10-29 · antigravity · Registrar e declarar popover: docs:registrar executado, intenção declarada em docs/componentes/popover.md com vizinhos [tooltip, dialog, dropdown-menu] e referências [passi:popover, shadcn:popover]. Prova: npm run docs:check e vitest memoria-componentes (popover) verdes.
+- 2026-10-29 · antigravity · Registrar e declarar progress: docs:registrar executado, intenção declarada em docs/componentes/progress.md com vizinhos [spinner, skeleton, stepper] e referências [passi:barra-de-progresso, shadcn:progress]. Prova: npm run docs:check e vitest memoria-componentes (progress) verdes.
+- 2026-10-29 · antigravity · Registrar e declarar radio-group: docs:registrar executado, intenção declarada em docs/componentes/radio-group.md com vizinhos [checkbox, select, segmented-control] e referências [passi:radio, shadcn:radio-group]. Prova: npm run docs:check e vitest memoria-componentes (radio-group) verdes.
+- 2026-10-29 · antigravity · Registrar e declarar select: docs:registrar executado, intenção declarada em docs/componentes/select.md com vizinhos [native-select, combobox, radio-group, dropdown-menu] e referências [passi:selecao, shadcn:select]. Prova: npm run docs:check e vitest memoria-componentes (select) verdes.
+- 2026-10-29 · antigravity · Registrar e declarar slider: docs:registrar executado, intenção declarada em docs/componentes/slider.md com vizinhos [input, select, progress] e referências [passi:controle-deslizante, shadcn:slider]. Prova: npm run docs:check e vitest memoria-componentes (slider) verdes.
+- 2026-10-29 · antigravity · Encaixar lote atoms c: native-select, popover, progress, radio-group, select e slider adicionados ao README.md da porta de entrada, removidos de PENDENTES_MD em memoria-componentes.test.ts e sinonimos.json verificado. Prova: vitest memoria-componentes.test.ts e docs:check verdes.
+- 2026-10-29 · antigravity · Validação final do lote atoms c: npx tsc --noEmit (sem erros), npm run test:unit (29 arquivos, 1713 testes verdes) e npm run docs:check verdes. Passada concluída.
+
+- 2026-10-29 · claude · Entregue no PR #37 (montado a partir da main, só com código e docs; as notas de _trabalho/ não sobem para o GitHub). Verificado antes: tsc, test:unit e docs:check rodados por mim, e as páginas conferidas no navegador. Texto `piloto`, à espera da revisão do Rafael.
 
 ## Histórico

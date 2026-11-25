@@ -9,9 +9,9 @@ export type AtomicCategory = "primitive" | "atom" | "molecule" | "organism"
 // que nunca teve página própria.
 export const categoryLabels: Record<AtomicCategory, string> = {
   primitive: "Primitivos",
-  atom: "Atoms",
-  molecule: "Molecules",
-  organism: "Organisms",
+  atom: "Átomos",
+  molecule: "Moléculas",
+  organism: "Organismos",
 }
 
 export const categoryHref: Record<AtomicCategory, string> = {
@@ -154,3 +154,10 @@ export interface InProgressEntry {
 // ainda consomem essa lista pra renderizar cards "Em construção" — component
 // futuro que entrar nesse fluxo volta a usar esta lista.
 export const inProgressEntries: InProgressEntry[] = []
+
+// Quantos componentes há em cada camada: os números da home.
+export function contagemPorCamada(): Record<AtomicCategory, number> {
+  const c: Record<AtomicCategory, number> = { primitive: 0, atom: 0, molecule: 0, organism: 0 }
+  for (const cat of Object.values(atomicRegistry)) c[cat]++
+  return c
+}

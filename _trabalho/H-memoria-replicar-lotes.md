@@ -1,5 +1,6 @@
 ---
 tipo: historia
+codigo: 040
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
 status: aguardando
@@ -9,9 +10,8 @@ ciclo:
 estimativa: 5
 perfil: front
 dono:
-tarefas: 1/3
+tarefas: 2/3
 bloqueada-por:
-  - "[[H-abas-padronizadas]]"
 criado: 2026-10-28
 fechado:
 motivo-descarte:
@@ -47,7 +47,7 @@ Lotes, por camada:
 ## Tarefas
 
 - [x] Definir os lotes
-- [ ] Registrar cada lote (`docs:registrar`) e adaptar a intenção
+- [x] Registrar cada lote (`docs:registrar`) e adaptar a intenção
 - [ ] Revisão do Rafael por lote
 
 ## Contribuições
@@ -55,4 +55,7 @@ Lotes, por camada:
 - 2026-10-29 · claude · Rafael mandou replicar tudo com o AGY (Loop Engineering; push e PR liberados: 1 do quadro e 1 por camada). A História foi fatiada em 14 lotes por camada, de 3 a 7 componentes cada: [[H-memoria-primitivos-a]], [[H-memoria-primitivos-b]], [[H-memoria-atoms-a]], [[H-memoria-atoms-b]], [[H-memoria-atoms-c]], [[H-memoria-atoms-d]], [[H-memoria-molecules-a]], [[H-memoria-molecules-b]], [[H-memoria-molecules-c]], [[H-memoria-molecules-d]], [[H-memoria-organisms-a]], [[H-memoria-organisms-b]], [[H-memoria-organisms-c]], [[H-memoria-organisms-d]]. Cada camada só começa depois da anterior integrada. A Decisão sobre [[H-replicar-doc-componentes]] segue aberta.
 - 2026-10-28 · claude · Lotes definidos por camada (decisão do Rafael). O bloqueio pelo spike caiu: ele entrou na main no PR #22. O `separator` foi registrado e declarado em [[H-memoria-baliza-skill]], como prova da skill.
 
+- 2026-10-29 · claude · Onda 2 concluída: os 75 componentes sem MD passaram pelo ciclo, em 14 lotes feitos pelo AGY em worktrees e conferidos por mim (tsc, test:unit e docs:check, mais navegador). Entregues em 7 PRs (#36 a #42), sempre a partir da main e sem as notas de _trabalho/. `direction` virou primitivo sem UI por decisão do Rafael (ver [[H-memoria-direction]]). A trava agora exige MD de todo componente (`PENDENTES_MD` saiu). Falta a **Revisão do Rafael por lote**: todo texto está `piloto`. Defeitos de texto fixo em inglês achados nos componentes (documentados em Cuidados; correção fora do escopo): dialog, sheet, spinner, breadcrumb, carousel e sidebar.
+
 ## Histórico
+- 2026-11-24 · rafael · Devolvida para aguardando na faxina do Painel por ordem do Rafael.

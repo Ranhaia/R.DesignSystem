@@ -31,8 +31,8 @@ export function gerarCss(): string {
   formatarBloco(":root", temas["default"].claro)
   formatarBloco(".dark", temas["default"].escuro)
 
-  // 2. [data-style="x"] e .dark[data-style="x"] para os demais presets: editorial, tech, soft, midnight
-  const outrosPresets = ["editorial", "tech", "soft", "midnight"] as const
+  // 2. [data-style="x"] e .dark[data-style="x"] para os demais presets: editorial, tech, soft, midnight, clay
+  const outrosPresets = ["editorial", "tech", "soft", "midnight", "clay"] as const
   for (const preset of outrosPresets) {
     formatarBloco(`[data-style="${preset}"]`, temas[preset].claro)
     formatarBloco(`.dark[data-style="${preset}"]`, temas[preset].escuro)

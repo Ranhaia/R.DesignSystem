@@ -6,7 +6,7 @@ export function PatternIndexPage() {
   return (
     <div className="flex flex-1 flex-col gap-6">
       <CatalogHeader
-        title="Patterns"
+        title="Padrões"
         description="Composições reutilizáveis acima de Organism/Template — cada uma com exemplo funcional de código, não só documentação em texto."
         count={patternsList.length}
       />

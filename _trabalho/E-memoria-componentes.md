@@ -3,6 +3,16 @@ tipo: epico
 projeto: 🎨 P-DS-SHADCN
 status: progresso
 criado: 2026-10-28
+decisoes:
+  - "[[D-memoria-componentes-1]]"
+  - "[[D-memoria-componentes-2]]"
+  - "[[D-memoria-componentes-3]]"
+  - "[[D-memoria-componentes-4]]"
+  - "[[D-memoria-componentes-5]]"
+  - "[[D-memoria-componentes-6]]"
+  - "[[D-memoria-componentes-7]]"
+  - "[[D-memoria-componentes-8]]"
+  - "[[D-memoria-componentes-9]]"
 ---
 
 # Memória de componentes (PASSI + Rayner)

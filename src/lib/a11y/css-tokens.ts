@@ -1,10 +1,10 @@
 // Tokens do globals.css aplicados pela cascata real: preset e modo ficam os dois no <html> (src/app/layout.tsx),
 // então só especificidade e ordem decidem quem vence.
 
-export type Contexto = { preset: "default" | "editorial" | "tech" | "soft" | "midnight"; modo: "claro" | "escuro" }
+export type Contexto = { preset: "default" | "editorial" | "tech" | "soft" | "midnight" | "clay"; modo: "claro" | "escuro" }
 export type Bloco = { seletor: string; ordem: number; decl: Record<string, string> }
 
-const PRESETS: Contexto["preset"][] = ["default", "editorial", "tech", "soft", "midnight"]
+const PRESETS: Contexto["preset"][] = ["default", "editorial", "tech", "soft", "midnight", "clay"]
 export const CONTEXTOS: Contexto[] = PRESETS.flatMap((preset) => (["claro", "escuro"] as const).map((modo) => ({ preset, modo })))
 export const nomeContexto = (c: Contexto) => `${c.preset}/${c.modo}`
 

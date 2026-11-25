@@ -1,5 +1,5 @@
-import { ComponentsIndexPage } from "@/components/components-index"
+import { redirect } from "next/navigation"
 
-export default function ComponentsPage() {
-  return <ComponentsIndexPage />
+export default function ComponentsRedirect() {
+  redirect("/fundamentos/componentes")
 }

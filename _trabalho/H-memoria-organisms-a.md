@@ -1,22 +1,19 @@
 ---
 tipo: historia
+codigo: 04E
 projeto: 🎨 P-DS-SHADCN
 epico: E-memoria-componentes
-status: aguardando
+status: entregue
 sinal: 🟢 Pronto para desenvolver
 sinal-desde: 2026-10-29
 ciclo:
 estimativa: 1
 perfil: front
 dono:
-tarefas: 0/7
+tarefas: 7/7
 bloqueada-por:
-  - "[[H-memoria-molecules-a]]"
-  - "[[H-memoria-molecules-b]]"
-  - "[[H-memoria-molecules-c]]"
-  - "[[H-memoria-molecules-d]]"
 criado: 2026-10-29
-fechado:
+fechado: 2026-10-29
 motivo-descarte:
 origem: H-memoria-replicar-lotes
 ---
@@ -74,14 +71,30 @@ Nenhum além dos bloqueadores.
 
 ## Tarefas
 
-- [ ] Registrar e declarar `alert-dialog` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `calendar` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `carousel` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `chart` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Registrar e declarar `combobox` (docs:registrar, intenção, vizinhos e referencias)
-- [ ] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
-- [ ] Rodar tsc, test:unit e docs:check, todos verdes
+- [x] Registrar e declarar `alert-dialog` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `calendar` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `carousel` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `chart` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Registrar e declarar `combobox` (docs:registrar, intenção, vizinhos e referencias)
+- [x] Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json
+- [x] Rodar tsc, test:unit e docs:check, todos verdes
 
 ## Contribuições
+
+- 2026-10-29 · antigravity · Verificação completa: npx tsc --noEmit (0 erros), npm run test:unit (30 arquivos, 2094 testes verdes) e npm run docs:check (sincronia e memória verdes). Passada concluída.
+
+- 2026-10-29 · antigravity · Encaixar o lote no README, no PENDENTES_MD e no sinonimos.json: 5 slugs adicionados a docs/componentes/README.md em ordem alfabética e removidos de PENDENTES_MD em src/lib/memoria-componentes.test.ts (sinônimos já mapeados); 643 testes de memória verdes.
+
+- 2026-10-29 · antigravity · Registrar e declarar `combobox`: `npm run docs:registrar -- combobox`, MD declarado com intenção, vizinhos e referências (passi:campo-com-sugestoes, shadcn:combobox), docs:check verde.
+
+- 2026-10-29 · antigravity · Registrar e declarar `chart`: `npm run docs:registrar -- chart`, MD declarado com intenção, vizinhos e referências (passi:padroes/graficos, shadcn:chart), docs:check verde.
+
+- 2026-10-29 · antigravity · Registrar e declarar `carousel`: `npm run docs:registrar -- carousel`, MD declarado com intenção, vizinhos e referências (passi:indicador-de-pagina, shadcn:carousel), docs:check verde. Defeito documentado em Cuidados: CarouselPrevious e CarouselNext contêm textos sr-only em inglês ("Previous slide" / "Next slide").
+
+- 2026-10-29 · antigravity · Registrar e declarar `calendar`: `npm run docs:registrar -- calendar`, MD declarado com intenção, vizinhos e referências (passi:padroes/calendario, shadcn:calendar), docs:check verde.
+
+- 2026-10-29 · antigravity · Registrar e declarar `alert-dialog`: `npm run docs:registrar -- alert-dialog`, MD declarado com intenção, vizinhos e referências (passi:janela-modal, shadcn:alert-dialog), docs:check verde.
+
+- 2026-10-29 · claude · Entregue no PR #41 (montado a partir da main, só com código e docs; as notas de _trabalho/ não sobem para o GitHub). Verificado antes: tsc, test:unit e docs:check rodados por mim, e as páginas conferidas no navegador. Texto `piloto`, à espera da revisão do Rafael.
 
 ## Histórico
