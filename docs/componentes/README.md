@@ -89,9 +89,9 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Visões do mesmo conteúdo, uma por vez → `tabs`. Etapas em sequência → `stepper`. Histórico do que já aconteceu → `timeline`.
 - Seções que abrem e fecham → `accordion` (uma só → `collapsible`).
 - Agrupar informação de um assunto → `card`. Lista de itens parecidos → `item` / `list`.
-- Dados estruturados em linhas e colunas → `table`.
+- Dados estruturados em linhas e colunas → `table`. Pares rótulo/valor de um registro só (ficha de detalhes) → `description-list`.
 - Status só de leitura → `badge`. Filtro ou seleção clicável → `chip` / `tag`.
-- Carregando com formato conhecido → `skeleton`. Sem formato → `spinner`. Com porcentagem → `progress`.
+- Carregando com formato conhecido → `skeleton`. Sem formato → `spinner`. Com porcentagem → `progress` (barra; em espaço curto, `shape="circle"`).
 - Nada para mostrar ainda → `empty`.
 
 ## Componentes documentados
@@ -121,6 +121,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [combobox](combobox.md) — Combina campo de texto com lista de sugestões filtradas e seleção por chips.
 - [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.
 - [context-menu](context-menu.md) — Menu contextual flutuante acionado pelo clique com o botão direito do mouse.
+- [description-list](description-list.md) — Pares rótulo/valor de uma ficha de detalhes, em lista de definições.
 - [dialog](dialog.md) — Janela sobre a tela para uma tarefa focada.
 - [direction](direction.md) — Entrega o sentido de leitura aos componentes; não renderiza nada.
 - [drawer](drawer.md) — Painel deslizante que emerge das bordas da tela sobre camada escurecida.
@@ -150,7 +151,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [password-input](password-input.md) — Campo de senha com mostrar e ocultar e, no cadastro, a força da senha.
 - [pagination](pagination.md) — Divide listas longas em páginas sequenciais numeradas.
 - [popover](popover.md) — Painel flutuante no clique para conteúdo rico ou configurações rápidas.
-- [progress](progress.md) — Barra que indica o andamento de tarefas com duração determinada.
+- [progress](progress.md) — Barra ou anel que indica o andamento de tarefas com duração determinada.
 - [radio-group](radio-group.md) — Opções exclusivas para escolher exatamente uma alternativa visível.
 - [resizable](resizable.md) — Grupos de painéis com divisores arrastáveis e proporcionais para layouts flexíveis.
 - [scroll-area](scroll-area.md) — Área de rolagem customizada e consistente entre navegadores.

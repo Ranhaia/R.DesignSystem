@@ -22,6 +22,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Badge](/ia/componentes/badge.md): Rótulo compacto para destacar status, contagem ou metadado associado a um item. Componente puramente informativo, projetado para leitura e não para interação direta.
 - [Button](/ia/componentes/button.md): Dispara uma ação. O texto diz exatamente o que vai acontecer: "Salvar alterações", não "OK".
 - [Checkbox](/ia/componentes/checkbox.md): Permite marcar ou desmarcar opções independentes em formulários e listagens. Suporta estados marcado, desmarcado e indeterminado.
+- [Description List](/ia/componentes/description-list.md): Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.
 - [File Uploader](/ia/componentes/file-uploader.md): Área interativa para envio de arquivos por clique ou arrastar e soltar (drag and drop). Atua como zona de captura acessível associada a um campo de arquivo nativo.
 - [Input Otp](/ia/componentes/input-otp.md): Campo especializado para captura de códigos de verificação pontuais (OTP/2FA). Distribui os caracteres em casas individuais com avanço automático e suporte a colar o código completo.
 - [Input](/ia/componentes/input.md): Campo de entrada para capturar textos ou valores de linha única. Dá suporte a rótulo embutido ou flutuante e ação interativa no final.
