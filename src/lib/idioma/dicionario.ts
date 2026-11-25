@@ -51,6 +51,18 @@ const ptBR = {
   "treeSelect.limparBusca": "Limpar busca",
   "treeSelect.recolher": "Recolher",
   "treeSelect.expandir": "Expandir",
+  "password.mostrar": "Mostrar senha",
+  "password.ocultar": "Ocultar senha",
+  "password.forca": "Força da senha",
+  "password.fraca": "Fraca",
+  "password.media": "Média",
+  "password.forte": "Forte",
+  "password.reqTamanho": "Pelo menos 8 caracteres",
+  "password.reqCaixa": "Letras maiúsculas e minúsculas",
+  "password.reqNumero": "Um número",
+  "password.reqSimbolo": "Um símbolo",
+  "password.cumprido": "cumprido",
+  "password.pendente": "pendente",
 } as const
 
 export type ChaveTexto = keyof typeof ptBR
@@ -103,6 +115,18 @@ const en: Record<ChaveTexto, string> = {
   "treeSelect.limparBusca": "Clear search",
   "treeSelect.recolher": "Collapse",
   "treeSelect.expandir": "Expand",
+  "password.mostrar": "Show password",
+  "password.ocultar": "Hide password",
+  "password.forca": "Password strength",
+  "password.fraca": "Weak",
+  "password.media": "Fair",
+  "password.forte": "Strong",
+  "password.reqTamanho": "At least 8 characters",
+  "password.reqCaixa": "Upper and lower case letters",
+  "password.reqNumero": "A number",
+  "password.reqSimbolo": "A symbol",
+  "password.cumprido": "met",
+  "password.pendente": "not met",
 }
 
 export const dicionario = { "pt-BR": ptBR, en } satisfies Record<string, Record<ChaveTexto, string>>
