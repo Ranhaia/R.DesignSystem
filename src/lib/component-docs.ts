@@ -711,7 +711,7 @@ import { Label } from "@/components/ui/label"
     variants: [],
     states: [
       { name: "Em andamento", description: "Indicador preenchido proporcionalmente com transição suave via transition-all" },
-      { name: "0%", description: "Indicador totalmente recuado para a esquerda" },
+      { name: "0%", description: "Barra: indicador recuado à esquerda. Anel: só o trilho, sem arco" },
       { name: "Concluído (100%)", description: "Indicador cobre todo o comprimento do trilho" },
     ],
     sizes: [],
@@ -730,6 +730,7 @@ import { Label } from "@/components/ui/label"
       { name: "value (Progress)", type: "number", default: "0", description: "Porcentagem concluída da tarefa, variando de 0 a 100" },
       { name: "max (Progress)", type: "number", default: "100", description: "Valor máximo de referência do progresso" },
       { name: "getValueLabel (Progress)", type: "(value: number, max: number) => string", default: "—", description: "Função que formata o texto acessível do valor" },
+      { name: "shape", type: "bar · circle", default: "bar", description: "Forma do indicador: barra linear ou anel. Valor e leitura de tela iguais nas duas" },
     ],
     meta: {
       nome: "Progress",
@@ -749,8 +750,8 @@ import { Label } from "@/components/ui/label"
       cautions: "Não anuncie cada porcentagem intermediária para evitar poluir o leitor de tela; anuncie apenas marcos relevantes ou a conclusão da tarefa. Sempre forneça um nome acessível via aria-label ou texto associado.",
     },
     tokens: [
-      { contexto: "Cor", itens: ["bg-primary"] },
-      { contexto: "Espaço", itens: ["h-2"] },
+      { contexto: "Cor", itens: ["bg-primary", "stroke-primary"] },
+      { contexto: "Espaço", itens: ["h-2", "size-10"] },
       { contexto: "Raio", itens: ["rounded-full"] },
     ],
   },
@@ -5463,5 +5464,118 @@ export function ExemploBusca() {
       focus: "Limpar pelo botão devolve o foco ao campo.",
       cautions: "O atalho não dispara enquanto alguém digita em outro campo, com a tecla repetida nem durante composição de IME. Dois campos com o mesmo atalho disputam o foco: use um por tela. Evite letras comuns como atalho; prefira /.",
     },
+  },
+  "description-list": {
+    description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
+    whenToUse: "Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar. Rótulos curtos com valores de tamanho variado.",
+    anatomy: [
+      { part: "DescriptionList", description: "O conjunto (dl). Define o layout." },
+      { part: "DescriptionItem", description: "Um par (div), o agrupador válido dentro de dl." },
+      { part: "DescriptionTerm", description: "O rótulo (dt), texto base apagado." },
+      { part: "DescriptionDetails", description: "O valor (dd), texto base médio. Pode haver mais de um por item." },
+    ],
+    variants: [],
+    states: [],
+    sizes: [],
+    doGuidelines: ["Agrupar fichas longas em seções com título (title) acima de cada lista.", "Manter a mesma ordem de campos em todas as fichas do mesmo tipo.", "Usar inline só quando os rótulos têm tamanho parecido."],
+    dontGuidelines: ["Comparar vários registros lado a lado numa lista → table.", "Deixar o valor vazio → traço ou \"Não informado\".", "Pôr campo editável no valor → field num formulário."],
+    code: `import {
+  DescriptionDetails,
+  DescriptionItem,
+  DescriptionList,
+  DescriptionTerm,
+} from "@/components/ui/description-list"
+
+<DescriptionList>
+  <DescriptionItem>
+    <DescriptionTerm>Plano</DescriptionTerm>
+    <DescriptionDetails>Profissional</DescriptionDetails>
+  </DescriptionItem>
+</DescriptionList>`,
+    props: [
+      { name: "layout", type: "stacked · inline", default: "stacked", description: "stacked põe o rótulo em cima do valor; inline põe lado a lado, com a coluna de rótulos alinhada." },
+    ],
+    meta: {
+      nome: "Description List",
+      camada: "atom",
+      status: "piloto",
+      codigo: "src/components/ui/description-list.tsx",
+      story: "src/components/ui/description-list.stories.tsx",
+      vizinhos: ["table", "item", "card"],
+    },
+    whenToUseItems: ["Mostrar os dados de um registro só: perfil, pedido, contrato, resumo antes de confirmar.", "Rótulos curtos com valores de tamanho variado."],
+    whenNotToUse: ["Vários registros com os mesmos campos → table.", "Lista de itens parecidos, cada um com ação → item / list.", "Valores que a pessoa edita → field com o controle certo."],
+    content: ["Rótulo curto, sem dois-pontos (o layout já separa).", "Valor ausente: mostre um traço ou \"Não informado\", nunca deixe o dd vazio."],
+    accessibility: {
+      keyboard: "não recebe foco; links ou botões dentro do valor seguem a ordem normal.",
+      screenReader: "anuncia a lista de definições e cada rótulo com seu valor.",
+      focus: "sem foco próprio.",
+      cautions: "só DescriptionItem, dt e dd dentro de dl; não troque por div soltos.",
+    },
+    tokens: [
+      { contexto: "Espaço", itens: ["gap-4", "gap-x-6", "gap-y-1", "gap-y-3"] },
+    ],
+  },
+  timeline: {
+    description: "Eventos em ordem, como o histórico de atividade de um pedido ou chamado. É o list como lista ordenada, com um marcador por evento e uma linha ligando os marcadores.",
+    whenToUse: "Mostrar o que já aconteceu com um registro, na ordem: pedido, chamado, aprovação. Feed de atividade de uma pessoa ou de um projeto.",
+    anatomy: [
+      { part: "Timeline", description: "A lista ordenada (ol) com os eventos." },
+      { part: "TimelineItem", description: "Um evento (li): marcador à esquerda, conteúdo à direita e a linha até o próximo." },
+      { part: "TimelineMarker", description: "O ponto do evento, ou o ícone passado como filho. Decorativo." },
+      { part: "TimelineContent", description: "Coluna do texto do evento." },
+      { part: "TimelineTitle", description: "O que aconteceu, texto médio (não é cabeçalho)." },
+      { part: "TimelineTime", description: "Quando aconteceu, em <time> com dateTime." },
+      { part: "TimelineDescription", description: "Detalhe opcional, texto apagado." },
+    ],
+    variants: [],
+    states: [],
+    sizes: [],
+    doGuidelines: ["Manter uma ordem só na tela inteira (mais novo em cima ou embaixo).", "Usar ícone no marcador quando os tipos de evento variam.", "Pôr a data em todo evento."],
+    dontGuidelines: ["Usar para passos futuros → stepper.", "Usar cabeçalho no título de cada evento → TimelineTitle, que é texto.", "Marcar falha só com a cor → escrever a falha no título."],
+    code: `import {
+  Timeline,
+  TimelineContent,
+  TimelineItem,
+  TimelineMarker,
+  TimelineTime,
+  TimelineTitle,
+} from "@/components/ui/timeline"
+
+<Timeline>
+  <TimelineItem>
+    <TimelineMarker />
+    <TimelineContent>
+      <TimelineTitle>Pedido criado</TimelineTitle>
+      <TimelineTime dateTime="2026-11-20">20 nov</TimelineTime>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>`,
+    props: [
+      { name: "dateTime (TimelineTime)", type: "string", default: "—", description: "Data em formato de máquina (ISO), para leitor de tela e buscadores." },
+      { name: "tone (TimelineMarker)", type: "default · primary · destructive", default: "default", description: "Cor do marcador: neutro, destaque ou problema." },
+    ],
+    meta: {
+      nome: "Timeline",
+      camada: "molecule",
+      status: "piloto",
+      codigo: "src/components/ui/timeline.tsx",
+      story: "src/components/ui/timeline.stories.tsx",
+      vizinhos: ["list", "item", "stepper"],
+    },
+    whenToUseItems: ["Mostrar o que já aconteceu com um registro, na ordem: pedido, chamado, aprovação.", "Feed de atividade de uma pessoa ou de um projeto."],
+    whenNotToUse: ["Etapas que a pessoa ainda vai percorrer → stepper.", "Itens sem ordem no tempo, com ações → item / list."],
+    content: ["Título no passado e curto: \"Pagamento aprovado\".", "Data no formato da tela e a mesma data em ISO no dateTime."],
+    accessibility: {
+      keyboard: "não recebe foco; links dentro do evento seguem a ordem normal.",
+      screenReader: "anuncia a lista com o número de eventos; marcador e linha ficam de fora.",
+      focus: "sem foco próprio.",
+      cautions: "a cor do marcador não pode ser a única pista: falha precisa estar escrita no título.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["bg-border", "bg-destructive", "bg-muted", "bg-primary", "text-destructive-foreground", "text-muted-foreground", "text-primary-foreground"] },
+      { contexto: "Espaço", itens: ["bottom-1", "gap-0", "gap-1", "gap-x-3", "left-3", "min-w-0", "pb-0", "pb-6", "pt-0.5", "size-2", "size-4", "size-6", "top-7", "w-px"] },
+      { contexto: "Raio", itens: ["rounded-full"] },
+    ],
   },
 }
