@@ -52,7 +52,7 @@
   "navigation-menu": ["menu-de-navegacao", "mega-menu", "navegacao", "navbar"],
   "pagination": ["paginacao", "paginação"],
   "popover": ["painel-flutuante"],
-  "progress": ["barra-de-progresso", "progress-bar"],
+  "progress": ["barra-de-progresso", "progress-bar", "progresso-circular", "anel-de-progresso", "progress-circle", "progress-ring"],
   "radio-group": ["radio", "rádio", "radio-button", "opcao-unica"],
   "resizable": ["redimensionavel", "painel-redimensionavel", "split-pane"],
   "scroll-area": ["area-de-rolagem", "rolagem", "scroll"],

@@ -5,11 +5,26 @@
   ],
   "variantes": [],
   "tamanhos": [],
-  "props": [],
+  "props": [
+    {
+      "nome": "shape",
+      "parte": "Progress",
+      "tipo": "`bar` · `circle`",
+      "padrao": "bar"
+    },
+    {
+      "nome": "max",
+      "parte": "Progress",
+      "tipo": null,
+      "padrao": "100"
+    }
+  ],
   "tokens": [
     "bg-primary",
     "h-2",
-    "rounded-full"
+    "rounded-full",
+    "size-10",
+    "stroke-primary"
   ],
   "compoe": []
 }
