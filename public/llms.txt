@@ -56,6 +56,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Card](/ia/componentes/card.md): Agrupa informações e ações sobre o mesmo assunto em uma superfície delimitada. Funciona como unidade visual para organizar painéis, resumos e blocos de conteúdo.
 - [Chip](/ia/componentes/chip.md): Sinaliza um critério ou atributo ativo aplicado a uma busca ou filtragem de lista. Permite ao usuário visualizar e remover regras ativas.
 - [Collapsible](/ia/componentes/collapsible.md): Alterna a visibilidade de uma seção de conteúdo secundário sob demanda. Mantém a página limpa ao esconder blocos opcionais sem a estrutura de um acordeão.
+- [Color Picker](/ia/componentes/color-picker.md): Escolhe uma cor: livre, na área de saturação e brilho mais a matiz; digitada em hexadecimal; ou tirada de uma paleta. Devolve sempre o hex.
 - [Empty](/ia/componentes/empty.md): Comunica um estado vazio em listas, tabelas ou telas sem dados. Orienta a pessoa sobre o que deveria estar ali e oferece o próximo passo.
 - [Field](/ia/componentes/field.md): Estrutura controles de formulário combinando rótulo, descrição, erros e agrupamentos acessíveis. Garante a conexão semântica correta entre as partes do campo.
 - [Hover Card](/ia/componentes/hover-card.md): Exibe uma prévia flutuante de informações enriquecidas ao passar o mouse ou focar um link. Permite consultar contexto adicional sem navegar até outra página.

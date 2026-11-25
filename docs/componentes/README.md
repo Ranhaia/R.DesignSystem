@@ -79,7 +79,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Dinheiro → `currency-input` (moeda em `currency`).
 - Número exato, com − e + → `number-input`.
 - Busca → `search-input` (com atalho de teclado: `shortcut`).
-- Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
+- Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`. Cor → `color-picker`.
 
 **Mostrar mensagem**
 - Fica na página, perto do assunto → `alert`.
@@ -125,6 +125,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [checkbox](checkbox.md) — Permite marcar ou desmarcar opções independentes em formulários.
 - [chip](chip.md) — Sinaliza critérios ou atributos ativos aplicados a uma busca ou filtragem de lista.
 - [code-block](code-block.md) — Código com botão de copiar.
+- [color-picker](color-picker.md) — Escolhe uma cor livre ou da paleta, com hexadecimal e teclado.
 - [collapsible](collapsible.md) — Alterna a visibilidade de uma seção de conteúdo secundário sob demanda.
 - [combobox](combobox.md) — Combina campo de texto com lista de sugestões filtradas e seleção por chips.
 - [command](command.md) — Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado.

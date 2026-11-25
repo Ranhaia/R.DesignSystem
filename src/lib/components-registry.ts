@@ -26,6 +26,7 @@ export const componentsList: ComponentEntry[] = [
   { slug: "checkbox", name: "Checkbox" },
   { slug: "chip", name: "Chip" },
   { slug: "collapsible", name: "Collapsible" },
+  { slug: "color-picker", name: "Color Picker" },
   { slug: "combobox", name: "Combobox" },
   { slug: "command", name: "Command" },
   { slug: "context-menu", name: "Context Menu" },

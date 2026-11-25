@@ -19,6 +19,7 @@ export const examplesMapping: Record<string, string[]> = {
   "checkbox": ["checkbox-demo", "checkbox-disabled", "checkbox-with-text"],
   "chip": ["chip-demo"],
   "collapsible": ["collapsible-demo"],
+  "color-picker": ["color-picker-demo", "color-picker-inline"],
   "combobox": ["combobox-demo", "combobox-dropdown-menu", "combobox-popover", "combobox-responsive"],
   "command": ["command-demo", "command-dialog"],
   "context-menu": ["context-menu-demo"],
