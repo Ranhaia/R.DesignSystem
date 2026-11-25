@@ -6151,4 +6151,62 @@ export function ExemploCor() {
       { contexto: "Foco", itens: ["ring-ring"] },
     ],
   },
+  "image-viewer": {
+    description: "Imagem grande por cima da página, com zoom, arrastar e galeria. É o dialog em tela cheia, com barra de ações, setas para trocar de imagem e miniaturas.",
+    whenToUse: "Ver em detalhe a foto de um produto, imóvel ou documento. Percorrer as fotos de uma galeria a partir da miniatura.",
+    anatomy: [
+      { part: "ImageViewer", description: "O visualizador: gatilho, barra (posição, reduzir, ampliar, fechar), palco com a imagem e as setas, e as miniaturas." },
+    ],
+    variants: [],
+    states: [
+      { name: "Sem zoom", description: "Imagem inteira; cursor de lupa." },
+      { name: "Com zoom", description: "De 1,5× a 4×; cursor de mão, arrastar move a imagem." },
+      { name: "Limite do zoom", description: "O botão do limite fica marcado como indisponível." },
+      { name: "Miniatura atual", description: "Opaca e com contorno; as outras, esmaecidas." },
+    ],
+    sizes: [],
+    doGuidelines: ["Usar a miniatura como gatilho, com nome (\"Ampliar foto 1\").", "Abrir na imagem clicada (defaultIndex).", "Escrever o alt de cada imagem."],
+    dontGuidelines: ["Usar para imagem decorativa → deixar só na página.", "Pôr formulário ou texto longo junto da imagem → dialog.", "Abrir sem gatilho visível → miniatura ou botão \"Ver fotos\"."],
+    code: `import { ImageViewer } from "@/components/ui/image-viewer"
+
+<ImageViewer images={[{ src: "/foto.jpg", alt: "Fachada" }]}>
+  <button type="button">Ver foto</button>
+</ImageViewer>`,
+    props: [
+      { name: "images", type: "ImagemDoVisualizador[]", default: "—", description: "Lista de imagens (src e alt); com mais de uma, vira galeria." },
+      { name: "children", type: "React.ReactNode", default: "—", description: "Gatilho que abre o visualizador, como a miniatura." },
+      { name: "open", type: "boolean", default: "—", description: "Aberto, controlado." },
+      { name: "defaultOpen", type: "boolean", default: "—", description: "Aberto no início, sem controle." },
+      { name: "onOpenChange", type: "(aberto: boolean) => void", default: "—", description: "Chamado ao abrir ou fechar." },
+      { name: "index", type: "number", default: "—", description: "Imagem atual, controlada." },
+      { name: "defaultIndex", type: "number", default: "0", description: "Imagem mostrada ao abrir, sem controle." },
+      { name: "onIndexChange", type: "(indice: number) => void", default: "—", description: "Chamado ao trocar de imagem." },
+      { name: "className", type: "string", default: "—", description: "Classes extras na superfície em tela cheia." },
+    ],
+    meta: {
+      nome: "Image Viewer",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/image-viewer.tsx",
+      story: "src/components/ui/image-viewer.stories.tsx",
+      vizinhos: ["dialog", "carousel", "aspect-ratio"],
+    },
+    whenToUseItems: ["Ver em detalhe a foto de um produto, imóvel ou documento.", "Percorrer as fotos de uma galeria a partir da miniatura."],
+    whenNotToUse: ["Fotos passando dentro da própria página → carousel.", "Imagem em proporção fixa na página → aspect-ratio."],
+    content: ["alt de cada imagem descreve o que se vê; ele vira o título do dialog e o nome da miniatura.", "Imagem em resolução alta: o zoom chega a 4×."],
+    accessibility: {
+      keyboard: "setas trocam a imagem; +, - e 0 controlam o zoom; Esc fecha; Tab passa pela barra, setas e miniaturas.",
+      screenReader: "anuncia o dialog com o alt da imagem; a posição (\"2 de 5\") é anunciada ao trocar.",
+      focus: "preso no visualizador enquanto aberto e devolvido ao gatilho ao fechar (do dialog).",
+      cautions: "sem pinça de dois dedos; no toque, o zoom é pelo duplo toque e pelos botões.",
+    },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm"] },
+      { contexto: "Espaço", itens: ["end-2", "gap-0", "gap-1", "gap-2", "inset-0", "left-0", "min-h-0", "p-0", "p-2", "px-2", "size-14", "start-2", "top-0", "top-1"] },
+      { contexto: "Raio", itens: ["rounded-full", "rounded-md"] },
+      { contexto: "Movimento", itens: ["duration-motion-fast"] },
+      { contexto: "Foco", itens: ["ring-primary", "ring-ring"] },
+    ],
+  },
 }

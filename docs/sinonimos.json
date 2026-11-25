@@ -43,6 +43,7 @@
   "input": ["campo", "campo-de-texto", "text-field", "textfield", "input-text", "email"],
   "search-input": ["busca", "campo-de-busca", "search", "pesquisa", "search-bar", "barra-de-busca"],
   "password-input": ["senha", "password", "campo-de-senha", "nova-senha", "forca-de-senha", "password-strength"],
+  "image-viewer": ["visualizador-de-imagem", "lightbox", "galeria", "ampliar-imagem", "zoom", "visualizar-foto", "image-gallery", "fotos"],
   "rating": ["avaliacao", "avaliação", "nota", "estrelas", "classificacao", "star-rating", "stars", "review"],
   "code-block": ["bloco-de-codigo", "codigo", "code", "snippet", "trecho-de-codigo", "copiar-codigo", "pre"],
   "timeline": ["linha-do-tempo", "historico", "historico-de-atividade", "atividade", "eventos", "cronologia", "feed-de-atividade", "activity"],

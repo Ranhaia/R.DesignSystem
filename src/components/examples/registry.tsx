@@ -147,6 +147,7 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "password-input-cadastro": dynamic(() => import("@/components/examples/password-input-cadastro")),
   "announcement-banner-demo": dynamic(() => import("@/components/examples/announcement-banner-demo")),
   "password-input-demo": dynamic(() => import("@/components/examples/password-input-demo")),
+  "image-viewer-demo": dynamic(() => import("@/components/examples/image-viewer-demo")),
   "rating-demo": dynamic(() => import("@/components/examples/rating-demo")),
   "rating-media": dynamic(() => import("@/components/examples/rating-media")),
   "code-block-demo": dynamic(() => import("@/components/examples/code-block-demo")),
