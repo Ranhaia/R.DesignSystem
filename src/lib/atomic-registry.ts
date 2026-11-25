@@ -126,6 +126,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   command: "organism",
   "context-menu": "organism",
   dialog: "organism",
+  "data-table": "organism",
   "dropdown-menu": "organism",
   drawer: "organism",
   form: "organism",

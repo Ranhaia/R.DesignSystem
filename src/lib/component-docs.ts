@@ -4994,10 +4994,10 @@ import { Button } from "@/components/ui/button"
       status: "piloto",
       codigo: "src/components/ui/table.tsx",
       story: "src/components/ui/table.stories.tsx",
-      vizinhos: ["list", "item", "card"],
+      vizinhos: ["data-table", "list", "item", "card"],
     },
     whenToUseItems: ["Listas densas de dados estruturados para comparação entre atributos: faturas, apólices ou transações.", "Exibição de registros tabulares com necessidade de cabeçalho descritivo e rodapé de totais.", "Conjunto de dados homogêneos que se beneficiam de ordenação por coluna e paginação."],
-    whenNotToUse: ["Layout de página ou organização visual de blocos sem relação tabular → box.", "Lista simples de itens sem comparação direta entre colunas → list ou item.", "Visualização de itens ricos em telas pequenas de celular → card."],
+    whenNotToUse: ["Busca, filtro, ordenação, seleção em lote ou exportar CSV → data-table", "Layout de página ou organização visual de blocos sem relação tabular → box.", "Lista sem comparação entre colunas, ou itens ricos no celular → list, item ou card."],
     content: ["Cabeçalhos de coluna curtos e claros com substantivos no singular: \"Fatura\", \"Valor\", \"Status\".", "Alinhe textos à esquerda e valores numéricos ou monetários à direita.", "Use TableCaption para descrever resumidamente o conjunto de dados exibido."],
     accessibility: {
       keyboard: "Células não recebem foco por padrão. Controles interativos dentro das células (como botões, links e checkboxes) seguem a ordem natural do Tab. O contêiner permite navegação horizontal por setas quando há estouro de largura.",
@@ -5416,54 +5416,78 @@ export function ExemploSenha() {
       { contexto: "Espaço", itens: ["gap-1", "gap-1.5", "gap-2", "min-w-12"] },
     ],
   },
-  "search-input": {
-    description: "Campo de busca pronto: lupa no início, botão de limpar quando há texto e, se quiser, uma tecla de atalho que leva o foco até ele. Resolve a busca de lista ou página sem montar o input-group à mão.",
-    whenToUse: "Filtrar uma lista, tabela ou página pelo texto digitado. Busca principal de uma tela, com atalho de teclado (shortcut=\"/\").",
+  "data-table": {
+    description: "Tabela montada sobre a table para trabalhar com os dados: procurar, filtrar, ordenar, escolher as colunas, agir sobre várias linhas de uma vez e levar tudo para uma planilha em CSV.",
+    whenToUse: "Muitos itens que a pessoa precisa comparar, achar ou ordenar (faturas, pedidos, usuários). A mesma ação vale para vários itens de uma vez (selecionavel + acoesEmLote). A pessoa precisa levar os dados para uma planilha.",
     anatomy: [
-      { part: "SearchInput", description: "Raiz <search> (landmark de busca) com data-slot=\"search-input\"; o className vai nela. Dentro, o input-group." },
-      { part: "Lupa", description: "input-group-addon no início, com o ícone search." },
-      { part: "Campo", description: "input-group-input com type=\"search\"; recebe as props de <input>." },
-      { part: "Limpar", description: "input-group-button com ícone close, no fim, só quando há texto." },
-      { part: "Atalho", description: "kbd com a tecla, no fim, enquanto o campo está vazio." },
+      { part: "DataTable", description: "Raiz <div data-slot=\"data-table\">; o className vai nela." },
+      { part: "Barra", description: "<div data-slot=\"data-table-toolbar\"> com a busca (input), um filtro por coluna filtravel (dropdown-menu), a contagem e as ações em lote, o menu Colunas e Exportar CSV." },
+      { part: "Tabela", description: "A table, com cabeçalho ordenável (button + aria-sort) e, com selecionavel, a coluna de checkbox." },
+      { part: "Vazio", description: "Uma linha que ocupa todas as colunas com o texto de vazio." },
     ],
     variants: [],
     states: [
-      { name: "Vazio", description: "Lupa e, se houver atalho, a tecla no fim" },
-      { name: "Com texto", description: "O botão de limpar troca a tecla do atalho" },
-      { name: "Foco", description: "Anel de foco do input-group em volta de tudo" },
-      { name: "Desabilitado", description: "disabled vale para o campo e para o botão de limpar" },
+      { name: "Ordenada", description: "Seta para cima ou para baixo no cabeçalho da coluna; as outras ordenáveis mostram a seta dupla apagada" },
+      { name: "Filtrada", description: "O botão do filtro mostra quantos valores estão marcados, ex.: \"Status (2)\"" },
+      { name: "Com seleção", description: "Linha marcada com o fundo de selecionada; a barra mostra \"N selecionadas\" e as ações em lote" },
+      { name: "Seleção parcial", description: "Checkbox do cabeçalho indeterminado" },
+      { name: "Vazia", description: "Uma linha com o texto de vazio" },
     ],
     sizes: [],
-    doGuidelines: ["Use onValueChange para filtrar; ele também avisa quando o campo é limpo.", "Dê um aria-label com o alvo quando houver mais de uma busca na tela.", "Prefira / como atalho: não briga com a digitação nem com atalhos do navegador."],
-    dontGuidelines: ["Montar lupa e limpar à mão no input-group → search-input", "Usar busca para escolher um único valor → combobox", "Tratar o limpar só pelo onChange em modo controlado → use onValueChange"],
-    code: `import { SearchInput } from "@/components/ui/search-input"
+    doGuidelines: ["Passe idDaLinha com um id real.", "Marque números com numerica, para alinharem à direita.", "Diga em vazio por que está vazio e qual o primeiro passo."],
+    dontGuidelines: ["Mais de 7 colunas visíveis → esconda as menos usadas com oculta", "Ação importante só no menu → coloque o botão em acoesEmLote", "Tabela no celular → list ou cards"],
+    code: `import { DataTable } from "@/components/ui/data-table"
 
-export function ExemploBusca() {
-  return <SearchInput shortcut="/" placeholder="Buscar pedidos" onValueChange={console.log} />
+const pedidos = [{ id: "1", cliente: "Ana", valor: 30 }]
+
+export function ExemploPedidos() {
+  return (
+    <DataTable
+      aria-label="Pedidos"
+      dados={pedidos}
+      idDaLinha={(p) => p.id}
+      selecionavel
+      colunas={[
+        { chave: "cliente", titulo: "Cliente", ordenavel: true },
+        { chave: "valor", titulo: "Valor", ordenavel: true, numerica: true },
+      ]}
+    />
+  )
 }`,
     props: [
-      { name: "value / defaultValue", type: "string", default: "—", description: "Texto controlado ou inicial" },
-      { name: "aria-label", type: "string", default: "\"Buscar\"", description: "Nome do campo; troque quando a busca tem alvo (\"Buscar pedidos\")" },
-      { name: "onValueChange", type: "(value: string) => void", default: "—", description: "Recebe o texto a cada mudança, inclusive ao limpar. Em modo controlado, é por ele que o limpar chega ao estado" },
-      { name: "shortcut", type: "string", default: "—", description: "Uma tecla (ex.: \"/\") que leva o foco ao campo; aparece com kbd" },
+      { name: "dados", type: "T[]", default: "—", description: "As linhas. Qualquer objeto." },
+      { name: "colunas", type: "ColunaDados<T>[]", default: "—", description: "Uma por coluna: chave, titulo e, se precisar, ordenavel, filtravel, numerica, oculta e celula (o que desenhar na célula)." },
+      { name: "idDaLinha", type: "(linha: T, indice: number) => string", default: "(_l, i) => String(i)", description: "Identidade da linha. Passe um id real para a seleção sobreviver a dados que mudam." },
+      { name: "selecionavel", type: "boolean", default: "false", description: "Liga a coluna de checkbox e a seleção em lote." },
+      { name: "ordemInicial", type: "Ordem<T>", default: "null", description: "Coluna e direção (asc/desc) com que a tabela abre." },
+      { name: "nomeArquivo", type: "string", default: "dados.csv", description: "Nome do arquivo do Exportar CSV." },
+      { name: "acoesEmLote", type: "(selecionadas: T[]) => React.ReactNode", default: "—", description: "Botões que aparecem na barra quando há linhas marcadas; recebe as linhas." },
+      { name: "className", type: "string", default: "—", description: "Classes extras na raiz." },
+      { name: "aria-label", type: "string", default: "—", description: "Nome da tabela para o leitor de tela. Obrigatório." },
+      { name: "vazio", type: "React.ReactNode", default: "—", description: "O que dizer sem linhas: o motivo e o primeiro passo. Padrão: \"Nenhum resultado encontrado.\"" },
     ],
     meta: {
-      nome: "Search Input",
+      nome: "Data Table",
       camada: "organism",
       status: "piloto",
-      codigo: "src/components/ui/search-input.tsx",
-      story: "src/components/ui/search-input.stories.tsx",
-      vizinhos: ["input-group", "command", "combobox"],
+      codigo: "src/components/ui/data-table.tsx",
+      story: "src/components/ui/data-table.stories.tsx",
+      vizinhos: ["table", "list", "pagination"],
     },
-    whenToUseItems: ["Filtrar uma lista, tabela ou página pelo texto digitado.", "Busca principal de uma tela, com atalho de teclado (shortcut=\"/\")."],
-    whenNotToUse: ["Escolher um valor de uma lista fechada → combobox", "Executar comandos ou navegar por atalhos → command", "Campo com outro ícone ou botão que não é busca → input-group"],
-    content: ["O placeholder diz o que se busca (\"Buscar pedidos\"), sem reticências.", "\"Buscar\" e \"Limpar busca\" vêm do dicionário de idioma; não escreva por fora."],
+    whenToUseItems: ["Muitos itens que a pessoa precisa comparar, achar ou ordenar (faturas, pedidos, usuários).", "A mesma ação vale para vários itens de uma vez (selecionavel + acoesEmLote).", "A pessoa precisa levar os dados para uma planilha."],
+    whenNotToUse: ["Poucas linhas só para ler, sem busca nem ação → table", "No celular, ou itens com pouco para comparar → list ou cards", "Milhares de linhas vindas do servidor → busque e pagine no servidor e use table com pagination"],
+    content: ["A primeira coluna é o nome do item: ela também nomeia o checkbox da linha (\"Selecionar Ana Souza\").", "Títulos de coluna e ações em lote são texto de produto e vêm por prop; busca, filtros, Colunas e Exportar vêm do dicionário (pt-BR ou en).", "Status com badge na celula, nunca só a cor do texto."],
     accessibility: {
-      keyboard: "Esc com texto limpa o campo. A tecla de shortcut, apertada fora de outro campo e sem Ctrl, ⌘ ou Alt, leva o foco à busca.",
-      screenReader: "O campo é type=\"search\" com nome \"Buscar\" por padrão; o atalho é anunciado por aria-keyshortcuts e a kbd fica fora da leitura. O botão diz \"Limpar busca\".",
-      focus: "Limpar pelo botão devolve o foco ao campo.",
-      cautions: "O atalho não dispara enquanto alguém digita em outro campo, com a tecla repetida nem durante composição de IME. Dois campos com o mesmo atalho disputam o foco: use um por tela. Evite letras comuns como atalho; prefira /.",
+      keyboard: "Tab passa pela busca, filtros, Colunas, Exportar, cabeçalhos ordenáveis e checkboxes. Enter ou Espaço ordena, marca e abre os menus; nos menus, setas navegam e Espaço marca sem fechar.",
+      screenReader: "A tabela tem nome (aria-label); a coluna ordenada anuncia aria-sort; cada checkbox diz qual linha marca; a contagem de selecionadas é anunciada ao mudar (aria-live).",
+      focus: "Anel de foco de cada peça (input, button, checkbox).",
+      cautions: "Até 7 colunas visíveis; deixe as outras com oculta. O CSV usa o valor cru e neutraliza texto que a planilha leria como fórmula.",
     },
+    tokens: [
+      { contexto: "Cor", itens: ["text-muted-foreground"] },
+      { contexto: "Tipografia", itens: ["text-sm"] },
+      { contexto: "Espaço", itens: ["gap-2", "gap-3", "h-24", "max-w-xs", "ml-3", "mr-3", "w-0"] },
+    ],
   },
   "description-list": {
     description: "Pares rótulo/valor de um único registro, como numa ficha de detalhes. Usa a lista de definições do HTML, para o leitor de tela ligar cada rótulo ao seu valor.",
@@ -5515,6 +5539,55 @@ export function ExemploBusca() {
     tokens: [
       { contexto: "Espaço", itens: ["gap-4", "gap-x-6", "gap-y-1", "gap-y-3"] },
     ],
+  },
+  "search-input": {
+    description: "Campo de busca pronto: lupa no início, botão de limpar quando há texto e, se quiser, uma tecla de atalho que leva o foco até ele. Resolve a busca de lista ou página sem montar o input-group à mão.",
+    whenToUse: "Filtrar uma lista, tabela ou página pelo texto digitado. Busca principal de uma tela, com atalho de teclado (shortcut=\"/\").",
+    anatomy: [
+      { part: "SearchInput", description: "Raiz <search> (landmark de busca) com data-slot=\"search-input\"; o className vai nela. Dentro, o input-group." },
+      { part: "Lupa", description: "input-group-addon no início, com o ícone search." },
+      { part: "Campo", description: "input-group-input com type=\"search\"; recebe as props de <input>." },
+      { part: "Limpar", description: "input-group-button com ícone close, no fim, só quando há texto." },
+      { part: "Atalho", description: "kbd com a tecla, no fim, enquanto o campo está vazio." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "Lupa e, se houver atalho, a tecla no fim" },
+      { name: "Com texto", description: "O botão de limpar troca a tecla do atalho" },
+      { name: "Foco", description: "Anel de foco do input-group em volta de tudo" },
+      { name: "Desabilitado", description: "disabled vale para o campo e para o botão de limpar" },
+    ],
+    sizes: [],
+    doGuidelines: ["Use onValueChange para filtrar; ele também avisa quando o campo é limpo.", "Dê um aria-label com o alvo quando houver mais de uma busca na tela.", "Prefira / como atalho: não briga com a digitação nem com atalhos do navegador."],
+    dontGuidelines: ["Montar lupa e limpar à mão no input-group → search-input", "Usar busca para escolher um único valor → combobox", "Tratar o limpar só pelo onChange em modo controlado → use onValueChange"],
+    code: `import { SearchInput } from "@/components/ui/search-input"
+
+export function ExemploBusca() {
+  return <SearchInput shortcut="/" placeholder="Buscar pedidos" onValueChange={console.log} />
+}`,
+    props: [
+      { name: "value / defaultValue", type: "string", default: "—", description: "Texto controlado ou inicial" },
+      { name: "aria-label", type: "string", default: "\"Buscar\"", description: "Nome do campo; troque quando a busca tem alvo (\"Buscar pedidos\")" },
+      { name: "onValueChange", type: "(value: string) => void", default: "—", description: "Recebe o texto a cada mudança, inclusive ao limpar. Em modo controlado, é por ele que o limpar chega ao estado" },
+      { name: "shortcut", type: "string", default: "—", description: "Uma tecla (ex.: \"/\") que leva o foco ao campo; aparece com kbd" },
+    ],
+    meta: {
+      nome: "Search Input",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/search-input.tsx",
+      story: "src/components/ui/search-input.stories.tsx",
+      vizinhos: ["input-group", "command", "combobox"],
+    },
+    whenToUseItems: ["Filtrar uma lista, tabela ou página pelo texto digitado.", "Busca principal de uma tela, com atalho de teclado (shortcut=\"/\")."],
+    whenNotToUse: ["Escolher um valor de uma lista fechada → combobox", "Executar comandos ou navegar por atalhos → command", "Campo com outro ícone ou botão que não é busca → input-group"],
+    content: ["O placeholder diz o que se busca (\"Buscar pedidos\"), sem reticências.", "\"Buscar\" e \"Limpar busca\" vêm do dicionário de idioma; não escreva por fora."],
+    accessibility: {
+      keyboard: "Esc com texto limpa o campo. A tecla de shortcut, apertada fora de outro campo e sem Ctrl, ⌘ ou Alt, leva o foco à busca.",
+      screenReader: "O campo é type=\"search\" com nome \"Buscar\" por padrão; o atalho é anunciado por aria-keyshortcuts e a kbd fica fora da leitura. O botão diz \"Limpar busca\".",
+      focus: "Limpar pelo botão devolve o foco ao campo.",
+      cautions: "O atalho não dispara enquanto alguém digita em outro campo, com a tecla repetida nem durante composição de IME. Dois campos com o mesmo atalho disputam o foco: use um por tela. Evite letras comuns como atalho; prefira /.",
+    },
   },
   timeline: {
     description: "Eventos em ordem, como o histórico de atividade de um pedido ou chamado. É o list como lista ordenada, com um marcador por evento e uma linha ligando os marcadores.",

@@ -28,6 +28,7 @@ export const componentsList: ComponentEntry[] = [
   { slug: "combobox", name: "Combobox" },
   { slug: "command", name: "Command" },
   { slug: "context-menu", name: "Context Menu" },
+  { slug: "data-table", name: "Data Table" },
   { slug: "dialog", name: "Dialog" },
   { slug: "direction", name: "Direction" },
   { slug: "drawer", name: "Drawer" },
