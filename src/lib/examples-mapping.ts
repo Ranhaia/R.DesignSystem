@@ -22,6 +22,7 @@ export const examplesMapping: Record<string, string[]> = {
   "combobox": ["combobox-demo", "combobox-dropdown-menu", "combobox-popover", "combobox-responsive"],
   "command": ["command-demo", "command-dialog"],
   "context-menu": ["context-menu-demo"],
+  "currency-input": ["currency-input-demo", "currency-input-moeda"],
   "data-table": ["data-table-demo"],
   "dialog": ["dialog-close-button", "dialog-demo"],
   "direction": ["direction-demo"],

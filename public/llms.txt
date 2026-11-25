@@ -84,6 +84,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Combobox](/ia/componentes/combobox.md): Combina um campo de entrada de texto com menu suspenso de sugestões filtradas sob demanda, suportando seleção única ou múltipla por chips.
 - [Command](/ia/componentes/command.md): Menu de comandos e busca rápida para filtrar ações e recursos pelo teclado. Funciona inline na página ou dentro de uma janela modal para paleta de comandos.
 - [Context Menu](/ia/componentes/context-menu.md): Menu contextual flutuante acionado pelo clique com o botão direito do mouse ou toque longo. Agrupa ações específicas aplicadas ao elemento apontado.
+- [Currency Input](/ia/componentes/currency-input.md): Campo para valor em dinheiro: digita livre e, ao sair, mostra no formato do idioma e da moeda, com o símbolo ao lado. Entrega o número pronto em `onValueChange`.
 - [Data Table](/ia/componentes/data-table.md): Tabela montada sobre a `table` para trabalhar com os dados: procurar, filtrar, ordenar, escolher as colunas, agir sobre várias linhas de uma vez e levar tudo para uma planilha em CSV.
 - [Dialog](/ia/componentes/dialog.md): Janela por cima da tela para uma tarefa curta e focada — editar, preencher, escolher. O resto da página fica inerte e escurecido.
 - [Drawer](/ia/componentes/drawer.md): Painel deslizante que emerge das bordas da tela sobre uma camada escurecida, ideal para dispositivos móveis. Permite arrastar para fechar ou tocar fora para dispensar.

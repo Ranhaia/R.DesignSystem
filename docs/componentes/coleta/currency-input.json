@@ -1,0 +1,38 @@
+{
+  "slug": "currency-input",
+  "partes": [
+    "CurrencyInput"
+  ],
+  "variantes": [],
+  "tamanhos": [],
+  "props": [
+    {
+      "nome": "value",
+      "parte": "CurrencyInput",
+      "tipo": "`number` · `null`",
+      "padrao": null
+    },
+    {
+      "nome": "defaultValue",
+      "parte": "CurrencyInput",
+      "tipo": "`number` · `null`",
+      "padrao": null
+    },
+    {
+      "nome": "onValueChange",
+      "parte": "CurrencyInput",
+      "tipo": "`(value: number | null) => void`",
+      "padrao": null
+    },
+    {
+      "nome": "currency",
+      "parte": "CurrencyInput",
+      "tipo": "`string`",
+      "padrao": "BRL"
+    }
+  ],
+  "tokens": [],
+  "compoe": [
+    "input-group"
+  ]
+}

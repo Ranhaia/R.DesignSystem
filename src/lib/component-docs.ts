@@ -5751,4 +5751,52 @@ export function ExemploBusca() {
       { contexto: "Raio", itens: ["rounded-full"] },
     ],
   },
+  "currency-input": {
+    description: "Campo para valor em dinheiro: digita livre e, ao sair, mostra no formato do idioma e da moeda, com o símbolo ao lado. Entrega o número pronto em onValueChange.",
+    whenToUse: "Preço, valor de seguro, renda, limite: qualquer quantia em dinheiro. Telas em mais de um idioma ou moeda (currency=\"USD\").",
+    anatomy: [
+      { part: "CurrencyInput", description: "Raiz input-group com data-slot=\"currency-input\"; o className vai nela." },
+      { part: "Símbolo", description: "input-group-addon no início com o símbolo da moeda no idioma (R$, $)." },
+      { part: "Campo", description: "input-group-input com inputMode=\"decimal\" e números tabulares." },
+    ],
+    variants: [],
+    states: [
+      { name: "Vazio", description: "Só o símbolo; o campo em branco é null" },
+      { name: "Digitando", description: "Texto livre, sem máscara" },
+      { name: "Confirmado", description: "Ao sair ou com Enter, o valor aparece formatado com as casas da moeda" },
+      { name: "Inválido", description: "Texto que não é valor volta ao último valor válido" },
+    ],
+    sizes: [],
+    doGuidelines: ["Guarde o número de onValueChange, nunca o texto do campo.", "Passe currency sempre que a moeda não for real.", "Valide limites (mínimo, máximo) no formulário, pelo field."],
+    dontGuidelines: ["Escrever \"R$\" no rótulo ou no placeholder → o símbolo já aparece no campo", "Usar input com máscara de dinheiro → currency-input", "Usar para quantidade sem moeda → number-input"],
+    code: `import { CurrencyInput } from "@/components/ui/currency-input"
+
+export function ExemploValor() {
+  return <CurrencyInput aria-label="Valor do seguro" onValueChange={console.log} />
+}`,
+    props: [
+      { name: "aria-label", type: "string", default: "—", description: "Nome do campo quando não há label por fora" },
+      { name: "value", type: "number · null", default: "—", description: "Valor controlado; null é vazio" },
+      { name: "defaultValue", type: "number · null", default: "—", description: "Valor inicial" },
+      { name: "onValueChange", type: "(value: number | null) => void", default: "—", description: "Recebe o número (ou null) ao sair do campo ou com Enter, só quando muda" },
+      { name: "currency", type: "string", default: "BRL", description: "Código ISO 4217; define o símbolo e as casas decimais" },
+    ],
+    meta: {
+      nome: "Currency Input",
+      camada: "organism",
+      status: "piloto",
+      codigo: "src/components/ui/currency-input.tsx",
+      story: "src/components/ui/currency-input.stories.tsx",
+      vizinhos: ["input", "slider"],
+    },
+    whenToUseItems: ["Preço, valor de seguro, renda, limite: qualquer quantia em dinheiro.", "Telas em mais de um idioma ou moeda (currency=\"USD\")."],
+    whenNotToUse: ["Quantidade sem moeda, com − e + → number-input", "Faixa de preço aproximada → slider"],
+    content: ["O rótulo diz o que é o valor (\"Valor do seguro\"), sem a moeda: o símbolo já está no campo.", "Formato e símbolo vêm do idioma ativo; não formate por fora."],
+    accessibility: {
+      keyboard: "Enter confirma e formata o texto digitado; Tab sai e também confirma.",
+      screenReader: "O símbolo fica no grupo junto do campo; o valor lido é o texto formatado.",
+      focus: "Anel do input-group em volta do símbolo e do campo.",
+      cautions: "Passe label ou aria-label. Não é type=\"number\": esse tipo não aceita o separador do idioma. Sem máscara durante a digitação, para não brigar com o cursor.",
+    },
+  },
 }

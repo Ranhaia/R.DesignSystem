@@ -21,6 +21,7 @@
   "chip": ["etiqueta", "filtro", "pill"],
   "collapsible": ["recolhivel", "recolhível", "mostrar-mais"],
   "combobox": ["campo-com-sugestoes", "autocomplete", "autocompletar", "typeahead"],
+  "currency-input": ["dinheiro", "moeda", "valor", "preco", "preço", "campo-de-dinheiro", "money-input", "currency"],
   "command": ["paleta-de-comandos", "command-palette", "cmdk", "busca-rapida"],
   "context-menu": ["menu-de-contexto", "clique-direito"],
   "data-table": ["tabela-de-dados", "grid-de-dados", "datagrid", "data-grid", "tabela-com-filtro", "exportar-csv"],
