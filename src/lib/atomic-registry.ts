@@ -111,6 +111,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   "segmented-control": "molecule",
   attachment: "molecule",
   "speed-dial": "molecule",
+  "timeline": "molecule",
 
   // Organisms
   combobox: "organism",

@@ -70,6 +70,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Speed Dial](/ia/componentes/speed-dial.md): Botão de ação flutuante que se expande em uma sequência de ações secundárias relacionadas. Permite acessar comandos rápidos sem ocupar espaço permanente na tela.
 - [Table](/ia/componentes/table.md): Organiza informações em linhas e colunas para visualização, comparação e consulta estruturada. Conta com contêiner responsivo com rolagem horizontal automática.
 - [Tabs](/ia/componentes/tabs.md): Divide um conteúdo em partes e mostra uma de cada vez, sem sair da página. A aba ativa fica destacada para a pessoa saber onde está.
+- [Timeline](/ia/componentes/timeline.md): Eventos em ordem, como o histórico de atividade de um pedido ou chamado. É o `list` como lista ordenada, com um marcador por evento e uma linha ligando os marcadores.
 - [Toggle Group](/ia/componentes/toggle-group.md): Agrupa botões de alternância de dois estados para seleção única ou múltipla. Ideal para barras de ferramentas, formatação e filtros visuais compactos.
 - [TreeSelect](/ia/componentes/tree-select.md): Campo de seleção em árvore que permite escolher itens estruturados em hierarquia dentro de um painel flutuante. Suporta seleção única, múltipla independente ou em cascata com caixas de marcação.
 
