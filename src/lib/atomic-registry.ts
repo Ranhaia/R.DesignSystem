@@ -82,6 +82,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
 
   // Molecules
   accordion: "molecule",
+  agenda: "organism",
   bubble: "molecule",
   card: "molecule",
   message: "molecule",

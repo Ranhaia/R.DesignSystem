@@ -76,6 +76,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 
 ## Organisms
 
+- [Agenda](/ia/componentes/agenda.md): Mostra compromissos no mês, na semana ou no dia. O mês monta sobre o `calendar` e herda o teclado dele; semana e dia listam os eventos como botões.
 - [Alert Dialog](/ia/componentes/alert-dialog.md): Interrompe o fluxo da tela com um aviso crítico e exige resposta explícita antes de continuar. Diferente do diálogo comum, não fecha ao clicar fora.
 - [Announcement Banner](/ia/componentes/announcement-banner.md): Faixa no topo do app com um recado para todas as pessoas, que cada uma pode fechar. É o `alert` em largura total, sem cantos, com o botão de fechar.
 - [Calendar](/ia/componentes/calendar.md): Exibe uma grade mensal interativa para seleção visual de uma data ou período. Já vem configurado com localização pt-BR por padrão.

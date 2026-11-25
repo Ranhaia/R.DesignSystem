@@ -79,7 +79,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Dinheiro → `currency-input` (moeda em `currency`).
 - Número exato, com − e + → `number-input`.
 - Busca → `search-input` (com atalho de teclado: `shortcut`).
-- Valor aproximado num intervalo → `slider`. Data → `calendar`. Hora → `time-picker`.
+- Valor aproximado num intervalo → `slider`. Data → `calendar`; ver compromissos no mês, semana ou dia → `agenda`. Hora → `time-picker`.
 
 **Mostrar mensagem**
 - Fica na página, perto do assunto → `alert`.
@@ -106,6 +106,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 (`src/lib/memoria-componentes.test.ts`) reprova componente sem MD ou sem a linha.
 
 - [accordion](accordion.md) — Organiza o conteúdo em seções empilhadas que expandem e recolhem.
+- [agenda](agenda.md) — Compromissos no mês, na semana ou no dia, com navegação por teclado.
 - [alert](alert.md) — Exibe uma mensagem contextual fixa na página para informar ou alertar.
 - [announcement-banner](announcement-banner.md) — Faixa no topo do app com um recado para todos, que a pessoa fecha.
 - [alert-dialog](alert-dialog.md) — Interrompe o fluxo da tela com um aviso crítico e exige resposta explícita.
