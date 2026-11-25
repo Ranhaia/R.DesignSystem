@@ -141,6 +141,7 @@ export const atomicRegistry: Record<string, AtomicCategory> = {
   sidebar: "organism",
   stepper: "organism",
   "time-picker": "organism",
+  "image-viewer": "organism",
   "code-block": "organism",
 }
 

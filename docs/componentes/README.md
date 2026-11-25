@@ -87,6 +87,7 @@ Escolher o componente errado é o erro mais comum. Resolva aqui primeiro.
 - Confirma algo e some sozinha → `sonner`.
 - Avisos que se acumulam para ler depois, com lidas e não lidas → `notification-center`.
 - Interrompe para pedir decisão → `alert-dialog`. Tarefa focada (editar, preencher) → `dialog`.
+- Ver uma foto grande, com zoom e galeria → `image-viewer`. Fotos passando na própria página → `carousel`.
 - Painel lateral com conteúdo longo → `sheet`. No celular, vindo de baixo → `drawer`.
 - Explica um elemento no hover/foco → `tooltip`. Painel pequeno no clique → `popover`.
 
@@ -144,6 +145,7 @@ Formato: `slug` — uma linha do que é. Todo componente de `src/components/ui/`
 - [hover-card](hover-card.md) — Exibe uma prévia flutuante de informações enriquecidas no hover ou foco.
 - [icon](icon.md) — Renderiza um glifo do Material Symbols com eixos variáveis.
 - [icon-button](icon-button.md) — Botão representado exclusivamente por um ícone visual.
+- [image-viewer](image-viewer.md) — Imagem grande sobre a página, com zoom, arrastar e galeria.
 - [input](input.md) — Campo de entrada para capturar textos ou valores de linha única.
 - [input-group](input-group.md) — Agrupa campos de entrada com botões, ícones ou textos na mesma borda.
 - [input-otp](input-otp.md) — Campo especializado para captura de códigos de verificação pontuais (OTP/2FA).

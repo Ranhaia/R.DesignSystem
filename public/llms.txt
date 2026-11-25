@@ -92,6 +92,7 @@ Comece pelas [regras para IA](/ia/AGENTS.md). Cada componente tem um arquivo Mar
 - [Dropdown Menu](/ia/componentes/dropdown-menu.md): Menu suspenso ancorado a um botão acionador que exibe uma lista de ações ou opções. Fecha ao selecionar um item ou ao clicar fora do painel.
 - [Files](/ia/componentes/files.md): Árvore hierárquica de navegação por pastas e arquivos com expansão e recolhimento animados. Apresenta a estrutura de diretórios e permite selecionar itens.
 - [Form](/ia/componentes/form.md): Estrutura e gerencia formulários com validação integrada ao React Hook Form. Conecta campos, rótulos, mensagens de erro e atributos acessíveis automaticamente.
+- [Image Viewer](/ia/componentes/image-viewer.md): Imagem grande por cima da página, com zoom, arrastar e galeria. É o `dialog` em tela cheia, com barra de ações, setas para trocar de imagem e miniaturas.
 - [Menubar](/ia/componentes/menubar.md): Barra horizontal persistente de menus inspirada em aplicações desktop. Oferece acesso consistente e agrupado a comandos globais por categorias e atalhos.
 - [MultiSelect](/ia/componentes/multi-select.md): Campo de seleção múltipla com autocompletar que exibe cada escolha como um chip removível no próprio container.
 - [Navigation Menu](/ia/componentes/navigation-menu.md): Menu estruturado para navegação principal em websites e portais. Oferece suporte a links diretos, painéis suspensos ricos e transição animada entre seções.
