@@ -50,7 +50,7 @@ export const examplesMapping: Record<string, string[]> = {
   "navigation-menu": ["navigation-menu-demo"],
   "pagination": ["pagination-demo"],
   "popover": ["popover-demo"],
-  "progress": ["progress-demo"],
+  "progress": ["progress-demo", "progress-circulo"],
   "radio-group": ["radio-group-demo"],
   "resizable": ["resizable-demo", "resizable-demo-with-handle", "resizable-handle", "resizable-vertical"],
   "scroll-area": ["scroll-area-demo", "scroll-area-horizontal-demo"],

@@ -172,6 +172,7 @@ export const exampleRegistry: Record<string, React.ComponentType> = {
   "pagination-demo": dynamic(() => import("@/components/examples/pagination-demo")),
   "popover-demo": dynamic(() => import("@/components/examples/popover-demo")),
   "progress-demo": dynamic(() => import("@/components/examples/progress-demo")),
+  "progress-circulo": dynamic(() => import("@/components/examples/progress-circulo")),
   "radio-group-demo": dynamic(() => import("@/components/examples/radio-group-demo")),
   "resizable-demo": dynamic(() => import("@/components/examples/resizable-demo")),
   "resizable-demo-with-handle": dynamic(() => import("@/components/examples/resizable-demo-with-handle")),

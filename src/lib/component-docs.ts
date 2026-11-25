@@ -711,7 +711,7 @@ import { Label } from "@/components/ui/label"
     variants: [],
     states: [
       { name: "Em andamento", description: "Indicador preenchido proporcionalmente com transição suave via transition-all" },
-      { name: "0%", description: "Indicador totalmente recuado para a esquerda" },
+      { name: "0%", description: "Barra: indicador recuado à esquerda. Anel: só o trilho, sem arco" },
       { name: "Concluído (100%)", description: "Indicador cobre todo o comprimento do trilho" },
     ],
     sizes: [],
@@ -730,6 +730,7 @@ import { Label } from "@/components/ui/label"
       { name: "value (Progress)", type: "number", default: "0", description: "Porcentagem concluída da tarefa, variando de 0 a 100" },
       { name: "max (Progress)", type: "number", default: "100", description: "Valor máximo de referência do progresso" },
       { name: "getValueLabel (Progress)", type: "(value: number, max: number) => string", default: "—", description: "Função que formata o texto acessível do valor" },
+      { name: "shape", type: "bar · circle", default: "bar", description: "Forma do indicador: barra linear ou anel. Valor e leitura de tela iguais nas duas" },
     ],
     meta: {
       nome: "Progress",
@@ -749,8 +750,8 @@ import { Label } from "@/components/ui/label"
       cautions: "Não anuncie cada porcentagem intermediária para evitar poluir o leitor de tela; anuncie apenas marcos relevantes ou a conclusão da tarefa. Sempre forneça um nome acessível via aria-label ou texto associado.",
     },
     tokens: [
-      { contexto: "Cor", itens: ["bg-primary"] },
-      { contexto: "Espaço", itens: ["h-2"] },
+      { contexto: "Cor", itens: ["bg-primary", "stroke-primary"] },
+      { contexto: "Espaço", itens: ["h-2", "size-10"] },
       { contexto: "Raio", itens: ["rounded-full"] },
     ],
   },

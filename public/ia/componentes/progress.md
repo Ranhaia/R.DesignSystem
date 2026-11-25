@@ -5,7 +5,7 @@ camada: atom
 codigo: src/components/ui/progress.tsx
 story: src/components/ui/progress.stories.tsx
 status: piloto
-sinonimos: [barra-de-progresso, progress-bar]
+sinonimos: [barra-de-progresso, progress-bar, progresso-circular, anel-de-progresso, progress-circle, progress-ring]
 vizinhos: [spinner, skeleton, stepper]
 referencias: [passi:barra-de-progresso, shadcn:progress]
 ---
@@ -43,21 +43,25 @@ Não usa outro componente do R.DS.
 | `value` (Progress) | `number` | `0` | Porcentagem concluída da tarefa, variando de 0 a 100 |
 | `max` (Progress) | `number` | `100` | Valor máximo de referência do progresso |
 | `getValueLabel` (Progress) | `(value: number, max: number) => string` | — | Função que formata o texto acessível do valor |
+| `shape` | `bar` · `circle` | `bar` | Forma do indicador: barra linear ou anel. Valor e leitura de tela iguais nas duas |
 
 ## Variantes
 
-Nenhuma. Barra linear com trilho translúcido bg-primary/20 e indicador bg-primary.
+Nenhuma de cor. A forma muda pela prop `shape`:
+
+- `bar` (padrão): largura disponível, ao lado ou abaixo do rótulo da tarefa (envio, importação, preenchimento de perfil).
+- `circle`: espaço curto ou quadrado, como dentro de um card, ao lado de um arquivo na lista ou num cabeçalho. Ponha a porcentagem em texto ao lado.
 
 ## Tamanhos
 
-Altura fixa de 8 px (h-2) com largura que preenche 100% do container pai (w-full).
+Barra: altura de 8 px (h-2) e largura de 100% do container (w-full). Anel: 40 px (size-10); troque com a classe size-* da escala.
 
 ## Estados
 
 | Estado | Como aparece |
 |---|---|
 | Em andamento | Indicador preenchido proporcionalmente com transição suave via transition-all |
-| 0% | Indicador totalmente recuado para a esquerda |
+| 0% | Barra: indicador recuado à esquerda. Anel: só o trilho, sem arco |
 | Concluído (100%) | Indicador cobre todo o comprimento do trilho |
 
 ## Conteúdo
@@ -75,8 +79,8 @@ Altura fixa de 8 px (h-2) com largura que preenche 100% do container pai (w-full
 
 ## Tokens usados
 
-- **Cor:** `bg-primary`
-- **Espaço:** `h-2`
+- **Cor:** `bg-primary` `stroke-primary`
+- **Espaço:** `h-2` `size-10`
 - **Raio:** `rounded-full`
 
 ## Faça
